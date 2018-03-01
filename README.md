@@ -26,3 +26,10 @@ So i try to make it better! Build a fast CMS with all required features by defau
   - extendable
   - mobile friendly
   - get high Google page speed score
+  - plugin marketplace (only checked plugins!) with speed index (how much they reduce speed of cms)
+  
+## Requirements
+
+  - PHP 7.0.8+
+  - MySQL 5.7+
+  - Mod_Rewrite Support

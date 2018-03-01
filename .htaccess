@@ -1,1 +1,27 @@
-﻿
+﻿# https://stackoverflow.com/questions/25423141/what-exactly-does-the-the-multiviews-options-in-htaccess
+<IfModule mod_negotiation.c>
+    Options -MultiViews
+</IfModule>
+
+# allow mod rewrite
+RewriteEngine On
+
+# redirect "/index.php?id=xxx" to "/index/xxx"
+#RewriteCond %{THE_REQUEST} \s/index\.php\?page=([0-9]+)\s [NC]
+#RewriteRule ^ /section/%1? [R=301,L]
+
+# internally rewrite "/section/xxx" to "/section.php?id=xxx"
+#RewriteRule ^index/([0-9]+)$ /index.php?page=$1 [L]
+
+#RewriteBase /
+
+# only if file not exists
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# only, if directory not exists
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# rewrite all urls
+RewriteRule (.*)/$ index.php?&page=$1
+
+#RewriteRule ^/([^/]+)$ /index.php?id=$1 [L]
