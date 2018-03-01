@@ -23,3 +23,6 @@ So i try to make it better! Build a fast CMS with all required features by defau
   - WYSIWYG Editor (What You See Is What You Get, like Word)
   - support for Blog & ticket (support) systems
   - self repair (if database is broken, this CMS should be able to repair the database itself without any manuall interactions)
+  - extendable
+  - mobile friendly
+  - get high Google page speed score
