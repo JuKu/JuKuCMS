@@ -16,13 +16,36 @@
  * limitations under the License.
  */
 
-//check php version
-if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
-    echo "CMS is required PHP 7.0.0 or greater! Please install PHP 7.";
-    exit;
-}
 
-//require config
-require(ROOT_PATH . "config/config.php");
+/**
+ * Created by PhpStorm.
+ * User: Justin
+ * Date: 02.03.2018
+ * Time: 00:17
+ */
+
+class Packages {
+
+    public static function listPackages (bool $installed_required = true) : array {
+
+        if (!file_exists(ROOT_PATH . "store/package_list.php")) {
+            return array();
+        }
+
+        require(ROOT_PATH . "store/pluginlist.php");
+
+        $packages = array();
+
+        foreach ($package_list as $plugin=>$installed) {
+            if ($installed || !$installed_required) {
+                $packages[] = $plugin;
+            }
+        }
+
+        return $packages;
+
+    }
+
+}
 
 ?>

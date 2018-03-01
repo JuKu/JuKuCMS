@@ -16,13 +16,17 @@
  * limitations under the License.
  */
 
-//check php version
-if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
-    echo "CMS is required PHP 7.0.0 or greater! Please install PHP 7.";
-    exit;
-}
 
-//require config
-require(ROOT_PATH . "config/config.php");
+/**
+ * Created by PhpStorm.
+ * User: Justin
+ * Date: 02.03.2018
+ * Time: 00:19
+ */
+
+$pluginlist = array(
+    'com.jukusoft.cms.config' => true,
+    'com.jukusoft.cms.configdriver' => true,
+);
 
 ?>
