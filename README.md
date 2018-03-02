@@ -9,7 +9,8 @@ Open Source CMS should be the fastest CMS world wide (WIP).
   - **provisional name**: JuKuCMS
   - Falcon CMS (falcons are the fastest animals in the world)
   - RocketCMS (as fast as a rocket - the fastest vehicle on the earth)
-  - WarpCMS (suggested by @PascalReintjens )
+  - WarpCMS (suggested by @PascalReintjens)
+  - HyperspeedCMS (suggested by @PascalReintjens)
 
 ## Main Goals
 
