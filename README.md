@@ -1,5 +1,7 @@
 # JuKuCMS
 
+![Rocket CMS](./system/images/logo.png)
+
 Open Source CMS should be the fastest CMS world wide (WIP).
 
 ## Name suggestions
@@ -33,3 +35,7 @@ So i try to make it better! Build a fast CMS with all required features by defau
   - PHP 7.0.8+
   - MySQL 5.7+
   - Mod_Rewrite Support
+  
+## Icon
+
+https://www.iconfinder.com/icons/298861/rocket_icon#size=256
