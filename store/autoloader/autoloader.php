@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2018 Justin Kuenzel (jukusoft.com)
  *
@@ -24,7 +25,8 @@ $autoloader_classes = array(
 	"system/core/exception/classloaderexception.php",
 	"system/core/classes/dbdriver.php",
 	"system/core/driver/mysqldriver.php",
-	"system/core/classes/database.php"
+	"system/core/classes/database.php",
+	"system/core/classes/security.php"
 );
 
 ?>
