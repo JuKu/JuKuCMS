@@ -28,7 +28,9 @@ $autoloader_classes = array(
 	"system/core/classes/database.php",
 	"system/core/classes/security.php",
 	"system/core/classes/icache.php",
-	"system/core/classes/cache.php"
+	"system/core/classes/cache.php",
+	"system/core/classes/phputils.php",
+	"system/core/driver/filecache.php"
 );
 
 ?>
