@@ -18,10 +18,6 @@
 
 /**
  * Database Driver Interface
- *
- * User: Justin
- * Date: 02.03.2018
- * Time: 01:33
  */
 
 interface DBDriver {
