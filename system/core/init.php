@@ -27,6 +27,10 @@ define('CACHE_PATH', ROOT_PATH . "cache/");
 define('CONFIG_PATH', ROOT_PATH . "config/");
 define('STORE_PATH', ROOT_PATH . "store/");
 
+//include and load ClassLoader
+require(ROOT_PATH . "system/core/classes/classloader.php");
+ClassLoader::init();
+
 //require config
 require(ROOT_PATH . "config/config.php");
 
