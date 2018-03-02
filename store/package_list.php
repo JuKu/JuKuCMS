@@ -16,14 +16,6 @@
  * limitations under the License.
  */
 
-
-/**
- * Created by PhpStorm.
- * User: Justin
- * Date: 02.03.2018
- * Time: 00:19
- */
-
 $pluginlist = array(
     'com.jukusoft.cms.config' => true,
     'com.jukusoft.cms.configdriver' => true,
