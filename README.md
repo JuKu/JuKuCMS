@@ -38,4 +38,4 @@ So i try to make it better! Build a fast CMS with all required features by defau
   
 ## Icon
 
-https://www.iconfinder.com/icons/298861/rocket_icon#size=256
+https://www.iconfinder.com/icons/298861/rocket_icon#size=256, MIT License
