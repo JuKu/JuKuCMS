@@ -23,7 +23,8 @@ $autoloader_classes = array(
 	"system/core/classes/packages.php",
 	"system/core/exception/classloaderexception.php",
 	"system/core/classes/dbdriver.php",
-	"system/core/driver/mysqldriver.php"
+	"system/core/driver/mysqldriver.php",
+	"system/core/classes/database.php"
 );
 
 ?>
