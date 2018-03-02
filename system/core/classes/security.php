@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Justin
- * Date: 06.07.2016
- * Time: 19:56
- */
 class Security {
 
     protected static $csrf_token = "";
