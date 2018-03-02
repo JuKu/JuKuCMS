@@ -15,12 +15,6 @@
  * limitations under the License.
  */
 
-/**
- * Created by PhpStorm.
- * User: Justin
- * Date: 13.07.2016
- * Time: 19:41
- */
 class MySQLDriver implements DBDriver {
 
     protected $host = "localhost";
