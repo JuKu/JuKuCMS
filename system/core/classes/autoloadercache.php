@@ -25,6 +25,8 @@ class AutoLoaderCache {
 		}
 		//check, if autoloader configuration exists
 		if (!file_exists(STORE_PATH . "autoloader/autoloader.php")) {
+			//TODO: generate file automatically (self repair)
+
 			throw new ConfigurationException("autoloader configuration not found in store.");
 		}
 		if (!file_exists(CACHE_PATH . "autoloader/preloaded_classes.php")) {
