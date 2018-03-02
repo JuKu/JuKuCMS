@@ -40,7 +40,7 @@ class MemcacheImpl implements ICache {
     }
 
     public function init($config) {
-        require(CONFIG_PATH . "memcache.php");
+        require(CONFIG_PATH . "memcache.example.php");
         
         $host = $memcache_config['host'];
         $port = $memcache_config['port'];
