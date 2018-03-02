@@ -5,6 +5,9 @@ $start_time = microtime(true);
 //start session
 session_start();
 
+//use gzip compression
+ob_start();
+
 //define root path
 define('ROOT_PATH', dirname(__FILE__) . "/");
 
@@ -21,5 +24,8 @@ $exec_time = $end_time - $start_time;
 if (ACTIVATE_BENCHMARK) {
 	echo "<!-- page was generated in " + $exec_time + " seconds -->";
 }
+
+//flush gzip cache
+ob_end_flush();
 
 ?>
