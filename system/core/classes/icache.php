@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright (c) 2018 Justin Kuenzel (jukusoft.com)
  *
@@ -16,19 +15,26 @@
  * limitations under the License.
  */
 
-/**
- * Dont edit this file, this was file generated automatically and will be overriden!
- */
+interface ICache {
 
-$autoloader_classes = array(
-	"system/core/classes/packages.php",
-	"system/core/exception/classloaderexception.php",
-	"system/core/classes/dbdriver.php",
-	"system/core/driver/mysqldriver.php",
-	"system/core/classes/database.php",
-	"system/core/classes/security.php",
-	"system/core/classes/icache.php",
-	"system/core/classes/cache.php"
-);
+    public function init ($config);
+
+    /**
+     * put session
+     *
+     * @param $area cache area
+     * @param $key cache key
+     * @param $value cache entry value, can also be an object
+     * @param $ttl time to live of cache entry in seconds (optional)
+     */
+    public function put ($area, $key, $value, $ttl = 180 * 60);
+
+    public function get ($area, $key);
+
+    public function contains ($area, $key) : bool;
+
+    public function clear ($area = "", $key = "");
+
+}
 
 ?>

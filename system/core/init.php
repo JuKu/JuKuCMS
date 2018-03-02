@@ -39,6 +39,9 @@ AutoLoaderCache::init();
 //load classes
 AutoLoaderCache::load();
 
+//initialize cache
+Cache::init();
+
 //TODO: manage session
 
 //check secure php options
