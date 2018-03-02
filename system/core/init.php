@@ -24,6 +24,7 @@ if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
 
 //define some constants
 define('CACHE_PATH', ROOT_PATH . "cache/");
+define('CONFIG_PATH', ROOT_PATH . "config/");
 define('STORE_PATH', ROOT_PATH . "store/");
 
 //require config
