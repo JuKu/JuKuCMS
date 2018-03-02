@@ -15,13 +15,6 @@
  * limitations under the License.
  */
 
-/**
- * Created by PhpStorm.
- * User: Justin
- * Date: 26.06.2016
- * Time: 17:26
- */
-
 class Cache {
 
     /**
