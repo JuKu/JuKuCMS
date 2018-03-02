@@ -114,7 +114,10 @@ function cms_autoloader ($classname) {
     if (file_exists(ROOT . "system/core/classes/" . strtolower($classname) . ".php")) {
         require(ROOT . "system/core/classes/" . strtolower($classname) . ".php");
         return null;
-    }
+    } else if (file_exists(ROOT . "system/core/exception/" . strtolower($classname) . ".php")) {
+		require(ROOT . "system/core/exception/" . strtolower($classname) . ".php");
+		return null;
+	}
 
     $array = explode("_", strtolower($classname));
 

@@ -22,7 +22,20 @@ if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
     exit;
 }
 
+//define some constants
+define('CACHE_PATH', ROOT_PATH . "cache/");
+define('STORE_PATH', ROOT_PATH . "store/");
+
 //require config
 require(ROOT_PATH . "config/config.php");
+
+//require autoloader cache
+require(ROOT_PATH . "system/core/classes/autoloadercache.php");
+
+//initialize autoloader cache
+AutoLoaderCache::init();
+
+//load classes
+AutoLoaderCache::load();
 
 ?>
