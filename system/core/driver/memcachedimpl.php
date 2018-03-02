@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Justin
- * Date: 13.07.2016
- * Time: 00:36
- */
 class MemcachedImpl implements ICache {
 
     protected $memcached = null;
