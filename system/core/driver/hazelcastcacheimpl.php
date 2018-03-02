@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Justin
- * Date: 13.07.2016
- * Time: 01:53
- */
 class HazelcastCacheImpl extends MemcacheImpl {
 
     /**
