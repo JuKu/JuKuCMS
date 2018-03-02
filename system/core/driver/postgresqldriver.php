@@ -15,12 +15,6 @@
  * limitations under the License.
  */
 
-/**
- * Created by PhpStorm.
- * User: Justin
- * Date: 14.07.2016
- * Time: 17:51
- */
 class PostGreSQLDriver extends MySQLDriver {
 
     public function connect ($config_path) {

@@ -16,14 +16,6 @@
  * limitations under the License.
  */
 
-
-/**
- * Classloader
- * User: Justin
- * Date: 01.03.2018
- * Time: 23:55
- */
-
 class ClassLoader {
 
     public static $classlist = array();

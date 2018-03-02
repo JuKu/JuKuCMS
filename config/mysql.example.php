@@ -2,10 +2,6 @@
 
 /**
  * Configuration file for CMS
- *
- * User: Justin
- * Date: 01.03.2018
- * Time: 18:19
  */
 
 //allow including of mysql.cfg only once (for security reasons)
