@@ -1,0 +1,36 @@
+{
+  "name": "com.jukusoft/jukucms",
+  "type": "project",
+  "version" : "0.0.1-dev",
+  "description": "Open Source CMS should be the fastest CMS world wide (WIP)",
+  "keywords": ["scale out","scaling", "cache", "caching", "database", "mysql", "hazelcast", "memcache", "memcached",
+    "database management", "plugin system", "plugins", "plugin", "events", "hooks",
+    "multi language system", "php7", "php7.0", "session", "sessions", "distributed sessions", "session management", "http caching", "mobile detection", "multi domain support", "seo", "content management system", "wysiwyg", "cms"],
+  "homepage": "https://github.com/JuKu/JuKuCMS",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Justin Kuenzel",
+      "email": "info@jukusoft.com",
+      "homepage": "http://jukusoft.com",
+      "role": "Project Founder & Developer"
+    },
+    {
+      "name": "Pascal Reintjens",
+      "email": "-",
+      "homepage": "-",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "info@jukusoft.com",
+    "source": "https://github.com/JuKu/JuKuCMS",
+    "issues": "https://github.com/JuKu/JuKuCMS/issues"
+  },
+  "autoload": {
+    "files": ["system/core/init.php"]
+  },
+  "require": {
+    "php": ">=7.0.8"
+  }
+}
