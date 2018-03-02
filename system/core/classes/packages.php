@@ -16,14 +16,6 @@
  * limitations under the License.
  */
 
-
-/**
- * Created by PhpStorm.
- * User: Justin
- * Date: 02.03.2018
- * Time: 00:17
- */
-
 class Packages {
 
     public static function listPackages (bool $installed_required = true) : array {
