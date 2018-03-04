@@ -117,6 +117,9 @@ class MySQLDriver implements DBDriver {
             echo "<br /><br /><b>PDO Statement: </b>";
             print_r($stmt);
 
+            //flush gzip cache
+            ob_end_flush();
+
             exit;
         } catch (Exception $e) {
             echo "An Error oncurred. Please contact administrator.<br /><br /><small>If you are the administrator: You can enable DEBUG MODE in LIB_PATH/store/settings/settings.php .</small>";
@@ -130,6 +133,9 @@ class MySQLDriver implements DBDriver {
 
             echo "<br /><br /><b>PDO Statement: </b>";
             print_r($stmt);
+
+            //flush gzip cache
+            ob_end_flush();
 
             exit;
         }
