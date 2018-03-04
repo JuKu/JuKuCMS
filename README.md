@@ -18,7 +18,7 @@ I am one of the earlier developers of [ContentLion](http://contentlion.org) and 
 My favorite CMS is wordpress, but it has a really big problem: Its very slow.\
 I think Wordpress is the best, but also the slowest CMS (also with Cache plugins) and it depends on the software & plugin architecture.\
 So i try to make it better! Build a fast CMS with all required features by default, but also very extenable.\
-**Main goal**: Reach a performance that CMS can generate pages in <= 200ms.
+**Main goal**: Reach a performance that CMS can **generate pages in <= 200ms**.
 
   - fastest CMS in then world
   - scalable
