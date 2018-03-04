@@ -1470,7 +1470,7 @@ class DBTable {
 					echo "\n\ncurrent columns:\n";
 					var_dump($current_columns);
 
-					exit;
+					echo "\n\n";
 				}
 
 				if ($current_columns[$name][$key] != $value) {
