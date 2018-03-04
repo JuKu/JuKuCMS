@@ -1476,6 +1476,9 @@ class DBTable {
 				if (!isset($current_columns[$name][$key])/* && !@is_null($current_columns[$name][$key])*/) {
 					echo "$" . "current_columns['" . $name . "']['" . $key . "'] not found:\n";
 					var_dump($current_columns);
+
+					echo "\n\nshould columns:\n";
+					var_dump($should_columns);
 				}
 
 				if ($current_columns[$name][$key] != $value) {
