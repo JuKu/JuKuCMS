@@ -232,7 +232,7 @@ class MySQLDriver implements DBDriver {
         $res = $stmt->execute();
 
         if (!$res) {
-            throw new PDOException("PDOException while getRow(): " . ($this->getErrorInfo())[3] . "");
+            throw new PDOException("PDOException while getRow(): " . ($this->getErrorInfo())[3] . "\n" . ($stmt->errorInfo())[2] . "");
         }
 
         //fetch row
@@ -261,7 +261,7 @@ class MySQLDriver implements DBDriver {
         $res = $stmt->execute();
 
         if (!$res) {
-            throw new PDOException("PDOException while listRows(): " . ($this->getErrorInfo())[3] . "");
+            throw new PDOException("PDOException while listRows(): " . ($this->getErrorInfo())[3] . "\n" . ($stmt->errorInfo())[2] . "");
         }
 
         //fetch rows
