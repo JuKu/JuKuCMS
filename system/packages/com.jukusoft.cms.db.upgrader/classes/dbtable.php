@@ -1473,7 +1473,7 @@ class DBTable {
 					echo "\n\n";
 				}
 
-				if (@$current_columns[$name][$key] == "NULL") {
+				if (strcmp($name, "charset") && @$current_columns[$name][$key] == "NULL") {
 					continue;
 				}
 
