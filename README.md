@@ -51,3 +51,11 @@ Currently, following caches are supported:
   - memcache
   - memcached
   - [Hazelcast](http://hazelcast.org)
+  
+## Architecture
+
+  - Styles
+  - Plugins
+  - Core
+      * Kernel (system/packages)
+      * Micro-Kernel (system/core/classes, system/core/driver, system/core/exception)
