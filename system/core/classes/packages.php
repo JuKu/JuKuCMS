@@ -24,7 +24,7 @@ class Packages {
             return array();
         }
 
-        require(ROOT_PATH . "store/pluginlist.php");
+        require(ROOT_PATH . "store/package_list.php");
 
         $packages = array();
 
