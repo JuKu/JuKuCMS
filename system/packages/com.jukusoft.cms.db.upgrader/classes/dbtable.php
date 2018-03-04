@@ -1294,6 +1294,8 @@ class DBTable {
             //create table structure
             $this->create();
         } else {
+        	var_dump($this->detectTableChanges());
+
             //TODO: add code here
 			throw new Exception("Upgrading of tables isnt supported yet.");
         }
@@ -1425,11 +1427,45 @@ class DBTable {
 		$removed_indexes = array();
 
 
-        //TODO: compare current state with should state
-
+        //compare current state with should state
 		$current_columns = $this->listColumnsFromDatabase();
+		$should_columns = $this->columns;
 
-		//TODO: check for changed columns
+		//check for added columns
+		foreach ($should_columns as $name=>$column_data) {
+			if (!isset($current_columns[$name])) {
+				//new column found
+				$added_columns[$name] = $should_columns[$name];
+			}
+		}
+
+		//check for removed columns
+		foreach ($current_columns as $name=>$column_data) {
+			if (!isset($should_columns[$name])) {
+				//removed column found
+				$removed_columns[$name] = $current_columns[$name];
+			}
+		}
+
+		//check for changed columns
+		foreach ($should_columns as $name=>$column_data) {
+			//we dont have to check this column, if the column was added
+			if (isset($added_columns[$name])) {
+				continue;
+			}
+
+			//we dont have to check this column, if the column was removed
+			if (isset($removed_columns[$name])) {
+				continue;
+			}
+
+			//check for differences
+			foreach ($current_columns[$name] as $key=>$value) {
+				if ($should_columns[$name][$key] != $value) {
+					$changed_columns[$name] = $should_columns[$name];
+				}
+			}
+		}
 
 		//TODO: check for changed indexes / keys
 
