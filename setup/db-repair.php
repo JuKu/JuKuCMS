@@ -51,6 +51,8 @@ Database::getInstance();
  * create database schema here
  */
 
+echo "Create table <b>events</b>...</br>";
+
 //create or upgrade test table
 $table = new DBTable("events", Database::getInstance());
 $table->setEngine("InnoDB");
@@ -72,8 +74,9 @@ $table->addUnique(array("name", "file", "class_name", "class_method"), "UNIQUE_E
 $table->addIndex(array("name", "activated"), "name");
 
 //create or upgrade table
-//$table->upgrade();
+$table->upgrade();
 
-echo $table->generateCreateQuery();
+echo "Finished!</br>";
+//echo $table->generateCreateQuery();
 
 ?>
