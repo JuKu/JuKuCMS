@@ -1295,6 +1295,7 @@ class DBTable {
             $this->create();
         } else {
             //TODO: add code here
+			throw new Exception("Upgrading of tables isnt supported yet.");
         }
     }
 
