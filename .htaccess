@@ -1,10 +1,7 @@
 ﻿# https://stackoverflow.com/questions/25423141/what-exactly-does-the-the-multiviews-options-in-htaccess
-<IfModule mod_negotiation.c>
-    Options -MultiViews
-</IfModule>
-
-# allow mod rewrite
-RewriteEngine On
+#<IfModule mod_negotiation.c>
+#    Options -MultiViews
+#</IfModule>
 
 # redirect "/index.php?id=xxx" to "/index/xxx"
 #RewriteCond %{THE_REQUEST} \s/index\.php\?page=([0-9]+)\s [NC]
@@ -16,12 +13,20 @@ RewriteEngine On
 #RewriteBase /
 
 # only if file not exists
-RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-f
 
 # only, if directory not exists
-RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-d
 
 # rewrite all urls
-RewriteRule (.*)/$ index.php?&page=$1
+#RewriteRule (.*)/$ index.php?&page=$1
 
 #RewriteRule ^/([^/]+)$ /index.php?id=$1 [L]
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
+</IfModule>
