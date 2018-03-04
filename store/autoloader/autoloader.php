@@ -29,7 +29,8 @@ $autoloader_classes = array(
 	"system/core/classes/icache.php",
 	"system/core/classes/cache.php",
 	"system/core/classes/phputils.php",
-	"system/core/driver/filecache.php"
+	"system/core/driver/filecache.php",
+	"system/core/classes/events.php"
 );
 
 ?>

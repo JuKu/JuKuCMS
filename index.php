@@ -2,16 +2,19 @@
 
 $start_time = microtime(true);
 
+//define root path
+define('ROOT_PATH', dirname(__FILE__) . "/");
+
+require("system/core/init.php");
+
+//throw event
+Events::throwEvent("start_session");
+
 //start session
 session_start();
 
 //use gzip compression
 ob_start();
-
-//define root path
-define('ROOT_PATH', dirname(__FILE__) . "/");
-
-require("system/core/init.php");
 
 $end_time = microtime(true);
 $exec_time = $end_time - $start_time;

@@ -56,9 +56,17 @@ Cache::init();
 //initialize database
 Database::getInstance();
 
+//initialize events
+Events::init();
+
+//throw init event
+Events::throwEvent("init");
+
 //TODO: manage session
 
 //check secure php options
 Security::check();
+
+Events::throwEvent("init_security");
 
 ?>
