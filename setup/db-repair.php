@@ -53,7 +53,7 @@ Database::getInstance();
  * create database schema here
  */
 
-echo "Create table <b>events</b>...</br>";
+echo "Create / Upgrade table <b>events</b>...</br>";
 
 //create or upgrade test table
 $table = new DBTable("events", Database::getInstance());

@@ -1414,8 +1414,47 @@ class DBTable {
     }
 
     protected function detectTableChanges () : array {
-        //
+    	//columns
+    	$changed_columns = array();
+    	$added_columns = array();
+    	$removed_columns = array();
+
+    	//indexes
+		$changed_indexes = array();
+		$added_indexes = array();
+		$removed_indexes = array();
+
+
+        //TODO: compare current state with should state
+
+		$current_columns = $this->listColumnsFromDatabase();
+
+		//TODO: check for changed columns
+
+		//TODO: check for changed indexes / keys
+
+		//TODO: change database engine if neccessary
+
+		//TODO: change charset if neccessary
+
+		return array(
+			'added_columns' => $added_columns,
+			"removed_columns" => $removed_columns,
+			"changed_columns" => $changed_columns,
+			"added_indexes" => $added_indexes,
+			"removed_indexes" => $removed_indexes,
+			"changed_indexes" => $changed_indexes
+		);
     }
+
+    /**
+     * backup table
+	 *
+	 * @param $output_file file where sql query should be written in
+     */
+    public function backup (string $output_file) : void {
+    	//TODO: implement this feature
+	}
 
     public function truncate () {
         $this->db_driver->query("TRUNCATE `" . $this->table_name . "`; ");
