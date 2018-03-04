@@ -30,29 +30,29 @@ class ClassLoader {
         //register autoloader
         spl_autoload_register('cms_autoloader');
 
-        if (!file_exists(ROOT . "cache")) {
-            mkdir(ROOT . "cache");
+        if (!file_exists(ROOT_PATH . "cache")) {
+            mkdir(ROOT_PATH . "cache");
         }
 
-        if (!file_exists(ROOT . "cache/classloader/classlist.php")) {
+        if (!file_exists(ROOT_PATH . "cache/classloader/classlist.php")) {
             self::rebuildCache();
         }
 
-        require(ROOT . "cache/classloader/classlist.php");
+        require(ROOT_PATH . "cache/classloader/classlist.php");
         self::$classlist = $classlist;
 
     }
 
     public static function rebuildCache () {
 
-        require_once(ROOT . "system/core/classes/packages.php");
+        require_once(ROOT_PATH . "system/core/classes/packages.php");
 
-        if (file_exists(ROOT . "cache/classloader/classlist.php")) {
-            @unlink(ROOT . "cache/classloader/classlist.php");
+        if (file_exists(ROOT_PATH . "cache/classloader/classlist.php")) {
+            @unlink(ROOT_PATH . "cache/classloader/classlist.php");
         }
 
-        if (!file_exists(ROOT . "cache/classloader")) {
-            mkdir(ROOT . "cache/classloader");
+        if (!file_exists(ROOT_PATH . "cache/classloader")) {
+            mkdir(ROOT_PATH . "cache/classloader");
         }
 
         $packages = Packages::listPackages();
@@ -60,7 +60,7 @@ class ClassLoader {
         $classlist = array();
 
         foreach ($packages as $path) {
-            $path = ROOT . "system/packages/" . $path . "/";
+            $path = ROOT_PATH . "system/packages/" . $path . "/";
 
             if (file_exists($path . "classloader.xml")) {
                 $xml = simplexml_load_file($path . "classloader.xml");
@@ -71,7 +71,7 @@ class ClassLoader {
             }
         }
 
-        $handle = fopen(ROOT . "cache/classloader/classlist.php", "w");
+        $handle = fopen(ROOT_PATH . "cache/classloader/classlist.php", "w");
 
         fwrite($handle, "<" . "?" . "php\r\n\r\n");
 
@@ -103,14 +103,14 @@ function cms_autoloader ($classname) {
         return null;
     }
 
-    if (file_exists(ROOT . "system/core/classes/" . strtolower($classname) . ".php")) {
-        require(ROOT . "system/core/classes/" . strtolower($classname) . ".php");
+    if (file_exists(ROOT_PATH . "system/core/classes/" . strtolower($classname) . ".php")) {
+        require(ROOT_PATH . "system/core/classes/" . strtolower($classname) . ".php");
         return null;
-    } else if (file_exists(ROOT . "system/core/exception/" . strtolower($classname) . ".php")) {
-		require(ROOT . "system/core/exception/" . strtolower($classname) . ".php");
+    } else if (file_exists(ROOT_PATH . "system/core/exception/" . strtolower($classname) . ".php")) {
+		require(ROOT_PATH . "system/core/exception/" . strtolower($classname) . ".php");
 		return null;
-	} else if (file_exists(ROOT . "system/core/driver/" . strtolower($classname) . ".php")) {
-		require(ROOT . "system/core/driver/" . strtolower($classname) . ".php");
+	} else if (file_exists(ROOT_PATH . "system/core/driver/" . strtolower($classname) . ".php")) {
+		require(ROOT_PATH . "system/core/driver/" . strtolower($classname) . ".php");
 		return null;
 	}
 
@@ -119,14 +119,14 @@ function cms_autoloader ($classname) {
     if (sizeOf($array) == 3) {
 
         if ($array[0] == "plugin") {
-            if (file_exists(ROOT . "plugins/" . strtolower($array[1]) . "/classes/" . strtolower($array[2]) . ".php")) {
-                require(ROOT . "plugins/" . strtolower($array[1]) . "/classes/" . strtolower($array[2]) . ".php");
+            if (file_exists(ROOT_PATH . "plugins/" . strtolower($array[1]) . "/classes/" . strtolower($array[2]) . ".php")) {
+                require(ROOT_PATH . "plugins/" . strtolower($array[1]) . "/classes/" . strtolower($array[2]) . ".php");
             } else {
                 echo "Could not load plugin-class " . $classname . "!";
             }
         } else {
-            if (file_exists(ROOT . "system/libs/smarty/sysplugins/" . strtolower($classname) . "php")) {
-                require ROOT . "system/libs/smarty/sysplugins/" . strtolower($classname) . ".php";
+            if (file_exists(ROOT_PATH . "system/libs/smarty/sysplugins/" . strtolower($classname) . "php")) {
+                require ROOT_PATH . "system/libs/smarty/sysplugins/" . strtolower($classname) . ".php";
             } else if ($classname == "Smarty") {
                 require("system/libs/smarty/Smarty.class.php");
             } else {
@@ -136,10 +136,10 @@ function cms_autoloader ($classname) {
 
     } else if (sizeOf($array) == 1) {
 
-        if (file_exists(ROOT . "system/classes/" . strtolower($classname) . ".php")) {
-            include ROOT . "system/classes/" . strtolower($classname) . ".php";
-        } else if (file_exists(ROOT . "system/libs/smarty/sysplugins/" . strtolower($classname) . "php")) {
-            require ROOT . "system/libs/smarty/sysplugins/" . strtolower($classname) . ".php";
+        if (file_exists(ROOT_PATH . "system/classes/" . strtolower($classname) . ".php")) {
+            include ROOT_PATH . "system/classes/" . strtolower($classname) . ".php";
+        } else if (file_exists(ROOT_PATH . "system/libs/smarty/sysplugins/" . strtolower($classname) . "php")) {
+            require ROOT_PATH . "system/libs/smarty/sysplugins/" . strtolower($classname) . ".php";
         } else if ($classname == "Smarty") {
             require("system/libs/smarty/Smarty.class.php");
         } else {
