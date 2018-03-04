@@ -18,7 +18,7 @@
 
 //check php version
 if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
-    echo "CMS is required PHP 7.0.0 or greater! Please install PHP 7.";
+    echo "CMS is required PHP 7.0.0 or greater! Please install PHP 7 (current version: " . PHP_VERSION . ").";
     exit;
 }
 
