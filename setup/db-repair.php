@@ -64,7 +64,7 @@ $table->setCharset("utf8");
 $table->addInt("id", 11, true, true);
 $table->addVarchar("name", 255, true);
 $table->addEnum("type", array("FILE", "FUNCTION", "CLASS_STATIC_METHOD", ""), true);
-$table->addVarchar("file", 600, false, "NULL");
+$table->addVarchar("file", 255, false, "NULL");
 $table->addVarchar("class_name", 255, true, "");
 $table->addVarchar("class_method", 255, true, "");
 $table->addVarchar("created_from", 255, true);
