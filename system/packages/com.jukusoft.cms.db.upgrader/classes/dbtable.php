@@ -1473,7 +1473,7 @@ class DBTable {
 					echo "\n\n";
 				}
 
-				if (!isset($current_columns[$name][$key]) && !@is_null($current_columns[$name][$key])) {
+				if (!isset($current_columns[$name][$key])/* && !@is_null($current_columns[$name][$key])*/) {
 					echo "$" . "current_columns['" . $name . "']['" . $key . "'] not found:\n";
 					var_dump($current_columns);
 				}
