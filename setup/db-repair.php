@@ -79,6 +79,6 @@ $table->addIndex(array("name", "activated"), "name");
 $table->upgrade();
 
 echo "Finished!</br>";
-//echo $table->generateCreateQuery();
+echo $table->generateCreateQuery();
 
 ?>
