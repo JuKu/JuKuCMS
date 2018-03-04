@@ -100,6 +100,12 @@ class MySQLDriver implements DBDriver {
             if (!$res) {
                 //TODO: throw exception instead
                 print_r($stmt->errorInfo());
+
+                if (DEBUG_MODE) {
+                	echo "SQL Query: " + $sql;
+				}
+
+				ob_end_flush();
                 exit;
             }
 
