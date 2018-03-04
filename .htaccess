@@ -1,4 +1,4 @@
-﻿# https://stackoverflow.com/questions/25423141/what-exactly-does-the-the-multiviews-options-in-htaccess
+# https://stackoverflow.com/questions/25423141/what-exactly-does-the-the-multiviews-options-in-htaccess
 #<IfModule mod_negotiation.c>
 #    Options -MultiViews
 #</IfModule>
