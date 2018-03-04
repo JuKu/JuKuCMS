@@ -24,6 +24,8 @@
 //define root path
 define('ROOT_PATH', dirname(__FILE__) . "/../");
 
+error_reporting(E_ALL);
+
 if (PHP_MAJOR_VERSION < 7) {
 	echo "CMS is required PHP 7.0.0 or greater! Please install PHP 7 (current version: " . PHP_VERSION . ").";
 	exit;

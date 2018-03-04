@@ -5,6 +5,8 @@ $start_time = microtime(true);
 //define root path
 define('ROOT_PATH', dirname(__FILE__) . "/");
 
+error_reporting(E_ALL);
+
 require("system/core/init.php");
 
 //throw event

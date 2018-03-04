@@ -9,6 +9,8 @@ define('ACTIVATE_BENCHMARK', true);
 
 define('OPTION_PRELOAD_CLASSES', true);
 
+define('DEBUG_MODE', true);
+
 //show all errors
 error_reporting(E_ALL);
 
