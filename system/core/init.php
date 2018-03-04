@@ -45,8 +45,10 @@ require(ROOT_PATH . "system/core/classes/autoloadercache.php");
 //initialize autoloader cache
 AutoLoaderCache::init();
 
-//load classes
-AutoLoaderCache::load();
+//load pre-loaded classes, if option is enabled
+if (OPTION_PRELOAD_CLASSES) {
+	AutoLoaderCache::load();
+}
 
 //initialize cache
 Cache::init();
