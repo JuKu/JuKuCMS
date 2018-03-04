@@ -24,4 +24,6 @@ if (ACTIVATE_BENCHMARK) {
 //flush gzip cache
 ob_end_flush();
 
+echo "test";
+
 ?>
