@@ -53,6 +53,9 @@ if (OPTION_PRELOAD_CLASSES) {
 //initialize cache
 Cache::init();
 
+//initialize database
+Database::getInstance();
+
 //TODO: manage session
 
 //check secure php options
