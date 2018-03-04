@@ -17,9 +17,14 @@
  */
 
 //check php version
-if (version_compare(phpversion(), '7.0.0', '>=')) {
+/*if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
     echo "CMS is required PHP 7.0.0 or greater! Please install PHP 7 (current version: " . PHP_VERSION . ").";
     exit;
+}*/
+
+if (PHP_MAJOR_VERSION < 7) {
+	echo "CMS is required PHP 7.0.0 or greater! Please install PHP 7 (current version: " . PHP_VERSION . ").";
+	exit;
 }
 
 //define some constants
