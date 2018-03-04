@@ -18,7 +18,7 @@ $exec_time = $end_time - $start_time;
 
 //benchmark code
 if (ACTIVATE_BENCHMARK) {
-	//echo "<!-- page was generated in " + $exec_time + " seconds -->";
+	echo "<!-- page was generated in " . $exec_time . " seconds -->";
 }
 
 //flush gzip cache
