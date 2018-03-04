@@ -1464,7 +1464,11 @@ class DBTable {
 				if (!isset($should_columns[$name][$key])) {
 					echo "Column '" . $key . "' not found.\n\n";
 
+					echo "should columns:\n";
 					var_dump($should_columns);
+
+					echo "\n\ncurrent columns:\n";
+					var_dump($current_columns);
 
 					exit;
 				}
