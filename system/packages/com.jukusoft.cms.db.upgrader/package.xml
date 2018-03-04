@@ -1,0 +1,22 @@
+<plugin>
+	<name>com.jukusoft.cms.db.upgrader</name>
+	<title>Database Upgrader</title>
+	<version>1.0.0</version>
+	<revision>1</revision>
+	<icon>icon_64.png</icon>
+	<packagedepencies>
+		<!-- no dependencies -->
+	</packagedepencies>
+	<pagelist>
+		<!-- no pages -->
+	</pagelist>
+	<pagetypes>
+		<!-- no page types -->
+	</pagetypes>
+	<permissions>
+		<!-- no added permissions -->
+	</permissions>
+	<menulist>
+		<!-- no menus -->
+	</menulist>
+</plugin>
