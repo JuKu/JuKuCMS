@@ -37,7 +37,7 @@ class FileCache implements ICache {
         }
     }
 
-    public function contains($area, $key) {
+    public function contains ($area, $key) : bool {
         return file_exists(CACHE_PATH . "/" . md5($area) . "/" + md5($key) + ".php");
     }
 
