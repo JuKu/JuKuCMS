@@ -1461,8 +1461,13 @@ class DBTable {
 
 			//check for differences
 			foreach ($current_columns[$name] as $key=>$value) {
-				var_dump($should_columns);
-				exit;
+				if (!isset($should_columns[$name][$key])) {
+					echo "Column '" . $key . "' not found.\n\n";
+
+					var_dump($should_columns);
+
+					exit;
+				}
 
 				if ($should_columns[$name][$key] != $value) {
 					$changed_columns[$name] = $should_columns[$name];
