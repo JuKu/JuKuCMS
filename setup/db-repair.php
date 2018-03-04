@@ -68,7 +68,7 @@ $table->addVarchar("file", 600, false, "NULL");
 $table->addVarchar("class_name", 255, true, "");
 $table->addVarchar("class_method", 255, true, "");
 $table->addVarchar("created_from", 255, true);
-$table->addInt("activated", 10, true, "1");
+$table->addInt("activated", 10, true, false, "1");
 
 //add keys to table
 $table->addPrimaryKey("id");
