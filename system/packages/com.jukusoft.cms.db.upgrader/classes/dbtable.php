@@ -1461,7 +1461,7 @@ class DBTable {
 
 			//check for differences
 			foreach ($should_columns[$name] as $key=>$value) {
-				if (!isset($should_columns[$name][$key])) {
+				if (!isset($should_columns[$name][$key]) && !@is_null($should_columns[$name][$key])) {
 					echo "Column '" . $key . "' not found.\n\n";
 
 					echo "should columns:\n";
