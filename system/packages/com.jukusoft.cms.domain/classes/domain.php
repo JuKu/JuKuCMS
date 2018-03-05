@@ -129,7 +129,13 @@ class Domain {
 		$row = self::getWildcardDomainRow();
 
 		if (!$row) {
-			throw new WildcardDomainNotFoundException("Couldnt found wildcard domain in database.");
+			//repair the missing wildcard domain
+			self::createWildcardDomain();
+
+			//select domain again
+			return self::getWildcardDomainID();
+
+			//throw new WildcardDomainNotFoundException("Couldnt found wildcard domain in database.");
 		}
 
 		return $row['id'];
@@ -152,6 +158,14 @@ class Domain {
 			//return id
 			return $row;
 		}
+	}
+
+	protected static function createWildcardDomain () : void {
+		Database::getInstance()->execute("INSERT INTO `{praefix}domain` (
+			`id`, `domain`, `alias`, `home_page`, `wildcard`, `styleID`, `redirect_url`, `redirect_code`, `lastUpdate`, `activated`
+		) VALUES (
+			NULL, '*', '-1', 'home', 'YES', '-1', 'none', '302', CURRENT_TIMESTAMP, '1'
+		); ");
 	}
 
 	public static function getCurrent () : Domain {
