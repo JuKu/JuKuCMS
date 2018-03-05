@@ -57,7 +57,7 @@ Database::getInstance();
  * test table to check upgrade system
  */
 
-echo "Create / Upgrade table <b>test</b>...</br>";
+echo "Create / Upgrade table <b>test</b>...<br />";
 
 //create or upgrade test table
 $table = new DBTable("test", Database::getInstance());
@@ -78,7 +78,7 @@ $table->addIndex("activated", "ix_activated");
 //create or upgrade table
 $table->upgrade();
 
-echo "Finished!</br>";
+echo "Finished!<br />";
 
 /**
  * test table to check upgrade system with added column, removed column and changed column
@@ -106,7 +106,7 @@ $table->addIndex("activated", "ix_activated");
 //create or upgrade table
 $table->upgrade();
 
-echo "Finished!</br>";
+echo "Finished!<br />";
 
 /**
  * table EVENTS
@@ -137,7 +137,7 @@ $table->addIndex(array("name", "activated"), "name");
 //create or upgrade table
 $table->upgrade();
 
-echo "Finished!</br>";
+echo "Finished!<br />";
 
 /**
  * table DOMAIN
@@ -170,6 +170,6 @@ $table->addIndex("alias");
 //create or upgrade table
 $table->upgrade();
 
-echo "Finished!</br>";
+echo "Finished!<br />";
 
 ?>
