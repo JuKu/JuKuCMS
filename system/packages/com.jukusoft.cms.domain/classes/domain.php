@@ -149,7 +149,11 @@ class Domain {
 			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}domain` WHERE `wildcard` = 'YES' AND `activated` = '1'; ");
 
 			if (!$row) {
-				throw new WildcardDomainNotFoundException("Couldnt found wildcard domain in database.");
+				self::createWildcardDomain();
+
+				return self::getWildcardDomainRow();
+
+				//throw new WildcardDomainNotFoundException("Couldnt found wildcard domain in database.");
 			}
 
 			//put id into cache
