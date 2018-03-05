@@ -848,7 +848,11 @@ class DBTable {
             }
 
             if (isset($column['default']) && $column['default'] != null) {
-                $default_str = " DEFAULT '" . $column['default'] . "'";
+            	if ($column['default'] === "CURRENT_TIMESTAMP") {
+					$default_str = " DEFAULT CURRENT_TIMESTAMP";
+				} else {
+					$default_str = " DEFAULT '" . $column['default'] . "'";
+				}
             }
 
             switch ($column['type']) {
