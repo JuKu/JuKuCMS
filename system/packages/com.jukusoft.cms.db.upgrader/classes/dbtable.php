@@ -1297,7 +1297,7 @@ class DBTable {
         	var_dump($this->detectTableChanges());
 
             //TODO: add code here
-			throw new Exception("Upgrading of tables isnt supported yet.");
+			//throw new Exception("Upgrading of tables isnt supported yet.");
         }
     }
 

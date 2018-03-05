@@ -81,6 +81,34 @@ $table->upgrade();
 echo "Finished!</br>";
 
 /**
+ * test table to check upgrade system with added column, removed column and changed column
+ */
+
+echo "Create / Upgrade table <b>test</b>...</br>";
+
+//create or upgrade test table
+$table = new DBTable("test", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//add int coloum with length 10, NOT NULL and AUTO_INCREMENT
+$table->addInt("id", 11, true, true);
+//$table->addVarchar("name", 255, true);
+$table->addVarchar("name2", 255, true);
+$table->addVarchar("value", 200, false);
+$table->addInt("activated", 10, true, false, "1");
+
+//add keys to table
+$table->addPrimaryKey("id");
+$table->addUnique("name", "UNIQUE_NAME");
+$table->addIndex("activated", "ix_activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!</br>";
+
+/**
  * table EVENTS
  */
 
