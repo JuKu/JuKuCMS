@@ -74,11 +74,19 @@ class Domain {
 	}
 
 	public function getStyleID () {
-		return $this->domaindata['styleID'];
+		return $this->row['styleID'];
 	}
 
 	public function getHomePage () {
-		return $this->domaindata['home_page'];
+		return $this->row['home_page'];
+	}
+
+	public function isRedirectUrl () {
+		return $this->row['redirect_url'] !== "none";
+	}
+
+	public function getRedirectUrl () {
+		return $this->row['redirect_url'];
 	}
 
 	public static function getIDByDomain ($domain) {

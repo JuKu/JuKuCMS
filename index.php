@@ -12,6 +12,15 @@ require("system/core/init.php");
 //throw event
 Events::throwEvent("start_session");
 
+//get domain
+$domain = Domain::getCurrent();
+
+//check, if redirect is enabled
+if ($domain->isRedirectUrl()) {
+	header("Location: " + $domain->getRedirectUrl());
+	exit;
+}
+
 //start session
 session_start();
 

@@ -157,6 +157,8 @@ $table->addInt("alias", 10, true, false, "-1");
 $table->addVarchar("home_page", 255, true, "home");
 $table->addEnum("wildcard", array("YES", "NO"), true, "NO");
 $table->addInt("styleID", 10, true, false, "-1");
+$table->addVarchar("redirect_url", 255, true, "none");
+$table->addVarchar("default_lang", 50, true, "none");
 $table->addTimestamp("lastUpdate", true, "CURRENT_TIMESTAMP");
 $table->addInt("activated", 10, true, "1");
 
