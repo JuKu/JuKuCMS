@@ -89,6 +89,10 @@ class Domain {
 		return $this->row['redirect_url'];
 	}
 
+	public function getRedirectCode () : int {
+		return $this->row['redirect_code'];
+	}
+
 	public static function getIDByDomain ($domain) : int {
 		if (Cache::getCache()->contains("domain", "id_" . $domain)) {
 			return (int) Cache::getCache()->contains("domain", "id_" . $domain);

@@ -17,7 +17,15 @@ $domain = Domain::getCurrent();
 
 //check, if redirect is enabled
 if ($domain->isRedirectUrl()) {
+	if ($domain->getRedirectCode() == 301) {
+		header("HTTP/1.1 301 Moved Permanently");
+	} else if ($domain->getRedirectCode() == 302) {
+		header("HTTP/1.1 302 Found");
+	}
+
 	header("Location: " + $domain->getRedirectUrl());
+	header("Connection: close");
+
 	exit;
 }
 
