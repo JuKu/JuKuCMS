@@ -160,7 +160,7 @@ $table->addInt("styleID", 10, true, false, "-1");
 $table->addVarchar("redirect_url", 255, true, "none");#
 $table->addInt("redirect_code", 10, true, false, "301");
 $table->addTimestamp("lastUpdate", true, "CURRENT_TIMESTAMP");
-$table->addInt("activated", 10, true, "1");
+$table->addInt("activated", 10, true, false, "1");
 
 //add keys to table
 $table->addPrimaryKey("id");
