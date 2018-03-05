@@ -164,7 +164,7 @@ class Domain {
 		}
 	}
 
-	protected static function createWildcardDomain () : void {
+	protected static function createWildcardDomain () {
 		Database::getInstance()->execute("INSERT INTO `{praefix}domain` (
 			`id`, `domain`, `alias`, `home_page`, `wildcard`, `styleID`, `redirect_url`, `redirect_code`, `lastUpdate`, `activated`
 		) VALUES (
