@@ -73,23 +73,23 @@ class Domain {
 		return $this->row['domain'];
 	}
 
-	public function getStyleID () {
+	public function getStyleID () : int {
 		return $this->row['styleID'];
 	}
 
-	public function getHomePage () {
+	public function getHomePage () : string {
 		return $this->row['home_page'];
 	}
 
-	public function isRedirectUrl () {
+	public function isRedirectUrl () : bool {
 		return $this->row['redirect_url'] !== "none";
 	}
 
-	public function getRedirectUrl () {
+	public function getRedirectUrl () : string {
 		return $this->row['redirect_url'];
 	}
 
-	public static function getIDByDomain ($domain) {
+	public static function getIDByDomain ($domain) : int {
 		if (Cache::getCache()->contains("domain", "id_" . $domain)) {
 			return (int) Cache::getCache()->contains("domain", "id_" . $domain);
 		} else {
@@ -121,7 +121,7 @@ class Domain {
 		}
 	}
 
-	public static function getWildcardDomainID () {
+	public static function getWildcardDomainID () : int {
 		$row = self::getWildcardDomainRow();
 
 		if (!$row) {
@@ -150,7 +150,7 @@ class Domain {
 		}
 	}
 
-	public static function getCurrent () {
+	public static function getCurrent () : Domain {
 		//check, if instance exists
 		if (self::$instance == null) {
 			//create new instance of domain
