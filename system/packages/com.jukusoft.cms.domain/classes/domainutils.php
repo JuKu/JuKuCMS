@@ -121,6 +121,26 @@ class DomainUtils {
 		return self::getBaseURL() . self::getRequestURI();
 	}
 
+	/**
+	 * faster implementation of getTld()
+	 *
+	 * @deprecated
+	 */
+	public static function getCurrentDomain () {
+		$host = DataBase::getInstance()->escape($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+		$domain = explode("?", $host);
+		$host = $domain[0];
+		$array = explode("/", $host);
+
+		$domain = "";
+
+		for ($i = 0; $i < count($array) - 1; $i++) {
+			$domain .= $array[$i];
+		}
+
+		return $domain;
+	}
+
 }
 
 ?>

@@ -139,4 +139,35 @@ $table->upgrade();
 
 echo "Finished!</br>";
 
+/**
+ * table DOMAIN
+ */
+
+echo "Create / Upgrade table <b>domain</b>...</br>";
+
+//create or upgrade test table
+$table = new DBTable("domain", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//add int coloum with length 10, NOT NULL and AUTO_INCREMENT
+$table->addInt("id", 10, true, true);
+$table->addVarchar("domain", 255, true);
+$table->addInt("alias", 10, true, false, "-1");
+$table->addVarchar("home_page", 255, true, "home");
+$table->addEnum("wildcard", array("YES", "NO"), true, "NO");
+$table->addInt("styleID", 10, true, false, "-1");
+$table->addTimestamp("lastUpdate", true, "CURRENT_TIMESTAMP");
+$table->addInt("activated", 10, true, "1");
+
+//add keys to table
+$table->addPrimaryKey("id");
+$table->addUnique("domain");
+$table->addIndex("alias");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!</br>";
+
 ?>
