@@ -11,6 +11,7 @@ $package_list = array(
 	'com.jukusoft.cms.db.upgrader' => true,
 	'com.jukusoft.cms.domain' => true,
 	'com.jukusoft.cms.settings' => true,
+	'com.jukusoft.cms.apimethods' => true,
 );
 
 ?>
