@@ -10,6 +10,7 @@ $package_list = array(
     'com.jukusoft.cms.configdriver' => true,
 	'com.jukusoft.cms.db.upgrader' => true,
 	'com.jukusoft.cms.domain' => true,
+	'com.jukusoft.cms.settings' => true,
 );
 
 ?>
