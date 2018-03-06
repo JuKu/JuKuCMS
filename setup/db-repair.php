@@ -172,4 +172,38 @@ $table->upgrade();
 
 echo "Finished!</br>";
 
+/**
+ * table global_settings
+ *
+ * Package: com.jukusoft.cms.settings
+ */
+
+echo "Create / Upgrade table <b>global_settings</b>...</br>";
+
+//create or upgrade test table
+$table = new DBTable("global_settings", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//add int coloum with length 10, NOT NULL and AUTO_INCREMENT
+$table->addVarchar("key", 255, true);
+$table->addText("value", true);
+$table->addVarchar("title", 255, true);
+$table->addVarchar("description", 600, true);
+$table->addVarchar("visible_permission", 255, true, "can_see_global_settings");
+$table->addVarchar("change_permission", 255, true, "can_change_global_settings");
+$table->addVarchar("owner", 255, true, "system");
+$table->addInt("order", 10, true, false, 10);
+$table->addVarchar("icon_path", 600, true, "none");
+$table->addTimestamp("last_update", true, "0000-00-00 00:00:00", true);
+
+//add keys to table
+$table->addPrimaryKey("key");
+$table->addIndex("last_update");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!</br>";
+
 ?>
