@@ -196,6 +196,7 @@ class MySQLDriver implements DBDriver {
 
         $sql = str_replace("{DBPRAEFIX}", $this->praefix, $sql);
         $sql = str_replace("{praefix}", $this->praefix, $sql);
+		$sql = str_replace("{prefix}", $this->praefix, $sql);
 		$sql = str_replace("{PREFIX}", $this->praefix, $sql);
         return str_replace("{PRAEFIX}", $this->praefix, $sql);
     }
