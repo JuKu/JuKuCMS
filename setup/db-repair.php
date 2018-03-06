@@ -57,7 +57,7 @@ Database::getInstance();
  * test table to check upgrade system
  */
 
-echo "Create / Upgrade table <b>test</b>...</br>";
+echo "Create / Upgrade table <b>test</b>...<br />";
 
 //create or upgrade test table
 $table = new DBTable("test", Database::getInstance());
@@ -78,13 +78,13 @@ $table->addIndex("activated", "ix_activated");
 //create or upgrade table
 $table->upgrade();
 
-echo "Finished!</br>";
+echo "Finished!<br />";
 
 /**
  * test table to check upgrade system with added column, removed column and changed column
  */
 
-echo "Create / Upgrade table <b>test</b>...</br>";
+echo "Create / Upgrade table <b>test</b>...<br />";
 
 //create or upgrade test table
 $table = new DBTable("test", Database::getInstance());
@@ -106,13 +106,13 @@ $table->addIndex("activated", "ix_activated");
 //create or upgrade table
 $table->upgrade();
 
-echo "Finished!</br>";
+echo "Finished!<br />";
 
 /**
  * table EVENTS
  */
 
-echo "Create / Upgrade table <b>events</b>...</br>";
+echo "Create / Upgrade table <b>events</b>...<br />";
 
 //create or upgrade test table
 $table = new DBTable("events", Database::getInstance());
@@ -137,13 +137,13 @@ $table->addIndex(array("name", "activated"), "name");
 //create or upgrade table
 $table->upgrade();
 
-echo "Finished!</br>";
+echo "Finished!<br />";
 
 /**
  * table DOMAIN
  */
 
-echo "Create / Upgrade table <b>domain</b>...</br>";
+echo "Create / Upgrade table <b>domain</b>...<br />";
 
 //create or upgrade test table
 $table = new DBTable("domain", Database::getInstance());
@@ -170,7 +170,7 @@ $table->addIndex("alias");
 //create or upgrade table
 $table->upgrade();
 
-echo "Finished!</br>";
+echo "Finished!<br />";
 
 /**
  * table global_settings
