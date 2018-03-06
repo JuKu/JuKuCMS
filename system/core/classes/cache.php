@@ -150,7 +150,7 @@ class Cache {
 	 * @param $value cache entry value, can also be an object
 	 * @param $ttl time to live of cache entry in seconds (optional)
 	 */
-	public static function put(string $area, string $key, $value, $ttl = 180 * 60) : void {
+	public static function put(string $area, string $key, $value, $ttl = 180 * 60) {
 		self::getCache()->put($area, $key, $value, $ttl);
 	}
 
@@ -162,7 +162,7 @@ class Cache {
 		return self::getCache()->contains($area, $key);
 	}
 
-	public static function clear(string $area = "", string $key = "") : void {
+	public static function clear(string $area = "", string $key = "") {
 		self::getCache()->clear($area, $key);
 	}
 }
