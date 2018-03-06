@@ -178,7 +178,7 @@ echo "Finished!<br />";
  * Package: com.jukusoft.cms.settings
  */
 
-echo "Create / Upgrade table <b>global_settings</b>...</br>";
+echo "Create / Upgrade table <b>global_settings</b>...<br />";
 
 //create or upgrade test table
 $table = new DBTable("global_settings", Database::getInstance());
@@ -207,7 +207,7 @@ $table->addIndex("activated");
 //create or upgrade table
 $table->upgrade();
 
-echo "Finished!</br>";
+echo "Finished!<br />";
 
 /**
  * table global_settings_category
@@ -215,7 +215,7 @@ echo "Finished!</br>";
  * Package: com.jukusoft.cms.settings
  */
 
-echo "Create / Upgrade table <b>global_settings_category</b>...</br>";
+echo "Create / Upgrade table <b>global_settings_category</b>...<br />";
 
 //create or upgrade test table
 $table = new DBTable("global_settings_category", Database::getInstance());
@@ -235,6 +235,6 @@ $table->addIndex("order");
 //create or upgrade table
 $table->upgrade();
 
-echo "Finished!</br>";
+echo "Finished!<br />";
 
 ?>
