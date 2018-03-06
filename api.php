@@ -47,7 +47,7 @@ if (!empty($method)) {
 } else {
 	//print error message
 	header("Content-Type: application/json");
-	echo "{\"error\": \"No api method in request, correct call: api.php?method=&lt;API_METHOD&gt;\"}";
+	echo "{\"error\": \"No api method in request, correct call: api.php?method=<API_METHOD>\"}";
 }
 
 $end_time = microtime(true);
