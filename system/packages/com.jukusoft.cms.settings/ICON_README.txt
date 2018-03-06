@@ -1,0 +1,2 @@
+License: Free for commercial use - https://docs.google.com/spreadsheets/u/1/d/1E8X2_xmJkkoeZwa1HPNG6jT3ytAZlcAgzTDRX0jDF-Q/pubhtml?gid=0&single=true
+Found at: https://www.iconfinder.com/icons/379393/settings_icon#size=64
