@@ -30,7 +30,7 @@ class ApiMethod {
 		if (Cache::contains("apimethods", "apimethods")) {
 			$this->apimethods = Cache::get("apimethods", "apimethods");
 		} else {
-			$rows = (Array) DataBase::Current()->ReadRows("SELECT * FROM `{prefix}api_methods` WHERE `activated` = '1'; ");
+			$rows = (Array) DataBase::getInstance()->listRows("SELECT * FROM `{prefix}api_methods` WHERE `activated` = '1'; ");
 
 			foreach ($rows as $row) {
 				$row = (Array) $row;
