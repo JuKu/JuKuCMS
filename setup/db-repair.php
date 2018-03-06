@@ -196,10 +196,39 @@ $table->addVarchar("owner", 255, true, "system");
 $table->addInt("order", 10, true, false, 10);
 $table->addVarchar("icon_path", 600, true, "none");
 $table->addTimestamp("last_update", true, "0000-00-00 00:00:00", true);
+$table->addVarchar("category", 255, true, "general");
 
 //add keys to table
 $table->addPrimaryKey("key");
 $table->addIndex("last_update");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!</br>";
+
+/**
+ * table global_settings_category
+ *
+ * Package: com.jukusoft.cms.settings
+ */
+
+echo "Create / Upgrade table <b>global_settings</b>...</br>";
+
+//create or upgrade test table
+$table = new DBTable("global_settings_category", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//add int coloum with length 10, NOT NULL and AUTO_INCREMENT
+$table->addVarchar("category", 255, true);
+$table->addVarchar("title", 255, true);
+$table->addVarchar("owner", 255, true, "system");
+$table->addInt("order", 10, true, false, 10);
+
+//add keys to table
+$table->addPrimaryKey("category");
+$table->addIndex("order");
 
 //create or upgrade table
 $table->upgrade();
