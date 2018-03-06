@@ -37,7 +37,7 @@ $api_method->loadApiMethods();
 $method = "";
 
 if (isset($_REQUEST['method']) && !empty($_REQUEST['method'])) {
-	$method = DataBase::Current()->escape($_REQUEST['method']);
+	$method = DataBase::getInstance()->escape($_REQUEST['method']);
 }
 
 //execute api method, if available
