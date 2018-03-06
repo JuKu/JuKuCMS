@@ -197,10 +197,12 @@ $table->addInt("order", 10, true, false, 10);
 $table->addVarchar("icon_path", 600, true, "none");
 $table->addTimestamp("last_update", true, "0000-00-00 00:00:00", true);
 $table->addVarchar("category", 255, true, "general");
+$table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
 $table->addPrimaryKey("key");
 $table->addIndex("last_update");
+$table->addIndex("activated");
 
 //create or upgrade table
 $table->upgrade();
