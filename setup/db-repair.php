@@ -237,4 +237,34 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table api_methods
+ *
+ * Package: com.jukusoft.cms.apimethods
+ */
+
+echo "Create / Upgrade table <b>api_methods</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("api_methods", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//add int coloum with length 10, NOT NULL and AUTO_INCREMENT
+$table->addVarchar("api_method", 255, true);
+$table->addVarchar("classname", 255, true);
+$table->addVarchar("method", 255, true);
+$table->addVarchar("response_type", 255, true, " 	application/json");
+$table->addVarchar("owner", 255, true, "system");
+$table->addInt("activated", 10, true, false, 1);
+
+//add keys to table
+$table->addPrimaryKey("api_method");
+$table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 ?>
