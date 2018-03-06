@@ -215,7 +215,7 @@ echo "Finished!</br>";
  * Package: com.jukusoft.cms.settings
  */
 
-echo "Create / Upgrade table <b>global_settings</b>...</br>";
+echo "Create / Upgrade table <b>global_settings_category</b>...</br>";
 
 //create or upgrade test table
 $table = new DBTable("global_settings_category", Database::getInstance());
