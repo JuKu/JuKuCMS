@@ -15,5 +15,5 @@
   -->
 
 <classes>
-	<class>Browser</class>
+	<class>ApiMethod</class>
 </classes>
