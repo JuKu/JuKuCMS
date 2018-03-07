@@ -31,6 +31,8 @@ if (PHP_MAJOR_VERSION < 7) {
 define('CACHE_PATH', ROOT_PATH . "cache/");
 define('CONFIG_PATH', ROOT_PATH . "config/");
 define('STORE_PATH', ROOT_PATH . "store/");
+define('PACKAGE_PATH', ROOT_PATH . "system/packages/");
+define('STYLE_PATH', ROOT_PATH . "styles/");
 
 //include and load ClassLoader
 require(ROOT_PATH . "system/core/classes/classloader.php");
