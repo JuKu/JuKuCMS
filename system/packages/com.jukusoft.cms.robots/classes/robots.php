@@ -18,6 +18,8 @@
 
 class Robots {
 
+	//https://developers.google.com/search/reference/robots_txt?hl=de
+
 	protected $robots = array();
 
 	public function __construct () {
