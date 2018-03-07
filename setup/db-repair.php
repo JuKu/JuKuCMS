@@ -347,6 +347,9 @@ $table->upgrade();
 
 echo "Finished!<br />";*/
 
+//create default wildcard domain, if absent
+Domain::createWildcardDomain();
+
 //create default folders, if absent
 Folder::createFolderIfAbsent("/", false);
 Folder::createFolder("/admin/", true);

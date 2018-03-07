@@ -164,12 +164,12 @@ class Domain {
 		}
 	}
 
-	protected static function createWildcardDomain () {
+	public static function createWildcardDomain () {
 		Database::getInstance()->execute("INSERT INTO `{praefix}domain` (
 			`id`, `domain`, `alias`, `home_page`, `wildcard`, `styleID`, `redirect_url`, `redirect_code`, `lastUpdate`, `activated`
 		) VALUES (
 			NULL, '*', '-1', 'home', 'YES', '-1', 'none', '302', CURRENT_TIMESTAMP, '1'
-		); ");
+		) ON DULICATE KEY UPDATE `activated` = '1'; ");
 	}
 
 	public static function getCurrent () : Domain {
