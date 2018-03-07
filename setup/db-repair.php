@@ -295,4 +295,60 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table folder
+ *
+ * Package: com.jukusoft.cms.folder
+ */
+
+echo "Create / Upgrade table <b>folder</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("folder", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//add int coloum with length 10, NOT NULL and AUTO_INCREMENT
+$table->addVarchar("folder", 255, true);
+$table->addInt("hidden", 10, true, false, 0);
+$table->addInt("activated", 10, true, false, 1);
+
+//add keys to table
+$table->addPrimaryKey("folder");
+$table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
+/**
+ * table style_rules
+ *
+ * Package: com.jukusoft.cms.style
+ */
+
+/*echo "Create / Upgrade table <b>style_rules</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("style_rules", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//add int coloum with length 10, NOT NULL and AUTO_INCREMENT
+$table->addVarchar("useragent", 255, true);
+
+//add keys to table
+$table->addPrimaryKey(array("useragent", "option"));
+$table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";*/
+
+//create default folders, if absent
+Folder::createFolderIfAbsent("/", false);
+Folder::createFolder("/admin/", true);
+
 ?>
