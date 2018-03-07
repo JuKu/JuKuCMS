@@ -1,6 +1,7 @@
 <?php
 
- require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'xtemplate.class.php');
+//require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'xtemplate.class.php');
+//require_once(ROOT_PATH . 'system/packages/com.jukusoft.cms.xtpl/xtpl/xtemplate.class.php');
 
 /**
  * CachingXTemplate
