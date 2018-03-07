@@ -267,4 +267,32 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table robots
+ *
+ * Package: com.jukusoft.cms.robots
+ */
+
+echo "Create / Upgrade table <b>robots</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("robots", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//add int coloum with length 10, NOT NULL and AUTO_INCREMENT
+$table->addVarchar("useragent", 255, true);
+$table->addEnum("option", aray("ALLOW", "DISALLOW", "SITEMAP"), true, "ALLOW");
+$table->addVarchar("value", 600, true);
+$table->addInt("activated", 10, true, false, 1);
+
+//add keys to table
+$table->addPrimaryKey(array("useragent", "option"));
+$table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 ?>

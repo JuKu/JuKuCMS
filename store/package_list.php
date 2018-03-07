@@ -13,6 +13,7 @@ $package_list = array(
 	'com.jukusoft.cms.settings' => true,
 	'com.jukusoft.cms.apimethods' => true,
 	'com.jukusoft.cms.xtpl' => true,
+	'com.jukusoft.cms.robots' => true,
 );
 
 ?>
