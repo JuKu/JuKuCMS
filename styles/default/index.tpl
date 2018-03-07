@@ -1,3 +1,4 @@
+<!-- BEGIN: main -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,6 +7,11 @@
         {HEAD}
     </head>
     <body>
+        {HEADER}
+
         {CONTENT}
+
+        {FOOTER}
     </body>
 </html>
+<!-- END: main -->
