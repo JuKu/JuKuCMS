@@ -169,7 +169,7 @@ class Domain {
 			`id`, `domain`, `alias`, `home_page`, `wildcard`, `styleID`, `redirect_url`, `redirect_code`, `lastUpdate`, `activated`
 		) VALUES (
 			NULL, '*', '-1', 'home', 'YES', '-1', 'none', '302', CURRENT_TIMESTAMP, '1'
-		) ON DULICATE KEY UPDATE `activated` = '1'; ");
+		) ON DUPLICATE KEY UPDATE `activated` = '1'; ");
 	}
 
 	public static function getCurrent () : Domain {
