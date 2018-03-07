@@ -31,7 +31,10 @@ $autoloader_classes = array(
 	"system/core/classes/phputils.php",
 	"system/core/driver/filecache.php",
 	"system/core/classes/events.php",
-	"system/packages/com.jukusoft.cms.settings/classes/settings.php"
+	"system/packages/com.jukusoft.cms.settings/classes/settings.php",
+	"system/packages/com.jukusoft.cms.xtpl/classes/template.php",
+	"system/packages/com.jukusoft.cms.xtpl/xtpl/xtemplate.class.php",
+	"system/packages/com.jukusoft.cms.xtpl/xtpl/caching_xtemplate.class.php"
 );
 
 ?>

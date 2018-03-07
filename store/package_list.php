@@ -12,6 +12,7 @@ $package_list = array(
 	'com.jukusoft.cms.domain' => true,
 	'com.jukusoft.cms.settings' => true,
 	'com.jukusoft.cms.apimethods' => true,
+	'com.jukusoft.cms.xtpl' => true,
 );
 
 ?>
