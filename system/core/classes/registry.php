@@ -46,7 +46,7 @@ class Registry {
 
 	}
 
-	public function storeObject ($key, $object) {
+	public function storeObject ($key, &$object) {
 		if (is_string($object)) {
 			$object = new $object();
 		}

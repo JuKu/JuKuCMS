@@ -40,6 +40,11 @@ class Domain {
 	}
 
 	public function load ($id = null) {
+		if ($id == null) {
+			//get current domain
+			$id = self::getIDByDomain(DomainUtils::getCurrentDomain());
+		}
+
 		$this->id = $id;
 
 		if (Cache::get2ndLvlCache()->contains("domain", "domain_" . $id)) {

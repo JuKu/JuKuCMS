@@ -21,11 +21,51 @@ class StyleRules {
 	protected static $rules = array();
 	protected static $initialized = false;
 
+	protected static $allowed_types = array("DOMAIN", "FOLDER", "MEDIA", "LANGUAGE");
+
 	/**
 	 * default constructor
 	 */
 	public function __construct() {
 		//
+	}
+
+	/**
+	 * check, if a condition is true
+	 *
+	 * @param $type condition type ("DOMAIN", "FOLDER", "MEDIA", "LANGUAGE")
+	 * @param $expected_value expected value
+	 * @param $registry instance of Registry
+	 *
+	 * @return true, if condition is true
+	 */
+	public function checkCondition (string $type, string $expected_value, Registry $registry) : bool {
+		$type = strtoupper($type);
+
+		//check, if condition type is allowed
+		if (!in_array($type, self::$allowed_types)) {
+			throw new IllegalArgumentException("condition type '" . $type . "' is unknown.");
+		}
+
+		//TODO: check condition
+		switch ($type) {
+			case "DOMAIN":
+				//get current domain
+
+				break;
+			case "FOLDER":
+
+				break;
+			case "MEDIA":
+
+				break;
+			case "LANGUAGE":
+
+				break;
+			default:
+				throw new IllegalStateException("Unknown style rule type: " . $type);
+				break;
+		}
 	}
 
 	public static function loadAllRules () {

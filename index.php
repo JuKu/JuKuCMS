@@ -35,6 +35,18 @@ session_start();
 //use gzip compression
 ob_start();
 
+//create new instance of registry
+$registry = Registry::singleton();
+
+echo "current domain: " . DomainUtils::getCurrentDomain();
+
+//get domain
+$domain = new Domain();
+$domain->load();
+$registry->storeObject("domain", $domain);
+
+//TODO: show page here
+
 $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
 
