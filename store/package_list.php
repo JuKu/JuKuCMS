@@ -15,6 +15,7 @@ $package_list = array(
 	'com.jukusoft.cms.xtpl' => true,
 	'com.jukusoft.cms.robots' => true,
 	'com.jukusoft.cms.twig' => true,
+	'com.jukusoft.cms.style' => true,
 );
 
 ?>
