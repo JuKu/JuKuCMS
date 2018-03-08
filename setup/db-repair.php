@@ -329,7 +329,7 @@ echo "Finished!<br />";
  * Package: com.jukusoft.cms.style
  */
 
-/*echo "Create / Upgrade table <b>style_rules</b>...<br />";
+echo "Create / Upgrade table <b>style_rules</b>...<br />";
 
 //create or upgrade test table
 $table = new DBTable("style_rules", Database::getInstance());
@@ -337,16 +337,21 @@ $table->setEngine("InnoDB");
 $table->setCharset("utf8");
 
 //add int coloum with length 10, NOT NULL and AUTO_INCREMENT
-$table->addVarchar("useragent", 255, true);
+$table->addInt("rule_id", 10, true, true);
+$table->addEnum("condidition_type", array("DOMAIN", "FOLDER", "MEDIA", "LANGUAGE"), true);
+$table->addVarchar("condition", 255, true);
+$table->addInt("parent", 10, true, false, "-1");
+$table->addInt("order", 10, true, false, 1);
+$table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
-$table->addPrimaryKey(array("useragent", "option"));
+$table->addPrimaryKey("rule_id");
 $table->addIndex("activated");
 
 //create or upgrade table
 $table->upgrade();
 
-echo "Finished!<br />";*/
+echo "Finished!<br />";
 
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
