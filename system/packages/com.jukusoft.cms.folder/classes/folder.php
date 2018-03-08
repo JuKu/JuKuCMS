@@ -94,16 +94,17 @@ class Folder {
 		return self::getFolderByPage($dir);
 	}
 
-	public static function createFolder ($folder, $hidden = false) {
+	public static function createFolder ($folder, $hidden = false, $force_template = "none") {
 		//escape string
 		$folder = Database::getInstance()->escape($folder);
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}` (
-			`folder`, `hidden`, `activated`
+			`folder`, `force_template`, `hidden`, `activated`
 		) VALUES (
-			:folder, :hidden, '1'
+			:folder, :templatename, :hidden, '1'
 		); ", array(
 			'folder' => $folder,
+			'templatename' => $force_template,
 			'hidden' => $hidden ? 1 : 0
 		));
 
@@ -111,16 +112,17 @@ class Folder {
 		Cache::clear("folder");
 	}
 
-	public static function createFolderIfAbsent ($folder, $hidden = false) {
+	public static function createFolderIfAbsent ($folder, $hidden = false, $force_template = "none") {
 		//escape string
 		$folder = Database::getInstance()->escape($folder);
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}` (
-			`folder`, `hidden`, `activated`
+			`folder`, `force_template`, `hidden`, `activated`
 		) VALUES (
-			:folder, :hidden, '1'
-		) ON DUPLICATE KEY UPDATE `hidden` = :hidden; ", array(
+			:folder, :templatename, :hidden, '1'
+		) ON DUPLICATE KEY UPDATE `hidden` = :hidden, `force_template` = :templatename; ", array(
 			'folder' => $folder,
+			'templatename' => $force_template,
 			'hidden' => $hidden ? 1 : 0
 		));
 
