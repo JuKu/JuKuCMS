@@ -122,6 +122,7 @@ class Domain {
 			}
 
 			if ($id == -1) {
+				//domain doesnt exists, so get wildcard domain
 				$wildcard_domain_row = self::getWildcardDomainRow();
 
 				//check, if id belongs to wildcard domain
@@ -133,9 +134,6 @@ class Domain {
 					throw new DomainNotFoundException("Couldnt find domain " . htmlspecialchars($domain) . " in database.");
 				}
 			}
-
-			echo "getIDByDomain().";
-			exit;
 
 			//add id to cache
 			Cache::getCache()->put("domain", "id_" . $domain, (int) $id);
