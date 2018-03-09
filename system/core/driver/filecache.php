@@ -25,17 +25,12 @@ class FileCache implements ICache {
         //create directory, if neccessary
         $this->check_directory(md5($area));
 
-        echo "Cache::put path: " . $this->getFilePath($area, $key) . "<br />\n";
-        exit;
-
         //write value to file
         file_put_contents($this->getFilePath($area, $key), serialize($value));
     }
 
     public function get($area, $key) {
-		echo "Cache::get path: " . CACHE_PATH . md5($area) . "/" + md5($key) + ".php<br />\n";
-
-        if ($this->contains($area, $key)) {
+		if ($this->contains($area, $key)) {
             return unserialize(file_get_contents($this->getFilePath($area, $key)));
         } else {
             throw new Exception("File cache object " . $area . "/" . $key + "(" . $this->getFilePath($area, $key) . ") doesnt exists.");
@@ -43,9 +38,7 @@ class FileCache implements ICache {
     }
 
     public function contains ($area, $key) : bool {
-		echo "Cache::contains path: " . $this->getFilePath($area, $key) . "<br />\n";
-
-        return file_exists($this->getFilePath($area, $key));
+		return file_exists($this->getFilePath($area, $key));
     }
 
     protected function getFilePath (string $area, string $key) : string {
