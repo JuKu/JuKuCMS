@@ -6,8 +6,7 @@
  */
 
 $package_list = array(
-    'com.jukusoft.cms.config' => true,
-	'com.jukusoft.cms.db.upgrader' => true,
+    'com.jukusoft.cms.db.upgrader' => true,
 	'com.jukusoft.cms.domain' => true,
 	'com.jukusoft.cms.settings' => true,
 	'com.jukusoft.cms.apimethods' => true,
@@ -18,6 +17,7 @@ $package_list = array(
 	'com.jukusoft.cms.browser' => true,
 	'com.jukusoft.cms.lang' => true,
 	'com.jukusoft.cms.folder' => true,
+	'com.jukusoft.cms.style' => true
 );
 
 ?>
