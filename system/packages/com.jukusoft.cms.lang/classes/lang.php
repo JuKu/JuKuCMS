@@ -135,6 +135,8 @@ class Lang {
 	 * @param $available_languages array with language-tag-strings (must be lowercase) that are available
 	 * @param $http_accept_language string HTTP_ACCEPT_LANGUAGE string (read from $_SERVER['HTTP_ACCEPT_LANGUAGE'] if left out)
 	 *
+	 * @link http://www.theserverpages.com/php/manual/en/function.http-negotiate-language.php
+	 *
 	 * @return prefered language
 	 */
 	protected static function prefered_language (array $available_languages, string $http_accept_language = "auto") : string {
