@@ -17,6 +17,7 @@ $package_list = array(
 	'com.jukusoft.cms.twig' => true,
 	'com.jukusoft.cms.style' => true,
 	'com.jukusoft.cms.browser' => true,
+	'com.jukusoft.cms.lang' => true,
 );
 
 ?>

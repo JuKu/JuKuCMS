@@ -34,7 +34,8 @@ $autoloader_classes = array(
 	"system/packages/com.jukusoft.cms.settings/classes/settings.php",
 	"system/packages/com.jukusoft.cms.xtpl/classes/template.php",
 	"system/packages/com.jukusoft.cms.xtpl/xtpl/xtemplate.class.php",
-	"system/packages/com.jukusoft.cms.xtpl/xtpl/caching_xtemplate.class.php"
+	"system/packages/com.jukusoft.cms.xtpl/xtpl/caching_xtemplate.class.php",
+	"system/packages/com.jukusoft.cms.browser/classes/browser.php"
 );
 
 ?>

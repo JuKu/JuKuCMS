@@ -360,4 +360,7 @@ Domain::createWildcardDomain();
 Folder::createFolderIfAbsent("/", false);
 Folder::createFolder("/admin/", true);
 
+//create or update default settings (value will be only set, if key doesnt exists)
+Settings::create("default_lang", "de", "Default Language", "Default (fallback) language, if no other languages are supported", "system", "general");
+
 ?>
