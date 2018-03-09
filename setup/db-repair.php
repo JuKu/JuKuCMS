@@ -381,13 +381,19 @@ echo "Finished!<br />";
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 
+echo "Create folder...<br />";
+
 //create default folders, if absent
 Folder::createFolderIfAbsent("/", false);
 Folder::createFolder("/admin/", true);
 
+echo "Create default (supported) languages...<br />";
+
 //add supported languages
 Lang::addLangOrUpdate("de", "German");
 Lang::addLangOrUpdate("en", "English");
+
+echo "Create default global settings...<br />";
 
 //create or update default settings (value will be only set, if key doesnt exists)
 Settings::create("default_lang", "de", "Default Language", "Default (fallback) language, if no other languages are supported", "system", "general");
