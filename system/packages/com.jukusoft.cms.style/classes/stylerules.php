@@ -30,6 +30,40 @@ class StyleRules {
 		//
 	}
 
+	public static function getStyle (Registry &$registry, string $default_style_name) : string {
+		//load all rules, if absent
+		self::initIfAbsent();
+
+		return self::applyRules(-1, $registry, $default_style_name);
+	}
+
+	protected static function applyRules (int $parentID, Registry &$registry, $default_value) : string {
+		//get all root rules
+		$root_rules = self::$rules[$parentID];
+
+		$style_name = $default_value;
+
+		//iterate through rules
+		foreach ($root_rules as $rule) {
+			$type = $rule['type'];
+			$expected_value = $rule['expected_value'];
+
+			//validate condition
+			if (self::checkCondition($type, $expected_value, $registry)) {
+				//set new default value
+				$style_name = $rule['style_name'];
+				$parentID = $rule['rule_id'];
+
+				//search for next rules
+				return self::applyRules($parentID, $registry, $style_name);
+
+				break;
+			}
+		}
+
+		return $style_name;
+	}
+
 	/**
 	 * check, if a condition is true
 	 *
@@ -39,7 +73,7 @@ class StyleRules {
 	 *
 	 * @return true, if condition is true
 	 */
-	public function checkCondition (string $type, string $expected_value, Registry $registry) : bool {
+	public static function checkCondition (string $type, string $expected_value, Registry &$registry) : bool {
 		$type = strtoupper($type);
 
 		//check, if condition type is allowed
@@ -146,6 +180,10 @@ class StyleRules {
 				}
 
 				$rules[$parentID][] = $row;
+			}
+
+			if (!isset($rules[-1])) {
+				$rules[-1] = array();
 			}
 
 			self::$rules = $rules;
