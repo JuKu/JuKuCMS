@@ -338,8 +338,9 @@ $table->setCharset("utf8");
 
 //add int coloum with length 10, NOT NULL and AUTO_INCREMENT
 $table->addInt("rule_id", 10, true, true);
-$table->addEnum("condidition_type", array("DOMAIN", "FOLDER", "MEDIA", "LANGUAGE"), true);
-$table->addVarchar("condition", 255, true);
+$table->addEnum("type", array("DOMAIN", "FOLDER", "MEDIA", "LANGUAGE"), true);
+$table->addVarchar("expected_value", 255, true);
+$table->addVarchar("style_name", 255, true);
 $table->addInt("parent", 10, true, false, "-1");
 $table->addInt("order", 10, true, false, 1);
 $table->addInt("activated", 10, true, false, 1);
