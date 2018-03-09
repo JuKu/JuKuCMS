@@ -47,7 +47,7 @@ class Cache {
 
         //create new instance of first level cache
         $class_name = $config['first_lvl_cache']['class_name'];
-        self::$instance = new CMSFileCache();//new $class_name();
+        self::$instance = new $class_name();
 		echo "First level cache class: " . get_class(self::$instance) . "<br />\n";
 
         if (!self::$instance instanceof ICache) {
@@ -71,8 +71,7 @@ class Cache {
         if (isset($config['second_lvl_cache']['activated']) && $config['second_lvl_cache']['activated'] == true) {
             //create new instance of second level cache
             $class_name = $config['second_lvl_cache']['class_name'];
-			echo "Second level cache class: " . $class_name . "<br />\n";
-            self::$second_level_cache = new CMSFileCache();//new $class_name();
+            self::$second_level_cache = new $class_name();
 
             if (!self::$second_level_cache instanceof ICache) {
                 throw new ConfigurationException("second level cache isnt instance of ICache.");
