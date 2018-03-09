@@ -158,7 +158,7 @@ class Domain {
 		return $row['id'];
 	}
 
-	public static function getWildcardDomain () : int {
+	public static function getWildcardDomain () : string {
 		$row = self::getWildcardDomainRow();
 
 		if (!$row) {
