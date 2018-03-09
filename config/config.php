@@ -7,7 +7,7 @@
 //should a HTML comment "<!-- page was generated in xxx seconds -->" be added to every page?
 define('ACTIVATE_BENCHMARK', true);
 
-define('OPTION_PRELOAD_CLASSES', true);
+define('OPTION_PRELOAD_CLASSES', false);
 
 define('DEBUG_MODE', true);
 
