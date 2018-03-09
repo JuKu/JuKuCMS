@@ -38,9 +38,7 @@ if ($domain->isRedirectUrl()) {
 session_start();
 
 //use gzip compression
-if (!DEBUG_MODE) {
-	ob_start();
-}
+ob_start();
 
 //TODO: remove this code in production
 if (isset($_REQUEST['clear_cache'])) {
