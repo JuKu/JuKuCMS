@@ -37,7 +37,6 @@ class FileCache implements ICache {
 			$content = file_get_contents($file_path);
 
 			echo $content;
-			exit;
 
             return unserialize($content);
         } else {
