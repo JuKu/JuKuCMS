@@ -82,6 +82,11 @@ class Lang {
 			throw new IllegalStateException("default language (in global settings) isnt a supported language");
 		}
 
+		//remove element from array
+		if (($key = array_search($default_lang, $keys)) !== false) {
+			unset($keys[$key]);
+		}
+
 		//add as first element
 		array_unshift($keys, $default_lang);
 
