@@ -28,5 +28,9 @@
     RewriteBase /
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . /index.php [L]
+
+    http://foobarblog.net/blog/seo-suchmaschinenfreundliche-urls-durch-rewriten-in-der-htaccess-datei-21/
+    RewriteCond %{QUERY_STRING} ^(.*)$
+
+    RewriteRule ^(.*)$ index.php?page=$1&%1 [L]
 </IfModule>
