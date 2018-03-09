@@ -25,14 +25,23 @@ class StyleController {
 	 *
 	 * @return current style as string name
 	 */
-	public static function getCurrentStyle (Registry $registry) : string {
+	public static function getCurrentStyle (Registry &$registry) : string {
 		//get default styles
 		$default_style_name = Settings::get("default_style_name");
 		$default_mobile_style_name = Settings::get("default_style_name");
 
 		$style_name = !Browser::isMobile() ? $default_style_name : $default_mobile_style_name;
 
-		//TODO: apply style rules
+		//apply style rules
+		$style_name = StyleController::getCurrentStyle($registry, $style_name);
+
+		//throw event, so plugins can change style
+		Events::throwEvent("get_style", array(
+			'default_style_name' => $default_style_name,
+			'default_mobile_style_name' => $default_mobile_style_name,
+			'style_name' => &$style_name,
+			'registry' => $registry
+		));
 
 		return $style_name;
 	}
