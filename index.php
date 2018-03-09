@@ -61,7 +61,7 @@ $mobile_detection_exec_time = $mobile_detection_end_time - $mobile_detection_sta
 //benchmark code
 if (ACTIVATE_BENCHMARK) {
 	echo "<!-- page was generated in " . $exec_time . " seconds -->\n";
-	echo "<!-- mobile detection executed in " . $mobile_detection_exec_time . " seconds -->\n";
+	echo "<!-- mobile detection executed in " . $mobile_detection_exec_time . " seconds, isMobile: " . $registry->getSetting("isMobile") . " -->\n";
 }
 
 if (DEBUG_MODE) {
