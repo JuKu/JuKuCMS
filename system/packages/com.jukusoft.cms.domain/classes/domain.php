@@ -106,8 +106,6 @@ class Domain {
 			throw new IllegalArgumentException("domain cannot be an integer, because a domain string is requested.");
 		}
 
-		echo "getIDByDomain: " . $domain . "<br />";
-
 		if (Cache::getCache()->contains("domain", "id_" . $domain)) {
 			return (int) Cache::getCache()->contains("domain", "id_" . $domain);
 		} else {
