@@ -174,8 +174,8 @@ class Lang {
 				$bestqval = $qvalue;
 			}
 			// if no direct hit, try the prefix only but decrease q-value by 10% (as http_negotiate_language does)
-			else if (in_array($languageprefix,$available_languages) && (($qvalue*0.9) > $bestqval)) {
-				$bestlang = $languageprefix;
+			else if (in_array($langprefix,$available_languages) && (($qvalue*0.9) > $bestqval)) {
+				$bestlang = $langprefix;
 				$bestqval = $qvalue*0.9;
 			}
 		}
