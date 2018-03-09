@@ -397,6 +397,8 @@ echo "Create default global settings...<br />";
 
 //create or update default settings (value will be only set, if key doesnt exists)
 Settings::create("default_lang", "de", "Default Language", "Default (fallback) language, if no other languages are supported", "system", "general");
+Settings::create("default_style_name", "default", "Default Style", "Default (fallback) style name, which will be used, if no other design was set by style rules.", "system", "general");
+Settings::create("default_mobile_style_name", "default", "Default mobile Style", "Like default style name, but for mobiledevices", "system", "general");
 
 echo "<br /><br />Finished DB Upgrade!";
 
