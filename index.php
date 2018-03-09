@@ -11,6 +11,8 @@ require("system/core/init.php");
 
 //reset OpCache in debug mode
 if (CLEAR_OP_CACHE) {
+	//http://php.net/manual/en/function.opcache-reset.php
+	//http://php.net/manual/en/function.opcache-invalidate.php
 	opcache_reset();
 }
 
