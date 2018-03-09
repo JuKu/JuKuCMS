@@ -73,7 +73,8 @@ $registry->setSetting("pref_lang", Lang::getPrefLangToken());
 $registry->setSetting("lang_token", Lang::getLangToken(Lang::listSupportedLangTokens()));
 
 //get current style
-$registry->setSetting("current_style_name", StyleController::getCurrentStyle());
+$registry->setSetting("current_style_name", StyleController::getCurrentStyle($registry));
+echo "Current style: " . $registry->getSetting("current_style_name");
 
 var_dump(get_object_vars($registry));
 
