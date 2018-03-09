@@ -35,6 +35,12 @@ session_start();
 //use gzip compression
 ob_start();
 
+//TODO: remove this code in production
+if (isset($_REQUEST['clear_cache'])) {
+	//clear cache
+	Cache::clear();
+}
+
 //create new instance of registry
 $registry = Registry::singleton();
 
