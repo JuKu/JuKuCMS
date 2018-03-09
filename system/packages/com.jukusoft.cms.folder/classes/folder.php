@@ -98,7 +98,7 @@ class Folder {
 		//escape string
 		$folder = Database::getInstance()->escape($folder);
 
-		Database::getInstance()->execute("INSERT INTO `{praefix}` (
+		Database::getInstance()->execute("INSERT INTO `{praefix}folder` (
 			`folder`, `force_template`, `hidden`, `activated`
 		) VALUES (
 			:folder, :templatename, :hidden, '1'
@@ -116,7 +116,7 @@ class Folder {
 		//escape string
 		$folder = Database::getInstance()->escape($folder);
 
-		Database::getInstance()->execute("INSERT INTO `{praefix}` (
+		Database::getInstance()->execute("INSERT INTO `{praefix}folder` (
 			`folder`, `force_template`, `hidden`, `activated`
 		) VALUES (
 			:folder, :templatename, :hidden, '1'
