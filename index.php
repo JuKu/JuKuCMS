@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 require("system/core/init.php");
 
 //reset OpCache in debug mode
-if (DEBUG_MODE) {
+if (CLEAR_OP_CACHE) {
 	opcache_reset();
 }
 

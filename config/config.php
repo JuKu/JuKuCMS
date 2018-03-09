@@ -11,6 +11,9 @@ define('OPTION_PRELOAD_CLASSES', true);
 
 define('DEBUG_MODE', true);
 
+//clear PHP 7 OpCache for debugging
+define('CLEAR_OP_CACHE', true);
+
 //show all errors
 error_reporting(E_ALL);
 
