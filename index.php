@@ -39,6 +39,8 @@ ob_start();
 if (isset($_REQUEST['clear_cache'])) {
 	//clear cache
 	Cache::clear();
+
+	echo "Clear cache!<br />";
 }
 
 //create new instance of registry
