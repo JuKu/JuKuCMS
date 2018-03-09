@@ -45,6 +45,10 @@ class Domain {
 			$id = self::getIDByDomain(DomainUtils::getCurrentDomain());
 		}
 
+		if (!is_int($id)) {
+			throw new IllegalArgumentException("domain id has to be an integer.");
+		}
+
 		$this->id = $id;
 
 		echo "load: " . $id;
