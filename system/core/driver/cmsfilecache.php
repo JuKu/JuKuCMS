@@ -48,8 +48,8 @@ class CMSFileCache implements ICache {
         return file_exists($this->getFilePath($area, $key));
     }
 
-    protected function getFilePath (string $area, string $key) {
-    	return CACHE_PATH . md5($area) . "/" + md5($key) + ".php";
+    protected function getFilePath (string $area, string $key) : string {
+    	return CACHE_PATH . md5($area) . "/" . md5($key) . ".php";
 	}
 
     private function check_directory ($name) {
