@@ -46,8 +46,8 @@ class FileCache implements ICache {
 	}
 
     private function check_directory ($name) {
-        if (!file_exists(CACHE_PATH . $name)) {
-            mkdir(CACHE_PATH . $name);
+        if (!file_exists(CACHE_PATH . $name . "/")) {
+            mkdir(CACHE_PATH . $name . "/");
         }
     }
 
