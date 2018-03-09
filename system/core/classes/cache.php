@@ -95,7 +95,7 @@ class Cache {
     }
 
     public static function &getCache ($name = "") : ICache {
-        if ($name == "") {
+        if (empty($name)) {
             return self::$instance;
         } else {
             //check, if cache exists
