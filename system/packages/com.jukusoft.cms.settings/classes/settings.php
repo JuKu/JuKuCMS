@@ -215,6 +215,8 @@ class Settings {
 				self::$settings[$row['key']] = $row['value'];
 			}
 
+			print_r(self::$settings);
+
 			//cache rows
 			Cache::put("global_settings", "all-settings", self::$settings);
 		}
