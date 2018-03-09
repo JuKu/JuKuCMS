@@ -209,12 +209,18 @@ class Settings {
 			//load settings from database
 			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}global_settings` WHERE `activated` = '1' ORDER BY `order`; ");
 
+			echo "rows: ";
+			print_r($rows);
+
+			echo "<br />\n";
+			
 			self::$settings = array();
 
 			foreach ($rows as $row) {
 				self::$settings[$row['key']] = $row['value'];
 			}
 
+			echo "settings:<br />";
 			print_r(self::$settings);
 
 			//cache rows
