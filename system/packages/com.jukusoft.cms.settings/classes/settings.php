@@ -48,6 +48,8 @@ class Settings {
 			if ($default_value != null) {
 				return $default_value;
 			} else {
+				print_r(self::$settings);
+
 				throw new IllegalStateException("Settings key '" . $key . "' doesnt exists.");
 
 				//return null;
