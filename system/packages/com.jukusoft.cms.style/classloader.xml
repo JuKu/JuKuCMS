@@ -16,4 +16,5 @@
 
 <classes>
 	<class>StyleRules</class>
+	<class>StyleController</class>
 </classes>
