@@ -30,6 +30,8 @@ class Browser {
 	//cached values
 	protected static $isMobile = false;
 	protected static $mobile_checked = false;
+	protected static $isTablet = false;
+	protected static $tablet_checked = false;
 
 	//https://github.com/serbanghita/Mobile-Detect/blob/master/Mobile_Detect.php
 
@@ -62,6 +64,11 @@ class Browser {
 	}
 
 	public static function isTablet () : bool {
+		//in-memory cache
+		if (self::$tablet_checked) {
+			return self::$isTablet;
+		}
+
 		//https://www.phpclasses.org/browse/file/48225.html
 		//https://mobiforge.com/design-development/tablet-and-mobile-device-detection-php
 
@@ -84,7 +91,13 @@ class Browser {
 			}
 		}
 
-		return $tablet_browser > 0;
+		$value = $tablet_browser > 0;
+
+		//cache values (in local in-memory cache)
+		self::$isTablet = $value;
+		self::$tablet_checked = true;
+
+		return $value;
 	}
 
 	public static function isAppleiOS () : bool {
