@@ -74,7 +74,6 @@ $registry->setSetting("lang_token", Lang::getLangToken(Lang::listSupportedLangTo
 
 //get current style
 $registry->setSetting("current_style_name", StyleController::getCurrentStyle($registry));
-echo "Current style: " . $registry->getSetting("current_style_name");
 
 //TODO: show page here
 
