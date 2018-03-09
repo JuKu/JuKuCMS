@@ -101,7 +101,7 @@ class Domain {
 		return $this->row['redirect_code'];
 	}
 
-	public static function getIDByDomain ($domain) : int {
+	public static function getIDByDomain (string $domain) : int {
 		echo "getIDByDomain: " . $domain . "<br />";
 
 		if (Cache::getCache()->contains("domain", "id_" . $domain)) {
