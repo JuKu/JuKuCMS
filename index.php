@@ -44,6 +44,10 @@ echo "current domain: " . DomainUtils::getCurrentDomain();
 $domain = new Domain();
 $domain->load();
 $registry->storeObject("domain", $domain);
+$registry->setSetting("domain_name", DomainUtils::getCurrentDomain());
+
+//mobile detection
+$registry->setSetting("isMobile", Browser::isMobile());
 
 //TODO: show page here
 

@@ -27,32 +27,57 @@
 
 class Browser {
 
+	//cached values
+	protected static $isMobile = false;
+	protected static $mobile_checked = false;
+
+	//https://github.com/serbanghita/Mobile-Detect/blob/master/Mobile_Detect.php
+
 	/**
 	 * check, if browser is mobile
 	 *
 	 * @return true, if browser is mobile
 	 */
-	public function isMobile () : bool {
-		return preg_match("/(android|webos|avantgo|iphone|ipad|ipod|blackberry|iemobile|bolt|bo‌​ost|cricket|docomo|fone|hiptop|mini|opera mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $this->getUserAgent());
+	public static function isMobile () : bool {
+		//in-memory cache
+		if (self::$mobile_checked) {
+			return self::$isMobile;
+		}
+
+		$value = preg_match("/(android|webos|avantgo|iphone|ipad|ipod|blackberry|iemobile|bolt|bo‌​ost|cricket|docomo|fone|hiptop|mini|opera mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", self::getUserAgent());
+
+		//cache values (in local in-memory cache)
+		self::$isMobile = $value;
+		self::$mobile_checked = true;
+
+		return $value;
 	}
 
-	public function isMobilePhone () : bool {
+	public static function isMobilePhone () : bool {
 		//TODO: add code here
 	}
 
-	public function isTablet () : bool {
+	public static function isTablet () : bool {
 		//TODO: add code here
 	}
 
-	public function isAppleiOS () : bool {
-		//TODO: add code here
+	public static function isAppleiOS () : bool {
+		$user_agent = self::getUserAgent();
+
+		$iPod    = stripos($user_agent,"iPod");
+		$iPhone  = stripos($user_agent,"iPhone");
+		$iPad    = stripos($user_agent,"iPad");
+		//$Android = stripos($_SERVER['HTTP_USER_AGENT'],"Android");
+		//$webOS   = stripos($_SERVER['HTTP_USER_AGENT'],"webOS");
+
+		return $iPod !== false || $iPhone !== false || $iPad !== false;
 	}
 
-	public function isAndroid () : bool {
-		//TODO: add code here
+	public static function isAndroid () : bool {
+		return stripos(self::getUserAgent(),'android') !== false;
 	}
 
-	public function getUserAgent () : string {
+	public static function getUserAgent () : string {
 		$user_agent = strtolower(htmlentities($_SERVER['HTTP_USER_AGENT']));
 
 		//throw event, so plugins can modify user agent

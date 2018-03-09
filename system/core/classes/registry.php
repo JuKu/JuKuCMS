@@ -65,6 +65,10 @@ class Registry {
 	}
 
 	public function getSetting ($key) {
+		if (!isset(self::$settings[$key])) {
+			throw new IllegalStateException("Registry-Settings key '" . htmlentities($key) . "' doesnt exists.");
+		}
+
 		return self::$settings[$key];
 	}
 
