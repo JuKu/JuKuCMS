@@ -26,7 +26,7 @@ class FileCache implements ICache {
         $this->check_directory(md5($area));
 
         echo "Cache::put path: " . CACHE_PATH . md5($area) . "/" + md5($key) + ".php<br />\n";
-        ob_flush();
+        ob_end_flush();
         exit;
 
         //write value to file
