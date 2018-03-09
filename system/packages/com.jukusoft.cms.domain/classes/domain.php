@@ -102,6 +102,9 @@ class Domain {
 	}
 
 	public static function getIDByDomain ($domain) : int {
+		echo "getIDByDomain().";
+		exit;
+
 		if (Cache::getCache()->contains("domain", "id_" . $domain)) {
 			return (int) Cache::getCache()->contains("domain", "id_" . $domain);
 		} else {
