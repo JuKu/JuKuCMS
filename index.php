@@ -52,6 +52,8 @@ $registry->setSetting("isMobile", Browser::isMobile());
 $mobile_detection_end_time = microtime(true);
 $mobile_detection_exec_time = $mobile_detection_end_time - $mobile_detection_start_time;
 
+echo "default language: " . Settings::get("default_lang") . "<br />";
+
 echo "supported lang tokens: ";
 print_r(Lang::listSupportedLangTokens());
 
