@@ -127,7 +127,7 @@ class Settings {
 		Database::getInstance()->execute("INSERT INTO `{praefix}global_settings` (
 			`key`, `value`, `title`, `description`, `visible_permission`, `change_permission`, `owner`, `order`, `icon_path`, `last_update`, `category`, `activated`
 		) VALUES (
-			:key, :value, :title, :description, :visible_permissions, :change_permissions, :owner, :order, :icon_path, :category, '1'
+			:key, :value, :title, :description, :visible_permissions, :change_permissions, :owner, :order, :icon_path, '0000-00-00 00:00:00', :category, '1'
 		) ON DUPLICATE KEY UPDATE `title` = :title, `description` = :description, `visible_permission` = :visible_permissions, `change_permission` = :change_permissions, `owner` = :owner, `order` = :order, `icon_path` = :icon_path, `last_update` = CURRENT_TIMESTAMP , `category` = :category; ", array(
 			'key' => $key,
 			'value' => $value,
