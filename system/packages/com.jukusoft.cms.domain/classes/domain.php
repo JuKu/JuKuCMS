@@ -127,7 +127,7 @@ class Domain {
 				//check, if id belongs to wildcard domain
 				if ($wildcard_domain_row['domain'] != $domain) {
 					//get id of wildcard domain
-					return self::getIDByDomain(self::getWildcardDomainID());
+					return self::getIDByDomain(self::getWildcardDomain());
 				} else {
 					//throw exception
 					throw new DomainNotFoundException("Couldnt find domain " . htmlspecialchars($domain) . " in database.");
@@ -156,6 +156,22 @@ class Domain {
 		}
 
 		return $row['id'];
+	}
+
+	public static function getWildcardDomain () : int {
+		$row = self::getWildcardDomainRow();
+
+		if (!$row) {
+			//repair the missing wildcard domain
+			self::createWildcardDomain();
+
+			//select domain again
+			return self::getWildcardDomainID();
+
+			//throw new WildcardDomainNotFoundException("Couldnt found wildcard domain in database.");
+		}
+
+		return $row['domain'];
 	}
 
 	public static function getWildcardDomainRow () {
