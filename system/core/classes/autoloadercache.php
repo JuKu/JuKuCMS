@@ -54,9 +54,9 @@ class AutoLoaderCache {
 			if (file_exists($class_path)) {
 				//get php code directly
 				$data .= file_get_contents($class_path);
-			} else if (file_exists(LIB_PSF_ROOT . $class_path)) {
-				//use LIB_PSF_ROOT prefix
-				$data .= file_get_contents(LIB_PSF_ROOT . $class_path);
+			} else if (file_exists(ROOT_PATH . $class_path)) {
+				//use ROOT_PATH prefix
+				$data .= file_get_contents(ROOT_PATH . $class_path);
 			} else {
 				Logger::warn("class " . $class_path . " couldnt be cached, file path doesnt exists.");
 				echo "<!-- class " . $class_path . " couldnt be cached, file path doesnt exists. -->";
