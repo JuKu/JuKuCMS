@@ -127,7 +127,7 @@ class Domain {
 				//check, if id belongs to wildcard domain
 				if ($wildcard_domain_row['domain'] != $domain) {
 					//get id of wildcard domain
-					return self::getIDByDomain(self::getWildcardDomain());
+					$id = self::getIDByDomain(self::getWildcardDomain());
 				} else {
 					//throw exception
 					throw new DomainNotFoundException("Couldnt find domain " . htmlspecialchars($domain) . " in database.");
