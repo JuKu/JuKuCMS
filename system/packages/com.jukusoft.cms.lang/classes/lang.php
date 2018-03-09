@@ -73,7 +73,19 @@ class Lang {
 		//load tokens, if not initialized
 		self::loadIfAbsent();
 
-		return array_keys(self::$supported_languages);
+		$keys = array_keys(self::$supported_languages);
+
+		//get default language
+		$default_lang = Settings::get("default_lang");
+
+		if (!in_array($default_lang, $keys)) {
+			throw new IllegalStateException("default language (in global settings) isnt a supported language");
+		}
+
+		//add as first element
+		array_unshift($keys, $default_lang);
+
+		return $keys;
 	}
 
 	public static function addLang (string $token, string $title) {
@@ -85,6 +97,9 @@ class Lang {
 			'token' => $token,
 			'title' => $title
 		));
+
+		//clear local in-memory cache
+		self::$initialized = false;
 
 		//clear cache
 		Cache::clear("supported-languages");
@@ -99,6 +114,9 @@ class Lang {
 			'token' => $token,
 			'title' => $title
 		));
+
+		//clear local in-memory cache
+		self::$initialized = false;
 
 		//clear cache
 		Cache::clear("supported-languages");
