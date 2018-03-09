@@ -51,9 +51,6 @@ class Domain {
 
 		$this->id = $id;
 
-		echo "load: " . $id;
-		exit;
-
 		if (Cache::getCache()->contains("domain", "domain_" . $id)) {
 			$this->row = Cache::getCache()->get("domain", "domain_" . $id);
 		} else {
