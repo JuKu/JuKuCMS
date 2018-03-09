@@ -26,26 +26,31 @@ class CMSFileCache implements ICache {
         $this->check_directory(md5($area));
 
         echo "Cache::put path: " . CACHE_PATH . md5($area) . "/" + md5($key) + ".php<br />\n";
+        exit;
 
         //write value to file
-        file_put_contents(CACHE_PATH . md5($area) . "/" + md5($key) + ".php", serialize($value));
+        file_put_contents($this->getFilePath($area, $key), serialize($value));
     }
 
     public function get($area, $key) {
 		echo "Cache::get path: " . CACHE_PATH . md5($area) . "/" + md5($key) + ".php<br />\n";
 
         if ($this->contains($area, $key)) {
-            return unserialize(file_get_contents(CACHE_PATH . md5($area) . "/" + md5($key) + ".php"));
+            return unserialize(file_get_contents($this->getFilePath($area, $key)));
         } else {
-            throw new Exception("File cache object " . $area . "/" . $key + "(" . CACHE_PATH . md5($area) . "/" . md5($key) . ") doesnt exists.");
+            throw new Exception("File cache object " . $area . "/" . $key + "(" . $this->getFilePath($area, $key) . ") doesnt exists.");
         }
     }
 
     public function contains ($area, $key) : bool {
-		echo "Cache::contains path: " . CACHE_PATH . md5($area) . "/" + md5($key) + ".php<br />\n";
+		echo "Cache::contains path: " . $this->getFilePath($area, $key) . ".php<br />\n";
 
-        return file_exists(CACHE_PATH . md5($area) . "/" + md5($key) + ".php");
+        return file_exists($this->getFilePath($area, $key));
     }
+
+    protected function getFilePath (string $area, string $key) {
+    	return CACHE_PATH . md5($area) . "/" + md5($key) + ".php";
+	}
 
     private function check_directory ($name) {
         if (!file_exists(CACHE_PATH . $name)) {
