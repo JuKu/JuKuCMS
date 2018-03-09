@@ -31,9 +31,6 @@ class FileCache implements ICache {
 
     public function get($area, $key) {
 		if ($this->contains($area, $key)) {
-			throw new Exception("test exception, area: " . $area . ", key: " . $key);
-
-			echo $this->getFilePath($area, $key); ob_end_flush();
             return unserialize(file_get_contents($this->getFilePath($area, $key)));
         } else {
             throw new Exception("File cache object " . $area . "/" . $key + "(" . $this->getFilePath($area, $key) . ") doesnt exists.");
