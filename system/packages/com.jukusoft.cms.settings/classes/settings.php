@@ -110,9 +110,9 @@ class Settings {
 		}
 
 		//check, if setting already exists
-		if (isset(self::$settings[$key])) {
+		/*if (isset(self::$settings[$key])) {
 			throw new IllegalArgumentException("global setting key '" . $key . "' already exists in database.");
-		}
+		}*/
 
 		//allow more than one possible permission as array
 		if (is_array($visible_permissions)) {
