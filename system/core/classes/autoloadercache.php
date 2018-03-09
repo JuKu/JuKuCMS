@@ -58,7 +58,6 @@ class AutoLoaderCache {
 				//use ROOT_PATH prefix
 				$data .= file_get_contents(ROOT_PATH . $class_path);
 			} else {
-				Logger::warn("class " . $class_path . " couldnt be cached, file path doesnt exists.");
 				echo "<!-- class " . $class_path . " couldnt be cached, file path doesnt exists. -->";
 			}
 		}

@@ -73,7 +73,8 @@ class Database {
                 //connect to database
                 self::$instances[$name]->connect($db_config_path);
             } else {
-                Logger::error("Couldnt find database configuration file for database '" . $name . "'.");
+                //Logger::error("Couldnt find database configuration file for database '" . $name . "'.");
+				echo "Couldnt find database configuration file for database '" . $name . "'.";
             }
         }
     }
