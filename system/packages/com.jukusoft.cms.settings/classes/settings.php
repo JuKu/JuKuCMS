@@ -203,27 +203,17 @@ class Settings {
 	 * initialize settings and get global settings
 	 */
 	protected static function loadAllSettings () {
-		echo "loadAllSettings<br />";
-
 		if (Cache::contains("global_settings", "all-settings")) {
 			self::$settings = Cache::get("global_settings", "all-settings");
 		} else {
 			//load settings from database
 			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}global_settings` WHERE `activated` = '1' ORDER BY `order`; ");
-
-			echo "rows: ";
-			print_r($rows);
-
-			echo "<br />\n";
 			
 			self::$settings = array();
 
 			foreach ($rows as $row) {
 				self::$settings[$row['key']] = $row['value'];
 			}
-
-			echo "settings:<br />";
-			print_r(self::$settings);
 
 			//cache rows
 			Cache::put("global_settings", "all-settings", self::$settings);
