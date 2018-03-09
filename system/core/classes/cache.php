@@ -42,7 +42,9 @@ class Cache {
         if (!isset($config['second_lvl_cache']) || !isset($config['second_lvl_cache']['class_name'])) {
             throw new ConfigurationException("cache configuration or class name of 'second_lvl_cache' isnt set.");
         }
-        
+
+        //TODO: fix this code
+
         //create new instance of first level cache
         $class_name = $config['first_lvl_cache']['class_name'];
         self::$instance = new FileCache();//new $class_name();
@@ -70,7 +72,7 @@ class Cache {
             //create new instance of second level cache
             $class_name = $config['second_lvl_cache']['class_name'];
 			echo "Second level cache class: " . $class_name . "<br />\n";
-            self::$second_level_cache = new $class_name();
+            self::$second_level_cache = new FileCache();//new $class_name();
 
             if (!self::$second_level_cache instanceof ICache) {
                 throw new ConfigurationException("second level cache isnt instance of ICache.");
