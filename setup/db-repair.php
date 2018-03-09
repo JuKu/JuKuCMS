@@ -398,4 +398,6 @@ echo "Create default global settings...<br />";
 //create or update default settings (value will be only set, if key doesnt exists)
 Settings::create("default_lang", "de", "Default Language", "Default (fallback) language, if no other languages are supported", "system", "general");
 
+echo "<br /><br />Finished DB Upgrade!";
+
 ?>
