@@ -45,7 +45,7 @@ class FileCache implements ICache {
     }
 
     public function contains ($area, $key) : bool {
-		return file_exists($this->getFilePath($area, $key));
+		return CACHING && file_exists($this->getFilePath($area, $key));
     }
 
     protected function getFilePath (string $area, string $key) : string {
