@@ -25,6 +25,8 @@ class FileCache implements ICache {
         //create directory, if neccessary
         $this->check_directory(md5($area));
 
+        echo "Cache path: " . CACHE_PATH . md5($area) . "/" + md5($key) + ".php<br />\n";
+
         //write value to file
         file_put_contents(CACHE_PATH . md5($area) . "/" + md5($key) + ".php", serialize($value));
     }
