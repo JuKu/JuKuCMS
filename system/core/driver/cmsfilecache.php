@@ -25,7 +25,7 @@ class CMSFileCache implements ICache {
         //create directory, if neccessary
         $this->check_directory(md5($area));
 
-        echo "Cache::put path: " . CACHE_PATH . md5($area) . "/" + md5($key) + ".php<br />\n";
+        echo "Cache::put path: " . $this->getFilePath($area, $key) . "<br />\n";
         exit;
 
         //write value to file
@@ -43,7 +43,7 @@ class CMSFileCache implements ICache {
     }
 
     public function contains ($area, $key) : bool {
-		echo "Cache::contains path: " . $this->getFilePath($area, $key) . ".php<br />\n";
+		echo "Cache::contains path: " . $this->getFilePath($area, $key) . "<br />\n";
 
         return file_exists($this->getFilePath($area, $key));
     }
