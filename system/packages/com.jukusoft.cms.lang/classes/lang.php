@@ -23,6 +23,9 @@
 
 class Lang {
 
+	protected static $supported_languages = array();
+	protected static $initialized = false;
+
 	//https://paulund.co.uk/auto-detect-browser-language-in-php
 
 	public static function getPrefLangToken () : string {
@@ -37,6 +40,68 @@ class Lang {
 		//https://stackoverflow.com/questions/3770513/detect-browser-language-in-php
 
 		return http_negotiate_language($supported_lang_tokens);
+	}
+
+	public static function loadSupportedLangs () {
+		if (Cache::contains("supported-languages", "list")) {
+			self::$supported_languages = Cache::get("supported-languages", "list");
+		} else {
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}supported_languages`; ");
+
+			$array = array();
+
+			foreach ($rows as $row) {
+				$array[$row['lang_token']] = $row;
+			}
+
+			//cache values
+			Cache::put("supported-languages", "list", $array);
+
+			self::$supported_languages = $array;
+		}
+
+		self::$initialized = true;
+	}
+
+	protected static function loadIfAbsent () {
+		if (!self::$initialized) {
+			self::loadSupportedLangs();
+		}
+	}
+
+	public static function listSupportedLangTokens () {
+		//load tokens, if not initialized
+		self::loadIfAbsent();
+
+		return array_keys(self::$supported_languages);
+	}
+
+	public static function addLang (string $token, string $title) {
+		Database::getInstance()->execute("INSERT INTO `{praefix}supported_languages` (
+			`lang_token`, `title`
+		) VALUES (
+			:token, :title
+		); ", array(
+			'token' => $token,
+			'title' => $title
+		));
+
+		//clear cache
+		Cache::clear("supported-languages");
+	}
+
+	public static function addLangOrUpdate (string $token, string $title) {
+		Database::getInstance()->execute("INSERT INTO `{praefix}supported_languages` (
+			`lang_token`, `title`
+		) VALUES (
+			:token, :title
+		) ON DUPLICATE KEY UPDATE `title` = :title; ", array(
+			'token' => $token,
+			'title' => $title
+		));
+
+		//clear cache
+		Cache::clear("supported-languages");
 	}
 
 }

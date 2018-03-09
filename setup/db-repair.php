@@ -353,12 +353,41 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table supported_languages
+ *
+ * Package: com.jukusoft.cms.style
+ */
+
+echo "Create / Upgrade table <b>supported_languages</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("supported_languages", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//add int coloum with length 10, NOT NULL and AUTO_INCREMENT
+$table->addVarchar("lang_token", 255, true);
+$table->addVarchar("title", 255, true);
+
+//add keys to table
+$table->addPrimaryKey("lang_token");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 
 //create default folders, if absent
 Folder::createFolderIfAbsent("/", false);
 Folder::createFolder("/admin/", true);
+
+//add supported languages
+Lang::addLangOrUpdate("de", "German");
+Lang::addLangOrUpdate("en", "English");
 
 //create or update default settings (value will be only set, if key doesnt exists)
 Settings::create("default_lang", "de", "Default Language", "Default (fallback) language, if no other languages are supported", "system", "general");
