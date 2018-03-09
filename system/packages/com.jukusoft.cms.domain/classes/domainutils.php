@@ -123,22 +123,23 @@ class DomainUtils {
 
 	/**
 	 * faster implementation of getTld()
-	 *
-	 * @deprecated
 	 */
 	public static function getCurrentDomain () {
 		$host = DataBase::getInstance()->escape($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 		$domain = explode("?", $host);
 		$host = $domain[0];
-		$array = explode("/", $host);
+		//$array = explode("/", $host);
 
-		$domain = "";
+		/*$domain = "";
 
 		for ($i = 0; $i < count($array) - 1; $i++) {
 			$domain .= $array[$i];
-		}
+		}*/
 
-		return $domain;
+		$array = explode(":", $host);
+		$host = $array[0];
+
+		return /*$domain*/$host;
 	}
 
 }
