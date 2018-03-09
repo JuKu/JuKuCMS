@@ -385,7 +385,7 @@ echo "Create folder...<br />";
 
 //create default folders, if absent
 Folder::createFolderIfAbsent("/", false);
-Folder::createFolder("/admin/", true);
+Folder::createFolderIfAbsent("/admin/", true);
 
 echo "Create default (supported) languages...<br />";
 
