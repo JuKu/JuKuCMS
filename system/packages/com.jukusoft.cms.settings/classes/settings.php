@@ -206,7 +206,6 @@ class Settings {
 		echo "loadAllSettings<br />";
 
 		if (Cache::contains("global_settings", "all-settings")) {
-			echo "";
 			self::$settings = Cache::get("global_settings", "all-settings");
 		} else {
 			//load settings from database
