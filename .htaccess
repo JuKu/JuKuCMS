@@ -29,8 +29,9 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 
-    http://foobarblog.net/blog/seo-suchmaschinenfreundliche-urls-durch-rewriten-in-der-htaccess-datei-21/
+    #http://foobarblog.net/blog/seo-suchmaschinenfreundliche-urls-durch-rewriten-in-der-htaccess-datei-21/
     RewriteCond %{QUERY_STRING} ^(.*)$
 
+    #https://haensel.pro/php/mit-htaccess-und-php-einfach-friendly-urls-nutzen
     RewriteRule ^(.*)$ index.php?page=$1&%1 [L]
 </IfModule>
