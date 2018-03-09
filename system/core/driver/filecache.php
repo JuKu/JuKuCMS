@@ -26,19 +26,19 @@ class FileCache implements ICache {
         $this->check_directory(md5($area));
 
         //write value to file
-        file_put_contents(CACHE_PATH . "/" . md5($area) . "/" + md5($key) + ".php", serialize($value));
+        file_put_contents(CACHE_PATH . md5($area) . "/" + md5($key) + ".php", serialize($value));
     }
 
     public function get($area, $key) {
         if ($this->contains($area, $key)) {
-            return unserialize(file_get_contents(CACHE_PATH . "/" . md5($area) . "/" + md5($key) + ".php"));
+            return unserialize(file_get_contents(CACHE_PATH . md5($area) . "/" + md5($key) + ".php"));
         } else {
             throw new Exception("File cache object " . $area . "/" . $key + "(" . CACHE_PATH . md5($area) . "/" . md5($key) . ") doesnt exists.");
         }
     }
 
     public function contains ($area, $key) : bool {
-        return file_exists(CACHE_PATH . "/" . md5($area) . "/" + md5($key) + ".php");
+        return file_exists(CACHE_PATH . md5($area) . "/" + md5($key) + ".php");
     }
 
     private function check_directory ($name) {
@@ -60,9 +60,23 @@ class FileCache implements ICache {
     }
 
     public function clear($area = "", $key = "") {
-        if ($area == "") {
+        if (empty($area)) {
             $this->rrmdir(CACHE_PATH, CACHE_PATH);
-        }
+        } else {
+        	//area is not null
+
+			$area_path = CACHE_PATH . md5($area) . "/";
+
+			if (!empty($key)) {
+				$file_path = CACHE_PATH . md5($area) . "/" + md5($key) + ".php";
+
+				//remove file
+				unlink($file_path);
+			} else {
+				//clear full area
+				$this->rrmdir($area_path, CACHE_PATH);
+			}
+		}
         // TODO: Implement clear() method.
     }
 
