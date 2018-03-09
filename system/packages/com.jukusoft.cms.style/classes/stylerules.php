@@ -60,6 +60,8 @@ class StyleRules {
 			case "FOLDER":
 				//TODO: add code here
 
+				throw new Exception("style rule FOLDER isnt implemented yet.");
+
 				break;
 			case "MEDIA":
 				switch (strtoupper($expected_value)) {

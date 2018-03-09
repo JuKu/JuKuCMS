@@ -72,6 +72,9 @@ $mobile_detection_exec_time = $mobile_detection_end_time - $mobile_detection_sta
 $registry->setSetting("pref_lang", Lang::getPrefLangToken());
 $registry->setSetting("lang_token", Lang::getLangToken(Lang::listSupportedLangTokens()));
 
+//get current style
+$registry->setSetting("current_style_name", StyleController::getCurrentStyle());
+
 var_dump($registry);
 
 //TODO: show page here
