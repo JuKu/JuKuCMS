@@ -28,7 +28,7 @@ class StyleController {
 	public static function getCurrentStyle (Registry &$registry) : string {
 		//get default styles
 		$default_style_name = Settings::get("default_style_name");
-		$default_mobile_style_name = Settings::get("default_style_name");
+		$default_mobile_style_name = Settings::get("default_mobile_style_name");
 
 		$style_name = !Browser::isMobile() ? $default_style_name : $default_mobile_style_name;
 
