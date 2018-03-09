@@ -139,6 +139,8 @@ class Domain {
 
 			//add id to cache
 			Cache::getCache()->put("domain", "id_" . $domain, (int) $id);
+
+			return $id;
 		}
 	}
 
