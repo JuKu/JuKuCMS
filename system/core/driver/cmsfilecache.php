@@ -19,14 +19,13 @@
  * File cache implementation
  */
 
-class FileCache implements ICache {
+class CMSFileCache implements ICache {
 
     public function put($area, $key, $value, $ttl = 0) {
         //create directory, if neccessary
         $this->check_directory(md5($area));
 
         echo "Cache::put path: " . CACHE_PATH . md5($area) . "/" + md5($key) + ".php<br />\n";
-        exit;
 
         //write value to file
         file_put_contents(CACHE_PATH . md5($area) . "/" + md5($key) + ".php", serialize($value));
