@@ -33,7 +33,7 @@ class StyleController {
 		$style_name = !Browser::isMobile() ? $default_style_name : $default_mobile_style_name;
 
 		//apply style rules
-		$style_name = StyleController::getCurrentStyle($registry, $style_name);
+		$style_name = StyleRules::getStyle($registry, $style_name);
 
 		//throw event, so plugins can change style
 		Events::throwEvent("get_style", array(
