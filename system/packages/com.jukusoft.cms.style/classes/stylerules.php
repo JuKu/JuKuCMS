@@ -51,15 +51,74 @@ class StyleRules {
 		switch ($type) {
 			case "DOMAIN":
 				//get current domain
+				$current_domain = $registry->getSetting("domain_name");
+
+				//compare expected domain with
+				return strcmp($current_domain, $expected_value) == 0;
 
 				break;
 			case "FOLDER":
+				//TODO: add code here
 
 				break;
 			case "MEDIA":
+				switch (strtoupper($expected_value)) {
+					case "MOBILE":
+						//mobile devices (mbile phone / tablet)
+						return $registry->getSetting("isMobile");
+
+						break;
+					case "MOBILE_PHONE":
+						//mobile phone (iOS / android phone)
+						return Browser::isMobilePhone();
+
+						break;
+					case "TABLET":
+						//tablet (iPad / android tablet)
+						return Browser::isTablet();
+
+						break;
+					case "DESKTOP":
+						//desktop browsers
+						return !$registry->getSetting("isMobile");
+
+						break;
+					case "ANDROID":
+						//android phones & tablets
+						return Browser::isAndroid();
+
+						break;
+					case "IOS":
+						//iPod / iPhone / iPad
+						return Browser::isAppleiOS();
+
+						break;
+					case "ALL":
+						//all devices
+						return true;
+
+						break;
+				}
 
 				break;
-			case "LANGUAGE":
+			case "PREF_LANG":
+				//get prefered user language token
+				$lang_token = Lang::getPrefLangToken();
+
+				return strcmp($lang_token, strtolower($expected_value)) == 0;
+
+				break;
+			case "SUPPORTED_LANG":
+				//get current user language token
+				$lang_tokens = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+
+				//check, if language is supported by browser
+				return stripos($lang_tokens, $expected_value) !== false;
+
+				break;
+			case "DEFAULT":
+				//default value, if all other conditions are false
+				return true;
 
 				break;
 			default:
