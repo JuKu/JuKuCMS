@@ -44,6 +44,8 @@ class Browser {
 			return self::$isMobile;
 		}
 
+		//customized from: https://stackoverflow.com/questions/4117555/simplest-way-to-detect-a-mobile-device
+		//https://stackoverflow.com/questions/4117555/simplest-way-to-detect-a-mobile-device
 		$value = preg_match("/(android|webos|avantgo|iphone|ipad|ipod|blackberry|iemobile|bolt|bo‌​ost|cricket|docomo|fone|hiptop|mini|opera mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", self::getUserAgent());
 
 		//cache values (in local in-memory cache)
@@ -54,11 +56,35 @@ class Browser {
 	}
 
 	public static function isMobilePhone () : bool {
+		throw new Exception("method Browser::isMobilePhone() isnt implemented yet.");
+
 		//TODO: add code here
 	}
 
 	public static function isTablet () : bool {
-		//TODO: add code here
+		//https://www.phpclasses.org/browse/file/48225.html
+		//https://mobiforge.com/design-development/tablet-and-mobile-device-detection-php
+
+		//TODO: ATTENTION! Rewrite this method so it will result into better performance!
+
+		$user_agent = self::getUserAgent();
+
+		$tablet_browser = 0;
+
+		if (preg_match('/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower($user_agent))) {
+			$tablet_browser++;
+		}
+
+		if (strpos(strtolower($user_agent),'opera mini') > 0) {
+			//Check for tablets on opera mini alternative headers
+			$stock_ua = strtolower(isset($_SERVER['HTTP_X_OPERAMINI_PHONE_UA']) ? $_SERVER['HTTP_X_OPERAMINI_PHONE_UA'] : (isset($_SERVER['HTTP_DEVICE_STOCK_UA'])?$_SERVER['HTTP_DEVICE_STOCK_UA']:''));
+
+			if (preg_match('/(tablet|ipad|playbook)|(android(?!.*mobile))/i', $stock_ua)) {
+				$tablet_browser++;
+			}
+		}
+
+		return $tablet_browser > 0;
 	}
 
 	public static function isAppleiOS () : bool {
