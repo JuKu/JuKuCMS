@@ -31,7 +31,10 @@ class FileCache implements ICache {
 
     public function get($area, $key) {
 		if ($this->contains($area, $key)) {
-			$content = file_get_contents($this->getFilePath($area, $key));
+			$file_path = $this->getFilePath($area, $key);
+			echo "File path: " . $file_path . "<br />\n";
+
+			$content = file_get_contents($file_path);
 
 			echo $content;
 			exit;
