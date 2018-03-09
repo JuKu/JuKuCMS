@@ -203,6 +203,8 @@ class Settings {
 	 * initialize settings and get global settings
 	 */
 	protected static function loadAllSettings () {
+		echo "loadAllSettings<br />";
+
 		if (Cache::contains("global_settings", "all-settings")) {
 			self::$settings = Cache::get("global_settings", "all-settings");
 		} else {
