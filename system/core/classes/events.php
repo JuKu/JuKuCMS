@@ -32,8 +32,8 @@ class Events {
 	protected static $isInitialized = false;
 
 	public static function init () {
-		if (Cache::get2ndLvlCache()->contains("events", "events")) {
-			self::$events = Cache::get2ndLvlCache()->get("events", "events");
+		if (Cache::getCache()->contains("events", "events")) {
+			self::$events = Cache::getCache()->get("events", "events");
 		} else {
 			//load events from database
 			$rows = Database::getInstance()->listRows("SELECT * FROM `{PRAEFIX}events` WHERE `activated` = '1'; ");
@@ -53,7 +53,7 @@ class Events {
 			}
 
 			//put events into cache
-			Cache::get2ndLvlCache()->put("events", "events", self::$events);
+			Cache::getCache()->put("events", "events", self::$events);
 		}
 
 		//set initialized flag to true

@@ -47,8 +47,8 @@ class Domain {
 
 		$this->id = $id;
 
-		if (Cache::get2ndLvlCache()->contains("domain", "domain_" . $id)) {
-			$this->row = Cache::get2ndLvlCache()->get("domain", "domain_" . $id);
+		if (Cache::getCache()->contains("domain", "domain_" . $id)) {
+			$this->row = Cache::getCache()->get("domain", "domain_" . $id);
 		} else {
 			//load domain from database
 			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}domain` WHERE `id` = :id; ", array('id' => $id));
@@ -60,7 +60,7 @@ class Domain {
 			$this->row = $row;
 
 			//put row into cache
-			Cache::get2ndLvlCache()->put("domain", "domain_" . $id, $this->row);
+			Cache::getCache()->put("domain", "domain_" . $id, $this->row);
 		}
 
 		//throw event, so plugin can execute code here
