@@ -38,8 +38,6 @@ ob_start();
 //create new instance of registry
 $registry = Registry::singleton();
 
-echo "current domain: " . DomainUtils::getCurrentDomain();
-
 //get domain
 $domain = new Domain();
 $domain->load();
