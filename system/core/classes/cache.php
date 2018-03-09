@@ -114,6 +114,10 @@ class Cache {
             throw new Exception("second level cache is null.");
         }
 
+        if (!(self::$second_level_cache instanceof ICache)) {
+        	throw new Exception("second level cache is not instance of ICache.");
+		}
+
         return self::$second_level_cache;
     }
 
