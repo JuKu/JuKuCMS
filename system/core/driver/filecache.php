@@ -19,7 +19,7 @@
  * File cache implementation
  */
 
-class CMSFileCache implements ICache {
+class FileCache implements ICache {
 
     public function put($area, $key, $value, $ttl = 0) {
         //create directory, if neccessary
