@@ -23,6 +23,8 @@
 
 class Lang {
 
+	//https://paulund.co.uk/auto-detect-browser-language-in-php
+
 	public static function getPrefLangToken () : string {
 		return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 	}
@@ -31,6 +33,8 @@ class Lang {
 		//http://php.net/manual/fa/function.http-negotiate-language.php
 
 		//https://stackoverflow.com/questions/6038236/using-the-php-http-accept-language-server-variable
+
+		//https://stackoverflow.com/questions/3770513/detect-browser-language-in-php
 
 		return http_negotiate_language($supported_lang_tokens);
 	}

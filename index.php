@@ -45,16 +45,20 @@ $registry->storeObject("domain", $domain);
 $registry->setSetting("domain_name", DomainUtils::getCurrentDomain());
 
 $mobile_detection_start_time = microtime(true);
+
 //mobile detection
 $registry->setSetting("isMobile", Browser::isMobile());
+
+$mobile_detection_end_time = microtime(true);
+$mobile_detection_exec_time = $mobile_detection_end_time - $mobile_detection_start_time;
+
+//get prefered language
+$registry->setSetting("pref_lang", Lang::getPrefLangToken());
 
 //TODO: show page here
 
 $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
-
-$mobile_detection_end_time = microtime(true);
-$mobile_detection_exec_time = $mobile_detection_end_time - $mobile_detection_start_time;
 
 //benchmark code
 if (ACTIVATE_BENCHMARK) {
