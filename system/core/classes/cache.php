@@ -45,7 +45,7 @@ class Cache {
         
         //create new instance of first level cache
         $class_name = $config['first_lvl_cache']['class_name'];
-        self::$instance = new $class_name();
+        self::$instance = new FileCache();//new $class_name();
 		echo "First level cache class: " . get_class(self::$instance) . "<br />\n";
 
         if (!self::$instance instanceof ICache) {
