@@ -36,7 +36,7 @@ class Registry {
 		//
 	}
 
-	public static function singleton () {
+	public static function &singleton () {
 
 		if (self::$instance == null) {
 			self::$instance = new Registry();
