@@ -102,9 +102,6 @@ class Domain {
 	}
 
 	public static function getIDByDomain ($domain) : int {
-		echo "getIDByDomain().";
-		exit;
-
 		if (Cache::getCache()->contains("domain", "id_" . $domain)) {
 			return (int) Cache::getCache()->contains("domain", "id_" . $domain);
 		} else {
@@ -130,6 +127,9 @@ class Domain {
 					throw new DomainNotFoundException("Couldnt find domain " . htmlspecialchars($domain) . " in database.");
 				}
 			}
+
+			echo "getIDByDomain().";
+			exit;
 
 			//add id to cache
 			Cache::getCache()->put("domain", "id_" . $domain, $id);
