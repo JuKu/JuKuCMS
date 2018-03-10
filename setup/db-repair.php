@@ -447,6 +447,34 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table menu_names
+ *
+ * Package: com.jukusoft.cms.menu
+ */
+
+echo "Create / Upgrade table <b>menu_names</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("menu_names", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("menuID", 10, true, true);
+$table->addVarchar("title", 255, true);
+$table->addInt("editable", 10, true, 1);
+$table->addInt("activated", 10, true, 1);
+
+//add keys to table
+$table->addPrimaryKey("menuID");
+$table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 
