@@ -463,8 +463,8 @@ $table->setCharset("utf8");
 //fields
 $table->addInt("menuID", 10, true, true);
 $table->addVarchar("title", 255, true);
-$table->addInt("editable", 10, true, 1);
-$table->addInt("activated", 10, true, 1);
+$table->addInt("editable", 10, true, false, 1);
+$table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
 $table->addPrimaryKey("menuID");
