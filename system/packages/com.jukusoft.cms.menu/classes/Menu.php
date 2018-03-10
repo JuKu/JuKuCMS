@@ -69,6 +69,8 @@ class Menu {
 	}
 
 	public static function deleteMenuName (int $menuID) {
+		throw new Exception("method deleteMenuName() isnt implemented yet.");
+
 		//TODO: add code here
 	}
 
