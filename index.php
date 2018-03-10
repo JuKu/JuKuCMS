@@ -76,7 +76,8 @@ $registry->setSetting("lang_token", Lang::getLangToken(Lang::listSupportedLangTo
 $registry->setSetting("current_style_name", StyleController::getCurrentStyle($registry));
 
 //TODO: show page here
-echo "Page: " . $_REQUEST['page'];
+$page = new Page();
+$page->load();
 
 $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
