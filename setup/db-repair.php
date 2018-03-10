@@ -417,6 +417,11 @@ $table->addPrimaryKey("id");
 $table->addUnique("alias");
 $table->addIndex("folder");
 
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 /**
  * table page_types
  *
