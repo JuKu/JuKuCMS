@@ -30,8 +30,8 @@ class Template {
 
 		$this->template = new XTemplate($file);
 
-		/*$registry = Registry::singleton();
-		$this->template->assign("REGISTRY", $registry->listSettings());*/
+		$registry = Registry::singleton();
+		$this->template->assign("REGISTRY", $registry->listSettings());
 	}
 
 	public function assign ($var, $value) {
