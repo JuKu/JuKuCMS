@@ -16,4 +16,5 @@
 
 <classes>
 	<class>Page</class>
+	<class>PageType</class>
 </classes>
