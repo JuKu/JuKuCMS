@@ -95,6 +95,26 @@ class Page {
 		return $this->pagetype;
 	}
 
+	public function getTitle () : string {
+		return $this->page['title'];
+	}
+
+	public function getGlobalMenuID () : int {
+		return $this->page['globalMenu'];
+	}
+
+	public function getLocalMenuID () : int {
+		return $this->page['localMenu'];
+	}
+
+	public function getStyle () : string {
+		return $this->page['design'];
+	}
+
+	public function getLastEdit () {
+		return $this->page['lastUpdate'];
+	}
+
 }
 
 ?>

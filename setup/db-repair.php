@@ -417,6 +417,26 @@ $table->addPrimaryKey("id");
 $table->addUnique("alias");
 $table->addIndex("folder");
 
+/**
+ * table page_types
+ *
+ * Package: com.jukusoft.cms.page
+ */
+
+echo "Create / Upgrade table <b>page_types</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("page_types", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addVarchar("page_type", 255, true);
+$table->addVarchar("title", 255, true);
+
+//add keys to table
+$table->addPrimaryKey("page_type");
+
 //create or upgrade table
 $table->upgrade();
 

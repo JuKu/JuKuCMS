@@ -18,16 +18,28 @@
 
 class PageType {
 
+	protected $page = null;
+
 	public function __construct() {
 		//
 	}
 
 	public function setPage (Page &$page) {
-		//
+		$this->page = $page;
+	}
+
+	public function showDesign () {
+		return true;
 	}
 
 	public static function loadInstance (string $type_name) : PageType {
-		//
+		$class = DataBase::Current()->escape($type_name);
+
+		return new $class();
+	}
+
+	public static function reloadCache () {
+		Cache::clear("pagetypes");
 	}
 
 }

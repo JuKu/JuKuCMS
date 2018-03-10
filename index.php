@@ -83,6 +83,7 @@ $registry->storeObject("page", $page);
 //create page type
 $page_type = PageType::loadInstance($page->getPageType());
 $page_type->setPage($page);
+$registry->storeObject("page_type", $page_type);
 
 $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
