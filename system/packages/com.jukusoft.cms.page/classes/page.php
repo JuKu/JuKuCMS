@@ -135,6 +135,22 @@ class Page {
 	}
 
 	public static function createIfAbsent (string $alias, string $title, string $page_type, string $content = "", string $folder = "/", int $globalMenu = -1, int $localMenu = -1, int $parentID = -1, bool $sitemap = true, bool $published = true, bool $editable = true, string $author = "system") : int {
+		//throw event
+		Events::throwEvent("create_page", array(
+			'alias' => &$alias,
+			'title' => &$title,
+			'page_type' => &$page_type,
+			'content' => &$content,
+			'folder' => &$folder,
+			'global_menu' => &$globalMenu,
+			'local_menu' => &$localMenu,
+			'parentID' => &$parentID,
+			'sitemap' => &$sitemap,
+			'published' => &$published,
+			'editable' => &$editable,
+			'author' => &$author
+		));
+
 		Database::getInstance()->execute("INSERT INTO `{praefix}pages` (
 			`id`, `alias`, `title`, `content`, `parent`, `folder`, `global_menu`, `local_menu`, `page_type`, `design`, `sitemap`, `published`, `version`, `last_update`, `created`, `editable`, `author`, `activated`
 		) VALUES (
@@ -157,7 +173,16 @@ class Page {
 		Cache::clear("pages");
 
 		//return page id
-		return Database::getInstance()->lastInsertId();
+		$insertID = Database::getInstance()->lastInsertId();
+
+		//throw event
+		Events::throwEvent("created_page", array(
+			'alias' => $alias,
+			'title' => $title,
+			'insertID' => $insertID
+		));
+
+		return $insertID;
 	}
 
 	public static function delete (string $alias) {
