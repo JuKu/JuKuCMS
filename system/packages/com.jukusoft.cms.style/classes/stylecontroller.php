@@ -25,7 +25,7 @@ class StyleController {
 	 *
 	 * @return current style as string name
 	 */
-	public static function getCurrentStyle (Registry &$registry) : string {
+	public static function getCurrentStyle (Registry &$registry, Page &$page, PageType &$page_type) : string {
 		//get default styles
 		$default_style_name = Settings::get("default_style_name");
 		$default_mobile_style_name = Settings::get("default_mobile_style_name");

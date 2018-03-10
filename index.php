@@ -72,9 +72,6 @@ $mobile_detection_exec_time = $mobile_detection_end_time - $mobile_detection_sta
 $registry->setSetting("pref_lang", Lang::getPrefLangToken());
 $registry->setSetting("lang_token", Lang::getLangToken(Lang::listSupportedLangTokens()));
 
-//get current style
-$registry->setSetting("current_style_name", StyleController::getCurrentStyle($registry));
-
 $page = new Page();
 $page->load();
 $registry->storeObject("page", $page);
@@ -83,6 +80,9 @@ $registry->storeObject("page", $page);
 $page_type = PageType::loadInstance($page->getPageType());
 $page_type->setPage($page);
 $registry->storeObject("page_type", $page_type);
+
+//get current style
+$registry->setSetting("current_style_name", StyleController::getCurrentStyle($registry, $page, $page_type));
 
 //TODO: show page here
 
