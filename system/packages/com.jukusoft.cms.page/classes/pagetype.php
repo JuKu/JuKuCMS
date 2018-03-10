@@ -33,7 +33,7 @@ class PageType {
 	}
 
 	public static function loadInstance (string $type_name) : PageType {
-		$class = DataBase::Current()->escape($type_name);
+		$class = DataBase::getInstance()->escape($type_name);
 
 		return new $class();
 	}
