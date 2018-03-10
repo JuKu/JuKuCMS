@@ -62,7 +62,7 @@ class Page {
 					'alias' => &$new_alias,
 					'original_alias' => $alias,
 					'page' => &$this,
-					'domain' => &$this->getDomain()
+					'domain' => $this->getDomain()
 				));
 
 				$this->load($new_alias);
