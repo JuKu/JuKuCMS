@@ -86,6 +86,20 @@ class Settings {
 	}
 
 	/**
+	 * check if settings key exists
+	 *
+	 * @param $key string settings key
+	 *
+	 * @return true if setting key exists
+	 */
+	public static function contains (string $key) : bool {
+		//escape key
+		$key = Database::getInstance()->escape($key);
+
+		return isset(self::$settings[$key]);
+	}
+
+	/**
 	 * set setting if key is absent
 	 *
 	 * @param $key setting

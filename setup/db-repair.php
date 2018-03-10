@@ -497,7 +497,30 @@ Settings::create("default_lang", "de", "Default Language", "Default (fallback) l
 Settings::create("default_style_name", "default", "Default Style", "Default (fallback) style name, which will be used, if no other design was set by style rules.", "system", "general");
 Settings::create("default_mobile_style_name", "default", "Default mobile Style", "Like default style name, but for mobiledevices", "system", "general");
 
-//TODO: create menu_names if absent
+$main_menuID = -1;
+$admin_menuID = -1;
+
+//get main menuID
+if (!Settings::contains("main_menuID")) {
+	//create menu_names if absent
+	$main_menuID = Menu::createMenuName("Main Menu");
+
+	//set setting
+	Settings::create("main_menuID", $admin_menuID, "Main MenuID", "id of main menu (in menu area)", "system", "general", "none", "none", 1);
+} else {
+	$main_menuID = Settings::get("main_menuID");
+}
+
+//get admin area menuID
+if (!Settings::contains("admin_menuID")) {
+	//create menu_names if absent
+	$admin_menuID = Menu::createMenuName("Admin Menu");
+
+	//set setting
+	Settings::create("admin_menuID", $admin_menuID, "Admin MenuID", "id of admin menu (in admin area)", "system", "general", "none", "none", 2);
+} else {
+	$admin_menuID = Settings::get("admin_menuID");
+}
 
 //TODO: create menus if absent
 
@@ -509,7 +532,7 @@ Page::createIfAbsent("login", "Login", "LoginPage", "", "/");
 Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/");
 
 echo "Create admin pages if absent...<br />";
-Page::createIfAbsent("admin/home", "Admin Area", "Admin_Dashboard", "", "/admin/", 2, -1, -1, false, true, false);
+Page::createIfAbsent("admin/home", "Admin Area", "Admin_Dashboard", "", "/admin/", $admin_menuID, -1, -1, false, true, false);
 
 echo "<br /><br />Finished DB Upgrade!";
 
