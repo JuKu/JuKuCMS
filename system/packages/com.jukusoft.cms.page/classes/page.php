@@ -134,7 +134,7 @@ class Page {
 		//TODO: add code here
 	}
 
-	public static function createIfAbsent (strig $alias, string $title, string $page_type, string $content = "", string $folder = "/", int $globalMenu = -1, int $localMenu = -1, int $parentID = -1, bool $sitemap = true, bool $published = true, bool $editable = true, string $author = "system") : int {
+	public static function createIfAbsent (string $alias, string $title, string $page_type, string $content = "", string $folder = "/", int $globalMenu = -1, int $localMenu = -1, int $parentID = -1, bool $sitemap = true, bool $published = true, bool $editable = true, string $author = "system") : int {
 		Database::getInstance()->execute("INSERT INTO `{praefix}pages` (
 			`id`, `alias`, `title`, `content`, `parent`, `folder`, `global_menu`, `local_menu`, `page_type`, `design`, `sitemap`, `published`, `version`, `last_update`, `created`, `editable`, `author`, `activated`
 		) VALUES (
