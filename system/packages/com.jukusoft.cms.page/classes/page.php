@@ -48,7 +48,7 @@ class Page {
 		if (Cache::contains("pages", "page_" . $alias)) {
 			$this->row = Cache::get("pages", "page_" . $alias);
 		} else {
-			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}pages` WHERE `alias` = :alias, `activated` = '1'; ", array('alias' => $alias));
+			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}pages` WHERE `alias` = :alias AND `activated` = '1'; ", array('alias' => $alias));
 
 			if (!$row) {
 				if (strcmp("error404", $alias)) {
