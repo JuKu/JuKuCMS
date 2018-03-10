@@ -138,7 +138,7 @@ class Page {
 		Database::getInstance()->execute("INSERT INTO `{praefix}pages` (
 			`id`, `alias`, `title`, `content`, `parent`, `folder`, `global_menu`, `local_menu`, `page_type`, `design`, `sitemap`, `published`, `version`, `last_update`, `created`, `editable`, `author`, `activated`
 		) VALUES (
-			NULL, :alias, :title, :content, :parent, :folder, :globalMenu, :localMenu, :pageType, :sitemap, :published, '1', '0000-00-00 00:00:00', CURRENT_TIMESTAMP, :editable, :author, '1'
+			NULL, :alias, :title, :content, :parent, :folder, :globalMenu, :localMenu, :pageType, 'none', :sitemap, :published, '1', '0000-00-00 00:00:00', CURRENT_TIMESTAMP, :editable, :author, '1'
 		) ON DUPLICATE KEY UPDATE `alias` = :alias; ", array(
 			'alias' => $alias,
 			'title' => $title,
