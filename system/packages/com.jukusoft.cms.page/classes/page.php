@@ -115,6 +115,10 @@ class Page {
 		return $this->page['design'];
 	}
 
+	public function getFolder () : string {
+		return $this->row['folder'];
+	}
+
 	public function getLastEdit () {
 		return $this->page['lastUpdate'];
 	}

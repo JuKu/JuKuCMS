@@ -469,6 +469,8 @@ Settings::create("default_lang", "de", "Default Language", "Default (fallback) l
 Settings::create("default_style_name", "default", "Default Style", "Default (fallback) style name, which will be used, if no other design was set by style rules.", "system", "general");
 Settings::create("default_mobile_style_name", "default", "Default mobile Style", "Like default style name, but for mobiledevices", "system", "general");
 
+//TODO: create menu_names if absent
+
 //TODO: create menus if absent
 
 echo "Create default pages if absent...<br />";
