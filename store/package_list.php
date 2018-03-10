@@ -17,7 +17,9 @@ $package_list = array(
 	'com.jukusoft.cms.browser' => true,
 	'com.jukusoft.cms.lang' => true,
 	'com.jukusoft.cms.folder' => true,
-	'com.jukusoft.cms.style' => true
+	'com.jukusoft.cms.style' => true,
+	'com.jukusoft.cms.test' => true,
+	'com.jukusoft.cms.page' => true
 );
 
 ?>
