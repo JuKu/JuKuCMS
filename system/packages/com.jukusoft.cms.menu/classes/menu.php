@@ -33,13 +33,45 @@ class Menu {
 	//name of template
 	protected $template = "";
 
+	//menu structure
+	protected $menus = array();
+
 	public function __construct (int $menuID = -1, string $template = "menu") {
 		$this->menuID = (int) $menuID;
 		$this->template = $template;
 	}
 
-	public function loadMenu () {
-		//
+	public function loadMenu ($menuID = -1) {
+		if ($menuID == -1) {
+			$menuID = $this->menuID;
+		}
+
+		if (Cache::contains("menus", "menuID_" . $menuID)) {
+			$this->menus = Cache::get("menus", "menuID_" . $menuID);
+		} else {
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}menus` WHERE `menuID` = :menuID AND `activated` = '1' ORDER BY `position`; ", array('menuID' => array(
+				'type' => PDO::PARAM_INT,
+				'value' => $menuID
+			)));
+
+			$menuID_array = array();
+
+			foreach ($rows as $row) {
+				$parentID = $row['parent'];
+
+				if (!isset($menuID_array[$parentID])) {
+					$menuID_array[$parentID] = array();
+				}
+
+				$menuID_array[$parentID][] = $row;
+			}
+
+			$this->menus = $menuID_array;
+
+			Cache::put("menus", "menuID_" . $menuID, $menuID_array);
+		}
+
+		$this->menuID = $menuID;
 	}
 
 	public static function createMenuName ($title) : int {

@@ -219,6 +219,13 @@ class Page {
 		}
 	}
 
+	public static function get (string $alias) : Page {
+		$page = new Page();
+		$page->load($alias);
+
+		return $page;
+	}
+
 }
 
 ?>
