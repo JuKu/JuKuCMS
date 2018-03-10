@@ -379,6 +379,49 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table pages
+ *
+ * Package: com.jukusoft.cms.page
+ */
+
+echo "Create / Upgrade table <b>pages</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("pages", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//add int coloum with length 10, NOT NULL and AUTO_INCREMENT
+$table->addInt("id", 10, true, true);
+$table->addVarchar("alias", 255, true);
+$table->addVarchar("title", 255, true);
+$table->addInt("parent", 10, true, false, -1);
+$table->addText("content", true, "");
+$table->addVarchar("folder", 255, true, "/");
+$table->addInt("global_menu", 10, true, false, -1);
+$table->addInt("local_menu", 10, true, false, -1);
+$table->addVarchar("page_type", 255, true, "HTMLPage");
+$table->addVarchar("design", 255, true, "none");
+$table->addInt("sitemap", 10, true, false, 1);//should page be shown in sitemap?
+$table->addInt("published", 10, true, false, 0);
+$table->addInt("version", 10, true, false, 1);
+$table->addTimestamp("last_update", true, "0000-00-00 00:00:00", true);
+$table->addTimestamp("created", true, "CURRENT_TIMESTAMP", false);
+$table->addInt("editable", 10, true, false, 1);
+$table->addInt("author", 10, true, false, -1);
+$table->addInt("activated", 10, true, false, 1);
+
+//add keys to table
+$table->addPrimaryKey("id");
+$table->addUnique("alias");
+$table->addIndex("folder");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 

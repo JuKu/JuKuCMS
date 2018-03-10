@@ -22,9 +22,6 @@ class Page {
 	protected $row = null;
 	protected $pagetype = "";
 
-	//instance of pagetype
-	protected $instance = null;
-
 	public function __construct() {
 		//
 	}
@@ -80,12 +77,6 @@ class Page {
 
 		//get name of page type (class name)
 		$this->pagetype = $this->row['page_type'];
-
-		//create instance of page type
-		$this->instance = PageType::loadInstance($this->pagetype);
-
-		//set row
-		$this->instance->setPageRow($this->row);
 	}
 
 	protected function getDomain () : Domain {
@@ -100,8 +91,8 @@ class Page {
 		return $this->alias;
 	}
 
-	public function getPageTypeInstance () : PageType {
-		return $this->instance;
+	public function getPageType () : string {
+		return $this->pagetype;
 	}
 
 }

@@ -22,7 +22,7 @@ class PageType {
 		//
 	}
 
-	public function setPageRow (array $row) {
+	public function setPage (Page &$page) {
 		//
 	}
 

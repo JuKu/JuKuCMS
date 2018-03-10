@@ -78,6 +78,11 @@ $registry->setSetting("current_style_name", StyleController::getCurrentStyle($re
 //TODO: show page here
 $page = new Page();
 $page->load();
+$registry->storeObject("page", $page);
+
+//create page type
+$page_type = PageType::loadInstance($page->getPageType());
+$page_type->setPage($page);
 
 $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
