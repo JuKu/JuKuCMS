@@ -40,7 +40,7 @@ class Page {
 		Events::throwEvent("get_alias", array(
 			'alias' => &$alias,
 			'page' => &$this,
-			'domain' => &$this->getDomain()
+			'domain' => $this->getDomain()
 		));
 
 		$this->alias = $alias;
@@ -79,7 +79,7 @@ class Page {
 		$this->pagetype = $this->row['page_type'];
 	}
 
-	protected function getDomain () : Domain {
+	protected function &getDomain () : Domain {
 		return Registry::singleton()->getObject("domain");
 	}
 
