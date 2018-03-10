@@ -396,8 +396,8 @@ $table->setCharset("utf8");
 $table->addInt("id", 10, true, true);
 $table->addVarchar("alias", 255, true);
 $table->addVarchar("title", 255, true);
-$table->addInt("parent", 10, true, false, -1);
 $table->addText("content", true, "");
+$table->addInt("parent", 10, true, false, -1);
 $table->addVarchar("folder", 255, true, "/");
 $table->addInt("global_menu", 10, true, false, -1);
 $table->addInt("local_menu", 10, true, false, -1);
@@ -468,6 +468,18 @@ echo "Create default global settings...<br />";
 Settings::create("default_lang", "de", "Default Language", "Default (fallback) language, if no other languages are supported", "system", "general");
 Settings::create("default_style_name", "default", "Default Style", "Default (fallback) style name, which will be used, if no other design was set by style rules.", "system", "general");
 Settings::create("default_mobile_style_name", "default", "Default mobile Style", "Like default style name, but for mobiledevices", "system", "general");
+
+//TODO: create menus if absent
+
+echo "Create default pages if absent...<br />";
+
+Page::createIfAbsent("home", "Home", "HTMLPage", "Home page", "/");
+Page::createIfAbsent("error404", "Error 404", "HTMLPage", "Error 404 - Cannot found this page.", "/");
+Page::createIfAbsent("login", "Login", "LoginPage", "", "/");
+Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/");
+
+echo "Create admin pages if absent...<br />";
+Page::createIfAbsent("admin/home", "Admin Area", "Admin_Dashboard", "", "/admin/", 2, -1, -1, false, true, false);
 
 echo "<br /><br />Finished DB Upgrade!";
 

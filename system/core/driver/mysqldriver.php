@@ -322,6 +322,10 @@ class MySQLDriver implements DBDriver {
         }
     }
 
+	public function lastInsertId(): int {
+		return $this->conn->lastInsertId();
+	}
+
     public function listQueryHistory() : array {
         return self::$query_history;
     }

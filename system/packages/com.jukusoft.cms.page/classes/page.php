@@ -87,6 +87,10 @@ class Page {
 		Cache::clear("pages");
 	}
 
+	public function getPageID () : int {
+		return $this->row['id'];
+	}
+
 	public function getAlias () : string {
 		return $this->alias;
 	}
@@ -113,6 +117,77 @@ class Page {
 
 	public function getLastEdit () {
 		return $this->page['lastUpdate'];
+	}
+
+	public function activate (bool $bool = true) {
+		$this->row['activated'] = $bool;
+	}
+
+	/**
+	 * save changes into database
+	 */
+	public function save () {
+		//TODO: add code here
+	}
+
+	public static function createIfAbsent (strig $alias, string $title, string $page_type, string $content = "", string $folder = "/", int $globalMenu = -1, int $localMenu = -1, int $parentID = -1, bool $sitemap = true, bool $published = true, bool $editable = true, string $author = "system") : int {
+		Database::getInstance()->execute("INSERT INTO `{praefix}pages` (
+			`id`, `alias`, `title`, `content`, `parent`, `folder`, `global_menu`, `local_menu`, `page_type`, `design`, `sitemap`, `published`, `version`, `last_update`, `created`, `editable`, `author`, `activated`
+		) VALUES (
+			NULL, :alias, :title, :content, :parent, :folder, :globalMenu, :localMenu, :pageType, :sitemap, :published, '1', '0000-00-00 00:00:00', CURRENT_TIMESTAMP, :editable, :author, '1'
+		) ON DUPLICATE KEY IGNORE; ", array(
+			'alias' => $alias,
+			'title' => $title,
+			'content' => $content,
+			'parent' => $parentID,
+			'folder' => $folder,
+			'globalMenu' => $globalMenu,
+			'localMenu' => $localMenu,
+			'pageType' => $page_type,
+			'sitemap' => ($sitemap ? 1 : 0),
+			'published' => ($published ? 1 : 0),
+			'editable' => ($editable ? 1 : 0),
+			'author' => $author
+		));
+
+		Cache::clear("pages");
+
+		//return page id
+		return Database::getInstance()->lastInsertId();
+	}
+
+	public static function delete (string $alias) {
+		$delete = true;
+
+		//plugins can avoid deletion or change alias
+		Events::throwEvent("delete_page_alias", array(
+			'alias' => &$alias,
+			'delete' => &$delete
+		));
+
+		if ($delete) {
+			//remove page from database
+			Database::getInstance()->execute("DELETE FROM `{praefix}pages` WHERE `alias` = :alias; ", array('alias' => $alias));
+
+			Cache::clear("pages");
+		}
+	}
+
+	public static function deleteByID (int $id) {
+		$delete = true;
+
+		//plugins can avoid deletion or change alias
+		Events::throwEvent("delete_page_id", array(
+			'alias' => &$id,
+			'delete' => &$delete
+		));
+
+		if ($delete) {
+			//remove page from database
+			Database::getInstance()->execute("DELETE FROM `{praefix}pages` WHERE `id` = :id; ", array('id' => $id));
+
+			Cache::clear("pages");
+		}
 	}
 
 }

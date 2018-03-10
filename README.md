@@ -61,5 +61,9 @@ Currently, following caches are supported:
       * Kernel (system/packages)
       * Micro-Kernel (system/core/classes, system/core/driver, system/core/exception)
 
+## Presentation
+
+[Slides](http://slides.com/juku/rocketcms/fullscreen)
+
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FJuKu%2FJuKuCMS.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FJuKu%2FJuKuCMS?ref=badge_large)

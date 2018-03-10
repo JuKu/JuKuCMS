@@ -54,6 +54,8 @@ interface DBDriver {
 
     public function prepare ($sql, bool $allow_information_schema = false) : PDOStatement;
 
+    public function lastInsertId () : int;
+
     public function listQueryHistory () : array;
 
     public function getDatabaseName () : string;
