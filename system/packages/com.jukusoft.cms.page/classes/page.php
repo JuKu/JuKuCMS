@@ -79,7 +79,7 @@ class Page {
 		$this->pagetype = $this->row['page_type'];
 	}
 
-	protected function &getDomain () : Domain {
+	protected function getDomain () : Domain {
 		return Registry::singleton()->getObject("domain");
 	}
 
