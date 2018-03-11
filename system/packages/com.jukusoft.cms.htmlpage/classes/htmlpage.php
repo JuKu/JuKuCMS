@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-class HTMLPage extends PageType {
+class HTMLPage/* extends PageType*/ {
 
 	//
 
