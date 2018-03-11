@@ -16,9 +16,22 @@
  * limitations under the License.
  */
 
-class HTMLPage extends PageType {
 
-	//
+/**
+ * Project: JuKuCMS
+ * License: Apache 2.0 license
+ * User: Justin
+ * Date: 11.03.2018
+ * Time: 14:35
+ */
+
+class PageLoader {
+
+	public static function loadInstance (string $type_name) : PageType {
+		$class = DataBase::getInstance()->escape($type_name);
+
+		return new $class();
+	}
 
 }
 

@@ -77,7 +77,7 @@ $page->load();
 $registry->storeObject("page", $page);
 
 //create page type
-$page_type = PageType::loadInstance($page->getPageType());
+$page_type = PageLoader::loadInstance($page->getPageType());
 $page_type->setPage($page);
 $registry->storeObject("page_type", $page_type);
 

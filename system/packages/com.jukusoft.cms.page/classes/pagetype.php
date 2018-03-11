@@ -32,12 +32,6 @@ class PageType {
 		return true;
 	}
 
-	public static function loadInstance (string $type_name) : PageType {
-		$class = DataBase::getInstance()->escape($type_name);
-
-		return new $class();
-	}
-
 	public static function reloadCache () {
 		Cache::clear("pagetypes");
 	}
