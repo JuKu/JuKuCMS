@@ -28,7 +28,7 @@
 class PageLoader {
 
 	public static function loadInstance (string $type_name) : PageType {
-		$class = DataBase::getInstance()->escape($type_name);
+		$class = $type_name;//DataBase::getInstance()->escape($type_name);
 
 		return new $class();
 	}
