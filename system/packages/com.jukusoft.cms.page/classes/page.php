@@ -104,11 +104,11 @@ class Page {
 	}
 
 	public function getGlobalMenuID () : int {
-		return $this->row['globalMenu'];
+		return $this->row['global_menu'];
 	}
 
 	public function getLocalMenuID () : int {
-		return $this->row['localMenu'];
+		return $this->row['local_menu'];
 	}
 
 	public function getStyle () : string {
