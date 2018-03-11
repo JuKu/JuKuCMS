@@ -9,6 +9,8 @@ error_reporting(E_ALL);
 
 require("system/core/init.php");
 
+require("system/packages/com.jukusoft.cms.htmlpage/classes/htmlpage.php");
+
 //reset OpCache in debug mode
 if (CLEAR_OP_CACHE) {
 	//http://php.net/manual/en/function.opcache-reset.php
