@@ -76,7 +76,7 @@ class Page {
 		}
 
 		//get name of page type (class name)
-		$this->rowtype = $this->row['page_type'];
+		$this->pagetype = $this->row['page_type'];
 	}
 
 	protected function getDomain () : Domain {
