@@ -84,6 +84,12 @@ $registry->storeObject("page_type", $page_type);
 //get current style
 $registry->setSetting("current_style_name", StyleController::getCurrentStyle($registry, $page, $page_type));
 
+//get main menu
+$menuID = (int) ($page->getGlobalMenuID() != -1) ? $page->getGlobalMenuID() : Settings::get("main_menuID");
+$menu = new Menu($menuID);
+$menu->loadMenu();
+$registry->storeObject("main_menu", $menu);
+
 //TODO: show page here
 
 $end_time = microtime(true);

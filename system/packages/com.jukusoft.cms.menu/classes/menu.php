@@ -34,6 +34,8 @@ class Menu {
 	protected $template = "";
 
 	//menu structure
+	protected static $menuID_array = array();
+
 	protected $menus = array();
 
 	public function __construct (int $menuID = -1, string $template = "menu") {
@@ -41,37 +43,101 @@ class Menu {
 		$this->template = $template;
 	}
 
-	public function loadMenu ($menuID = -1) {
+	public function loadMenu (int $menuID = -1) {
 		if ($menuID == -1) {
 			$menuID = $this->menuID;
 		}
 
+		//load menuID if absent
+		self::loadMenu($menuID);
+
+		if (Cache::contains("menus", "menu_" . $menuID)) {
+			$this->menus = Cache::get("menus", "menu_" . $menuID);
+		} else {
+			$menu_cache = self::$menuID_array[$menuID];
+
+			//get menu by parent -y, this means root menu
+			$this->menus = $this->getMenuByParent($menu_cache, -1);
+
+			Cache::put("menus", "menu_" . $menuID, $this->menus);
+		}
+
+		$this->menuID = $menuID;
+	}
+
+	protected function getMenuByParent (array &$menu_array, int $parentID) : array {
+		if (!isset($menu_array[$parentID])) {
+			//menu doesnt have submenus
+			return array();
+		}
+
+		$array = array();
+
+		foreach ($menu_array[$parentID] as $row) {
+			$entry = array();
+
+			$href = "";
+			$entry['append'] = "";
+			$entry['title'] = $row['title'];
+			$entry['text'] = $row['title'];
+			$entry['icon'] = $row['icon'];
+
+			if ($row['type'] == "page") {
+				$href = Domain::getUrl($row['url']);
+			} else if ($row['type'] == "link") {
+				$href = Domain::getUrl($row['url']);
+			} else if ($row['type'] == "external_link") {
+				$href = $row['url'];
+			} else if ($row['type'] == "js_link") {
+				$href = "#";
+				$entry['append'] = " onclick=\"" . $row['url'] . "\"";
+			}
+
+			$entry['href'] = $href;
+
+			if (!empty($row['icon']) && $row['icon'] != "none") {
+				$entry['text'] = "<img src=\"" . $row['icon'] . "\" alt=\"" . $row['title'] . "\" title=\"" . $row['title'] . "\" style=\"max-width:32px; max-height:32px; \" /> " . $row['title'];
+			}
+
+			//get submenus
+			$entry['submenus'] = $this->getMenuByParent($menu_array, $row['id']);
+			$entry['has_submenus'] = sizeof($entry['submenus']) > 0;
+
+			$array[] = $entry;
+		}
+
+		return $array;
+	}
+
+	protected static function loadMenuID (int $menuID) {
+		if (isset(self::$menuID_array[$menuID])) {
+			return;
+		}
+
 		if (Cache::contains("menus", "menuID_" . $menuID)) {
-			$this->menus = Cache::get("menus", "menuID_" . $menuID);
+			self::$menuID_array[$menuID] = Cache::get("menus", "menuID_" . $menuID);
 		} else {
 			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}menus` WHERE `menuID` = :menuID AND `activated` = '1' ORDER BY `position`; ", array('menuID' => array(
 				'type' => PDO::PARAM_INT,
 				'value' => $menuID
 			)));
 
-			$menuID_array = array();
+			$array = array();
 
 			foreach ($rows as $row) {
 				$parentID = $row['parent'];
 
-				if (!isset($menuID_array[$parentID])) {
-					$menuID_array[$parentID] = array();
+				if (!isset($array[$parentID])) {
+					$array[$parentID] = array();
 				}
 
-				$menuID_array[$parentID][] = $row;
+				$array[$parentID][] = $row;
 			}
 
-			$this->menus = $menuID_array;
+			self::$menuID_array[$menuID] = $array;
 
-			Cache::put("menus", "menuID_" . $menuID, $menuID_array);
+			Cache::put("menus", "menuID_" . $menuID, $array);
 		}
-
-		$this->menuID = $menuID;
 	}
 
 	public static function createMenuName ($title) : int {
