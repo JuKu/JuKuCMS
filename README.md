@@ -55,8 +55,8 @@ Currently, following caches are supported:
   
 ## Architecture
 
-  - Styles
-  - Plugins
+  - Styles (/styles)
+  - Plugins (/plugins)
   - Core
       * Kernel (system/packages)
       * Micro-Kernel (system/core/classes, system/core/driver, system/core/exception)
