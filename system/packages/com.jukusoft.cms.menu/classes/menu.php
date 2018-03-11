@@ -49,7 +49,7 @@ class Menu {
 		}
 
 		//load menuID if absent
-		self::loadMenu($menuID);
+		self::loadMenuID($menuID);
 
 		if (Cache::contains("menus", "menu_" . $menuID)) {
 			$this->menus = Cache::get("menus", "menu_" . $menuID);
