@@ -40,6 +40,7 @@ $autoloader_classes = array(
 	"system/packages/com.jukusoft.cms.style/stylerules.php",
 	"system/packages/com.jukusoft.cms.style/stylecontroller",
 	"system/packages/com.jukusoft.cms.page/classes/page.php",
+	"system/packages/com.jukusoft.cms.page/classes/pagetype.php",
 	"system/packages/com.jukusoft.cms.htmlpage/classes/htmlpage.php",
 );
 
