@@ -76,7 +76,7 @@ class Page {
 		}
 
 		//get name of page type (class name)
-		$this->pagetype = $this->row['page_type'];
+		$this->rowtype = $this->row['page_type'];
 	}
 
 	protected function getDomain () : Domain {
@@ -100,19 +100,19 @@ class Page {
 	}
 
 	public function getTitle () : string {
-		return $this->page['title'];
+		return $this->row['title'];
 	}
 
 	public function getGlobalMenuID () : int {
-		return $this->page['globalMenu'];
+		return $this->row['globalMenu'];
 	}
 
 	public function getLocalMenuID () : int {
-		return $this->page['localMenu'];
+		return $this->row['localMenu'];
 	}
 
 	public function getStyle () : string {
-		return $this->page['design'];
+		return $this->row['design'];
 	}
 
 	public function getFolder () : string {
@@ -120,7 +120,7 @@ class Page {
 	}
 
 	public function getLastEdit () {
-		return $this->page['lastUpdate'];
+		return $this->row['lastUpdate'];
 	}
 
 	public function activate (bool $bool = true) {
