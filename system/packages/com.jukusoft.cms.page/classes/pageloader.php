@@ -28,6 +28,10 @@
 class PageLoader {
 
 	public static function loadInstance (string $type_name) : PageType {
+		if ($type_name == null || empty($type_name)) {
+			throw new NullPointerException("page_type cannot be null or empty.");
+		}
+
 		$class = $type_name;//DataBase::getInstance()->escape($type_name);
 
 		return new $class();
