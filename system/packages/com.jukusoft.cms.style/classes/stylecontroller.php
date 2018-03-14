@@ -55,6 +55,7 @@ class StyleController {
 
 		//assign variables
 		$template->assign("TITLE", $title_preafix . $page->getTitle() . $title_suffix);
+		$template->assign("RAW_TITLE", $page->getTitle());
 		$template->assign("REGISTRY", $registry->listSettings());
 
 		$template->assign("BODY", $page_type->getContent());
