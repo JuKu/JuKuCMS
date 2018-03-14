@@ -499,6 +499,8 @@ $table->addVarchar("permissions", 600, true, "all");
 $table->addInt("login_required", 10, true, false, 0);
 $table->addInt("parent", 10, true, false, -1);
 $table->addInt("order", 10, true, false, 10);
+$table->addVarchar("owner", 255, true, "user");
+$table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
 $table->addPrimaryKey("id");
