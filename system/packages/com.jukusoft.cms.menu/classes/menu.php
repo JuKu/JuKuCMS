@@ -117,7 +117,7 @@ class Menu {
 		if (Cache::contains("menus", "menuID_" . $menuID)) {
 			self::$menuID_array[$menuID] = Cache::get("menus", "menuID_" . $menuID);
 		} else {
-			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}menus` WHERE `menuID` = :menuID AND `activated` = '1' ORDER BY `position`; ", array('menuID' => array(
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}menu` WHERE `menuID` = :menuID AND `activated` = '1' ORDER BY `position`; ", array('menuID' => array(
 				'type' => PDO::PARAM_INT,
 				'value' => $menuID
 			)));
