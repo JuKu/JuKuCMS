@@ -53,6 +53,11 @@ class Menu {
 			$this->menus = array();
 		}
 
+		Events::throwEvent("before_load_menu", array(
+			'menuID' => &$menuID,
+			'instance' => &$this
+		));
+
 		//load menuID if absent
 		self::loadMenuID($menuID);
 
@@ -63,6 +68,13 @@ class Menu {
 
 			//get menu by parent -y, this means root menu
 			$this->menus = $this->getMenuByParent($menu_cache, -1);
+
+			Events::throwEvent("after_load_menu", array(
+				'menuID' => &$menuID,
+				'instance' => &$this,
+				'menus' => &$this->menus,
+				'menu_cache' => $menu_cache
+			));
 
 			Cache::put("menus", "menu_" . $menuID, $this->menus);
 		}
