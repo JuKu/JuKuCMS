@@ -536,6 +536,7 @@ Settings::create("default_style_name", "default", "Default Style", "Default (fal
 Settings::create("default_mobile_style_name", "default", "Default mobile Style", "Like default style name, but for mobiledevices", "system", "general");
 
 $main_menuID = -1;
+$local_menuID = -1;
 $admin_menuID = -1;
 
 //get main menuID
@@ -558,6 +559,17 @@ if (!Settings::contains("admin_menuID")) {
 	Settings::create("admin_menuID", $admin_menuID, "Admin MenuID", "id of admin menu (in admin area)", "system", "general", "none", "none", 2);
 } else {
 	$admin_menuID = Settings::get("admin_menuID");
+}
+
+//get local menuID
+if (!Settings::contains("local_menuID")) {
+	//create menu_names if absent
+	$local_menuID = Menu::createMenuName("Default Local Menu");
+
+	//set setting
+	Settings::create("local_menuID", $admin_menuID, "Default Local MenuID", "id of default local menu (in menu area)", "system", "general", "none", "none", 1);
+} else {
+	$local_menuID = Settings::get("local_menuID");
 }
 
 //TODO: create menus if absent

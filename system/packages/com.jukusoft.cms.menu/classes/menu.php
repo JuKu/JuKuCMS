@@ -48,6 +48,11 @@ class Menu {
 			$menuID = $this->menuID;
 		}
 
+		if ($menuID == -1) {
+			//we dont need to load anything, because no menu is selected
+			$this->menus = array();
+		}
+
 		//load menuID if absent
 		self::loadMenuID($menuID);
 

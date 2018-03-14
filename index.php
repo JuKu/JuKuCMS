@@ -84,11 +84,17 @@ $registry->storeObject("page_type", $page_type);
 //get current style
 $registry->setSetting("current_style_name", StyleController::getCurrentStyle($registry, $page, $page_type));
 
-//get main menu
+//get (global) main menu
 $menuID = (int) ($page->getGlobalMenuID() != -1) ? $page->getGlobalMenuID() : Settings::get("main_menuID");
-$menu = new Menu($menuID);
+$menu = new Menu($menuID, "menu");
 $menu->loadMenu();
 $registry->storeObject("main_menu", $menu);
+
+//get (global) main menu
+$localMenuID = (int) ($page->getLocalMenuID() != -1) ? $page->getLocalMenuID() : Settings::get("local_menuID");
+$localMenu = new Menu($menuID, "local_menu");
+$localMenu->loadMenu();
+$registry->storeObject("local_menu", $localMenu);
 
 //TODO: show page here
 
