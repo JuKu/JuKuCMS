@@ -21,16 +21,21 @@ class Template {
 	protected $template = null;
 	protected static $registeredTemplate = array();
 
-	public function __construct ($file) {
+	public function __construct ($file, Registry &$registry = null) {
+		if ($registry == null) {
+			$registry = Registry::singleton();
+		}
+
 		require_once(ROOT_PATH . "system/packages/com.jukusoft.cms.xtpl/xtpl/xtemplate.class.php");
 
 		if (isset(self::$registeredTemplate[$file])) {
 			$file = self::$registeredTemplate[$file];
 		}
 
-		$this->template = new XTemplate($file);
+		//find file
+		$file = self::findTemplate($file, $registry);
 
-		$registry = Registry::singleton();
+		$this->template = new XTemplate($file);
 		$this->template->assign("REGISTRY", $registry->listSettings());
 	}
 
@@ -61,6 +66,33 @@ class Template {
 
 	public static function getName () {
 		return __CLASS__;
+	}
+
+	public static function findTemplate (string $tpl_name, Registry &$registry) : string {
+		if (strpos($tpl_name, ".tpl") !== FALSE) {
+			//remove file extension
+			$tpl_name = str_replace(".tpl", "", $tpl_name);
+		}
+
+		//find file
+		$current_style = $registry->getSetting("current_style_name");
+		$style_path = STYLE_PATH . $current_style . "/";
+
+		$array = explode("_", $tpl_name);
+
+		if (sizeof($array) == 3) {
+			//plugin oder style template
+			throw new Exception("templates with 2 '_' arent supported yet.");
+		} else if (sizeof($array) == 1) {
+			//search in style path
+			if (file_exists(style_path . $tpl_name . ".php")) {
+				return style_path . $tpl_name . ".php";
+			} else {
+				throw new Exception("Coulnd't found template '" . $tpl_name . "'!");
+			}
+		} else {
+			throw new IllegalStateException("Coulndt found template file '" . $tpl_name . "', because unknown array size: " . sizeof($array));
+		}
 	}
 
 }

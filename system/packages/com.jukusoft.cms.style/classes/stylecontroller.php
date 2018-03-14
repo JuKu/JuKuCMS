@@ -47,7 +47,29 @@ class StyleController {
 	}
 
 	public static function showPage (Registry &$registry, Page &$page, PageType &$page_type) {
-		//
+		//create new template
+		$template = new Template("index");
+
+		$title_preafix = Settings::get("title_praefix", "");
+		$title_suffix = Settings::get("title_suffix", "");
+
+		//assign variables
+		$template->assign("TITLE", $title_preafix . $page->getTitle() . $title_suffix);
+		$template->assign("REGISTRY", $registry->listSettings());
+
+		$template->assign("BODY", $page_type->getContent());
+		$template->assign("FOOTER", $registry->getSetting("footer", ""));
+		$template->assign("COPYRIGHT", Settings::get("copyright", "&copy; 2018 JuKuSoft.com, All Rights Reserved."));
+
+		//assign menu code
+		$globalMenu = $registry->getObject("main_menu");
+		$localMenu = $registry->getObject("local_menu");
+		$template->assign("MENU", $globalMenu->getCode());
+		$template->assign("LOCALMENU", $localMenu->getCode());
+
+		$template->parse();
+
+		echo $template->getCode();
 	}
 
 }

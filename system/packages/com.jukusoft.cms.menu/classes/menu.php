@@ -126,6 +126,13 @@ class Menu {
 		return $array;
 	}
 
+	/**
+	 * get HTML code of menu
+	 */
+	public function getCode () : string {
+		//
+	}
+
 	protected static function loadMenuID (int $menuID) {
 		if (isset(self::$menuID_array[$menuID])) {
 			return;
