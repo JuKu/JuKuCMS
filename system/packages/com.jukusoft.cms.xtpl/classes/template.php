@@ -85,10 +85,10 @@ class Template {
 			throw new Exception("templates with 2 '_' arent supported yet.");
 		} else if (sizeof($array) == 1) {
 			//search in style path
-			if (file_exists($style_path . $tpl_name . ".php")) {
-				return $style_path . $tpl_name . ".php";
+			if (file_exists($style_path . $tpl_name . ".tpl")) {
+				return $style_path . $tpl_name . ".tpl";
 			} else {
-				throw new Exception("Coulnd't found template '" . $tpl_name . "'!");
+				throw new Exception("Coulnd't found template '" . $tpl_name . "' (searched path: '" . $style_path . $tpl_name . ".tpl" . "'!");
 			}
 		} else {
 			throw new IllegalStateException("Coulndt found template file '" . $tpl_name . "', because unknown array size: " . sizeof($array));
