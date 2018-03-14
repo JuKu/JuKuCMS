@@ -99,6 +99,12 @@ $localMenu = new Menu($menuID, "local_menu");
 $localMenu->loadMenu();
 $registry->storeObject("local_menu", $localMenu);
 
+$registry->setSetting("footer", "");
+
+Events::throwEvent("Show page", array(
+	'registry' => &$registry
+));
+
 //show page here
 if ($page_type->showDesign()) {
 	//show page with design
