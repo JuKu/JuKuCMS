@@ -131,6 +131,8 @@ class Menu {
 	 */
 	public function getCode () : string {
 		//TODO: add code here
+
+		return "";
 	}
 
 	protected static function loadMenuID (int $menuID) {
