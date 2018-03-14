@@ -88,7 +88,7 @@ class Template {
 			if (file_exists($style_path . $tpl_name . ".tpl")) {
 				return $style_path . $tpl_name . ".tpl";
 			} else {
-				throw new Exception("Coulnd't found template '" . $tpl_name . "' (searched path: '" . $style_path . $tpl_name . ".tpl" . "'!");
+				throw new Exception("Coulnd't found template '" . $tpl_name . "' (search path: '" . $style_path . $tpl_name . ".tpl" . "'!");
 			}
 		} else {
 			throw new IllegalStateException("Coulndt found template file '" . $tpl_name . "', because unknown array size: " . sizeof($array));
