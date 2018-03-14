@@ -22,4 +22,17 @@ class PHPUtils {
 		return false;
 	}
 
+	public static function startsWith($haystack, $needle) {
+    	//https://stackoverflow.com/questions/834303/startswith-and-endswith-functions-in-php
+
+		$length = strlen($needle);
+		return (substr($haystack, 0, $length) === $needle);
+	}
+
+	public static function endsWith($haystack, $needle) {
+		$length = strlen($needle);
+
+		return $length === 0 || (substr($haystack, -$length) === $needle);
+	}
+
 }

@@ -32,6 +32,10 @@ class PageType {
 		return true;
 	}
 
+	public function getContent () : string {
+		//
+	}
+
 	public static function reloadCache () {
 		Cache::clear("pagetypes");
 	}

@@ -92,9 +92,9 @@ class StyleRules {
 
 				break;
 			case "FOLDER":
-				//TODO: add code here
+				$page_folder = $registry->getSetting("folder");
 
-				throw new Exception("style rule FOLDER isnt implemented yet.");
+				return PHPUtils::startsWith($page_folder, $expected_value);
 
 				break;
 			case "MEDIA":

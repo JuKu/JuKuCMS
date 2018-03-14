@@ -76,6 +76,9 @@ $page = new Page();
 $page->load();
 $registry->storeObject("page", $page);
 
+//set folder
+$registry->setSetting("folder", $page->getFolder());
+
 //create page type
 $page_type = PageLoader::loadInstance($page->getPageType());
 $page_type->setPage($page);
@@ -96,7 +99,14 @@ $localMenu = new Menu($menuID, "local_menu");
 $localMenu->loadMenu();
 $registry->storeObject("local_menu", $localMenu);
 
-//TODO: show page here
+//show page here
+if ($page_type->showDesign()) {
+	//show page with design
+	StyleController::showPage($registry, $page, $page_type);
+} else {
+	//only show content
+	return $page_type->getContent();
+}
 
 $end_time = microtime(true);
 $exec_time = $end_time - $start_time;

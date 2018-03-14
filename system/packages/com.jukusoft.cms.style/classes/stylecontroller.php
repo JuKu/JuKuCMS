@@ -46,6 +46,10 @@ class StyleController {
 		return $style_name;
 	}
 
+	public static function showPage (Registry &$registry, Page &$page, PageType &$page_type) {
+		//
+	}
+
 }
 
 ?>
