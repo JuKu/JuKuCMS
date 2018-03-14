@@ -45,7 +45,7 @@ class Settings {
 		self::loadSettingsIfAbsent();
 
 		if (!isset(self::$settings[$key])) {
-			if ($default_value != null) {
+			if ($default_value !== null) {
 				return $default_value;
 			} else {
 				print_r(self::$settings);
