@@ -130,7 +130,7 @@ class Menu {
 	 * get HTML code of menu
 	 */
 	public function getCode () : string {
-		//
+		//TODO: add code here
 	}
 
 	protected static function loadMenuID (int $menuID) {
