@@ -103,6 +103,10 @@ class Page {
 		return $this->row['title'];
 	}
 
+	public function getContent () : string {
+		return $this->row['content'];
+	}
+
 	public function getGlobalMenuID () : int {
 		return $this->row['global_menu'];
 	}

@@ -28,12 +28,24 @@ class PageType {
 		$this->page = $page;
 	}
 
+	protected function getPage () : Page {
+		return $this->page;
+	}
+
 	public function showDesign () {
 		return true;
 	}
 
 	public function getContent () : string {
-		//
+		$content = $this->getPage()->getContent();
+
+		Events::throwEvent("get_content", array(
+			'content' => &$content,
+			'page' => &$this->page,
+			'page_type' => &$this
+		));
+
+		return $content;
 	}
 
 	public static function reloadCache () {
