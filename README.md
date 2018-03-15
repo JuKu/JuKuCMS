@@ -3,7 +3,8 @@
 ![Rocket CMS](./system/images/logo.png)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FJuKu%2FJuKuCMS.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FJuKu%2FJuKuCMS?ref=badge_shield)
 
-Open Source CMS should be the fastest CMS world wide (WIP).
+Open Source CMS should be the fastest CMS world wide (WIP).\
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/JuKu/JuKuCMS.svg?columns=all)](https://waffle.io/JuKu/JuKuCMS) 
 
 ## Name suggestions
 
