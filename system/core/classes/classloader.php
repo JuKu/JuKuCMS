@@ -112,9 +112,6 @@ function cms_autoloader ($classname) {
 	} else if (file_exists(ROOT_PATH . "system/core/driver/" . strtolower($classname) . ".php")) {
 		require(ROOT_PATH . "system/core/driver/" . strtolower($classname) . ".php");
 		return null;
-	} else if (file_exists(ROOT_PATH . "system/core/validator/" . strtolower($classname) . ".php")) {
-		require(ROOT_PATH . "system/core/validator/" . strtolower($classname) . ".php");
-		return null;
 	}
 
     $array = explode("_", strtolower($classname));
@@ -137,7 +134,15 @@ function cms_autoloader ($classname) {
             }
         }
 
-    } else if (sizeOf($array) == 1) {
+    } else if (sizeof($array) == 2) {
+		if ($array[0] == "calidator") {
+			if (file_exists(ROOT_PATH . "system/core/validator/" . $array[1] . ".php")) {
+				require(ROOT_PATH . "system/core/validator/" . $array[1] . ".php");
+			} else {
+				echo "Could not load validator class " . $classname . "!";
+			}
+		}
+	} else if (sizeOf($array) == 1) {
 
         if (file_exists(ROOT_PATH . "system/classes/" . strtolower($classname) . ".php")) {
             include ROOT_PATH . "system/classes/" . strtolower($classname) . ".php";
