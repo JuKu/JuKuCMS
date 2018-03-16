@@ -27,14 +27,153 @@
 
 class User {
 
+	//instance of current (logged-in / guest) user
 	protected static $instance = null;
+
+	//current userID
+	protected $userID = -1;
+
+	//current username
+	protected $username = "Guest";
+
+	//flag, if user is logged in
+	protected $isLoggedIn = false;
+
+	//current database row
+	protected $row = null;
 
 	public function __construct() {
 		//
 	}
 
 	public function &load (int $userID = -1) {
+		//check, if user is logged in
+		if (isset($_SESSION['logged-in']) && $_SESSION['logged-in'] === true) {
+			if (!isset($_SESSION['userID']) || empty($_SESSION['userID'])) {
+				throw new IllegalStateException("userID is not set in session.");
+			}
+
+			if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
+				throw new IllegalStateException("username is not set in session.");
+			}
+
+			$this->userID = (int) $_SESSION['userID'];
+			$this->username = $_SESSION['username'];
+			$this->isLoggedIn = true;
+
+			//TODO: update online state in database
+		} else {
+			$this->userID = (int) Settings::get("guest_userid", "-1");
+			$this->username = Settings::get("guest_username", "Guest");
+			$this->isLoggedIn = false;
+		}
+
+		Events::throwEvent("before_load_user", array(
+			'userID' => &$this->userID,
+			'username' => &$this->username,
+			'isLoggedIn' => &$this->isLoggedIn,
+			'user' => &$this
+		));
+
+		//try to load from cache
+		if (Cache::contains("user", "user-" . $this->userID)) {
+			$this->row = Cache::get("user", "user-" . $this->userID);
+		} else {
+			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `userID` = :userID AND `activated` = '1'; ");
+
+			if (!$row) {
+				$logout_user = true;
+
+				//user not found, throw an event, so plugins can handle this (optional)
+				Events::throwEvent("user_not_found", array(
+					'userID' => &$this->userID,
+					'username' => &$this->username,
+					'isLoggedIn' => &$this->isLoggedIn,
+					'row' => &$row,
+					'logout_user' => &$logout_user,
+					'user' => &$this
+				));
+
+				if ($logout_user) {
+					//logout user
+					$this->logout();
+				}
+			} else {
+				//remove password hash from row
+				unset($row['password']);
+
+				Events::throwEvent("before_cache_user", array(
+					'userID' => &$this->userID,
+					'username' => &$this->username,
+					'isLoggedIn' => &$this->isLoggedIn,
+					'row' => &$row,
+					'user' => &$this
+				));
+
+				//cache entry
+				Cache::put("user", "user-" . $this->userID, $row);
+
+				$this->row = $row;
+			}
+
+			$this->userID = $this->row['userID'];
+			$this->username = $this->row['username'];
+		}
+
+		Events::throwEvent("after_load_user", array(
+			'userID' => &$this->userID,
+			'username' => &$this->username,
+			'isLoggedIn' => &$this->isLoggedIn,
+			'row' => &$row,
+			'user' => &$this
+		));
+	}
+
+	public function loginByUsername (string $username, string $password) : bool {
+		//TODO: get salt
+	}
+
+	public function logout () {
 		//
+	}
+
+	protected function hashPassword ($password, $salt) {
+		//add salt to password
+		$password .= $salt;
+
+		$options = array(
+			'cost' => (int) Settings::get("password_hash_cost", "3")
+		);
+		$algo = PASSWORD_DEFAULT;
+
+		Events::throwEvent("hashing_password", array(
+			'options' => &$options,
+			'algo' => &$algo
+		));
+
+		return password_hash($password, $algo, $options);
+	}
+
+	/**
+	 * get user ID of user
+	 *
+	 * @return integer userID
+	 */
+	public function getID () : int {
+		return $this->userID;
+	}
+
+	/**
+	 * get username of user
+	 *
+	 * @return string username
+	 */
+	public function getUsername () : string {
+		return $this->username;
+	}
+
+	public function getMail () : string {
+		return $this->row['mail'];
 	}
 
 	/**
