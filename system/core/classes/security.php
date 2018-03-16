@@ -33,6 +33,9 @@ class Security {
 
         @ini_set("expose_php", "off");
 
+        //dont allow include($url) to avoid code injection
+		@ini_set("allow_url_include", "0");
+
         /**
          * dont allow some XSS attacks or SQL Injections from host or server name
          *
