@@ -39,7 +39,7 @@ class Validator_String implements Validator_Base {
 		$value = Database::getInstance()->escape($value);
 
 		//remove html entities
-		$value = htmlentities($value, null, "UTF-8");//htmlspecialchars($value, ENT_QUOTES, "UTF-8");
+		$value = htmlspecialchars($value, ENT_QUOTES, "UTF-8");//htmlentities($value, null, "UTF-8");
 
 		return $value;
 	}
