@@ -34,6 +34,10 @@ define('STORE_PATH', ROOT_PATH . "store/");
 define('PACKAGE_PATH', ROOT_PATH . "system/packages/");
 define('STYLE_PATH', ROOT_PATH . "styles/");
 
+//set default charset to UTF-8
+@ini_set('default_charset', 'utf-8');
+@mb_internal_encoding("UTF-8");
+
 //include and load ClassLoader
 require(ROOT_PATH . "system/core/classes/classloader.php");
 ClassLoader::init();
