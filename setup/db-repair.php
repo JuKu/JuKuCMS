@@ -513,6 +513,44 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table user
+ *
+ * Package: com.jukusoft.cms.user
+ */
+
+echo "Create / Upgrade table <b>user</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("user", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("userID", 10, true, true);
+$table->addVarchar("username", 255, true);
+$table->addVarchar("password", 255, true);
+$table->addVarchar("salt", 255, true);
+$table->addVarchar("mail", 255, true);
+$table->addVarchar("ip", 255, true);
+$table->addInt("main_group", 10, true, false, "2");
+$table->addVarchar("specific_title", 255, true, "none");
+$table->addInt("online", 10, true, false, "0");
+$table->addTimestamp("last_online", true, "0000-00-00 00:00:00");
+$table->addTimestamp("registered", true, "CURRENT_TIMESTAMP");
+$table->addInt("activated", 10, true, false, 1);
+
+//add keys to table
+$table->addPrimaryKey("userID");
+$table->addUnique("username");
+$table->addIndex("mail");
+$table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 
@@ -534,6 +572,8 @@ echo "Create default global settings...<br />";
 Settings::create("default_lang", "de", "Default Language", "Default (fallback) language, if no other languages are supported", "system", "general");
 Settings::create("default_style_name", "default", "Default Style", "Default (fallback) style name, which will be used, if no other design was set by style rules.", "system", "general");
 Settings::create("default_mobile_style_name", "default", "Default mobile Style", "Like default style name, but for mobiledevices", "system", "general");
+Settings::create("guest_userid", "-1", "Guest UserID", "UserID of not-logged-in users (default: -1).", "system", "general");
+Settings::create("guest_username", "Guest", "Guest Username", "Username of not-logged-in users (default: Guest).", "system", "general");
 
 $main_menuID = -1;
 $local_menuID = -1;

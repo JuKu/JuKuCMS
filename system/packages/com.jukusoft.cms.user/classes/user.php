@@ -79,7 +79,12 @@ class User {
 		if (Cache::contains("user", "user-" . $this->userID)) {
 			$this->row = Cache::get("user", "user-" . $this->userID);
 		} else {
-			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `userID` = :userID AND `activated` = '1'; ");
+			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `userID` = :userID AND `activated` = '1'; ", array(
+				'userID' => array(
+					'type' => PDO::PARAM_INT,
+					'value' => $this->userID
+				)
+			));
 
 			if (!$row) {
 				$logout_user = true;
@@ -127,6 +132,8 @@ class User {
 			'row' => &$row,
 			'user' => &$this
 		));
+
+		//TODO: update online state and IP
 	}
 
 	public function loginByUsername (string $username, string $password) : bool {
@@ -134,7 +141,10 @@ class User {
 	}
 
 	public function logout () {
-		//
+		unset($_SESSION['userID']);
+		unset($_SESSION['username']);
+
+		$_SESSION['logged-in'] = false;
 	}
 
 	protected function hashPassword ($password, $salt) {
