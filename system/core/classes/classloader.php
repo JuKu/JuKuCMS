@@ -112,6 +112,9 @@ function cms_autoloader ($classname) {
 	} else if (file_exists(ROOT_PATH . "system/core/driver/" . strtolower($classname) . ".php")) {
 		require(ROOT_PATH . "system/core/driver/" . strtolower($classname) . ".php");
 		return null;
+	} else if (file_exists(ROOT_PATH . "system/core/validator/" . strtolower($classname) . ".php")) {
+		require(ROOT_PATH . "system/core/validator/" . strtolower($classname) . ".php");
+		return null;
 	}
 
     $array = explode("_", strtolower($classname));
