@@ -29,7 +29,7 @@ class Page {
 	public function load ($alias = null) {
 		if ($alias == null) {
 			if (isset($_REQUEST['page']) && !empty($_REQUEST['page'])) {
-				$alias = Database::getInstance()->escape($_REQUEST['page']);
+				$alias = Validator_String::get($_REQUEST['page']);
 			} else {
 				$alias = $this->getDomain()->getHomePage();
 			}
