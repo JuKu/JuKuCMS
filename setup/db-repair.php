@@ -574,7 +574,7 @@ Settings::create("default_style_name", "default", "Default Style", "Default (fal
 Settings::create("default_mobile_style_name", "default", "Default mobile Style", "Like default style name, but for mobiledevices", "system", "general");
 Settings::create("guest_userid", -1, "Guest UserID", "UserID of not-logged-in users (default: -1).", "system", "general");
 Settings::create("guest_username", "Guest", "Guest Username", "Username of not-logged-in users (default: Guest).", "system", "general");
-Settings::create("online_interval", 5, "Online Interval", "Interval-Angabe in Minuten, wie lange ein User online ist (seit letzten Seitenaufruf).", "system", "general");
+Settings::create("online_interval", 5, "Online Interval", "Interval-Angabe in minues, how long a user is set as online (since last page request). IMPORTANT: This is independent from login interval!", "system", "general");
 
 $main_menuID = -1;
 $local_menuID = -1;
