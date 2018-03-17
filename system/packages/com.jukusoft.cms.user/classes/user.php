@@ -74,7 +74,6 @@ class User {
 
 		Events::throwEvent("before_load_user", array(
 			'userID' => &$this->userID,
-			'username' => &$this->username,
 			'isLoggedIn' => &$this->isLoggedIn,
 			'user' => &$this
 		));
