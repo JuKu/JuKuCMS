@@ -142,6 +142,9 @@ class User {
 		//TODO: search username from database
 
 		//TODO: verify password
+
+		//set online state
+		$this->setOnline();
 	}
 
 	public function logout () {

@@ -72,6 +72,10 @@ $mobile_detection_exec_time = $mobile_detection_end_time - $mobile_detection_sta
 $registry->setSetting("pref_lang", Lang::getPrefLangToken());
 $registry->setSetting("lang_token", Lang::getLangToken(Lang::listSupportedLangTokens()));
 
+//get user
+$user = User::current();
+$registry->storeObject("user", $user);
+
 $page = new Page();
 $page->load();
 $registry->storeObject("page", $page);
