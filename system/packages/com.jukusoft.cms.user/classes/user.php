@@ -69,7 +69,7 @@ class User {
 				$this->isLoggedIn = false;
 			}
 		} else {
-			$this->userID = $userID;
+			$this->userID = (int) $userID;
 		}
 
 		Events::throwEvent("before_load_user", array(
@@ -125,8 +125,10 @@ class User {
 			}
 		}
 
-		$this->userID = $this->row['userID'];
-		$this->username = $this->row['username'];
+		if ($this->row !== null) {
+			$this->userID = (int) $this->row['userID'];
+			$this->username = $this->row['username'];
+		}
 
 		Events::throwEvent("after_load_user", array(
 			'userID' => &$this->userID,
