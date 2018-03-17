@@ -46,7 +46,7 @@ class User {
 		//
 	}
 
-	public function &load (int $userID = -1) {
+	public function load (int $userID = -1) {
 		//check, if user is logged in
 		if (isset($_SESSION['logged-in']) && $_SESSION['logged-in'] === true) {
 			if (!isset($_SESSION['userID']) || empty($_SESSION['userID'])) {
