@@ -139,6 +139,9 @@ class User {
 		));
 
 		//TODO: update online state and IP
+		if ($userID === -1 && $this->isLoggedIn()) {
+			$this->setOnline();
+		}
 	}
 
 	public function loginByUsername (string $username, string $password) : bool {
