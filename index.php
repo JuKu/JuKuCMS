@@ -130,4 +130,7 @@ if (DEBUG_MODE) {
 //flush gzip cache
 ob_end_flush();
 
+//update online list
+User::current()->updateOnlineList();
+
 ?>

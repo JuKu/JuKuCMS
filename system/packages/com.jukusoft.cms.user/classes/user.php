@@ -138,6 +138,10 @@ class User {
 
 	public function loginByUsername (string $username, string $password) : bool {
 		//TODO: get salt
+
+		//TODO: search username from database
+
+		//TODO: verify password
 	}
 
 	public function logout () {
@@ -148,6 +152,8 @@ class User {
 	}
 
 	protected function hashPassword ($password, $salt) {
+		//http://php.net/manual/de/function.password-hash.php
+
 		//add salt to password
 		$password .= $salt;
 
@@ -184,6 +190,33 @@ class User {
 
 	public function getMail () : string {
 		return $this->row['mail'];
+	}
+
+	public function isLoggedIn () : bool {
+		return $this->isLoggedIn;
+	}
+
+	public function getRow () : array {
+		return $this->row;
+	}
+
+	public function setOnline () {
+		//get client ip
+		$ip = PHPUtils::getClientIP();
+
+		Database::getInstance()->execute("UPDATE `{praefix}user` SET `online` = '1', `last_online` = CURRENT_TIMESTAMP, `ip` WHERE `userid` = :userid; ", array(
+			'userid' => array(
+				'type' => PDO::PARAM_INT,
+				'value' => (int) $this->userID
+			),
+			'ip' => $ip
+		));
+	}
+
+	public function updateOnlineList () {
+		$interval_minutes = (int) Settings::get("online_interval", "5");
+
+		Database::getInstance()->execute("UPDATE `{praefix}user` SET `online` = '0' WHERE DATE_SUB(NOW(), INTERVAL " . $interval_minutes . " MINUTE) > `last_online`; ");
 	}
 
 	/**

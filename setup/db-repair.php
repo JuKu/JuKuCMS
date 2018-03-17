@@ -572,8 +572,9 @@ echo "Create default global settings...<br />";
 Settings::create("default_lang", "de", "Default Language", "Default (fallback) language, if no other languages are supported", "system", "general");
 Settings::create("default_style_name", "default", "Default Style", "Default (fallback) style name, which will be used, if no other design was set by style rules.", "system", "general");
 Settings::create("default_mobile_style_name", "default", "Default mobile Style", "Like default style name, but for mobiledevices", "system", "general");
-Settings::create("guest_userid", "-1", "Guest UserID", "UserID of not-logged-in users (default: -1).", "system", "general");
+Settings::create("guest_userid", -1, "Guest UserID", "UserID of not-logged-in users (default: -1).", "system", "general");
 Settings::create("guest_username", "Guest", "Guest Username", "Username of not-logged-in users (default: Guest).", "system", "general");
+Settings::create("online_interval", 5, "Online Interval", "Interval-Angabe in Minuten, wie lange ein User online ist (seit letzten Seitenaufruf).", "system", "general");
 
 $main_menuID = -1;
 $local_menuID = -1;
