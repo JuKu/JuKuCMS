@@ -35,7 +35,14 @@ class PHPUtils {
 		return $length === 0 || (substr($haystack, -$length) === $needle);
 	}
 
+	/**
+	 * get IP address of client browser
+	 *
+	 * @return IPv4 / IPv6 address (up to 45 characters)
+	 */
 	public static function getClientIP () : string {
+    	//https://stackoverflow.com/questions/3003145/how-to-get-the-client-ip-address-in-php
+
     	$ip = "";
 
 		if (isset($_SERVER['HTTP_CLIENT_IP']) && !empty($_SERVER['HTTP_CLIENT_IP'])) {
