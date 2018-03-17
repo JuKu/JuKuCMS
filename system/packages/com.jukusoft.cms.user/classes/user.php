@@ -229,9 +229,9 @@ class User {
 		if (self::$instance == null) {
 			self::$instance = new User();
 			self::$instance->load();
-		} else {
-			return self::$instance;
 		}
+
+		return self::$instance;
 	}
 
 }
