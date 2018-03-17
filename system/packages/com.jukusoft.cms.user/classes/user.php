@@ -48,24 +48,28 @@ class User {
 
 	public function load (int $userID = -1) {
 		//check, if user is logged in
-		if (isset($_SESSION['logged-in']) && $_SESSION['logged-in'] === true) {
-			if (!isset($_SESSION['userID']) || empty($_SESSION['userID'])) {
-				throw new IllegalStateException("userID is not set in session.");
+		if ($userID === -1) {
+			if (isset($_SESSION['logged-in']) && $_SESSION['logged-in'] === true) {
+				if (!isset($_SESSION['userID']) || empty($_SESSION['userID'])) {
+					throw new IllegalStateException("userID is not set in session.");
+				}
+
+				if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
+					throw new IllegalStateException("username is not set in session.");
+				}
+
+				$this->userID = (int) $_SESSION['userID'];
+				$this->username = $_SESSION['username'];
+				$this->isLoggedIn = true;
+
+				//TODO: update online state in database
+			} else {
+				$this->userID = (int) Settings::get("guest_userid", "-1");
+				$this->username = Settings::get("guest_username", "Guest");
+				$this->isLoggedIn = false;
 			}
-
-			if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
-				throw new IllegalStateException("username is not set in session.");
-			}
-
-			$this->userID = (int) $_SESSION['userID'];
-			$this->username = $_SESSION['username'];
-			$this->isLoggedIn = true;
-
-			//TODO: update online state in database
 		} else {
-			$this->userID = (int) Settings::get("guest_userid", "-1");
-			$this->username = Settings::get("guest_username", "Guest");
-			$this->isLoggedIn = false;
+			$this->userID = $userID;
 		}
 
 		Events::throwEvent("before_load_user", array(
@@ -120,10 +124,10 @@ class User {
 
 				$this->row = $row;
 			}
-
-			$this->userID = $this->row['userID'];
-			$this->username = $this->row['username'];
 		}
+
+		$this->userID = $this->row['userID'];
+		$this->username = $this->row['username'];
 
 		Events::throwEvent("after_load_user", array(
 			'userID' => &$this->userID,
