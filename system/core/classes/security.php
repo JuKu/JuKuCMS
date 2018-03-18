@@ -38,6 +38,9 @@ class Security {
 
 		header("X-Content-Type-Options: nosniff");
 
+		//enable internet explorer XSS protection, https://www.perpetual-beta.org/weblog/security-headers.html
+		header("X-XSS-Protection: 1; mode=block");
+
         /**
          * dont allow some XSS attacks or SQL Injections from host or server name
          *
