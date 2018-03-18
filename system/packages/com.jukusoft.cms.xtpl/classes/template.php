@@ -37,6 +37,9 @@ class Template {
 
 		$this->template = new XTemplate($file);
 		$this->template->assign("REGISTRY", $registry->listSettings());
+
+		//set CSRF token
+		$this->template->assign("CSRF_TOKEN", Security::getCSRFToken());
 	}
 
 	public function assign ($var, $value) {
