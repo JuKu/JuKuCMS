@@ -41,6 +41,7 @@ class Security {
 		//enable internet explorer XSS protection, https://www.perpetual-beta.org/weblog/security-headers.html
 		header("X-XSS-Protection: 1; mode=block");
 
+		//https://developer.mozilla.org/de/docs/Web/HTTP/Headers/X-Frame-Options
 		$x_frames_options = Settings::get("x_frame_options", "SAMEORIGIN");
 
 		if (!strcmp($x_frames_options, "none")) {
