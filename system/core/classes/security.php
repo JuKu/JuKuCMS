@@ -44,7 +44,7 @@ class Security {
 		//https://developer.mozilla.org/de/docs/Web/HTTP/Headers/X-Frame-Options
 		$x_frame_options = Settings::get("x_frame_options", "SAMEORIGIN");
 
-		if (!strcmp($x_frame_options, "none")) {
+		if (strcmp($x_frame_options, "none") !== 0) {
 			//set X-Frame-Options header to avoid clickjacking attacks
 			header("X-Frame-Options: " . $x_frame_options);
 
