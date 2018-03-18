@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <td>Password: </td>
-                    <td><input type="password" name="password" maxlength="255" required="required" placeholder="Password" />
+                    <td><input type="password" name="password" autocomplete="off" maxlength="255" required="required" placeholder="Password" />
 
                         <!-- CSRF token -->
                         <input type="hidden" name="csrf_token" value="{CSRF_TOKEN}" />
