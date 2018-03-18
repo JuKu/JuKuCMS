@@ -36,6 +36,8 @@ class Security {
         //dont allow include($url) to avoid code injection
 		@ini_set("allow_url_include", "0");
 
+		header("X-Content-Type-Options: nosniff");
+
         /**
          * dont allow some XSS attacks or SQL Injections from host or server name
          *
