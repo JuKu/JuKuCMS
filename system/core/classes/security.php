@@ -41,6 +41,13 @@ class Security {
 		//enable internet explorer XSS protection, https://www.perpetual-beta.org/weblog/security-headers.html
 		header("X-XSS-Protection: 1; mode=block");
 
+		$x_frames_options = Settings::get("x_frame_options", "SAMEORIGIN");
+
+		if (!strcmp($x_frames_options, "none")) {
+			//set X-Frame-Options header to avoid clickjacking attacks
+			header("X-Frame-Options: " . $x_frames_options);
+		}
+
         /**
          * dont allow some XSS attacks or SQL Injections from host or server name
          *
