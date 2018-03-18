@@ -13,6 +13,8 @@
 
         {CONTENT}
 
+        <p>Your username: {USERNAME} (UserID: {USERID})</p>
+
         {FOOTER}
     </body>
 </html>
