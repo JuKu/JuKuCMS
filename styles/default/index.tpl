@@ -13,7 +13,10 @@
 
         {CONTENT}
 
-        <p>Your username: {USERNAME} (UserID: {USERID})</p>
+        <p>Your username: {USERNAME} (UserID: {USERID})</p><br />
+        <hr />
+        <br />
+        <h2>Login</h2>
 
         <form action="{CURRENT_PAGE_URL}" method="post">
             <table>
