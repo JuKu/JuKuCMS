@@ -7,6 +7,9 @@ define('ROOT_PATH', dirname(__FILE__) . "/");
 
 error_reporting(E_ALL);
 
+//start session
+session_start();
+
 require("system/core/init.php");
 
 //reset OpCache in debug mode
@@ -35,9 +38,6 @@ if ($domain->isRedirectUrl()) {
 
 	exit;
 }
-
-//start session
-session_start();
 
 //use gzip compression
 ob_start();
