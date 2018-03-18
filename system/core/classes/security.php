@@ -47,6 +47,10 @@ class Security {
 		if (!strcmp($x_frame_options, "none")) {
 			//set X-Frame-Options header to avoid clickjacking attacks
 			header("X-Frame-Options: " . $x_frame_options);
+
+			echo "set X-Frame-Options.";
+		} else {
+			echo "dont set X-Frame-Options.";
 		}
 
         /**
