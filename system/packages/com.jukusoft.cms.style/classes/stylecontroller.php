@@ -58,7 +58,7 @@ class StyleController {
 		$template->assign("RAW_TITLE", $page->getTitle());
 		$template->assign("REGISTRY", $registry->listSettings());
 
-		$template->assign("BODY", $page_type->getContent());
+		$template->assign("CONTENT", $page_type->getContent());
 		$template->assign("FOOTER", $registry->getSetting("footer", ""));
 		$template->assign("COPYRIGHT", Settings::get("copyright", "&copy; 2018 JuKuSoft.com, All Rights Reserved."));
 

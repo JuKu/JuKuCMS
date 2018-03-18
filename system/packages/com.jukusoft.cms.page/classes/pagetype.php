@@ -45,8 +45,6 @@ class PageType {
 			'page_type' => &$this
 		));
 
-		echo "Content: " . $content;
-
 		return $content;
 	}
 
