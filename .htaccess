@@ -25,7 +25,9 @@
 
 <IfModule mod_headers.c>
     RequestHeader unset X-Powered-By
+    Header unset X-Powered-By
     RequestHeader unset Server
+    Header unset Server
 </IfModule>
 
 <IfModule mod_rewrite.c>
