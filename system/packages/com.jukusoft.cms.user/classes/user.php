@@ -64,9 +64,7 @@ class User {
 
 				//TODO: update online state in database
 			} else {
-				$this->userID = (int) Settings::get("guest_userid", "-1");
-				$this->username = Settings::get("guest_username", "Guest");
-				$this->isLoggedIn = false;
+				$this->setGuest();
 			}
 		} else {
 			$this->userID = (int) $userID;
@@ -144,15 +142,83 @@ class User {
 		}
 	}
 
-	public function loginByUsername (string $username, string $password) : bool {
-		//TODO: get salt
+	public function loginByUsername (string $username, string $password) : array {
+		$res = array(
+			'success' => false,
+			'erorr' => "No error"
+		);
 
-		//TODO: search username from database
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `username` = :username AND `activated` = '1'; ", array(
+			'username' => &$username
+		));
 
-		//TODO: verify password
+		if (!$row) {
+			//user doesnt exists
+			$res['success'] = false;
+			$res['error'] = "user_not_exists";
 
-		//set online state
-		$this->setOnline();
+			return $res;
+		}
+
+		//user exists
+
+		//get salt
+		$salt = $row['salt'];
+
+		//add salt to password
+		$password .= $salt;
+
+		//verify password
+		if (password_verify($password, $row['password'])) {
+			//correct password
+
+			//check, if a newer password algorithmus is available --> rehash required
+			if (password_needs_rehash($row['password'], PASSWORD_DEFAULT)) {
+				//rehash password
+				$new_hash = $this->hashPassword($password, $salt);
+
+				//update password in database
+				Database::getInstance()->execute("UPDATE `{praefix}user` SET `password` = :password WHERE `userID` = :userID; ", array(
+					'password' => $password,
+					'userID' => array(
+						'type' => PDO::PARAM_INT,
+						'value' => $row['userID']
+					)
+				));
+			}
+
+			//set online state
+			$this->setOnline();
+
+			//set logged in
+			$this->setLoggedIn($row['userID'], $row['username'], $row);
+
+			//login successful
+			$res['success'] = true;
+			$res['error'] = "none";
+			return $res;
+		} else {
+			//wrong password
+
+			//user doesnt exists
+			$res['success'] = false;
+			$res['error'] = "wrong_password";
+
+			return $res;
+		}
+	}
+
+	protected function setLoggedIn (int $userID, string $username, array $row) {
+		$_SESSION['logged-in'] = true;
+		$_SESSION['userID'] = (int) $userID;
+		$_SESSION['username'] = $username;
+
+		//remove password hash from row (so password isnt cached)
+		unset($row['password']);
+
+		$this->userID = $userID;
+		$this->username = $username;
+		$this->row = $row;
 	}
 
 	public function logout () {
@@ -160,6 +226,14 @@ class User {
 		unset($_SESSION['username']);
 
 		$_SESSION['logged-in'] = false;
+
+		$this->setGuest();
+	}
+
+	protected function setGuest () {
+		$this->userID = (int) Settings::get("guest_userid", "-1");
+		$this->username = Settings::get("guest_username", "Guest");
+		$this->isLoggedIn = false;
 	}
 
 	protected function hashPassword ($password, $salt) {
@@ -211,17 +285,26 @@ class User {
 		return $this->row;
 	}
 
-	public function setOnline () {
+	public function setOnline (bool $updateIP = true) {
 		//get client ip
 		$ip = PHPUtils::getClientIP();
 
-		Database::getInstance()->execute("UPDATE `{praefix}user` SET `online` = '1', `last_online` = CURRENT_TIMESTAMP, `ip` WHERE `userid` = :userid; ", array(
-			'userid' => array(
-				'type' => PDO::PARAM_INT,
-				'value' => (int) $this->userID
-			),
-			'ip' => $ip
-		));
+		if ($updateIP) {
+			Database::getInstance()->execute("UPDATE `{praefix}user` SET `online` = '1', `last_online` = CURRENT_TIMESTAMP, `ip` = :ip WHERE `userid` = :userid; ", array(
+				'userid' => array(
+					'type' => PDO::PARAM_INT,
+					'value' => (int) $this->userID
+				),
+				'ip' => $ip
+			));
+		} else {
+			Database::getInstance()->execute("UPDATE `{praefix}user` SET `online` = '1', `last_online` = CURRENT_TIMESTAMP, WHERE `userid` = :userid; ", array(
+				'userid' => array(
+					'type' => PDO::PARAM_INT,
+					'value' => (int) $this->userID
+				)
+			));
+		}
 	}
 
 	public function updateOnlineList () {
