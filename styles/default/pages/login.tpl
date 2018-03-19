@@ -9,7 +9,7 @@
 <!-- END: no_password -->
 
 <!-- BEGIN: error_msg -->
-<p style="color: red; ">Error: {ERROR_MSG}</p><br />
+<p style="color: red; "><b>Error</b>: {ERROR_MSG}</p><br />
 <!-- END: error_msg -->
 
 <!-- BEGIN: login_successful -->

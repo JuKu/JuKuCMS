@@ -55,7 +55,7 @@ class LoginPage extends PageType {
 				$user = User::current();
 				$res = $user->loginByUsername($_REQUEST['username'], $_REQUEST['password']);
 
-				if ($res['success'] == true) {
+				if ($res['success'] === true) {
 					//login successful, show redirect
 
 					$template->parse("login_successful");
@@ -67,6 +67,9 @@ class LoginPage extends PageType {
 						$template->parse("error_msg");
 					} else if ($res['error'] === "wrong_password") {
 						$template->assign("ERROR_MSG", "Wrong password!");
+						$template->parse("error_msg");
+					} else {
+						$template->assign("ERROR_MSG", "Unknown error message: " . $res['error']);
 						$template->parse("error_msg");
 					}
 				}
