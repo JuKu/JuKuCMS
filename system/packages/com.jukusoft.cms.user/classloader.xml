@@ -17,4 +17,6 @@
 <classes>
 	<class>User</class>
 	<class>LoginHandler</class>
+	<class>LoginPage</class>
+	<class>LogoutPage</class>
 </classes>

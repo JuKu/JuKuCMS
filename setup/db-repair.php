@@ -397,6 +397,8 @@ $table->addInt("id", 10, true, true);
 $table->addVarchar("alias", 255, true);
 $table->addVarchar("title", 255, true);
 $table->addText("content", true, "");
+$table->addVarchar("content_type", 255, true, "text/html");
+$table->addInt("redirect_code", 10, true, false, "301");
 $table->addInt("parent", 10, true, false, -1);
 $table->addVarchar("folder", 255, true, "/");
 $table->addInt("global_menu", 10, true, false, -1);
