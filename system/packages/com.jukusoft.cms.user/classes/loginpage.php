@@ -62,6 +62,8 @@ class LoginPage extends PageType {
 
 					$show_form = false;
 				} else {
+					echo "Login error!";
+
 					if ($res['error'] === "user_not_exists") {
 						$template->assign("ERROR_TEXT", "Username doesnt exists!");
 						$template->parse("error_msg");
