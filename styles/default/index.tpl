@@ -18,7 +18,7 @@
         <br />
         <h2>Login</h2>
 
-        <form action="{CURRENT_PAGE_URL}" method="post">
+        <form action="{LOGIN_URL}" method="post">
             <table>
                 <tr>
                     <td>Username: </td>
@@ -80,6 +80,18 @@
                 <tr>
                     <td>LOGIN_PAGE</td>
                     <td>{LOGIN_PAGE}</td>
+                </tr>
+                <tr>
+                    <td>LOGIN_URL</td>
+                    <td>{LOGIN_URL}</td>
+                </tr>
+                <tr>
+                    <td>LOGOUT_PAGE</td>
+                    <td>{LOGOUT_PAGE}</td>
+                </tr>
+                <tr>
+                    <td>LOGOUT_URL</td>
+                    <td>{LOGOUT_URL}</td>
                 </tr>
             </tbody>
         </table>
