@@ -30,7 +30,7 @@ class LoginPage extends PageType {
 	public function getContent() : string {
 		//TODO: handle login
 
-		$template = new Template("login", Registry::singleton());
+		$template = new Template("pages/login", Registry::singleton());
 
 		//get HTML code
 		$template->parse();
