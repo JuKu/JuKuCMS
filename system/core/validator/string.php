@@ -36,7 +36,7 @@ class Validator_String implements Validator_Base {
 
 	public function validate($value) : string {
 		//escape string
-		$value = Database::getInstance()->escape($value);
+		//$value = Database::getInstance()->escape($value);
 
 		//remove html entities
 		$value = htmlspecialchars($value, ENT_QUOTES, "UTF-8");//htmlentities($value, null, "UTF-8");
