@@ -52,7 +52,7 @@ class Page {
 
 			if (!$row) {
 				if (PHPUtils::strEqs("error404", $alias)) {
-					throw new IllegalStateException("No page with alias 'error404' exists.");
+					throw new IllegalStateException("No page with alias 'error404' exists (requested alias: " . $alias . ").");
 				}
 
 				//page not found
