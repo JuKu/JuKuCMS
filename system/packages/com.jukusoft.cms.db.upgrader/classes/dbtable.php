@@ -60,7 +60,7 @@ class DBTable {
         $founded_engine = "";
 
         foreach (self::$supported_engines as $name) {
-            if (strcmp(strtolower($engine_name) !== 0, strtolower($name)) == 0) {
+            if (strcmp(strtolower($engine_name) === 0, strtolower($name)) == 0) {
                 //database engine is supported
                 $found = true;
                 $founded_engine = $name;
