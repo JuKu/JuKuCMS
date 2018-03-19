@@ -135,13 +135,15 @@ function cms_autoloader ($classname) {
         }
 
     } else if (sizeof($array) == 2) {
-		if ($array[0] == "calidator") {
+		if ($array[0] == "validator") {
 			if (file_exists(ROOT_PATH . "system/core/validator/" . $array[1] . ".php")) {
 				require(ROOT_PATH . "system/core/validator/" . $array[1] . ".php");
 			} else {
 				echo "Could not load validator class " . $classname . "!";
 			}
-		}
+		} else {
+			echo "Could not load class " . $classname . ", unknown prefix '" . $array[0] . "'!";
+        }
 	} else if (sizeOf($array) == 1) {
 
         if (file_exists(ROOT_PATH . "system/classes/" . strtolower($classname) . ".php")) {
