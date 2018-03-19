@@ -28,9 +28,54 @@
 class LoginPage extends PageType {
 
 	public function getContent() : string {
-		//TODO: handle login
+		$show_form = true;
 
 		$template = new Template("pages/login", Registry::singleton());
+
+		if (isset($_REQUEST['action']) && $_REQUEST['action'] === "login") {
+			//try to login
+
+			$username_set = false;
+			$password_set = false;
+
+			if (isset($_POST['username']) && !empty($_POST['username'])) {
+				$username_set = true;
+			} else {
+				$template->parse("main.no_username");
+			}
+
+			if (isset($_POST['password']) && !empty($_POST['password'])) {
+				$password_set = true;
+			} else {
+				$template->parse("main.no_password");
+			}
+
+			if ($username_set && $password_set) {
+				//try to login
+				$user = User::current();
+				$res = $user->loginByUsername($_REQUEST['username'], $_REQUEST['password']);
+
+				if ($res['success'] == true) {
+					//login successful, show redirect
+
+					$template->parse("login_successful");
+
+					$show_form = false;
+				} else {
+					if ($res['error'] === "user_not_exists") {
+						$template->assign("ERROR_MSG", "Username doesnt exists!");
+						$template->parse("error_msg");
+					} else if ($res['error'] === "wrong_password") {
+						$template->assign("ERROR_MSG", "Wrong password!");
+						$template->parse("error_msg");
+					}
+				}
+			}
+		}
+
+		if ($show_form) {//show form
+			$template->parse("main.form");
+		}
 
 		//get HTML code
 		$template->parse();
