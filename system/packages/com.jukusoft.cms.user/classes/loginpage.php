@@ -51,27 +51,37 @@ class LoginPage extends PageType {
 			}
 
 			if ($username_set && $password_set) {
-				//try to login
-				$user = User::current();
-				$res = $user->loginByUsername($_REQUEST['username'], $_REQUEST['password']);
+				//check CSRF token
+				if (Security::checkCSRFToken()) {
+					//try to login
+					$user = User::current();
+					$res = $user->loginByUsername($_REQUEST['username'], $_REQUEST['password']);
 
-				if ($res['success'] === true) {
-					//login successful, show redirect
+					if ($res['success'] === true) {
+						//login successful, show redirect
 
-					$template->parse("login_successful");
+						if (isset($_REQUEST['redirect_url']) && !empty($_REQUEST['redirect_url'])) {
+							//
+						}
 
-					$show_form = false;
-				} else {
-					if ($res['error'] === "user_not_exists") {
-						$template->assign("ERROR_TEXT", "Username doesnt exists!");
-						$template->parse("main.error_msg");
-					} else if ($res['error'] === "wrong_password") {
-						$template->assign("ERROR_TEXT", "Wrong password!");
-						$template->parse("main.error_msg");
+						$template->parse("login_successful");
+
+						$show_form = false;
 					} else {
-						$template->assign("ERROR_TEXT", "Unknown error message: " . $res['error']);
-						$template->parse("main.error_msg");
+						if ($res['error'] === "user_not_exists") {
+							$template->assign("ERROR_TEXT", "Username doesnt exists!");
+							$template->parse("main.error_msg");
+						} else if ($res['error'] === "wrong_password") {
+							$template->assign("ERROR_TEXT", "Wrong password!");
+							$template->parse("main.error_msg");
+						} else {
+							$template->assign("ERROR_TEXT", "Unknown error message: " . $res['error']);
+							$template->parse("main.error_msg");
+						}
 					}
+				} else {
+					$template->assign("ERROR_TEXT", "Wrong CSRF token! Please try to login again!");
+					$template->parse("main.error_msg");
 				}
 			}
 		}

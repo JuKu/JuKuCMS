@@ -95,7 +95,15 @@ class Security {
         return "<input type=\"hidden\" name=<\"csrf_token\" value=\"" . self::$csrf_token . "\" />";
     }
 
-    public static function checkCSRFToken ($value) {
+    public static function checkCSRFToken ($value = null) {
+    	if (is_null($value)) {
+    		if (!isset($_REQUEST['csrf_token']) || empty($_REQUEST['csrf_token'])) {
+    			return false;
+			}
+
+    		$value = $_REQUEST['csrf_token'];
+		}
+
         return self::$csrf_token == $value;
     }
 
