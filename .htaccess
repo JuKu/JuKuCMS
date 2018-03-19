@@ -39,6 +39,15 @@
     Header always unset "Server"
 </IfModule>
 
+<IfModule mod_headers.c>
+ Header unset Server
+ Header always unset X-Powered-By
+ Header unset X-Powered-By
+ Header unset X-CF-Powered-By
+ Header unset X-Mod-Pagespeed
+ Header unset X-Pingback
+</IfModule>
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
