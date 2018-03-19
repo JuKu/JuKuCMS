@@ -88,6 +88,10 @@ $page_type = PageLoader::loadInstance($page->getPageType());
 $page_type->setPage($page);
 $registry->storeObject("page_type", $page_type);
 
+//set content type
+header("Content-Type: " . $page_type->getContentType());
+$page_type->setCustomHeader();
+
 //get current style
 $registry->setSetting("current_style_name", StyleController::getCurrentStyle($registry, $page, $page_type));
 

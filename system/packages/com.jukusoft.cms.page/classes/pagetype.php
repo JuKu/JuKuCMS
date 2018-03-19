@@ -36,6 +36,18 @@ class PageType {
 		return true;
 	}
 
+	public function getContentType () : string {
+		return "text/html; charset=" . $this->getCharset();
+	}
+
+	public function getCharset () : string {
+		return "utf-8";
+	}
+
+	public function setCustomHeader () {
+		//
+	}
+
 	public function getContent () : string {
 		$content = $this->getPage()->getContent();
 
