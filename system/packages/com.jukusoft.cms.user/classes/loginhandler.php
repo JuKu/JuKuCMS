@@ -27,7 +27,7 @@
 
 class LoginHandler {
 
-	public static function handle () {
+	public static function handle () : array {
 		//
 	}
 

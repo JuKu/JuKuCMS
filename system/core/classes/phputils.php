@@ -56,4 +56,8 @@ class PHPUtils {
 		return $ip;
 	}
 
+	public static function strEqs (string $str1, string $str2) : bool {
+		return strcmp($str1, $str2) === 0;
+	}
+
 }
