@@ -40,6 +40,20 @@ class Template {
 
 		//set CSRF token
 		$this->template->assign("CSRF_TOKEN", Security::getCSRFToken());
+
+		//set domain, current page and so on
+		$this->template->assign("DOMAIN", DomainUtils::getCurrentDomain());
+		$this->template->assign("BASE_URL", DomainUtils::getBaseURL());
+		$this->template->assign("CURRENT_URL", DomainUtils::getURL());
+		$this->template->assign("FOLDER", $registry->getSetting("folder"));
+
+		//set language settings
+		$this->template->assign("PREF_LANG", $registry->getSetting("pref_lang"));
+		$this->template->assign("LANG_TOKEN", $registry->getSetting("lang_token"));
+
+		$domain = $registry->getObject("domain");
+		$this->template->assign("HOME_PAGE", $domain->getHomePage());
+
 	}
 
 	public function assign ($var, $value) {

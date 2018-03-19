@@ -39,6 +39,47 @@
             </table>
         </form>
 
+        <hr />
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th><b>Template Variable</b></th>
+                    <th><b>Value</b></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>DOMAIN</td>
+                    <td>{DOMAIN}</td>
+                </tr>
+                <tr>
+                    <td>BASE_URL</td>
+                    <td>{BASE_URL}</td>
+                </tr>
+                <tr>
+                    <td>CURRENT_URL</td>
+                    <td>{CURRENT_URL}</td>
+                </tr>
+                <tr>
+                    <td>FOLDER</td>
+                    <td>{FOLDER}</td>
+                </tr>
+                <tr>
+                    <td>PREF_LANG</td>
+                    <td>{PREF_LANG}</td>
+                </tr>
+                <tr>
+                    <td>LANG_TOKEN</td>
+                    <td>{LANG_TOKEN}</td>
+                </tr>
+                <tr>
+                    <td>HOME_PAGE</td>
+                    <td>{HOME_PAGE}</td>
+                </tr>
+            </tbody>
+        </table>
+
         {FOOTER}
     </body>
 </html>
