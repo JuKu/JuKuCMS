@@ -50,7 +50,7 @@ class Page {
 		} else {
 			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}pages` WHERE `alias` = :alias AND `activated` = '1'; ", array('alias' => $alias));
 
-			echo "Alias: " . $alias;
+			echo "Alias: " . $alias . ", $" . "_REQUEST['page']: " . $_REQUEST['page'];
 			var_dump($row);
 
 			if (!$row) {
