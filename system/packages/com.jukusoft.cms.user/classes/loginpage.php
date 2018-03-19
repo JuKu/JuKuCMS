@@ -26,7 +26,15 @@
  */
 
 class LoginPage extends PageType {
-	//
+
+	public function getContent() : string {
+		$template = new Template("login", Registry::singleton());
+
+		//get HTML code
+		$template->parse();
+		echo $template->getCode();
+	}
+
 }
 
 ?>
