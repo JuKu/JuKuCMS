@@ -17,7 +17,7 @@
 <!-- END: login_successful -->
 
 <!-- BEGIN: form -->
-    {FILE "./login_form.tpl"}
+    {FILE "styles/default/pages/login_form.tpl"}
 <!-- END: form -->
 
 <!-- END: main -->
