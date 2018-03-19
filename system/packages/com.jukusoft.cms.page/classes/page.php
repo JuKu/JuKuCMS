@@ -50,9 +50,6 @@ class Page {
 		} else {
 			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}pages` WHERE `alias` = :alias AND `activated` = '1'; ", array('alias' => $alias));
 
-			echo "Alias: " . $alias . ", $" . "_REQUEST['page']: " . $_REQUEST['page'];
-			var_dump($row);
-
 			if (!$row) {
 				if (!PHPUtils::strEqs("error404", $alias)) {
 					throw new IllegalStateException("No page with alias 'error404' exists (requested alias: " . $alias . ").");
