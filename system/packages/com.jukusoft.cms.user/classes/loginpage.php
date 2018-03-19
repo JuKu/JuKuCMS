@@ -34,7 +34,7 @@ class LoginPage extends PageType {
 
 		//get HTML code
 		$template->parse();
-		echo $template->getCode();
+		return $template->getCode();
 	}
 
 }
