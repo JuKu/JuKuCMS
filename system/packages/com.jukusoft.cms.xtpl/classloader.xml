@@ -16,4 +16,5 @@
 
 <classes>
 	<class>Template</class>
+	<class>CachingXTemplate</class>
 </classes>
