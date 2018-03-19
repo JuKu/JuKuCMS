@@ -34,7 +34,7 @@ class Page {
 				$alias = $this->getDomain()->getHomePage();
 			}
 		} else {
-			$alias = Database::getInstance()->escape($alias);
+			//$alias = Database::getInstance()->escape($alias);
 		}
 
 		Events::throwEvent("get_alias", array(
@@ -51,7 +51,7 @@ class Page {
 			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}pages` WHERE `alias` = :alias AND `activated` = '1'; ", array('alias' => $alias));
 
 			if (!$row) {
-				if (!PHPUtils::strEqs("error404", $alias)) {
+				if (PHPUtils::strEqs("error404", $alias)) {
 					throw new IllegalStateException("No page with alias 'error404' exists (requested alias: " . $alias . ").");
 				}
 
