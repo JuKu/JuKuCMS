@@ -77,6 +77,10 @@
                     <td>HOME_PAGE</td>
                     <td>{HOME_PAGE}</td>
                 </tr>
+                <tr>
+                    <td>LOGIN_PAGE</td>
+                    <td>{LOGIN_PAGE}</td>
+                </tr>
             </tbody>
         </table>
 
