@@ -23,11 +23,20 @@
 
 #RewriteRule ^/([^/]+)$ /index.php?id=$1 [L]
 
+#Reduce Server HTTP Header to the minimum product (Apache) rather than showing detailed version information of the server and operating system
+ServerTokens Prod
+
+#Remove the footer from error pages, which details the version numbers:
+ServerSignature Off
+
 <IfModule mod_headers.c>
     RequestHeader unset X-Powered-By
     Header unset X-Powered-By
     RequestHeader unset Server
     Header unset Server
+
+    Header always unset "X-Powered-By"
+    Header always unset "Server"
 </IfModule>
 
 <IfModule mod_rewrite.c>
