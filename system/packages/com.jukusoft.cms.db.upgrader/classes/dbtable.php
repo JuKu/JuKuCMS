@@ -60,7 +60,7 @@ class DBTable {
         $founded_engine = "";
 
         foreach (self::$supported_engines as $name) {
-            if (strcmp(strtolower($engine_name), strtolower($name)) === 0) {
+            if (strcmp(strtolower($engine_name), strtolower($name)) == 0) {
                 //database engine is supported
                 $found = true;
                 $founded_engine = $name;
@@ -385,7 +385,7 @@ class DBTable {
         );
     }
 
-    public function addEnum (string $name, array $values = array(), bool $not_null = false, string $default_value = null, string $charset = null) {
+    public function addEnum (string $name, $values = array(), bool $not_null = false, string $default_value = null, string $charset = null) {
         $this->columns[$name] = array(
             'type' => "enum",
             'name' => $name,
@@ -1477,11 +1477,11 @@ class DBTable {
 					echo "\n\n";
 				}
 
-				if (strcmp($name, "charset") === 0 && @$current_columns[$name][$key] == "NULL") {
+				if (strcmp($name, "charset") && @$current_columns[$name][$key] == "NULL") {
 					continue;
 				}
 
-				if (strcmp($name, "bool(false)") === 0) {
+				if (strcmp($name, "bool(false)")) {
 					continue;
 				}
 
