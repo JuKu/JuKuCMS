@@ -31,7 +31,7 @@ class Validator_String implements Validator_Base {
 	public function isValide($value) : bool {
 		$validated_str = $this->validate($value);
 
-		return strcmp($value, $validated_str);
+		return strcmp($value, $validated_str) === 0;
 	}
 
 	public function validate($value) : string {

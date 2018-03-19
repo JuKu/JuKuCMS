@@ -60,7 +60,7 @@ class DBTable {
         $founded_engine = "";
 
         foreach (self::$supported_engines as $name) {
-            if (strcmp(strtolower($engine_name), strtolower($name)) == 0) {
+            if (strcmp(strtolower($engine_name) !== 0, strtolower($name)) == 0) {
                 //database engine is supported
                 $found = true;
                 $founded_engine = $name;
@@ -1477,11 +1477,11 @@ class DBTable {
 					echo "\n\n";
 				}
 
-				if (strcmp($name, "charset") && @$current_columns[$name][$key] == "NULL") {
+				if (strcmp($name, "charset") === 0 && @$current_columns[$name][$key] == "NULL") {
 					continue;
 				}
 
-				if (strcmp($name, "bool(false)")) {
+				if (strcmp($name, "bool(false)") === 0) {
 					continue;
 				}
 

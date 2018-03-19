@@ -49,7 +49,7 @@ class Folder {
 
 			if (!$row) {
 				//load upper folder
-				if (!strcmp($folder, "/")) {
+				if (strcmp($folder, "/") !== 0) {
 					//load upper dir
 					$folder = self::getUpperDir($folder);
 

@@ -88,7 +88,7 @@ class StyleRules {
 				$current_domain = $registry->getSetting("domain_name");
 
 				//compare expected domain with
-				return strcmp($current_domain, $expected_value) == 0;
+				return strcmp($current_domain, $expected_value) === 0;
 
 				break;
 			case "FOLDER":
