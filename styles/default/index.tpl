@@ -18,7 +18,9 @@
         <br />
         <h2>Login</h2>
 
-        <a href="{BASE_URL}/{LOGIN_PAGE}">Login Page</a>
+        <!-- BEGIN: not_logged_in -->
+            <a href="{BASE_URL}/{LOGIN_PAGE}">Login Page</a>
+        <!-- END: not_logged_in -->
 
         <!-- BEGIN: logged_in -->
             <a href="{LOGOUT_URL}">Logout</a>

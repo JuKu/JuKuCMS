@@ -76,6 +76,8 @@ class StyleController {
 
 		if (User::current()->isLoggedIn()) {
 			$template->parse("main.logged_in");
+		} else {
+			$template->parse("main.not_logged_in");
 		}
 
 		$template->parse();
