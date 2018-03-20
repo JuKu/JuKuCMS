@@ -243,7 +243,7 @@ class User {
 		$password .= $salt;
 
 		$options = array(
-			'cost' => (int) Settings::get("password_hash_cost", "3")
+			'cost' => (int) Settings::get("password_hash_cost", "10")
 		);
 		$algo = PASSWORD_DEFAULT;
 
