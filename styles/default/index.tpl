@@ -23,7 +23,7 @@
         <!-- END: not_logged_in -->
 
         <!-- BEGIN: logged_in -->
-            <a href="{LOGOUT_URL}">Logout</a>
+            <a href="{BASE_URL}/admin/home">Admin Area</a> | <a href="{LOGOUT_URL}">Logout</a>
         <!-- END: logged_in -->
 
         <hr />
