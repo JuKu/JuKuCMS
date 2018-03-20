@@ -51,10 +51,16 @@ class Template {
 		$this->template->assign("PREF_LANG", $registry->getSetting("pref_lang"));
 		$this->template->assign("LANG_TOKEN", $registry->getSetting("lang_token"));
 
+		$redirect_url = urlencode(DomainUtils::getURL());
+
+		if (isset($_REQUEST['redirect_url']) && !empty($_REQUEST['redirect_url'])) {
+			$redirect_url = $_REQUEST['redirect_url'];
+		}
+
 		$domain = $registry->getObject("domain");
 		$this->template->assign("HOME_PAGE", $domain->getHomePage());
 		$this->template->assign("LOGIN_PAGE", Settings::get("login_page", "login"));
-		$this->template->assign("LOGIN_URL", DomainUtils::getBaseURL() . "/" . Settings::get("login_page", "login") . "?action=login&redirect_url=" . urlencode(DomainUtils::getURL()));
+		$this->template->assign("LOGIN_URL", DomainUtils::getBaseURL() . "/" . Settings::get("login_page", "login") . "?action=login&redirect_url=" . $redirect_url);
 		$this->template->assign("LOGOUT_PAGE", Settings::get("logout_page", "logout"));
 		$this->template->assign("LOGOUT_URL", DomainUtils::getBaseURL() . "/" . Settings::get("logout_page", "logout") . "?csrf_token=" . urlencode(Security::getCSRFToken()));
 
