@@ -69,10 +69,34 @@ class LoginPage extends PageType {
 							//login successful, show redirect
 
 							if (isset($_REQUEST['redirect_url']) && !empty($_REQUEST['redirect_url'])) {
-								//
+								//TODO: check for security issues, maybe we should check if redirect_url is a known domain
+
+								header("Location: " . urldecode($_REQUEST['redirect_url']));
+
+								//flush gzip buffer
+								ob_end_flush();
+
+								exit;
+							} else {
+								//redirect to index page
+
+								//get domain
+								$domain = Registry::singleton()->getObject("domain");
+
+								//generate index url
+								$index_url = DomainUtils::generateURL($domain->getHomePage());
+
+								header("Location: " . $index_url);
+
+								//flush gzip buffer
+								ob_end_flush();
+
+								exit;
 							}
 
 							$template->parse("login_successful");
+
+							Events::throwEvent("page_login_successful");
 
 							$show_form = false;
 						} else {

@@ -54,7 +54,7 @@ class Template {
 		$domain = $registry->getObject("domain");
 		$this->template->assign("HOME_PAGE", $domain->getHomePage());
 		$this->template->assign("LOGIN_PAGE", Settings::get("login_page", "login"));
-		$this->template->assign("LOGIN_URL", DomainUtils::getBaseURL() . "/" . Settings::get("login_page", "login") . "?action=login");
+		$this->template->assign("LOGIN_URL", DomainUtils::getBaseURL() . "/" . Settings::get("login_page", "login") . "?action=login&redirect_url=" . urlencode(DomainUtils::getURL()));
 		$this->template->assign("LOGOUT_PAGE", Settings::get("logout_page", "logout"));
 		$this->template->assign("LOGOUT_URL", DomainUtils::getBaseURL() . "/" . Settings::get("logout_page", "logout") . "?csrf_token=" . urlencode(Security::getCSRFToken()));
 
