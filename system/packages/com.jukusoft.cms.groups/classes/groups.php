@@ -26,7 +26,9 @@
  */
 
 class Groups {
+
 	//
+
 }
 
 ?>

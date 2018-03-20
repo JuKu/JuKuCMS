@@ -16,4 +16,5 @@
 
 <classes>
 	<class>Groups</class>
+	<class>Group</class>
 </classes>
