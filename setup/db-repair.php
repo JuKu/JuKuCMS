@@ -626,7 +626,7 @@ if (!Settings::contains("local_menuID")) {
 echo "Create default pages if absent...<br />";
 
 Page::createIfAbsent("home", "Home", "HTMLPage", "Home page", "/");
-Page::createIfAbsent("error404", "Error 404", "HTMLPage", "Error 404 - Couldn't find this page.", "/");
+Page::createIfAbsent("error404", "Error 404", "Error404Page", "Error 404 - Couldn't find this page.", "/");
 Page::createIfAbsent("login", "Login", "LoginPage", "", "/");
 Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/");
 
