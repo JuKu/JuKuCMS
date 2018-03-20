@@ -708,7 +708,7 @@ echo "Create default groups if absent...<br />";
 Groups::createGroupIfIdAbsent(1, "Administrator", "Administrator group with full permissions", "#cc0000", true, true, false);
 Groups::createGroupIfIdAbsent(2, "Registered Users", "Registered users (every new user is automatically added to this group on registration process)", "#33cc33", false, true, true);
 Groups::createGroupIfIdAbsent(3, "Guests", "Not-logged-in users", "#669999", false, true, false);
-Groups::createGroupIfIdAbsent(4, "Bots", "Not-logged-in users", "#669999", false, true, false);
+Groups::createGroupIfIdAbsent(4, "Bots", "Bots (Google bot and so on)", "#cc00ff", false, true, false);
 
 //Redakteur
 Groups::createGroupIfIdAbsent(5, "Editor", "Editors (can create & edit every post and every page, can publish and delete pages)", "#ff9933", true, true, false);
