@@ -100,6 +100,16 @@ class Group {
 		Cache::clear("groups", "group-" . $this->groupID);
 	}
 
+	public function putCache () {
+		//cache database row
+		Cache::put("groups", "group-" . $this->groupID, $this->row);
+	}
+
+	public function removeCache () {
+		//clear cache data for this group
+		Cache::clear("groups", "group-" . $this->groupID);
+	}
+
 	/**
 	 * get id of group
 	 *
