@@ -22,7 +22,8 @@ $package_list = array(
 	'com.jukusoft.cms.page' => true,
 	'com.jukusoft.cms.menu' => true,
 	'com.jukusoft.cms.htmlpage' => true,
-	'com.jukusoft.cms.user' => true
+	'com.jukusoft.cms.user' => true,
+	'com.jukusoft.cms.groups' => true,
 );
 
 ?>
