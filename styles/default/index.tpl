@@ -78,6 +78,10 @@
                     <td>LOGOUT_URL</td>
                     <td>{LOGOUT_URL}</td>
                 </tr>
+                <tr>
+                    <td>Username (UserID(</td>
+                    <td>{USERNAME} ({USERID})</td>
+                </tr>
             </tbody>
         </table>
 

@@ -58,6 +58,10 @@ class Template {
 		$this->template->assign("LOGOUT_PAGE", Settings::get("logout_page", "logout"));
 		$this->template->assign("LOGOUT_URL", DomainUtils::getBaseURL() . "/" . Settings::get("logout_page", "logout") . "?csrf_token=" . urlencode(Security::getCSRFToken()));
 
+		//set user variables
+		$this->template->assign("USERID", User::current()->getID());
+		$this->template->assign("USERNAME", User::current()->getUsername());
+
 	}
 
 	public function assign ($var, $value) {
