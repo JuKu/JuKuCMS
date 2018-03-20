@@ -162,6 +162,22 @@ class Group {
 		return $this->row['show'] === 1;
 	}
 
+	public function hasRank () : bool {
+		return $this->row['rank'] !== "none";
+	}
+
+	public function getRank () : string {
+		return $this->row['rank'];
+	}
+
+	public function hasRankImage () : bool {
+		return $this->row['rank_image'] !== "none";
+	}
+
+	public function getRankImage () : string {
+		return $this->row['rank_image'];
+	}
+
 	public function isActivated () : bool {
 		return $this->row['activated'] === 1;
 	}

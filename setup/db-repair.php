@@ -573,6 +573,8 @@ $table->addInt("groupID", 10, true, true);
 $table->addVarchar("name", 255, true);
 $table->addText("description", true);
 $table->addVarchar("color", 50, true, "#0066ff");
+$table->addVarchar("rank_title", 255, true, "none");
+$table->addVarchar("rank_image", 255, true, "none");
 $table->addInt("auto_assign_regist", 10, true, false, "0");//flag, if group is automatically assigned to registered users
 $table->addInt("system_group", 10, true, false, "0");
 $table->addInt("show", 10, true, false, "1");//show group name on index page
