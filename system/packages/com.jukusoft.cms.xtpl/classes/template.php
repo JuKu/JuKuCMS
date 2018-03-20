@@ -56,7 +56,7 @@ class Template {
 		$this->template->assign("LOGIN_PAGE", Settings::get("login_page", "login"));
 		$this->template->assign("LOGIN_URL", DomainUtils::getBaseURL() . "/" . Settings::get("login_page", "login") . "?action=login");
 		$this->template->assign("LOGOUT_PAGE", Settings::get("logout_page", "logout"));
-		$this->template->assign("LOGOUT_URL", DomainUtils::getBaseURL() . "/" . Settings::get("logout_page", "logout"));
+		$this->template->assign("LOGOUT_URL", DomainUtils::getBaseURL() . "/" . Settings::get("logout_page", "logout") . "?csrf_token=" . Security::getCSRFToken());
 
 	}
 

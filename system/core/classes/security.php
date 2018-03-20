@@ -104,7 +104,7 @@ class Security {
     		$value = $_REQUEST['csrf_token'];
 		}
 
-        return self::$csrf_token == $value;
+        return self::$csrf_token === $value;
     }
 
     public static function containsPort ($address) {
