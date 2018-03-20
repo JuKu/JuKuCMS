@@ -79,8 +79,16 @@
                     <td>{LOGOUT_URL}</td>
                 </tr>
                 <tr>
-                    <td>Username (UserID)</td>
-                    <td>{USERNAME} ({USERID})</td>
+                    <td>USERNAME</td>
+                    <td>{USERNAME}</td>
+                </tr>
+                <tr>
+                    <td>IS_LOGGED_IN</td>
+                    <td>{IS_LOGGED_IN}</td>
+                </tr>
+                <tr>
+                    <td>USERID</td>
+                    <td>{USERID}</td>
                 </tr>
             </tbody>
         </table>
