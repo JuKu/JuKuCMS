@@ -27,7 +27,44 @@
 
 class Groups {
 
-	//
+	public static function createGroupIfIdAbsent (int $groupID, string $name, string $description, string $color = "#000000", bool $show = true, bool $system_group = false, bool $auto_assign_regist = false) {
+		//check, if color is valide
+		$validator = new Validator_Color();
+
+		if (!$validator->isValide($color)) {
+			throw new IllegalArgumentException("color '" . $color . "' isnt a valide hex color.");
+		}
+
+		Database::getInstance()->execute("INSERT INTO `{praefix}groups` (
+			`groupID`, `name`, `description`, `color`, `auto_assign_regist`, `system_group`, `show`, `activated`
+		) VALUES (
+			:groupID, :name, :description, :color, :auto_assign_regist, :system_group, :show, '1'
+		) ON DUPLICATE KEY UPDATE `groupID` = :groupID; ", array(
+			'groupID' => $groupID,
+			'name' => Validator_String::get($name),
+			'description' => Validator_String::get($description),
+			'color' => $color,
+			'auto_assign_regist' => ($auto_assign_regist ? 1 : 0),
+			'system_group' => ($system_group ? 1 : 0),
+			'show' => ($show ? 1 : 0)
+		));
+
+		//clear complete cache for all groups, so membership cache is also cleared
+		Cache::clear("groups");
+	}
+
+	public static function deleteGroup (int $groupID) {
+		$group = new Group();
+
+		try {
+			$group->loadById($groupID);
+		} catch (IllegalStateException $e) {
+			//group doesnt exists, we dont have to do anything
+			return;
+		}
+
+		$group->delete();
+	}
 
 }
 

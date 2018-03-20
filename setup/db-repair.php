@@ -701,7 +701,13 @@ Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/");
 echo "Create admin pages if absent...<br />";
 Page::createIfAbsent("admin/home", "Admin Area", "Admin_Dashboard", "", "/admin/", $admin_menuID, -1, -1, false, true, false);
 
-//TODO: create groups
+//create groups
+echo "Create default groups if absent...<br />";
+
+//#0099cc
+Groups::createGroupIfIdAbsent(1, "Administrator", "Administrator group with full permissions", "#cc0000", true, true, false);
+Groups::createGroupIfIdAbsent(2, "Registered Users", "Registered users (every new user is automatically added to this group on registration process)", "#33cc33", false, true, true);
+Groups::createGroupIfIdAbsent(3, "Guests", "Not-logged-in users", "#669999", false, true, false);
 
 echo "Create default administrator user if absent...<br />";
 User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrator", 1);
