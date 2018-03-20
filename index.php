@@ -132,6 +132,7 @@ if (ACTIVATE_BENCHMARK) {
 }
 
 if (DEBUG_MODE) {
+	echo "<!-- userID: " . User::current()->getID() . ", username: " . User::current()->getUsername() . " -->\n";
 	echo "<!-- " . Database::getInstance()->countQueries() . " sql queries executed -->";
 }
 
