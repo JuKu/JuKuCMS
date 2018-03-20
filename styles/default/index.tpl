@@ -20,9 +20,9 @@
 
         <a href="{BASE_URL}/{LOGIN_PAGE}">Login Page</a>
 
-        <!-- BEGIN: logged-in -->
+        <!-- BEGIN: logged_in -->
             <a href="{LOGOUT_URL}">Logout</a>
-        <!-- END: logged-in -->
+        <!-- END: logged_in -->
 
         <hr />
 
