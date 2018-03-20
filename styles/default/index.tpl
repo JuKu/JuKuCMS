@@ -92,6 +92,10 @@
                     <td>USERID</td>
                     <td>{USERID}</td>
                 </tr>
+                <tr>
+                    <td>MY_GROUP_IDS</td>
+                    <td>{MY_GROUP_IDS}</td>
+                </tr>
             </tbody>
         </table>
 

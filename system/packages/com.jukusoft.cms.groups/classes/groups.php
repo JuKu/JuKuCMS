@@ -27,6 +27,53 @@
 
 class Groups {
 
+	protected $my_groups = array();
+
+	public function __construct() {
+		//
+	}
+
+	public function loadMyGroups (int $userID) : array {
+		if (Cache::contains("groups", "own-groups-" . $userID)) {
+			$this->my_groups = Cache::get("groups", "own-groups-" . $userID);
+		} else {
+			$rows = Database::getInstance("SELECT * FROM `{praefix}group_members` LEFT JOIN `{praefix}groups` ON `{praefix}group_members`.`groupID` = `{praefix}groups`.`groupID` WHERE `userID` = :userID AND `activated` = '1'; ", array(
+				'userID' => array(
+					'type' => PDO::PARAM_INT,
+					'value' => $userID
+				)
+			));
+
+			$this->my_groups = $rows;
+
+			//cache rows
+			Cache::put("groups", "own-groups-" . $userID, $this->my_groups);
+		}
+	}
+
+	public function listGroupIDs () : array {
+		$array = array();
+
+		foreach ($this->my_groups as $group_row) {
+			$array[] = $group_row['groupID'];
+		}
+
+		return $array;
+	}
+
+	public function listMyGroups () : array {
+		$array = array();
+
+		foreach ($this->my_groups as $row) {
+			$group = new Group();
+			$group->loadByRow($row);
+
+			$array[] = $group;
+		}
+
+		return $array;
+	}
+
 	public static function createGroupIfIdAbsent (int $groupID, string $name, string $description, string $color = "#000000", bool $show = true, bool $system_group = false, bool $auto_assign_regist = false) {
 		//check, if color is valide
 		$validator = new Validator_Color();

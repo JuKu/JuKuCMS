@@ -76,6 +76,11 @@ $registry->setSetting("lang_token", Lang::getLangToken(Lang::listSupportedLangTo
 $user = User::current();
 $registry->storeObject("user", $user);
 
+//get my groups
+$groups = new Groups();
+$groups->loadMyGroups($user->getID());
+$registry->storeObject("groups", $groups);
+
 $page = new Page();
 $page->load();
 $registry->storeObject("page", $page);
