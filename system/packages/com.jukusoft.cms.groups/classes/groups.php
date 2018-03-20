@@ -37,7 +37,7 @@ class Groups {
 		if (Cache::contains("groups", "own-groups-" . $userID)) {
 			$this->my_groups = Cache::get("groups", "own-groups-" . $userID);
 		} else {
-			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}group_members` LEFT JOIN `{praefix}groups` ON `{praefix}group_members`.`groupID` = `{praefix}groups`.`groupID` WHERE `userID` = :userID AND `activated` = '1'; ", array(
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}group_members` LEFT JOIN `{praefix}groups` ON `{praefix}group_members`.`groupID` = `{praefix}groups`.`groupID` WHERE `{praefix}group_members`.`userID` = :userID AND `activated` = '1'; ", array(
 				'userID' => array(
 					'type' => PDO::PARAM_INT,
 					'value' => $userID
