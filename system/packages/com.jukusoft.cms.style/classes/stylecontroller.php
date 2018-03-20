@@ -64,8 +64,8 @@ class StyleController {
 
 		//userid and username
 		$user = User::current();
-		$template->assign("USERID", $user->getID());
-		$template->assign("USERNAME", $user->getUsername());
+		/*$template->assign("USERID", $user->getID());
+		$template->assign("USERNAME", $user->getUsername());*/
 		$template->assign("IS_LOGGED_IN", $user->isLoggedIn());
 
 		//assign menu code
@@ -75,7 +75,7 @@ class StyleController {
 		$template->assign("LOCALMENU", $localMenu->getCode());
 
 		if (User::current()->isLoggedIn()) {
-			$template->parse("logged-in");
+			$template->parse("main.logged-in");
 		}
 
 		$template->parse();
