@@ -555,6 +555,74 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table groups
+ *
+ * Package: com.jukusoft.cms.groups
+ */
+
+echo "Create / Upgrade table <b>groups</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("groups", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("groupID", 10, true, true);
+$table->addVarchar("name", 255, true);
+$table->addText("description", true);
+$table->addVarchar("color", 50, true, "#0066ff");
+$table->addInt("auto_assign_regist", 10, true, false, "0");//flag, if group is automatically assigned to registered users
+$table->addInt("system_group", 10, true, false, "0");
+$table->addInt("show", 10, true, false, "1");//show group name on index page
+$table->addInt("activated", 10, true, false, "1");
+
+//https://www.w3schools.com/colors/colors_picker.asp
+
+//add keys to table
+$table->addPrimaryKey("groupID");
+$table->addIndex("auto_assign_regist");
+$table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
+/**
+ * table group_members
+ *
+ * Package: com.jukusoft.cms.groups
+ */
+
+echo "Create / Upgrade table <b>group_members</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("group_members", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("groupID", 10, true, false);
+$table->addInt("userID", 10, true, false);
+$table->addInt("group_leader", 10, true, false, "0");
+$table->addInt("activated", 10, false, false, "1");
+
+//https://www.w3schools.com/colors/colors_picker.asp
+
+//add keys to table
+$table->addPrimaryKey(array("groupID", "userID"));
+$table->addIndex("groupID");
+$table->addIndex("userID");
+$table->addIndex("group_leader");
+$table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 
