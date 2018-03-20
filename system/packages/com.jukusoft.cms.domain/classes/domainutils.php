@@ -117,6 +117,13 @@ class DomainUtils {
 		return $url;
 	}
 
+	/**
+	 * generate an url for a page in this form: http(s)://<Domain><Base URL><Page>
+	 */
+	public static function generateURL (string $page) : string {
+		return self::getBaseURL() . "/" . $page;
+	}
+
 	public static function getURL () {
 		return self::getBaseURL() . self::getRequestURI();
 	}

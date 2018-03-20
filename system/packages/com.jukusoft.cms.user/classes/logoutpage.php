@@ -36,7 +36,17 @@ class LogoutPage extends HTMLPage {
 		//logout user
 		User::current()->logout();
 
-		header("Location: <Location>");
+		//get domain
+		$domain = Registry::singleton()->getObject("domain");
+
+		//generate index url
+		$index_url = DomainUtils::generateURL($domain->getHomePage());
+
+		header("Location: " . $index_url);
+
+		//flush gzip buffer
+		ob_end_flush();
+
 		exit;
 	}
 
