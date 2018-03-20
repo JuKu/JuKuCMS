@@ -57,6 +57,9 @@ class LoginPage extends PageType {
 					if (User::current()->isLoggedIn()) {
 						$template->assign("ERROR_TEXT", "User is already logged in!");
 						$template->parse("main.error_msg");
+
+						//dont show form, because user is already logged in
+						$show_form = false;
 					} else {
 						//try to login
 						$user = User::current();
