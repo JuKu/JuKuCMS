@@ -62,7 +62,7 @@ class StyleController {
 		$template->assign("FOOTER", $registry->getSetting("footer", ""));
 		$template->assign("COPYRIGHT", Settings::get("copyright", "&copy; 2018 JuKuSoft.com, All Rights Reserved."));
 
-		$template->assign("MY_GROUP_IDS", implode($registry->getObject("groups")->listGroupIDs()));
+		$template->assign("MY_GROUP_IDS", implode(",", $registry->getObject("groups")->listGroupIDs()));
 
 		//userid and username
 		$user = User::current();
