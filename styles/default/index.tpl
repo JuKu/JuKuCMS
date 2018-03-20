@@ -19,7 +19,7 @@
         <h2>Login</h2>
 
         <!-- BEGIN: not_logged_in -->
-            <a href="{BASE_URL}/{LOGIN_PAGE}">Login Page</a>
+            <a href="{BASE_URL}/{LOGIN_PAGE}?redirect_url={CURRENT_URL}">Login Page</a>
         <!-- END: not_logged_in -->
 
         <!-- BEGIN: logged_in -->
