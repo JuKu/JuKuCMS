@@ -33,7 +33,7 @@ class Groups {
 		//
 	}
 
-	public function loadMyGroups (int $userID) : array {
+	public function loadMyGroups (int $userID) {
 		if (Cache::contains("groups", "own-groups-" . $userID)) {
 			$this->my_groups = Cache::get("groups", "own-groups-" . $userID);
 		} else {
