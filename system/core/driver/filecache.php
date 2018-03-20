@@ -81,8 +81,11 @@ class FileCache implements ICache {
 			if (!empty($key)) {
 				$file_path = CACHE_PATH . md5($area) . "/" + md5($key) + ".php";
 
-				//remove file
-				unlink($file_path);
+				//check, if file exists
+				if (file_exists($file_path)) {
+					//remove file
+					unlink($file_path);
+				}
 			} else {
 				//clear full area
 				$this->rrmdir($area_path, CACHE_PATH);
