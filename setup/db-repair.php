@@ -716,6 +716,12 @@ Groups::createGroupIfIdAbsent(4, "Bots", "Bots (Google bot and so on)", "#cc00ff
 Groups::createGroupIfIdAbsent(5, "Editor", "Editors (can create & edit every post and every page, can publish and delete pages)", "#ff9933", true, true, false);
 Groups::createGroupIfIdAbsent(6, "Author", "Authors (can create & edit OWN posts and OWN pages, can publish and delete OWN pages)", "#ffcc00", true, true, false);
 
+echo "Assign default users to default groups...<br />";
+
+Groups::addGroupToUser(1, 1, true);
+Groups::addGroupToUser(2, 1, true);
+Groups::addGroupToUser(3, -1);
+
 echo "Create default administrator user if absent...<br />";
 User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrator", 1);
 

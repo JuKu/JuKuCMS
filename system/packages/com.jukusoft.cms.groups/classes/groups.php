@@ -113,6 +113,27 @@ class Groups {
 		$group->delete();
 	}
 
+	public static function addGroupToUser (int $groupId, int $userID, bool $group_leader = false) {
+		Database::getInstance()->execute("INSERT INTO `{praefix}group_members` (
+			`groupID`, `userID`, `group_leader`, `activated`
+		) VALUES (
+			:groupID, :userID, :group_leader, '1'
+		) ON DUPLICATE KEY UPDATE `group_leader` = :group_leader; ", array(
+			'groupID' => array(
+				'type' => PDO::PARAM_INT,
+				'value' => $groupId
+			),
+			'userID' => array(
+				'type' => PDO::PARAM_INT,
+				'value' => $userID
+			),
+			'group_leader' => ($group_leader ? 1 : 0)
+		));
+
+		//clear cache
+		Cache::clear("groups", "own-groups-" . $userID);
+	}
+
 }
 
 ?>
