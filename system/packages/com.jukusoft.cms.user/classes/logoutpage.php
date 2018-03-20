@@ -27,7 +27,18 @@
 
 class LogoutPage extends HTMLPage {
 
-	//
+	public function setCustomHeader() {
+		if (!Security::checkCSRFToken()) {
+			//dont logout user, because csrf token isnt correct
+			return;
+		}
+
+		//logout user
+		User::current()->logout();
+
+		header("Location: <Location>");
+		exit;
+	}
 
 }
 
