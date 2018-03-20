@@ -630,6 +630,11 @@ Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/");
 echo "Create admin pages if absent...<br />";
 Page::createIfAbsent("admin/home", "Admin Area", "Admin_Dashboard", "", "/admin/", $admin_menuID, -1, -1, false, true, false);
 
+//TODO: create groups
+
+echo "Create default administrator user if absent...<br />";
+User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrator", 1);
+
 echo "<br /><br />Finished DB Upgrade!";
 
 ?>

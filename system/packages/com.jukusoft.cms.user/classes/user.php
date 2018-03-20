@@ -175,11 +175,11 @@ class User {
 			//check, if a newer password algorithmus is available --> rehash required
 			if (password_needs_rehash($row['password'], PASSWORD_DEFAULT)) {
 				//rehash password
-				$new_hash = $this->hashPassword($password, $salt);
+				$new_hash = self::hashPassword($password, $salt);
 
 				//update password in database
 				Database::getInstance()->execute("UPDATE `{praefix}user` SET `password` = :password WHERE `userID` = :userID; ", array(
-					'password' => $password,
+					'password' => $new_hash,
 					'userID' => array(
 						'type' => PDO::PARAM_INT,
 						'value' => $row['userID']
@@ -236,7 +236,7 @@ class User {
 		$this->isLoggedIn = false;
 	}
 
-	protected function hashPassword ($password, $salt) {
+	protected static function hashPassword ($password, $salt) {
 		//http://php.net/manual/de/function.password-hash.php
 
 		//add salt to password
@@ -311,6 +311,61 @@ class User {
 		$interval_minutes = (int) Settings::get("online_interval", "5");
 
 		Database::getInstance()->execute("UPDATE `{praefix}user` SET `online` = '0' WHERE DATE_SUB(NOW(), INTERVAL " . $interval_minutes . " MINUTE) > `last_online`; ");
+	}
+
+	/**
+	 * creates user if userID is absent
+	 */
+	public static function createIfIdAbsent (int $userID, string $username, string $password, string $mail, int $main_group = 1, string $specific_title = "none", int $activated = 1) {
+		if (self::existsUserID($userID)) {
+			//dont create user, if user already exists
+			return;
+		}
+
+		//create salt
+		$salt = md5(PHPUtils::randomString(50));
+
+		//generate password hash
+		$hashed_password = self::hashPassword($password, $salt);
+
+		Database::getInstance()->execute("INSERT INTO `{praefix}user` (
+			`userID`, `username`, `password`, `salt`, `mail`, `ip`, `main_group`, `specific_title`, `online`, `last_online`, `registered`, `activated`
+		) VALUES (
+			:userID, :username, :password, :salt, :mail, '0.0.0.0', :main_group, :title, '0', '0000-00-00 00:00:00', CURRENT_TIMESTAMP , :activated
+		)", array(
+			'userID' => $userID,
+			'username' => $username,
+			'password' => $hashed_password,
+			'salt' => $salt,
+			'mail' => $mail,
+			'main_group' => $main_group,
+			'title' => $specific_title,
+			'activated' => $activated
+		));
+	}
+
+	public static function existsUserID (int $userID) : bool {
+		//search for userID in database
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `userID` = :userID; ", array(
+			'type' => PDO::PARAM_INT,
+			'value' => $userID
+		));
+
+		return $row !== false;
+	}
+
+	public static function existsUsername (string $username) : bool {
+		//search for username in database, ignore case
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE UPPER(`username`) LIKE UPPER(:username); ", array('username' => $username));
+
+		return $row !== false;
+	}
+
+	public static function existsMail (string $mail) : bool {
+		//search for mail in database, ignore case
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE UPPER(`mail`) LIKE UPPER(:mail); ", array('mail' => $mail));
+
+		return $row !== false;
 	}
 
 	/**
