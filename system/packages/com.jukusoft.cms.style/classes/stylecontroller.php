@@ -74,6 +74,10 @@ class StyleController {
 		$template->assign("MENU", $globalMenu->getCode());
 		$template->assign("LOCALMENU", $localMenu->getCode());
 
+		if (User::current()->isLoggedIn()) {
+			$template->parse("logged-in");
+		}
+
 		$template->parse();
 
 		echo $template->getCode();
