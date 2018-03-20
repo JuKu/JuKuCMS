@@ -344,11 +344,25 @@ class User {
 		));
 	}
 
+	public static function deleteUserID (int $userID) {
+		Database::getInstance()->execute("DELETE FROM `{praefix}user` WHERE `userID` = :userID; ", array(
+			'userID' => array(
+				'type' => PDO::PARAM_INT,
+				'value' => $userID
+			)
+		));
+
+		//remove user from cache
+		Cache::clear("user", "user-" . $userID);
+	}
+
 	public static function existsUserID (int $userID) : bool {
 		//search for userID in database
 		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `userID` = :userID; ", array(
-			'type' => PDO::PARAM_INT,
-			'value' => $userID
+			'userID' => array(
+				'type' => PDO::PARAM_INT,
+				'value' => $userID
+			)
 		));
 
 		return $row !== false;
