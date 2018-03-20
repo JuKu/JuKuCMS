@@ -159,6 +159,8 @@ $table->addEnum("wildcard", array("YES", "NO"), true, "NO");
 $table->addInt("styleID", 10, true, false, "-1");
 $table->addVarchar("redirect_url", 255, true, "none");#
 $table->addInt("redirect_code", 10, true, false, "301");
+$table->addVarchar("base_dir", 255, true, "/");
+$table->addInt("force_ssl", 10, true, false, "0");//if 1 then all http urls would be rewritten to https urls
 $table->addTimestamp("lastUpdate", true, "CURRENT_TIMESTAMP");
 $table->addInt("activated", 10, true, false, "1");
 
@@ -580,6 +582,7 @@ Settings::create("online_interval", 5, "Online Interval", "Interval-Angabe in mi
 Settings::create("x_frame_options", "DENY", "X-Frame-Options header value (none = dont set header).", "values: DENY, SAMEORIGIN, ALLOW-FROM https://example.com/, none", "system", "security");
 Settings::create("login_page","login", "Alias of Login Page (incl. directory, if necessary)", "Alias of Login Page (incl. directory, if necessary). Default: login", "system", "general");
 Settings::create("logout_page", "logout", "Alias of Logout Page (incl. directory, if necessary)", "Alias of Logout Page (incl. directory, if necessary). Default: logout", "system", "general");
+//Settings::create("base_dir", "/", "Base directory", "Base directory (if this CMS is installed in root directory, the right option is '/', but if it is installed in a sub directory, the right option is '/sub-dir/'). Default: /", "system", "general");
 
 $main_menuID = -1;
 $local_menuID = -1;
