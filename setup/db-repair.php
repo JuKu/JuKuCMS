@@ -340,7 +340,7 @@ $table->setCharset("utf8");
 
 //add int coloum with length 10, NOT NULL and AUTO_INCREMENT
 $table->addInt("rule_id", 10, true, true);
-$table->addEnum("type", array("DOMAIN", "FOLDER", "MEDIA", "LANGUAGE"), true);
+$table->addEnum("type", array("DOMAIN", "FOLDER", "MEDIA", "PREF_LANG", "SUPPORTED_LANG"), true);
 $table->addVarchar("expected_value", 255, true);
 $table->addVarchar("style_name", 255, true);
 $table->addInt("parent", 10, true, false, "-1");
@@ -702,6 +702,9 @@ Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/");
 
 echo "Create admin pages if absent...<br />";
 Page::createIfAbsent("admin/home", "Admin Area", "Admin_Dashboard", "", "/admin/", $admin_menuID, -1, -1, false, true, false);
+
+echo "Create style rule for admin area if absent...<br />";
+StyleRules::createRuleWithPredefinedID(1, "FOLDER", "/admin/", "admin", -1, 1);
 
 //create groups
 echo "Create default groups if absent...<br />";

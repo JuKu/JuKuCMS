@@ -202,6 +202,37 @@ class StyleRules {
 		}
 	}
 
+	public static function createRuleWithPredefinedID (int $ruleID, string $type, string $expected_value, string $style_name, int $parent = -1, int $order = 10) {
+		$type = strtoupper($type);
+
+		if ($type !== "DOMAIN" && $type !== "FOLDER" && $type !== "MEDIA" && $type !== "PREF_LANG" && $type !== "SUPPORTED_LANG") {
+			throw new IllegalArgumentException("unknown style rule type '" , $type . "'!");
+		}
+
+		Database::getInstance()->execute("INSERT INTO `{praefix}style_rules` (
+			`rule_id`, `type`, `expected_value`, `style_name`, `parent`, `order`, `activated`
+		) VALUES (
+			:ruleID, :type, :value, :style, :parent, :order, '1'
+		) ON DUPLICATE KEY UPDATE `order` = :order; ", array(
+			'ruleID' => $ruleID,
+			'type' => $type,
+			'value' => $expected_value,
+			'style' => $style_name,
+			'parent' => $parent,
+			'order' => $order
+		));
+
+		//clear cache
+		Cache::clear("style", "style-rules");
+	}
+
+	public static function deleteRule (int $ruleID) {
+		Database::getInstance()->execute("DELETE FROM `{praefix}style_rules` WHERE `rule_id` = :ruleID; ", array('ruleID' => $ruleID));
+
+		//clear cache
+		Cache::clear("style", "style-rules");
+	}
+
 }
 
 ?>
