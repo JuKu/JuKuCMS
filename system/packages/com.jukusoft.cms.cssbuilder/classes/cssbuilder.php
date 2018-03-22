@@ -32,6 +32,10 @@ class CSSBuilder {
 	}
 
 	public function generateCSS (string $style_name, string $media = "ALL") : string {
+		//validate values
+		$style_name = Validator_Filename::get($style_name);
+		$media = Validator_Filename::get($media);
+
 		$md5_filename = md5($style_name);
 		$css_cache_path = CACHE_PATH . "cssbuilder/" . $md5_filename . ".css";
 
@@ -60,6 +64,40 @@ class CSSBuilder {
 		}
 
 		var_dump($css_files);
+
+		$buffer = "";
+
+		foreach ($css_files as $css_file) {
+			//first check, if file exists
+			if (!file_exists($css_file)) {
+				continue;
+			}
+
+			//add file content to buffer
+			$buffer .= file_get_contents($css_file) . "\n";
+		}
+
+		//$code = preg_replace("/\s\s+/", " ", $code);
+
+		//remove comments
+		$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
+
+		// remove space after colons
+		$buffer = str_replace(': ', ':', $buffer);
+
+		//remove whitespace
+		$buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
+
+		//TODO: cache buffer
+
+		return $buffer;
+	}
+
+	public function getCachePath (string $style, string $media = "ALL") : string {
+		$md5_filename = md5($style . "_" . $media);
+		$css_cache_path = CACHE_PATH . "cssbuilder/" . $md5_filename . ".css";
+
+		return $css_cache_path;
 	}
 
 }

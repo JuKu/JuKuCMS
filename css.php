@@ -43,7 +43,7 @@ if (CLEAR_OP_CACHE) {
 	opcache_reset();
 }
 
-ob_start();
+ob_start("ob_gzhandler");
 
 //set css header
 header("Content-Type: text/css");
@@ -86,8 +86,11 @@ if (isset($_REQUEST['media']) && !empty($_REQUEST['media'])) {
 	$media = $validator->validate($_REQUEST['media']);
 }
 
-$md5_filename = md5($style . "_" . $media);
-$css_cache_path = CACHE_PATH . "cssbuilder/" . $md5_filename . ".css";
+//create css builder
+$css_builder = new CSSBuilder();
+
+//get style cache path
+$css_cache_path = $css_builder->getCachePath($style, $media);
 
 //intelligent caching
 if (file_exists($css_cache_path)) {
@@ -120,7 +123,6 @@ if (file_exists($css_cache_path)) {
 }
 
 //generate css file
-$css_builder = new CSSBuilder();
 echo $css_builder->generateCSS($style, $media);
 
 //flush gzip cache
