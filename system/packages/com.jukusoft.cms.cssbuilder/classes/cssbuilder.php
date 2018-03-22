@@ -63,8 +63,6 @@ class CSSBuilder {
 			$css_files[] = $row['css_file'];
 		}
 
-		var_dump($css_files);
-
 		$buffer = "";
 
 		foreach ($css_files as $css_file) {
