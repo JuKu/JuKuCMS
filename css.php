@@ -95,6 +95,8 @@ $css_cache_path = $css_builder->getCachePath($style, $media);
 //generate css file
 $css_builder->generateCSS($style, $media);
 
+//http://blog.franky.ws/php-und-das-caching-via-http-header-etag/
+
 //intelligent caching
 if (file_exists($css_cache_path)) {
 	//get the last-modified-date of this very file
