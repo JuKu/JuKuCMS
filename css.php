@@ -126,7 +126,7 @@ if (file_exists($css_cache_path)) {
 }
 
 //generate css file
-//echo $css_builder->generateCSS($style, $media);
+echo $css_builder->getBuffer();
 
 //flush gzip cache
 ob_end_flush();

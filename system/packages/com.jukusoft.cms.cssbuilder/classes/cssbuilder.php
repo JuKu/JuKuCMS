@@ -27,6 +27,8 @@
 
 class CSSBuilder {
 
+	protected $content = "";
+
 	public function __construct() {
 		//
 	}
@@ -94,6 +96,8 @@ class CSSBuilder {
 		//cache buffer
 		file_put_contents($this->getCachePath($style_name, $media), $buffer);
 
+		$this->content = $buffer;
+
 		return $buffer;
 	}
 
@@ -102,6 +106,10 @@ class CSSBuilder {
 		$css_cache_path = CACHE_PATH . "cssbuilder/" . $md5_filename . ".css";
 
 		return $css_cache_path;
+	}
+
+	public function getBuffer () : string {
+		return $this->content;
 	}
 
 }
