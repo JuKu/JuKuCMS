@@ -640,7 +640,7 @@ $table->setCharset("utf8");
 
 //fields
 $table->addVarchar("style", 255, true);
-$table->addVarchar("css_file", 600, true);
+$table->addVarchar("css_file", 255, true);
 $table->addVarchar("media", 255, true, "ALL");
 $table->addInt("activated", 10, true, false, 1);
 
