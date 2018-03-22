@@ -63,6 +63,7 @@ class StyleController {
 		$template->assign("COPYRIGHT", Settings::get("copyright", "&copy; 2018 JuKuSoft.com, All Rights Reserved."));
 
 		$template->assign("MY_GROUP_IDS", implode(",", $registry->getObject("groups")->listGroupIDs()));
+		$template->assign("CHARSET", $page_type->getCharset());
 
 		//userid and username
 		$user = User::current();
