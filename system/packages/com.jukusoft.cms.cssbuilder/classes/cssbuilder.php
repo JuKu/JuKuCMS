@@ -102,7 +102,7 @@ class CSSBuilder {
 	}
 
 	public function getCachePath (string $style, string $media = "ALL") : string {
-		$md5_filename = md5($style . "_" . $media);
+		$md5_filename = md5("css_" . $style . "_" . $media);
 		$css_cache_path = CACHE_PATH . "cssbuilder/" . $md5_filename . ".css";
 
 		return $css_cache_path;
