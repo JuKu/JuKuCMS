@@ -625,6 +625,36 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table css_files
+ *
+ * Package: com.jukusoft.cms.cssbuilder
+ */
+
+echo "Create / Upgrade table <b>css_files</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("css_files", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addVarchar("style", 255, true);
+$table->addVarchar("css_file", 600, true);
+$table->addVarchar("media", 255, true, "ALL");
+$table->addInt("activated", 10, true, false, 1);
+
+//https://www.w3schools.com/colors/colors_picker.asp
+
+//add keys to table
+$table->addPrimaryKey(array("style", "css_file"));
+$table->addIndex("css_file");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 

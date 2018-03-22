@@ -59,12 +59,13 @@ if (!isset($_REQUEST['style']) || empty($_REQUEST['style'])) {
 }
 
 $style = $_REQUEST['style'];
+$media = "ALL";
 
 //check, if stlye name is valide
 $validator = new Validator_Filename();
 
 if (!$validator->isValide($style)) {
-	echo "Invalide style name '" . $style . "' (only allowed characters: a-z, A-Z and 0-9)!";
+	echo "Invalide style name '" . htmlentities($style) . "' (only allowed characters: a-z, A-Z and 0-9)!";
 	exit;
 }
 
@@ -76,8 +77,16 @@ if (!file_exists(STYLE_PATH . $style)) {
 	exit;
 }
 
-$md5_filename = md5($style);
+if (isset($_REQUEST['media']) && !empty($_REQUEST['media'])) {
+	if (!$validator->isValide($media)) {
+		echo "Invalide media '" . htmlentities($_REQUEST['media']) . "'!";
+		exit;
+	}
 
+	$media = $validator->validate($_REQUEST['media']);
+}
+
+$md5_filename = md5($style . "_" . $media);
 $css_cache_path = CACHE_PATH . "cssbuilder/" . $md5_filename . ".css";
 
 //intelligent caching
@@ -112,7 +121,7 @@ if (file_exists($css_cache_path)) {
 
 //generate css file
 $css_builder = new CSSBuilder();
-echo $css_builder->generateCSS($style);
+echo $css_builder->generateCSS($style, $media);
 
 //flush gzip cache
 ob_end_flush();

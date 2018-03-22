@@ -31,7 +31,7 @@ class CSSBuilder {
 		//
 	}
 
-	public function generateCSS (string $style_name) : string {
+	public function generateCSS (string $style_name, string $media = "ALL") : string {
 		$md5_filename = md5($style_name);
 		$css_cache_path = CACHE_PATH . "cssbuilder/" . $md5_filename . ".css";
 
@@ -41,10 +41,25 @@ class CSSBuilder {
 		if (file_exists(STYLE_PATH . $style_name . "/style.json")) {
 			$json = json_decode(file_get_contents(STYLE_PATH . $style_name . "/style.json"), true);
 
-			var_dump($json);
+			if (isset($json['css']) && is_array($json['css'])) {
+				foreach ($json['css'] as $css_file) {
+					$full_path = STYLE_PATH . $style_name . "/" . $css_file;
+					$css_files[] = $full_path;
+				}
+			}
 		}
 
-		//TODO: load css files from database
+		//load css files from database
+		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}css_files` WHERE (`style` = :style OR `style` = 'ALL') AND (`media` = :media OR `media` = 'ALL') AND `activated` = '1'; ", array(
+			'style' => $style_name,
+			'media' => $media
+		));
+
+		foreach ($rows as $row) {
+			$css_files[] = $row['css_file'];
+		}
+
+		var_dump($css_files);
 	}
 
 }
