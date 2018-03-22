@@ -38,6 +38,12 @@ class StyleRules {
 	}
 
 	protected static function applyRules (int $parentID, Registry &$registry, $default_value) : string {
+		if (!isset(self::$rules[$parentID])) {
+			var_dump(self::$rules);
+
+			throw new IllegalStateException("Unknown parentID '" . $parentID . "' in style rules.");
+		}
+
 		//get all root rules
 		$root_rules = self::$rules[$parentID];
 
