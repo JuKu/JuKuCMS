@@ -92,6 +92,9 @@ $css_builder = new CSSBuilder();
 //get style cache path
 $css_cache_path = $css_builder->getCachePath($style, $media);
 
+//generate css file
+$css_builder->generateCSS($style, $media);
+
 //intelligent caching
 if (file_exists($css_cache_path)) {
 	//get the last-modified-date of this very file
@@ -123,7 +126,7 @@ if (file_exists($css_cache_path)) {
 }
 
 //generate css file
-echo $css_builder->generateCSS($style, $media);
+//echo $css_builder->generateCSS($style, $media);
 
 //flush gzip cache
 ob_end_flush();

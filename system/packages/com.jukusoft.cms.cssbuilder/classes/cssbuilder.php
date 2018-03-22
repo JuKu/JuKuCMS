@@ -87,6 +87,7 @@ class CSSBuilder {
 		$buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
 
 		//TODO: cache buffer
+		file_put_contents($this->getCachePath($style_name, $media), $buffer);
 
 		return $buffer;
 	}
