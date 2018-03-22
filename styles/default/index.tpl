@@ -96,6 +96,10 @@
                     <td>MY_GROUP_IDS</td>
                     <td>{MY_GROUP_IDS}</td>
                 </tr>
+                <tr>
+                    <td>STYLE_PATH</td>
+                    <td>{STYLE_PATH}</td>
+                </tr>
             </tbody>
         </table>
 
