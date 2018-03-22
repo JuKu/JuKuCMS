@@ -683,6 +683,8 @@ Settings::create("x_frame_options", "DENY", "X-Frame-Options header value (none 
 Settings::create("login_page","login", "Alias of Login Page (incl. directory, if necessary)", "Alias of Login Page (incl. directory, if necessary). Default: login", "system", "general");
 Settings::create("logout_page", "logout", "Alias of Logout Page (incl. directory, if necessary)", "Alias of Logout Page (incl. directory, if necessary). Default: logout", "system", "general");
 //Settings::create("base_dir", "/", "Base directory", "Base directory (if this CMS is installed in root directory, the right option is '/', but if it is installed in a sub directory, the right option is '/sub-dir/'). Default: /", "system", "general");
+Settings::create("css_cache_strategy", "expires_header", "CSS Browser Cache Strategy", "CSS Browser Cache Strategy, values: expires_header, etag_header, none", "system", "general");
+Settings::create("css_cache_expires_header_ttl", "86400", "CSS Expires Header Seconds to cache", "Seconds to cache (on client browser). Only used, if cache strategy 'expired_header' is used! Default: 86400 seconds (1 day)", "system", "general");
 
 $main_menuID = -1;
 $local_menuID = -1;
