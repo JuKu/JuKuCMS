@@ -65,6 +65,12 @@ class StyleController {
 		$template->assign("MY_GROUP_IDS", implode(",", $registry->getObject("groups")->listGroupIDs()));
 		$template->assign("CHARSET", $page_type->getCharset());
 
+		//create new css builder
+		$css_builder = new CSSBuilder();
+
+		$current_style = $registry->getSetting("current_style_name");
+		$template->assign("CSS_HASH_ALL", $css_builder->getHash($current_style, "ALL"));
+
 		//userid and username
 		$user = User::current();
 		/*$template->assign("USERID", $user->getID());

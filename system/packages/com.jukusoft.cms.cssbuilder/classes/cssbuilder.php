@@ -117,6 +117,19 @@ class CSSBuilder {
 		return file_exists($this->getCachePath($style, $media));
 	}
 
+	public function getHash (string $style, string $media = "ALL") : string {
+		if (!$this->existsCache($style, $media)) {
+			//generate cached css file
+			$this->generateCSS($style, $media);
+		}
+
+		if (!Cache::contains("cssbuilder", "hash_" . $style . "_" . $media)) {
+			throw new IllegalStateException("cached css file 'hash_" . $style . "_" . $media . "' doesnt exists.");
+		}
+
+		return Cache::get("cssbuilder", "hash_" . $style . "_" . $media);
+	}
+
 	public function getBuffer () : string {
 		return $this->content;
 	}
