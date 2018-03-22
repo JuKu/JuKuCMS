@@ -78,7 +78,7 @@ if (!file_exists(STYLE_PATH . $style)) {
 }
 
 if (isset($_REQUEST['media']) && !empty($_REQUEST['media'])) {
-	if (!$validator->isValide($media)) {
+	if (!$validator->isValide($_REQUEST['media'])) {
 		echo "Invalide media '" . htmlentities($_REQUEST['media']) . "'!";
 		exit;
 	}
@@ -152,8 +152,6 @@ $css_builder->load($style, $media);
 
 //get css output
 echo $css_builder->getBuffer();
-
-echo "test";
 
 //flush gzip cache
 ob_end_flush();
