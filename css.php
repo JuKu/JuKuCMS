@@ -107,7 +107,7 @@ if (file_exists($css_cache_path)) {
 		//https://www.electrictoolbox.com/php-caching-headers/
 
 		//set expires header, so browser can cache this css file
-		$seconds_to_cache = (int) Settings::get("css_cache_expires_header_ttl", "86400");
+		$seconds_to_cache = (int) Settings::get("css_cache_expires_header_ttl", "31536000");
 		$ts = gmdate("D, d M Y H:i:s", time() + $seconds_to_cache) . " GMT";
 		header("Expires: " . $ts);
 		header("Pragma: cache");
