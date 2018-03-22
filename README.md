@@ -45,6 +45,11 @@ So i try to make it better! Build a fast CMS with all required features by defau
 
 https://www.iconfinder.com/icons/298861/rocket_icon#size=256, MIT License
 
+## Official Wiki & Support
+
+  - [Wiki](https://juku.github.io/JuKuCMS/)
+  - [Mail](mailto:info[at]jukusoft.com)
+
 ## Caching
 
 Currently, following caches are supported:
