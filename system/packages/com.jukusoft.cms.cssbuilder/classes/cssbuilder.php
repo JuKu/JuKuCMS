@@ -111,6 +111,10 @@ class CSSBuilder {
 		return $css_cache_path;
 	}
 
+	public function existsCache (string $style, string $media = "ALL") : bool {
+		return file_exists($this->getCachePath($style, $media));
+	}
+
 	public function getBuffer () : string {
 		return $this->content;
 	}

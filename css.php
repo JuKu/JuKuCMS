@@ -92,8 +92,10 @@ $css_builder = new CSSBuilder();
 //get style cache path
 $css_cache_path = $css_builder->getCachePath($style, $media);
 
-//generate css file
-$css_builder->generateCSS($style, $media);
+//generate css file, if neccessary
+if (!$css_builder->existsCache($style, $media)) {
+	$css_builder->generateCSS($style, $media);
+}
 
 //http://blog.franky.ws/php-und-das-caching-via-http-header-etag/
 
