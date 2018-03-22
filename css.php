@@ -129,7 +129,10 @@ if (file_exists($css_cache_path)) {
 	}
 }
 
-//generate css file
+//load css builder
+$css_builder->load($style, $media);
+
+//get css output
 echo $css_builder->getBuffer();
 
 echo "test";

@@ -130,6 +130,16 @@ class CSSBuilder {
 		return Cache::get("cssbuilder", "hash_" . $style . "_" . $media);
 	}
 
+	public function load (string $style, string $media = "ALL") {
+		$cache_path = $this->getCachePath($style, $media);
+
+		if (!$this->existsCache($style, $media)) {
+			$this->generateCSS($style, $media);
+		} else {
+			$this->content = file_get_contents($cache_path);
+		}
+	}
+
 	public function getBuffer () : string {
 		return $this->content;
 	}
