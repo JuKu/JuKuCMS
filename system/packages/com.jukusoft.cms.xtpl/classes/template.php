@@ -68,6 +68,9 @@ class Template {
 		$this->template->assign("USERID", User::current()->getID());
 		$this->template->assign("USERNAME", User::current()->getUsername());
 
+		$style_name = $registry->getSetting("current_style_name");
+		$this->template->assign("STYLE_PATH",DomainUtils::getBaseURL() . "/styles/" . $style_name . "/");
+
 	}
 
 	public function assign ($var, $value) {
