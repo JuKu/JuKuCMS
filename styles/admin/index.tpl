@@ -1,3 +1,4 @@
+<!-- BEGIN: main -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -662,3 +663,4 @@
 </script>
 </body>
 </html>
+<!-- END: main -->
