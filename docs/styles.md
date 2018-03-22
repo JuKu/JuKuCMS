@@ -52,7 +52,7 @@ Then you have to add all your required css files to **style.json** file in your 
 ```
 
 If your template is shown by client, client requests **css.php** file which merges all this css files and adds a **E-Tag** and **Last-Modified-Header**, so browser doesnt have to download this files every request, only if they have changed.\
-This increase your page speed drastically.
+This increase your page speed drastically. Also css.php compress your css files, so bandwidth can so reduced and loading will be faster.
 
 ### Namingspace
 
