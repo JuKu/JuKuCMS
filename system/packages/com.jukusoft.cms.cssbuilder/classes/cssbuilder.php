@@ -86,7 +86,12 @@ class CSSBuilder {
 		//remove whitespace
 		$buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
 
-		//TODO: cache buffer
+		//create cache directory, if neccessary
+		if (!file_exists(CACHE_PATH . "cssbuilder/")) {
+			mkdir(CACHE_PATH . "cssbuilder/");
+		}
+
+		//cache buffer
 		file_put_contents($this->getCachePath($style_name, $media), $buffer);
 
 		return $buffer;
