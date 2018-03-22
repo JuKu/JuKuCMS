@@ -99,6 +99,8 @@ class CSSBuilder {
 		//cache buffer
 		file_put_contents($this->getCachePath($style_name, $media), $buffer);
 
+		Cache::put("cssbuilder", "hash_" . $style_name . "_" . $media, md5($buffer));
+
 		$this->content = $buffer;
 
 		return $buffer;
