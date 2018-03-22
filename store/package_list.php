@@ -25,6 +25,7 @@ $package_list = array(
 	'com.jukusoft.cms.user' => true,
 	'com.jukusoft.cms.groups' => true,
 	'com.jukusoft.cms.dashboard' => true,
+	'com.jukusoft.cms.cssbuilder' => true,
 );
 
 ?>
