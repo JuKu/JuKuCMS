@@ -132,6 +132,8 @@ if (file_exists($css_cache_path)) {
 //generate css file
 echo $css_builder->getBuffer();
 
+echo "test";
+
 //flush gzip cache
 ob_end_flush();
 
