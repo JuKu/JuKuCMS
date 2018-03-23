@@ -45,7 +45,7 @@ class Version {
 				exit;
 			}
 
-			$array = json_decode($version_path, true);
+			$array = json_decode(file_get_contents($version_path), true);
 
 			//cache
 			Cache::put("version", "version_" . $version_path, $array);
@@ -61,8 +61,6 @@ class Version {
 			echo "Version not found!";
 			exit;
 		}
-
-		var_dump($this->version_data);
 
 		return $this->version_data['version'];
 	}
