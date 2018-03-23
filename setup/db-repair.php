@@ -741,15 +741,41 @@ $table->addVarchar("title", 255, true);
 $table->addVarchar("description", 600, true);
 $table->addVarchar("category", 255, true, "general");
 $table->addVarchar("owner", 255, true, "system");
-$table->addInt("show", 10, false, false, 1);//flag, if permission is shown on permissions page
-$table->addInt("order", 10, false, false, 100);
-$table->addInt("activated", 10, false, false, 1);
+$table->addInt("show", 10, true, false, 1);//flag, if permission is shown on permissions page
+$table->addInt("order", 10, true, false, 100);
+$table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
 $table->addPrimaryKey("token");
 $table->addIndex("category");
 $table->addIndex("order");
 $table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
+/**
+ * table group_rights
+ *
+ * Package: com.jukusoft.cms.permissions
+ */
+
+echo "Create / Upgrade table <b>group_rights</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("group_rights", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("groupID", 10, true, false);
+$table->addVarchar("token", 255, true);
+$table->addInt("value", 10, true, false);
+
+//add keys to table
+$table->addPrimaryKey(array("groupID", "token"));
 
 //create or upgrade table
 $table->upgrade();
