@@ -423,7 +423,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    Footer
+                    {FOOTER}
                 </div>
                 <!-- /.box-footer-->
             </div>
@@ -438,8 +438,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.0
         </div>
-        <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-        reserved.
+        <strong>{COPYRIGHT} Design: Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights reserved.
     </footer>
 
     <!-- Control Sidebar -->
