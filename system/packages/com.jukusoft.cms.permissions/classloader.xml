@@ -16,4 +16,6 @@
 
 <classes>
 	<class>Permissions</class>
+	<class>GroupRights</class>
+	<class>UserRights</class>
 </classes>
