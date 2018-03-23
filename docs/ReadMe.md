@@ -10,7 +10,7 @@ Add content here
 
 ## For Plugin-Developers
 
-Add content here
+  - [Events (Hooks)](events.md)
 
 ## For Style / Template Designers
 
