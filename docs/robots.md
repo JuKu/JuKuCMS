@@ -37,6 +37,9 @@ Robots::addRule("ALLOW", "/store/*");
 Robots::addRule("DISALLOW", "/dir1/");
 Robots::addRule("ALLOW", "/dir1/dir2/");
 
+//remove rule /dir1/ for googlebot again
+Robots::deleteRule("DISALLOW", "/dir1/*", "Googlebot");
+
 //set sitemap
 Robots::addRule("SITEMAP", "http://www.example.com/sitemap.xml");
 ```
