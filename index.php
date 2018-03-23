@@ -141,6 +141,7 @@ if (DEBUG_MODE) {
 	echo "<!-- " . Database::getInstance()->countQueries() . " sql queries executed -->";
 
 	foreach (Database::getInstance()->listQueryHistory() as $query_str) {
+		var_dump($query_str);
 		echo "<!-- query: " . $query_str . " -->\n";
 	}
 }
