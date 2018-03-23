@@ -70,6 +70,10 @@ class Robots {
 	}
 
 	public function getContent () {
+		echo "getContent().";
+		ob_end_flush();
+		exit;
+
 		$array = $this->sortByUserAgent();
 
 		$buffer = "# generated robots.txt\n";
