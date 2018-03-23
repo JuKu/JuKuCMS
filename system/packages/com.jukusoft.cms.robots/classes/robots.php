@@ -92,7 +92,7 @@ class Robots {
 			`useragent`, `option`, `value`, `activated`
 		) VALUES (
 			:useragent, :option, :value '1'
-		) ON DUPLICATE KEY UPDATE `option` = :option, ``activated` = '1'; ", array(
+		) ON DUPLICATE KEY UPDATE `option` = :option, `activated` = '1'; ", array(
 			'useragent' => $useragent,
 			'option' => $option,
 			'value' => $value
