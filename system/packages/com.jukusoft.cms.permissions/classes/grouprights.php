@@ -115,7 +115,7 @@ class GroupRights {
 	}
 
 	public function listRights () : array {
-		$this->permissions;
+		return $this->permissions;
 	}
 
 	public function hasRight (string $token) {
