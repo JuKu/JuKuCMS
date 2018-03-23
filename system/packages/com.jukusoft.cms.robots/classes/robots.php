@@ -72,7 +72,7 @@ class Robots {
 	public function getContent () {
 		$array = $this->sortByUserAgent();
 
-		$buffer = "# generated robots.txt\n";
+		$buffer = "";
 
 		foreach ($array as $useragent=>$value) {
 			$buffer .= "User-agent: " . $useragent . "\r\n";
