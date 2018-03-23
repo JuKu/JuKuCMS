@@ -112,7 +112,7 @@ class JSBuilder {
 		$buffer = $jz->squeeze(
 			$buffer,
 			true,   // $singleLine
-			true,   // $keepImportantComments
+			false,   // $keepImportantComments
 			false   // $specialVarRx
 		);
 
