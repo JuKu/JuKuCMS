@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <!-- header javascript -->
-    <script src="{BASE_URL}/js.php?style=admin&amp;hash={JS_HASH_ALL_HEADER}&amp;position=header">
+    <script language="javascript" type="text/javascript" src="{BASE_URL}/js.php?style=admin&amp;hash={JS_HASH_ALL_HEADER}&amp;position=header">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
