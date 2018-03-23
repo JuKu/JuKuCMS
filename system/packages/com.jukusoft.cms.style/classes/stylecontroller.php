@@ -68,8 +68,13 @@ class StyleController {
 		//create new css builder
 		$css_builder = new CSSBuilder();
 
+		//create new js builder
+		$js_builder = new JSBuilder();
+
 		$current_style = $registry->getSetting("current_style_name");
 		$template->assign("CSS_HASH_ALL", $css_builder->getHash($current_style, "ALL"));
+		$template->assign("JS_HASH_ALL_HEADER", $js_builder->getHash($current_style, "ALL", "header"));
+		$template->assign("JS_HASH_ALL_FOOTER", $js_builder->getHash($current_style, "ALL", "footer"));
 
 		//userid and username
 		$user = User::current();
