@@ -29,6 +29,10 @@ class Lang {
 	//https://paulund.co.uk/auto-detect-browser-language-in-php
 
 	public static function getPrefLangToken () : string {
+		if (!isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+			$_SERVER['HTTP_ACCEPT_LANGUAGE'] = Settings::get("default_lang");
+		}
+
 		return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 	}
 
@@ -145,6 +149,10 @@ class Lang {
 	 * @return prefered language
 	 */
 	protected static function prefered_language (array $available_languages, string $http_accept_language = "auto") : string {
+		if (!isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+			$_SERVER['HTTP_ACCEPT_LANGUAGE'] = Settings::get("default_lang");
+		}
+
 		// if $http_accept_language was left out, read it from the HTTP-Header
 		if ($http_accept_language == "auto") $http_accept_language = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
