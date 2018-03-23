@@ -285,7 +285,7 @@ $table->setCharset("utf8");
 //add int coloum with length 10, NOT NULL and AUTO_INCREMENT
 $table->addVarchar("useragent", 255, true);
 $table->addEnum("option", array("ALLOW", "DISALLOW", "SITEMAP", "CRAWL-DELAY"), true, "ALLOW");
-$table->addVarchar("value", 600, true);
+$table->addVarchar("value", 255, true);
 $table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
