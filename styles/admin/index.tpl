@@ -640,7 +640,7 @@
 <!-- ./wrapper -->
 
 <!-- footer javascript -->
-<script src="{BASE_URL}/js.php?style=admin&amp;hash={JS_HASH_ALL_FOOTER}&amp;position=footer" />
+<!-- <script src="{BASE_URL}/js.php?style=admin&amp;hash={JS_HASH_ALL_FOOTER}&amp;position=footer" /> -->
 
 <script>
     $(document).ready(function () {
