@@ -658,7 +658,7 @@
 </script>
 
 <!-- footer javascript -->
-<script src="{BASE_URL}/js.php?style=admin&amp;hash={JS_HASH_ALL_HEADER}&amp;position=footer" />
+<script src="{BASE_URL}/js.php?style=admin&amp;hash={JS_HASH_ALL_FOOTER}&amp;position=footer" />
 
 </body>
 </html>
