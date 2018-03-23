@@ -32,11 +32,12 @@ class Permissions {
 		$category = Validator_AlphaNumeric::get($category);
 		$title = Validator_AlphaNumeric::get($category);
 		$area = Validator_AlphaNumeric::get($area);
+		$order = intval($order);
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}permission_category` (
 			`category`, `title`, `area`, `show`, `order`, `activated`
 		) VALUES (
-			:category, :title, :area, '1', '1'
+			:category, :title, :area, '1', :order, '1'
 		) ON DUPLICATE KEY UPDATE `title` = :title, `area` = :area, `order` = :order, `activated` = '1'; ", array(
 			'category' => $category,
 			'title' => $title,
