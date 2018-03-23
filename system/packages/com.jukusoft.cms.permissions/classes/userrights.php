@@ -90,6 +90,7 @@ class UserRights {
 
 		//clear cache
 		Cache::clear("user_permissions", "user_" . $this->userID);
+		Cache::clear("permissions", "permissions_user_" . $this->userID);
 	}
 
 	public function removeRight (string $token) {
@@ -112,6 +113,7 @@ class UserRights {
 
 		//clear cache
 		Cache::clear("user_permissions", "user_" . $this->userID);
+		Cache::clear("permissions", "permissions_user_" . $this->userID);
 	}
 
 	public function listRights () : array {

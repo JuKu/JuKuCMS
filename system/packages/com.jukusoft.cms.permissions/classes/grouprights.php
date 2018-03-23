@@ -90,6 +90,7 @@ class GroupRights {
 
 		//clear cache
 		Cache::clear("group_permissions", "group_" . $this->groupID);
+		Cache::clear("permissions");
 	}
 
 	public function removeRight (string $token) {
@@ -112,6 +113,7 @@ class GroupRights {
 
 		//clear cache
 		Cache::clear("group_permissions", "group_" . $this->groupID);
+		Cache::clear("permissions");
 	}
 
 	public function listRights () : array {
