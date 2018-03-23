@@ -81,6 +81,9 @@ $groups = new Groups();
 $groups->loadMyGroups($user->getID());
 $registry->storeObject("groups", $groups);
 
+//get permission checker
+$registry->storeObject("permission_checker", PermissionChecker::current());
+
 $page = new Page();
 $page->load();
 $registry->storeObject("page", $page);
