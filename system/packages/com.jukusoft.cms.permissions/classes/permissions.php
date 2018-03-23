@@ -97,6 +97,28 @@ class Permissions {
 		Cache::clear("permissions", "permission_list");
 	}
 
+	public static function listPermissions (string $category = "") : array {
+		$suffix = "";
+
+		if ($category != "") {
+			$suffix = "_" . Validator_AlphaNumeric::get($category);
+		}
+
+		if (Cache::contains("permissions", "permission_list" . $suffix)) {
+			return Cache::get("permissions", "permission_list" . $suffix);
+		} else {
+			if ($category == "") {
+				$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}permissions` WHERE `activated` = '1' ORDER BY `order`; ");
+			} else {
+				$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}permissions` WHERE `category` = :category, AND `activated` = '1' ORDER BY `order`; ", array('category' => $category));
+			}
+
+			Cache::put("permissions", "permission_list" . $suffix, $rows);
+
+			return $rows;
+		}
+	}
+
 }
 
 ?>
