@@ -107,6 +107,11 @@ class Robots {
 		));
 	}
 
+	public static function listRules () : array {
+		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}robots`; ");
+		return $rows;
+	}
+
 }
 
 ?>
