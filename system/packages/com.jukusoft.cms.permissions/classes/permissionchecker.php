@@ -76,22 +76,6 @@ class PermissionChecker {
 		if (!isset($this->permissions[$token])) {
 			$this->permissions[$token] = $value;
 		} else {
-			/*if ($this->permissions[$token] != 2) {
-				if ($this->permissions[$token] == 1) {
-					if ($value == 2) {
-						$this->permissions[$token] = 2;
-					} else if ($value == 1) {
-						$this->permissions[$token] = 1;
-					}
-				} else {
-					if ($value == 1) {
-						$this->permissions[$token] = 1;
-					}
-				}
-			} else {
-				//never cannot be overriden
-			}*/
-
 			$current_value = $this->permissions[$token];
 
 			if ($value > $current_value) {
