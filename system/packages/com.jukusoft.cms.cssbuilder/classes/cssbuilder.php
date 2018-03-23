@@ -38,8 +38,8 @@ class CSSBuilder {
 		$style_name = Validator_Filename::get($style_name);
 		$media = Validator_Filename::get($media);
 
-		$md5_filename = md5($style_name);
-		$css_cache_path = CACHE_PATH . "cssbuilder/" . $md5_filename . ".css";
+		//$md5_filename = md5($style_name);
+		//$css_cache_path = CACHE_PATH . "cssbuilder/" . $md5_filename . ".css";
 
 		$css_files = array();
 

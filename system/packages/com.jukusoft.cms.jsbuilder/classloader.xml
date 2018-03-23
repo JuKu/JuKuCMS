@@ -16,4 +16,5 @@
 
 <classes>
 	<class>JSBuilder</class>
+	<class>JSqueeze</class>
 </classes>
