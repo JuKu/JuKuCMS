@@ -649,6 +649,39 @@ $table->addInt("activated", 10, true, false, 1);
 //add keys to table
 $table->addPrimaryKey(array("style", "css_file"));
 $table->addIndex("css_file");
+$table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
+/**
+ * table js_files
+ *
+ * Package: com.jukusoft.cms.jsbuilder
+ */
+
+echo "Create / Upgrade table <b>js_files</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("js_files", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addVarchar("style", 255, true);
+$table->addVarchar("js_file", 255, true);
+$table->addVarchar("media", 255, true, "ALL");
+$table->addVarchar("position", 255, true, "FOOTER");
+$table->addInt("activated", 10, true, false, 1);
+
+//https://www.w3schools.com/colors/colors_picker.asp
+
+//add keys to table
+$table->addPrimaryKey(array("style", "js_file"));
+$table->addIndex("js_file");
+$table->addIndex("activated");
 
 //create or upgrade table
 $table->upgrade();
