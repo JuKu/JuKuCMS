@@ -26,7 +26,9 @@ class Template {
 			$registry = Registry::singleton();
 		}
 
-		require_once(ROOT_PATH . "system/packages/com.jukusoft.cms.xtpl/xtpl/xtemplate.class.php");
+		if (!class_exists("XTemplate", false)) {
+			require_once(ROOT_PATH . "system/packages/com.jukusoft.cms.xtpl/xtpl/xtemplate.class.php");
+		}
 
 		if (isset(self::$registeredTemplate[$file])) {
 			$file = self::$registeredTemplate[$file];
