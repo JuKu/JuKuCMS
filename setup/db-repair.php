@@ -713,7 +713,38 @@ $table->addInt("activated", 10, false, false, 1);
 
 //add keys to table
 $table->addPrimaryKey("category");
-$table->addVarchar("area");
+$table->addIndex("area");
+$table->addIndex("order");
+$table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
+/**
+ * table permissions
+ *
+ * Package: com.jukusoft.cms.permissions
+ */
+
+echo "Create / Upgrade table <b>permissions</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("permissions", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addVarchar("permission", 255, true);
+$table->addVarchar("title", 255, true);
+$table->addVarchar("description", 600, true);
+$table->addVarchar("category", 255, true, "general");
+$table->addInt("order", 10, false, false, 100);
+$table->addInt("activated", 10, false, false, 1);
+
+//add keys to table
+$table->addPrimaryKey("category");
 $table->addIndex("order");
 $table->addIndex("activated");
 
