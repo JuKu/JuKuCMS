@@ -640,13 +640,13 @@
 <!-- ./wrapper -->
 
 <!-- footer javascript -->
-<!-- <script src="{BASE_URL}/js.php?style=admin&amp;hash={JS_HASH_ALL_FOOTER}&amp;position=footer"></script> -->
+<script src="{BASE_URL}/js.php?style=admin&amp;hash={JS_HASH_ALL_FOOTER}&amp;position=footer"></script>
 
-<!-- <script>
+<script>
     $(document).ready(function () {
         $('.sidebar-menu').tree()
     })
-</script> -->
+</script>
 
 </body>
 </html>
