@@ -865,13 +865,16 @@ Groups::addGroupToUser(3, -1);
 
 echo "Create default permission categories...<br />";
 Permissions::createOrUpdateCategory("general", "General", 1);
-Permissions::createOrUpdateCategory("users", "Users", 2);//user permissions, like "can_create_user"
+Permissions::createOrUpdateCategory("users", "Users", 3);//user permissions, like "can_create_user"
+Permissions::createOrUpdateCategory("groups", "Groups", 3);
+Permissions::createOrUpdateCategory("pages", "Pages", 4);
+Permissions::createOrUpdateCategory("permissions", "Permissions", 5);
+Permissions::createOrUpdateCategory("admin", "Admin", 6);
 
 echo "Create default permissions...<br />";
 //general permissions
-Permissions::createPermission("can_access_admin_area", "Can access admin area", "Can access admin area", "general", "system", 1);
-Permissions::createPermission("can_see_cms_version", "Can see version of CMS system", "Can see version of CMS system", "general", "system", 2);
-Permissions::createPermission("can_edit_own_password", "Can edit own password", "Can edit own password", "general", "system", 3);
+Permissions::createPermission("can_edit_own_password", "Can edit own password", "Can edit own password", "general", "system", 1);
+Permissions::createPermission("can_edit_own_mail", "Can edit his own mail address", "Can edit his own mail address", "general", 2);
 
 //permissions
 Permissions::createPermission("can_see_own_permissions", "Can see own permissions", "User can see his own permissions", "permissions", "system", 1);
@@ -882,8 +885,22 @@ Permissions::createPermission("can_edit_administrator_group_permissions", "Can e
 //user permissions
 Permissions::createPermission("can_see_all_users", "Can see all users", "Can see all users and see their information", "users", "system", 1);
 Permissions::createPermission("can_create_user", "Can create new user", "Can create new user", "users", "system", 2);
-Permissions::createPermission("can_edit_user", "Can edit users", "Can edit users", "users", "system", 3);
-Permissions::createPermission("can_edit_user_password", "Can edit password of users", "Can edit password of users (without super-admin with userID 1)", "users", "system", 4);
+Permissions::createPermission("can_edit_users", "Can edit users", "Can edit users", "users", "system", 3);
+Permissions::createPermission("can_edit_users_password", "Can edit password of users", "Can edit password of users (without super-admin with userID 1)", "users", "system", 4);
+
+//page permissions
+Permissions::createPermission("can_see_all_pages", "Can see all pages in admin area", "pages", "system", 1);
+Permissions::createPermission("can_create_pages", "Can create pages", "Can create pages", "pages", "system", 2);
+Permissions::createPermission("can_edit_own_pages", "Can edit own pages", "Can edit pages which was created by user", "pages", "system", 3);
+Permissions::createPermission("can_edit_all_pages", "Can edit all pages", "Can edit all pages, including pages which was created by other users", "pages", "system", 4);
+Permissions::createPermission("can_publish_own_pages", "Can publish his own pages", "Can publish his own pages", "pages", "system", 5);
+Permissions::createPermission("can_publish_all_pages", "Can publish all pages", "Can publish all pages, including pages which was created by other users", "pages", "system", 6);
+Permissions::createPermission("can_delete_own_pages", "Can delete own pages", "Can delete pages which was created by user", "pages", "system", 7);
+Permissions::createPermission("can_delete_all_pages", "Can delete all pages", "Can delete all pages, including pages which was created by other users", "pages", "system", 8);
+
+//admin permissions
+Permissions::createPermission("can_access_admin_area", "Can access admin area", "Can access admin area", "admin", "system", 1);
+Permissions::createPermission("can_see_cms_version", "Can see version of CMS system", "Can see version of CMS system", "admin", "system", 2);
 
 echo "Create default robots.txt rules...<br />";
 Robots::addRule("DISALLOW", "/system/*");
