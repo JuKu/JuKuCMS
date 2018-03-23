@@ -99,6 +99,14 @@ class Robots {
 		));
 	}
 
+	public static function removeRule (string $option, string $value, string $useragent = "*") {
+		Database::getInstance()->execute("DELETE FROM `{praefix}robots` WHERE `useragent` = :useragent AND `option` = :option AND `value` = :value; ", array(
+			'useragent' => $useragent,
+			'option' => $option,
+			'value' => $value
+		));
+	}
+
 }
 
 ?>
