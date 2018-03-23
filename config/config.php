@@ -11,7 +11,7 @@ define('OPTION_PRELOAD_CLASSES', false);
 
 define('DEBUG_MODE', true);
 
-define("DEBUG_SQL_QUERIES", true);
+define("DEBUG_SQL_QUERIES", false);
 
 define("CACHING", true);
 
