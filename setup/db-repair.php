@@ -838,6 +838,7 @@ Robots::addRule("DISALLOW", "/cache/*");
 Robots::addRule("DISALLOW", "/docs/*");
 Robots::addRule("DISALLOW", "/plugins/*");
 Robots::addRule("DISALLOW", "/styles/*");
+Robots::addRule("DISALLOW", "/admin/*");
 
 echo "Create default administrator user if absent...<br />";
 User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrator", 1);
