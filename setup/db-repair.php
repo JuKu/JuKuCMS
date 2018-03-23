@@ -706,6 +706,7 @@ $table->addVarchar("category", 255, true);
 $table->addVarchar("title", 255, true);
 $table->addVarchar("area", 255, true, "global");
 $table->addInt("show", 10, true, false, 1);
+$table->addInt("order", 10, true, false, 100);
 $table->addInt("activated", 10, false, false, 1);
 
 //https://www.w3schools.com/colors/colors_picker.asp
@@ -713,6 +714,7 @@ $table->addInt("activated", 10, false, false, 1);
 //add keys to table
 $table->addPrimaryKey("category");
 $table->addVarchar("area");
+$table->addIndex("order");
 $table->addIndex("activated");
 
 //create or upgrade table
@@ -825,7 +827,7 @@ Groups::addGroupToUser(2, 1, true);
 Groups::addGroupToUser(3, -1);
 
 echo "Create default permission categories...<br />";
-Permissions::createOrUpdateCategory("general", "General");
+Permissions::createOrUpdateCategory("general", "General", 1);
 
 echo "Create default administrator user if absent...<br />";
 User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrator", 1);

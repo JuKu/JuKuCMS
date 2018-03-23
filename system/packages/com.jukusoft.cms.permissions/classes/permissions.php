@@ -27,20 +27,21 @@
 
 class Permissions {
 
-	public static function createOrUpdateCategory (string $category, string $title, string $area = "global") {
+	public static function createOrUpdateCategory (string $category, string $title, int $order = 100, string $area = "global") {
 		//validate values
 		$category = Validator_AlphaNumeric::get($category);
 		$title = Validator_AlphaNumeric::get($category);
 		$area = Validator_AlphaNumeric::get($area);
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}permission_category` (
-			`category`, `title`, `area`, `show`, `activated`
+			`category`, `title`, `area`, `show`, `order`, `activated`
 		) VALUES (
 			:category, :title, :area, '1', '1'
-		) ON DUPLICATE KEY UPDATE `title` = :title, `area` = :area, `activated` = '1'; ", array(
+		) ON DUPLICATE KEY UPDATE `title` = :title, `area` = :area, `order` = :order, `activated` = '1'; ", array(
 			'category' => $category,
 			'title' => $title,
-			'area' => $area
+			'area' => $area,
+			'order' => $order
 		));
 
 		//clear cache
