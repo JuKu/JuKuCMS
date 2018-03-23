@@ -69,7 +69,7 @@ class Permissions {
 		$owner = Validator_AlphaNumeric::get($owner);
 		$order = intval($order);
 
-		Database::getInstance()->execute("ÌNSERT INTO `{praefix}permissions` (
+		Database::getInstance()->execute("INSERT INTO `{praefix}permissions` (
 			`token`, `title`, `description`, `category`, `owner`, `show`, `order`, `activated`
 		) VALUES (
 			:token, :title, :description, :category, :owner, '1', :order, '1'
