@@ -76,6 +76,10 @@ class StyleController {
 		$template->assign("JS_HASH_ALL_HEADER", $js_builder->getHash($current_style, "ALL", "header"));
 		$template->assign("JS_HASH_ALL_FOOTER", $js_builder->getHash($current_style, "ALL", "footer"));
 
+		//set version and build number
+		$template->assign("VERSION", Version::current()->getVersion());
+		$template->assign("BUILD", Version::current()->getBuildNumber());
+
 		//userid and username
 		$user = User::current();
 		/*$template->assign("USERID", $user->getID());
