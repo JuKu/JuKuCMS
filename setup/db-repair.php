@@ -289,7 +289,7 @@ $table->addVarchar("value", 600, true);
 $table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
-$table->addPrimaryKey(array("useragent", "option"));
+$table->addPrimaryKey(array("useragent", "option", "value"));
 $table->addIndex("activated");
 
 //create or upgrade table
@@ -831,6 +831,13 @@ Groups::addGroupToUser(3, -1);
 
 echo "Create default permission categories...<br />";
 Permissions::createOrUpdateCategory("general", "General", 1);
+
+echo "Create default robots.txt rules...<br />";
+Robots::addRule("DISALLOW", "/system/*");
+Robots::addRule("DISALLOW", "/cache/*");
+Robots::addRule("DISALLOW", "/docs/*");
+Robots::addRule("DISALLOW", "/plugins/*");
+Robots::addRule("DISALLOW", "/styles/*");
 
 echo "Create default administrator user if absent...<br />";
 User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrator", 1);

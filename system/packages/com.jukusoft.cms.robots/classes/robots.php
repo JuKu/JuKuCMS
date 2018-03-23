@@ -34,9 +34,12 @@ class Robots {
 	public function sortByUserAgent () {
 		$array = array();
 
-		foreach ($this->robots as $line) {
-			$line = (Array) $line;
-			$array[$line['useragent']][] = $line;
+		foreach ($this->robots as $row) {
+			if (!isset($row['useragent'])) {
+				$array[$row['useragent']] = array();
+			}
+
+			$array[$row['useragent']][] = $row;
 		}
 
 		return $array;
@@ -82,6 +85,18 @@ class Robots {
 		}
 
 		return $buffer;
+	}
+
+	public static function addRule (string $option, string $value, string $useragent = "*") {
+		Database::getInstance()->execute("INSERT INTO `{praefix}robots` (
+			`useragent`, `option`, `value`, `activated`
+		) VALUES (
+			:useragent, :option, :value '1'
+		) ON DUPLICATE KEY UPDATE `activated` = '1'; ", array(
+			'useragent' => $useragent,
+			'option' => $option,
+			'value' => $value
+		));
 	}
 
 }
