@@ -117,7 +117,11 @@ class Browser {
 	}
 
 	public static function getUserAgent () : string {
-		$user_agent = strtolower(htmlentities($_SERVER['HTTP_USER_AGENT']));
+		$user_agent = "";
+
+		if (isset($_SERVER['HTTP_USER_AGENT'])) {
+			$user_agent = strtolower(htmlentities($_SERVER['HTTP_USER_AGENT']));
+		}
 
 		//throw event, so plugins can modify user agent
 		Events::throwEvent("get_user_agent", array(
