@@ -62,6 +62,8 @@ class Version {
 			exit;
 		}
 
+		var_dump($this->version_data);
+
 		return $this->version_data['version'];
 	}
 
