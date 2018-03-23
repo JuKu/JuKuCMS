@@ -23,6 +23,8 @@
 	<packagedepencies>
 		<!-- no dependencies -->
 		<package>com.jukusoft.cms.settings</package>
+		<package>com.jukusoft.cms.groups</package>
+		<package>com.jukusoft.cms.user</package>
 	</packagedepencies>
 	<pagelist>
 		<!-- no pages -->
