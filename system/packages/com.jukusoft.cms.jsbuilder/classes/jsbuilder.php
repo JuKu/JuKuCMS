@@ -132,6 +132,8 @@ class JSBuilder {
 	}
 
 	public function getCachePath (string $style, string $media = "ALL", string $position = "header") : string {
+		$position = strtolower($position);
+
 		$md5_filename = md5("js_" . $style . "_" . $media . "_" . $position);
 		$js_cache_path = CACHE_PATH . "jsbuilder/" . $md5_filename . ".js";
 
@@ -139,6 +141,8 @@ class JSBuilder {
 	}
 
 	public function existsCache (string $style, string $media = "ALL", string $position = "header") : bool {
+		$position = strtoupper($position);
+
 		return file_exists($this->getCachePath($style, $media, $position));
 	}
 
@@ -156,8 +160,6 @@ class JSBuilder {
 	}
 
 	public function load (string $style, string $media = "ALL", string $position = "header") {
-		$position = strtolower($position);
-
 		$cache_path = $this->getCachePath($style, $media, $position);
 
 		if (!$this->existsCache($style, $media, $position)) {
