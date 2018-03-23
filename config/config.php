@@ -11,6 +11,9 @@ define('OPTION_PRELOAD_CLASSES', false);
 
 define('DEBUG_MODE', true);
 
+/**
+ * if this option is enabled you will see a sql query history on end of every page as html comment
+ */
 define("DEBUG_SQL_QUERIES", false);
 
 define("CACHING", true);
