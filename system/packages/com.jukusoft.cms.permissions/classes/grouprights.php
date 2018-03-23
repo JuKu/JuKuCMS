@@ -114,6 +114,14 @@ class GroupRights {
 		Cache::clear("group_permissions", "group_" . $this->groupID);
 	}
 
+	public function listRights () : array {
+		$this->permissions;
+	}
+
+	public function hasRight (string $token) {
+		return isset($this->permissions[$token]) && $this->permissions[$token] == 1;
+	}
+
 }
 
 ?>
