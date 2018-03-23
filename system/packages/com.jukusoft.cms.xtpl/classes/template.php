@@ -73,6 +73,13 @@ class Template {
 		$style_name = $registry->getSetting("current_style_name");
 		$this->template->assign("STYLE_PATH",DomainUtils::getBaseURL() . "/styles/" . $style_name . "/");
 
+		Events::throwEvent("init_template", array(
+			'file' => &$file,
+			'template' => &$this,
+			'template_instance' => &$this->template,
+			'registry' => &$registry
+		));
+
 	}
 
 	public function assign ($var, $value) {

@@ -98,6 +98,14 @@ class StyleController {
 			$template->parse("main.not_logged_in");
 		}
 
+		//throw event
+		Events::throwEvent("show_page", array(
+			'registry' => &$registry,
+			'page' => &$page,
+			'page_type' => &$page_type,
+			'template' => &$template
+		));
+
 		$template->parse();
 
 		echo $template->getCode();
