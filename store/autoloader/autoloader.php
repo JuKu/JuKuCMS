@@ -42,7 +42,9 @@ $autoloader_classes = array(
 	"system/packages/com.jukusoft.cms.page/classes/page.php",
 	"system/packages/com.jukusoft.cms.page/classes/pagetype.php",
 	"system/packages/com.jukusoft.cms.htmlpage/classes/htmlpage.php",
-	"system/packages/com.jukusoft.cms.user/classes/user.php"
+	"system/packages/com.jukusoft.cms.user/classes/user.php",
+	"system/packages/com.jukusoft.cms.cssbuilder/classes/cssbuilder.php",
+	"system/packages/com.jukusoft.cms.jsbuilder/classes/jsbuilder.php"
 );
 
 ?>
