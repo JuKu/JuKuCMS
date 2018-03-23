@@ -718,6 +718,8 @@ Settings::create("logout_page", "logout", "Alias of Logout Page (incl. directory
 //Settings::create("base_dir", "/", "Base directory", "Base directory (if this CMS is installed in root directory, the right option is '/', but if it is installed in a sub directory, the right option is '/sub-dir/'). Default: /", "system", "general");
 Settings::create("css_cache_strategy", "expires_header", "CSS Browser Cache Strategy", "CSS Browser Cache Strategy, values: expires_header, etag_header, none", "system", "general");
 Settings::create("css_cache_expires_header_ttl", "31536000", "CSS Expires Header Seconds to cache", "Seconds to cache (on client browser). Only used, if cache strategy 'expired_header' is used! Default: 31536000 seconds (1 year)", "system", "general");
+Settings::create("js_cache_strategy", "expires_header", "JS Browser Cache Strategy", "JS Browser Cache Strategy, values: expires_header, etag_header, none", "system", "general");
+Settings::create("js_cache_expires_header_ttl", "31536000", "JS Expires Header Seconds to cache", "Seconds to cache (on client browser). Only used, if cache strategy 'expired_header' is used! Default: 31536000 seconds (1 year)", "system", "general");
 
 $main_menuID = -1;
 $local_menuID = -1;
