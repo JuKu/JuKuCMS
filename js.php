@@ -45,7 +45,7 @@ if (CLEAR_OP_CACHE) {
 ob_start("ob_gzhandler");
 
 //set javascript header
-header("Content-Type: application/javascript");
+header("Content-Type: text/javascript");
 
 Events::throwEvent("init_js");
 
