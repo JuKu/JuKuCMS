@@ -801,6 +801,9 @@ Page::createIfAbsent("error404", "Error 404", "Error404Page", "Error 404 - Could
 Page::createIfAbsent("login", "Login", "LoginPage", "", "/");
 Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/");
 
+//create robots.txt page
+Page::createIfAbsent("robots.txt", "Robots.txt", "RobotsPage", "", "/", -1, -1, -1, false, true, false);
+
 echo "Create admin pages if absent...<br />";
 Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/admin/", $admin_menuID, -1, -1, false, true, false);
 

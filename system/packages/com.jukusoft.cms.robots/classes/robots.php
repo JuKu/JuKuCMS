@@ -66,6 +66,24 @@ class Robots {
 		fclose($handle);
 	}
 
+	public function getContent () {
+		$array = $this->sortByUserAgent();
+
+		$buffer = "";
+
+		foreach ($array as $useragent=>$value) {
+			$buffer .= "User-agent: " . $useragent . "\r\n";
+
+			foreach ($value as $line) {
+				$buffer .= "" . $line['option'] . ": " . $line['value'] . "\r\n";
+			}
+
+			$buffer .= "\r\n";
+		}
+
+		return $buffer;
+	}
+
 }
 
 ?>
