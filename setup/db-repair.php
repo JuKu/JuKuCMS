@@ -740,11 +740,14 @@ $table->addVarchar("token", 255, true);
 $table->addVarchar("title", 255, true);
 $table->addVarchar("description", 600, true);
 $table->addVarchar("category", 255, true, "general");
+$table->addVarchar("owner", 255, true, "system");
+$table->addInt("show", 10, false, false, 1);//flag, if permission is shown on permissions page
 $table->addInt("order", 10, false, false, 100);
 $table->addInt("activated", 10, false, false, 1);
 
 //add keys to table
-$table->addPrimaryKey("category");
+$table->addPrimaryKey("token");
+$table->addIndex("category");
 $table->addIndex("order");
 $table->addIndex("activated");
 
