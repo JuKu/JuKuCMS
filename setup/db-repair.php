@@ -802,7 +802,7 @@ Page::createIfAbsent("login", "Login", "LoginPage", "", "/");
 Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/");
 
 echo "Create admin pages if absent...<br />";
-Page::createIfAbsent("admin/home", "Admin Area", "Admin_Dashboard", "", "/admin/", $admin_menuID, -1, -1, false, true, false);
+Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/admin/", $admin_menuID, -1, -1, false, true, false);
 
 echo "Create style rule for admin area if absent...<br />";
 StyleRules::createRuleWithPredefinedID(1, "FOLDER", "/admin/", "admin", -1, 1);
