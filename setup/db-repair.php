@@ -865,6 +865,25 @@ Groups::addGroupToUser(3, -1);
 
 echo "Create default permission categories...<br />";
 Permissions::createOrUpdateCategory("general", "General", 1);
+Permissions::createOrUpdateCategory("users", "Users", 2);//user permissions, like "can_create_user"
+
+echo "Create default permissions...<br />";
+//general permissions
+Permissions::createPermission("can_access_admin_area", "Can access admin area", "Can access admin area", "general", "system", 1);
+Permissions::createPermission("can_see_cms_version", "Can see version of CMS system", "Can see version of CMS system", "general", "system", 2);
+Permissions::createPermission("can_edit_own_password", "Can edit own password", "Can edit own password", "general", "system", 3);
+
+//permissions
+Permissions::createPermission("can_see_own_permissions", "Can see own permissions", "User can see his own permissions", "permissions", "system", 1);
+Permissions::createPermission("can_see_permissions", "Can see permissions of other users", "Can see permissions of other users", "permissions", "system", 2);
+Permissions::createPermission("can_edit_group_permissions", "Can edit group permissions", "Can edit group permissions (expect administrator group)", "permissions", "system", 3);
+Permissions::createPermission("can_edit_administrator_group_permissions", "Can edit administrator group permissions", "Can edit administrator group permissions", "permissions", "system", 4);//can edit permissions of group "administrator"
+
+//user permissions
+Permissions::createPermission("can_see_all_users", "Can see all users", "Can see all users and see their information", "users", "system", 1);
+Permissions::createPermission("can_create_user", "Can create new user", "Can create new user", "users", "system", 2);
+Permissions::createPermission("can_edit_user", "Can edit users", "Can edit users", "users", "system", 3);
+Permissions::createPermission("can_edit_user_password", "Can edit password of users", "Can edit password of users (without super-admin with userID 1)", "users", "system", 4);
 
 echo "Create default robots.txt rules...<br />";
 Robots::addRule("DISALLOW", "/system/*");
