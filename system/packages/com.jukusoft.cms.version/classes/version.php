@@ -37,13 +37,18 @@ class Version {
 
 	public function load ($version_path) {
 		//because unserialize is 2 times faster than json_decode, we cache this value
-		if (Cache::contains("version", "version")) {
-			$this->version_data = Cache::get("version", "version");
+		if (Cache::contains("version", "version_" . $version_path)) {
+			$this->version_data = Cache::get("version", "version_" . $version_path);
 		} else {
-			$array = json_decode($version_path);
+			if (!file_exists($version_path)) {
+				echo "Version file doesnt exists: " . $version_path;
+				exit;
+			}
+
+			$array = json_decode($version_path, true);
 
 			//cache
-			Cache::put("version", "version", $array);
+			Cache::put("version", "version_" . $version_path, $array);
 
 			$this->version_data = $array;
 		}
