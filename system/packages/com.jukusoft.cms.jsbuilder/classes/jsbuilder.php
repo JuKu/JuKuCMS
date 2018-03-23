@@ -141,8 +141,6 @@ class JSBuilder {
 	}
 
 	public function existsCache (string $style, string $media = "ALL", string $position = "header") : bool {
-		$position = strtoupper($position);
-
 		return file_exists($this->getCachePath($style, $media, $position));
 	}
 
