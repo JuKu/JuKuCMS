@@ -15,8 +15,8 @@
   -->
 
 <plugin>
-	<name>com.jukusoft.cms.page</name>
-	<title>Page</title>
+	<name>com.jukusoft.cms.permissions</name>
+	<title>Permission System</title>
 	<version>1.0.0</version>
 	<revision>1</revision>
 	<icon>icon_64.png</icon>

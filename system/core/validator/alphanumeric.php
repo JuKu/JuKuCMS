@@ -27,6 +27,8 @@
 
 class Validator_AlphaNumeric implements Validator_Base {
 
+	protected static $instance = null;
+
 	public function isValide ($value): bool {
 		return ctype_alnum($value);
 	}
@@ -37,8 +39,11 @@ class Validator_AlphaNumeric implements Validator_Base {
 	}
 
 	public static function get (string $value) : string {
-		$obj = new Validator_AlphaNumeric();
-		return $obj->validate($value);
+		if (self::$instance == null) {
+			self::$instance = new Validator_AlphaNumeric();
+		}
+
+		return self::$instance->validate($value);
 	}
 
 }

@@ -688,6 +688,38 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table permission_category
+ *
+ * Package: com.jukusoft.cms.permissions
+ */
+
+echo "Create / Upgrade table <b>permission_category</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("permission_category", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addVarchar("category", 255, true);
+$table->addVarchar("title", 255, true);
+$table->addVarchar("area", 255, true, "global");
+$table->addInt("show", 10, true, false, 1);
+$table->addInt("activated", 10, false, false, 1);
+
+//https://www.w3schools.com/colors/colors_picker.asp
+
+//add keys to table
+$table->addPrimaryKey("category");
+$table->addVarchar("area");
+$table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 
@@ -791,6 +823,9 @@ echo "Assign default users to default groups...<br />";
 Groups::addGroupToUser(1, 1, true);
 Groups::addGroupToUser(2, 1, true);
 Groups::addGroupToUser(3, -1);
+
+echo "Create default permission categories...<br />";
+Permissions::createOrUpdateCategory("general", "General");
 
 echo "Create default administrator user if absent...<br />";
 User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrator", 1);

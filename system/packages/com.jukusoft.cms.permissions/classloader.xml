@@ -14,26 +14,6 @@
   ~ limitations under the License.
   -->
 
-<plugin>
-	<name>com.jukusoft.cms.page</name>
-	<title>Page</title>
-	<version>1.0.0</version>
-	<revision>1</revision>
-	<icon>icon_64.png</icon>
-	<packagedepencies>
-		<!-- no dependencies -->
-		<package>com.jukusoft.cms.settings</package>
-	</packagedepencies>
-	<pagelist>
-		<!-- no pages -->
-	</pagelist>
-	<pagetypes>
-		<!-- no page types -->
-	</pagetypes>
-	<permissions>
-		<!-- no added permissions -->
-	</permissions>
-	<menulist>
-		<!-- no menus -->
-	</menulist>
-</plugin>
+<classes>
+	<class>Page</class>
+</classes>
