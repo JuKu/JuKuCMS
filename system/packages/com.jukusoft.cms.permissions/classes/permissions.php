@@ -60,6 +60,43 @@ class Permissions {
 		Cache::clear("permissions", "categories");
 	}
 
+	public static function createPermission (string $token, string $title, string $description, string $category = "general", string $owner = "system", int $order = 100) {
+		//validate values
+		$token = Validator_Token::get($token);
+		$title = Validator_String::get($title);
+		$description = Validator_String::get($description);
+		$category = Validator_Filename::get($category);
+		$owner = Validator_AlphaNumeric::get($owner);
+		$order = intval($order);
+
+		Database::getInstance()->execute("ÌNSERT INTO `{praefix}permissions` (
+			`token`, `title`, `description`, `category`, `owner`, `show`, `order`, `activated`
+		) VALUES (
+			:token, :title, :description, :category, :owner, '1', :order, '1'
+		) ON DUPLICATE KEY UPDATE `title` = :title, `description` = :description, `category` = :category, `owner` = :owner, `order` = :order, `activated` = '1'; ", array(
+			'token' => $token,
+			'title' => $title,
+			'description' => $description,
+			'category' => $category,
+			'owner' => $owner,
+			'order' => $order
+		));
+
+		//clear cache
+		Cache::clear("permissions", "permission_list");
+	}
+
+	public static function deletePermission (string $token) {
+		//validate value
+		$token = Validator_Token::get($token);
+
+		//delete from database
+		Database::getInstance()->execute("DELETE FROM `{praefix}permissions` WHERE `token` = :token; ", array('token' => $token));
+
+		//clear cache
+		Cache::clear("permissions", "permission_list");
+	}
+
 }
 
 ?>
