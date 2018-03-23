@@ -140,8 +140,10 @@ if (DEBUG_MODE) {
 	echo "<!-- userID: " . User::current()->getID() . ", username: " . User::current()->getUsername() . " -->\n";
 	echo "<!-- " . Database::getInstance()->countQueries() . " sql queries executed -->";
 
-	foreach (Database::getInstance()->listQueryHistory() as $query_array) {
-		echo "<!-- query: " . $query_array['query'] . " -->\n";
+	if (DEBUG_SQL_QUERIES) {
+		foreach (Database::getInstance()->listQueryHistory() as $query_array) {
+			echo "<!-- query: " . $query_array['query'] . " -->\n";
+		}
 	}
 }
 
