@@ -60,6 +60,10 @@ class PageType {
 		return $content;
 	}
 
+	public function exitAfterOutput () {
+		return false;
+	}
+
 	public static function reloadCache () {
 		Cache::clear("pagetypes");
 	}

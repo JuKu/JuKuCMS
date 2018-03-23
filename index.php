@@ -124,7 +124,14 @@ if ($page_type->showDesign()) {
 	StyleController::showPage($registry, $page, $page_type);
 } else {
 	//only show content
-	return $page_type->getContent();
+	echo $page_type->getContent();
+
+	if ($page_type->exitAfterOutput()) {
+		//flush gzip cache
+		ob_end_flush();
+
+		exit;
+	}
 }
 
 $end_time = microtime(true);

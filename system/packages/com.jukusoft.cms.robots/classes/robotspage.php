@@ -35,6 +35,11 @@ class RobotsPage extends PageType {
 		return false;
 	}
 
+	public function exitAfterOutput() {
+		//dont add additional text (like HTML comments for benchmarks) at end of this content
+		return true;
+	}
+
 	public function getContent(): string {
 		//load robots.txt entries from database
 		$robots = new Robots();
