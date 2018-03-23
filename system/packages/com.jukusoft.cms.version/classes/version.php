@@ -55,6 +55,13 @@ class Version {
 	}
 
 	public function getVersion () : string {
+		if (!isset($this->version_data['version'])) {
+			var_dump($this->version_data);
+
+			echo "Version not found!";
+			exit;
+		}
+
 		return $this->version_data['version'];
 	}
 
