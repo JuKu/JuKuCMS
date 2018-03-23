@@ -289,7 +289,7 @@ $table->addVarchar("value", 600, true);
 $table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
-$table->addPrimaryKey(array("useragent", "option", "value"));
+$table->addPrimaryKey(array("useragent", "value"));
 $table->addIndex("activated");
 
 //create or upgrade table
