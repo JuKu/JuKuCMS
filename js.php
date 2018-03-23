@@ -160,8 +160,6 @@ $js_builder->load($style, $media, $position);
 //get css output
 echo $js_builder->getBuffer();
 
-//TODO: add code here
-
 //flush gzip cache
 ob_end_flush();
 
