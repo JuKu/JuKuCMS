@@ -736,7 +736,7 @@ $table->setEngine("InnoDB");
 $table->setCharset("utf8");
 
 //fields
-$table->addVarchar("permission", 255, true);
+$table->addVarchar("token", 255, true);
 $table->addVarchar("title", 255, true);
 $table->addVarchar("description", 600, true);
 $table->addVarchar("category", 255, true, "general");
