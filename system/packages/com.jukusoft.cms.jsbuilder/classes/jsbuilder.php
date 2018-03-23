@@ -75,7 +75,14 @@ class JSBuilder {
 		foreach ($js_files as $js_file) {
 			//first check, if file exists
 			if (!file_exists($js_file)) {
-				continue;
+				if (DEBUG_MODE) {
+					echo "Coulnd't found javascript file (style: " . $style_name . "): " . $js_file;
+
+					ob_end_flush();
+					exit;
+				} else {
+					continue;
+				}
 			}
 
 			//add file content to buffer
