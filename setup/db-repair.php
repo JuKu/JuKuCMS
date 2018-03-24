@@ -956,6 +956,12 @@ Permissions::createPermission("can_see_cms_version", "Can see version of CMS sys
 Permissions::createPermission("can_see_global_settings", "Can see global CMS settings", "Can see global CMS settings", "admin", "system", 2);
 Permissions::createPermission("can_edit_global_settings", "Can edit global settings", "Can edit global settings", "admin", "system", 3);
 
+echo "Set default permissions for userID 1...<br />";
+$user_rights = new UserRights(1);
+
+//userID 1 should be super_admin
+$user_rights->setRight("super_admin", 1);
+
 echo "Create default robots.txt rules...<br />";
 Robots::addRule("DISALLOW", "/system/*");
 Robots::addRule("DISALLOW", "/cache/*");
