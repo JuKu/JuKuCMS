@@ -86,7 +86,7 @@ class PermissionChecker {
 
 	public function hasRight (string $token) {
 		//check, if user is super admin
-		if ($this->userID == 1 || (isset($this->permissions["super_admin"]) && $this->permissions["super_admin"] == 1)) {
+		if (/*$this->userID == 1 || */(isset($this->permissions["super_admin"]) && $this->permissions["super_admin"] == 1)) {
 			//super admin has all rights
 			return true;
 		}
