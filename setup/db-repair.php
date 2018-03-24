@@ -955,6 +955,7 @@ Permissions::createPermission("can_delete_all_pages", "Can delete all pages", "C
 Permissions::createPermission("can_see_cms_version", "Can see version of CMS system", "Can see version of CMS system", "admin", "system", 1);
 Permissions::createPermission("can_see_global_settings", "Can see global CMS settings", "Can see global CMS settings", "admin", "system", 2);
 Permissions::createPermission("can_edit_global_settings", "Can edit global settings", "Can edit global settings", "admin", "system", 3);
+Permissions::createPermission("super_admin", "Is super admin and CAN EVERYTHING", "Is super admin and CAN EVERYTHING (overrides all other values!)", "admin", "system", 4);
 
 echo "Set default permissions for userID 1...<br />";
 $user_rights = new UserRights(1);
