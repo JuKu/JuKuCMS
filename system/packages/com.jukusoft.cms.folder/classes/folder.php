@@ -69,6 +69,10 @@ class Folder {
 		return $this->row['folder'];
 	}
 
+	public function listRequiredPermissions () : array {
+		return explode("|", $this->row['permissions']);
+	}
+
 	public function isHidden () : bool {
 		return $this->row['hidden'] == 1;
 	}
@@ -94,17 +98,24 @@ class Folder {
 		return self::getFolderByPage($dir);
 	}
 
-	public static function createFolder ($folder, $hidden = false, $force_template = "none") {
+	public static function createFolder (string $folder, bool $hidden = false, array $permissions = array(), string $force_template = "none") {
 		//escape string
 		$folder = Database::getInstance()->escape($folder);
 
+		$permissions_str = implode("|", $permissions);
+
+		if (sizeof($permissions) == 0) {
+			$permissions_str = "none";
+		}
+
 		Database::getInstance()->execute("INSERT INTO `{praefix}folder` (
-			`folder`, `force_template`, `hidden`, `activated`
+			`folder`, `force_template`, `permissions`, `hidden`, `activated`
 		) VALUES (
-			:folder, :templatename, :hidden, '1'
+			:folder, :templatename, :permissions, :hidden, '1'
 		); ", array(
 			'folder' => $folder,
 			'templatename' => $force_template,
+			'permissions' => $permissions_str,
 			'hidden' => $hidden ? 1 : 0
 		));
 
@@ -112,17 +123,24 @@ class Folder {
 		Cache::clear("folder");
 	}
 
-	public static function createFolderIfAbsent ($folder, $hidden = false, $force_template = "none") {
+	public static function createFolderIfAbsent (string $folder, bool $hidden = false, array $permissions = array(), string $force_template = "none") {
 		//escape string
 		$folder = Database::getInstance()->escape($folder);
 
+		$permissions_str = implode("|", $permissions);
+
+		if (sizeof($permissions) == 0) {
+			$permissions_str = "none";
+		}
+
 		Database::getInstance()->execute("INSERT INTO `{praefix}folder` (
-			`folder`, `force_template`, `hidden`, `activated`
+			`folder`, `force_template`, `permissions`, `hidden`, `activated`
 		) VALUES (
-			:folder, :templatename, :hidden, '1'
-		) ON DUPLICATE KEY UPDATE `hidden` = :hidden, `force_template` = :templatename; ", array(
+			:folder, :templatename, :permissions, :hidden, '1'
+		) ON DUPLICATE KEY UPDATE `hidden` = :hidden, `permissions` = :permissions, `force_template` = :templatename; ", array(
 			'folder' => $folder,
 			'templatename' => $force_template,
+			'permissions' => $permissions_str,
 			'hidden' => $hidden ? 1 : 0
 		));
 

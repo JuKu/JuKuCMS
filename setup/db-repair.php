@@ -313,6 +313,7 @@ $table->setCharset("utf8");
 //add int coloum with length 10, NOT NULL and AUTO_INCREMENT
 $table->addVarchar("folder", 255, true);
 $table->addVarchar("force_template", 255, true, "none");
+$table->addVarchar("permissions", 600, true, "none");
 $table->addInt("hidden", 10, true, false, 0);
 $table->addInt("activated", 10, true, false, 1);
 
@@ -815,7 +816,7 @@ echo "Create folder...<br />";
 
 //create default folders, if absent
 Folder::createFolderIfAbsent("/", false);
-Folder::createFolderIfAbsent("/admin/", true);
+Folder::createFolderIfAbsent("/admin/", true, array("can_access_admin_area"));
 
 echo "Create default (supported) languages...<br />";
 
