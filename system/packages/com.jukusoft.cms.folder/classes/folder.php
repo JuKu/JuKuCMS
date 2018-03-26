@@ -70,6 +70,8 @@ class Folder {
 	}
 
 	public function listRequiredPermissions () : array {
+		var_dump($this->row);
+
 		return explode("|", $this->row['permissions']);
 	}
 
