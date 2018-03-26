@@ -73,6 +73,18 @@ class Folder {
 		return explode("|", $this->row['permissions']);
 	}
 
+	public function checkPermissions (PermissionChecker $permission_checker) : bool {
+		foreach ($this->listRequiredPermissions() as $permission) {
+			if ($permission_checker->hasRight($permission)) {
+				return true;
+			} else if ($permission === "none") {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	public function isHidden () : bool {
 		return $this->row['hidden'] == 1;
 	}

@@ -86,7 +86,18 @@ $registry->storeObject("permission_checker", PermissionChecker::current());
 
 $page = new Page();
 $page->load();
+
+//load folder
+$folder = new Folder($page->getFolder());
+
+//check, if user has folder permissions
+if (!$folder->checkPermissions(PermissionChecker::current())) {
+	//user dont has permissions to access folder
+	$page->load("error403");
+}
+
 $registry->storeObject("page", $page);
+$registry->storeObject("folder", $folder);
 
 //set folder
 $registry->setSetting("folder", $page->getFolder());

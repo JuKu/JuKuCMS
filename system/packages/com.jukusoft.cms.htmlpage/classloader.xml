@@ -17,4 +17,5 @@
 <classes>
 	<class>HTMLPage</class>
 	<class>Error404Page</class>
+	<class>Error403Page</class>
 </classes>
