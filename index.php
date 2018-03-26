@@ -89,6 +89,7 @@ $page->load();
 
 //load folder
 $folder = new Folder($page->getFolder());
+$folder->load($page->getFolder());
 
 //check, if user has folder permissions
 if (!$folder->checkPermissions(PermissionChecker::current())) {
