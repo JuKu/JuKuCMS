@@ -845,6 +845,7 @@ Settings::create("js_cache_strategy", "expires_header", "JS Browser Cache Strate
 Settings::create("js_cache_expires_header_ttl", "31536000", "JS Expires Header Seconds to cache", "Seconds to cache (on client browser). Only used, if cache strategy 'expired_header' is used! Default: 31536000 seconds (1 year)", "system", "general");
 Settings::create("title_praefix", "", "Title Praefix", "Title Praefix", "system", "general");
 Settings::create("title_suffix", "", "Title Suffix", "Title Suffix", "system", "general");
+Settings::create("copyright", "<strong>Copyright &copy; 2018 <a href=\"http://jukusoft.com\">JuKuSoft.com</a></strong>, All Rights Reserved.", "Copyright Notice on page", "Copyright notice on every page", "system", "general");
 
 $main_menuID = -1;
 $local_menuID = -1;
