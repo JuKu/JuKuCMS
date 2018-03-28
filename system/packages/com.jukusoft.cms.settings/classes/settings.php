@@ -62,9 +62,6 @@ class Settings {
 	 * @param $value mixed value to set
 	 */
 	public static function set (string $key, $value) {
-		//escape key
-		$key = Database::getInstance()->escape($key);
-
 		//serialize data
 		$value = serialize($value);
 
