@@ -38,6 +38,9 @@ class Error404Page extends HTMLPage {
 		if (file_exists(STYLE_PATH . $current_style . "/pages/error404.tpl")) {
 			$template = new Template("pages/error404");
 
+			$template->assign("TITLE", $this->getPage()->getTitle());
+			$template->assign("CONTENT", parent::getContent());
+
 			$template->parse("main");
 			return $template->getCode();
 		} else {
