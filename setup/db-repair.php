@@ -24,6 +24,8 @@
 //define root path
 define('ROOT_PATH', dirname(__FILE__) . "/../");
 
+define('INSTALL_SCRIPT', true);
+
 error_reporting(E_ALL);
 
 if (PHP_MAJOR_VERSION < 7) {
@@ -979,5 +981,13 @@ echo "Create default administrator user if absent...<br />";
 User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrator", 1);
 
 echo "<br /><br />Finished DB Upgrade!";
+
+if (file_exists(ROOT_PATH . "setup/add-install.php")) {
+	echo "<br />Call add-install.php...<br />";
+
+	require(ROOT_PATH . "setup/add-install.php");
+
+	echo "<br /><br />Finished additional Upgrade!";
+}
 
 ?>
