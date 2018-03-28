@@ -843,6 +843,8 @@ Settings::create("css_cache_strategy", "expires_header", "CSS Browser Cache Stra
 Settings::create("css_cache_expires_header_ttl", "31536000", "CSS Expires Header Seconds to cache", "Seconds to cache (on client browser). Only used, if cache strategy 'expired_header' is used! Default: 31536000 seconds (1 year)", "system", "general");
 Settings::create("js_cache_strategy", "expires_header", "JS Browser Cache Strategy", "JS Browser Cache Strategy, values: expires_header, etag_header, none", "system", "general");
 Settings::create("js_cache_expires_header_ttl", "31536000", "JS Expires Header Seconds to cache", "Seconds to cache (on client browser). Only used, if cache strategy 'expired_header' is used! Default: 31536000 seconds (1 year)", "system", "general");
+Settings::create("title_praefix", "", "Title Praefix", "Title Praefix", "system", "general");
+Settings::create("title_suffix", "", "Title Suffix", "Title Suffix", "system", "general");
 
 $main_menuID = -1;
 $local_menuID = -1;
