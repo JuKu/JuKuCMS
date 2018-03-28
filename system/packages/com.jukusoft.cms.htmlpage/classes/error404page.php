@@ -32,6 +32,19 @@ class Error404Page extends HTMLPage {
 		header("HTTP/1.0 404 Not Found");
 	}
 
+	public function getContent(): string {
+		//first check, if specific template exists
+		$current_style = Registry::singleton()->getSetting("current_style_name");
+		if (file_exists(STYLE_PATH . $current_style . "/pages/error404.tpl")) {
+			$template = new Template("pages/error404");
+
+			$template->parse("main");
+			return $template->getCode();
+		} else {
+			return parent::getContent();
+		}
+	}
+
 }
 
 ?>
