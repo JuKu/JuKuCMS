@@ -13,7 +13,7 @@
  * @author Fabien Potencier <fabien@symfony.com>
  */
 
-define('TWIG_ROOT', dirname(__FILE__) . "/");
+define('TWIG_ROOT', dirname(__FILE__) . "/lib/");
 
 class Twig_Autoloader
 {
