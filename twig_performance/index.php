@@ -41,25 +41,22 @@ $twig = new Twig_Environment($loader, array(
 
 $twig->addGlobal("charset", "UTF-8");
 $twig->addGlobal("title", "My title");
+$twig->addGlobal("CSS_HASH_ALL", "" . md5("test"));
+$twig->addGlobal("JS_HASH_ALL_HEADER", md5("test"));
+$twig->addGlobal("JS_HASH_ALL_FOOTER", md5("test"));
+$twig->addGlobal("HTML_TEXT", "<b>A bold text</b>");
+$twig->addGlobal("{BASE_URL}", "/twig_performance/");
+$twig->addGlobal("STYLE_PATH", "styles/");
+$twig->addGlobal("USERID", -1);
+$twig->addGlobal("USERNAME", "Guest");
+$twig->addGlobal("LOGOUT_URL", "logout.html");
+$twig->addGlobal("CONTENT", "test content");
+$twig->addGlobal("FOOTER", "FOOTER");
+$twig->addGlobal("COPYRIGHT", "Copyright (c) 2018 JuKuSoft.com");
+$twig->addGlobal("VERSION", "1.0.0");
+$twig->addGlobal("BUILD", "1001");
 
-$template = $twig->load('index.html');
-
-$template->addGlobal("charset", "UTF-8");
-$template->addGlobal("title", "My title");
-$template->addGlobal("CSS_HASH_ALL", "" . md5("test"));
-$template->addGlobal("JS_HASH_ALL_HEADER", md5("test"));
-$template->addGlobal("JS_HASH_ALL_FOOTER", md5("test"));
-$template->addGlobal("HTML_TEXT", "<b>A bold text</b>");
-$template->addGlobal("{BASE_URL}", "/twig_performance/");
-$template->addGlobal("STYLE_PATH", "styles/");
-$template->addGlobal("USERID", -1);
-$template->addGlobal("USERNAME", "Guest");
-$template->addGlobal("LOGOUT_URL", "logout.html");
-$template->addGlobal("CONTENT", "test content");
-$template->addGlobal("FOOTER", "FOOTER");
-$template->addGlobal("COPYRIGHT", "Copyright (c) 2018 JuKuSoft.com");
-$template->addGlobal("VERSION", "1.0.0");
-$template->addGlobal("BUILD", "1001");
+$template = $twig->load('index.twig');
 
 echo $template->render(array(
 	'name' => 'Fabien',
