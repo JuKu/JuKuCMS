@@ -39,8 +39,8 @@ $twig = new Twig_Environment($loader, array(
 	'cache' => false
 ));
 
-$twig->addGlobal("CHARSET", "UTF-8");
-$twig->addGlobal("TITLE", "My title");
+$twig->addGlobal("charset", "UTF-8");
+$twig->addGlobal("title", "My title");
 $twig->addGlobal("CSS_HASH_ALL", "" . md5("test"));
 $twig->addGlobal("JS_HASH_ALL_HEADER", md5("test"));
 $twig->addGlobal("JS_HASH_ALL_FOOTER", md5("test"));
