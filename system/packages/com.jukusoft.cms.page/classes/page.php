@@ -230,6 +230,20 @@ class Page {
 		return $page;
 	}
 
+	public static function setPageType (string $alias, string $page_type) {
+		Events::throwEvent("set_pagetype", array(
+			'alias' => &$alias,
+			'page_type' => &$page_type
+		));
+
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `page_type` = :page_type WHERE `alias` = :alias; ", array(
+			'alias' => $alias,
+			'page_type' => $page_type
+		));
+
+		Cache::clear("pages");
+	}
+
 }
 
 ?>
