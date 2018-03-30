@@ -56,7 +56,7 @@ $twig->addGlobal("COPYRIGHT", "Copyright (c) 2018 JuKuSoft.com");
 $twig->addGlobal("VERSION", "1.0.0");
 $twig->addGlobal("BUILD", "1001");
 
-echo $twig->render('index.tpl', array('name' => 'Fabien'));
+echo $twig->render('index.html', array('name' => 'Fabien'));
 
 $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
