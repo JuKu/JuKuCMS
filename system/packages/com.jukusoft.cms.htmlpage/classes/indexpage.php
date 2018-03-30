@@ -43,6 +43,10 @@ class IndexPage extends HTMLPage {
 		}
 	}
 
+	public function showFooter(): bool {
+		return false;
+	}
+
 	protected function getHTML () : string {
 		$content = $this->getPage()->getContent();
 

@@ -111,6 +111,10 @@ class StyleController {
 			'template' => &$template
 		));
 
+		if ($page_type->showFooter()) {
+			$template->parse("main.footer");
+		}
+
 		$template->parse();
 
 		echo $template->getCode();

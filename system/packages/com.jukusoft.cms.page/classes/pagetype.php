@@ -48,6 +48,10 @@ class PageType {
 		//
 	}
 
+	public function showFooter () : bool {
+		return true;
+	}
+
 	public function getContent () : string {
 		$content = $this->getPage()->getContent();
 
