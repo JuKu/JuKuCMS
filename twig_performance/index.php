@@ -25,6 +25,9 @@
 
 $start_time = microtime(true);
 
+//define root path
+define('ROOT_PATH', dirname(__FILE__) . "/../");
+
 //require twig autoloader
 require("../system/packages/com.jukusoft.cms.twig/twig/test_autoloader.php");
 

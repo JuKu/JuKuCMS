@@ -32,10 +32,10 @@ class Twig_Autoloader
 		if (0 !== strpos($class, 'Twig')) {
 			return;
 		}
-		if (is_file($file = dirname(__FILE__).'/../'.str_replace(array('_', "\0"), array('/', ''), $class).'.php')) {
+		if (is_file($file = ROOT_PATH . str_replace(array('_', "\0"), array('/', ''), $class).'.php')) {
 			require $file;
 		} else {
-			echo "Cannot load twig class: " . $class . ", expected path: " . dirname(__FILE__).'/../'.str_replace(array('_', "\0"), array('/', ''), $class).'.php' . " .";
+			echo "Cannot load twig class: " . $class . ", expected path: " . ROOT_PATH  . str_replace(array('_', "\0"), array('/', ''), $class).'.php' . " .";
 		}
 	}
 }
