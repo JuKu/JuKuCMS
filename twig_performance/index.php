@@ -26,9 +26,9 @@
 $start_time = microtime(true);
 
 //require twig autoloader
-require("system/packages/com.jukusoft.cms.twig/twig/test_autoloader.php");
+require("../system/packages/com.jukusoft.cms.twig/twig/test_autoloader.php");
 
-$loader = new Twig_Loader_Filesystem(dirname(__FILE__) . "/twig_performance/");
+$loader = new Twig_Loader_Filesystem(dirname(__FILE__) . "/");
 $twig = new Twig_Environment($loader, array(
 	'cache' => false
 ));
