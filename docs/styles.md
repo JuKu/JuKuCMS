@@ -5,7 +5,7 @@ Templates are written in **XTPL Template Engine** ~~or with **[Twig 2.0](https:/
 \
 **NOTICE**:\
 Twig is not longer supported, because of its bad performance - compared to XTemplate.\
-You can find a benchmark in directory [/twig_performance/](../twig_performance).\
+You can find a benchmark in directory [twig_performance](https://github.com/JuKu/JuKuCMS/tree/master/twig_performance).\
 We have used a simple template file with 14 variables.\
 \
 **Benchmark Results**:
