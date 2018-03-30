@@ -13,7 +13,7 @@ We have used a simple template file with 14 variables.\
 |         | Twig           | XTemplate  |
 | --------- |:-------------:| :-----:|
 | Without cache      | 32ms | 0.0000011920928955078ms (1.1920928955078E-6 seconds)  |
-| With cache      | 10ms      |   0.00095367431640625 (9.5367431640625E-7 seconds) |
+| With cache      | 10ms      |   0.00095367431640625ms (9.5367431640625E-7 seconds) |
 
 **Conclusion**:\
 **XTemplate is 10.485x times faster than Twig**!
