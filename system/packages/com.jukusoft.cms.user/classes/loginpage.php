@@ -28,7 +28,7 @@
 class LoginPage extends PageType {
 
 	public function getContent() : string {
-		$show_form = true;
+		$show_form = !User::current()->isLoggedIn();
 
 		$template = new Template("pages/login", Registry::singleton());
 
