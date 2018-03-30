@@ -3,6 +3,7 @@
 ## General
 
   - [Robots.txt](robots.md)
+  - [Maintenance Mode](maintenance.md)
 
 ## Installation
 
