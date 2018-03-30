@@ -20,4 +20,8 @@
     {FILE "styles/default/pages/login_form.tpl"}
 <!-- END: form -->
 
+<!-- BEGIN: already_logged_in -->
+<p style="border: 1px solid green; background: yellowgreen; color:green; padding: 5px; ">You are already logged in! (Username: {USERNAME})</p>
+<!-- END: already_logged_in -->
+
 <!-- END: main -->
