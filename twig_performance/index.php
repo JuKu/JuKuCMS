@@ -23,6 +23,21 @@
  * @link https://twig.symfony.com/
  */
 
+$start_time = microtime(true);
 
+//require twig autoloader
+require("system/packages/com.jukusoft.cms.twig/twig/test_autoloader.php");
+
+$loader = new Twig_Loader_Filesystem(dirname(__FILE__) . "/twig_performance/");
+$twig = new Twig_Environment($loader, array(
+	'cache' => false
+));
+
+echo $twig->render('index.html', array('name' => 'Fabien'));
+
+$end_time = microtime(true);
+$exec_time = $end_time - $start_time;
+
+echo "<!-- Execution time: " . $exec_time . " seconds -->";
 
 ?>
