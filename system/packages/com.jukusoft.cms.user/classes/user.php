@@ -143,11 +143,6 @@ class User {
 	}
 
 	public function loginByUsername (string $username, string $password) : array {
-		$res = array(
-			'success' => false,
-			'erorr' => "No error"
-		);
-
 		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `username` = :username AND `activated` = '1'; ", array(
 			'username' => &$username
 		));
@@ -156,18 +151,13 @@ class User {
 	}
 
 	public function loginByMail (string $mail, string $password) : array {
-		$res = array(
-			'success' => false,
-			'erorr' => "No error"
-		);
-
 		//check, if mail is valide
 		$validator = new Validator_Mail();
 
 		if (!$validator->isValide($mail)) {
 			return array(
 				'success' => false,
-				'erorr' => "mail_not_valide"
+				'error' => "mail_not_valide"
 			);
 		}
 
