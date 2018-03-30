@@ -121,6 +121,11 @@ class LoginPage extends PageType {
 
 		if ($show_form) {//show form
 			$template->parse("main.form");
+		} else if (User::current()->isLoggedIn()) {
+			$template->assign("USERID", User::current()->getID());
+			$template->assign("USERNAME", User::current()->getUsername());
+
+			$template->parse("main.already_logged_in");
 		}
 
 		//get HTML code
