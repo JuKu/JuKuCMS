@@ -35,8 +35,8 @@ define('ROOT_PATH', dirname(__FILE__) . "/../");
 require(ROOT_PATH . "system/packages/com.jukusoft.cms.xtpl/xtpl/xtemplate.class.php");
 require(ROOT_PATH . "system/packages/com.jukusoft.cms.xtpl/xtpl/caching_xtemplate.class.php");
 
-if (!file_exists(ROOT_PATH . "/twig/performance/cache/")) {
-	mkdir(ROOT_PATH . "/twig/performance/cache/");
+if (!file_exists(ROOT_PATH . "/twig_performance/cache/")) {
+	mkdir(ROOT_PATH . "/twig_performance/cache/");
 }
 
 $template = new CachingXTemplate(dirname(__FILLE__) . "/index.tpl");

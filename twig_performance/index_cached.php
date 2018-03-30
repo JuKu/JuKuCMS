@@ -34,8 +34,8 @@ require("../system/packages/com.jukusoft.cms.twig/twig/test_autoloader.php");
 //register autoloader
 Twig_Autoloader::register();
 
-if (!file_exists(ROOT_PATH . "/twig/performance/cache/")) {
-	mkdir(ROOT_PATH . "/twig/performance/cache/");
+if (!file_exists(ROOT_PATH . "/twig_performance/cache/")) {
+	mkdir(ROOT_PATH . "/twig_performance/cache/");
 }
 
 $loader = new Twig_Loader_Filesystem(dirname(__FILE__) . "/");
