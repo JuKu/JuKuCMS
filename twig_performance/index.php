@@ -61,7 +61,11 @@ $template->addGlobal("COPYRIGHT", "Copyright (c) 2018 JuKuSoft.com");
 $template->addGlobal("VERSION", "1.0.0");
 $template->addGlobal("BUILD", "1001");
 
-echo $template->render(array('name' => 'Fabien'));
+echo $template->render(array(
+	'name' => 'Fabien',
+	'title' => "My title",
+	'charset' => "UTF-8"
+));
 
 $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
