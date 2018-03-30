@@ -152,6 +152,33 @@ class User {
 			'username' => &$username
 		));
 
+		return $this->loginRow($row, $password);
+	}
+
+	public function loginByMail (string $mail, string $password) : array {
+		$res = array(
+			'success' => false,
+			'erorr' => "No error"
+		);
+
+		//check, if mail is valide
+		$validator = new Validator_Mail();
+
+		if (!$validator->isValide($mail)) {
+			return array(
+				'success' => false,
+				'erorr' => "mail_not_valide"
+			);
+		}
+
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `mail` = :mail AND `activated` = '1'; ", array(
+			'mail' => &$mail
+		));
+
+		return $this->loginRow($row, $password);
+	}
+
+	protected function loginRow ($row, string $password) : array {
 		if (!$row) {
 			//user doesnt exists
 			$res['success'] = false;
