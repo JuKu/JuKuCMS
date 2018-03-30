@@ -847,6 +847,10 @@ Settings::create("title_praefix", "", "Title Praefix", "Title Praefix", "system"
 Settings::create("title_suffix", "", "Title Suffix", "Title Suffix", "system", "general");
 Settings::create("copyright", "<strong>Copyright &copy; 2018 <a href=\"http://jukusoft.com\">JuKuSoft.com</a></strong>, All Rights Reserved.", "Copyright Notice on page", "Copyright notice on every page", "system", "general");
 
+//maintenance mode
+Settings::create("maintenance_mode_enabled", false, "Maintenance Mode enabled (boolean)", "Maintenance Mode enabled (boolean), Default: false", "system", "general");
+Settings::create("maintenance_text", "This domain is currently under scheduled maintenance mode. Sorry for the inconvenience! Look in a few minutes over again!", "Maintenance Text", "Text which is shown, if maintenance mode is enabled", "system", "general");
+
 $main_menuID = -1;
 $local_menuID = -1;
 $admin_menuID = -1;

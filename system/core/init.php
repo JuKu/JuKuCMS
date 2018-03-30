@@ -75,4 +75,22 @@ Security::check();
 
 Events::throwEvent("init_security");
 
+//check for maintenance mode
+if (Settings::get("maintenance_mode_enabled", false) == true) {
+	$html = Settings::get("maintenance_text", "Maintenance mode enabled!");
+
+	//throw event
+	Events::throwEvent("maintenance_html", array(
+		'html' => &$html
+	));
+
+	if (file_exists(ROOT_PATH . "maintenance.html")) {
+		echo file_get_contents(ROOT_PATH . "maintenance.html");
+	} else if (file_exists(ROOT_PATH . "setup/maintenance.html")) {
+		echo file_get_contents(ROOT_PATH . "setup/maintenance.html");
+	} else {
+		echo $html;
+	}
+}
+
 ?>
