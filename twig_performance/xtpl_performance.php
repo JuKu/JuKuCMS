@@ -34,7 +34,7 @@ define('ROOT_PATH', dirname(__FILE__) . "/../");
 
 require(ROOT_PATH . "system/packages/com.jukusoft.cms.xtpl/xtpl/xtemplate.class.php");
 
-$template = new XTemplate($file);
+$template = new XTemplate(dirname(__FILLE__) . "/index.tpl");
 
 $template->assign("CHARSET", "UTF-8");
 $template->assign("TITLE", "My title");
