@@ -12,6 +12,9 @@
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
+
+define('TWIG_ROOT', dirname(__FILE__) . "/");
+
 class Twig_Autoloader
 {
 	/**
@@ -32,10 +35,10 @@ class Twig_Autoloader
 		if (0 !== strpos($class, 'Twig')) {
 			return;
 		}
-		if (is_file($file = ROOT_PATH . str_replace(array('_', "\0"), array('/', ''), $class).'.php')) {
+		if (is_file($file = TWIG_ROOT . str_replace(array('_', "\0"), array('/', ''), $class).'.php')) {
 			require $file;
 		} else {
-			echo "Cannot load twig class: " . $class . ", expected path: " . ROOT_PATH  . str_replace(array('_', "\0"), array('/', ''), $class).'.php' . " .";
+			echo "Cannot load twig class: " . $class . ", expected path: " . TWIG_ROOT  . str_replace(array('_', "\0"), array('/', ''), $class).'.php' . " .";
 		}
 	}
 }
