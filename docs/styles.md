@@ -1,7 +1,22 @@
 # Styles
 
 Styles are the templates, including CSS and JS.\
-Templates are written in **XTPL Template Engine** or with **[Twig 2.0](https://twig.symfony.com/doc/2.x/templates.html)**.
+Templates are written in **XTPL Template Engine** ~~or with **[Twig 2.0](https://twig.symfony.com/doc/2.x/templates.html)**~~.\
+\
+**NOTICE**:\
+Twig is not longer supported, because of its bad performance - compared to XTemplate.\
+You can find a benchmark in directory [/twig_performance/](../twig_performance).\
+We have used a simple template file with 14 variables.\
+\
+**Benchmark Results**:
+
+|         | Twig           | XTemplate  |
+| --------- |:-------------:| :-----:|
+| Without cache      | 32ms | 0.0000011920928955078ms (1.1920928955078E-6 seconds)  |
+| With cache      | 10ms      |   0.00095367431640625 (9.5367431640625E-7 seconds) |
+
+**Conclusion**:\
+**XTemplate is 10.485x times faster than Twig**!
 
 ## style.json
 
