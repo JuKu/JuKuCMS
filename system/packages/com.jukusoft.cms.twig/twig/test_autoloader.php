@@ -34,6 +34,8 @@ class Twig_Autoloader
 		}
 		if (is_file($file = dirname(__FILE__).'/'.str_replace(array('_', "\0"), array('/', ''), $class).'.php')) {
 			require $file;
+		} else {
+			echo "Cannot load twig class: " . $class . ", expected path: " . dirname(__FILE__).'/'.str_replace(array('_', "\0"), array('/', ''), $class).'.php' . " .";
 		}
 	}
 }
