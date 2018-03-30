@@ -36,6 +36,7 @@ class LoginPage extends PageType {
 			//try to login
 
 			$username_set = false;
+			$mail_set = false;
 			$password_set = false;
 
 			if (isset($_POST['username']) && !empty($_POST['username'])) {
@@ -44,13 +45,19 @@ class LoginPage extends PageType {
 				$template->parse("main.no_username");
 			}
 
+			if (isset($_POST['mail']) && !empty($_POST['mail'])) {
+				$mail_set = true;
+			} else {
+				$template->parse("main.no_mail");
+			}
+
 			if (isset($_POST['password']) && !empty($_POST['password'])) {
 				$password_set = true;
 			} else {
 				$template->parse("main.no_password");
 			}
 
-			if ($username_set && $password_set) {
+			if (($username_set || $mail_set) && $password_set) {
 				//check CSRF token
 				if (Security::checkCSRFToken()) {
 					//check, if user is already logged in
@@ -63,7 +70,12 @@ class LoginPage extends PageType {
 					} else {
 						//try to login
 						$user = User::current();
-						$res = $user->loginByUsername($_REQUEST['username'], $_REQUEST['password']);
+
+						if ($username_set) {
+							$res = $user->loginByUsername($_REQUEST['username'], $_REQUEST['password']);
+						} else {
+							$res = $user->loginByMail($_REQUEST['mail'], $_REQUEST['password']);
+						}
 
 						if ($res['success'] === true) {
 							//login successful, show redirect
