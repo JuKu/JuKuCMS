@@ -118,6 +118,9 @@ class LoginPage extends PageType {
 							} else if ($res['error'] === "wrong_password") {
 								$template->assign("ERROR_TEXT", "Wrong password!");
 								$template->parse("main.error_msg");
+							} else if ($res['error'] === "mail_not_valide") {
+								$template->assign("ERROR_TEXT", "Mail is not valide!");
+								$template->parse("main.error_msg");
 							} else {
 								$template->assign("ERROR_TEXT", "Unknown error message: " . $res['error']);
 								$template->parse("main.error_msg");
