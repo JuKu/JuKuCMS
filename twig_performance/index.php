@@ -39,6 +39,9 @@ $twig = new Twig_Environment($loader, array(
 	'cache' => false
 ));
 
+$twig->addGlobal("charset", "UTF-8");
+$twig->addGlobal("title", "My title");
+
 $template = $twig->load('index.html');
 
 $template->addGlobal("charset", "UTF-8");
