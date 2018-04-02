@@ -215,9 +215,15 @@ class Menu {
 	}
 
 	public static function deleteMenuName (int $menuID) {
-		throw new Exception("method deleteMenuName() isnt implemented yet.");
+		Database::getInstance()->execute("DELETE FROM `{praefix}menu_names` WHERE `menuID` = :menuID; ", array(
+			'menuID' => array(
+				'type' => PDO::PARAM_INT,
+				'value' => $menuID
+			)
+		));
 
-		//TODO: add code here
+		//clear cache
+		Cache::clear("menus", "menuID_" . $menuID);
 	}
 
 	public static function createMenu (int $id, int $menuID, string $title, string $url, int $parent = -1, $type = "page", $permissions = array("all"), $login_required = false, string $icon = "none", int $order = 100, string $owner = "user") {
