@@ -8,6 +8,7 @@ Open Source CMS should be the fastest CMS world wide (WIP).\
 [![Latest Stable Version](https://poser.pugx.org/com.jukusoft/jukucms/version)](https://packagist.org/packages/com.jukusoft/jukucms)
 [![Latest Unstable Version](https://poser.pugx.org/com.jukusoft/jukucms/v/unstable)](//packagist.org/packages/com.jukusoft/jukucms)
 [![License](https://poser.pugx.org/com.jukusoft/jukucms/license)](https://packagist.org/packages/com.jukusoft/jukucms)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JuKu/JuKuCMS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/JuKu/JuKuCMS/?branch=master)
 
 ## Name suggestions
 
