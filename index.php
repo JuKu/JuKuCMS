@@ -108,6 +108,31 @@ $page_type->setPage($page);
 if (!$page_type->checkPermissions(PermissionChecker::current())) {
 	//user dont has custom permissions to access page
 	$page->load("error403");
+
+	//create page type
+	$page_type = PageLoader::loadInstance($page->getPageType());
+	$page_type->setPage($page);
+}
+
+//check page rights
+$page_rights = new PageRights($page);
+$page_rights->load();
+
+$page_permission = "see";
+
+//check, if page is not published
+if (!$page->isPublished()) {
+	//another permission is required, because page is not published yet
+	$page_permission = "see_draft";
+}
+
+if (!$page_rights->checkRights($user->getID(), $groups->listGroupIDs(), $page_permission)) {
+	//user dont has custom permissions to access page
+	$page->load("error403");
+
+	//create page type
+	$page_type = PageLoader::loadInstance($page->getPageType());
+	$page_type->setPage($page);
 }
 
 $registry->storeObject("page", $page);

@@ -143,6 +143,10 @@ class Page {
 		return explode("|", $this->row['can_see_permissions']);
 	}
 
+	public function isPublished () : bool {
+		return $this->row['published'] == 1;
+	}
+
 	public function activate (bool $bool = true) {
 		$this->row['activated'] = $bool;
 	}
