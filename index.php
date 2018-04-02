@@ -155,7 +155,7 @@ $registry->storeObject("main_menu", $menu);
 
 //get (global) main menu
 $localMenuID = (int) ($page->getLocalMenuID() != -1) ? $page->getLocalMenuID() : ($folder->hasCustomLocalMenu() ? $folder->getLocalMenu() : Settings::get("local_menuID"));
-$localMenu = new Menu($menuID, "local_menu");
+$localMenu = new Menu($menuID, "localmenu");
 $localMenu->loadMenu();
 $registry->storeObject("local_menu", $localMenu);
 
