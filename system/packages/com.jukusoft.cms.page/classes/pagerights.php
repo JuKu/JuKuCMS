@@ -170,7 +170,7 @@ class PageRights {
 			`groupID`, `pageID`, `token`, `value`
 		) VALUES 
 			" . $line_str . "
-		");
+		ON DUPLICATE KEY UPDATE `value` = '1'; ");
 
 		//clear cache
 		Cache::clear("page_rights", "page_" . $pageID);
