@@ -100,9 +100,9 @@ class Menu {
 			$entry['icon'] = $row['icon'];
 
 			if ($row['type'] == "page") {
-				$href = Domain::getUrl($row['url']);
+				$href = DomainUtils::generateURL($row['url']);
 			} else if ($row['type'] == "link") {
-				$href = Domain::getUrl($row['url']);
+				$href = DomainUtils::generateURL($row['url']);
 			} else if ($row['type'] == "external_link") {
 				$href = $row['url'];
 			} else if ($row['type'] == "js_link") {
