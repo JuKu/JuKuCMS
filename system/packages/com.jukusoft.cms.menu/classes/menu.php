@@ -225,7 +225,7 @@ class Menu {
 		Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
 			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `order`, `owner`, `activated`
 		) VALUES (
-			:id, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :order, :owner, '1'
+			:id, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :menu_order, :owner, '1'
 		) ON DUPLICATE KEY UPDATE `permissions` = :permissions, `login_required` = :login_required, `activated` = '1'; ", array(
 			'id' => $id,
 			'menuID' => $menuID,
@@ -236,7 +236,7 @@ class Menu {
 			'permissions' => $permissions,
 			'login_required' => ($login_required ? 1 : 0),
 			'parent' => $parent,
-			'order' => $order,
+			'menu_order' => $order,
 			`owner` => $owner
 		));
 
