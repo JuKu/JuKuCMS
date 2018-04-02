@@ -224,13 +224,13 @@ class Menu {
 		Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
 			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `order`, `owner`, `activated`
 		) VALUES (
-			:id, :menuID, :title, :url, :type, :icon, :permissions, :login_required, :parent, :order, :owner, '1'
+			:id, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :order, :owner, '1'
 		) ON DUPLICATE KEY UPDATE `permissions` = :permissions, `login_required` = :login_required, `activated` = '1'; ", array(
 			'id' => $id,
 			'menuID' => $menuID,
 			'title' => $title,
 			'url' => $url,
-			'type' => $type,
+			'url_type' => $type,
 			'icon' => $icon,
 			'permissions' => $permissions,
 			'login_required' => ($login_required ? 1 : 0),
