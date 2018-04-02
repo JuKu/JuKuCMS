@@ -90,7 +90,7 @@ class Settings {
 		self::loadSettingsIfAbsent();
 
 		//escape key
-		$key = Database::getInstance()->escape($key);
+		//$key = Database::getInstance()->escape($key);
 
 		return isset(self::$settings[$key]);
 	}
