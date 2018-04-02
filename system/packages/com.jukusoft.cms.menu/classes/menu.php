@@ -225,7 +225,7 @@ class Menu {
 			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `order`, `owner`, `activated`
 		) VALUES (
 			:id, :menuID, :title, :url, :type, :icon, :permissions, :login_required, :parent, :order, :owner, '1'
-		) ON DUPLICATE KEY UPDATE `activated` = '1'; ", array(
+		) ON DUPLICATE KEY UPDATE `permissions` = :permissions, `login_required` = :login_required, `activated` = '1'; ", array(
 			'id' => $id,
 			'menuID' => $menuID,
 			'title' => $title,
