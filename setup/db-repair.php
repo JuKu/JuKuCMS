@@ -923,7 +923,7 @@ if (!Settings::contains("main_menuID")) {
 	$main_menuID = Menu::createMenuName("Main Menu");
 
 	//set setting
-	Settings::create("main_menuID", $admin_menuID, "Main MenuID", "id of main menu (in menu area)", "system", "general", "none", "none", 1);
+	Settings::create("main_menuID", $main_menuID, "Main MenuID", "id of main menu (in menu area)", "system", "general", "none", "none", 1);
 } else {
 	$main_menuID = Settings::get("main_menuID");
 }
@@ -945,7 +945,7 @@ if (!Settings::contains("local_menuID")) {
 	$local_menuID = Menu::createMenuName("Default Local Menu");
 
 	//set setting
-	Settings::create("local_menuID", $admin_menuID, "Default Local MenuID", "id of default local menu (in menu area)", "system", "general", "none", "none", 1);
+	Settings::create("local_menuID", $local_menuID, "Default Local MenuID", "id of default local menu (in menu area)", "system", "general", "none", "none", 1);
 } else {
 	$local_menuID = Settings::get("local_menuID");
 }
