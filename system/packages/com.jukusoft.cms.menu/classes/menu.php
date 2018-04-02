@@ -98,6 +98,8 @@ class Menu {
 			$entry['title'] = $row['title'];
 			$entry['text'] = $row['title'];
 			$entry['icon'] = $row['icon'];
+			$entry['icon_class'] = " " . $row['icon'];
+			$entry['permissions'] = explode("|", $row['permissions']);
 
 			if ($row['type'] == "page") {
 				$href = DomainUtils::generateURL($row['url']);
@@ -134,7 +136,7 @@ class Menu {
 	public function getCode () : string {
 		$template = new Template($this->template);
 
-		//TODO: add code here
+		$this->parseMenu($this->menus, $template);
 
 		//parse main block
 		$template->parse("main");
@@ -148,6 +150,23 @@ class Menu {
 		));
 
 		return $html;
+	}
+
+	protected function parseMenu (array $menu_array, Template &$template) {
+		foreach ($menu_array as $menu) {
+			//check, if menu has sub menus
+			if (sizeof($menu['submenus']) > 0) {
+				//TODO: add code here
+			} else {
+				//menu doesnt have sub menus
+
+				foreach ($menu as $key=>$value) {
+					$template->assign(strtoupper($key), $value);
+				}
+
+				$template->parse("menu");
+			}
+		}
 	}
 
 	protected static function loadMenuID (int $menuID) {
