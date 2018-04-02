@@ -213,16 +213,20 @@ class Menu {
 		}
 
 		//validate values
-		/*$id = Validator_Int::get($id);
+		$id = Validator_Int::get($id);
 		$menuID = Validator_Int::get($menuID);
 		$title = Validator_String::get($title);
 		$parent = Validator_Int::get($parent);
 		$type = Validator_String::get($type);
-		$login_required = (bool) $login_required;*/
+		$login_required = (bool) $login_required;
 
 		$permissions = implode("|", $permissions);
 
-		$params = array(
+		Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
+			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `order`, `owner`, `activated`
+		) VALUES (
+			:id, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :menu_order, :owner, '1'
+		) ON DUPLICATE KEY UPDATE `permissions` = :permissions, `login_required` = :login_required, `activated` = '1'; ", array(
 			'id' => $id,
 			'menuID' => $menuID,
 			'title' => $title,
@@ -233,19 +237,8 @@ class Menu {
 			'login_required' => ($login_required ? 1 : 0),
 			'parent' => $parent,
 			'menu_order' => $order,
-			`owner` => $owner
-		);
-
-		echo "size of params: " . sizeof($params);
-
-		print_r($params);
-		echo "<br />";
-
-		Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
-			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `order`, `owner`, `activated`
-		) VALUES (
-			:id, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :menu_order, :owner, '1'
-		) ON DUPLICATE KEY UPDATE `permissions` = :permissions, `login_required` = :login_required, `activated` = '1'; ", $params);
+			'owner' => $owner
+		));
 
 		//clear cache
 		Cache::clear("menus", "menuID_" . $menuID);
