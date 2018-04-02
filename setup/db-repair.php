@@ -882,10 +882,6 @@ Domain::createWildcardDomain();
 
 echo "Create folder...<br />";
 
-//create default folders, if absent
-Folder::createFolderIfAbsent("/", false);
-Folder::createFolderIfAbsent("/admin/", true, array("can_access_admin_area"));
-
 echo "Create default (supported) languages...<br />";
 
 //add supported languages
@@ -953,6 +949,10 @@ if (!Settings::contains("local_menuID")) {
 } else {
 	$local_menuID = Settings::get("local_menuID");
 }
+
+//create default folders, if absent
+Folder::createFolderIfAbsent("/", false);
+Folder::createFolderIfAbsent("/admin/", true, array("can_access_admin_area"), $admin_menuID, -1);
 
 echo "Create default menu if absent...<br />";
 
