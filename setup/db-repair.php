@@ -447,6 +447,7 @@ $table->setCharset("utf8");
 //fields
 $table->addVarchar("page_type", 255, true);
 $table->addVarchar("title", 255, true);
+$table->addVarchar("create_permissions", 255, true, "none");//list with permissions (OR), one of this permissions is required to create pages with this page type
 $table->addInt("advanced", 10, true, false, 0);//flag, if page type is only shown in expert (advanced) mode
 $table->addInt("activated", 10, true, false, 1);
 
