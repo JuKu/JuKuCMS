@@ -64,6 +64,8 @@ class Menu {
 		if (Cache::contains("menus", "menu_" . $menuID)) {
 			$this->menus = Cache::get("menus", "menu_" . $menuID);
 		} else {
+			self::loadMenuID($menuID);
+
 			$menu_cache = self::$menuID_array[$menuID];
 
 			//get menu by parent -y, this means root menu
