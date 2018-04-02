@@ -206,14 +206,13 @@ class Page {
 			'insertID' => $insertID
 		));
 
-		if ($insertID != 0) {
-			$pageID = Page::getPageIDByAlias($alias);
+		//get pageID by alias
+		$pageID = Page::getPageIDByAlias($alias);
 
-			//set default rights, allow page for administrators, registered users, guests and bots
-			PageRights::setDefaultAllowedGroups($pageID, array(1, 2, 3, 4));
-		}
+		//set default rights, allow page for administrators, registered users, guests and bots
+		PageRights::setDefaultAllowedGroups($pageID, array(1, 2, 3, 4));
 
-		return $insertID;
+		return $pageID;
 	}
 
 	public static function delete (string $alias) {
