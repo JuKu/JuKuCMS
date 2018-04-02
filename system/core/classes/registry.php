@@ -61,6 +61,8 @@ class Registry {
 
 		if (is_object(self::$objects[$key])) {
 			return self::$objects[$key];
+		} else {
+			throw new IllegalStateException("key '" . $key.  "' isnt an object.");
 		}
 	}
 
