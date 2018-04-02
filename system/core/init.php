@@ -93,4 +93,19 @@ if (Settings::get("maintenance_mode_enabled", false) == true) {
 	}
 }
 
+/*set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) {
+	// error was suppressed with the @-operator
+	if (0 === error_reporting()) {
+		return false;
+	}
+
+	throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+});
+
+function warning_handler($errno, $errstr) {
+// do something
+}
+
+set_error_handler("warning_handler", E_WARNING);*/
+
 ?>
