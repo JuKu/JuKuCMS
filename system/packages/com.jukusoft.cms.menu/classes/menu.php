@@ -213,13 +213,13 @@ class Menu {
 		}
 
 		//validate values
-		$id = Validator_Int::get($id);
+		/*$id = Validator_Int::get($id);
 		$menuID = Validator_Int::get($menuID);
 		$title = Validator_String::get($title);
 		$parent = Validator_Int::get($parent);
 		$type = Validator_String::get($type);
 		$permissions = implode("|", $permissions);
-		$login_required = (bool) $login_required;
+		$login_required = (bool) $login_required;*/
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
 			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `order`, `owner`, `activated`
