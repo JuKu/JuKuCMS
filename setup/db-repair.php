@@ -839,7 +839,7 @@ $table->addVarchar("permission", 255, true);
 $table->addInt("value", 10, true, false);
 
 //add keys to table
-$table->addPrimaryKey(array("groupID", "pageID"));
+$table->addPrimaryKey(array("userID", "pageID", "token"));
 
 //create or upgrade table
 $table->upgrade();
@@ -862,11 +862,11 @@ $table->setCharset("utf8");
 //fields
 $table->addInt("userIDID", 10, true, false);
 $table->addInt("pageID", 10, true, false);
-$table->addVarchar("permission", 255, true);
+$table->addVarchar("token", 255, true);
 $table->addInt("value", 10, true, false);
 
 //add keys to table
-$table->addPrimaryKey(array("userID", "pageID"));
+$table->addPrimaryKey(array("userID", "pageID", "token"));
 
 //create or upgrade table
 $table->upgrade();
