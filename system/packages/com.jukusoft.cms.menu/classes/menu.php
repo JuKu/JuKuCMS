@@ -172,7 +172,7 @@ class Menu {
 		));
 
 		if ($unique_name == null) {
-			$unique_name = md5(time());
+			$unique_name = md5(PHPUtils::randomString(100));
 		}
 
 		$unique_name = Validator_String::get($unique_name);
