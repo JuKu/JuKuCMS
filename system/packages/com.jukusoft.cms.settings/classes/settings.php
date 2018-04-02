@@ -86,6 +86,9 @@ class Settings {
 	 * @return true if setting key exists
 	 */
 	public static function contains (string $key) : bool {
+		//load settings if neccessary
+		self::loadSettingsIfAbsent();
+
 		//escape key
 		$key = Database::getInstance()->escape($key);
 
