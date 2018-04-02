@@ -835,7 +835,7 @@ $table->setCharset("utf8");
 //fields
 $table->addInt("groupID", 10, true, false);
 $table->addInt("pageID", 10, true, false);
-$table->addVarchar("permission", 255, true);
+$table->addVarchar("token", 255, true);
 $table->addInt("value", 10, true, false);
 
 //add keys to table
