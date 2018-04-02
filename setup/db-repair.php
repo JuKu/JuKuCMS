@@ -958,7 +958,7 @@ echo "Create default menu if absent...<br />";
 
 //create menus if absent
 Menu::createMenu(1, $main_menuID, "Home", "home", -1, "page", "all", false, "none", 1, "user");
-Menu::createMenu(2, $admin_menuID, "Dashboard", "admin/home", -1, "page", array("can_access_admin_area"), true, "none", 1, "system");
+Menu::createMenu(2, $admin_menuID, "Dashboard", "admin/home", -1, "page", array("can_access_admin_area"), true, "fa-dashboard", 1, "system");
 
 echo "Create default pages if absent...<br />";
 
