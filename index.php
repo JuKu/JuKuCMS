@@ -118,6 +118,7 @@ if (!$page_type->checkPermissions(PermissionChecker::current())) {
 $page_rights = new PageRights($page);
 $page_rights->load();
 
+//permission to see a published page
 $page_permission = "see";
 
 //check, if page is not published
