@@ -207,8 +207,10 @@ class Page {
 		));
 
 		if ($insertID != 0) {
+			$pageID = Page::getPageIDByAlias($alias);
+
 			//set default rights, allow page for administrators, registered users, guests and bots
-			PageRights::setDefaultAllowedGroups($insertID, array(1, 2, 3, 4));
+			PageRights::setDefaultAllowedGroups($pageID, array(1, 2, 3, 4));
 		}
 
 		return $insertID;
