@@ -846,6 +846,33 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table page_user_rights
+ *
+ * Package: com.jukusoft.cms.page
+ */
+
+echo "Create / Upgrade table <b>page_user_rights</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("page_user_rights", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("userIDID", 10, true, false);
+$table->addInt("pageID", 10, true, false);
+$table->addVarchar("permission", 255, true);
+$table->addInt("value", 10, true, false);
+
+//add keys to table
+$table->addPrimaryKey(array("userID", "pageID"));
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 
