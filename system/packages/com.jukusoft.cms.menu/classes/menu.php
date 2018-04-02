@@ -238,6 +238,9 @@ class Menu {
 
 		echo "size of params: " . sizeof($params);
 
+		print_r($params);
+		echo "<br />";
+
 		Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
 			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `order`, `owner`, `activated`
 		) VALUES (
