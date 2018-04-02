@@ -122,6 +122,8 @@ class MySQLDriver implements DBDriver {
                 exit;
             }
 
+			print_r($e);
+
             echo "<br /><br /><b>Query</b>: " . $sql . ", parameters: ";
             var_dump($params);
 
@@ -138,6 +140,8 @@ class MySQLDriver implements DBDriver {
             if (!defined("DEBUG_MODE") || !DEBUG_MODE) {
                 exit;
             }
+
+			print_r($e);
 
             echo "<br /><br /><b>Query</b>: " . $sql . ", parameters: ";
             var_dump($params);
