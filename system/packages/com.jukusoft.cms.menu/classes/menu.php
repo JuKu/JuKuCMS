@@ -68,6 +68,8 @@ class Menu {
 
 			$menu_cache = self::$menuID_array[$menuID];
 
+			var_dump(self::$menuID_array);
+
 			//get menu by parent -y, this means root menu
 			$this->menus = $this->getMenuByParent($menu_cache, -1);
 
