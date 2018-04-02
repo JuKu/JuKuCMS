@@ -222,11 +222,7 @@ class Menu {
 
 		$permissions = implode("|", $permissions);
 
-		Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
-			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `order`, `owner`, `activated`
-		) VALUES (
-			:id, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :menu_order, :owner, '1'
-		) ON DUPLICATE KEY UPDATE `permissions` = :permissions, `login_required` = :login_required, `activated` = '1'; ", array(
+		$params = array(
 			'id' => $id,
 			'menuID' => $menuID,
 			'title' => $title,
@@ -238,7 +234,15 @@ class Menu {
 			'parent' => $parent,
 			'menu_order' => $order,
 			`owner` => $owner
-		));
+		);
+
+		echo "size of params: " . sizeof($params);
+
+		Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
+			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `order`, `owner`, `activated`
+		) VALUES (
+			:id, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :menu_order, :owner, '1'
+		) ON DUPLICATE KEY UPDATE `permissions` = :permissions, `login_required` = :login_required, `activated` = '1'; ", $params);
 
 		//clear cache
 		Cache::clear("menus", "menuID_" . $menuID);
