@@ -147,7 +147,8 @@ class PageType {
 		));
 
 		//validate and convert array to string
-		$permissions = implode("|", Validator_String::get($permissions));
+		$permissions = implode("|", $permissions);
+		$permissions = Validator_String::get($permissions);
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}page_types` (
 			`page_type`, `title`, `create_permissions`, `advanced`, `order`, `activated`
