@@ -109,6 +109,29 @@ class PageType {
 		Cache::clear("pagetypes");
 	}
 
+	public static function listPageTypes (bool $advanced = false) : array {
+		$rows = array();
+
+		$advanced_str = $advanced ? "advanced" : "normal";
+
+		if (Cache::contains("pagetypes", "list-" . $advanced_str)) {
+			$rows = Cache::get("pagetypes", "list-" . $advanced_str);
+		} else {
+			if ($advanced) {
+				//show all page types
+				$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}page_types` WHERE `activated` = '1'; ");
+			} else {
+				//show only not-expert page types
+				$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}page_types` WHERE `advanced` = '0' AND `activated` = '1'; ");
+			}
+
+			//put into cache
+			Cache::put("pagetypes", "list-" . $advanced_str, $rows);
+		}
+
+		return $rows;
+	}
+
 	public static function createPageType (string $class_name, string $title, bool $advanced = false) {
 		//validate values
 		$class_name = Validator_String::get($class_name);
