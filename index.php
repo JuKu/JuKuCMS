@@ -150,13 +150,13 @@ $registry->setSetting("current_style_name", StyleController::getCurrentStyle($re
 //get (global) main menu
 $menuID = (int) ($page->getGlobalMenuID() != -1) ? $page->getGlobalMenuID() : ($folder->hasCustomMainMenu() ? $folder->getMainMenu() : Settings::get("main_menuID"));
 $menu = new Menu($menuID, "menu");
-$menu->loadMenu();
+$menu->loadMenu($menuID);
 $registry->storeObject("main_menu", $menu);
 
 //get (global) main menu
 $localMenuID = (int) ($page->getLocalMenuID() != -1) ? $page->getLocalMenuID() : ($folder->hasCustomLocalMenu() ? $folder->getLocalMenu() : Settings::get("local_menuID"));
 $localMenu = new Menu($menuID, "localmenu");
-$localMenu->loadMenu();
+$localMenu->loadMenu($localMenuID);
 $registry->storeObject("local_menu", $localMenu);
 
 $registry->setSetting("footer", "");

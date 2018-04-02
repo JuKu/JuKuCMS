@@ -159,6 +159,8 @@ class Menu {
 	protected function parseMenu (array $menu_array, Template &$template) {
 		var_dump($menu_array);
 
+		//TODO: check permissions & login required
+
 		foreach ($menu_array as $menu) {
 			//check, if menu has sub menus
 			if (sizeof($menu['submenus']) > 0) {
