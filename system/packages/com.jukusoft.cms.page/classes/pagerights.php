@@ -164,7 +164,7 @@ class PageRights {
 			$lines[] = "('" . $groupID . "', '" . $pageID . "', 'see', '1')";
 		}
 
-		$line_str = implode(",\n");
+		$line_str = implode(",\n", $lines);
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}page_rights` (
 			`groupID`, `pageID`, `token`, `value`
