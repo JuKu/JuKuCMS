@@ -207,7 +207,11 @@ class Menu {
 		//TODO: add code here
 	}
 
-	public static function createMenu (int $id, int $menuID, string $title, string $url, int $parent = -1, $type = "page", array $permissions = array("all"), $login_required = false, string $icon = "none", int $order = 100, string $owner = "user") {
+	public static function createMenu (int $id, int $menuID, string $title, string $url, int $parent = -1, $type = "page", $permissions = array("all"), $login_required = false, string $icon = "none", int $order = 100, string $owner = "user") {
+		if (!is_array($permissions)) {
+			$permissions = array($permissions);
+		}
+
 		//validate values
 		$id = Validator_Int::get($id);
 		$menuID = Validator_Int::get($menuID);
