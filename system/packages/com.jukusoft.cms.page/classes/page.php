@@ -270,11 +270,25 @@ class Page {
 		Cache::clear("pages");
 	}
 
+	/**
+	 * get id of page by alias
+	 *
+	 * only use this method for database upgrade, because their is no caching for this method!
+	 *
+	 * @param string $alias alias of page
+	 *
+	 * @throws IllegalStateException if alias doesnt exists
+	 *
+	 * @return int pageID
+	 */
 	public static function getPageIDByAlias (string $alias) : int {
-		$page = new Page();
-		$page->load($alias);
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}pages` WHERE `alias` = :alias; ", array('alias' => $alias));
 
-		return $page->getPageID();
+		if (!$row) {
+			throw new IllegalStateException("page with alias '" . $alias . "' doesnt exists.");
+		}
+
+		return $row['id'];
 	}
 
 }
