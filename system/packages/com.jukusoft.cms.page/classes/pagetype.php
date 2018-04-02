@@ -119,10 +119,10 @@ class PageType {
 		} else {
 			if ($advanced) {
 				//show all page types
-				$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}page_types` WHERE `activated` = '1'; ");
+				$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}page_types` WHERE `activated` = '1' ORDER BY `order`; ");
 			} else {
 				//show only not-expert page types
-				$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}page_types` WHERE `advanced` = '0' AND `activated` = '1'; ");
+				$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}page_types` WHERE `advanced` = '0' AND `activated` = '1' ORDER BY `order`; ");
 			}
 
 			//put into cache

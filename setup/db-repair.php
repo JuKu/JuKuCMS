@@ -449,6 +449,7 @@ $table->addVarchar("page_type", 255, true);
 $table->addVarchar("title", 255, true);
 $table->addVarchar("create_permissions", 255, true, "none");//list with permissions (OR), one of this permissions is required to create pages with this page type
 $table->addInt("advanced", 10, true, false, 0);//flag, if page type is only shown in expert (advanced) mode
+$table->addInt("order", 10, true, false, 10);//order in admin area on page creation selection
 $table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
@@ -812,6 +813,33 @@ $table->addInt("value", 10, true, false);
 
 //add keys to table
 $table->addPrimaryKey(array("userID", "token"));
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
+/**
+ * table page_rights
+ *
+ * Package: com.jukusoft.cms.page
+ */
+
+echo "Create / Upgrade table <b>page_rights</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("page_rights", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("groupID", 10, true, false);
+$table->addInt("pageID", 10, true, false);
+$table->addVarchar("permission", 255, true);
+$table->addInt("value", 10, true, false);
+
+//add keys to table
+$table->addPrimaryKey(array("groupID", "pageID"));
 
 //create or upgrade table
 $table->upgrade();
