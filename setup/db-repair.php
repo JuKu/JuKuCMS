@@ -417,6 +417,8 @@ $table->addTimestamp("last_update", true, "0000-00-00 00:00:00", true);
 $table->addTimestamp("created", true, "0000-00-00 00:00:00", false);
 $table->addInt("editable", 10, true, false, 1);
 $table->addInt("author", 10, true, false, -1);
+$table->addVarchar("can_see_permissions", 255, true, "none");
+$table->addVarchar("template", 255, true, "none");
 $table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
@@ -445,9 +447,13 @@ $table->setCharset("utf8");
 //fields
 $table->addVarchar("page_type", 255, true);
 $table->addVarchar("title", 255, true);
+$table->addInt("advanced", 10, true, false, 0);//flag, if page type is only shown in expert (advanced) mode
+$table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
 $table->addPrimaryKey("page_type");
+$table->addIndex("advanced");
+$table->addIndex("activated");
 
 //create or upgrade table
 $table->upgrade();
@@ -905,6 +911,15 @@ Page::createIfAbsent("error403", "Error 403", "Error403Page", "Error 403 - Forbi
 
 echo "Create admin pages if absent...<br />";
 Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/admin/", $admin_menuID, -1, -1, false, true, false);
+
+echo "Create default page types if absent...<br />";
+
+PageType::createPageType("HTMLPage", "HTML page", false);
+PageType::createPageType("Error404Page", "Error 404 page", true);
+PageType::createPageType("Error403Page", "Error 403 page", true);
+PageType::createPageType("IndexPage", "index page (supports extra template)", true);
+PageType::createPageType("LoginPage", "Login page", true);
+PageType::createPageType("LogoutPage", "Logout page", true);
 
 echo "Create style rule for admin area if absent...<br />";
 StyleRules::createRuleWithPredefinedID(1, "FOLDER", "/admin/", "admin", -1, 1);

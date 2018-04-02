@@ -127,6 +127,22 @@ class Page {
 		return $this->row['lastUpdate'];
 	}
 
+	public function hasCustomTemplate () : bool {
+		return $this->row['template'] !== "none";
+	}
+
+	public function getCustomTemplate () : string {
+		return $this->row['template'];
+	}
+
+	public function hasCustomPermissions () : bool {
+		return $this->row['can_see_permissions'] !== "none";
+	}
+
+	public function listCustomPermissions () : array {
+		return explode("|", $this->row['can_see_permissions']);
+	}
+
 	public function activate (bool $bool = true) {
 		$this->row['activated'] = $bool;
 	}

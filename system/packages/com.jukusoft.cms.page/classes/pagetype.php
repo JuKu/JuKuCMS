@@ -55,6 +55,27 @@ class PageType {
 	public function getContent () : string {
 		$content = $this->getPage()->getContent();
 
+		//check, if page has custom template
+		if ($this->getPage()->hasCustomTemplate()) {
+			//get custom template
+			$template = Validator_String::get($this->getPage()->getCustomTemplate());
+
+			$current_style = Registry::singleton()->getSetting("current_style_name");
+
+			//check, if custom template exists
+			if (file_exists(STYLE_PATH . $current_style . "/" . $template)) {
+				$template = new Template($template);
+
+				$template->assign("TITLE", $this->getPage()->getTitle());
+				$template->assign("CONTENT", $content);
+
+				$template->parse("main");
+				$content = $template->getCode();
+			} else {
+				throw new IllegalStateException("Custom template '" . $template . "' doesnt exists.");
+			}
+		}
+
 		Events::throwEvent("get_content", array(
 			'content' => &$content,
 			'page' => &$this->page,
@@ -64,12 +85,40 @@ class PageType {
 		return $content;
 	}
 
+	public function checkPermissions () {
+		if (!$this->getPage()->hasCustomPermissions()) {
+			return true;
+		}
+	}
+
 	public function exitAfterOutput () {
 		return false;
 	}
 
 	public static function reloadCache () {
 		Cache::clear("pagetypes");
+	}
+
+	public static function createPageType (string $class_name, string $title, bool $advanced = false) {
+		$class_name = Validator_String::get($class_name);
+		$title = Validator_String::get($title);
+
+		Database::getInstance()->execute("INSERT INTO `{praefix}page_types` (
+			`page_type`, `title`, `advanced`, `activated`
+		) VALUES (
+			:pagetype, :title, :advanced, '1'
+		) ON DUPLICATE KEY UPDATE `title` = :title, `advanced` = :advanced, `activated` = '1'; ", array(
+			'pagetype' => $class_name,
+			'title' => $title,
+			'advanced' => ($advanced ? 1 : 0)
+		));
+
+		//clear cache
+		Cache::clear("pagetypes");
+	}
+
+	public static function removePageType (string $class_name) {
+		//
 	}
 
 }
