@@ -89,6 +89,22 @@ class Folder {
 		return $this->row['hidden'] == 1;
 	}
 
+	public function hasCustomMainMenu () : bool {
+		return $this->row['main_menu'] != -1;
+	}
+
+	public function getMainMenu () : int {
+		return $this->row['main_menu'];
+	}
+
+	public function hasCustomLocalMenu () : bool {
+		return $this->row['local_menu'] != -1;
+	}
+
+	public function getLocalMenu () : int {
+		return $this->row['local_menu'];
+	}
+
 	public function isActivated () : bool {
 		return $this->row['activated'] == 1;
 	}

@@ -148,13 +148,13 @@ $page_type->setCustomHeader();
 $registry->setSetting("current_style_name", StyleController::getCurrentStyle($registry, $page, $page_type));
 
 //get (global) main menu
-$menuID = (int) ($page->getGlobalMenuID() != -1) ? $page->getGlobalMenuID() : Settings::get("main_menuID");
+$menuID = (int) ($page->getGlobalMenuID() != -1) ? $page->getGlobalMenuID() : ($folder->hasCustomMainMenu() ? $folder->getMainMenu() : Settings::get("main_menuID"));
 $menu = new Menu($menuID, "menu");
 $menu->loadMenu();
 $registry->storeObject("main_menu", $menu);
 
 //get (global) main menu
-$localMenuID = (int) ($page->getLocalMenuID() != -1) ? $page->getLocalMenuID() : Settings::get("local_menuID");
+$localMenuID = (int) ($page->getLocalMenuID() != -1) ? $page->getLocalMenuID() : ($folder->hasCustomLocalMenu() ? $folder->getLocalMenu() : Settings::get("local_menuID"));
 $localMenu = new Menu($menuID, "local_menu");
 $localMenu->loadMenu();
 $registry->storeObject("local_menu", $localMenu);
