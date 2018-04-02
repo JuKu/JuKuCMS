@@ -132,9 +132,14 @@ class Menu {
 	 * get HTML code of menu
 	 */
 	public function getCode () : string {
+		$template = new Template("menu");
+		
 		//TODO: add code here
 
-		return "";
+		//parse main block
+		$template->parse("main");
+
+		return $template->getCode();
 	}
 
 	protected static function loadMenuID (int $menuID) {
