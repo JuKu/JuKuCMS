@@ -108,6 +108,8 @@ class Menu {
 			} else if ($row['type'] == "js_link") {
 				$href = "#";
 				$entry['append'] = " onclick=\"" . $row['url'] . "\"";
+			} else {
+				throw new IllegalStateException("Unknown menu type: " . $row['type']);
 			}
 
 			$entry['href'] = $href;
@@ -203,6 +205,38 @@ class Menu {
 		throw new Exception("method deleteMenuName() isnt implemented yet.");
 
 		//TODO: add code here
+	}
+
+	public static function createMenu (int $id, int $menuID, string $title, string $url, int $parent = -1, $type = "page", array $permissions = array("all"), $login_required = false, string $icon = "none", int $order = 100, string $owner = "user") {
+		//validate values
+		$id = Validator_Int::get($id);
+		$menuID = Validator_Int::get($menuID);
+		$title = Validator_String::get($title);
+		$parent = Validator_Int::get($parent);
+		$type = Validator_String::get($type);
+		$permissions = implode("|", $permissions);
+		$login_required = (bool) $login_required;
+
+		Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
+			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `order`, `owner`, `activated`
+		) VALUES (
+			:id, :menuID, :title, :url, :type, :icon, :permissions, :login_required, :parent, :order, :owner, '1'
+		) ON DUPLICATE KEY UPDATE `activated` = '1'; ", array(
+			'id' => $id,
+			'menuID' => $menuID,
+			'title' => $title,
+			'url' => $url,
+			'type' => $type,
+			'icon' => $icon,
+			'permissions' => $permissions,
+			'login_required' => ($login_required ? 1 : 0),
+			'parent' => $parent,
+			'order' => $order,
+			`owner` => $owner
+		));
+
+		//clear cache
+		Cache::clear("menus", "menuID_" . $menuID);
 	}
 
 }

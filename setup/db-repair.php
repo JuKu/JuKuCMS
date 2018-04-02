@@ -952,7 +952,10 @@ if (!Settings::contains("local_menuID")) {
 	$local_menuID = Settings::get("local_menuID");
 }
 
-//TODO: create menus if absent
+echo "Create default menu if absent...<br />";
+
+//create menus if absent
+Menu::createMenu(1, $main_menuID, "Home", "home", -1, "page", "all", false, "none", 1, "user");
 
 echo "Create default pages if absent...<br />";
 
