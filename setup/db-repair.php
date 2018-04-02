@@ -922,7 +922,7 @@ $admin_menuID = -1;
 //get main menuID
 if (!Settings::contains("main_menuID")) {
 	//create menu_names if absent
-	$main_menuID = Menu::createMenuName("Main Menu");
+	$main_menuID = Menu::createMenuName("Main Menu", "main_menu");
 
 	//set setting
 	Settings::create("main_menuID", $main_menuID, "Main MenuID", "id of main menu (in menu area)", "system", "general", "none", "none", 1);
@@ -933,7 +933,7 @@ if (!Settings::contains("main_menuID")) {
 //get admin area menuID
 if (!Settings::contains("admin_menuID")) {
 	//create menu_names if absent
-	$admin_menuID = Menu::createMenuName("Admin Menu");
+	$admin_menuID = Menu::createMenuName("Admin Menu", "admin_menu");
 
 	//set setting
 	Settings::create("admin_menuID", $admin_menuID, "Admin MenuID", "id of admin menu (in admin area)", "system", "general", "none", "none", 2);
@@ -944,7 +944,7 @@ if (!Settings::contains("admin_menuID")) {
 //get local menuID
 if (!Settings::contains("local_menuID")) {
 	//create menu_names if absent
-	$local_menuID = Menu::createMenuName("Default Local Menu");
+	$local_menuID = Menu::createMenuName("Default Local Menu", "local_menu");
 
 	//set setting
 	Settings::create("local_menuID", $local_menuID, "Default Local MenuID", "id of default local menu (in menu area)", "system", "general", "none", "none", 1);
