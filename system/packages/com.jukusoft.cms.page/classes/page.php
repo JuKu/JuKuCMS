@@ -206,6 +206,11 @@ class Page {
 			'insertID' => $insertID
 		));
 
+		if ($insertID != 0) {
+			//set default rights, allow page for administrators, registered users, guests and bots
+			PageRights::setDefaultAllowedGroups($insertID, array(1, 2, 3, 4));
+		}
+
 		return $insertID;
 	}
 
@@ -262,6 +267,13 @@ class Page {
 		));
 
 		Cache::clear("pages");
+	}
+
+	public static function getPageIDByAlias (string $alias) : int {
+		$page = new Page();
+		$page->load($alias);
+
+		return $page->getPageID();
 	}
 
 }
