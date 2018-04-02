@@ -103,12 +103,13 @@ class MySQLDriver implements DBDriver {
             $res = $stmt->execute();
 
             if (!$res) {
-                //TODO: throw exception instead
-                print_r($stmt->errorInfo());
-
-                if (DEBUG_MODE) {
-                	echo "SQL Query: " + $sql;
+				if (DEBUG_MODE) {
+					echo "SQL Query: " + $sql;
 				}
+
+                //TODO: throw exception instead
+
+                print_r($stmt->errorInfo());
 
 				ob_end_flush();
                 exit;
@@ -116,7 +117,7 @@ class MySQLDriver implements DBDriver {
 
             return $res;
         } catch (PDOException $e) {
-            echo "An Error oncurred. Please contact administrator.<br /><br /><small>If you are the administrator: You can enable DEBUG MODE in config/config.php .</small>";
+            echo "An Error oncurred. Please contact administrator.<br /><br /><small>If you are the administrator: You can enable DEBUG MODE in file config/config.php .</small>";
 
             if (!defined("DEBUG_MODE") || !DEBUG_MODE) {
                 exit;
@@ -135,7 +136,7 @@ class MySQLDriver implements DBDriver {
 
             exit;
         } catch (Exception $e) {
-            echo "An Error oncurred. Please contact administrator.<br /><br /><small>If you are the administrator: You can enable DEBUG MODE in config/config.php .</small>";
+            echo "An Error oncurred. Please contact administrator.<br /><br /><small>If you are the administrator: You can enable DEBUG MODE in file config/config.php .</small>";
 
             if (!defined("DEBUG_MODE") || !DEBUG_MODE) {
                 exit;
