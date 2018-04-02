@@ -61,8 +61,8 @@ class MySQLDriver implements DBDriver {
         }
     }
 
-    public function update ($sql) {
-        $this->execute($sql);
+    public function update ($sql, $params = array()) {
+        $this->execute($sql, $params);
     }
 
     public function close () {

@@ -28,9 +28,9 @@ interface DBDriver {
 
     public function connect ($config_path);
 
-    public function update ($sql);
+    public function update ($sql, $params = array());
 
-    public function execute ($sql);
+    public function execute ($sql, $params = array());
 
     public function quote ($str) : string;
 
