@@ -55,6 +55,10 @@ class Registry {
 	}
 
 	public function getObject ($key) {
+		if (!isset(self::$objects[$key])) {
+			throw new IllegalStateException("registry key '" . $key . "' doesnt exists.");
+		}
+
 		if (is_object(self::$objects[$key])) {
 			return self::$objects[$key];
 		}
