@@ -56,7 +56,7 @@ class MySQLDriver implements DBDriver {
 
             if (DEBUG_MODE) {
 				$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				$this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+				//$this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 			}
         } catch (PDOException $e) {
             echo "Couldnt connect to database!";
