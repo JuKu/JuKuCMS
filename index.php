@@ -157,7 +157,7 @@ $registry->storeObject("main_menu", $menu);
 $localMenuID = (int) ($page->getLocalMenuID() != -1) ? $page->getLocalMenuID() : ($folder->hasCustomLocalMenu() ? $folder->getLocalMenu() : Settings::get("local_menuID"));
 $localMenu = new Menu($menuID, "local_menu");
 $localMenu->loadMenu();
-$registry->storeObject("local_menu", $localMenu);
+$registry->storeObject("localmenu", $localMenu);
 
 $registry->setSetting("footer", "");
 
