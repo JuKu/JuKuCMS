@@ -97,6 +97,13 @@ if (!$folder->checkPermissions(PermissionChecker::current())) {
 	$page->load("error403");
 }
 
+//set folder
+$registry->setSetting("folder", $page->getFolder());
+
+//create page type
+$page_type = PageLoader::loadInstance($page->getPageType());
+$page_type->setPage($page);
+
 //check, if user has page permissions
 if (!$page_type->checkPermissions(PermissionChecker::current())) {
 	//user dont has custom permissions to access page
@@ -105,13 +112,6 @@ if (!$page_type->checkPermissions(PermissionChecker::current())) {
 
 $registry->storeObject("page", $page);
 $registry->storeObject("folder", $folder);
-
-//set folder
-$registry->setSetting("folder", $page->getFolder());
-
-//create page type
-$page_type = PageLoader::loadInstance($page->getPageType());
-$page_type->setPage($page);
 $registry->storeObject("page_type", $page_type);
 
 //set content type
