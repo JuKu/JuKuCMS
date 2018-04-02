@@ -55,7 +55,7 @@ class MySQLDriver implements DBDriver {
             $this->conn = new PDO("mysql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->database . "", $this->username, $this->password, $this->options);
 
             if (DEBUG_MODE) {
-				$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				//$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				//$this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 			}
         } catch (PDOException $e) {
