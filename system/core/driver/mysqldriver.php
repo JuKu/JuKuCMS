@@ -116,7 +116,7 @@ class MySQLDriver implements DBDriver {
 
             return $res;
         } catch (PDOException $e) {
-            echo "An Error oncurred. Please contact administrator.<br /><br /><small>If you are the administrator: You can enable DEBUG MODE in LIB_PATH/store/settings/settings.php .</small>";
+            echo "An Error oncurred. Please contact administrator.<br /><br /><small>If you are the administrator: You can enable DEBUG MODE in config/config.php .</small>";
 
             if (!defined("DEBUG_MODE") || !DEBUG_MODE) {
                 exit;
@@ -133,7 +133,7 @@ class MySQLDriver implements DBDriver {
 
             exit;
         } catch (Exception $e) {
-            echo "An Error oncurred. Please contact administrator.<br /><br /><small>If you are the administrator: You can enable DEBUG MODE in LIB_PATH/store/settings/settings.php .</small>";
+            echo "An Error oncurred. Please contact administrator.<br /><br /><small>If you are the administrator: You can enable DEBUG MODE in config/config.php .</small>";
 
             if (!defined("DEBUG_MODE") || !DEBUG_MODE) {
                 exit;
