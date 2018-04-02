@@ -97,6 +97,12 @@ if (!$folder->checkPermissions(PermissionChecker::current())) {
 	$page->load("error403");
 }
 
+//check, if user has page permissions
+if (!$page_type->checkPermissions(PermissionChecker::current())) {
+	//user dont has custom permissions to access page
+	$page->load("error403");
+}
+
 $registry->storeObject("page", $page);
 $registry->storeObject("folder", $folder);
 

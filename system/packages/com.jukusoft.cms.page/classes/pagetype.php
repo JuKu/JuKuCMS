@@ -85,9 +85,19 @@ class PageType {
 		return $content;
 	}
 
-	public function checkPermissions () {
+	public function checkPermissions (PermissionChecker $permission_checker) {
 		if (!$this->getPage()->hasCustomPermissions()) {
 			return true;
+		} else {
+			$permissions = $this->getPage()->listCustomPermissions();
+
+			foreach ($permissions as $permission) {
+				if ($permission_checker->hasRight($permission)) {
+					return true;
+				}
+			}
+
+			return false;
 		}
 	}
 
@@ -100,8 +110,15 @@ class PageType {
 	}
 
 	public static function createPageType (string $class_name, string $title, bool $advanced = false) {
+		//validate values
 		$class_name = Validator_String::get($class_name);
 		$title = Validator_String::get($title);
+
+		Events::throwEvent("before_add_pagetype", array(
+			'class_name' => &$class_name,
+			'title' => &$title,
+			'advanced' => &$advanced
+		));
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}page_types` (
 			`page_type`, `title`, `advanced`, `activated`
@@ -113,12 +130,39 @@ class PageType {
 			'advanced' => ($advanced ? 1 : 0)
 		));
 
+		Events::throwEvent("after_add_pagetype", array(
+			'class_name' => $class_name,
+			'title' => $title,
+			'advanced' => $advanced
+		));
+
 		//clear cache
 		Cache::clear("pagetypes");
 	}
 
 	public static function removePageType (string $class_name) {
-		//
+		//validate value
+		$class_name = Validator_String::get($class_name);
+
+		$delete = true;
+
+		//throw event, so plugins can interact
+		Events::throwEvent("before_remove_pagetype", array(
+			'class_name' => &$class_name,
+			'delete' => &$delete
+		));
+
+		if ($delete) {
+			Database::getInstance()->execute("DELETE FROM `{praefix}page_types` WHERE `page_type` = :pagetype; ", array('pagetype' => $class_name));
+
+			//throw event, so plugins can interact
+			Events::throwEvent("after_remove_pagetype", array(
+				'class_name' => $class_name
+			));
+
+			//clear cache
+			Cache::clear("pagetypes");
+		}
 	}
 
 }

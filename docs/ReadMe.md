@@ -13,6 +13,7 @@ Add content here
 
   - [Events (Hooks)](events.md)
   - [Robots.txt](robots.md)
+  - [Page Types](page_type.md)
 
 ## For Style / Template Designers
 
