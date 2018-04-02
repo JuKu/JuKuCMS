@@ -166,17 +166,24 @@ class Menu {
 		}
 	}
 
-	public static function createMenuName ($title) : int {
+	public static function createMenuName (string $title, string $unique_name = null) : int {
 		Events::throwEvent("before_create_menu_name", array(
 			'title' => &$title
 		));
 
+		if ($unique_name == null) {
+			$unique_name = md5(time());
+		}
+
+		$unique_name = Validator_String::get($unique_name);
+
 		Database::getInstance()->execute("INSERT INTO `{praefix}menu_names` (
-			`menuID`, `title`
+			`menuID`, `title`, `unique_name`, `activated`
 		) VALUES (
-			NULL, :title
-		); ", array(
-			'title' => $title
+			NULL, :title, :name, '1'
+		) ON DUPLICATE KEY UPDATE `title` = :title, `activated` = '1'; ", array(
+			'title' => $title,
+			'name' => $unique_name
 		));
 
 		Cache::clear("menus");

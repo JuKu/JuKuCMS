@@ -479,10 +479,12 @@ $table->setCharset("utf8");
 $table->addInt("menuID", 10, true, true);
 $table->addVarchar("title", 255, true);
 $table->addInt("editable", 10, true, false, 1);
+$table->addVarchar("unique_name", 255, true);
 $table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
 $table->addPrimaryKey("menuID");
+$table->addUnique("unique_name");
 $table->addIndex("activated");
 
 //create or upgrade table
