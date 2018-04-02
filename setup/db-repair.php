@@ -839,7 +839,7 @@ $table->addVarchar("token", 255, true);
 $table->addInt("value", 10, true, false);
 
 //add keys to table
-$table->addPrimaryKey(array("userID", "pageID", "token"));
+$table->addPrimaryKey(array("groupID", "pageID", "token"));
 
 //create or upgrade table
 $table->upgrade();
