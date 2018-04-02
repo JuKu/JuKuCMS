@@ -164,7 +164,7 @@ class Menu {
 					$template->assign(strtoupper($key), $value);
 				}
 
-				$template->parse("menu");
+				$template->parse("main.menu");
 			}
 		}
 	}
