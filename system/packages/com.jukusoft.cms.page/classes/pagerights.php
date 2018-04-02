@@ -98,9 +98,9 @@ class PageRights {
 		$value = 0;
 
 		//per default published pages are visible, if not specified
-		/*if ($token == "see") {
+		if ($token == "see") {
 			$value = -1;
-		}*/
+		}
 
 		//iterate through user groups
 		foreach ($groupIDs as $groupID) {
@@ -129,7 +129,7 @@ class PageRights {
 			}
 		}
 
-		return $value == 1/* || $value == -1*/;
+		return $value == 1 || $value == -1;
 	}
 
 	protected function mergeRow (array $permissions, string $token, int $value) : array {
