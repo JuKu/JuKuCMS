@@ -860,7 +860,7 @@ $table->setEngine("InnoDB");
 $table->setCharset("utf8");
 
 //fields
-$table->addInt("userIDID", 10, true, false);
+$table->addInt("userID", 10, true, false);
 $table->addInt("pageID", 10, true, false);
 $table->addVarchar("token", 255, true);
 $table->addInt("value", 10, true, false);
