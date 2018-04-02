@@ -943,7 +943,7 @@ Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/a
 
 echo "Create default page types if absent...<br />";
 
-PageType::createPageType("HTMLPage", "HTML page", false);
+PageType::createPageType("HTMLPage", "HTML page", false, 1);//order 1 - so show as first page type in admin area
 PageType::createPageType("Error404Page", "Error 404 page", true);
 PageType::createPageType("Error403Page", "Error 403 page", true);
 PageType::createPageType("IndexPage", "index page (supports extra template)", true);

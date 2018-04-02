@@ -132,31 +132,41 @@ class PageType {
 		return $rows;
 	}
 
-	public static function createPageType (string $class_name, string $title, bool $advanced = false) {
+	public static function createPageType (string $class_name, string $title, bool $advanced = false,int $order = 10, array $permissions = array("none")) {
 		//validate values
 		$class_name = Validator_String::get($class_name);
 		$title = Validator_String::get($title);
+		$order = Validator_Int::get($order);
 
 		Events::throwEvent("before_add_pagetype", array(
 			'class_name' => &$class_name,
 			'title' => &$title,
-			'advanced' => &$advanced
+			'create_permissions' => &$permissions,
+			'advanced' => &$advanced,
+			'order' => &$order
 		));
 
+		//validate and convert array to string
+		$permissions = implode("|", Validator_String::get($permissions));
+
 		Database::getInstance()->execute("INSERT INTO `{praefix}page_types` (
-			`page_type`, `title`, `advanced`, `activated`
+			`page_type`, `title`, `create_permissions`, `advanced`, `order`, `activated`
 		) VALUES (
-			:pagetype, :title, :advanced, '1'
+			:pagetype, :title, :permissions, :advanced, :order, '1'
 		) ON DUPLICATE KEY UPDATE `title` = :title, `advanced` = :advanced, `activated` = '1'; ", array(
 			'pagetype' => $class_name,
 			'title' => $title,
-			'advanced' => ($advanced ? 1 : 0)
+			'permissions' => $permissions,
+			'advanced' => ($advanced ? 1 : 0),
+			'order' => $order
 		));
 
 		Events::throwEvent("after_add_pagetype", array(
 			'class_name' => $class_name,
 			'title' => $title,
-			'advanced' => $advanced
+			'create_permissions' => $permissions,
+			'advanced' => $advanced,
+			'order' => $order
 		));
 
 		//clear cache
