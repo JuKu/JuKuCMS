@@ -43,6 +43,14 @@ File Extension: .tpl\
 Example:
 ```smarty
 {$variable}
+
+{if 3 == 5}
+  never gonna happen
+{elseif 3 == 3}
+  this will be shown
+{else}
+  this will never happen, unless, as previously mentionned
+{/if}
 ```
 
 ## Style Rules
