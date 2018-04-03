@@ -517,12 +517,15 @@ $table->addVarchar("icon", 255, true, "none");
 $table->addVarchar("permissions", 600, true, "all");
 $table->addInt("login_required", 10, true, false, 0);
 $table->addInt("parent", 10, true, false, -1);
-$table->addInt("order", 10, true, false, 10);
+$table->addVarchar("unique_name", 255, false, "");
+$table->addVarchar("extensions", 255, true, "none");//for example: private messages
 $table->addVarchar("owner", 255, true, "user");
+$table->addInt("order", 10, true, false, 10);
 $table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
 $table->addPrimaryKey("id");
+$table->addUnique("unique_name");
 $table->addIndex("menuID");
 $table->addIndex("order");
 $table->addIndex("activated");
@@ -959,6 +962,7 @@ echo "Create default menu if absent...<br />";
 //create menus if absent
 Menu::createMenu(1, $main_menuID, "Home", "home", -1, "page", "all", false, "none", 1, "user");
 Menu::createMenu(2, $admin_menuID, "Dashboard", "admin/home", -1, "page", array("can_access_admin_area"), true, "fa-dashboard", 1, "system");
+//Menu::createMenu(3, )
 
 echo "Create default pages if absent...<br />";
 
