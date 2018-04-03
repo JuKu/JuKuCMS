@@ -61,12 +61,12 @@ class Menu {
 		//load menuID if absent
 		self::loadMenuID($menuID);
 
+		var_dump(self::$menuID_array);
+
 		if (Cache::contains("menus", "menu_" . $menuID)) {
 			$this->menus = Cache::get("menus", "menu_" . $menuID);
 		} else {
 			self::loadMenuID($menuID);
-
-			var_dump(self::$menuID_array);
 
 			$menu_cache = self::$menuID_array[$menuID];
 
