@@ -97,6 +97,15 @@ class DwooTemplate extends Template {
 
 			//set cache dir
 			self::$core->setCacheDir($cache_dir);
+
+			//add plugins
+			//self::$core->addPlugin("if");
+
+			Events::throwEvent("init_dwoo", array(
+				'core' => &self::$core,
+				'cache_path' => CACHE_PATH,
+				'cache_dir' => $cache_dir
+			));
 		}
 	}
 
