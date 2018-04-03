@@ -2,14 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="{CHARSET}">
+    <meta charset="{$CHARSET}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{TITLE}</title>
+    <title>{$TITLE}</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <link rel="stylesheet" href="{BASE_URL}/css.php?style=admin&amp;hash={CSS_HASH_ALL}" />
+    <link rel="stylesheet" href="{$BASE_URL}/css.php?style=admin&amp;hash={$CSS_HASH_ALL}" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <!-- header javascript -->
-    <script language="javascript" type="text/javascript" src="{BASE_URL}/js.php?style=admin&amp;hash={JS_HASH_ALL_HEADER}&amp;position=header"></script>
+    <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=admin&amp;hash={$JS_HASH_ALL_HEADER}&amp;position=header"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -30,7 +30,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="{BASE_URL}" class="logo">
+        <a href="{$BASE_URL}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>C</b>MS</span>
             <!-- logo for regular state and mobile devices -->
@@ -62,7 +62,7 @@
                                     <li><!-- start message -->
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="{STYLE_PATH}dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                <img src="{$STYLE_PATH}dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
                                                 Support Team
@@ -134,16 +134,16 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{STYLE_PATH}dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">{USERNAME}</span>
+                            <img src="{$STYLE_PATH}dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <span class="hidden-xs">{$USERNAME}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="{STYLE_PATH}dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="{$STYLE_PATH}dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    {USERNAME} - Web Developer
+                                    {$USERNAME} - Web Developer
                                     <small>Member since Nov. 2012</small>
                                 </p>
                             </li>
@@ -168,7 +168,7 @@
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{LOGOUT_URL}" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{$LOGOUT_URL}" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -191,10 +191,10 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{STYLE_PATH}dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="{$STYLE_PATH}dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>{USERNAME}</p>
+                    <p>{$USERNAME}</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
@@ -210,7 +210,7 @@
             </form>
             <!-- /.search form -->
 
-            {MENU}
+            {$MENU}
 
         </section>
         <!-- /.sidebar -->
@@ -223,7 +223,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                {TITLE}
+                {$TITLE}
                 <small>it all starts here</small>
             </h1>
             <ol class="breadcrumb">
@@ -254,7 +254,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    {FOOTER}
+                    {$FOOTER}
                 </div>
                 <!-- /.box-footer-->
             </div>
@@ -267,9 +267,9 @@
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> {VERSION} <b>Build</b> {BUILD}
+            <b>Version</b> {$VERSION} <b>Build</b> {$BUILD}
         </div>
-        {COPYRIGHT} Design: <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights reserved.
+        {$COPYRIGHT} Design: <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights reserved.
     </footer>
 
     <!-- Control Sidebar -->
@@ -470,7 +470,7 @@
 <!-- ./wrapper -->
 
 <!-- footer javascript -->
-<script language="javascript" type="text/javascript" src="{BASE_URL}/js.php?style=admin&amp;hash={JS_HASH_ALL_FOOTER}&amp;position=footer"></script>
+<script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=admin&amp;hash={$JS_HASH_ALL_FOOTER}&amp;position=footer"></script>
 
 <script>
     $(document).ready(function () {
