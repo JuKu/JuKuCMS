@@ -988,6 +988,9 @@ Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/");
 //create robots.txt page
 Page::createIfAbsent("robots.txt", "Robots.txt", "RobotsPage", "", "/", -1, -1, -1, false, true, false);
 
+//create sitemap page
+Page::createIfAbsent("sitemap.xml", "Sitemap", "SitemapPage", "", "/", -1, -1, -1, false, true, false);
+
 //create forbidden pages
 Page::createIfAbsent("error403", "Error 403", "Error403Page", "Error 403 - Forbidden!<br /> You dont have permissions to access this page or folder. Maybe you have to login.", "/");
 
