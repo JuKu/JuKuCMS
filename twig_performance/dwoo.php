@@ -59,6 +59,7 @@ define('ROOT_PATH', dirname(__FILE__) . "/../");
 define('DWOO_PATH', ROOT_PATH . "system/packages/com.jukusoft.cms.dwoo/dwoo/lib/Dwoo/");
 
 require(DWOO_PATH . "Core.php");
+require(DWOO_PATH . "ITemplate.php");
 require(DWOO_PATH . "Template/Str.php");
 require(DWOO_PATH . "Template/File.php");
 
