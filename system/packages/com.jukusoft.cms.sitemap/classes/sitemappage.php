@@ -27,7 +27,19 @@
 
 class SitemapPage extends PageType {
 
-	//
+	public function getContentType(): string {
+		return "text/xml; charset=" . $this->getCharset();
+	}
+
+	public function getContent(): string {
+		$template = new DwooTemplate(PACKAGE_PATH . "com.jukusoft.cms.sitemap/template/sitemap.tpl");
+
+		return $template->getCode();
+	}
+
+	public function showDesign() {
+		return false;
+	}
 
 }
 
