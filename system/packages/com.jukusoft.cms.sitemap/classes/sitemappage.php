@@ -41,6 +41,7 @@ class SitemapPage extends PageType {
 		foreach ($rows as $row) {
 			$entry = array();
 
+			//generate url to page
 			$entry['loc'] = DomainUtils::generateURL($row['alias']);
 
 			//get last modified timestamp
