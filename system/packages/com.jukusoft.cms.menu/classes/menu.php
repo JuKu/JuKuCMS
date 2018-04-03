@@ -249,7 +249,7 @@ class Menu {
 		Cache::clear("menus", "menuID_" . $menuID);
 	}
 
-	public static function createMenu (int $id, int $menuID, string $title, string $url, int $parent = -1, $type = "page", $permissions = array("all"), $login_required = false, string $icon = "none", int $order = 100, string $owner = "user") {
+	public static function createMenu (int $id, int $menuID, string $title, string $url, int $parent = -1, string $unique_name = "", $type = "page", $permissions = array("all"), $login_required = false, string $icon = "none", int $order = 100, string $owner = "user") {
 		if (!is_array($permissions)) {
 			$permissions = array($permissions);
 		}
@@ -264,10 +264,14 @@ class Menu {
 
 		$permissions = implode("|", $permissions);
 
-		Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
-			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `order`, `owner`, `activated`
+		if (empty($unique_name)) {
+			$unique_name = md5(PHPUtils::randomString(100));
+		}
+
+		$insertID = Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
+			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `unique_name`, `extensions`, `order`, `owner`, `activated`
 		) VALUES (
-			:id, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :menu_order, :owner, '1'
+			:id, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :unique_name, :extensions, :menu_order, :owner, '1'
 		) ON DUPLICATE KEY UPDATE `menuID` = :menuID, `permissions` = :permissions, `login_required` = :login_required, `icon` = :icon, `activated` = '1'; ", array(
 			'id' => $id,
 			'menuID' => $menuID,
@@ -278,12 +282,16 @@ class Menu {
 			'permissions' => $permissions,
 			'login_required' => ($login_required ? 1 : 0),
 			'parent' => $parent,
+			'unique_name' => $unique_name,
+			'extensions' => "none",
 			'menu_order' => $order,
 			'owner' => $owner
 		));
 
 		//clear cache
 		Cache::clear("menus", "menuID_" . $menuID);
+
+		return $insertID;
 	}
 
 }

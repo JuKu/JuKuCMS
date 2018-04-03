@@ -13,6 +13,8 @@
 
                 <!-- <small class="label pull-right bg-red">3</small>
                 <small class="label pull-right bg-blue">17</small> -->
+
+                {EXTENSIONS}
             </span>
         </a>
     </li>
@@ -20,7 +22,7 @@
     <!-- BEGIN: treeview -->
     <li class="treeview">
         <a href="#">
-            <i class="fa{ICON_CLASS}"></i> <span>Dashboard</span>
+            <i class="fa {ICON_CLASS}"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
