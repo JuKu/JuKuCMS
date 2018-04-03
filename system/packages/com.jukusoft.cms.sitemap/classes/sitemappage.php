@@ -34,6 +34,12 @@ class SitemapPage extends PageType {
 	public function getContent(): string {
 		$template = new DwooTemplate(PACKAGE_PATH . "com.jukusoft.cms.sitemap/template/sitemap.tpl");
 
+		$urls = array();
+
+		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}pages` WHERE `sitemap` = '1' AND `activated` = '1'; ");
+
+		$template->assign("urls", $urls);
+
 		return $template->getCode();
 	}
 

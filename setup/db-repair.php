@@ -416,6 +416,8 @@ $table->addInt("local_menu", 10, true, false, -1);
 $table->addVarchar("page_type", 255, true, "HTMLPage");
 $table->addVarchar("design", 255, true, "none");
 $table->addInt("sitemap", 10, true, false, 1);//should page be shown in sitemap?
+$table->addEnum("sitemap_changefreq", array("ALWAYS", "HOURLY", "DAILY", "WEEKLY", "MONTHLY", "YEARLY", "NEVER"), true, "weekly");
+$table->addDecimal("sitemap_priority", 5, 2, true, "0.5");
 $table->addInt("published", 10, true, false, 0);
 $table->addInt("version", 10, true, false, 1);
 $table->addTimestamp("last_update", true, "0000-00-00 00:00:00", true);
