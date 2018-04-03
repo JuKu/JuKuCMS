@@ -66,9 +66,9 @@ class Menu {
 		} else {
 			self::loadMenuID($menuID);
 
-			$menu_cache = self::$menuID_array[$menuID];
-
 			var_dump(self::$menuID_array);
+
+			$menu_cache = self::$menuID_array[$menuID];
 
 			//get menu by parent -y, this means root menu
 			$this->menus = $this->getMenuByParent($menu_cache, -1);
@@ -157,8 +157,6 @@ class Menu {
 	}
 
 	protected function parseMenu (array $menu_array, Template &$template) {
-		var_dump($menu_array);
-
 		//TODO: check permissions & login required
 
 		foreach ($menu_array as $menu) {
