@@ -973,7 +973,7 @@ Menu::createMenu(10, $admin_menuID, "My Pages", "admin/my_pages", 9, "my_pages",
 Menu::createMenu(11, $admin_menuID, "Media", "admin/media", -1, "media", "page", array("can_see_all_media", "can_upload_media"), true, "fa-file-image", 2, "system");
 Menu::createMenu(12, $admin_menuID, "All Media", "admin/media", 11, "all_media", "page", array("can_see_all_media"), true, "fa-file-image", 1, "system");
 Menu::createMenu(14, $admin_menuID, "Upload Media", "admin/media/upload", 11, "upload_media", "page", array("can_upload_media"), true, "fa-upload", 2, "system");
-Menu::createMenu(15, $admin_menuID, "Menu", "admin/menu", -1, "menu", "page", array("can_see_menus", "can_edit_menus"), true, "fa-anchord", 5, "system");
+Menu::createMenu(15, $admin_menuID, "Menu", "admin/menu", -1, "menu", "page", array("can_see_menus", "can_edit_menus"), true, "fa-anchor", 5, "system");
 
 echo "Create default pages if absent...<br />";
 
