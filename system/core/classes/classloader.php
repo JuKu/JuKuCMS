@@ -114,6 +114,16 @@ function cms_autoloader ($classname) {
 		return null;
 	}
 
+	//check, if class belongs to dwoo template engine
+    if (PHPUtils::startsWith($classname, "Dwoo")) {
+        if (class_exists("DwooAutoloader", true)) {
+            DwooAutoloader::loadClass($classname);
+            return;
+        } else {
+			echo "Could not load Dwoo template engine class " . $classname . "!";
+        }
+    }
+
     $array = explode("_", strtolower($classname));
 
     if (sizeOf($array) == 3) {

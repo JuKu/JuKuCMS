@@ -15,5 +15,6 @@
   -->
 
 <classes>
-	<class>DomainClass</class>
+	<class>DwooTemplate</class>
+	<class>DwooAutoloader</class>
 </classes>
