@@ -58,7 +58,19 @@ class StyleController {
 		$template->assign("RAW_TITLE", $page->getTitle());
 		$template->assign("REGISTRY", $registry->listSettings());
 
+		$head_content = "";
+
+		Events::throwEvent("get_head", array(
+			'registry' => &$registry,
+			'page' => &$page,
+			'page_type' => &$page_type,
+			'head_content' => $head_content
+		));
+
+		$template->assign("HEAD", $head_content);
+
 		$template->assign("CONTENT", $page_type->getContent());
+		$template->assign("HEADER", $registry->getSetting("header", ""));
 		$template->assign("FOOTER", $registry->getSetting("footer", ""));
 		$template->assign("COPYRIGHT", Settings::get("copyright", "<strong>Copyright &copy; 2018 <a href=\"http://jukusoft.com\">JuKuSoft.com</a></strong>, All Rights Reserved."));
 
