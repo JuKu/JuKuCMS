@@ -45,6 +45,9 @@ class DwooTemplate extends Template {
 			$registry = Registry::singleton();
 		}
 
+		//initialize core if neccessary
+		self::initCoreIfAbsent();
+
 		//find file
 		$this->file = Template::findTemplate($file, $registry);
 
