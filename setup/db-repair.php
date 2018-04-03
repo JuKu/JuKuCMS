@@ -971,7 +971,7 @@ Menu::createMenu(8, $admin_menuID, "Pages", "admin/pages", -1, "pages", "page", 
 Menu::createMenu(9, $admin_menuID, "All Pages", "admin/pages", 8, "all_pages", "page", array("can_see_all_pages"), true, "fa-circle-o", 1, "system");
 Menu::createMenu(10, $admin_menuID, "My Pages", "admin/my_pages", 9, "my_pages", "page", array("can_see_all_pages"), true, "fa-circle-o", 2, "system");
 Menu::createMenu(11, $admin_menuID, "Media", "admin/media", -1, "media", "page", array("can_see_all_media", "can_upload_media"), true, "fa-file-image-o", 3, "system");
-Menu::createMenu(12, $admin_menuID, "All Media", "admin/media", 11, "all_media", "page", array("can_see_all_media"), true, "fa-file-image", 1, "system");
+Menu::createMenu(12, $admin_menuID, "All Media", "admin/media", 11, "all_media", "page", array("can_see_all_media"), true, "fa-file-image-o", 1, "system");
 Menu::createMenu(14, $admin_menuID, "Upload Media", "admin/media/upload", 11, "upload_media", "page", array("can_upload_media"), true, "fa-upload", 4, "system");
 Menu::createMenu(15, $admin_menuID, "Menu", "admin/menu", -1, "menu", "page", array("can_see_menus", "can_edit_menus"), true, "fa-anchor", 5, "system");
 
