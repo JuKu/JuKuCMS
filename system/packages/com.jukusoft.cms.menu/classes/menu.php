@@ -140,8 +140,6 @@ class Menu {
 	public function getCode () : string {
 		$template = new DwooTemplate($this->template);
 
-		var_dump($this->menus);
-
 		$template->assign("menu_array", $this->menus);
 
 		/*$template = new Template($this->template);
