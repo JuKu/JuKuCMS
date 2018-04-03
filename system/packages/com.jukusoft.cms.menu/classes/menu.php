@@ -100,6 +100,7 @@ class Menu {
 			$entry['icon'] = $row['icon'];
 			$entry['icon_class'] = " " . $row['icon'];
 			$entry['permissions'] = explode("|", $row['permissions']);
+			$entry['append'] = "";
 
 			if ($row['type'] == "page") {
 				$href = DomainUtils::generateURL($row['url']);
@@ -110,6 +111,8 @@ class Menu {
 			} else if ($row['type'] == "js_link") {
 				$href = "#";
 				$entry['append'] = " onclick=\"" . $row['url'] . "\"";
+			} else if ($row['type'] == "no_link") {
+				$href = "#";
 			} else {
 				throw new IllegalStateException("Unknown menu type: " . $row['type']);
 			}
@@ -264,7 +267,7 @@ class Menu {
 
 		$permissions = implode("|", $permissions);
 
-		if (empty($unique_name)) {
+		if (is_null($unique_name) || empty($unique_name)) {
 			$unique_name = md5(PHPUtils::randomString(100));
 		}
 

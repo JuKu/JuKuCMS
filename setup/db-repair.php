@@ -960,9 +960,20 @@ Folder::createFolderIfAbsent("/admin/", true, array("can_access_admin_area"), $a
 echo "Create default menu if absent...<br />";
 
 //create menus if absent
-Menu::createMenu(1, $main_menuID, "Home", "home", -1, "page", "all", false, "none", 1, "user");
-Menu::createMenu(2, $admin_menuID, "Dashboard", "admin/home", -1, "page", array("can_access_admin_area"), true, "fa-dashboard", 1, "system");
-//Menu::createMenu(3, )
+Menu::createMenu(1, $main_menuID, "Home", "home", -1, "home", "page", "all", false, "none", 1, "user");
+Menu::createMenu(2, $admin_menuID, "Dashboard", "admin/home", -1, "admin_home", "page", array("can_access_admin_area"), true, "fa-dashboard", 1, "system");
+Menu::createMenu(3, $admin_menuID, "Dashboard", "admin/home", 2, "", "page", array("can_access_admin_area"), true, "fa-dashboard", 1, "system");
+Menu::createMenu(4, $admin_menuID, "Settings", "admin/settings", 2, "", "page", array("can_see_global_settings"), true, "fa-cog", 2, "system");
+Menu::createMenu(5, $admin_menuID, "Website", "/", 2, "", "page", "none", false, "fa-desktop", 3, "system");
+Menu::createMenu(6, $admin_menuID, "Updates", "admin/update", 2, "updates", "page", array("can_see_cms_version", "can_update_cms"), true, "fa-download", 4, "system");
+Menu::createMenu(7, $admin_menuID, "Posts", "#", -1, "posts", "no_link", array("can_see_all_pages"), true, "fa-list-alt", 2, "system");
+Menu::createMenu(8, $admin_menuID, "Pages", "admin/pages", -1, "pages", "page", array("can_see_all_pages"), true, "fa-file", 3, "system");
+Menu::createMenu(9, $admin_menuID, "All Pages", "admin/pages", 8, "all_pages", "page", array("can_see_all_pages"), true, "fa-circle-o", 1, "system");
+Menu::createMenu(10, $admin_menuID, "My Pages", "admin/my_pages", 9, "my_pages", "page", array("can_see_all_pages"), true, "fa-circle-o", 2, "system");
+Menu::createMenu(11, $admin_menuID, "Media", "admin/media", -1, "media", "page", array("can_see_all_media", "can_upload_media"), true, "fa-file-image", 2, "system");
+Menu::createMenu(12, $admin_menuID, "All Media", "admin/media", 11, "all_media", "page", array("can_see_all_media"), true, "fa-file-image", 1, "system");
+Menu::createMenu(14, $admin_menuID, "Upload Media", "admin/media/upload", 11, "upload_media", "page", array("can_upload_media"), true, "fa-upload", 2, "system");
+Menu::createMenu(15, $admin_menuID, "Menu", "admin/menu", -1, "menu", "page", array("can_see_menus", "can_edit_menus"), true, "fa-anchord", 5, "system");
 
 echo "Create default pages if absent...<br />";
 
@@ -1016,8 +1027,9 @@ Permissions::createOrUpdateCategory("general", "General", 1);
 Permissions::createOrUpdateCategory("users", "Users", 3);//user permissions, like "can_create_user"
 Permissions::createOrUpdateCategory("groups", "Groups", 3);
 Permissions::createOrUpdateCategory("pages", "Pages", 4);
-Permissions::createOrUpdateCategory("permissions", "Permissions", 5);
-Permissions::createOrUpdateCategory("admin", "Admin", 6);
+Permissions::createOrUpdateCategory("media", "Media", 5);
+Permissions::createOrUpdateCategory("permissions", "Permissions", 6);
+Permissions::createOrUpdateCategory("admin", "Admin", 7);
 
 echo "Create default permissions...<br />";
 //general permissions
@@ -1038,7 +1050,7 @@ Permissions::createPermission("can_edit_users", "Can edit users", "Can edit user
 Permissions::createPermission("can_edit_users_password", "Can edit password of users", "Can edit password of users (without super-admin with userID 1)", "users", "system", 4);
 
 //page permissions
-Permissions::createPermission("can_see_all_pages", "Can see all pages in admin area", "pages", "system", 1);
+Permissions::createPermission("can_see_all_pages", "Can see all pages in admin area", "pages", "pages", "system", 1);
 Permissions::createPermission("can_create_pages", "Can create pages", "Can create pages", "pages", "system", 2);
 Permissions::createPermission("can_edit_own_pages", "Can edit own pages", "Can edit pages which was created by user", "pages", "system", 3);
 Permissions::createPermission("can_edit_all_pages", "Can edit all pages", "Can edit all pages, including pages which was created by other users", "pages", "system", 4);
@@ -1047,11 +1059,21 @@ Permissions::createPermission("can_publish_all_pages", "Can publish all pages", 
 Permissions::createPermission("can_delete_own_pages", "Can delete own pages", "Can delete pages which was created by user", "pages", "system", 7);
 Permissions::createPermission("can_delete_all_pages", "Can delete all pages", "Can delete all pages, including pages which was created by other users", "pages", "system", 8);
 
+//media permissions
+Permissions::createPermission("can_see_all_media", "Can see all media", "Can see all media files", "media", "system", 1);
+Permissions::createPermission("can_see_own_media", "Can see own media", "Can see own media files", "media", "system", 2);
+Permissions::createPermission("can_upload_media", "Can upload media", "Can upload media files", "media", "system", 3);
+
+//menu permissions
+Permissions::createPermission("can_see_menus", "Can see menus", "Can see menus", "menu", "system", 1);
+Permissions::createPermission("can_edit_menus", "Can edit menus", "Can edit menus", "menu", "system", 2);
+
 //admin permissions
 Permissions::createPermission("can_see_cms_version", "Can see version of CMS system", "Can see version of CMS system", "admin", "system", 1);
-Permissions::createPermission("can_see_global_settings", "Can see global CMS settings", "Can see global CMS settings", "admin", "system", 2);
-Permissions::createPermission("can_edit_global_settings", "Can edit global settings", "Can edit global settings", "admin", "system", 3);
-Permissions::createPermission("super_admin", "Is super admin and CAN EVERYTHING", "Is super admin and CAN EVERYTHING (overrides all other values!)", "admin", "system", 4);
+Permissions::createPermission("can_update_cms", "Can update CMS system", "Can update CMS system", "admin", "system", 2);
+Permissions::createPermission("can_see_global_settings", "Can see global CMS settings", "Can see global CMS settings", "admin", "system", 3);
+Permissions::createPermission("can_edit_global_settings", "Can edit global settings", "Can edit global settings", "admin", "system", 4);
+Permissions::createPermission("super_admin", "Is super admin and CAN EVERYTHING", "Is super admin and CAN EVERYTHING (overrides all other values!)", "admin", "system", 5);
 
 echo "Set default permissions for userID 1...<br />";
 $user_rights = new UserRights(1);
