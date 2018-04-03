@@ -903,21 +903,21 @@ Settings::create("default_mobile_style_name", "default", "Default mobile Style",
 Settings::create("guest_userid", -1, "Guest UserID", "UserID of not-logged-in users (default: -1).", "system", "general", "DataType_Integer");
 Settings::create("guest_username", "Guest", "Guest Username", "Username of not-logged-in users (default: Guest).", "system", "general", "DataType_Username");
 Settings::create("online_interval", 5, "Online Interval", "Interval-Angabe in minues, how long a user is set as online (since last page request). IMPORTANT: This is independent from login interval!", "system", "general", "DataType_Integer");
-Settings::create("x_frame_options", "DENY", "X-Frame-Options header value (none = dont set header).", "values: DENY, SAMEORIGIN, ALLOW-FROM https://example.com/, none", "system", "security", "DataType_SelectBox");
-Settings::create("login_page","login", "Alias of Login Page (incl. directory, if necessary)", "Alias of Login Page (incl. directory, if necessary). Default: login", "system", "general");
-Settings::create("logout_page", "logout", "Alias of Logout Page (incl. directory, if necessary)", "Alias of Logout Page (incl. directory, if necessary). Default: logout", "system", "general");
+Settings::create("x_frame_options", "DENY", "X-Frame-Options header value (none = dont set header).", "values: DENY, SAMEORIGIN, ALLOW-FROM https://example.com/, none", "system", "security", "DataType_String");
+Settings::create("login_page","login", "Alias of Login Page (incl. directory, if necessary)", "Alias of Login Page (incl. directory, if necessary). Default: login", "system", "general", "DataType_String");
+Settings::create("logout_page", "logout", "Alias of Logout Page (incl. directory, if necessary)", "Alias of Logout Page (incl. directory, if necessary). Default: logout", "system", "general", "DataType_String");
 //Settings::create("base_dir", "/", "Base directory", "Base directory (if this CMS is installed in root directory, the right option is '/', but if it is installed in a sub directory, the right option is '/sub-dir/'). Default: /", "system", "general");
-Settings::create("css_cache_strategy", "expires_header", "CSS Browser Cache Strategy", "CSS Browser Cache Strategy, values: expires_header, etag_header, none", "system", "general");
-Settings::create("css_cache_expires_header_ttl", "31536000", "CSS Expires Header Seconds to cache", "Seconds to cache (on client browser). Only used, if cache strategy 'expired_header' is used! Default: 31536000 seconds (1 year)", "system", "general");
-Settings::create("js_cache_strategy", "expires_header", "JS Browser Cache Strategy", "JS Browser Cache Strategy, values: expires_header, etag_header, none", "system", "general");
-Settings::create("js_cache_expires_header_ttl", "31536000", "JS Expires Header Seconds to cache", "Seconds to cache (on client browser). Only used, if cache strategy 'expired_header' is used! Default: 31536000 seconds (1 year)", "system", "general");
-Settings::create("title_praefix", "", "Title Praefix", "Title Praefix", "system", "general");
-Settings::create("title_suffix", "", "Title Suffix", "Title Suffix", "system", "general");
-Settings::create("copyright", "<strong>Copyright &copy; 2018 <a href=\"http://jukusoft.com\">JuKuSoft.com</a></strong>, All Rights Reserved.", "Copyright Notice on page", "Copyright notice on every page", "system", "general");
+Settings::create("css_cache_strategy", "expires_header", "CSS Browser Cache Strategy", "CSS Browser Cache Strategy, values: expires_header, etag_header, none", "system", "general", "DataType_SelectBox", array("expires_header", "etag_header", "none"));
+Settings::create("css_cache_expires_header_ttl", "31536000", "CSS Expires Header Seconds to cache", "Seconds to cache (on client browser). Only used, if cache strategy 'expired_header' is used! Default: 31536000 seconds (1 year)", "system", "general", "DataType_Integer");
+Settings::create("js_cache_strategy", "expires_header", "JS Browser Cache Strategy", "JS Browser Cache Strategy, values: expires_header, etag_header, none", "system", "general", "DataType_SelectBox", array("expires_header", "etag_header", "none"));
+Settings::create("js_cache_expires_header_ttl", "31536000", "JS Expires Header Seconds to cache", "Seconds to cache (on client browser). Only used, if cache strategy 'expired_header' is used! Default: 31536000 seconds (1 year)", "system", "general", "DataType_Integer");
+Settings::create("title_praefix", "", "Title Praefix", "Title Praefix", "system", "general", "DataType_String");
+Settings::create("title_suffix", "", "Title Suffix", "Title Suffix", "system", "general", "DataType_String");
+Settings::create("copyright", "<strong>Copyright &copy; 2018 <a href=\"http://jukusoft.com\">JuKuSoft.com</a></strong>, All Rights Reserved.", "Copyright Notice on page", "Copyright notice on every page", "system", "general", "DataType_HTML");
 
 //maintenance mode
-Settings::create("maintenance_mode_enabled", false, "Maintenance Mode enabled (boolean)", "Maintenance Mode enabled (boolean), Default: false", "system", "general");
-Settings::create("maintenance_text", "This domain is currently under scheduled maintenance mode. Sorry for the inconvenience! Look in a few minutes over again!", "Maintenance Text", "Text which is shown, if maintenance mode is enabled", "system", "general");
+Settings::create("maintenance_mode_enabled", false, "Maintenance Mode enabled (boolean)", "Maintenance Mode enabled (boolean), Default: false", "system", "general", "DataType_Boolean");
+Settings::create("maintenance_text", "This domain is currently under scheduled maintenance mode. Sorry for the inconvenience! Look in a few minutes over again!", "Maintenance Text", "Text which is shown, if maintenance mode is enabled", "system", "general", "DataType_HTML");
 
 $main_menuID = -1;
 $local_menuID = -1;
