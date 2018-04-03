@@ -83,8 +83,6 @@ $data['BUILD'] = "1001";
 // Output the result
 echo $core->get(__FILLE__ . "/index_dwoo.html", $data);
 
-$template = new XTemplate(dirname(__FILLE__) . "/index.tpl");
-
 echo "<!-- Execution time: " . $exec_time . " seconds -->";
 
 ?>
