@@ -162,6 +162,12 @@ class Menu {
 			//check, if menu has sub menus
 			if (sizeof($menu['submenus']) > 0) {
 				//TODO: add code here
+
+				foreach ($menu as $key=>$value) {
+					$template->assign(strtoupper($key), $value);
+				}
+
+				$template->parse("main.treeview");
 			} else {
 				//menu doesnt have sub menus
 
