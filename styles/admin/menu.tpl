@@ -11,8 +11,8 @@
             <span class="pull-right-container">
                 <!-- <small class="label pull-right bg-green">Hot</small> -->
 
-                <small class="label pull-right bg-red">3</small>
-                <small class="label pull-right bg-blue">17</small>
+                <!-- <small class="label pull-right bg-red">3</small>
+                <small class="label pull-right bg-blue">17</small> -->
             </span>
         </a>
     </li>
