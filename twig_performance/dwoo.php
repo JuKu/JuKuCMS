@@ -56,13 +56,21 @@ $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
 
 define('ROOT_PATH', dirname(__FILE__) . "/../");
-define('DWOO_PATH', ROOT_PATH . "system/packages/com.jukusoft.cms.dwoo/dwoo/lib/Dwoo/");
+define('DWOO_PATH', ROOT_PATH . "system/packages/com.jukusoft.cms.dwoo/dwoo/lib/");
 
-require(DWOO_PATH . "Core.php");
-require(DWOO_PATH . "ITemplate.php");
-require(DWOO_PATH . "Compiler.php");
-require(DWOO_PATH . "Template/Str.php");
-require(DWOO_PATH . "Template/File.php");
+require(DWOO_PATH . "Dwoo/Core.php");
+require(DWOO_PATH . "Dwoo/ITemplate.php");
+require(DWOO_PATH . "Dwoo/Compiler.php");
+require(DWOO_PATH . "Dwoo/Template/Str.php");
+require(DWOO_PATH . "Dwoo/Template/File.php");
+
+function dwoo_autoload ($class_name) {
+	$class_name = str_replace("\\", "/", $class_name);
+	require(DWOO_PATH . $class_name);
+}
+
+//register autoloader
+spl_autoload_register('dwoo_autoload');
 
 // Create the controller, it is reusable and can render multiple templates
 $core = new Dwoo\Core();

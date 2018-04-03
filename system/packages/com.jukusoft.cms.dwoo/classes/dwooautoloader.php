@@ -25,6 +25,8 @@
  * Time: 20:11
  */
 
+define('DWOO_PATH', ROOT_PATH . "system/packages/com.jukusoft.cms.dwoo/dwoo/lib/");
+
 class DwooAutoloader {
 
 	public static function loadClass (string $class_name) {
