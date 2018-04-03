@@ -159,6 +159,7 @@ $localMenu = new Menu($menuID, "localmenu");
 $localMenu->loadMenu($localMenuID);
 $registry->storeObject("local_menu", $localMenu);
 
+$registry->setSetting("header", "");
 $registry->setSetting("footer", "");
 
 Events::throwEvent("Show page", array(
