@@ -32,7 +32,7 @@
         <!-- Logo -->
         <a href="{BASE_URL}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>R</b>CMS</span>
+            <span class="logo-mini"><b>C</b>MS</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Rocket</b>CMS</span>
         </a>
