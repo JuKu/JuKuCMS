@@ -109,9 +109,9 @@ class DwooTemplate extends Template {
 			self::$core->setCompileDir($compile_dir);
 
 			//allow some php functions
-			self::$core->setSecurityPolicy(new \Dwoo\Security\Policy());
-			self::$core->getSecurityPolicy()->allowPhpFunction("count");
-			self::$core->getSecurityPolicy()->allowPhpFunction("sizeof");
+			//self::$core->setSecurityPolicy(new \Dwoo\Security\Policy());
+			//self::$core->getSecurityPolicy()->allowPhpFunction("count");
+			//self::$core->getSecurityPolicy()->allowPhpFunction("sizeof");
 
 			//add plugins
 			//self::$core->addPlugin("if");
