@@ -184,7 +184,7 @@ class Menu {
 				'value' => $menuID
 			)));
 
-			var_dump($rows);
+			//var_dump($rows);
 
 			$array = array();
 
