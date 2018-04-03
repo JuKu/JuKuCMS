@@ -101,6 +101,7 @@ class Menu {
 			$entry['icon_class'] = " " . $row['icon'];
 			$entry['permissions'] = explode("|", $row['permissions']);
 			$entry['append'] = "";
+			$entry['extension_code'] = "";
 
 			if ($row['type'] == "page") {
 				$href = DomainUtils::generateURL($row['url']);
