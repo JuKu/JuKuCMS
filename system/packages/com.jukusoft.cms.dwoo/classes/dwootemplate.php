@@ -61,6 +61,42 @@ class DwooTemplate extends Template {
 
 		//create a data set, this data set can be reused to render multiple templates if it contains enough data to fill them all
 		$this->data = new Dwoo\Data();
+
+		//set default values
+		$this->assign("REGISTRY", $registry->listSettings());
+
+		//set CSRF token
+		$this->assign("CSRF_TOKEN", Security::getCSRFToken());
+
+		//set domain, current page and so on
+		$this->assign("DOMAIN", DomainUtils::getCurrentDomain());
+		$this->assign("BASE_URL", DomainUtils::getBaseURL());
+		$this->assign("CURRENT_URL", DomainUtils::getURL());
+		$this->assign("FOLDER", $registry->getSetting("folder"));
+
+		//set language settings
+		$this->assign("PREF_LANG", $registry->getSetting("pref_lang"));
+		$this->assign("LANG_TOKEN", $registry->getSetting("lang_token"));
+
+		$redirect_url = urlencode(DomainUtils::getURL());
+
+		if (isset($_REQUEST['redirect_url']) && !empty($_REQUEST['redirect_url'])) {
+			$redirect_url = $_REQUEST['redirect_url'];
+		}
+
+		$domain = $registry->getObject("domain");
+		$this->assign("HOME_PAGE", $domain->getHomePage());
+		$this->assign("LOGIN_PAGE", Settings::get("login_page", "login"));
+		$this->assign("LOGIN_URL", DomainUtils::getBaseURL() . "/" . Settings::get("login_page", "login") . "?action=login&redirect_url=" . $redirect_url);
+		$this->assign("LOGOUT_PAGE", Settings::get("logout_page", "logout"));
+		$this->assign("LOGOUT_URL", DomainUtils::getBaseURL() . "/" . Settings::get("logout_page", "logout") . "?csrf_token=" . urlencode(Security::getCSRFToken()));
+
+		//set user variables
+		$this->assign("USERID", User::current()->getID());
+		$this->assign("USERNAME", User::current()->getUsername());
+
+		$style_name = $registry->getSetting("current_style_name");
+		$this->assign("STYLE_PATH",DomainUtils::getBaseURL() . "/styles/" . $style_name . "/");
 	}
 
 	public function assign ($var, $value) {
