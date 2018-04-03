@@ -1007,6 +1007,7 @@ PageType::createPageType("Error403Page", "Error 403 page", true);
 PageType::createPageType("IndexPage", "index page (supports extra template)", true);
 PageType::createPageType("LoginPage", "Login page", true);
 PageType::createPageType("LogoutPage", "Logout page", true);
+PageType::createPageType("SitemapPage", "Sitemap page", true);
 
 echo "Create style rule for admin area if absent...<br />";
 StyleRules::createRuleWithPredefinedID(1, "FOLDER", "/admin/", "admin", -1, 1);
