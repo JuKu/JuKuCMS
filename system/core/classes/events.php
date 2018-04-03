@@ -79,6 +79,32 @@ class Events {
 	}
 
 	protected static function executeEvent ($row, $params) {
+		$type = strtolower($row['type']);
+		$file = $row['file'];
+		$class_name = $row['class_name'];
+		$class_method = $row['class_method'];
+
+		switch ($type) {
+			case "file":
+				//check, if file exists
+				if (file_exists(ROOT_PATH . $file)) {
+					require(ROOT_PATH . $file);
+				} else {
+					throw new IllegalStateException("required file for event not found: " . $file);
+				}
+
+				break;
+			case "function":
+				call_user_func($class_method, $params);
+				break;
+			case "class_static_method":
+				call_user_func(array($class_name, $class_method), $params);
+				break;
+			default:
+				throw new IllegalStateException("unknown event type '" . $type . "' for event '" . $row['name'] . "'!");
+				break;
+		}
+
 		//TODO: execute event here
 	}
 
