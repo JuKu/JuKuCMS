@@ -22,7 +22,7 @@
     <!-- BEGIN: treeview -->
     <li class="treeview">
         <a href="#">
-            <i class="fa {ICON_CLASS}"></i> <span>Dashboard</span>
+            <i class="fa {ICON_CLASS}"></i> <span>{TITLE}</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
