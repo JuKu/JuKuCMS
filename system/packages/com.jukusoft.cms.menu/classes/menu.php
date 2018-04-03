@@ -91,6 +91,28 @@ class Menu {
 		$array = array();
 
 		foreach ($menu_array[$parentID] as $row) {
+			//check login_required
+			if ($row['login_required'] == 1 && !User::current()->isLoggedIn()) {
+				//dont show this menu
+				continue;
+			}
+
+			//check permissions
+			$permissions = explode("|", $row['permissions']);
+			$has_permission = false;
+
+			foreach ($permissions as $permission) {
+				if (PermissionChecker::current()->hasRight($permission)) {
+					$has_permission = true;
+					break;
+				}
+			}
+
+			if (!$has_permission) {
+				//dont show this menu, because user doesnt have permission for this menu
+				continue;
+			}
+
 			$entry = array();
 
 			$href = "";
