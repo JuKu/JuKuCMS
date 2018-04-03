@@ -58,11 +58,11 @@ $exec_time = $end_time - $start_time;
 define('ROOT_PATH', dirname(__FILE__) . "/../");
 define('DWOO_PATH', ROOT_PATH . "system/packages/com.jukusoft.cms.dwoo/dwoo/lib/");
 
-require(DWOO_PATH . "Dwoo/Core.php");
+/*require(DWOO_PATH . "Dwoo/Core.php");
 require(DWOO_PATH . "Dwoo/ITemplate.php");
 require(DWOO_PATH . "Dwoo/Compiler.php");
 require(DWOO_PATH . "Dwoo/Template/Str.php");
-require(DWOO_PATH . "Dwoo/Template/File.php");
+require(DWOO_PATH . "Dwoo/Template/File.php");*/
 
 function dwoo_autoload ($class_name) {
 	$class_name = str_replace("\\", "/", $class_name);
