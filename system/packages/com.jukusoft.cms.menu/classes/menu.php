@@ -159,7 +159,7 @@ class Menu {
 		return $html;
 	}
 
-	protected function parseMenu (array $menu_array, Template &$template) {
+	/*protected function parseMenu (array $menu_array, Template &$template) {
 		//TODO: check permissions & login required
 
 		foreach ($menu_array as $menu) {
@@ -182,7 +182,7 @@ class Menu {
 				$template->parse("main.menu");
 			}
 		}
-	}
+	}*/
 
 	protected static function loadMenuID (int $menuID) {
 		if (isset(self::$menuID_array[$menuID])) {
