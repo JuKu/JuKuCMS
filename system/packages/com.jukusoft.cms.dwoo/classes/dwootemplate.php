@@ -108,6 +108,10 @@ class DwooTemplate extends Template {
 			self::$core->setCacheDir($cache_dir);
 			self::$core->setCompileDir($compile_dir);
 
+			//allow some php functions
+			self::$core->getSecurityPolicy()->allowPhpFunction("count");
+			self::$core->getSecurityPolicy()->allowPhpFunction("sizeof");
+
 			//add plugins
 			//self::$core->addPlugin("if");
 
