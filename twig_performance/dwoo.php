@@ -60,6 +60,7 @@ define('DWOO_PATH', ROOT_PATH . "system/packages/com.jukusoft.cms.dwoo/dwoo/lib/
 
 require(DWOO_PATH . "Core.php");
 require(DWOO_PATH . "Template/File.php");
+require(DWOO_PATH . "Template/Str.php");
 
 // Create the controller, it is reusable and can render multiple templates
 $core = new Dwoo\Core();
