@@ -147,6 +147,10 @@ class Page {
 		return $this->row['published'] == 1;
 	}
 
+	public function getContentType () : string {
+		return $this->row['content_type'];
+	}
+
 	public function activate (bool $bool = true) {
 		$this->row['activated'] = $bool;
 	}

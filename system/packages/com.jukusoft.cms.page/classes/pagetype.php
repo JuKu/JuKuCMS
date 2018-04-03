@@ -37,7 +37,7 @@ class PageType {
 	}
 
 	public function getContentType () : string {
-		return "text/html; charset=" . $this->getCharset();
+		return "" . $this->page->getContentType() . "; charset=" . $this->getCharset();
 	}
 
 	public function getCharset () : string {
