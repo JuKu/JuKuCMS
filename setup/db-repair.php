@@ -974,7 +974,7 @@ Page::createIfAbsent("robots.txt", "Robots.txt", "RobotsPage", "", "/", -1, -1, 
 Page::createIfAbsent("error403", "Error 403", "Error403Page", "Error 403 - Forbidden!<br /> You dont have permissions to access this page or folder. Maybe you have to login.", "/");
 
 echo "Create admin pages if absent...<br />";
-Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/admin/", $admin_menuID, -1, -1, false, true, false);
+Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/admin/", -1, -1, -1, false, true, false);
 
 echo "Create default page types if absent...<br />";
 
