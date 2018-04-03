@@ -200,6 +200,9 @@ $table->addVarchar("owner", 255, true, "system");
 $table->addInt("order", 10, true, false, 10);
 $table->addVarchar("icon_path", 600, true, "none");
 $table->addTimestamp("last_update", true, "0000-00-00 00:00:00", true);
+$table->addVarchar("datatype", 255, true, "DataType_String");
+$table->addText("datatype_params", true);
+$table->addInt("editable", 10, true, false, 1);
 $table->addVarchar("category", 255, true, "general");
 $table->addInt("activated", 10, true, false, 1);
 
@@ -894,13 +897,13 @@ Lang::addLangOrUpdate("en", "English");
 echo "Create default global settings...<br />";
 
 //create or update default settings (value will be only set, if key doesnt exists)
-Settings::create("default_lang", "de", "Default Language", "Default (fallback) language, if no other languages are supported", "system", "general");
-Settings::create("default_style_name", "default", "Default Style", "Default (fallback) style name, which will be used, if no other design was set by style rules.", "system", "general");
-Settings::create("default_mobile_style_name", "default", "Default mobile Style", "Like default style name, but for mobiledevices", "system", "general");
-Settings::create("guest_userid", -1, "Guest UserID", "UserID of not-logged-in users (default: -1).", "system", "general");
-Settings::create("guest_username", "Guest", "Guest Username", "Username of not-logged-in users (default: Guest).", "system", "general");
-Settings::create("online_interval", 5, "Online Interval", "Interval-Angabe in minues, how long a user is set as online (since last page request). IMPORTANT: This is independent from login interval!", "system", "general");
-Settings::create("x_frame_options", "DENY", "X-Frame-Options header value (none = dont set header).", "values: DENY, SAMEORIGIN, ALLOW-FROM https://example.com/, none", "system", "security");
+Settings::create("default_lang", "de", "Default Language", "Default (fallback) language, if no other languages are supported", "system", "general", "DataType_LangChooser");
+Settings::create("default_style_name", "default", "Default Style", "Default (fallback) style name, which will be used, if no other design was set by style rules.", "system", "general", "DataType_StyleChooser");
+Settings::create("default_mobile_style_name", "default", "Default mobile Style", "Like default style name, but for mobiledevices", "system", "general", "DataType_StyleChooser");
+Settings::create("guest_userid", -1, "Guest UserID", "UserID of not-logged-in users (default: -1).", "system", "general", "DataType_Integer");
+Settings::create("guest_username", "Guest", "Guest Username", "Username of not-logged-in users (default: Guest).", "system", "general", "DataType_Username");
+Settings::create("online_interval", 5, "Online Interval", "Interval-Angabe in minues, how long a user is set as online (since last page request). IMPORTANT: This is independent from login interval!", "system", "general", "DataType_Integer");
+Settings::create("x_frame_options", "DENY", "X-Frame-Options header value (none = dont set header).", "values: DENY, SAMEORIGIN, ALLOW-FROM https://example.com/, none", "system", "security", "DataType_SelectBox");
 Settings::create("login_page","login", "Alias of Login Page (incl. directory, if necessary)", "Alias of Login Page (incl. directory, if necessary). Default: login", "system", "general");
 Settings::create("logout_page", "logout", "Alias of Logout Page (incl. directory, if necessary)", "Alias of Logout Page (incl. directory, if necessary). Default: logout", "system", "general");
 //Settings::create("base_dir", "/", "Base directory", "Base directory (if this CMS is installed in root directory, the right option is '/', but if it is installed in a sub directory, the right option is '/sub-dir/'). Default: /", "system", "general");

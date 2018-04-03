@@ -112,7 +112,7 @@ class Settings {
 	/**
 	 * create setting (so it can be shown on settings page)
 	 */
-	public static function create (string $key, $value, string $title, string $description, string $owner, string $category = "general", $visible_permissions = "can_see_global_settings", $change_permissions = "can_change_global_settings", int $order = 10, string $icon_path = "none", string $last_update = "0000-00-00 00:00:00") {
+	public static function create (string $key, $value, string $title, string $description, string $owner, string $category = "general", string $datatype = "DataType_String", string $datatype_params = "", bool $editable = true, $visible_permissions = "can_see_global_settings", $change_permissions = "can_change_global_settings", int $order = 10, string $icon_path = "none", string $last_update = "0000-00-00 00:00:00") {
 		self::loadSettingsIfAbsent();
 
 		if (strlen($key) > 255) {
@@ -139,10 +139,10 @@ class Settings {
 
 		//insert setting into database
 		Database::getInstance()->execute("INSERT INTO `{praefix}global_settings` (
-			`key`, `value`, `title`, `description`, `visible_permission`, `change_permission`, `owner`, `order`, `icon_path`, `last_update`, `category`, `activated`
+			`key`, `value`, `title`, `description`, `visible_permission`, `change_permission`, `owner`, `order`, `icon_path`, `last_update`, `datatype`, `datatype_params`, `editable`, `category`, `activated`
 		) VALUES (
-			:key, :value, :title, :description, :visible_permissions, :change_permissions, :owner, :order, :icon_path, '0000-00-00 00:00:00', :category, '1'
-		) ON DUPLICATE KEY UPDATE `title` = :title, `description` = :description, `visible_permission` = :visible_permissions, `change_permission` = :change_permissions, `owner` = :owner, `order` = :order, `icon_path` = :icon_path, `last_update` = CURRENT_TIMESTAMP , `category` = :category; ", array(
+			:key, :value, :title, :description, :visible_permissions, :change_permissions, :owner, :order, :icon_path, '0000-00-00 00:00:00', :datatype, :datatype_params, :editable, :category, :activated
+		) ON DUPLICATE KEY UPDATE `title` = :title, `description` = :description, `visible_permission` = :visible_permissions, `change_permission` = :change_permissions, `owner` = :owner, `order` = :order, `icon_path` = :icon_path, `last_update` = CURRENT_TIMESTAMP, `datatype` = :datatype, `datatype_params` = :datatype_params, `editable` = :editable, `category` = :category; ", array(
 			'key' => $key,
 			'value' => $value,
 			'title' => $title,
@@ -152,7 +152,11 @@ class Settings {
 			'owner' => $owner,
 			'order' => (int) $order,
 			'icon_path' => $icon_path,
-			'category' => $category
+			'datatype' => $datatype,
+			'datatype_params' => $datatype_params,
+			'editable' => ($editable ? 1 : 0),
+			'category' => $category,
+			'activated' => 1
 		));
 
 		//update value in local in-memory cache
