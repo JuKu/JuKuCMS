@@ -48,7 +48,7 @@ class StyleController {
 
 	public static function showPage (Registry &$registry, Page &$page, PageType &$page_type) {
 		//create new template
-		$template = new Template("index");
+		$template = new DwooTemplate("index");
 
 		$title_preafix = Settings::get("title_praefix", "");
 		$title_suffix = Settings::get("title_suffix", "");
@@ -98,9 +98,11 @@ class StyleController {
 		$template->assign("LOCALMENU", $localMenu->getCode());
 
 		if (User::current()->isLoggedIn()) {
-			$template->parse("main.logged_in");
+			$template->assign("is_logged_in", true);
+			//$template->parse("main.logged_in");
 		} else {
-			$template->parse("main.not_logged_in");
+			$template->assign("is_logged_in", false);
+			//$template->parse("main.not_logged_in");
 		}
 
 		//throw event
@@ -112,10 +114,13 @@ class StyleController {
 		));
 
 		if ($page_type->showFooter()) {
-			$template->parse("main.footer");
+			$template->assign("show_footer", true);
+			//$template->parse("main.footer");
+		} else {
+			$template->assign("show_footer", false);
 		}
 
-		$template->parse();
+		//$template->parse();
 
 		echo $template->getCode();
 	}
