@@ -104,8 +104,6 @@ class Events {
 				throw new IllegalStateException("unknown event type '" . $type . "' for event '" . $row['name'] . "'!");
 				break;
 		}
-
-		//TODO: execute event here
 	}
 
 }
