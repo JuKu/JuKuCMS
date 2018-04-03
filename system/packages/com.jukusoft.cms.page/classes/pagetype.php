@@ -52,6 +52,10 @@ class PageType {
 		return true;
 	}
 
+	public function showHTMLComments () : bool {
+		return true;
+	}
+
 	public function getContent () : string {
 		$content = $this->getPage()->getContent();
 

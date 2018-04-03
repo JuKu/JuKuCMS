@@ -41,7 +41,7 @@ class SitemapPage extends PageType {
 		return false;
 	}
 
-	public function showFooter(): bool {
+	public function showHTMLComments(): bool {
 		return false;
 	}
 

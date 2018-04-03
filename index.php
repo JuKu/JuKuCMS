@@ -184,24 +184,26 @@ if ($page_type->showDesign()) {
 $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
 
-//benchmark code
-if (ACTIVATE_BENCHMARK) {
-	echo "<!-- page was generated in " . $exec_time . " seconds -->\n";
-	echo "<!-- mobile detection executed in " . $mobile_detection_exec_time . " seconds, isMobile: " . ($registry->getSetting("isMobile") ? "true" : "false") . " -->\n";
+if ($page_type->showHTMLComments()) {
+	//benchmark code
+	if (ACTIVATE_BENCHMARK) {
+		echo "<!-- page was generated in " . $exec_time . " seconds -->\n";
+		echo "<!-- mobile detection executed in " . $mobile_detection_exec_time . " seconds, isMobile: " . ($registry->getSetting("isMobile") ? "true" : "false") . " -->\n";
 
-	//benchmark dwoo template engine
-	foreach (DwooTemplate::listFileBenchmark() as $file=>$exec_time) {
-		echo "<!-- Dwoo benchmark file '" . $file . "': " . $exec_time . " seconds -->\n";
+		//benchmark dwoo template engine
+		foreach (DwooTemplate::listFileBenchmark() as $file=>$exec_time) {
+			echo "<!-- Dwoo benchmark file '" . $file . "': " . $exec_time . " seconds -->\n";
+		}
 	}
-}
 
-if (DEBUG_MODE) {
-	echo "<!-- userID: " . User::current()->getID() . ", username: " . User::current()->getUsername() . " -->\n";
-	echo "<!-- " . Database::getInstance()->countQueries() . " sql queries executed -->";
+	if (DEBUG_MODE) {
+		echo "<!-- userID: " . User::current()->getID() . ", username: " . User::current()->getUsername() . " -->\n";
+		echo "<!-- " . Database::getInstance()->countQueries() . " sql queries executed -->";
 
-	if (DEBUG_SQL_QUERIES) {
-		foreach (Database::getInstance()->listQueryHistory() as $query_array) {
-			echo "<!-- query: " . $query_array['query'] . " -->\n";
+		if (DEBUG_SQL_QUERIES) {
+			foreach (Database::getInstance()->listQueryHistory() as $query_array) {
+				echo "<!-- query: " . $query_array['query'] . " -->\n";
+			}
 		}
 	}
 }
