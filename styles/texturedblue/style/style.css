@@ -7,7 +7,7 @@ html
 
 body
 { font: normal .80em 'trebuchet ms', arial, sans-serif;
-  background: #F0EFE2 url({STYLE_PATH}background.png) repeat;
+  background: #F0EFE2 url({STYLE_PATH}style/background.png) repeat;
   color: #777;}
 
 p
@@ -89,7 +89,7 @@ ol li
   margin-right: auto;}
 
 #header
-{ background: #1D1D1D url({STYLE_PATH}header.png) repeat;
+{ background: #1D1D1D url({STYLE_PATH}style/header.png) repeat;
   height: 240px;}
 
 #logo
@@ -177,7 +177,7 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
 .sidebar li a, .sidebar li a:hover
 { padding: 0 0 0 40px;
   display: block;
-  background: transparent url({STYLE_PATH}link.png) no-repeat left center;}
+  background: transparent url({STYLE_PATH}style/link.png) no-repeat left center;}
 
 .sidebar li a.selected
 { color: #444;
@@ -193,7 +193,7 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
 
 #content ul li
 { list-style-type: none;
-  background: url({STYLE_PATH}bullet.png) no-repeat;
+  background: url({STYLE_PATH}style/bullet.png) no-repeat;
   margin: 0 0 6px 0; 
   padding: 0 0 4px 25px;
   line-height: 1.5em;}
