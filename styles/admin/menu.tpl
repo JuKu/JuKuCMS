@@ -22,19 +22,23 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     {foreach $item.submenus submenu}
-                                        <li><a href="{$submenu.href}"><i class="fa {$submenu.icon_class}"></i> {$submenu.title}</a></li>
-                                    {/foreach}
-                                    <!-- <li class="treeview">
-                                        <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                                            <span class="pull-right-container">
+                                        {if $submenu.has_submenus == true}
+                                            <li class="treeview">
+                                                <a href="#"><i class="fa fa-circle-o"></i> {$submenu.title}
+                                                    <span class="pull-right-container">
                                               <i class="fa fa-angle-left pull-right"></i>
                                             </span>
-                                        </a>
-                                        <ul class="treeview-menu">
-                                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                        </ul>
-                                    </li> -->
+                                                </a>
+                                                <ul class="treeview-menu">
+                                                    {foreach $submenu.submenus item1}
+                                                        <li><a href="{$item1.href}"><i class="fa {$item1.icon_class}"></i> {$item1.title}</a></li>
+                                                    {/foreach}
+                                                </ul>
+                                            </li>
+                                        {else}
+                                            <li><a href="{$submenu.href}"><i class="fa {$submenu.icon_class}"></i> {$submenu.title}</a></li>
+                                        {/if}
+                                    {/foreach}
                                 </ul>
                             </li>
                         {else}
