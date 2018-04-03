@@ -173,7 +173,6 @@ class Menu {
 
 	protected static function loadMenuID (int $menuID) {
 		if (isset(self::$menuID_array[$menuID])) {
-			echo "menuID already exists.";
 			return;
 		}
 
@@ -184,6 +183,8 @@ class Menu {
 				'type' => PDO::PARAM_INT,
 				'value' => $menuID
 			)));
+
+			var_dump($rows);
 
 			$array = array();
 
@@ -202,7 +203,7 @@ class Menu {
 			Cache::put("menus", "menuID_" . $menuID, $array);
 		}
 
-		var_dump(self::$menuID_array);
+		//var_dump(self::$menuID_array);
 	}
 
 	public static function createMenuName (string $title, string $unique_name = null) : int {
