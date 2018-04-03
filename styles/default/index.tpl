@@ -18,13 +18,11 @@
         <br />
         <h2>Login</h2>
 
-        <!-- BEGIN: not_logged_in -->
-            <a href="{$BASE_URL}/{$LOGIN_PAGE}?redirect_url={$CURRENT_URL}">Login Page</a>
-        <!-- END: not_logged_in -->
-
-        <!-- BEGIN: logged_in -->
+        {if $is_logged_in == true}
             <a href="{$BASE_URL}/admin/home">Admin Area</a> | <a href="{$LOGOUT_URL}">Logout</a>
-        <!-- END: logged_in -->
+        {else}
+            <a href="{$BASE_URL}/{$LOGIN_PAGE}?redirect_url={$CURRENT_URL}">Login Page</a>
+        {/if}
 
         <hr />
 
