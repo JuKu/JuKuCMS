@@ -112,7 +112,7 @@ class Settings {
 	/**
 	 * create setting (so it can be shown on settings page)
 	 */
-	public static function create (string $key, $value, string $title, string $description, string $owner, string $category = "general", string $datatype = "DataType_String", string $datatype_params = "", bool $editable = true, $visible_permissions = "can_see_global_settings", $change_permissions = "can_change_global_settings", int $order = 10, string $icon_path = "none", string $last_update = "0000-00-00 00:00:00") {
+	public static function create (string $key, $value, string $title, string $description, string $owner, string $category = "general", string $datatype = "DataType_String", $datatype_params = "", bool $editable = true, $visible_permissions = "can_see_global_settings", $change_permissions = "can_change_global_settings", int $order = 10, string $icon_path = "none", string $last_update = "0000-00-00 00:00:00") {
 		self::loadSettingsIfAbsent();
 
 		if (strlen($key) > 255) {
@@ -136,6 +136,7 @@ class Settings {
 
 		//serialize value
 		$value = serialize($value);
+		$datatype_params = serialize($datatype_params);
 
 		//insert setting into database
 		Database::getInstance()->execute("INSERT INTO `{praefix}global_settings` (
