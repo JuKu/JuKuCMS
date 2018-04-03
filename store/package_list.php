@@ -30,6 +30,7 @@ $package_list = array(
 	'com.jukusoft.cms.version' => true,
 	'com.jukusoft.cms.permissions' => true,
 	'com.jukusoft.cms.dwoo' => true,
+	'com.jukusoft.cms.sitemap' => true,
 );
 
 ?>
