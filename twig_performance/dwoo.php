@@ -90,7 +90,7 @@ $data['VERSION'] = "1.0.0";
 $data['BUILD'] = "1001";
 
 // Output the result
-echo $core->get(__FILLE__ . "/index_dwoo.html", $data);
+echo $core->get(dirname(__FILE__) . "/index_dwoo.html", $data);
 
 echo "<!-- Execution time: " . $exec_time . " seconds -->";
 
