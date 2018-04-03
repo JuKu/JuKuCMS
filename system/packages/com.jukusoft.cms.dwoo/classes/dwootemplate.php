@@ -27,6 +27,16 @@
 
 class DwooTemplate extends Template {
 
+	protected static $core = null;
+
+	protected static $files = array();
+
+	//variables
+	//protected $vars = array();
+	protected $data = null;
+
+	protected $template = null;
+
 	public function __construct($file, Registry $registry = null) {
 		if ($registry == null) {
 			$registry = Registry::singleton();
@@ -34,6 +44,47 @@ class DwooTemplate extends Template {
 
 		//find file
 		$file = Template::findTemplate($file, $registry);
+
+		//load a template file, this is reusable if you want to render multiple times the same template with different data
+		if (isset(self::$files[$file])) {
+			$this->template = self::$files[$file];
+		} else {
+			$this->template = new Dwoo\Template\File($file);
+			self::$files[$file] = $this->template;
+		}
+
+		//create a data set, this data set can be reused to render multiple templates if it contains enough data to fill them all
+		$this->data = new Dwoo\Data();
+	}
+
+	public function assign ($var, $value) {
+		//$this->vars[$var] = $value;
+		$this->data->assign($var, $value);
+	}
+
+	public function parse ($name = "main") {
+		throw new Exception("Method DwooTemplate::parse() is not supported from Dwoo template engine.");
+	}
+
+	public function getCode ($name = "main") {
+		// Output the result
+		return self::$core->get($this->template, $this->data);
+	}
+
+	protected static function initCoreIfAbsent () {
+		if (self::$core == null) {
+			self::$core = new Dwoo\Core();
+
+			$cache_dir = CACHE_PATH . "dwoo/";
+
+			//check, if cache dir exists
+			if (!file_exists($cache_dir)) {
+				mkdir($cache_dir);
+			}
+
+			//set cache dir
+			self::$core->setCacheDir($cache_dir);
+		}
 	}
 
 }
