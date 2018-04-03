@@ -117,6 +117,11 @@ class Template {
 			$tpl_name = str_replace(".tpl", "", $tpl_name);
 		}
 
+		//check, if file path was set
+		if (file_exists($tpl_name)) {
+			return $tpl_name;
+		}
+
 		//find file
 		$current_style = $registry->getSetting("current_style_name");
 		$style_path = STYLE_PATH . $current_style . "/";
