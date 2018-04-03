@@ -14,7 +14,29 @@
                 <ul class="treeview-menu">
                     {foreach $menu.submenus item}
                         {if $item.has_submenus == true}
-                            //TODO: add code here
+                            <li class="treeview">
+                                <a href="#"><i class="fa fa-circle-o"></i> {$item.title}
+                                    <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    {foreach $item.submenus submenu}
+                                        <li><a href="{$submenu.href}"><i class="fa {$submenu.icon_class}"></i> {$submenu.title}</a></li>
+                                    {/foreach}
+                                    <!-- <li class="treeview">
+                                        <a href="#"><i class="fa fa-circle-o"></i> Level Two
+                                            <span class="pull-right-container">
+                                              <i class="fa fa-angle-left pull-right"></i>
+                                            </span>
+                                        </a>
+                                        <ul class="treeview-menu">
+                                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                        </ul>
+                                    </li> -->
+                                </ul>
+                            </li>
                         {else}
                             <li><a href="{$item.href}"><i class="fa {$item.icon_class}"></i> {$item.title}</a></li>
                         {/if}
