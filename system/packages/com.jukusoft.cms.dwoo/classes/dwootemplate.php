@@ -89,14 +89,21 @@ class DwooTemplate extends Template {
 			self::$core = new Dwoo\Core();
 
 			$cache_dir = CACHE_PATH . "dwoo/";
+			$compile_dir = CACHE_PATH . "dwoo-compile/";
 
 			//check, if cache dir exists
 			if (!file_exists($cache_dir)) {
 				mkdir($cache_dir);
 			}
 
+			//check, if compile dir exists
+			if (!file_exists($compile_dir)) {
+				mkdir($compile_dir);
+			}
+
 			//set cache dir
 			self::$core->setCacheDir($cache_dir);
+			self::$core->setCompileDir($compile_dir);
 
 			//add plugins
 			//self::$core->addPlugin("if");
