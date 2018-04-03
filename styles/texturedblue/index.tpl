@@ -8,10 +8,10 @@
     <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
     <link rel="stylesheet" type="text/css" href="style/style.css" title="style" />
 
-    <link rel="stylesheet" href="{$BASE_URL}/css.php?style=admin&amp;hash={$CSS_HASH_ALL}" />
+    <link rel="stylesheet" href="{$BASE_URL}/css.php?style=texturedblue&amp;hash={$CSS_HASH_ALL}" />
 
     <!-- header javascript -->
-    <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=admin&amp;hash={$JS_HASH_ALL_HEADER}&amp;position=header"></script>
+    <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_HEADER}&amp;position=header"></script>
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 </div>
 
 <!-- footer javascript -->
-<script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=admin&amp;hash={$JS_HASH_ALL_FOOTER}&amp;position=footer"></script>
+<script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_FOOTER}&amp;position=footer"></script>
 
 </body>
 </html>
