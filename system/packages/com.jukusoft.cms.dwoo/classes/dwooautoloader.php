@@ -30,7 +30,13 @@ define('DWOO_PATH', ROOT_PATH . "system/packages/com.jukusoft.cms.dwoo/dwoo/lib/
 class DwooAutoloader {
 
 	public static function loadClass (string $class_name) {
-		echo "load class '" . $class_name . "'.";
+		$class_name = str_replace("\\", "/", $class_name);
+
+		if (file_exists(DWOO_PATH . $class_name . ".php")) {
+			require(DWOO_PATH . $class_name . ".php");
+		} else {
+			echo "Cannot load Dwoo Template Engine class '" . $class_name . "'!";
+		}
 	}
 
 }
