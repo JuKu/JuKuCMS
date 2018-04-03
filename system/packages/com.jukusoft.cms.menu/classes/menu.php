@@ -137,12 +137,16 @@ class Menu {
 	 * get HTML code of menu
 	 */
 	public function getCode () : string {
-		$template = new Template($this->template);
+		$template = new DwooTemplate($this->template);
+
+		$template->assign("menu_array", $this->menus);
+
+		/*$template = new Template($this->template);
 
 		$this->parseMenu($this->menus, $template);
 
 		//parse main block
-		$template->parse("main");
+		$template->parse("main");*/
 
 		$html = $template->getCode();
 
