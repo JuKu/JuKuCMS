@@ -61,13 +61,9 @@ class Menu {
 		//load menuID if absent
 		self::loadMenuID($menuID);
 
-		var_dump(self::$menuID_array);
-
 		if (Cache::contains("menus", "menu_" . $menuID)) {
 			$this->menus = Cache::get("menus", "menu_" . $menuID);
 		} else {
-			self::loadMenuID($menuID);
-
 			$menu_cache = self::$menuID_array[$menuID];
 
 			//get menu by parent -y, this means root menu
@@ -177,6 +173,7 @@ class Menu {
 
 	protected static function loadMenuID (int $menuID) {
 		if (isset(self::$menuID_array[$menuID])) {
+			echo "menuID already exists.";
 			return;
 		}
 
@@ -204,6 +201,8 @@ class Menu {
 
 			Cache::put("menus", "menuID_" . $menuID, $array);
 		}
+
+		var_dump(self::$menuID_array);
 	}
 
 	public static function createMenuName (string $title, string $unique_name = null) : int {
