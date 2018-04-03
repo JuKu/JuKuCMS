@@ -184,9 +184,6 @@ class Menu {
 				'value' => $menuID
 			)));
 
-			echo "menuID: " . $menuID . ":<br />";
-			var_dump($rows);
-
 			$array = array();
 
 			foreach ($rows as $row) {
