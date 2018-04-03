@@ -118,8 +118,8 @@ class Template {
 		}
 
 		//check, if file path was set
-		if (file_exists($tpl_name)) {
-			return $tpl_name;
+		if (file_exists($tpl_name . ".tpl")) {
+			return $tpl_name . ".tpl";
 		}
 
 		//find file
