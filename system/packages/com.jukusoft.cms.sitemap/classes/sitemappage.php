@@ -41,6 +41,10 @@ class SitemapPage extends PageType {
 		return false;
 	}
 
+	public function showFooter(): bool {
+		return false;
+	}
+
 }
 
 ?>
