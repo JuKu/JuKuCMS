@@ -38,6 +38,26 @@ class SitemapPage extends PageType {
 
 		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}pages` WHERE `sitemap` = '1' AND `activated` = '1'; ");
 
+		foreach ($rows as $row) {
+			$entry = array();
+
+			$entry['loc'] = DomainUtils::generateURL($row['alias']);
+
+			//get last modified timestamp
+			$last_update = ($row['last_update'] === "0000-00-00 00:00:00" ? $row['created'] : $row['last_update']);
+
+			//timezone berlin
+			$timezone = "+01:00";
+
+			//convert last modification timestamp to w3c timestamp: https://www.w3.org/TR/NOTE-datetime
+			$entry['lastmod'] = date('Y-m-d\TH:i:s', strtotime($last_update)) . $timezone;
+
+			$entry['changefreq'] = strtolower($row['sitemap_changefreq']);
+			$entry['priority'] = $row['sitemap_priority'];
+
+			$urls[] = $entry;
+		}
+
 		$template->assign("urls", $urls);
 
 		return $template->getCode();
