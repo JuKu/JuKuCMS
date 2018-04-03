@@ -56,6 +56,9 @@ $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
 
 define('ROOT_PATH', dirname(__FILE__) . "/../");
+define('DWOO_PATH', ROOT_PATH . "system/packages/com.jukusoft.cms.dwoo/dwoo/lib/Dwoo/");
+
+require(DWOO_PATH . "Core.php");
 
 // Create the controller, it is reusable and can render multiple templates
 $core = new Dwoo\Core();
