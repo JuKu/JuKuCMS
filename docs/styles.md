@@ -1,7 +1,7 @@
 # Styles
 
 Styles are the templates, including CSS and JS.\
-Templates are written in **XTPL Template Engine** ~~or with **[Twig 2.0](https://twig.symfony.com/doc/2.x/templates.html)**~~.\
+Templates are written in **XTPL Template Engine** ~~or with **[Twig 2.0](https://twig.symfony.com/doc/2.x/templates.html)**~~ or in **[Dwoo Template Engine](http://dwoo.org/documentation/v1.3/dwoo-for-designers.html)**.\
 \
 **NOTICE**:\
 Twig is not longer supported, because of its bad performance - compared to XTemplate.\
@@ -33,6 +33,16 @@ This file contains all required information about the style.
         "dist/css/skins/_all-skins.min.css"
     ]
 }
+```
+
+## Template Engine
+
+By default, **[Dwoo](http://dwoo.org/documentation/v1.3/dwoo-for-designers.html)** is used.\
+File Extension: .tpl\
+\
+Example:
+```smarty
+{$variable}
 ```
 
 ## Style Rules
