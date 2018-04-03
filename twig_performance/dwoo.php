@@ -66,7 +66,7 @@ require(DWOO_PATH . "Dwoo/Template/File.php");*/
 
 function dwoo_autoload ($class_name) {
 	$class_name = str_replace("\\", "/", $class_name);
-	require(DWOO_PATH . $class_name);
+	require(DWOO_PATH . $class_name . ".php");
 }
 
 //register autoloader
