@@ -91,6 +91,10 @@ class PermissionChecker {
 			return true;
 		}
 
+		if ($token === "none") {
+			return true;
+		}
+
 		return isset($this->permissions[$token]) && $this->permissions[$token] == 1;
 	}
 
