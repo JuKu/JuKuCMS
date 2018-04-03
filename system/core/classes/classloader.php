@@ -151,6 +151,12 @@ function cms_autoloader ($classname) {
 			} else {
 				echo "Could not load validator class " . $classname . "!";
 			}
+		} else if ($array[0] == "datatype") {
+			if (file_exists(ROOT_PATH . "system/core/datatype/" . $array[1] . ".php")) {
+				require(ROOT_PATH . "system/core/datatype/" . $array[1] . ".php");
+			} else {
+				echo "Could not load datatype class " . $classname . "!";
+			}
 		} else {
 			echo "Could not load class " . $classname . ", unknown prefix '" . $array[0] . "'!";
         }
