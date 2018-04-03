@@ -2,7 +2,7 @@
     <li class="header">MAIN NAVIGATION</li>
 
     {foreach $menu_array menu}
-        {if count($menu.submenus) > 0}
+        {if {count($menu.submenus)} > 0}
             {* menu with submenus *}
             <li class="treeview">
                 <a href="#">
