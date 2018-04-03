@@ -29,6 +29,7 @@ $package_list = array(
 	'com.jukusoft.cms.jsbuilder' => true,
 	'com.jukusoft.cms.version' => true,
 	'com.jukusoft.cms.permissions' => true,
+	'com.jukusoft.cms.dwoo' => true,
 );
 
 ?>
