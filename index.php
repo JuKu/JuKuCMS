@@ -188,6 +188,11 @@ $exec_time = $end_time - $start_time;
 if (ACTIVATE_BENCHMARK) {
 	echo "<!-- page was generated in " . $exec_time . " seconds -->\n";
 	echo "<!-- mobile detection executed in " . $mobile_detection_exec_time . " seconds, isMobile: " . ($registry->getSetting("isMobile") ? "true" : "false") . " -->\n";
+
+	//benchmark dwoo template engine
+	foreach (DwooTemplate::listFileBenchmark() as $file=>$exec_time) {
+		echo "<!-- Dwoo benchmark file '" . $file . "': " . $exec_time . " seconds -->\n";
+	}
 }
 
 if (DEBUG_MODE) {

@@ -31,10 +31,13 @@ class DwooTemplate extends Template {
 
 	protected static $files = array();
 
+	protected static $benchmark = array();
+
 	//variables
 	//protected $vars = array();
 	protected $data = null;
 
+	protected $file = "";
 	protected $template = null;
 
 	public function __construct($file, Registry $registry = null) {
@@ -43,13 +46,13 @@ class DwooTemplate extends Template {
 		}
 
 		//find file
-		$file = Template::findTemplate($file, $registry);
+		$this->file = Template::findTemplate($file, $registry);
 
 		//load a template file, this is reusable if you want to render multiple times the same template with different data
 		if (isset(self::$files[$file])) {
-			$this->template = self::$files[$file];
+			$this->template = self::$files[$this->file];
 		} else {
-			$this->template = new Dwoo\Template\File($file);
+			$this->template = new Dwoo\Template\File($this->file);
 			self::$files[$file] = $this->template;
 		}
 
@@ -67,8 +70,18 @@ class DwooTemplate extends Template {
 	}
 
 	public function getCode ($name = "main") {
+		$start_time = microtime(true);
+
 		// Output the result
-		return self::$core->get($this->template, $this->data);
+		$html = self::$core->get($this->template, $this->data);
+
+		$end_time = microtime(true);
+		$exec_time = $end_time - $start_time;
+
+		//store benchmark
+		self::$benchmark[$this->file] = $exec_time;
+
+		return $html;
 	}
 
 	protected static function initCoreIfAbsent () {
@@ -85,6 +98,10 @@ class DwooTemplate extends Template {
 			//set cache dir
 			self::$core->setCacheDir($cache_dir);
 		}
+	}
+
+	public static function listFileBenchmark () {
+		return self::$benchmark;
 	}
 
 }
