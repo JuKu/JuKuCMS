@@ -987,9 +987,9 @@ Menu::createMenu(102, $main_menuID, "Logout", "LOGOUT_URL", -1, "logout", "page"
 echo "Create default pages if absent...<br />";
 
 Page::createIfAbsent("home", "Home", "IndexPage", "Home page", "/");
-Page::createIfAbsent("error404", "Error 404", "Error404Page", "Error 404 - Couldn't find this page.", "/");
-Page::createIfAbsent("login", "Login", "LoginPage", "", "/");
-Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/");
+Page::createIfAbsent("error404", "Error 404", "Error404Page", "Error 404 - Couldn't find this page.", "/", -1, -1, -1, false);
+Page::createIfAbsent("login", "Login", "LoginPage", "", "/", -1, -1, -1, false);
+Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/", -1, -1, -1, false);
 
 //create robots.txt page
 Page::createIfAbsent("robots.txt", "Robots.txt", "RobotsPage", "", "/", -1, -1, -1, false, true, false);
