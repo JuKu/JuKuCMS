@@ -284,7 +284,7 @@ class Menu {
 		$permissions = implode("|", $permissions);
 
 		if (is_null($unique_name) || empty($unique_name)) {
-			$unique_name = md5(PHPUtils::randomString(100));
+			$unique_name = md5(PHPUtils::randomString(100) . time());
 		}
 
 		$insertID = Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
