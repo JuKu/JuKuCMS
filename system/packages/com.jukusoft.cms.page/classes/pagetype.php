@@ -90,6 +90,22 @@ class PageType {
 	}
 
 	public function checkPermissions (PermissionChecker $permission_checker) {
+		//first, check required permissions
+		if (count($this->listRequiredPermissions()) > 0) {
+			$bool = false;
+
+			foreach ($this->listRequiredPermissions() as $permission) {
+				if ($permission_checker->hasRight($permission)) {
+					$bool = true;
+					break;
+				}
+			}
+
+			if (!$bool) {
+				return false;
+			}
+		}
+
 		if (!$this->getPage()->hasCustomPermissions()) {
 			return true;
 		} else {
@@ -103,6 +119,10 @@ class PageType {
 
 			return false;
 		}
+	}
+
+	protected function listRequiredPermissions () : array {
+		return array();
 	}
 
 	public function exitAfterOutput () {

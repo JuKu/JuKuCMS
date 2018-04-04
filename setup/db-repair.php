@@ -1023,6 +1023,9 @@ Page::createIfAbsent("error403", "Error 403", "Error403Page", "Error 403 - Forbi
 echo "Create admin pages if absent...<br />";
 Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/admin/", -1, -1, -1, false, true, false);
 
+//create some tool pages
+Page::createIfAbsent("admin/phpinfo", "phpinfo()", "PHPInfoPage", "", "/admin/", -1, -1, -1, false, true, false);
+
 echo "Create default page types if absent...<br />";
 
 PageType::createPageType("HTMLPage", "HTML page", false, 1);//order 1 - so show as first page type in admin area
