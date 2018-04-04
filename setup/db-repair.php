@@ -988,8 +988,8 @@ Menu::createMenu(20, $admin_menuID, "My groups", "admin/my_groups", 16, "admin_o
 Menu::createMenu(21, $admin_menuID, "My profile", "admin/profile", 16, "admin_own_profile", "page", array("can_see_own_profile", "can_edit_own_profile"), true, "fa-user-circle", 5, "system");
 
 Menu::createMenu(100, $main_menuID, "Admin Area", "admin/home", -1, "", "page", array("can_access_admin_area"), true, "none", 2, "user");
-Menu::createMenu(101, $main_menuID, "Login", "LOGIN_URL", -1, "login", "link", "not_logged_in", false, "none", 3, "user");
-Menu::createMenu(102, $main_menuID, "Logout", "LOGOUT_URL", -1, "logout", "link", "all", true, "none", 100, "user");
+Menu::createMenu(101, $main_menuID, "Login", "LOGIN_URL", -1, "login", "external_link", "not_logged_in", false, "none", 3, "user");
+Menu::createMenu(102, $main_menuID, "Logout", "LOGOUT_URL", -1, "logout", "external_link", "all", true, "none", 100, "user");
 
 echo "Create default pages if absent...<br />";
 
