@@ -979,7 +979,7 @@ Menu::createMenu(11, $admin_menuID, "Media", "admin/media", -1, "media", "page",
 Menu::createMenu(12, $admin_menuID, "All Media", "admin/media", 11, "all_media", "page", array("can_see_all_media"), true, "fa-file-image-o", 1, "system");
 Menu::createMenu(14, $admin_menuID, "Upload Media", "admin/media/upload", 11, "upload_media", "page", array("can_upload_media"), true, "fa-upload", 4, "system");
 Menu::createMenu(15, $admin_menuID, "Menu", "admin/menu", -1, "menu", "page", array("can_see_menus", "can_edit_menus"), true, "fa-anchor", 5, "system");
-Menu::createMenu(16, $admin_menuID, "Users", "#", -1, "admin_users", "no_link", array("can_see_all_users", "can_create_user", "can_edit_users"), true, "fa-user", 6, "system");
+Menu::createMenu(16, $admin_menuID, "Users", "#", -1, "admin_users", "no_link", array("can_see_all_users", "can_create_user", "can_edit_users"), true, "fa-users", 6, "system");
 
 Menu::createMenu(17, $admin_menuID, "All Users", "admin/users", 16, "all_users", "page", array("can_see_all_users"), true, "fa-id-card", 1, "system");
 Menu::createMenu(18, $admin_menuID, "Create User", "admin/create_user", 16, "create_user", "page", array("can_create_user"), true, "fa-user-plus", 2, "system");
