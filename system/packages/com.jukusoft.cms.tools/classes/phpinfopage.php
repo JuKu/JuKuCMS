@@ -46,7 +46,7 @@ class PHPInfoPage extends PageType {
 	}
 
 	public function showDesign() {
-		return isset($_REQUEST['no_design']);
+		return !isset($_REQUEST['no_design']);
 	}
 
 	public function listRequiredPermissions(): array {
