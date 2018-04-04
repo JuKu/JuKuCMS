@@ -921,6 +921,9 @@ Settings::create("copyright", "<strong>Copyright &copy; 2018 <a href=\"http://ju
 Settings::create("maintenance_mode_enabled", false, "Maintenance Mode enabled (boolean)", "Maintenance Mode enabled (boolean), Default: false", "system", "general", "DataType_Boolean");
 Settings::create("maintenance_text", "This domain is currently under scheduled maintenance mode. Sorry for the inconvenience! Look in a few minutes over again!", "Maintenance Text", "Text which is shown, if maintenance mode is enabled", "system", "general", "DataType_HTML");
 
+//external tools
+Settings::create("phpmyadmin_link", "#", "Link to PhpMyAdmin", "Link to PhpMyAdmin", "system", "general", "DataType_URL");
+
 $main_menuID = -1;
 $local_menuID = -1;
 $admin_menuID = -1;
