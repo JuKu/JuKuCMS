@@ -26,9 +26,7 @@
         </div>
         <div id="menubar">
             <ul id="menu">
-                {dynamic}
-                    {$MENU}
-                {/dynamic}
+                {$MENU}
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
                 <!-- <li class="selected"><a href="index.html">Home</a></li>
                 <li><a href="examples.html">Examples</a></li>
