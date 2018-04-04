@@ -190,31 +190,6 @@ class Menu {
 		return $html;
 	}
 
-	/*protected function parseMenu (array $menu_array, Template &$template) {
-		//TODO: check permissions & login required
-
-		foreach ($menu_array as $menu) {
-			//check, if menu has sub menus
-			if (sizeof($menu['submenus']) > 0) {
-				//TODO: add code here
-
-				foreach ($menu as $key=>$value) {
-					$template->assign(strtoupper($key), $value);
-				}
-
-				$template->parse("main.treeview");
-			} else {
-				//menu doesnt have sub menus
-
-				foreach ($menu as $key=>$value) {
-					$template->assign(strtoupper($key), $value);
-				}
-
-				$template->parse("main.menu");
-			}
-		}
-	}*/
-
 	protected static function loadMenuID (int $menuID) {
 		if (isset(self::$menuID_array[$menuID])) {
 			return;
@@ -316,7 +291,7 @@ class Menu {
 			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `unique_name`, `extensions`, `order`, `owner`, `activated`
 		) VALUES (
 			:id, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :unique_name, :extensions, :menu_order, :owner, '1'
-		) ON DUPLICATE KEY UPDATE `menuID` = :menuID, `permissions` = :permissions, `login_required` = :login_required, `parent` = :parent, `icon` = :icon, `activated` = '1'; ", array(
+		) ON DUPLICATE KEY UPDATE `menuID` = :menuID, `type` = :url_type, `permissions` = :permissions, `login_required` = :login_required, `parent` = :parent, `icon` = :icon, `activated` = '1'; ", array(
 			'id' => $id,
 			'menuID' => $menuID,
 			'title' => $title,

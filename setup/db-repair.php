@@ -981,8 +981,8 @@ Menu::createMenu(14, $admin_menuID, "Upload Media", "admin/media/upload", 11, "u
 Menu::createMenu(15, $admin_menuID, "Menu", "admin/menu", -1, "menu", "page", array("can_see_menus", "can_edit_menus"), true, "fa-anchor", 5, "system");
 
 Menu::createMenu(100, $main_menuID, "Admin Area", "admin/home", -1, "", "page", array("can_access_admin_area"), true, "none", 2, "user");
-Menu::createMenu(101, $main_menuID, "Login", "login", -1, "login", "page", "not_logged_in", false, "none", 3, "user");
-Menu::createMenu(102, $main_menuID, "Logout", "LOGOUT_URL", -1, "logout", "page", "all", true, "none", 100, "user");
+Menu::createMenu(101, $main_menuID, "Login", "LOGIN_URL", -1, "login", "link", "not_logged_in", false, "none", 3, "user");
+Menu::createMenu(102, $main_menuID, "Logout", "LOGOUT_URL", -1, "logout", "link", "all", true, "none", 100, "user");
 
 echo "Create default pages if absent...<br />";
 
