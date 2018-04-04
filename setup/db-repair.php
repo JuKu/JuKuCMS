@@ -979,6 +979,13 @@ Menu::createMenu(11, $admin_menuID, "Media", "admin/media", -1, "media", "page",
 Menu::createMenu(12, $admin_menuID, "All Media", "admin/media", 11, "all_media", "page", array("can_see_all_media"), true, "fa-file-image-o", 1, "system");
 Menu::createMenu(14, $admin_menuID, "Upload Media", "admin/media/upload", 11, "upload_media", "page", array("can_upload_media"), true, "fa-upload", 4, "system");
 Menu::createMenu(15, $admin_menuID, "Menu", "admin/menu", -1, "menu", "page", array("can_see_menus", "can_edit_menus"), true, "fa-anchor", 5, "system");
+Menu::createMenu(16, $admin_menuID, "Users", "#", -1, "admin_users", "no_link", array("can_see_all_users", "can_create_user", "can_edit_users"), true, "fa-user", 6, "system");
+
+Menu::createMenu(17, $admin_menuID, "All Users", "admin/users", 16, "all_users", "page", array("can_see_all_users"), true, "fa-id-card", 1, "system");
+Menu::createMenu(18, $admin_menuID, "Create User", "admin/create_user", 16, "create_user", "page", array("can_create_user"), true, "fa-user-plus", 2, "system");
+Menu::createMenu(19, $admin_menuID, "Groups", "admin/groups", 16, "groups", "page", array("can_see_all_groups"), true, "fa-users", 3, "system");
+Menu::createMenu(20, $admin_menuID, "My groups", "admin/my_groups", 16, "admin_own_groups", "page", array("can_see_own_groups"), true, "fa-id-badge", 4, "system");
+Menu::createMenu(21, $admin_menuID, "My profile", "admin/profile", 16, "admin_own_profile", "page", array("can_see_own_profile", "can_edit_own_profile"), true, "fa-user-circle", 5, "system");
 
 Menu::createMenu(100, $main_menuID, "Admin Area", "admin/home", -1, "", "page", array("can_access_admin_area"), true, "none", 2, "user");
 Menu::createMenu(101, $main_menuID, "Login", "LOGIN_URL", -1, "login", "link", "not_logged_in", false, "none", 3, "user");
@@ -1037,7 +1044,7 @@ Groups::addGroupToUser(3, -1);
 
 echo "Create default permission categories...<br />";
 Permissions::createOrUpdateCategory("general", "General", 1);
-Permissions::createOrUpdateCategory("users", "Users", 3);//user permissions, like "can_create_user"
+Permissions::createOrUpdateCategory("users", "Users", 2);//user permissions, like "can_create_user"
 Permissions::createOrUpdateCategory("groups", "Groups", 3);
 Permissions::createOrUpdateCategory("pages", "Pages", 4);
 Permissions::createOrUpdateCategory("media", "Media", 5);
@@ -1049,6 +1056,7 @@ echo "Create default permissions...<br />";
 Permissions::createPermission("can_access_admin_area", "Can access admin area", "Can access admin area", "admin", "system", 1);
 Permissions::createPermission("can_edit_own_password", "Can edit own password", "Can edit own password", "general", "system", 2);
 Permissions::createPermission("can_edit_own_mail", "Can edit his own mail address", "Can edit his own mail address", "general", 3);
+Permissions::createPermission("can_edit_own_profile", "Can edit own profile", "Can edit own profile (except mail & password)", "general", 4);
 
 //permissions
 Permissions::createPermission("can_see_own_permissions", "Can see own permissions", "User can see his own permissions", "permissions", "system", 1);
@@ -1061,6 +1069,12 @@ Permissions::createPermission("can_see_all_users", "Can see all users", "Can see
 Permissions::createPermission("can_create_user", "Can create new user", "Can create new user", "users", "system", 2);
 Permissions::createPermission("can_edit_users", "Can edit users", "Can edit users", "users", "system", 3);
 Permissions::createPermission("can_edit_users_password", "Can edit password of users", "Can edit password of users (without super-admin with userID 1)", "users", "system", 4);
+
+//group permissions
+Permissions::createPermission("can_see_all_groups", "Can see all groups", "Can see list with all groups", "groups", "system", 1);
+Permissions::createPermission("can_see_own_groups", "Can see own groups", "Can see list with own groups", "groups", "system", 2);
+Permissions::createPermission("can_edit_all_groups", "Can edit all groups", "Can edit all groups", "groups", "system", 3);
+Permissions::createPermission("can_edit_own_groups", "Can edit own groups", "Can edit own groups, where user is group leader", "groups", "system", 4);
 
 //page permissions
 Permissions::createPermission("can_see_all_pages", "Can see all pages in admin area", "pages", "pages", "system", 1);
