@@ -994,6 +994,9 @@ Menu::createMenu(35, $admin_menuID, "Plugins", "admin/plugins", -1, "plugins", "
 
 Menu::createMenu(45, $admin_menuID, "Tools", "#", -1, "tools", "no_link", array("none"), true, "fa-wrench", 9, "system");
 
+Menu::createMenu(53, $admin_menuID, "phpinfo()", "admin/phpinfo", 45, "phpinfo", "page", array("can_see_phpinfo"), true, "fa-php", 9, "system");
+Menu::createMenu(54, $admin_menuID, "PhpMyAdmin", "settings:phpmyadmin_link", 45, "phpmyadmin", "dynamic_link", array("can_see_phpmyadmin_menu"), true, "fa-laptop", 10, "system");
+
 Menu::createMenu(55, $admin_menuID, "Settings", "#", -1, "settings", "no_link", array("can_see_global_settings"), true, "fa-cogs", 10, "system");
 Menu::createMenu(56, $admin_menuID, "Settings", "admin/settings", 55, "", "page", array("can_see_global_settings", "can_edit_global_settings"), true, "fa-cog", 1, "system");
 
@@ -1114,7 +1117,9 @@ Permissions::createPermission("can_see_cms_version", "Can see version of CMS sys
 Permissions::createPermission("can_update_cms", "Can update CMS system", "Can update CMS system", "admin", "system", 2);
 Permissions::createPermission("can_see_global_settings", "Can see global CMS settings", "Can see global CMS settings", "admin", "system", 3);
 Permissions::createPermission("can_edit_global_settings", "Can edit global settings", "Can edit global settings", "admin", "system", 4);
-Permissions::createPermission("super_admin", "Is super admin and CAN EVERYTHING", "Is super admin and CAN EVERYTHING (overrides all other values!)", "admin", "system", 5);
+Permissions::createPermission("can_see_phpinfo", "Can see phpinfo()", "Can see phpinfo()", "admin", "system", 5);
+Permissions::createPermission("can_see_phpmyadmin_menu", "Can see PhpMyAdmin menu", "Can see PhpMyAdmin menu", "admin", "system", 6);
+Permissions::createPermission("super_admin", "Is super admin and CAN EVERYTHING", "Is super admin and CAN EVERYTHING (overrides all other values!)", "admin", "system", 7);
 
 echo "Set default permissions for userID 1...<br />";
 $user_rights = new UserRights(1);
