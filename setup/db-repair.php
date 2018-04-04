@@ -980,6 +980,8 @@ Menu::createMenu(12, $admin_menuID, "All Media", "admin/media", 11, "all_media",
 Menu::createMenu(14, $admin_menuID, "Upload Media", "admin/media/upload", 11, "upload_media", "page", array("can_upload_media"), true, "fa-upload", 4, "system");
 Menu::createMenu(15, $admin_menuID, "Menu", "admin/menu", -1, "menu", "page", array("can_see_menus", "can_edit_menus"), true, "fa-anchor", 5, "system");
 
+Menu::createMenu(100, $main_menuID, "Login", "login", -1, "login", "page", "not_logged_in", false, "none", 2, "user");
+
 echo "Create default pages if absent...<br />";
 
 Page::createIfAbsent("home", "Home", "IndexPage", "Home page", "/");
@@ -1089,6 +1091,10 @@ $user_rights = new UserRights(1);
 
 //userID 1 should be super_admin
 $user_rights->setRight("super_admin", 1);
+
+echo "Set default permissions for userID -1 (guest)...<br />";
+$user_rights = new UserRights(-1);
+$user_rights->setRight("not_logged_in", 1);
 
 echo "Create default robots.txt rules...<br />";
 Robots::addRule("DISALLOW", "/system/*");
