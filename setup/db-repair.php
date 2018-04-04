@@ -966,17 +966,17 @@ echo "Create default menu if absent...<br />";
 
 //create menus if absent
 Menu::createMenu(1, $main_menuID, "Home", "home", -1, "home", "page", "all", false, "none", 1, "user");
-Menu::createMenu(2, $admin_menuID, "Dashboard", "admin/home", -1, "admin_home", "page", array("can_access_admin_area"), true, "fa-dashboard", 1, "system");
-Menu::createMenu(3, $admin_menuID, "Dashboard", "admin/home", 2, "", "page", array("can_access_admin_area"), true, "fa-dashboard", 1, "system");
+Menu::createMenu(2, $admin_menuID, "Dashboard", "admin/home", -1, "admin_home", "page", array("can_access_admin_area"), true, "fa-tachometer-alt", 1, "system");
+Menu::createMenu(3, $admin_menuID, "Dashboard", "admin/home", 2, "", "page", array("can_access_admin_area"), true, "fa-tachometer-alt", 1, "system");
 Menu::createMenu(4, $admin_menuID, "Settings", "admin/settings", 2, "", "page", array("can_see_global_settings"), true, "fa-cog", 2, "system");
 Menu::createMenu(5, $admin_menuID, "Website", "", 2, "", "page", "none", false, "fa-desktop", 3, "system");
 Menu::createMenu(6, $admin_menuID, "Updates", "admin/update", 2, "updates", "page", array("can_see_cms_version", "can_update_cms"), true, "fa-download", 4, "system");
 Menu::createMenu(7, $admin_menuID, "Posts", "#", -1, "posts", "no_link", array("can_see_all_pages"), true, "fa-list-alt", 2, "system");
 Menu::createMenu(8, $admin_menuID, "Pages", "admin/pages", -1, "pages", "page", array("can_see_all_pages"), true, "fa-file", 3, "system");
-Menu::createMenu(9, $admin_menuID, "All Pages", "admin/pages", 8, "all_pages", "page", array("can_see_all_pages"), true, "fa-circle-o", 1, "system");
-Menu::createMenu(10, $admin_menuID, "My Pages", "admin/my_pages", 8, "my_pages", "page", array("can_see_all_pages"), true, "fa-circle-o", 2, "system");
-Menu::createMenu(11, $admin_menuID, "Media", "admin/media", -1, "media", "page", array("can_see_all_media", "can_upload_media"), true, "fa-file-image-o", 3, "system");
-Menu::createMenu(12, $admin_menuID, "All Media", "admin/media", 11, "all_media", "page", array("can_see_all_media"), true, "fa-file-image-o", 1, "system");
+Menu::createMenu(9, $admin_menuID, "All Pages", "admin/pages", 8, "all_pages", "page", array("can_see_all_pages"), true, "fa-circle", 1, "system");
+Menu::createMenu(10, $admin_menuID, "My Pages", "admin/my_pages", 8, "my_pages", "page", array("can_see_all_pages"), true, "fa-circle", 2, "system");
+Menu::createMenu(11, $admin_menuID, "Media", "admin/media", -1, "media", "page", array("can_see_all_media", "can_upload_media"), true, "fa-file-image", 3, "system");
+Menu::createMenu(12, $admin_menuID, "All Media", "admin/media", 11, "all_media", "page", array("can_see_all_media"), true, "fa-file-image", 1, "system");
 Menu::createMenu(14, $admin_menuID, "Upload Media", "admin/media/upload", 11, "upload_media", "page", array("can_upload_media"), true, "fa-upload", 4, "system");
 Menu::createMenu(15, $admin_menuID, "Menu", "admin/menu", -1, "menu", "page", array("can_see_menus", "can_edit_menus"), true, "fa-anchor", 5, "system");
 Menu::createMenu(16, $admin_menuID, "Users", "#", -1, "admin_users", "no_link", array("can_see_all_users", "can_create_user", "can_edit_users"), true, "fa-users", 6, "system");
