@@ -20,8 +20,8 @@
         <div id="logo">
             <div id="logo_text">
                 <!-- class="logo_colour", allows you to change the colour of the text -->
-                <h1><a href="index.html">textured<span class="logo_colour">blue</span></a></h1>
-                <h2>Simple. Contemporary. Website Template.</h2>
+                <h1><a href="/">Rocket<span class="logo_colour">CMS</span></a></h1>
+                <h2>A simple demo website with a demo design</h2>
             </div>
         </div>
         <div id="menubar">
@@ -39,7 +39,7 @@
     <div id="site_content">
         <div class="sidebar">
             <!-- insert your sidebar items here -->
-            <!-- <h3>Latest News</h3>
+            <h3>Latest News</h3>
             <h4>New Website Launched</h4>
             <h5>August 1st, 2013</h5>
             <p>2013 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href="#">Read more</a></p>
@@ -60,7 +60,7 @@
                     <input class="search" type="text" name="search_field" value="Enter keywords....." />
                     <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/search.png" alt="Search" title="Search" />
                 </p>
-            </form> -->
+            </form>
         </div>
         <div id="content">
             {$CONTENT}
