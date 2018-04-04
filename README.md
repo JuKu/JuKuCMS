@@ -70,6 +70,10 @@ Currently, following caches are supported:
   - Core
       * Kernel (system/packages)
       * Micro-Kernel (system/core/classes, system/core/driver, system/core/exception)
+      
+## Roadmap
+
+  - **Core finished** - 04.04.2018 ([Issues](https://github.com/JuKu/JuKuCMS/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3ACore+))
 
 ## Presentation
 
