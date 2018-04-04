@@ -78,12 +78,6 @@ class DwooTemplate extends Template {
 		$this->assign("PREF_LANG", $registry->getSetting("pref_lang"));
 		$this->assign("LANG_TOKEN", $registry->getSetting("lang_token"));
 
-		$redirect_url = urlencode(DomainUtils::getURL());
-
-		if (isset($_REQUEST['redirect_url']) && !empty($_REQUEST['redirect_url'])) {
-			$redirect_url = $_REQUEST['redirect_url'];
-		}
-
 		$domain = $registry->getObject("domain");
 		$this->assign("HOME_PAGE", $domain->getHomePage());
 		$this->assign("LOGIN_PAGE", Settings::get("login_page", "login"));

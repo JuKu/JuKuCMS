@@ -167,6 +167,12 @@ Events::throwEvent("Show page", array(
 ));
 
 //set login & logout url
+$redirect_url = urlencode(DomainUtils::getURL());
+
+if (isset($_REQUEST['redirect_url']) && !empty($_REQUEST['redirect_url'])) {
+	$redirect_url = $_REQUEST['redirect_url'];
+}
+
 $registry->setSetting("login_url", DomainUtils::getBaseURL() . "/" . Settings::get("login_page", "login") . "?action=login&redirect_url=" . $redirect_url);
 $registry->setSetting("logout_url", DomainUtils::getBaseURL() . "/" . Settings::get("logout_page", "logout") . "?csrf_token=" . urlencode(Security::getCSRFToken()));
 
