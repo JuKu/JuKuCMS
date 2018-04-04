@@ -30,6 +30,7 @@ class PHPInfoPage extends PageType {
 	public function getContent(): string {
 		if (isset($_REQUEST['no_design'])) {
 			phpinfo();
+			exit;
 		} else {
 			/*$content = "";
 
