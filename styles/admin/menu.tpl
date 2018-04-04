@@ -6,7 +6,7 @@
             {* menu with submenus *}
             <li class="treeview">
                 <a href="#">
-                    <i class="fa {$menu.icon_class}"></i> <span>{$menu.title}</span>
+                    <i class="{$menu.icon_class}"></i> <span>{$menu.title}</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -31,18 +31,18 @@
                                                 </a>
                                                 <ul class="treeview-menu">
                                                     {foreach $submenu.submenus item1}
-                                                        <li><a href="{$item1.href}"><i class="fa {$item1.icon_class}"></i> {$item1.title}</a></li>
+                                                        <li><a href="{$item1.href}"><i class="{$item1.icon_class}"></i> {$item1.title}</a></li>
                                                     {/foreach}
                                                 </ul>
                                             </li>
                                         {else}
-                                            <li><a href="{$submenu.href}"><i class="fa {$submenu.icon_class}"></i> {$submenu.title}</a></li>
+                                            <li><a href="{$submenu.href}"><i class="{$submenu.icon_class}"></i> {$submenu.title}</a></li>
                                         {/if}
                                     {/foreach}
                                 </ul>
                             </li>
                         {else}
-                            <li><a href="{$item.href}"><i class="fa {$item.icon_class}"></i> {$item.title}</a></li>
+                            <li><a href="{$item.href}"><i class="{$item.icon_class}"></i> {$item.title}</a></li>
                         {/if}
                     {/foreach}
                 </ul>
@@ -51,7 +51,7 @@
             {* menu without submenus *}
             <li>
                 <a href="{$menu.href}">
-                    <i class="fa {$menu.icon_class}"></i> <span>{$menu.title}</span>
+                    <i class="{$menu.icon_class}"></i> <span>{$menu.title}</span>
                     <span class="pull-right-container">
                         <!-- <small class="label pull-right bg-green">Hot</small> -->
 

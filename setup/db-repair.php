@@ -966,39 +966,39 @@ echo "Create default menu if absent...<br />";
 
 //create menus if absent
 Menu::createMenu(1, $main_menuID, "Home", "home", -1, "home", "page", "all", false, "none", 1, "user");
-Menu::createMenu(2, $admin_menuID, "Dashboard", "admin/home", -1, "admin_home", "page", array("can_access_admin_area"), true, "fa-tachometer-alt", 1, "system");
-Menu::createMenu(3, $admin_menuID, "Dashboard", "admin/home", 2, "", "page", array("can_access_admin_area"), true, "fa-tachometer-alt", 1, "system");
-Menu::createMenu(4, $admin_menuID, "Settings", "admin/settings", 2, "", "page", array("can_see_global_settings"), true, "fa-cog", 2, "system");
-Menu::createMenu(5, $admin_menuID, "Website", "", 2, "", "page", "none", false, "fa-desktop", 3, "system");
-Menu::createMenu(6, $admin_menuID, "Updates", "admin/update", 2, "updates", "page", array("can_see_cms_version", "can_update_cms"), true, "fa-download", 4, "system");
-Menu::createMenu(7, $admin_menuID, "Posts", "#", -1, "posts", "no_link", array("can_see_all_pages"), true, "fa-list-alt", 2, "system");
-Menu::createMenu(8, $admin_menuID, "Pages", "admin/pages", -1, "pages", "page", array("can_see_all_pages"), true, "fa-file", 3, "system");
-Menu::createMenu(9, $admin_menuID, "All Pages", "admin/pages", 8, "all_pages", "page", array("can_see_all_pages"), true, "fa-circle", 1, "system");
-Menu::createMenu(10, $admin_menuID, "My Pages", "admin/my_pages", 8, "my_pages", "page", array("can_see_all_pages"), true, "fa-circle", 2, "system");
-Menu::createMenu(11, $admin_menuID, "Media", "admin/media", -1, "media", "page", array("can_see_all_media", "can_upload_media"), true, "fa-file-image", 3, "system");
-Menu::createMenu(12, $admin_menuID, "All Media", "admin/media", 11, "all_media", "page", array("can_see_all_media"), true, "fa-file-image", 1, "system");
-Menu::createMenu(14, $admin_menuID, "Upload Media", "admin/media/upload", 11, "upload_media", "page", array("can_upload_media"), true, "fa-upload", 4, "system");
-Menu::createMenu(15, $admin_menuID, "Menu", "admin/menu", -1, "menu", "page", array("can_see_menus", "can_edit_menus"), true, "fa-anchor", 5, "system");
-Menu::createMenu(16, $admin_menuID, "Users", "#", -1, "admin_users", "no_link", array("can_see_all_users", "can_create_user", "can_edit_users"), true, "fa-users", 6, "system");
+Menu::createMenu(2, $admin_menuID, "Dashboard", "admin/home", -1, "admin_home", "page", array("can_access_admin_area"), true, "fa fa-tachometer-alt", 1, "system");
+Menu::createMenu(3, $admin_menuID, "Dashboard", "admin/home", 2, "", "page", array("can_access_admin_area"), true, "fa fa-tachometer-alt", 1, "system");
+Menu::createMenu(4, $admin_menuID, "Settings", "admin/settings", 2, "", "page", array("can_see_global_settings"), true, "fa fa-cog", 2, "system");
+Menu::createMenu(5, $admin_menuID, "Website", "", 2, "", "page", "none", false, "fa fa-desktop", 3, "system");
+Menu::createMenu(6, $admin_menuID, "Updates", "admin/update", 2, "updates", "page", array("can_see_cms_version", "can_update_cms"), true, "fa fa-download", 4, "system");
+Menu::createMenu(7, $admin_menuID, "Posts", "#", -1, "posts", "no_link", array("can_see_all_pages"), true, "fa fa-list-alt", 2, "system");
+Menu::createMenu(8, $admin_menuID, "Pages", "admin/pages", -1, "pages", "page", array("can_see_all_pages"), true, "fa fa-file", 3, "system");
+Menu::createMenu(9, $admin_menuID, "All Pages", "admin/pages", 8, "all_pages", "page", array("can_see_all_pages"), true, "fa fa-circle", 1, "system");
+Menu::createMenu(10, $admin_menuID, "My Pages", "admin/my_pages", 8, "my_pages", "page", array("can_see_all_pages"), true, "fa fa-circle", 2, "system");
+Menu::createMenu(11, $admin_menuID, "Media", "admin/media", -1, "media", "page", array("can_see_all_media", "can_upload_media"), true, "fa fa-file-image", 3, "system");
+Menu::createMenu(12, $admin_menuID, "All Media", "admin/media", 11, "all_media", "page", array("can_see_all_media"), true, "fa fa-file-image", 1, "system");
+Menu::createMenu(14, $admin_menuID, "Upload Media", "admin/media/upload", 11, "upload_media", "page", array("can_upload_media"), true, "fa fa-upload", 4, "system");
+Menu::createMenu(15, $admin_menuID, "Menu", "admin/menu", -1, "menu", "page", array("can_see_menus", "can_edit_menus"), true, "fa fa-anchor", 5, "system");
+Menu::createMenu(16, $admin_menuID, "Users", "#", -1, "admin_users", "no_link", array("can_see_all_users", "can_create_user", "can_edit_users"), true, "fa fa-users", 6, "system");
 
-Menu::createMenu(17, $admin_menuID, "All Users", "admin/users", 16, "all_users", "page", array("can_see_all_users"), true, "fa-id-card", 1, "system");
-Menu::createMenu(18, $admin_menuID, "Create User", "admin/create_user", 16, "create_user", "page", array("can_create_user"), true, "fa-user-plus", 2, "system");
-Menu::createMenu(19, $admin_menuID, "Groups", "admin/groups", 16, "groups", "page", array("can_see_all_groups"), true, "fa-users", 3, "system");
-Menu::createMenu(20, $admin_menuID, "My groups", "admin/my_groups", 16, "admin_own_groups", "page", array("can_see_own_groups"), true, "fa-id-badge", 4, "system");
-Menu::createMenu(21, $admin_menuID, "My profile", "admin/profile", 16, "admin_own_profile", "page", array("can_see_own_profile", "can_edit_own_profile"), true, "fa-user-circle", 5, "system");
-Menu::createMenu(22, $admin_menuID, "Change password", "admin/change_password", 16, "admin_password", "page", array("can_edit_own_password"), true, "fa-key", 6, "system");
+Menu::createMenu(17, $admin_menuID, "All Users", "admin/users", 16, "all_users", "page", array("can_see_all_users"), true, "fa fa-id-card", 1, "system");
+Menu::createMenu(18, $admin_menuID, "Create User", "admin/create_user", 16, "create_user", "page", array("can_create_user"), true, "fa fa-user-plus", 2, "system");
+Menu::createMenu(19, $admin_menuID, "Groups", "admin/groups", 16, "groups", "page", array("can_see_all_groups"), true, "fa fa-users", 3, "system");
+Menu::createMenu(20, $admin_menuID, "My groups", "admin/my_groups", 16, "admin_own_groups", "page", array("can_see_own_groups"), true, "fa fa-id-badge", 4, "system");
+Menu::createMenu(21, $admin_menuID, "My profile", "admin/profile", 16, "admin_own_profile", "page", array("can_see_own_profile", "can_edit_own_profile"), true, "fa fa-user-circle", 5, "system");
+Menu::createMenu(22, $admin_menuID, "Change password", "admin/change_password", 16, "admin_password", "page", array("can_edit_own_password"), true, "fa fa-key", 6, "system");
 
-Menu::createMenu(25, $admin_menuID, "Design", "admin/design", -1, "design", "page", array("can_see_global_settings"), true, "fa-paint-brush", 7, "system");
+Menu::createMenu(25, $admin_menuID, "Design", "admin/design", -1, "design", "page", array("can_see_global_settings"), true, "fa fa-paint-brush", 7, "system");
 
-Menu::createMenu(35, $admin_menuID, "Plugins", "admin/plugins", -1, "plugins", "no_link", array("can_see_installed_plugins"), true, "fa-cubes", 8, "system");
+Menu::createMenu(35, $admin_menuID, "Plugins", "admin/plugins", -1, "plugins", "no_link", array("can_see_installed_plugins"), true, "fa fa-cubes", 8, "system");
 
-Menu::createMenu(45, $admin_menuID, "Tools", "#", -1, "tools", "no_link", array("none"), true, "fa-wrench", 9, "system");
+Menu::createMenu(45, $admin_menuID, "Tools", "#", -1, "tools", "no_link", array("none"), true, "fa fa-wrench", 9, "system");
 
-Menu::createMenu(53, $admin_menuID, "phpinfo()", "admin/phpinfo", 45, "phpinfo", "page", array("can_see_phpinfo"), true, "fa-php", 9, "system");
-Menu::createMenu(54, $admin_menuID, "PhpMyAdmin", "settings:phpmyadmin_link", 45, "phpmyadmin", "dynamic_link", array("can_see_phpmyadmin_menu"), true, "fa-laptop", 10, "system");
+Menu::createMenu(53, $admin_menuID, "phpinfo()", "admin/phpinfo", 45, "phpinfo", "page", array("can_see_phpinfo"), true, "fab fa-php", 9, "system");
+Menu::createMenu(54, $admin_menuID, "PhpMyAdmin", "settings:phpmyadmin_link", 45, "phpmyadmin", "dynamic_link", array("can_see_phpmyadmin_menu"), true, "fa fa-laptop", 10, "system");
 
-Menu::createMenu(55, $admin_menuID, "Settings", "#", -1, "settings", "no_link", array("can_see_global_settings"), true, "fa-cogs", 10, "system");
-Menu::createMenu(56, $admin_menuID, "Settings", "admin/settings", 55, "", "page", array("can_see_global_settings", "can_edit_global_settings"), true, "fa-cog", 1, "system");
+Menu::createMenu(55, $admin_menuID, "Settings", "#", -1, "settings", "no_link", array("can_see_global_settings"), true, "fa fa-cogs", 10, "system");
+Menu::createMenu(56, $admin_menuID, "Settings", "admin/settings", 55, "", "page", array("can_see_global_settings", "can_edit_global_settings"), true, "fa fa-cog", 1, "system");
 
 Menu::createMenu(100, $main_menuID, "Admin Area", "admin/home", -1, "", "page", array("can_access_admin_area"), true, "none", 2, "user");
 Menu::createMenu(101, $main_menuID, "Login", "LOGIN_URL", -1, "login", "external_link", "not_logged_in", false, "none", 3, "user");
