@@ -986,6 +986,15 @@ Menu::createMenu(18, $admin_menuID, "Create User", "admin/create_user", 16, "cre
 Menu::createMenu(19, $admin_menuID, "Groups", "admin/groups", 16, "groups", "page", array("can_see_all_groups"), true, "fa-users", 3, "system");
 Menu::createMenu(20, $admin_menuID, "My groups", "admin/my_groups", 16, "admin_own_groups", "page", array("can_see_own_groups"), true, "fa-id-badge", 4, "system");
 Menu::createMenu(21, $admin_menuID, "My profile", "admin/profile", 16, "admin_own_profile", "page", array("can_see_own_profile", "can_edit_own_profile"), true, "fa-user-circle", 5, "system");
+Menu::createMenu(22, $admin_menuID, "Change password", "admin/change_password", 16, "admin_password", "page", array("can_edit_own_password"), true, "fa-key", 6, "system");
+
+Menu::createMenu(25, $admin_menuID, "Design", "admin/design", -1, "design", "page", array("can_see_global_settings"), true, "fa-paint-brush", 7, "system");
+
+Menu::createMenu(35, $admin_menuID, "Plugins", "admin/plugins", -1, "plugins", "no_link", array("can_see_installed_plugins"), true, "fa-cubes", 8, "system");
+
+Menu::createMenu(45, $admin_menuID, "Tools", "#", -1, "tools", "no_link", array("none"), true, "fa-wrench", 9, "system");
+
+Menu::createMenu(55, $admin_menuID, "Settings", "#", -1, "settings", "no_link", array("can_see_global_settings"), true, "fa-cogs", 10, "system");
 
 Menu::createMenu(100, $main_menuID, "Admin Area", "admin/home", -1, "", "page", array("can_access_admin_area"), true, "none", 2, "user");
 Menu::createMenu(101, $main_menuID, "Login", "LOGIN_URL", -1, "login", "external_link", "not_logged_in", false, "none", 3, "user");
@@ -1049,7 +1058,8 @@ Permissions::createOrUpdateCategory("groups", "Groups", 3);
 Permissions::createOrUpdateCategory("pages", "Pages", 4);
 Permissions::createOrUpdateCategory("media", "Media", 5);
 Permissions::createOrUpdateCategory("permissions", "Permissions", 6);
-Permissions::createOrUpdateCategory("admin", "Admin", 7);
+Permissions::createOrUpdateCategory("plugins", "Plugins", 7);
+Permissions::createOrUpdateCategory("admin", "Admin", 8);
 
 echo "Create default permissions...<br />";
 //general permissions
@@ -1094,6 +1104,9 @@ Permissions::createPermission("can_upload_media", "Can upload media", "Can uploa
 //menu permissions
 Permissions::createPermission("can_see_menus", "Can see menus", "Can see menus", "menu", "system", 1);
 Permissions::createPermission("can_edit_menus", "Can edit menus", "Can edit menus", "menu", "system", 2);
+
+//plugin permissions
+Permissions::createPermission("can_see_installed_plugins", "Can see installed plugins", "Can see installed plugins", "plugins", "system", 1);
 
 //admin permissions
 Permissions::createPermission("can_see_cms_version", "Can see version of CMS system", "Can see version of CMS system", "admin", "system", 1);
