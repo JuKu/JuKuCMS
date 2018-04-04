@@ -75,6 +75,15 @@ Currently, following caches are supported:
 
   - **Core finished** - 04.04.2018 ([Issues](https://github.com/JuKu/JuKuCMS/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3ACore+))
 
+## First Screenshots
+
+Some early screenshots from core, **main page**:\
+\
+![Screenshot Main Page](./docs/images/screenshot1.jpg)\
+\
+**Admin Area**:\
+![Admin Area Screnshot](./docs/images/screenshot2.jpg)
+
 ## Presentation
 
 [Slides](http://slides.com/juku/rocketcms/fullscreen)
