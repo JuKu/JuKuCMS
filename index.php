@@ -166,6 +166,10 @@ Events::throwEvent("Show page", array(
 	'registry' => &$registry
 ));
 
+//set login & logout url
+$registry->setSetting("login_url", DomainUtils::getBaseURL() . "/" . Settings::get("login_page", "login") . "?action=login&redirect_url=" . $redirect_url);
+$registry->setSetting("logout_url", DomainUtils::getBaseURL() . "/" . Settings::get("logout_page", "logout") . "?csrf_token=" . urlencode(Security::getCSRFToken()));
+
 //show page here
 if ($page_type->showDesign()) {
 	//show page with design

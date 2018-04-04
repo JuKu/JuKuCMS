@@ -125,6 +125,14 @@ class Menu {
 			$entry['append'] = "";
 			$entry['extension_code'] = "";
 
+			if (strpos($row['url'], "LOGIN_URL") !== FALSE) {
+				$row['url'] = Registry::singleton()->getSetting("login_url");
+			}
+
+			if (strpos($row['url'], "LOGOUT_URL") !== FALSE) {
+				$row['url'] = Registry::singleton()->getSetting("logout_url");
+			}
+
 			if ($row['type'] == "page") {
 				$href = DomainUtils::generateURL($row['url']);
 			} else if ($row['type'] == "link") {

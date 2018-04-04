@@ -87,9 +87,9 @@ class DwooTemplate extends Template {
 		$domain = $registry->getObject("domain");
 		$this->assign("HOME_PAGE", $domain->getHomePage());
 		$this->assign("LOGIN_PAGE", Settings::get("login_page", "login"));
-		$this->assign("LOGIN_URL", DomainUtils::getBaseURL() . "/" . Settings::get("login_page", "login") . "?action=login&redirect_url=" . $redirect_url);
+		$this->assign("LOGIN_URL", $registry->getSetting("login_url"));
 		$this->assign("LOGOUT_PAGE", Settings::get("logout_page", "logout"));
-		$this->assign("LOGOUT_URL", DomainUtils::getBaseURL() . "/" . Settings::get("logout_page", "logout") . "?csrf_token=" . urlencode(Security::getCSRFToken()));
+		$this->assign("LOGOUT_URL", $registry->getSetting("logout_url"));
 
 		//set user variables
 		$this->assign("USERID", User::current()->getID());
