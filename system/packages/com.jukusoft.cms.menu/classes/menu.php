@@ -136,7 +136,7 @@ class Menu {
 			if ($row['type'] == "page") {
 				$href = DomainUtils::generateURL($row['url']);
 			} else if ($row['type'] == "link") {
-				$href = DomainUtils::generateURL($row['url']);
+				$href = $row['url'];
 			} else if ($row['type'] == "external_link") {
 				$href = $row['url'];
 			} else if ($row['type'] == "js_link") {
