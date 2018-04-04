@@ -61,8 +61,8 @@ class Menu {
 		//load menuID if absent
 		self::loadMenuID($menuID);
 
-		if (Cache::contains("menus", "menu_" . $menuID)) {
-			$this->menus = Cache::get("menus", "menu_" . $menuID);
+		if (Cache::contains("menus", "menu_" . $menuID . "_" . User::current()->getID())) {
+			$this->menus = Cache::get("menus", "menu_" . $menuID . "_" . User::current()->getID());
 		} else {
 			$menu_cache = self::$menuID_array[$menuID];
 
@@ -76,7 +76,7 @@ class Menu {
 				'menu_cache' => $menu_cache
 			));
 
-			Cache::put("menus", "menu_" . $menuID, $this->menus);
+			Cache::put("menus", "menu_" . $menuID . "_" . User::current()->getID(), $this->menus);
 		}
 
 		$this->menuID = $menuID;
