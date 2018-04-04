@@ -41,20 +41,27 @@ class LoginPage extends PageType {
 
 			if (isset($_POST['username']) && !empty($_POST['username'])) {
 				$username_set = true;
-			} else {
-				$template->parse("main.no_username");
 			}
 
 			if (isset($_POST['mail']) && !empty($_POST['mail'])) {
 				$mail_set = true;
-			} else {
-				$template->parse("main.no_mail");
 			}
 
 			if (isset($_POST['password']) && !empty($_POST['password'])) {
 				$password_set = true;
+			}
+
+			if (!$username_set && !$mail_set && !$password_set) {
+				//form was not submitted
 			} else {
-				$template->parse("main.no_password");
+				if (!$username_set && !$mail_set) {
+					$template->parse("main.no_username");
+					$template->parse("main.no_mail");
+				}
+
+				if (!$password_set) {
+					$template->parse("main.no_password");
+				}
 			}
 
 			if (($username_set || $mail_set) && $password_set) {
