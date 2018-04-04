@@ -145,6 +145,13 @@ class Menu {
 				$entry['append'] = " onclick=\"" . $row['url'] . "\"";
 			} else if ($row['type'] == "no_link") {
 				$href = "#";
+			} else if ($row['type'] == "dynamic_link") {
+				$href = "#";
+
+				if (PHPUtils::startsWith($row['url'], "settings:")) {
+					$array = explode(":", $row['url']);
+					$href = Settings::get($array[1], "#");
+				}
 			} else {
 				throw new IllegalStateException("Unknown menu type: " . $row['type']);
 			}
