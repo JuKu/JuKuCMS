@@ -91,7 +91,7 @@ class PermissionChecker {
 			return true;
 		}
 
-		if ($token === "none") {
+		if ($token === "none" || $token === "all") {
 			return true;
 		}
 
