@@ -46,6 +46,11 @@ class PHPInfoPage extends PageType {
 		}
 	}
 
+	public function setCustomHeader() {
+		//allow iframe
+		header('X-Frame-Options: SAMEORIGIN');
+	}
+
 	public function showDesign() {
 		return !isset($_REQUEST['no_design']);
 	}
