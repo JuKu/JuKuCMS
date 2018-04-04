@@ -969,7 +969,7 @@ Menu::createMenu(1, $main_menuID, "Home", "home", -1, "home", "page", "all", fal
 Menu::createMenu(2, $admin_menuID, "Dashboard", "admin/home", -1, "admin_home", "page", array("can_access_admin_area"), true, "fa-dashboard", 1, "system");
 Menu::createMenu(3, $admin_menuID, "Dashboard", "admin/home", 2, "", "page", array("can_access_admin_area"), true, "fa-dashboard", 1, "system");
 Menu::createMenu(4, $admin_menuID, "Settings", "admin/settings", 2, "", "page", array("can_see_global_settings"), true, "fa-cog", 2, "system");
-Menu::createMenu(5, $admin_menuID, "Website", "/", 2, "", "page", "none", false, "fa-desktop", 3, "system");
+Menu::createMenu(5, $admin_menuID, "Website", "", 2, "", "page", "none", false, "fa-desktop", 3, "system");
 Menu::createMenu(6, $admin_menuID, "Updates", "admin/update", 2, "updates", "page", array("can_see_cms_version", "can_update_cms"), true, "fa-download", 4, "system");
 Menu::createMenu(7, $admin_menuID, "Posts", "#", -1, "posts", "no_link", array("can_see_all_pages"), true, "fa-list-alt", 2, "system");
 Menu::createMenu(8, $admin_menuID, "Pages", "admin/pages", -1, "pages", "page", array("can_see_all_pages"), true, "fa-file", 3, "system");
