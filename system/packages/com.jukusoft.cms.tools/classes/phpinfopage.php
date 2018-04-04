@@ -42,7 +42,7 @@ class PHPInfoPage extends PageType {
 			return $content;*/
 
 			//show iframe
-			return " <iframe src=\"" . DomainUtils::generateURL("admin/phpinfo") . "?no_design=true\" style=\"width: 100%; height: 100%; \"></iframe> ";
+			return " <iframe src=\"" . DomainUtils::generateURL("admin/phpinfo") . "?no_design=true\" style=\"width: 100%; min-height: 400px; \"></iframe> ";
 		}
 	}
 
