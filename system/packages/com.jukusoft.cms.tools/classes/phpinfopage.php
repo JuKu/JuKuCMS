@@ -28,14 +28,25 @@
 class PHPInfoPage extends PageType {
 
 	public function getContent(): string {
-		$content = "";
+		if (isset($_REQUEST['no_design'])) {
+			phpinfo();
+		} else {
+			/*$content = "";
 
-		ob_start();
-		phpinfo();
-		$content = ob_get_contents();
-		ob_get_clean();
+			ob_start();
+			phpinfo();
+			$content = ob_get_contents();
+			ob_get_clean();
 
-		return $content;
+			return $content;*/
+
+			//show iframe
+			return " <iframe src=\"" . DomainUtils::generateURL("admin/phpinfo") . "?no_design=true\"></iframe> ";
+		}
+	}
+
+	public function showDesign() {
+		return isset($_REQUEST['no_design']);
 	}
 
 	public function listRequiredPermissions(): array {
