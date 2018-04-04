@@ -149,11 +149,11 @@ class Menu {
 				$href = "#";
 
 				if (PHPUtils::startsWith($row['url'], "settings:")) {
-					$array = explode(":", $row['url']);
-					$href = Settings::get($array[1], "#");
+					$array1 = explode(":", $row['url']);
+					$href = Settings::get($array1[1], "#");
 				} else if (PHPUtils::startsWith($row['url'], "registry:")) {
-					$array = explode(":", $row['url']);
-					$href = Registry::singleton()->getSetting($array[1], "#");
+					$array1 = explode(":", $row['url']);
+					$href = Registry::singleton()->getSetting($array1[1], "#");
 				}
 			} else {
 				throw new IllegalStateException("Unknown menu type: " . $row['type']);
