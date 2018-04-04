@@ -995,6 +995,7 @@ Menu::createMenu(35, $admin_menuID, "Plugins", "admin/plugins", -1, "plugins", "
 Menu::createMenu(45, $admin_menuID, "Tools", "#", -1, "tools", "no_link", array("none"), true, "fa-wrench", 9, "system");
 
 Menu::createMenu(55, $admin_menuID, "Settings", "#", -1, "settings", "no_link", array("can_see_global_settings"), true, "fa-cogs", 10, "system");
+Menu::createMenu(56, $admin_menuID, "Settings", "admin/settings", -1, "", "page", array("can_see_global_settings", "can_edit_global_settings"), true, "fa-cog", 1, "system");
 
 Menu::createMenu(100, $main_menuID, "Admin Area", "admin/home", -1, "", "page", array("can_access_admin_area"), true, "none", 2, "user");
 Menu::createMenu(101, $main_menuID, "Login", "LOGIN_URL", -1, "login", "external_link", "not_logged_in", false, "none", 3, "user");
