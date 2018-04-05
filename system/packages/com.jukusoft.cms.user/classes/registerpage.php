@@ -76,7 +76,8 @@ class RegisterPage extends PageType {
 				'value' => "",
 				'custom_html' => false,
 				'text_behind' => "",
-				'validator' => "Validator_Password"
+				'validator' => "Validator_Password",
+				'hints' => "All characters are allowed, min length: 8, max length: 64"
 			);
 
 			$fields[] = array(
@@ -88,7 +89,8 @@ class RegisterPage extends PageType {
 				'value' => "",
 				'custom_html' => false,
 				'text_behind' => "",
-				'validator' => "Validator_Password"
+				'validator' => "Validator_Password",
+				'hints' => "All characters are allowed, min length: 8, max length: 64"
 			);
 
 			$fields[] = array(
@@ -137,7 +139,7 @@ class RegisterPage extends PageType {
 
 							if (!$obj->isValide($_POST[$field['name']])) {
 								$validate = false;
-								$error_msg_array[] = "Field '" . $field['title'] . "' is not valide!";
+								$error_msg_array[] = "Field '" . $field['title'] . "' is not valide! " . (isset($field['hints']) ? $field['hints'] : "");
 							}
 						}
 					}
