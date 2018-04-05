@@ -30,7 +30,7 @@ class Validator_Username implements Validator_Base {
 	public function isValide($value): bool {
 		//https://stackoverflow.com/questions/4383878/php-username-validation
 
-		if(preg_match("/^[a-zA-Z0-9\.\-]{" . Settings::get("username_min_length") . "," . Settings::get("username_max_length") . "}$/", $value)) { // for english chars + numbers only
+		if(preg_match("/^[" . Settings::get("username_regex", "a-zA-Z0-9\.\-") . "]{" . Settings::get("username_min_length", 4) . "," . Settings::get("username_max_length", 20) . "}$/", $value)) { // for english chars + numbers only
 			return true;
 		}
 

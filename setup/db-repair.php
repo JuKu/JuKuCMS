@@ -939,6 +939,7 @@ Settings::create("registration_enabled", false, "Registration enabled", "Registr
 Settings::create("agb_page", "agb", "Terms of use Page", "Terms of use page", "system", "general", "DataType_String");
 Settings::create("username_min_length", 4, "Minimal length (characters) of allowed username", "Minimal length (characters) of allowed username", "general", "general", "DataType_Integer");
 Settings::create("username_max_length", 20, "Maximal length (characters) of allowed usernames", "Maximal length (characters) of allowed usernames", "general", "general", "DataType_Integer");
+Settings::create("username_regex", "a-zA-Z0-9\.\-", "Username Regex", "Allowed characters of usernames (regex)", "general", "general", "DataType_String");
 
 $main_menuID = -1;
 $local_menuID = -1;
