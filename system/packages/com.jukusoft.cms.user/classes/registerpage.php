@@ -44,6 +44,10 @@ class RegisterPage extends PageType {
 		return $template->getCode();
 	}
 
+	public function listRequiredPermissions(): array {
+		return array("not_logged_in");
+	}
+
 }
 
 ?>
