@@ -86,4 +86,13 @@ class PHPUtils {
 		return $str;
 	}
 
+	public static function getHostname () : string {
+		if (function_exists("gethostname")) {
+			return gethostname();
+		} else {
+			//Or, an option that also works before PHP 5.3
+			return php_uname('n');
+		}
+	}
+
 }
