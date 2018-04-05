@@ -135,6 +135,9 @@ class Template {
 			//search in style path
 			if (file_exists($style_path . $tpl_name . ".tpl")) {
 				return $style_path . $tpl_name . ".tpl";
+			} else if (file_exists(STYLE_PATH . "default/" . $tpl_name . ".tpl")) {
+				//use default template
+				return STYLE_PATH . "default/" . $tpl_name . ".tpl";
 			} else {
 				throw new Exception("Coulnd't found template '" . $tpl_name . "' (search path: '" . $style_path . $tpl_name . ".tpl" . "'!");
 			}
