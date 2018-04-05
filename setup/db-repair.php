@@ -1137,8 +1137,9 @@ Permissions::createPermission("can_update_cms", "Can update CMS system", "Can up
 Permissions::createPermission("can_see_global_settings", "Can see global CMS settings", "Can see global CMS settings", "admin", "system", 3);
 Permissions::createPermission("can_edit_global_settings", "Can edit global settings", "Can edit global settings", "admin", "system", 4);
 Permissions::createPermission("can_see_phpinfo", "Can see phpinfo()", "Can see phpinfo()", "admin", "system", 5);
-Permissions::createPermission("can_see_phpmyadmin_menu", "Can see PhpMyAdmin menu", "Can see PhpMyAdmin menu", "admin", "system", 6);
-Permissions::createPermission("super_admin", "Is super admin and CAN EVERYTHING", "Is super admin and CAN EVERYTHING (overrides all other values!)", "admin", "system", 7);
+Permissions::createPermission("can_see_system_info", "Can see system information", "Can see system information, like os or opcache information", "admin", "system", 6);
+Permissions::createPermission("can_see_phpmyadmin_menu", "Can see PhpMyAdmin menu", "Can see PhpMyAdmin menu", "admin", "system", 7);
+Permissions::createPermission("super_admin", "Is super admin and CAN EVERYTHING", "Is super admin and CAN EVERYTHING (overrides all other values!)", "admin", "system", 8);
 
 echo "Set default permissions for userID 1...<br />";
 $user_rights = new UserRights(1);
