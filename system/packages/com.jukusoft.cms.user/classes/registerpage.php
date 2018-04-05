@@ -163,6 +163,12 @@ class RegisterPage extends PageType {
 					}
 				}
 
+				//check, if passwords are equals
+				if (isset($_POST['password']) && isset($_POST['password_repeat']) && $_POST['password'] !== $_POST['password_repeat']) {
+					$validate = false;
+					$error_msg_array[] = "Repeated password isnt the same!";
+				}
+
 				//check, if agb is checked
 				if (!isset($_POST['agb']) || $_POST['agb'] !== "checked") {
 					$validate = false;
