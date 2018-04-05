@@ -58,6 +58,16 @@ class MailApi {
 		return $obj;
 	}
 
+	public static function getSignature () : string {
+		$signature = Settings::get("mail_signature", "");
+
+		Events::throwEvent("get_mail_signature", array(
+			'signature' => &$signature
+		));
+
+		return $signature;
+	}
+
 }
 
 ?>
