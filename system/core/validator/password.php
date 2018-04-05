@@ -28,6 +28,18 @@
 class Validator_Password implements Validator_Base {
 
 	public function isValide($value): bool {
+		$valide = false;
+
+		//throw event, so plugins like pwned can interact
+		Events::throwEvent("validate_password", array(
+			'password' => &$value,
+			'valide' => &$valide
+		));
+
+		if (!$valide) {
+			return false;
+		}
+
 		if (strlen($value) > 64) {
 			//more than 64 characters arent supported
 			return false;
