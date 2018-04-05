@@ -3,33 +3,29 @@
 {else}
     <form action="{$action_url}" method="post">
         <table border="0">
-            <tr>
-                <td>Username*: </td>
-                <td>
-                    <input type="text" name="username" placeholder="Username" required="required" />
-
-                    <!-- CSRF token -->
-                    <input type="hidden" name="csrf_token" value="{$CSRF_TOKEN}" required="required" />
-                </td>
-            </tr>
-            <tr>
-                <td>E-Mail*: </td>
-                <td><input type="email" name="mail" placeholder="john@example.com" required="required" /></td>
-            </tr>
-            <tr>
-                <td>Password*: </td>
-                <td><input type="password" name="password" placeholder="Password" required="required" /></td>
-            </tr>
-            <tr>
-                <td>Reply Password*: </td>
-                <td><input type="password" name="password_reply" placeholder="Password" required="required" /></td>
-            </tr>
+            {foreach $fields field}
+                <tr>
+                    <td>{$field.title}{if $field.required}*{/if}: </td>
+                    <td>
+                        {if !$field.custom_html}
+                            <input type="{$field.type}" name="{$field.name}" placeholder="{$field.placeholder}"{if $field.required} required="required"{/if} value="{$field.value}" />
+                        {else}
+                            {$field.html}
+                        {/if}
+                    </td>
+                </tr>
+            {/foreach}
 
             <!-- custom profile fields -->
 
             <tr>
                 <td>&nbsp;</td>
-                <td><input type="submit" name="submit" value="Register" /></td>
+                <td>
+                    <!-- CSRF token -->
+                    <input type="hidden" name="csrf_token" value="{$CSRF_TOKEN}" required="required" />
+
+                    <input type="submit" name="submit" value="Register" />
+                </td>
             </tr>
         </table>
     </form>

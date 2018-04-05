@@ -39,6 +39,62 @@ class RegisterPage extends PageType {
 			$template->assign("registration_enabled", true);
 			$template->assign("action_url", DomainUtils::generateURL($this->getPage()->getAlias()));
 
+			$fields = array();
+
+			//add fields
+			$fields[] = array(
+				'name' => "username",
+				'title' => "Username",
+				'type' => "text",
+				'placeholder' => "Username",
+				'required' => true,
+				'value' => (isset($_POST['username']) && !empty($_POST['username']) ? Database::getInstance()->escape($_REQUEST['username']) : ""),
+				'custom_html' => false
+			);
+
+			$fields[] = array(
+				'name' => "mail",
+				'title' => "E-Mail",
+				'type' => "email",
+				'placeholder' => "john@example.com",
+				'required' => true,
+				'value' => (isset($_POST['mail']) && !empty($_POST['mail']) ? Database::getInstance()->escape($_REQUEST['mail']) : ""),
+				'custom_html' => false
+			);
+
+			$fields[] = array(
+				'name' => "password",
+				'title' => "Password",
+				'type' => "password",
+				'placeholder' => "Password",
+				'required' => true,
+				'value' => "",
+				'custom_html' => false
+			);
+
+			$fields[] = array(
+				'name' => "password_reply",
+				'title' => "Reply password",
+				'type' => "password",
+				'placeholder' => "Password",
+				'required' => true,
+				'value' => "",
+				'custom_html' => false
+			);
+
+			Events::throwEvent("register_fields", array(
+				'fields' => &$fields,
+				'template'  => &$template
+			));
+
+			if (isset($_REQUEST['submit']) && !empty($_REQUEST['submit'])) {
+				//TODO: check fields
+
+				//TODO: check CSRF token
+			}
+
+			$template->assign("fields", $fields);
+
 			//TODO: add code here
 		}
 
