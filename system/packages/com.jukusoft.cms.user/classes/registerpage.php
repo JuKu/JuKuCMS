@@ -77,8 +77,8 @@ class RegisterPage extends PageType {
 			);
 
 			$fields[] = array(
-				'name' => "password_reply",
-				'title' => "Reply password",
+				'name' => "password_repeat",
+				'title' => "Repeat password",
 				'type' => "password",
 				'placeholder' => "Password",
 				'required' => true,
