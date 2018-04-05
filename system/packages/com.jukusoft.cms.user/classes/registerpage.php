@@ -144,7 +144,7 @@ class RegisterPage extends PageType {
 				}
 
 				//check, if username already exists
-				if (isset($_POST[$field['username']]) && !empty($_POST[$field['username']])) {
+				if (isset($_POST['username']) && !empty($_POST['username'])) {
 					$username = $_POST['username'];
 
 					if (User::existsUsername($username)) {
@@ -154,7 +154,7 @@ class RegisterPage extends PageType {
 				}
 
 				//check, if mail already exists
-				if (isset($_POST[$field['mail']]) && !empty($_POST[$field['mail']])) {
+				if (isset($_POST['mail']) && !empty($_POST['mail'])) {
 					$mail = $_POST['mail'];
 
 					if (User::existsMail($mail)) {
