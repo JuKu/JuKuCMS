@@ -97,9 +97,10 @@ class RegisterPage extends PageType {
 				'type' => "checkbox",
 				'placeholder' => "",
 				'required' => true,
-				'value' => "",
+				'value' => "checked",
 				'custom_html' => false,
-				'text_behind' => "<br />I have read and agree with the <a href=\"" . DomainUtils::generateURL(Settings::get("agb_page", "agb")) . "\" target=\"_blank\">terms of use</a>"
+				'text_behind' => "<br />I have read and agree with the <a href=\"" . DomainUtils::generateURL(Settings::get("agb_page", "agb")) . "\" target=\"_blank\">terms of use</a>",
+				'validator' => null
 			);
 
 			Events::throwEvent("register_fields", array(
@@ -130,11 +131,14 @@ class RegisterPage extends PageType {
 					//validate fields
 					if (isset($_POST[$field['name']])) {
 						$validator = $field['validator'];
-						$obj = new $validator;
 
-						if (!$obj->isValide($_POST[$field['name']])) {
-							$validate = false;
-							$error_msg_array[] = "Field '" . $field['title'] . "' is not valide!";
+						if (!is_null($validator) && !empty($validator)) {
+							$obj = new $validator;
+
+							if (!$obj->isValide($_POST[$field['name']])) {
+								$validate = false;
+								$error_msg_array[] = "Field '" . $field['title'] . "' is not valide!";
+							}
 						}
 					}
 				}
@@ -158,6 +162,18 @@ class RegisterPage extends PageType {
 						$error_msg_array[] = "Mail '" . htmlentities($_POST['username']) . "' already exists in system! Maybe you are already registered? Choose another mail address or login!";
 					}
 				}
+
+				//check, if agb is checked
+				if (!isset($_POST['agb']) || $_POST['agb'] !== "checked") {
+					$validate = false;
+					$error_msg_array[] = "Please agree to AGB and fillout checkbox!";
+				}
+
+				Events::throwEvent("register_validate", array(
+					'valide' => &$validate,
+					'fields' => &$fields,
+					'error_msg_array' => &$error_msg_array
+				));
 
 				$template->assign("error", !$validate);
 				$template->assign("error_msg_array", $error_msg_array);
