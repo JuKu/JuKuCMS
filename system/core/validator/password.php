@@ -40,7 +40,11 @@ class Validator_Password implements Validator_Base {
 			return false;
 		}
 
-		if (strlen($value) > 64) {
+		if (strlen($value) < Settings::get("password_min_length", 8)) {
+			return false;
+		}
+
+		if (strlen($value) > Settings::get("password_max_length", 64)) {
 			//more than 64 characters arent supported
 			return false;
 		}
