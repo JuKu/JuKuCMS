@@ -1,6 +1,16 @@
 {if !$registration_enabled}
     <p style="border: 1px solid #CC0000; background: #FFAA00; color:#CC0000; padding: 5px; text-shadow: 0 0 2px orange; /* horizontal-offset vertical-offset 'blur' colour */ -moz-text-shadow: 0 0 2px orange; -webkit-text-shadow: 0 0 2px orange; ">Registration is disabled!</p>
 {else}
+    {if $error}
+        <p style="border: 1px solid #CC0000; background: #FFAA00; color:#CC0000; padding: 5px; text-shadow: 0 0 2px orange; /* horizontal-offset vertical-offset 'blur' colour */ -moz-text-shadow: 0 0 2px orange; -webkit-text-shadow: 0 0 2px orange; ">
+            <ul>
+                {foreach $error_msg_array error_item}
+                    <li>{$error_item}</li>
+                {/foreach}
+            </ul>
+        </p>
+    {/if}
+
     <form action="{$action_url}" method="post">
         <table border="0">
             {foreach $fields field}

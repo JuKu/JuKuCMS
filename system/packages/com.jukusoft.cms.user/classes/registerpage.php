@@ -104,9 +104,32 @@ class RegisterPage extends PageType {
 			));
 
 			if (isset($_REQUEST['submit']) && !empty($_REQUEST['submit'])) {
-				//TODO: check fields
+				$validate = true;
+				$error_msg_array = array();
 
-				//TODO: check CSRF token
+				//check CSRF token
+				if (!Security::checkCSRFToken()) {
+					$validate = false;
+					$error_msg_array[] = "Wrong CSRF token!";
+				}
+
+				//check fields
+				foreach ($fields as $field) {
+					//check, if field is required
+					if ($field['required']) {
+						if (!isset($_POST[$field['name']]) || empty($_POST[$field['name']])) {
+							$validate = false;
+							$error_msg_array[] = "Field '" . $field['title'] . "' wasnt filled!";
+						}
+					}
+				}
+
+				//validate fields
+
+				$template->assign("error", !$validate);
+				$template->assign("error_msg_array", $error_msg_array);
+			} else {
+				$template->assign("error", false);
 			}
 
 			$template->assign("fields", $fields);
