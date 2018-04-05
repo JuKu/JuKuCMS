@@ -923,6 +923,7 @@ Settings::create("maintenance_text", "This domain is currently under scheduled m
 
 //external tools
 Settings::create("phpmyadmin_link", "#", "Link to PhpMyAdmin", "Link to PhpMyAdmin", "system", "general", "DataType_URL");
+Settings::create("webmail_link", "#", "Link to Webmail", "Link to Webmail", "system", "general", "DataType_URL");
 
 //send mail
 Settings::create("send_mails_enabled", true, "Enable send mails from CMS", "Enable send mails from CMS - if disabled no mails can be sended! If deactivated, it can influence other features like registration.", "system", "mail");
@@ -1011,6 +1012,7 @@ Menu::createMenu(45, $admin_menuID, "Tools", "#", -1, "tools", "no_link", array(
 
 Menu::createMenu(53, $admin_menuID, "phpinfo()", "admin/phpinfo", 45, "phpinfo", "page", array("can_see_phpinfo"), true, "fab fa-php", 9, "system");
 Menu::createMenu(54, $admin_menuID, "PhpMyAdmin", "settings:phpmyadmin_link", 45, "phpmyadmin", "dynamic_link", array("can_see_phpmyadmin_menu"), true, "fa fa-laptop", 10, "system");
+Menu::createMenu(55, $admin_menuID, "Webmail", "settings:webmail_link", 45, "webmail", "dynamic_link", array("can_see_webmail_menu"), true, "fas fa-envelope", 11, "system");
 
 Menu::createMenu(55, $admin_menuID, "Settings", "#", -1, "settings", "no_link", array("can_see_global_settings"), true, "fa fa-cogs", 10, "system");
 Menu::createMenu(56, $admin_menuID, "Settings", "admin/settings", 55, "", "page", array("can_see_global_settings", "can_edit_global_settings"), true, "fa fa-cog", 1, "system");
@@ -1139,7 +1141,8 @@ Permissions::createPermission("can_edit_global_settings", "Can edit global setti
 Permissions::createPermission("can_see_phpinfo", "Can see phpinfo()", "Can see phpinfo()", "admin", "system", 5);
 Permissions::createPermission("can_see_system_info", "Can see system information", "Can see system information, like os or opcache information", "admin", "system", 6);
 Permissions::createPermission("can_see_phpmyadmin_menu", "Can see PhpMyAdmin menu", "Can see PhpMyAdmin menu", "admin", "system", 7);
-Permissions::createPermission("super_admin", "Is super admin and CAN EVERYTHING", "Is super admin and CAN EVERYTHING (overrides all other values!)", "admin", "system", 8);
+Permissions::createPermission("can_see_webmail_menu", "Can see Webmail menu", "Can see Webmail menu", "admin", "system", 8);
+Permissions::createPermission("super_admin", "Is super admin and CAN EVERYTHING", "Is super admin and CAN EVERYTHING (overrides all other values!)", "admin", "system", 9);
 
 echo "Set default permissions for userID 1...<br />";
 $user_rights = new UserRights(1);
