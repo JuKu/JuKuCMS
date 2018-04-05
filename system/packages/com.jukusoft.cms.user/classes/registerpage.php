@@ -48,8 +48,10 @@ class RegisterPage extends PageType {
 				'type' => "text",
 				'placeholder' => "Username",
 				'required' => true,
-				'value' => (isset($_POST['username']) && !empty($_POST['username']) ? Database::getInstance()->escape($_REQUEST['username']) : ""),
-				'custom_html' => false
+				'value' => (isset($_REQUEST['username']) && !empty($_REQUEST['username']) ? Database::getInstance()->escape($_REQUEST['username']) : ""),
+				'custom_html' => false,
+				'text_behind',
+				'text_behind' => ""
 			);
 
 			$fields[] = array(
@@ -58,8 +60,9 @@ class RegisterPage extends PageType {
 				'type' => "email",
 				'placeholder' => "john@example.com",
 				'required' => true,
-				'value' => (isset($_POST['mail']) && !empty($_POST['mail']) ? Database::getInstance()->escape($_REQUEST['mail']) : ""),
-				'custom_html' => false
+				'value' => (isset($_REQUEST['mail']) && !empty($_REQUEST['mail']) ? Database::getInstance()->escape($_REQUEST['mail']) : ""),
+				'custom_html' => false,
+				'text_behind' => ""
 			);
 
 			$fields[] = array(
@@ -69,7 +72,8 @@ class RegisterPage extends PageType {
 				'placeholder' => "Password",
 				'required' => true,
 				'value' => "",
-				'custom_html' => false
+				'custom_html' => false,
+				'text_behind' => ""
 			);
 
 			$fields[] = array(
@@ -79,7 +83,19 @@ class RegisterPage extends PageType {
 				'placeholder' => "Password",
 				'required' => true,
 				'value' => "",
-				'custom_html' => false
+				'custom_html' => false,
+				'text_behind' => ""
+			);
+
+			$fields[] = array(
+				'name' => "agb",
+				'title' => "AGB",
+				'type' => "checkbox",
+				'placeholder' => "",
+				'required' => true,
+				'value' => "",
+				'custom_html' => false,
+				'text_behind' => " I have read and agree with the <a href=\"{BASE_URL}agb\">AGB</a>"
 			);
 
 			Events::throwEvent("register_fields", array(

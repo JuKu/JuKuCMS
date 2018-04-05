@@ -8,7 +8,7 @@
                     <td>{$field.title}{if $field.required}*{/if}: </td>
                     <td>
                         {if !$field.custom_html}
-                            <input type="{$field.type}" name="{$field.name}" placeholder="{$field.placeholder}"{if $field.required} required="required"{/if} value="{$field.value}" />
+                            <input type="{$field.type}" name="{$field.name}" placeholder="{$field.placeholder}"{if $field.required} required="required"{/if} value="{$field.value}" />{$field.text_behind}
                         {else}
                             {$field.html}
                         {/if}
