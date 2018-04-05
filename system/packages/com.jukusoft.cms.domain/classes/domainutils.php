@@ -120,8 +120,22 @@ class DomainUtils {
 	/**
 	 * generate an url for a page in this form: http(s)://<Domain><Base URL><Page>
 	 */
-	public static function generateURL (string $page) : string {
-		return self::getBaseURL() . "/" . $page;
+	public static function generateURL (string $page, array $params = array()) : string {
+		$params_str = "";
+
+		if (count($params) > 0) {
+			$params_str = "?";
+
+			$array = "";
+
+			foreach ($params as $key=>$value) {
+				$array[] = $key . "=" . $value;
+			}
+
+			$params_str .= implode("&amp;", $array);
+		}
+
+		return self::getBaseURL() . "/" . $page . $params_str;
 	}
 
 	public static function getURL () {

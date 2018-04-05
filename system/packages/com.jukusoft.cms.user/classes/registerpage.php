@@ -37,6 +37,7 @@ class RegisterPage extends PageType {
 			$template->assign("registration_enabled", false);
 		} else {
 			$template->assign("registration_enabled", true);
+			$template->assign("action_url", DomainUtils::generateURL($this->getPage()->getAlias()));
 
 			//TODO: add code here
 		}
