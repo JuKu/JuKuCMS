@@ -51,7 +51,8 @@ class RegisterPage extends PageType {
 				'value' => (isset($_REQUEST['username']) && !empty($_REQUEST['username']) ? str_replace("\"", "", $_REQUEST['username']) : ""),
 				'custom_html' => false,
 				'text_behind',
-				'text_behind' => ""
+				'text_behind' => "",
+				'validator' => "Validator_Username"
 			);
 
 			$fields[] = array(
@@ -62,7 +63,8 @@ class RegisterPage extends PageType {
 				'required' => true,
 				'value' => (isset($_REQUEST['mail']) && !empty($_REQUEST['mail']) ? str_replace("\"", "", $_REQUEST['mail']) : ""),
 				'custom_html' => false,
-				'text_behind' => ""
+				'text_behind' => "",
+				'validator' => "Validator_Mail"
 			);
 
 			$fields[] = array(
@@ -73,7 +75,8 @@ class RegisterPage extends PageType {
 				'required' => true,
 				'value' => "",
 				'custom_html' => false,
-				'text_behind' => ""
+				'text_behind' => "",
+				'validator' => "Validator_Password"
 			);
 
 			$fields[] = array(
@@ -84,7 +87,8 @@ class RegisterPage extends PageType {
 				'required' => true,
 				'value' => "",
 				'custom_html' => false,
-				'text_behind' => ""
+				'text_behind' => "",
+				'validator' => "Validator_Password"
 			);
 
 			$fields[] = array(
@@ -122,9 +126,38 @@ class RegisterPage extends PageType {
 							$error_msg_array[] = "Field '" . $field['title'] . "' wasnt filled!";
 						}
 					}
+
+					//validate fields
+					if (isset($_POST[$field['name']])) {
+						$validator = $field['validator'];
+						$obj = new $validator;
+
+						if (!$obj->isValide($_POST[$field['name']])) {
+							$validate = false;
+							$error_msg_array[] = "Field '" . $field['title'] . "' is not valide!";
+						}
+					}
 				}
 
-				//validate fields
+				//check, if username already exists
+				if (isset($_POST[$field['username']]) && !empty($_POST[$field['username']])) {
+					$username = $_POST['username'];
+
+					if (User::existsUsername($username)) {
+						$validate = false;
+						$error_msg_array[] = "Username '" . htmlentities($_POST['username']) . "' already exists! Choose another username!";
+					}
+				}
+
+				//check, if mail already exists
+				if (isset($_POST[$field['mail']]) && !empty($_POST[$field['mail']])) {
+					$mail = $_POST['mail'];
+
+					if (User::existsMail($mail)) {
+						$validate = false;
+						$error_msg_array[] = "Mail '" . htmlentities($_POST['username']) . "' already exists in system! Maybe you are already registered? Choose another mail address or login!";
+					}
+				}
 
 				$template->assign("error", !$validate);
 				$template->assign("error_msg_array", $error_msg_array);
