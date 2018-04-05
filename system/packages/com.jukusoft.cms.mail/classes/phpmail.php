@@ -133,6 +133,8 @@ class PHPMail implements MailSender {
 			$headers[] = "To: " . $to;
 		}
 
+		$headers[] = "Content-Transfer-Encoding: quoted-printable";
+
 		if (isset($options['from']) && !empty($options['from'])) {
 			$headers[] = "From: " . $options['from'];
 		}
