@@ -19,4 +19,5 @@
 	<class>LoginHandler</class>
 	<class>LoginPage</class>
 	<class>LogoutPage</class>
+	<class>RegisterPage</class>
 </classes>
