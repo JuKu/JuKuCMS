@@ -48,7 +48,7 @@ class RegisterPage extends PageType {
 				'type' => "text",
 				'placeholder' => "Username",
 				'required' => true,
-				'value' => (isset($_REQUEST['username']) && !empty($_REQUEST['username']) ? Database::getInstance()->escape($_REQUEST['username']) : ""),
+				'value' => (isset($_REQUEST['username']) && !empty($_REQUEST['username']) ? str_replace("\"", "", $_REQUEST['username']) : ""),
 				'custom_html' => false,
 				'text_behind',
 				'text_behind' => ""
@@ -60,7 +60,7 @@ class RegisterPage extends PageType {
 				'type' => "email",
 				'placeholder' => "john@example.com",
 				'required' => true,
-				'value' => (isset($_REQUEST['mail']) && !empty($_REQUEST['mail']) ? Database::getInstance()->escape($_REQUEST['mail']) : ""),
+				'value' => (isset($_REQUEST['mail']) && !empty($_REQUEST['mail']) ? str_replace("\"", "", $_REQUEST['mail']) : ""),
 				'custom_html' => false,
 				'text_behind' => ""
 			);
@@ -89,13 +89,13 @@ class RegisterPage extends PageType {
 
 			$fields[] = array(
 				'name' => "agb",
-				'title' => "AGB",
+				'title' => "Terms of use",
 				'type' => "checkbox",
 				'placeholder' => "",
 				'required' => true,
 				'value' => "",
 				'custom_html' => false,
-				'text_behind' => " I have read and agree with the <a href=\"{BASE_URL}agb\">AGB</a>"
+				'text_behind' => " I have read and agree with the <a href=\"{BASE_URL}agb\">terms of use</a>"
 			);
 
 			Events::throwEvent("register_fields", array(
