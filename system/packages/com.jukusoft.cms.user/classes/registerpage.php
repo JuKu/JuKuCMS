@@ -95,7 +95,7 @@ class RegisterPage extends PageType {
 				'required' => true,
 				'value' => "",
 				'custom_html' => false,
-				'text_behind' => " I have read and agree with the <a href=\"" . DomainUtils::generateURL(Settings::get("agb_page", "agb")) . "\">terms of use</a>"
+				'text_behind' => " I have read and agree with the <a href=\"" . DomainUtils::generateURL(Settings::get("agb_page", "agb")) . "\" target=\"_blank\">terms of use</a>"
 			);
 
 			Events::throwEvent("register_fields", array(
