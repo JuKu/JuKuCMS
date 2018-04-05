@@ -32,7 +32,7 @@
             <!-- CSRF token -->
             <input type="hidden" name="csrf_token" value="{$CSRF_TOKEN}" required="required" />
 
-            <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="name" value="Register" /></p>
+            <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="submit" value="Register" /></p>
         </div>
     </form>
 
