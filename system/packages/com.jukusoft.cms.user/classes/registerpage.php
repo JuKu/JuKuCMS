@@ -183,6 +183,7 @@ class RegisterPage extends PageType {
 
 				$template->assign("error", !$validate);
 				$template->assign("error_msg_array", $error_msg_array);
+				$template->assign("success", $validate);
 			} else {
 				$template->assign("error", false);
 			}

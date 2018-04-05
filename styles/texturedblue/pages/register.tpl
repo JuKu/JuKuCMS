@@ -11,6 +11,10 @@
         </div>
     {/if}
 
+    {if $success}
+        <p style="border: 1px solid green; background: yellowgreen; color:green; padding: 5px; ">Registration successfully!{$additional_success_text}</p>
+    {/if}
+
     <form action="{$action_url}" method="post">
         <div class="form_settings">
             {foreach $fields field}
