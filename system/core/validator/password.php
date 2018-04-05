@@ -28,7 +28,7 @@
 class Validator_Password implements Validator_Base {
 
 	public function isValide($value): bool {
-		$valide = false;
+		$valide = true;
 
 		//throw event, so plugins like pwned can interact
 		Events::throwEvent("validate_password", array(
