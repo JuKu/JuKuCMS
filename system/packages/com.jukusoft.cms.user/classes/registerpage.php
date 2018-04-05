@@ -27,7 +27,22 @@
 
 class RegisterPage extends PageType {
 
-	//
+	public function getContent(): string {
+		$template = new DwooTemplate("pages/register");
+
+		$registration_enabled = Settings::get("registration_enabled", false);
+
+		if (!$registration_enabled) {
+			//registration is not enabled
+			$template->assign("registration_enabled", false);
+		} else {
+			$template->assign("registration_enabled", true);
+
+			//TODO: add code here
+		}
+
+		return $template->getCode();
+	}
 
 }
 

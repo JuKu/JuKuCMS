@@ -934,7 +934,7 @@ Settings::create("mail_signature", "", "Mail Signature", "This text will be adde
 Settings::create("mail_default_charset", "utf-8", "Default mail charset", "Default mail charset, default: utf-8", "system", "mail", "DataType_String");
 
 //registration
-Settings::create("registration_enabled", true, "Registration enabled", "Registration enabled", "system", "general", "DataType_Boolean");
+Settings::create("registration_enabled", false, "Registration enabled", "Registration enabled", "system", "general", "DataType_Boolean");
 
 $main_menuID = -1;
 $local_menuID = -1;
