@@ -16,4 +16,7 @@
 
 <classes>
 	<class>MailApi</class>
+	<class>MailSender</class>
+	<class>PHPMail</class>
+	<class>SMTPMail</class>
 </classes>
