@@ -24,7 +24,7 @@
                     <!-- CSRF token -->
                     <input type="hidden" name="csrf_token" value="{$CSRF_TOKEN}" required="required" />
 
-                    <input type="submit" name="submit" value="Register" />
+                    <input type="submit" name="submit" value="Register" class="submit" />
                 </td>
             </tr>
         </table>
