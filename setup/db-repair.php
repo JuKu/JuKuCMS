@@ -924,6 +924,11 @@ Settings::create("maintenance_text", "This domain is currently under scheduled m
 //external tools
 Settings::create("phpmyadmin_link", "#", "Link to PhpMyAdmin", "Link to PhpMyAdmin", "system", "general", "DataType_URL");
 
+//send mail
+Settings::create("sendmail_method", "PHPMail", "Method for sending mails", "Method for sending mails (class name of send mail implementation)", "system", "general", "DataType_SelectBox", array("PHPMail", "SMTPMail"));
+Settings::create("sender_mail", "none", "Sender mail address", "sender mail address, e.q. admin@example.com", "system", "general", "DataType_Mail");
+Settings::create("mail_reply_to", "none", "Reply-to mail address", "Reply-to mail address, e.q. admin@example.com", "system", "general", "DataType_Mail");
+
 $main_menuID = -1;
 $local_menuID = -1;
 $admin_menuID = -1;
