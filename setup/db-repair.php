@@ -936,6 +936,7 @@ Settings::create("mail_default_charset", "utf-8", "Default mail charset", "Defau
 
 //registration
 Settings::create("registration_enabled", false, "Registration enabled", "Registration enabled", "system", "general", "DataType_Boolean");
+Settings::create("agb_page", "agb", "Terms of use Page", "Terms of use page", "system", "general", "DataType_String");
 
 $main_menuID = -1;
 $local_menuID = -1;
