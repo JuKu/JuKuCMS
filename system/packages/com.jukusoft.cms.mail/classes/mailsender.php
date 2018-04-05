@@ -27,9 +27,9 @@
 
 interface MailSender {
 
-	public function sendPlainMail ($to, string $subject, string $message, string $from = "", string $reply_to = "", array $options = array()) : bool;
+	public function sendPlainMail ($to, string $subject, string $message, array $options = array(), string $from = "", string $reply_to = "") : bool;
 
-	public function sendHTMLMail ($to, string $subject, string $message, string $from = "", string $reply_to = "", array $options = array()) : bool;
+	public function sendHTMLMail ($to, string $subject, string $message, array $options = array(), string $from = "", string $reply_to = "") : bool;
 
 }
 

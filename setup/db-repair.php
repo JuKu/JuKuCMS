@@ -925,6 +925,7 @@ Settings::create("maintenance_text", "This domain is currently under scheduled m
 Settings::create("phpmyadmin_link", "#", "Link to PhpMyAdmin", "Link to PhpMyAdmin", "system", "general", "DataType_URL");
 
 //send mail
+Settings::create("send_mails_enabled", true, "Enable send mails from CMS", "Enable send mails from CMS - if disabled no mails can be sended! If deactivated, it can influence other features like registration.", "system", "general");
 Settings::create("sendmail_method", "PHPMail", "Method for sending mails", "Method for sending mails (class name of send mail implementation)", "system", "general", "DataType_SelectBox", array("PHPMail", "SMTPMail"));
 Settings::create("sender_mail", "none", "Sender mail address", "sender mail address, e.q. admin@example.com", "system", "general", "DataType_Mail");
 Settings::create("mail_reply_to", "none", "Reply-to mail address", "Reply-to mail address, e.q. admin@example.com", "system", "general", "DataType_Mail");

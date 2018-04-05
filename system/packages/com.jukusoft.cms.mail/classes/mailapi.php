@@ -28,10 +28,20 @@
 class MailApi {
 
 	public static function sendPlainMail ($to, string $subject, string $message, string $from = "", string $reply_to = "", array $options = array()) : bool {
+		if (!Settings::get("send_mails_enabled", true)) {
+			//send mails is not enabled
+			return false;
+		}
+
 		return self::getClass()->sendPlainMail($to, $subject, $message, $from, $reply_to, $options);
 	}
 
 	public static function sendHTMLMail ($to, string $subject, string $message, string $from = "", string $reply_to = "", array $options = array()) : bool {
+		if (!Settings::get("send_mails_enabled", true)) {
+			//send mails is not enabled
+			return false;
+		}
+
 		return self::getClass()->sendHTMLMail($to, $subject, $message, $from, $reply_to, $options);
 	}
 
