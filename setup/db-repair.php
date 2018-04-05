@@ -933,6 +933,9 @@ Settings::create("mail_reply_to", "", "Reply-to mail address", "Reply-to mail ad
 Settings::create("mail_signature", "", "Mail Signature", "This text will be added as footer on all mails.", "system", "mail", "DataType_Text");
 Settings::create("mail_default_charset", "utf-8", "Default mail charset", "Default mail charset, default: utf-8", "system", "mail", "DataType_String");
 
+//registration
+Settings::create("registration_enabled", true, "Registration enabled", "Registration enabled", "system", "general", "DataType_Boolean");
+
 $main_menuID = -1;
 $local_menuID = -1;
 $admin_menuID = -1;
@@ -1022,6 +1025,7 @@ Page::createIfAbsent("home", "Home", "IndexPage", "Home page", "/");
 Page::createIfAbsent("error404", "Error 404", "Error404Page", "Error 404 - Couldn't find this page.", "/", -1, -1, -1, false);
 Page::createIfAbsent("login", "Login", "LoginPage", "", "/", -1, -1, -1, false);
 Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/", -1, -1, -1, false);
+Page::createIfAbsent("register", "Registration", "RegisterPage", "", "/", -1, -1, -1, false);
 
 //create robots.txt page
 Page::createIfAbsent("robots.txt", "Robots.txt", "RobotsPage", "", "/", -1, -1, -1, false, true, false);
