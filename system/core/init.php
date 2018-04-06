@@ -27,6 +27,13 @@ register_shutdown_function(function () {
 	ob_end_flush();
 });
 
+//check, if allow_url_fopen is enabled
+if (!PHPUtils::isUrlfopenEnabled()) {
+	echo "CMS requires PHP option 'allow_url_fopen' enabled, change your php.ini or hosting settings to enable this option!";
+	ob_flush();
+	exit;
+}
+
 //define some constants
 define('CACHE_PATH', ROOT_PATH . "cache/");
 define('CONFIG_PATH', ROOT_PATH . "config/");
