@@ -943,6 +943,7 @@ Settings::create("username_regex", "a-zA-Z0-9\.\-", "Username Regex", "Allowed c
 Settings::create("password_min_length", 8, "Minimal password length", "Minimal password length, default: 8", "system", "general", "DataType_Integer");
 Settings::create("password_max_length", 64, "Maximal password length", "Maximal password length, default: 8", "system", "general", "DataType_Integer");
 Settings::create("register_activation_method", "auto", "Register Activation Method", "Activation method for new user accounts, Default: auto (which means, that users are automatically activated)", "system", "general", "DataType_SelectBox", array("auto", "mail_verification", "manual_verification"));
+Settings::create("default_main_group", 2, "Default main group ID", "ID of default main group, Default: 2 (registered users)", "system", "general", "DataType_Integer");
 
 //captcha
 Settings::create("captcha_enabled", true, "Captcha enabled", "Option, if captcha is enabled on forms", "system", "general", "DataType_Boolean");

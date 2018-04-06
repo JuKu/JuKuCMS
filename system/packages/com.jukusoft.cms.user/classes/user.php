@@ -168,6 +168,32 @@ class User {
 		return $this->loginRow($row, $password);
 	}
 
+	public function loginByID (int $userID) : array {
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `userID` = :userID AND `activated` = '1'; ", array(
+			'userID' => &$userID
+		));
+
+		$res = array();
+
+		if ($row !== false) {
+			//set online state
+			$this->setOnline();
+
+			//set logged in
+			$this->setLoggedIn($row['userID'], $row['username'], $row);
+
+			//login successful
+			$res['success'] = true;
+			$res['error'] = "none";
+			return $res;
+		} else {
+			//user doesnt exists
+			$res['success'] = false;
+			$res['error'] = "user_not_exists";
+			return $res;
+		}
+	}
+
 	protected function loginRow ($row, string $password) : array {
 		if (!$row) {
 			//user doesnt exists
@@ -332,8 +358,10 @@ class User {
 
 	/**
 	 * creates user if userID is absent
+	 *
+	 * Only use this method for installation & upgrade!
 	 */
-	public static function createIfIdAbsent (int $userID, string $username, string $password, string $mail, int $main_group = 1, string $specific_title = "none", int $activated = 1) {
+	public static function createIfIdAbsent (int $userID, string $username, string $password, string $mail, int $main_group = 2, string $specific_title = "none", int $activated = 1) {
 		if (self::existsUserID($userID)) {
 			//dont create user, if user already exists
 			return;
@@ -359,6 +387,67 @@ class User {
 			'title' => $specific_title,
 			'activated' => $activated
 		));
+	}
+
+	public static function create (string $username, string $password, string $mail, string $ip, int $main_group = 2, string $specific_title = "none", int $activated = 1) {
+		if (self::existsUsername($username)) {
+			//dont create user, if username already exists
+			return false;
+		}
+
+		if (self::existsMail($mail)) {
+			//dont create user, if mail already exists
+			return false;
+		}
+
+		if (empty($specific_title)) {
+			$specific_title = "none";
+		}
+
+		//create salt
+		$salt = md5(PHPUtils::randomString(50));
+
+		//generate password hash
+		$hashed_password = self::hashPassword($password, $salt);
+
+		//create user in database
+		Database::getInstance()->execute("INSERT INTO `{praefix}user` (
+			`userID`, `username`, `password`, `salt`, `mail`, `ip`, `main_group`, `specific_title`, `online`, `last_online`, `registered`, `activated`
+		) VALUES (
+			NULL, :username, :password, :salt, :mail, :ip, :main_group, :title, '0', '0000-00-00 00:00:00', CURRENT_TIMESTAMP , :activated
+		)", array(
+			'username' => $username,
+			'password' => $hashed_password,
+			'salt' => $salt,
+			'mail' => $mail,
+			'ip' => $ip,
+			'main_group' => $main_group,
+			'title' => $specific_title,
+			'activated' => $activated
+		));
+
+		//get userID
+		$userID = self::getIDByUsernameFromDB($username);
+
+		if ($userID == Settings::get("guest_userid", -1)) {
+			//something went wrong
+			return false;
+		}
+
+		//add user to group "registered users"
+		Groups::addGroupToUser(2, $userID, false);
+
+		Events::throwEvent("add_user", array(
+			'userID' => $userID,
+			'username' => &$username,
+			'mail' => $mail,
+			'main_group' => $main_group
+		));
+
+		return array(
+			'success' => true,
+			'userID' => $userID
+		);
 	}
 
 	public static function deleteUserID (int $userID) {
@@ -397,6 +486,18 @@ class User {
 		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE UPPER(`mail`) LIKE UPPER(:mail); ", array('mail' => $mail));
 
 		return $row !== false;
+	}
+
+	public static function getIDByUsernameFromDB (string $username) : int {
+		//search for username in database, ignore case
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE UPPER(`username`) LIKE UPPER(:username); ", array('username' => $username));
+
+		if ($row === false) {
+			//return guest userID
+			return Settings::get("guest_userid", -1);
+		}
+
+		return $row['userID'];
 	}
 
 	/**

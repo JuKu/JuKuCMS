@@ -120,6 +120,9 @@ class RegisterPage extends PageType {
 				'template'  => &$template
 			));
 
+			//array with all validated values of fields
+			$field_values = array();
+
 			//add captcha field, if captcha enabled
 			if (Captcha::isEnabled()) {
 				$fields[] = array(
@@ -164,6 +167,9 @@ class RegisterPage extends PageType {
 							if (!$obj->isValide($_POST[$field['name']])) {
 								$validate = false;
 								$error_msg_array[] = "Field '" . $field['title'] . "' is not valide! " . (isset($field['hints']) ? $field['hints'] : "");
+							} else {
+								//set validated value
+								$field_values[$field['name']] = $obj->validate($_POST[$field['name']]);
 							}
 						}
 					}
@@ -212,16 +218,88 @@ class RegisterPage extends PageType {
 				Events::throwEvent("register_validate", array(
 					'valide' => &$validate,
 					'fields' => &$fields,
+					'field_values' => &$field_values,
 					'error_msg_array' => &$error_msg_array
 				));
 
 				if ($validate) {
-					//
-				}
+					$text = "";
 
-				$template->assign("error", !$validate);
-				$template->assign("error_msg_array", $error_msg_array);
-				$template->assign("success", $validate);
+					//get activation method
+					$activation_method = Settings::get("register_activation_method", "auto");
+
+					$activated = 2;
+
+					if ($activation_method === "auto") {
+						$activated = 1;
+					}
+
+					//get fields
+					$username = $field_values['username'];
+					$password = $field_values['password'];
+					$mail = $field_values['mail'];
+
+					//get IP address of user
+					$ip = PHPUtils::getClientIP();
+
+					$main_group = 2;
+
+					//create new user
+					$res = User::create($username, $password, $mail, $ip, $main_group, "", $activated);
+
+					if ($res === true || $res['success'] === true) {
+						//throw event for custom registration fields
+						Events::throwEvent("register_execute", array(
+							'field_values' => $field_values,
+							'text' => &$text
+						));
+
+						switch ($activation_method) {
+							case "auto":
+								//login user automatically
+								User::current()->loginByID($res['userID']);
+
+								//redirect user to home page
+								header("Location: " . DomainUtils::generateURL(Domain::getCurrent()->getHomePage()));
+								exit;
+
+								break;
+
+							case "mail_verification":
+								//send verification mail
+								Mail_Verification::sendMail($res['userID']);
+
+								$text .= "Registration successful! Before you can login you have to verify your mail address! For this we have send you a mail with a link, please click on this link!";
+
+								break;
+
+							case "manual_verification":
+
+								//TODO: inform administrator
+
+								$text .= "Registration successful! An Administrator has to activate your account manually now.";
+
+								break;
+
+							default:
+								throw new IllegalStateException("Unknown activation method: " . $activation_method);
+								break;
+						}
+
+						$template->assign("error", !$validate);
+						$template->assign("error_msg_array", $error_msg_array);
+						$template->assign("success", $validate);
+						$template->assign("additional_success_text", $text);
+					} else {
+						$template->assign("error", true);
+						$template->assign("error_msg_array", array("Couldnt create user. Please contact the administrator of this website!"));
+						$template->assign("success", false);
+					}
+				} else {
+					$template->assign("error", !$validate);
+					$template->assign("error_msg_array", $error_msg_array);
+					$template->assign("success", $validate);
+				}
 			} else {
 				$template->assign("error", false);
 			}

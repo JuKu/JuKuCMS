@@ -45,6 +45,11 @@ class Validator_Username implements Validator_Base {
 		}
 	}
 
+	public static function get (string $value) : string {
+		$obj = new Validator_Username();
+		return $obj->validate($value);
+	}
+
 }
 
 ?>
