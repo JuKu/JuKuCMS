@@ -32,6 +32,7 @@ $package_list = array(
 	'com.jukusoft.cms.dwoo' => true,
 	'com.jukusoft.cms.sitemap' => true,
 	'com.jukusoft.cms.tools' => true,
+	'com.jukusoft.cms.captcha' => true,
 );
 
 ?>
