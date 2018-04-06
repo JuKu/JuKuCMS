@@ -185,7 +185,7 @@ class Settings {
 	 * initialize settings and get global settings
 	 */
 	protected static function loadCategorySettings (string $category) {
-		$category = Database::getInstance()->escape($category);
+		//$category = Database::getInstance()->escape($category);
 
 		$category_settings = array();
 

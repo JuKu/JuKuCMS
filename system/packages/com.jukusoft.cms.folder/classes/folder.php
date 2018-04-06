@@ -130,7 +130,7 @@ class Folder {
 
 	public static function createFolder (string $folder, bool $hidden = false, array $permissions = array(), int $main_menu = -1, int $local_menu = -1, string $force_template = "none") {
 		//escape string
-		$folder = Database::getInstance()->escape($folder);
+		//$folder = Database::getInstance()->escape($folder);
 
 		$permissions_str = implode("|", $permissions);
 
@@ -157,7 +157,7 @@ class Folder {
 
 	public static function createFolderIfAbsent (string $folder, bool $hidden = false, array $permissions = array(), int $main_menu = -1, int $local_menu = -1, string $force_template = "none") {
 		//escape string
-		$folder = Database::getInstance()->escape($folder);
+		//$folder = Database::getInstance()->escape($folder);
 
 		$permissions_str = implode("|", $permissions);
 
@@ -184,7 +184,7 @@ class Folder {
 
 	public static function deleteFolder ($folder) {
 		//escape string
-		$folder = Database::getInstance()->escape($folder);
+		//$folder = Database::getInstance()->escape($folder);
 
 		Database::getInstance()->execute("DELETE FROM `{praefix}folder` WHERE `folder` = :folder; ", array('folder' => $folder));
 	}
