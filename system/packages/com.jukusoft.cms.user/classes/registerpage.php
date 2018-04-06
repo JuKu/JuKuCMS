@@ -185,7 +185,7 @@ class RegisterPage extends PageType {
 
 					if (User::existsMail($mail)) {
 						$validate = false;
-						$error_msg_array[] = "Mail '" . htmlentities($_POST['username']) . "' already exists in system! Maybe you are already registered? Choose another mail address or login!";
+						$error_msg_array[] = "Mail '" . htmlentities($_POST['mail']) . "' already exists in system! Maybe you are already registered? Choose another mail address or login!";
 					}
 				}
 
