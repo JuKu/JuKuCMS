@@ -943,6 +943,12 @@ Settings::create("username_regex", "a-zA-Z0-9\.\-", "Username Regex", "Allowed c
 Settings::create("password_min_length", 8, "Minimal password length", "Minimal password length, default: 8", "system", "general", "DataType_Integer");
 Settings::create("password_max_length", 64, "Maximal password length", "Maximal password length, default: 8", "system", "general", "DataType_Integer");
 
+//captcha
+Settings::create("captcha_enabled", true, "Captcha enabled", "Option, if captcha is enabled on forms", "system", "general", "DataType_Boolean");
+Settings::create("captcha_class_name", "ReCaptcha", "Captcha Classname", "Captcha Classname", "system", "general", "DataType_String");
+Settings::create("recaptcha_website_key", "", "reCAPTCHA website key", "reCAPTCHA website key, provided by google", "system", "general", "DataType_String");
+Settings::create("recaptcha_secret_key", "", "reCAPTCHA website key", "reCAPTCHA website key, provided by google", "system", "general", "DataType_String");
+
 $main_menuID = -1;
 $local_menuID = -1;
 $admin_menuID = -1;

@@ -48,6 +48,10 @@ class PageType {
 		//
 	}
 
+	public function getAdditionalHeaderCode () : string {
+		return "";
+	}
+
 	public function showFooter () : bool {
 		return true;
 	}

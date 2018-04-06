@@ -27,6 +27,16 @@
 
 class RegisterPage extends PageType {
 
+	public function getAdditionalHeaderCode(): string {
+		//check, if captcha is enabled
+		if (!Captcha::isEnabled()) {
+			return "";
+		}
+
+		//get code between <head> and </head>
+		return Captcha::getInstance()->getHeader();
+	}
+
 	public function getContent(): string {
 		$template = new DwooTemplate("pages/register");
 
