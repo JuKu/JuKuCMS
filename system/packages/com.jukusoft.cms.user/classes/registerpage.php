@@ -120,6 +120,20 @@ class RegisterPage extends PageType {
 				'template'  => &$template
 			));
 
+			//add captcha field, if captcha enabled
+			if (Captcha::isEnabled()) {
+				$fields[] = array(
+					'name' => "captcha",
+					'title' => "Captcha",
+					'type' => "",
+					'placeholder' => "",
+					'required' => true,
+					'value' => "captcha",
+					'custom_html' => "<input type=\"hidden\" name=\"captcha\" value=\"captcha\" />" . Captcha::getInstance()->getFormCode(),
+					'validator' => null
+				);
+			}
+
 			if (isset($_REQUEST['submit']) && !empty($_REQUEST['submit'])) {
 				$validate = true;
 				$error_msg_array = array();
@@ -185,6 +199,14 @@ class RegisterPage extends PageType {
 				if (!isset($_POST['agb']) || $_POST['agb'] !== "checked") {
 					$validate = false;
 					$error_msg_array[] = "Please agree to AGB and fillout checkbox!";
+				}
+
+				//check captcha, if enabled
+				if (Captcha::isEnabled()) {
+					if (!Captcha::getInstance()->verify()) {
+						$validate = false;
+						$error_msg_array[] = "Wrong captcha!";
+					}
 				}
 
 				Events::throwEvent("register_validate", array(

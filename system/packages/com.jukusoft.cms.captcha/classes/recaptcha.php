@@ -41,7 +41,42 @@ class ReCaptcha implements ICaptcha {
 	}
 
 	public function verify(array $params = array()): bool {
-		// TODO: Implement verify() method.
+		$secret_key = Settings::get("recaptcha_secret_key", "");
+
+		if (empty($secret_key)) {
+			throw new IllegalStateException("Cannot verify recaptcha, because no secret key was set, <a href=\"https://www.google.com/recaptcha/admin\">generate a website & secret key by recaptcha</a> and set them in global settings.");
+		}
+
+		if (!isset($_POST['g-recaptcha-response']) || empty($_POST['g-recaptcha-response'])) {
+			//no recaptcha response was set
+			return false;
+		}
+
+		$g_recaptcha_response = $_POST['g-recaptcha-response'];
+
+		$params = array(
+			'secret' => $secret_key,
+			'response' => $g_recaptcha_response//'remoteip' => "" Optional. The user's IP address.
+		);
+
+		//send POST request
+		$result = PHPUtils::sendPOSTRequest("https://www.google.com/recaptcha/api/siteverify", $params);
+
+		if (!$result) {
+			//coulnd send POST request
+			throw new IllegalStateException("Couldnt send POST request to verify recaptcha");
+		}
+
+		$json = json_decode($result, true);
+
+		if (isset($json['success']) && $json['success'] == true) {
+			//validation successfully
+			return true;
+		} else {
+			//for error-message see https://developers.google.com/recaptcha/docs/verify
+
+			return false;
+		}
 	}
 
 }
