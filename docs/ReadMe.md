@@ -5,6 +5,7 @@
   - [Robots.txt](robots.md)
   - [Maintenance Mode](maintenance.md)
   - [Registration](register.md)
+  - [Captcha / reCAPTCHA](captcha.md)
 
 ## Installation
 
