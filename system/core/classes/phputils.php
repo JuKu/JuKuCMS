@@ -96,22 +96,45 @@ class PHPUtils {
 	}
 
 	public static function sendPOSTRequest (string $url, array $data = array()) {
-		// use key 'http' even if you send the request to https://...
-		$options = array(
-			'http' => array(
-				'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-				'method'  => 'POST',
-				'content' => http_build_query($data)
-			)
-		);
-		$context  = stream_context_create($options);
-		$result = file_get_contents($url, false, $context);
+		//check, if allow_url_fopen is enabled
+		if (PHPUtils::isUrlfopenEnabled()) {
+			// use key 'http' even if you send the request to https://...
+			$options = array(
+				'http' => array(
+					'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+					'method'  => 'POST',
+					'content' => http_build_query($data)
+				)
+			);
+			$context  = stream_context_create($options);
+			$result = file_get_contents($url, false, $context);
 
-		if ($result === FALSE) {
-			return false;
+			if ($result === FALSE) {
+				return false;
+			}
+
+			return $result;
+		} else {
+			//try to use curl instead
+
+			//https://stackoverflow.com/questions/2138527/php-curl-http-post-sample-code?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+			//create a new curl session
+			$ch = curl_init();
+
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));//"postvar1=value1&postvar2=value2&postvar3=value3"
+
+			//receive server response
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			$result = curl_exec ($ch);
+
+			//close curl session
+			curl_close ($ch);
+
+			return $result;
 		}
-
-		return $result;
 	}
 
 	public static function isUrlfopenEnabled () : bool {
