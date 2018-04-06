@@ -93,8 +93,8 @@ https://poser.pugx.org/
 
 ## CONTRIBUTORS / Maintainers
 
-  - Justin Künzel @JuKu - [jukusoft.com](http://jukusoft.com)
-  - Pascal Reinjens @PascalReintjens
+  - Justin Künzel [@JuKu](http://github.com/JuKu) - [jukusoft.com](http://jukusoft.com)
+  - Pascal Reinjens [@PascalReintjens](https://github.com/PascalReintjens)
 
 ## License
 
