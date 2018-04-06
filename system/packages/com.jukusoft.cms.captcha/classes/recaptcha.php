@@ -21,6 +21,7 @@
  * Implementation for captcha based on googles recaptcha
  *
  * @link https://developers.google.com/recaptcha/intro
+ * @link https://github.com/google/recaptcha/blob/1.0.0/php/recaptchalib.php
  */
 
 class ReCaptcha implements ICaptcha {
