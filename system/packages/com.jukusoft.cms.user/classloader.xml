@@ -21,4 +21,5 @@
 	<class>LogoutPage</class>
 	<class>RegisterPage</class>
 	<class>Mail_Verification</class>
+	<class>MailVerifyPage</class>
 </classes>
