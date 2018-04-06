@@ -47,7 +47,7 @@ class Mail_Verification {
 		$template->assign("token", $token);
 		$template->assign("userID", $userID);
 		$template->assign("username", $username);
-		$template->assign("verify_url", DomainUtils::generateURL("user/verify_mail", array('token' => $token)));
+		$template->assign("verify_url", DomainUtils::generateURL("user/verify_mail", array('token' => $token, 'username' => $username)));
 		$template->assign("base_url", DomainUtils::getBaseURL());
 		$template->assign("mail", $mail);
 
