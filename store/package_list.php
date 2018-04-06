@@ -33,6 +33,7 @@ $package_list = array(
 	'com.jukusoft.cms.sitemap' => true,
 	'com.jukusoft.cms.tools' => true,
 	'com.jukusoft.cms.captcha' => true,
+	'com.jukusoft.cms.mail' => true,
 );
 
 ?>
