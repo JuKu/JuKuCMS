@@ -39,8 +39,11 @@ if ($domain->isRedirectUrl()) {
 	exit;
 }
 
-//use gzip compression
-ob_start();
+//check, if gzip compression is enabled
+if (Settings::get("gzip_compression", false)) {
+	//use gzip compression
+	ob_start();
+}
 
 //TODO: remove this code in production
 if (isset($_REQUEST['clear_cache'])) {

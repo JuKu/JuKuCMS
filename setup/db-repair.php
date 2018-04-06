@@ -944,6 +944,8 @@ Settings::create("title_suffix", "", "Title Suffix", "Title Suffix", "system", "
 Settings::create("copyright", "<strong>Copyright &copy; 2018 <a href=\"http://jukusoft.com\">JuKuSoft.com</a></strong>, All Rights Reserved.", "Copyright Notice on page", "Copyright notice on every page", "system", "general", "DataType_HTML");
 Settings::create("website_name", "" . DomainUtils::getDomain(), "Website name", "Name of your website, e.q. used for mail templates", "system", "general", "DataType_String");
 
+Settings::create("gzip_compression", true, "GZip compression enabled", "GZip compression enabled", "system", "general", "DataType_Boolean");
+
 //maintenance mode
 Settings::create("maintenance_mode_enabled", false, "Maintenance Mode enabled (boolean)", "Maintenance Mode enabled (boolean), Default: false", "system", "general", "DataType_Boolean");
 Settings::create("maintenance_text", "This domain is currently under scheduled maintenance mode. Sorry for the inconvenience! Look in a few minutes over again!", "Maintenance Text", "Text which is shown, if maintenance mode is enabled", "system", "general", "DataType_HTML");
