@@ -120,11 +120,6 @@ class Folder {
 	}
 
 	public static function getFolderByPage (string $page) : string {
-		if (PHPUtils::endsWith($page, "/")) {
-			//remove last slash
-			$page = substr($page, 0, -1);
-		}
-
 		$array = explode("/", $page);
 
 		if (sizeof($array) <= 2 && empty($array[0])) {
@@ -138,7 +133,21 @@ class Folder {
 	}
 
 	public static function getUpperDir ($dir) {
-		return self::getFolderByPage($dir);
+		if (PHPUtils::endsWith($dir, "/")) {
+			//remove last slash
+			$dir = substr($dir, 0, -1);
+		}
+
+		$array = explode("/", $dir);
+
+		if (sizeof($array) <= 2 && empty($array[0])) {
+			return "/";
+		}
+
+		//remove last element
+		array_pop($array);
+
+		return implode("/", $array) . "/";
 	}
 
 	public static function createFolder (string $folder, bool $hidden = false, array $permissions = array(), int $main_menu = -1, int $local_menu = -1, string $force_template = "none") {
