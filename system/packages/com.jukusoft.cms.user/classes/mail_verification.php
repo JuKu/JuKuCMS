@@ -41,7 +41,7 @@ class Mail_Verification {
 		));
 
 		//send mail
-		$template = new DwooTemplate(STORE_PATH . "templates/mail/verifymail.tpl");
+		$template = new DwooTemplate(STORE_PATH . "templates/mail/verify_mail.tpl");
 
 		//assign variables
 		$template->assign("token", $token);

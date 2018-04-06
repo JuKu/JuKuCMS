@@ -28,7 +28,7 @@
 class MailVerifyPage extends PageType {
 
 	public function getContent(): string {
-		$template = new DwooTemplate("pages/verify_mail");
+		$template = new DwooTemplate("pages/verifymail");
 
 		if (isset($_REQUEST['token']) && !empty($_REQUEST['token'])) {
 			//check token
