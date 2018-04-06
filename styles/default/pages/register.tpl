@@ -13,37 +13,37 @@
 
     {if $success}
         <p style="border: 1px solid green; background: yellowgreen; color:green; padding: 5px; ">Registration successfully!{$additional_success_text}</p>
-    {/if}
+    {else}
+        <form action="{$action_url}" method="post">
+            <table border="0">
+                {foreach $fields field}
+                    <tr>
+                        <td>{$field.title}{if $field.required}*{/if}: </td>
+                        <td>
+                            {if !$field.custom_html}
+                                <input type="{$field.type}" name="{$field.name}" placeholder="{$field.placeholder}"{if $field.required} required="required"{/if} value="{$field.value}" />{$field.text_behind}
+                            {else}
+                                {$field.custom_html}
+                            {/if}
+                        </td>
+                    </tr>
+                {/foreach}
 
-    <form action="{$action_url}" method="post">
-        <table border="0">
-            {foreach $fields field}
+                <!-- custom profile fields -->
+
                 <tr>
-                    <td>{$field.title}{if $field.required}*{/if}: </td>
+                    <td>&nbsp;</td>
                     <td>
-                        {if !$field.custom_html}
-                            <input type="{$field.type}" name="{$field.name}" placeholder="{$field.placeholder}"{if $field.required} required="required"{/if} value="{$field.value}" />{$field.text_behind}
-                        {else}
-                            {$field.custom_html}
-                        {/if}
+                        <!-- CSRF token -->
+                        <input type="hidden" name="csrf_token" value="{$CSRF_TOKEN}" required="required" />
+
+                        <input type="submit" name="submit" value="Register" class="submit" />
                     </td>
                 </tr>
-            {/foreach}
+            </table>
+        </form>
 
-            <!-- custom profile fields -->
-
-            <tr>
-                <td>&nbsp;</td>
-                <td>
-                    <!-- CSRF token -->
-                    <input type="hidden" name="csrf_token" value="{$CSRF_TOKEN}" required="required" />
-
-                    <input type="submit" name="submit" value="Register" class="submit" />
-                </td>
-            </tr>
-        </table>
-    </form>
-
-    <hr />
-    <p><b>*This field is required.</b></p>
+        <hr />
+        <p><b>*This field is required.</b></p>
+    {/if}
 {/if}
