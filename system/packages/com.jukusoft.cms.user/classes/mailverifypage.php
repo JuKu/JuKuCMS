@@ -31,8 +31,6 @@ class MailVerifyPage extends PageType {
 		$template = new DwooTemplate("pages/verifymail");
 
 		if (isset($_REQUEST['token']) && !empty($_REQUEST['token'])) {
-			echo "token found.";
-
 			$template->assign("no_token", false);
 
 			//check token
@@ -42,7 +40,6 @@ class MailVerifyPage extends PageType {
 				$template->assign("invalide_token", false);
 			}
 		} else {
-			echo "no token.";
 			$template->assign("no_token", true);
 		}
 
