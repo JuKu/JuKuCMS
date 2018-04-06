@@ -91,6 +91,11 @@ Some early screenshots from core, **main page**:\
 Badge Links:\
 https://poser.pugx.org/
 
+## CONTRIBUTORS / Maintainers
+
+  - Justin Künzel @JuKu - [jukusoft.com](http://jukusoft.com)
+  - Pascal Reinjens @PascalReintjens
+
 ## License
 
 **Styles, Plugins & Packages** can have their own licenses (see LICENSE file in directory)!\
