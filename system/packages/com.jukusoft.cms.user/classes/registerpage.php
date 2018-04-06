@@ -260,8 +260,10 @@ class RegisterPage extends PageType {
 								User::current()->loginByID($res['userID']);
 
 								//redirect user to home page
-								header("Location: " . DomainUtils::generateURL(Domain::getCurrent()->getHomePage()));
-								exit;
+								//header("Location: " . DomainUtils::generateURL(Domain::getCurrent()->getHomePage()));
+								//exit;
+
+							$text .= "Registration successfully! You are automatically logged-in now. <a href=\"" . DomainUtils::generateURL(Domain::getCurrent()->getHomePage()) . "\">Homepage</a>";
 
 								break;
 
