@@ -74,7 +74,7 @@ Currently, following caches are supported:
       
 ## Roadmap
 
-  - **Core finished** - 04.04.2018 ([Issues](https://github.com/JuKu/JuKuCMS/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3ACore+))
+  - **Core finished** - 06.04.2018 ([Issues](https://github.com/JuKu/JuKuCMS/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3ACore+))
 
 ## First Screenshots
 
