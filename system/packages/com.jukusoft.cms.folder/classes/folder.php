@@ -35,6 +35,8 @@ class Folder {
 	}
 
 	public function load ($folder) {
+		echo "load folder: " . $folder . "<br />";
+
 		//escape string
 		$folder = Database::getInstance()->escape($folder);
 
