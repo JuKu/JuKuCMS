@@ -67,10 +67,10 @@ class StyleController {
 			'head_content' => $head_content
 		));
 
-		$template->assign("HEAD", $head_content);
+		$template->assign("HEAD", $head_content . $page_type->getAdditionalHeaderCode());
 
 		$template->assign("CONTENT", $page_type->getContent());
-		$template->assign("HEADER", $registry->getSetting("header", "") . $page_type->getAdditionalHeaderCode());
+		$template->assign("HEADER", $registry->getSetting("header", ""));
 		$template->assign("FOOTER", $registry->getSetting("footer", ""));
 		$template->assign("COPYRIGHT", Settings::get("copyright", "<strong>Copyright &copy; 2018 <a href=\"http://jukusoft.com\">JuKuSoft.com</a></strong>, All Rights Reserved."));
 

@@ -12,6 +12,8 @@
 
     <!-- header javascript -->
     <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_HEADER}&amp;position=header"></script>
+
+    {$HEAD}
 </head>
 
 <body>
