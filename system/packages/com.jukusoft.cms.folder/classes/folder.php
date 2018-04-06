@@ -120,6 +120,11 @@ class Folder {
 	}
 
 	public static function getFolderByPage (string $page) : string {
+		if (PHPUtils::endsWith($page, "/")) {
+			//remove last slash
+			$page = substr($page, 0, -1);
+		}
+
 		$array = explode("/", $page);
 
 		if (sizeof($array) <= 2 && empty($array[0])) {
