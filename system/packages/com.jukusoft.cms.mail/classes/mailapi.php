@@ -27,22 +27,22 @@
 
 class MailApi {
 
-	public static function sendPlainMail ($to, string $subject, string $message, string $from = "", string $reply_to = "", array $options = array()) : bool {
+	public static function sendPlainMail ($to, string $subject, string $message, array $options = array(), string $from = "", string $reply_to = "") : bool {
 		if (!Settings::get("send_mails_enabled", true)) {
 			//send mails is not enabled
 			return false;
 		}
 
-		return self::getClass()->sendPlainMail($to, $subject, $message, $from, $reply_to, $options);
+		return self::getClass()->sendPlainMail($to, $subject, $message, $options, $from, $reply_to);
 	}
 
-	public static function sendHTMLMail ($to, string $subject, string $message, string $from = "", string $reply_to = "", array $options = array()) : bool {
+	public static function sendHTMLMail ($to, string $subject, string $message, array $options = array(), string $from = "", string $reply_to = "") : bool {
 		if (!Settings::get("send_mails_enabled", true)) {
 			//send mails is not enabled
 			return false;
 		}
 
-		return self::getClass()->sendHTMLMail($to, $subject, $message, $from, $reply_to, $options);
+		return self::getClass()->sendHTMLMail($to, $subject, $message, $options, $from, $reply_to);
 	}
 
 	protected static function getClass () : MailSender {
