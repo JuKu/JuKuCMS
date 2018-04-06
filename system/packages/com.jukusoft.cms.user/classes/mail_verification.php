@@ -27,8 +27,34 @@
 
 class Mail_Verification {
 
-	public static function sendMail (int $userID) {
-		//
+	public static function sendMail (int $userID, string $username, string $mail) {
+		//generate token
+		$token = PHPUtils::randomString(64);
+
+		Database::getInstance()->execute("INSERT INTO `{praefix}register_mail_verification` (
+			`userID`, `token`
+		) VALUES (
+			:userID, :token
+		) ON DUPLICATE KEY UPDATE `token` = :token; ", array(
+			'userID' => $userID,
+			'token' => $token
+		));
+
+		//send mail
+		$template = new DwooTemplate(STORE_PATH . "templates/mail/verify_mail.tpl");
+
+		//assign variables
+		$template->assign("token", $token);
+		$template->assign("userID", $userID);
+		$template->assign("username", $username);
+		$template->assign("verify_url", DomainUtils::generateURL("user/verify_mail", array('token' => $token)));
+		$template->assign("base_url", DomainUtils::getBaseURL());
+		$template->assign("mail", $mail);
+
+		$message = $template->getCode();
+
+		//send mail
+		MailApi::sendHTMLMail($mail, "Mail Verification " . Settings::get("website_name", ""), $message);
 	}
 
 }

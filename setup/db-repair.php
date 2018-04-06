@@ -885,6 +885,31 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table register_mail_verification
+ *
+ * Package: com.jukusoft.cms.user
+ */
+
+echo "Create / Upgrade table <b>register_mail_verification</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("register_mail_verification", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("userID", 10, true, false);
+$table->addVarchar("token", 255, true);
+
+//add keys to table
+$table->addPrimaryKey("userID");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 
@@ -916,6 +941,7 @@ Settings::create("js_cache_expires_header_ttl", "31536000", "JS Expires Header S
 Settings::create("title_praefix", "", "Title Praefix", "Title Praefix", "system", "general", "DataType_String");
 Settings::create("title_suffix", "", "Title Suffix", "Title Suffix", "system", "general", "DataType_String");
 Settings::create("copyright", "<strong>Copyright &copy; 2018 <a href=\"http://jukusoft.com\">JuKuSoft.com</a></strong>, All Rights Reserved.", "Copyright Notice on page", "Copyright notice on every page", "system", "general", "DataType_HTML");
+Settings::create("website_name", "" . DomainUtils::getDomain(), "Website name", "Name of your website, e.q. used for mail templates", "system", "general", "DataType_String");
 
 //maintenance mode
 Settings::create("maintenance_mode_enabled", false, "Maintenance Mode enabled (boolean)", "Maintenance Mode enabled (boolean), Default: false", "system", "general", "DataType_Boolean");

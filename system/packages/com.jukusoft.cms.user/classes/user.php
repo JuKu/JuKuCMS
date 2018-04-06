@@ -446,7 +446,9 @@ class User {
 
 		return array(
 			'success' => true,
-			'userID' => $userID
+			'userID' => $userID,
+			'username' => $username,
+			'mail' => $mail
 		);
 	}
 

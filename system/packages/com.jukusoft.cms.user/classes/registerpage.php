@@ -269,7 +269,7 @@ class RegisterPage extends PageType {
 
 							case "mail_verification":
 								//send verification mail
-								Mail_Verification::sendMail($res['userID']);
+								Mail_Verification::sendMail($res['userID'], $res['username'], $res['mail']);
 
 								$text .= "Registration successful! Before you can login you have to verify your mail address! For this we have send you a mail with a link, please click on this link!";
 
