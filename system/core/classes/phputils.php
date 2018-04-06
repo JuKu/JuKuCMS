@@ -114,7 +114,7 @@ class PHPUtils {
 		return $result;
 	}
 
-	public static function isUrlfopenEnabled () {
+	public static function isUrlfopenEnabled () : bool {
 		$res = ini_get("allow_url_fopen");
 
 		if ($res) {
@@ -122,6 +122,17 @@ class PHPUtils {
 		} else {
 			return false;
 		}
+	}
+
+	public static function isCurlAvailable () : bool {
+		/*if  (in_array  ('curl', get_loaded_extensions())) {
+			return true;
+		}
+		else {
+			return false;
+		}*/
+
+		return function_exists('curl_version');
 	}
 
 }
