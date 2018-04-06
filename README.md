@@ -74,7 +74,14 @@ Currently, following caches are supported:
       
 ## Roadmap
 
-  - **Core finished** - 06.04.2018 ([Issues](https://github.com/JuKu/JuKuCMS/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3ACore+))
+  - ![#c5f015](https://placehold.it/15/c5f015/000000?text=+)  **Core finished** - 06.04.2018 ([Issues](https://github.com/JuKu/JuKuCMS/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3ACore+))
+  - ![#1589F0](https://placehold.it/15/1589F0/000000?text=+) **Alpha 0.1.0** (WIP) ([Issues](https://github.com/JuKu/JuKuCMS/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3A%22Alpha+0.1.0%22+))
+
+**Legend**:
+
+  - ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `overdue`
+  - ![#c5f015](https://placehold.it/15/c5f015/000000?text=+) `finished`
+  - ![#1589F0](https://placehold.it/15/1589F0/000000?text=+) `Work In Progress (WIP)`
 
 ## First Screenshots
 
