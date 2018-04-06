@@ -942,6 +942,7 @@ Settings::create("username_max_length", 20, "Maximal length (characters) of allo
 Settings::create("username_regex", "a-zA-Z0-9\.\-", "Username Regex", "Allowed characters of usernames (regex)", "system", "general", "DataType_String");
 Settings::create("password_min_length", 8, "Minimal password length", "Minimal password length, default: 8", "system", "general", "DataType_Integer");
 Settings::create("password_max_length", 64, "Maximal password length", "Maximal password length, default: 8", "system", "general", "DataType_Integer");
+Settings::create("register_activation_method", "auto", "Register Activation Method", "Activation method for new user accounts, Default: auto (which means, that users are automatically activated)", "system", "general", "DataType_SelectBox", array("auto", "mail_verification", "manual_verification"));
 
 //captcha
 Settings::create("captcha_enabled", true, "Captcha enabled", "Option, if captcha is enabled on forms", "system", "general", "DataType_Boolean");
