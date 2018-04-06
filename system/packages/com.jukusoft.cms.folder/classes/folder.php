@@ -38,7 +38,7 @@ class Folder {
 		echo "load folder: " . $folder . "<br />";
 
 		//escape string
-		$folder = Database::getInstance()->escape($folder);
+		//$folder = Database::getInstance()->escape($folder);
 
 		if (empty($folder)) {
 			$folder = "/";
