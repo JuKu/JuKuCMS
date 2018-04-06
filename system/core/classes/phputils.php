@@ -158,4 +158,8 @@ class PHPUtils {
 		return function_exists('curl_version');
 	}
 
+	public static function isGettextAvailable () : bool {
+		return function_exists("gettext");
+	}
+
 }
