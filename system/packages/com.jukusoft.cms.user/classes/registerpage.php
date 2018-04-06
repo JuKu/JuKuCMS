@@ -263,7 +263,7 @@ class RegisterPage extends PageType {
 								//header("Location: " . DomainUtils::generateURL(Domain::getCurrent()->getHomePage()));
 								//exit;
 
-							$text .= "Registration successfully! You are automatically logged-in now. <a href=\"" . DomainUtils::generateURL(Domain::getCurrent()->getHomePage()) . "\">Homepage</a>";
+							$text .= "You are automatically logged-in now. <a href=\"" . DomainUtils::generateURL(Domain::getCurrent()->getHomePage()) . "\">Homepage</a>";
 
 								break;
 
@@ -271,7 +271,7 @@ class RegisterPage extends PageType {
 								//send verification mail
 								Mail_Verification::sendMail($res['userID'], $res['username'], $res['mail']);
 
-								$text .= "Registration successful! Before you can login you have to verify your mail address! For this we have send you a mail with a link, please click on this link!";
+								$text .= "Before you can login you have to verify your mail address! For this we have send you a mail with a link, please click on this link!";
 
 								break;
 
@@ -279,7 +279,7 @@ class RegisterPage extends PageType {
 
 								//TODO: inform administrator
 
-								$text .= "Registration successful! An Administrator has to activate your account manually now.";
+								$text .= "An Administrator has to activate your account manually now.";
 
 								break;
 
