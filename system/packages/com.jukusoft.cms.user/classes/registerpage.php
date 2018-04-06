@@ -236,7 +236,7 @@ class RegisterPage extends PageType {
 
 					//get fields
 					$username = $field_values['username'];
-					$password = $field_values['password'];
+					$password = $_POST['password'];
 					$mail = $field_values['mail'];
 
 					//get IP address of user
