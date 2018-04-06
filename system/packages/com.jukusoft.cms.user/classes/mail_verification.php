@@ -57,6 +57,26 @@ class Mail_Verification {
 		MailApi::sendHTMLMail($mail, "Mail Verification " . Settings::get("website_name", ""), $message);
 	}
 
+	public static function checkToken (string $token) : bool {
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}register_mail_verification` WHERE `token` = :token; ", array('token' => $token));
+
+		if ($row === false) {
+			return false;
+		} else {
+			//activate user
+			Database::getInstance()->execute("UPDATE `{praefix}user` SET `activated` = '1' WHERE `userID` = :userID AND `activated` = '2'; ", array('userID' => $row['userID']));
+
+			//remove token
+			self::removeToken($token);
+
+			return true;
+		}
+	}
+
+	public static function removeToken (string $token) {
+		Database::getInstance()->execute("DELETE FROM `{praefix}register_mail_verification` WHERE `token` = :token; ", array('token' => $token));
+	}
+
 }
 
 ?>

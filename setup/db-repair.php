@@ -904,6 +904,7 @@ $table->addVarchar("token", 255, true);
 
 //add keys to table
 $table->addPrimaryKey("userID");
+$table->addUnique("token");
 
 //create or upgrade table
 $table->upgrade();
@@ -1068,6 +1069,8 @@ Page::createIfAbsent("error404", "Error 404", "Error404Page", "Error 404 - Could
 Page::createIfAbsent("login", "Login", "LoginPage", "", "/", -1, -1, -1, false);
 Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/", -1, -1, -1, false);
 Page::createIfAbsent("register", "Registration", "RegisterPage", "", "/", -1, -1, -1, false);
+
+Page::createIfAbsent("user/verify_mail", "Mail Verification", "MailVerifyPage", "", "/user/", -1, -1, -1, false);
 
 //create robots.txt page
 Page::createIfAbsent("robots.txt", "Robots.txt", "RobotsPage", "", "/", -1, -1, -1, false, true, false);
