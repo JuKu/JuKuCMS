@@ -30,11 +30,19 @@ class Folder {
 	protected $folder = "";
 	protected $row = array();
 
+	protected static $load_count = 0;
+
 	public function __construct($folder) {
 		$this->folder = $folder;
 	}
 
 	public function load ($folder) {
+		self::$load_count++;
+
+		if (self::$load_count > 50) {
+			throw new IllegalStateException("reached max allowed number of Folder::load() calls (to prevent recursion).");
+		}
+
 		echo "load folder: " . $folder . "<br />";
 
 		//escape string
