@@ -255,6 +255,11 @@ class MySQLDriver implements DBDriver {
         $res = $stmt->execute();
 
         if (!$res) {
+        	if (DEBUG_MODE) {
+        		echo "SQL Query: " . $sql . "<br />";
+        		var_dump($params);
+			}
+
             throw new PDOException("PDOException while getRow(): " . ($this->getErrorInfo())[3] . "\n" . ($stmt->errorInfo())[2] . "");
         }
 
