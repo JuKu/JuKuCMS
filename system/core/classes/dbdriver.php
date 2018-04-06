@@ -42,6 +42,11 @@ interface DBDriver {
 
     public function listRows ($sql, $params = array(), bool $allow_information_schema = false) : array;
 
+    /**
+     * escape string and add quotes, alias method to quote()
+     *
+     * @deprecated since version 0.1.0 alpha
+     */
     public function escape (string $str) : string;
 
     public function countQueries () : int;
