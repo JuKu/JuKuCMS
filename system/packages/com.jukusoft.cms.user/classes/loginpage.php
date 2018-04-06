@@ -120,13 +120,13 @@ class LoginPage extends PageType {
 							$show_form = false;
 						} else {
 							if ($res['error'] === "user_not_exists") {
-								$template->assign("ERROR_TEXT", "Username doesnt exists!");
+								$template->assign("ERROR_TEXT", /*"Username doesnt exists!"*/"Wrong credentials!");
 								$template->parse("main.error_msg");
 							} else if ($res['error'] === "wrong_password") {
-								$template->assign("ERROR_TEXT", "Wrong password!");
+								$template->assign("ERROR_TEXT", /*"Wrong password!"*/"Wrong credentials!");
 								$template->parse("main.error_msg");
 							} else if ($res['error'] === "mail_not_valide") {
-								$template->assign("ERROR_TEXT", "Mail is not valide!");
+								$template->assign("ERROR_TEXT", /*"Mail is not valide!"*/"Wrong credentials!");
 								$template->parse("main.error_msg");
 							} else {
 								$template->assign("ERROR_TEXT", "Unknown error message: " . $res['error']);
