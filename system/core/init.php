@@ -77,8 +77,8 @@ Events::throwEvent("init");
 Security::check();
 
 //check, if allow_url_fopen is enabled
-if (!PHPUtils::isUrlfopenEnabled()) {
-	echo "CMS requires PHP option 'allow_url_fopen' enabled, change your php.ini or hosting settings to enable this option!";
+if (!PHPUtils::isUrlfopenEnabled() && !PHPUtils::isCurlAvailable()) {
+	echo "CMS requires PHP option 'allow_url_fopen' enabled OR extension 'curl', change your php.ini or hosting settings to enable this option!";
 	ob_flush();
 	exit;
 }
