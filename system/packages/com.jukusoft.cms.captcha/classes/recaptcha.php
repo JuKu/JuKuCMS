@@ -37,7 +37,7 @@ class ReCaptcha implements ICaptcha {
 			throw new IllegalStateException("reCaptcha wasnt configured right. Administrators: generate a website & secret key by google recaptcha and set them in settings to fix this issue!");
 		}
 
-		return "<div class=\"g-recaptcha\" data-sitekey=\"6LeYfVEUAAAAACEow7FNCXqPzmX7SfXoFrNP7xBH\"></div>";
+		return "<div class=\"g-recaptcha\" data-sitekey=\"" . $website_key . "\"></div>";
 	}
 
 	public function verify(array $params = array()): bool {
