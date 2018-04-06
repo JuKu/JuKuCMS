@@ -30,13 +30,6 @@ register_shutdown_function(function () {
 	Events::throwEvent("shutdown_function");
 });
 
-//check, if allow_url_fopen is enabled
-if (!PHPUtils::isUrlfopenEnabled()) {
-	echo "CMS requires PHP option 'allow_url_fopen' enabled, change your php.ini or hosting settings to enable this option!";
-	ob_flush();
-	exit;
-}
-
 //define some constants
 define('CACHE_PATH', ROOT_PATH . "cache/");
 define('CONFIG_PATH', ROOT_PATH . "config/");
@@ -82,6 +75,13 @@ Events::throwEvent("init");
 
 //check secure php options
 Security::check();
+
+//check, if allow_url_fopen is enabled
+if (!PHPUtils::isUrlfopenEnabled()) {
+	echo "CMS requires PHP option 'allow_url_fopen' enabled, change your php.ini or hosting settings to enable this option!";
+	ob_flush();
+	exit;
+}
 
 Events::throwEvent("init_security");
 
