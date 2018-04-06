@@ -1,0 +1,6 @@
+/twig_performance/*
+/twig_performance/**
+*.js
+**.js
+*.css
+**.css
