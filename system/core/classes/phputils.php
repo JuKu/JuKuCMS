@@ -115,7 +115,13 @@ class PHPUtils {
 	}
 
 	public static function isUrlfopenEnabled () {
-		return ini_get("allow_url_fopen") === 1 || ini_get("allow_url_fopen") === true;
+		$res = ini_get("allow_url_fopen");
+
+		if ($res) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }
