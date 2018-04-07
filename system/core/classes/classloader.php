@@ -170,7 +170,9 @@ function cms_autoloader ($classname) {
             require ROOT_PATH . "system/libs/smarty/sysplugins/" . strtolower($classname) . ".php";
         } else if ($classname == "Smarty") {
             require("system/libs/smarty/Smarty.class.php");
-        } else {
+        } else if (strpos($classname, "Plugin")) {
+			//dwoo tries several times to load a class - with and without namespace, so we hide this error message
+		} else {
             echo "Could not load class " . $classname . "!";
         }
 
