@@ -1255,6 +1255,9 @@ User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrat
 echo "Clear gettext cache<br />";
 PHPUtils::clearGetTextCache();
 
+echo "Clear cache<br />";
+Cache::clear();
+
 echo "<br /><br />Finished DB Upgrade!";
 
 if (file_exists(ROOT_PATH . "setup/add-install.php")) {
