@@ -74,7 +74,7 @@ class PluginLang extends Plugin/* implements ICompilableBlock*/ {
 	public function process(){
 		var_dump($this->buffer);
 
-		exit;
+		//exit;
 		return strtoupper($this->buffer);
 	}
 
