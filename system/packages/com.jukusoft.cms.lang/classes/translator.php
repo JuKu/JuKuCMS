@@ -27,12 +27,54 @@
 
 class Translator {
 
+	/**
+	 *
+	 */
 	protected static $backend = null;
 
-	public static function translate (string $key, string $category = "") : string {
-		self::getBackend()->translate($key, $category);
+	/**
+	 * translate a string
+	 *
+	 * @param string $key message to translate
+	 * @param string $domain domain where to search key (optional)
+	 * @param array $params array with params to replace in translated message
+	 *
+	 * @throws IllegalStateException if settings key "translator_class_name" is not set
+	 * @see Translator_Backend::translate()
+	 * @since 0.1.0
+	 *
+	 * @return string translated message
+	 */
+	public static function translate (string $key, string $domain = "", array $params = array()) : string {
+		return self::getBackend()->translate($key, $domain, $params);
 	}
 
+	/**
+	 * translate a string, plural version of translate()
+	 *
+	 * @param string $key message to translate
+	 * @param string $domain domain where to search key (optional)
+	 * @param array $params array with params to replace in translated message
+	 *
+	 * @throws IllegalStateException if settings key "translator_class_name" is not set
+	 * @see Translator_Backend::n_translate()
+	 * @since 0.1.0
+	 *
+	 * @return string translated message
+	 */
+	public function n_translate (string $key, string $plural_key, int $n, string $domain = "", array $params = array()) : string {
+		return self::getBackend()->n_translate($key, $plural_key, $n, $domain, $params);
+	}
+
+	/**
+	 * get current instance of translator backend
+	 *
+	 * @see GetTextBackend
+	 *
+	 * @throws IllegalStateException if settings key "translator_class_name" is not set
+	 *
+	 * @return Translator_Backend instance of translator backend
+	 */
 	public static function &getBackend () : Translator_Backend {
 		if (self::$backend == null) {
 			//get translator backend

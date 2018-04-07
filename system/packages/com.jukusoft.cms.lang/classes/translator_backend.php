@@ -34,7 +34,30 @@ interface Translator_Backend {
 	 */
 	public function init (string $lang_token);
 
-	public function translate (string $key, string $domain = "") : string;
+	/**
+	 * translate a string
+	 *
+	 * @param string $key message to translate
+	 * @param string $domain domain where to search key (optional)
+	 * @param array $params array with params to replace in translated message
+	 *
+	 * @return string translated message
+	 */
+	public function translate (string $key, string $domain = "", array $params = array()) : string;
+
+	/**
+	 * translate a string, plural version of translate()
+	 *
+	 * @see Translator_Backend::translate()
+	 * @since 0.1.0
+	 *
+	 * @param string $key message to translate
+	 * @param string $domain domain where to search key (optional)
+	 * @param array $params array with params to replace in translated message
+	 *
+	 * @return string translated message
+	 */
+	public function n_translate (string $key, string $plural_key, int $n, string $domain = "", array $params = array()) : string;
 
 	public function bindLangPack (string $domain, string $path);
 

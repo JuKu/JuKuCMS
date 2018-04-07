@@ -28,10 +28,10 @@ use Dwoo\Plugin;
  * License: Apache 2.0 license
  * User: Justin
  * Date: 07.04.2018
- * Time: 12:56
+ * Time: 17:26
  */
 
-class PluginLang extends Plugin implements ICompilable {
+class PluginPLang extends Plugin implements ICompilable {
 
 	/**
 	 * @param Compiler $compiler
@@ -40,8 +40,8 @@ class PluginLang extends Plugin implements ICompilable {
 	 *
 	 * @return string
 	 */
-	public static function compile(Compiler $compiler, $value, $domain = "") {
-		return 'Translator::translate(' . $value . ', ' . $domain . ')';
+	public static function compile(Compiler $compiler, $msg1, $msg2, $n, $domain = "") {
+		return 'Translator::n_translate(' . $msg1 . ', ' . $msg2 . ', ' . $n . ', ' . $domain . ')';
 	}
 
 }
