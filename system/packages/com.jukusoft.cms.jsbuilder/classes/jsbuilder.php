@@ -191,6 +191,10 @@ class JSBuilder {
 		return $this->content;
 	}
 
+	public static function listBenchmarks () {
+		return self::$benchmark;
+	}
+
 }
 
 ?>
