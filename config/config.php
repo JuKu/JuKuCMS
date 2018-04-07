@@ -16,7 +16,7 @@ define('DEBUG_MODE', true);
  *
  * depends on DEBUG_MODE option
  */
-define("DEBUG_SQL_QUERIES", false);
+define("DEBUG_SQL_QUERIES", true);
 
 define("CACHING", true);
 
