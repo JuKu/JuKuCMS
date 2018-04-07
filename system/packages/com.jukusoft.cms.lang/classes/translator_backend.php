@@ -34,9 +34,11 @@ interface Translator_Backend {
 	 */
 	public function init (string $lang_token);
 
-	public function translate (string $key, string $domain) : string;
+	public function translate (string $key, string $domain = "") : string;
 
 	public function bindLangPack (string $domain, string $path);
+
+	public function setDefaultDomain (string $domain);
 
 }
 

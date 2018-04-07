@@ -27,6 +27,12 @@
 
 class GetTextBackend implements Translator_Backend {
 
+	//current language token
+	protected $lang_token = "";
+
+	//current domain
+	protected $domain = "";
+
 	/**
 	 * initialize translator backend
 	 *
@@ -42,14 +48,52 @@ class GetTextBackend implements Translator_Backend {
 		setlocale(LC_ALL, $lang_token);
 	}
 
-	public function translate(string $key, string $domain): string {
-		// TODO: Implement translate() method.
+	public function translate(string $key, string $domain = "", array $params = array()): string {
+		$text = "";
+
+		if (empty($domain)) {
+			$text = gettext($key);
+		} else {
+			$text = dgettext($domain, $key);
+		}
+
+		if (!empty($params)) {
+			foreach ($params as $key=>$value) {
+				//replace variables
+				$text = str_replace("{" . $key . "}", $value, $text);
+			}
+		}
+
+		return $text;
+	}
+
+	public function n_translate (string $key, string $plural_key, int $n, string $domain = "", array $params = array()) : string {
+		$text = "";
+
+		if (empty($domain)) {
+			$text = ngettext($key, $plural_key, $n);
+		} else {
+			$text = dngettext($domain, $key, $plural_key, $n);
+		}
+
+		if (!empty($params)) {
+			foreach ($params as $key=>$value) {
+				//replace variables
+				$text = str_replace("{" . $key . "}", $value, $text);
+			}
+		}
+
+		return $text;
 	}
 
 	public function bindLangPack(string $domain, string $path) {
-		// TODO: Implement bindLangPack() method.
+		bindtextdomain($domain, $path);
+		bind_textdomain_codeset($domain, 'UTF-8');
 	}
 
+	public function setDefaultDomain(string $domain) {
+		textdomain($domain);
+	}
 }
 
 ?>
