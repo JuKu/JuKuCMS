@@ -1060,9 +1060,9 @@ Menu::createMenu(55, $admin_menuID, "Webmail", "settings:webmail_link", 45, "web
 Menu::createMenu(55, $admin_menuID, "Settings", "#", -1, "settings", "no_link", array("can_see_global_settings"), true, "fa fa-cogs", 10, "system");
 Menu::createMenu(56, $admin_menuID, "Settings", "admin/settings", 55, "", "page", array("can_see_global_settings", "can_edit_global_settings"), true, "fa fa-cog", 1, "system");
 
-Menu::createMenu(100, $main_menuID, "Admin Area", "admin/home", -1, "", "page", array("can_access_admin_area"), true, "none", 2, "user");
-Menu::createMenu(101, $main_menuID, "Login", "LOGIN_URL", -1, "login", "external_link", "not_logged_in", false, "none", 3, "user");
-Menu::createMenu(102, $main_menuID, "Logout", "LOGOUT_URL", -1, "logout", "external_link", "all", true, "none", 100, "user");
+Menu::createMenu(100, $main_menuID, "lang_Admin Area", "admin/home", -1, "", "page", array("can_access_admin_area"), true, "none", 2, "user");
+Menu::createMenu(101, $main_menuID, "lang_Login", "LOGIN_URL", -1, "login", "external_link", "not_logged_in", false, "none", 3, "user");
+Menu::createMenu(102, $main_menuID, "lang_Logout", "LOGOUT_URL", -1, "logout", "external_link", "all", true, "none", 100, "user");
 
 //privacy policy & imprint
 Menu::createMenu(200, $main_menuID, "lang_Privacy Policy", "privacy-policy", -1, "privacy_policy", "page", array("none"), false, "none", 101, "system");
