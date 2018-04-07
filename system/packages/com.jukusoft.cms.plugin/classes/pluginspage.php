@@ -30,7 +30,7 @@ class PluginsPage extends PageType {
 	public function getContent(): string {
 		$template = new DwooTemplate("pages/plugins");
 
-		$table_header_fields = array();
+		$table_header_fields = array("Plugin", "Title / Description", "Installed Version", "Actions");
 
 		return $template->getCode();
 	}

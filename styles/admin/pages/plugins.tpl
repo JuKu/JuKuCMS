@@ -2,7 +2,7 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">{lang}Plugins{/lang}</h3>
+                <h3 class="box-title">{lang}Installed Plugins{/lang}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -10,13 +10,8 @@
                     <thead>
                         <tr>
                             {foreach $table_header_fields field}
-                                <th>{$field.title}</th>
+                                <th>{$field}</th>
                             {/foreach}
-                            <th>Rendering engine</th>
-                            <th>Browser</th>
-                            <th>Platform(s)</th>
-                            <th>Engine version</th>
-                            <th>CSS grade</th>
                         </tr>
                     </thead>
                     <tbody>
