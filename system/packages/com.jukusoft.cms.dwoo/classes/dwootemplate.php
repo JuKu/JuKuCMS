@@ -48,6 +48,8 @@ class DwooTemplate extends Template {
 		//initialize core if neccessary
 		self::initCoreIfAbsent();
 
+		$start_time = microtime(true);
+
 		//find file
 		$this->file = Template::findTemplate($file, $registry);
 
@@ -91,6 +93,12 @@ class DwooTemplate extends Template {
 
 		$style_name = $registry->getSetting("current_style_name");
 		$this->assign("STYLE_PATH",DomainUtils::getBaseURL() . "/styles/" . $style_name . "/");
+
+		$end_time = microtime(true);
+		$exec_time = $end_time - $start_time;
+
+		//store benchmark
+		self::$benchmark[$this->file] = $exec_time;
 	}
 
 	public function assign ($var, $value) {
@@ -112,7 +120,11 @@ class DwooTemplate extends Template {
 		$exec_time = $end_time - $start_time;
 
 		//store benchmark
-		self::$benchmark[$this->file] = $exec_time;
+		if (isset(self::$benchmark[$this->file])) {
+			self::$benchmark[$this->file] = self::$benchmark[$this->file] + $exec_time;
+		} else {
+			self::$benchmark[$this->file] = $exec_time;
+		}
 
 		return $html;
 	}
