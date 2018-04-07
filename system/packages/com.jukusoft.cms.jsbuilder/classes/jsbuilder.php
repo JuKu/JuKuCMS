@@ -28,12 +28,18 @@
 class JSBuilder {
 
 	protected $content = "";
+
+	protected static $benchmark = array();
 	
 	public function __construct() {
 		//
 	}
 
 	public function generateJS (string $style_name, string $media = "ALL", string $position = "header") {
+		if (ACTIVATE_BENCHMARK) {
+			$start_time = microtime(true);
+		}
+
 		//validate values
 		$style_name = Validator_Filename::get($style_name);
 		$media = strtoupper(Validator_Filename::get($media));
@@ -134,6 +140,13 @@ class JSBuilder {
 		Cache::put("jsbuilder", "hash_" . $style_name . "_" . $media . "_" . strtolower($position), md5($buffer));
 
 		$this->content = $buffer;
+
+		if (ACTIVATE_BENCHMARK) {
+			$end_time = microtime(true);
+			$exec_time = $end_time - $start_time;
+
+			self::$benchmark[$style_name . "_" . $media] = $exec_time;
+		}
 
 		return $buffer;
 	}

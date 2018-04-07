@@ -215,6 +215,14 @@ if ($page_type->showHTMLComments()) {
 		foreach (DwooTemplate::listFileBenchmark() as $file=>$exec_time) {
 			echo "<!-- Dwoo benchmark file '" . $file . "': " . $exec_time . " seconds -->\n";
 		}
+
+		foreach (CSSBuilder::listBenchmarks() as $key=>$exec_time) {
+			echo "<!-- css generation of file '" . $key . "': " . $exec_time . " seconds -->\n";
+		}
+
+		foreach (JSBuilder::listBenchmarks() as $key=>$exec_time) {
+			echo "<!-- js generation of file '" . $key . "': " . $exec_time . " seconds -->\n";
+		}
 	}
 
 	if (DEBUG_MODE) {

@@ -29,11 +29,17 @@ class CSSBuilder {
 
 	protected $content = "";
 
+	protected static $benchmark = array();
+
 	public function __construct() {
 		//
 	}
 
 	public function generateCSS (string $style_name, string $media = "ALL") : string {
+		if (ACTIVATE_BENCHMARK) {
+			$start_time = microtime(true);
+		}
+
 		//validate values
 		$style_name = Validator_Filename::get($style_name);
 		$media = Validator_Filename::get($media);
@@ -106,6 +112,13 @@ class CSSBuilder {
 
 		$this->content = $buffer;
 
+		if (ACTIVATE_BENCHMARK) {
+			$end_time = microtime(true);
+			$exec_time = $end_time - $start_time;
+
+			self::$benchmark[$style_name . "_" . $media] = $exec_time;
+		}
+
 		return $buffer;
 	}
 
@@ -145,6 +158,10 @@ class CSSBuilder {
 
 	public function getBuffer () : string {
 		return $this->content;
+	}
+
+	public static function listBenchmarks () {
+		return self::$benchmark;
 	}
 
 }
