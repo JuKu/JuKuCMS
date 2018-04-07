@@ -96,8 +96,8 @@ class PageType {
 	public function generateNormalPage (string $content, $vars = array()) : string {
 		$current_style = Registry::singleton()->getSetting("current_style_name");
 
-		if (file_exists(STYLE_PATH . $current_style . "/normal.tpl")) {
-			$template = new DwooTemplate(STYLE_PATH . $current_style . "/normal.tpl");
+		if (file_exists(STYLE_PATH . $current_style . "/pages/normal.tpl")) {
+			$template = new DwooTemplate(STYLE_PATH . $current_style . "/pages/normal.tpl");
 
 			$template->assign("TITLE", $this->getPage()->getTitle());
 			$template->assign("CONTENT", $content);
