@@ -173,7 +173,7 @@ function cms_autoloader ($classname) {
         } else if (strpos($classname, "Plugin")) {
 			//dwoo tries several times to load a class - with and without namespace, so we hide this error message
 		} else {
-            echo "Could not load class " . $classname . "!";
+            echo "Could not load class " . $classname . " (array size 1)!";
         }
 
     }
