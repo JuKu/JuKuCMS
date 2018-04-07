@@ -73,8 +73,7 @@ class PluginLang extends Plugin/* implements ICompilableBlock*/ {
 	// this is called when the block is required to output it's data, it should read $this->buffer, process it and return it
 	public function process(){
 		var_dump($this->buffer);
-
-		exit;
+		
 		return strtoupper($this->buffer);
 	}
 
