@@ -1065,7 +1065,7 @@ Menu::createMenu(101, $main_menuID, "Login", "LOGIN_URL", -1, "login", "external
 Menu::createMenu(102, $main_menuID, "Logout", "LOGOUT_URL", -1, "logout", "external_link", "all", true, "none", 100, "user");
 
 //privacy policy & imprint
-Menu::createMenu(200, $main_menuID, "lang_Privacy Policy", "privacy_policy", -1, "privacy_policy", "page", array("none"), false, "none", 101, "system");
+Menu::createMenu(200, $main_menuID, "lang_Privacy Policy", "privacy-policy", -1, "privacy_policy", "page", array("none"), false, "none", 101, "system");
 Menu::createMenu(201, $main_menuID, "lang_Imprint", "imprint", -1, "imprint", "page", array("none"), false, "none", 102, "system");
 
 echo "Create default pages if absent...<br />";
