@@ -1,10 +1,14 @@
 {
     "name": "example-plugin",
+    "type": "library",
     "title": "Example Plugin",
     "description": "An example plugin to show plugin structure.",
     "version": "1.0.0",
     "keywords": [
         "example", "example-plugin", "plugin"
+    ],
+    "categories": [
+        "example"
     ],
     "homepage": "http://jukusoft.com",
     "license": "Apache 2.0",
