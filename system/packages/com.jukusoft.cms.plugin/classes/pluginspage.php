@@ -33,6 +33,15 @@ class PluginsPage extends PageType {
 		return $template->getCode();
 	}
 
+	public function getFooterScripts(): string {
+		return "<!-- page script -->
+			<script>
+				$(function () {
+					$('#example1').DataTable();
+				})
+			</script>";
+	}
+
 }
 
 ?>
