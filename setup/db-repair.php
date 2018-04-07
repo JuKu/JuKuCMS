@@ -1210,6 +1210,9 @@ Robots::addRule("DISALLOW", "/admin/*");
 echo "Create default administrator user if absent...<br />";
 User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrator", 1);
 
+echo "Clear gettext cache<br />";
+PHPUtils::clearGetTextCache();
+
 echo "<br /><br />Finished DB Upgrade!";
 
 if (file_exists(ROOT_PATH . "setup/add-install.php")) {

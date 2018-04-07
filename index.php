@@ -50,6 +50,9 @@ if (isset($_REQUEST['clear_cache'])) {
 	//clear cache
 	Cache::clear();
 
+	//clear gettext cache
+	PHPUtils::clearGetTextCache();
+
 	echo "Clear cache!<br />";
 }
 
