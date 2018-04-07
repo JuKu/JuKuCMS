@@ -116,7 +116,8 @@ class PageType {
 
 			return $template->getCode();
 		} else {
-			return $content;
+			throw new IllegalStateException("no normal template (pages/normal.tpl) found!");
+			//return $content;
 		}
 	}
 
