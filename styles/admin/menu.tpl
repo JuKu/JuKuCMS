@@ -15,7 +15,7 @@
                     {foreach $menu.submenus item}
                         {if $item.has_submenus == true}
                             <li class="treeview">
-                                <a href="#"><i class="fa fa-circle-o"></i> {$item.title}
+                                <a href="#"><i class="{$item.icon_class}"></i> {$item.title}
                                     <span class="pull-right-container">
                                       <i class="fa fa-angle-left pull-right"></i>
                                     </span>
@@ -24,7 +24,7 @@
                                     {foreach $item.submenus submenu}
                                         {if $submenu.has_submenus == true}
                                             <li class="treeview">
-                                                <a href="#"><i class="fa fa-circle-o"></i> {$submenu.title}
+                                                <a href="#"><i class="{$submenu.icon_class}"></i> {$submenu.title}
                                                     <span class="pull-right-container">
                                               <i class="fa fa-angle-left pull-right"></i>
                                             </span>
