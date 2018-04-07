@@ -16,4 +16,7 @@
 
 <classes>
 	<class>Lang</class>
+	<class>Translator</class>
+	<class>Translator_Backend</class>
+	<class>GetTextBackend</class>
 </classes>
