@@ -15,27 +15,11 @@
  * limitations under the License.
  */
 
-namespace Dwoo\Plugins\Functions;
+namespace Dwoo\Plugins\Blocks;
 
 use Dwoo\Compiler;
 use Dwoo\Block\Plugin as Plugin;
 use Dwoo\ICompilable\Block as ICompilableBlock;
-
-/**
- * Copyright (c) 2018 Justin Kuenzel (jukusoft.com)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 
 /**
@@ -46,7 +30,7 @@ use Dwoo\ICompilable\Block as ICompilableBlock;
  * Time: 12:56
  */
 
-class PluginLang extends Plugin/* implements ICompilableBlock*/ {
+class PluginLang extends Plugin implements ICompilableBlock {
 
 	/**
 	 * @param Compiler $compiler
@@ -60,9 +44,8 @@ class PluginLang extends Plugin/* implements ICompilableBlock*/ {
 	}*/
 
 	// parameters go here if you need any settings
-	public function init($value, $domain = "") {
-		var_dump($value);
-		var_dump($domain);
+	public function init() {
+		//
 	}
 
 	// this can be ommitted, it's called once when the block ends, don't implement if you don't need it
@@ -71,10 +54,26 @@ class PluginLang extends Plugin/* implements ICompilableBlock*/ {
 	}
 
 	// this is called when the block is required to output it's data, it should read $this->buffer, process it and return it
-	public function process(){
+	/*public function process(){
 		var_dump($this->buffer);
-		
+
 		return strtoupper($this->buffer);
+	}*/
+
+	public static function preProcessing(Compiler $compiler, array $params, $prepend, $append, $type) {
+		var_dump($params);
+		exit;
+
+		return Compiler::PHP_OPEN . $prepend . ' ob_start(); ' . $append . Compiler::PHP_CLOSE;
+	}
+
+	public static function postProcessing(Compiler $compiler, array $params, $prepend, $append, $content) {
+		/**
+		 * the block is responsible for outputting it's entire content (passed as $content),
+		 * so you can transform it and then return it, but in this case we don't because
+		 * we want the content to be uppercased at runtime and not at compile time
+		 */
+		return $content . Compiler::PHP_OPEN . $prepend . ' $tmp = ob_get_clean(); echo strtoupper($tmp); ' . $append . Compiler::PHP_CLOSE;
 	}
 
 }
