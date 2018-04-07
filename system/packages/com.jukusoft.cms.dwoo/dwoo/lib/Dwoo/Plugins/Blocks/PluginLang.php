@@ -32,6 +32,8 @@ use Dwoo\ICompilable\Block as ICompilableBlock;
 
 class PluginLang extends Plugin implements ICompilableBlock {
 
+	protected static $domain = "";
+
 	/**
 	 * @param Compiler $compiler
 	 * @param mixed    $value
@@ -63,11 +65,19 @@ class PluginLang extends Plugin implements ICompilableBlock {
 	public static function preProcessing(Compiler $compiler, array $params, $prepend, $append, $type) {
 		$domain = "";
 
-		if (isset($params[1])) {
+		/*if (isset($params[1])) {
 			$domain = $params[1][1];
 		}
 
-		return Compiler::PHP_OPEN . $prepend . " echo Translator::translate(\"" . $params[0][1] . "\", \"" . $domain . "\"); " . $append . Compiler::PHP_CLOSE;
+		return Compiler::PHP_OPEN . $prepend . " echo Translator::translate(\"" . $params[0][1] . "\", \"" . $domain . "\"); " . $append . Compiler::PHP_CLOSE;*/
+
+		if (isset($params[0])) {
+			$domain = $params[0][1];
+		}
+
+		self::$domain = $domain;
+
+		return Compiler::PHP_OPEN . "echo Translator::translate(\"";
 	}
 
 	public static function postProcessing(Compiler $compiler, array $params, $prepend, $append, $content) {
@@ -76,7 +86,9 @@ class PluginLang extends Plugin implements ICompilableBlock {
 		 * so you can transform it and then return it, but in this case we don't because
 		 * we want the content to be uppercased at runtime and not at compile time
 		 */
-		return $content . Compiler::PHP_OPEN . $prepend . ' ' . $append . Compiler::PHP_CLOSE;
+		//return $content . Compiler::PHP_OPEN . $prepend . ' ' . $append . Compiler::PHP_CLOSE;
+
+		return "\", \"" . self::$domain . "\"); " . Compiler::PHP_CLOSE;
 	}
 
 }
