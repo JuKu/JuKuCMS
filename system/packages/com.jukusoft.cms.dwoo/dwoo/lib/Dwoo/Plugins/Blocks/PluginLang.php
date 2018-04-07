@@ -88,7 +88,7 @@ class PluginLang extends Plugin implements ICompilableBlock {
 		 */
 		//return $content . Compiler::PHP_OPEN . $prepend . ' ' . $append . Compiler::PHP_CLOSE;
 
-		return "\", \"" . self::$domain . "\"); " . Compiler::PHP_CLOSE;
+		return $content . "\", \"" . self::$domain . "\"); " . Compiler::PHP_CLOSE;
 	}
 
 }
