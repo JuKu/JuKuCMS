@@ -36,6 +36,7 @@ define('CONFIG_PATH', ROOT_PATH . "config/");
 define('STORE_PATH', ROOT_PATH . "store/");
 define('PACKAGE_PATH', ROOT_PATH . "system/packages/");
 define('STYLE_PATH', ROOT_PATH . "styles/");
+define('PLUGIN_PATH', ROOT_PATH . "plugins/");
 
 //set default charset to UTF-8
 @ini_set('default_charset', 'utf-8');

@@ -28,7 +28,18 @@
 class Plugins {
 
 	public static function listAvailablePluginNames () : array {
-		//
+		$names = array();
+
+		//use directory iterator
+		$dir = new DirectoryIterator(PLUGIN_PATH);
+
+		foreach ($dir as $fileinfo) {
+			if ($fileinfo->isDir() && !$fileinfo->isDot()) {
+				$names[] = $fileinfo->getFilename();
+			}
+		}
+
+		return $names;
 	}
 
 	public static function listInstalledPluginNames () : array {
