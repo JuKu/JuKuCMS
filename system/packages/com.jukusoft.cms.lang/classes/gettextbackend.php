@@ -33,6 +33,11 @@ class GetTextBackend implements Translator_Backend {
 	 * @param $lang_token $lang_token contains language & country, e.q. de_DE
 	 */
 	public function init(string $lang_token) {
+		//check, if gettext is available
+		if (!PHPUtils::isGettextAvailable()) {
+			throw new IllegalStateException("PHP extension 'gettext' is not available.");
+		}
+
 		putenv("LANG=" . $lang_token);
 		setlocale(LC_ALL, $lang_token);
 	}
