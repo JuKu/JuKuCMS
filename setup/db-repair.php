@@ -321,6 +321,7 @@ $table->addVarchar("force_template", 255, true, "none");
 $table->addInt("main_menu", 10, true, false, -1);
 $table->addInt("local_menu", 10, true, false, -1);
 $table->addVarchar("permissions", 600, true, "none");
+$table->addInt("title_translation_support", 10, true, true, 1);
 $table->addInt("hidden", 10, true, false, 0);
 $table->addInt("activated", 10, true, false, 1);
 
