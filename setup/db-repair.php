@@ -1085,8 +1085,8 @@ Menu::createMenu(53, $admin_menuID, "phpinfo()", "admin/phpinfo", 45, "phpinfo",
 Menu::createMenu(54, $admin_menuID, "PhpMyAdmin", "settings:phpmyadmin_link", 45, "phpmyadmin", "dynamic_link", array("can_see_phpmyadmin_menu"), true, "fa fa-laptop", 10, "system");
 Menu::createMenu(55, $admin_menuID, "Webmail", "settings:webmail_link", 45, "webmail", "dynamic_link", array("can_see_webmail_menu"), true, "fas fa-envelope", 11, "system");
 
-Menu::createMenu(55, $admin_menuID, "Settings", "#", -1, "settings", "no_link", array("can_see_global_settings"), true, "fa fa-cogs", 10, "system");
-Menu::createMenu(56, $admin_menuID, "Settings", "admin/settings", 55, "", "page", array("can_see_global_settings", "can_edit_global_settings"), true, "fa fa-cog", 1, "system");
+Menu::createMenu(60, $admin_menuID, "Settings", "#", -1, "settings", "no_link", array("can_see_global_settings"), true, "fa fa-cogs", 10, "system");
+Menu::createMenu(61, $admin_menuID, "Settings", "admin/settings", 55, "", "page", array("can_see_global_settings", "can_edit_global_settings"), true, "fa fa-cog", 1, "system");
 
 Menu::createMenu(100, $main_menuID, "lang_Admin Area", "admin/home", -1, "", "page", array("can_access_admin_area"), true, "none", 2, "user");
 Menu::createMenu(101, $main_menuID, "lang_Login", "LOGIN_URL", -1, "login", "external_link", "not_logged_in", false, "none", 3, "user");
