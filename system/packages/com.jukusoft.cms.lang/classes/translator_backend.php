@@ -43,7 +43,7 @@ interface Translator_Backend {
 	 *
 	 * @return string translated message
 	 */
-	public function translate (string $key, string $domain = "", array $params = array()) : string;
+	public function translate (string $key, string $domain = "", $params = null) : string;
 
 	/**
 	 * translate a string, plural version of translate()
@@ -57,7 +57,7 @@ interface Translator_Backend {
 	 *
 	 * @return string translated message
 	 */
-	public function n_translate (string $key, string $plural_key, int $n, string $domain = "", array $params = array()) : string;
+	public function n_translate (string $key, string $plural_key, int $n, string $domain = "", $params = null) : string;
 
 	public function bindLangPack (string $domain, string $path);
 

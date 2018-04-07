@@ -48,7 +48,7 @@ class GetTextBackend implements Translator_Backend {
 		setlocale(LC_ALL, $lang_token);
 	}
 
-	public function translate(string $key, string $domain = "", array $params = array()): string {
+	public function translate(string $key, string $domain = "", $params = null): string {
 		$text = "";
 
 		if (empty($domain)) {
@@ -57,7 +57,7 @@ class GetTextBackend implements Translator_Backend {
 			$text = dgettext($domain, $key);
 		}
 
-		if (!empty($params)) {
+		if ($params != null && !empty($params)) {
 			foreach ($params as $key=>$value) {
 				//replace variables
 				$text = str_replace("{" . $key . "}", $value, $text);
@@ -67,7 +67,7 @@ class GetTextBackend implements Translator_Backend {
 		return $text;
 	}
 
-	public function n_translate (string $key, string $plural_key, int $n, string $domain = "", array $params = array()) : string {
+	public function n_translate (string $key, string $plural_key, int $n, string $domain = "", $params = null) : string {
 		$text = "";
 
 		if (empty($domain)) {
@@ -76,7 +76,7 @@ class GetTextBackend implements Translator_Backend {
 			$text = dngettext($domain, $key, $plural_key, $n);
 		}
 
-		if (!empty($params)) {
+		if ($params != null && !empty($params)) {
 			foreach ($params as $key=>$value) {
 				//replace variables
 				$text = str_replace("{" . $key . "}", $value, $text);
