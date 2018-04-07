@@ -1,0 +1,27 @@
+{
+    "name": "example-plugin",
+    "title": "Example Plugin",
+    "description": "An example plugin to show plugin structure.",
+    "version": "1.0.0",
+    "keywords": [
+        "example", "example-plugin", "plugin"
+    ],
+    "homepage": "http://jukusoft.com",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Justin Kuenzel",
+            "email": "info@jukusoft.com",
+            "homepage": "http://jukusoft.com",
+            "role": "Project Founder & Lead Developer"
+        }
+    ],
+    "support": {
+        "email": "info@jukusoft.com",
+        "source": "https://github.com/JuKu/JuKuCMS",
+        "issues": "https://github.com/JuKu/JuKuCMS/issues"
+    },
+    "require": {
+        "php": ">=7.0.8"
+    }
+}
