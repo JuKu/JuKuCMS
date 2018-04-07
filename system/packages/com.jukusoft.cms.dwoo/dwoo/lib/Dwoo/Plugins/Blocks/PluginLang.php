@@ -63,7 +63,9 @@ class PluginLang extends Plugin implements ICompilableBlock {
 	public static function preProcessing(Compiler $compiler, array $params, $prepend, $append, $type) {
 		var_dump($params);
 
-		var_dump(/*Compiler::PHP_OPEN . */$prepend . " echo Translator::translate(" . $params[0][0] . "); " . $append/* . Compiler::PHP_CLOSE*/);
+		$domain = "";
+
+		var_dump(/*Compiler::PHP_OPEN . */$prepend . " echo Translator::translate(\"" . $params[0][1] . "\", \"" . $domain . "\"); " . $append/* . Compiler::PHP_CLOSE*/);
 		exit;
 	}
 
@@ -73,7 +75,7 @@ class PluginLang extends Plugin implements ICompilableBlock {
 		 * so you can transform it and then return it, but in this case we don't because
 		 * we want the content to be uppercased at runtime and not at compile time
 		 */
-		return $content . Compiler::PHP_OPEN . $prepend . ' $tmp = ob_get_clean(); echo strtoupper($tmp); ' . $append . Compiler::PHP_CLOSE;
+		return $content . Compiler::PHP_OPEN . $prepend . ' ' . $append . Compiler::PHP_CLOSE;
 	}
 
 }
