@@ -35,7 +35,7 @@ class DwooAutoloader {
 		if (file_exists(DWOO_PATH . $class_name . ".php")) {
 			require(DWOO_PATH . $class_name . ".php");
 		} else {
-			echo "Cannot load Dwoo Template Engine class '" . $class_name . "' (search path: " . DWOO_PATH . $class_name . ".php)!";
+			//echo "Cannot load Dwoo Template Engine class '" . $class_name . "' (search path: " . DWOO_PATH . $class_name . ".php)!";
 		}
 	}
 
