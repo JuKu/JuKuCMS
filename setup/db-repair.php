@@ -1084,7 +1084,7 @@ Menu::createMenu(45, $admin_menuID, "Tools", "#", -1, "tools", "no_link", array(
 
 Menu::createMenu(53, $admin_menuID, "phpinfo()", "admin/phpinfo", 45, "phpinfo", "page", array("can_see_phpinfo"), true, "fab fa-php", 9, "system");
 Menu::createMenu(54, $admin_menuID, "PhpMyAdmin", "settings:phpmyadmin_link", 45, "phpmyadmin", "dynamic_link", array("can_see_phpmyadmin_menu"), true, "fa fa-laptop", 10, "system");
-Menu::createMenu(55, $admin_menuID, "Webmail", "settings:webmail_link", 45, "webmail", "dynamic_link", array("can_see_webmail_menu"), true, "fas fa-envelope", 11, "system");
+Menu::createMenu(55, $admin_menuID, "Webmail", "settings:webmail_link", 45, "webmail", "dynamic_link", array("can_see_webmail_menu"), true, "fa fa-envelope", 11, "system");
 
 Menu::createMenu(60, $admin_menuID, "Settings", "#", -1, "settings", "no_link", array("can_see_global_settings"), true, "fa fa-cogs", 10, "system");
 Menu::createMenu(61, $admin_menuID, "Settings", "admin/settings", 60, "", "page", array("can_see_global_settings", "can_edit_global_settings"), true, "fa fa-cog", 1, "system");
