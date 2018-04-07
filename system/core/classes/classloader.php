@@ -168,10 +168,10 @@ function cms_autoloader ($classname) {
             include ROOT_PATH . "system/classes/" . strtolower($classname) . ".php";
         } else if (file_exists(ROOT_PATH . "system/libs/smarty/sysplugins/" . strtolower($classname) . "php")) {
             require ROOT_PATH . "system/libs/smarty/sysplugins/" . strtolower($classname) . ".php";
-        } else if (strpos($classname, "Plugin")) {
+        } else if (strpos($classname, "Plugin") !== FALSE) {
 			//dwoo tries several times to load a class - with and without namespace, so we hide this error message
 		} else {
-            echo "Could not load class " . $classname . " (array size 1)!";
+            echo "Could not load class '" . $classname . "'' (array size 1)!";
         }
 
     }

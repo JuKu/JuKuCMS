@@ -68,7 +68,7 @@ class Translator {
 	
 	public static function translateTitle (string $token) {
 		//translate title
-		if (strpos($token, "lang_")) {
+		if (strpos($token, "lang_") !== FALSE) {
 			$array1 = explode("_", $token);
 
 			if (count($array1) == 2) {
