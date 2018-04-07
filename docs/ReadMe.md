@@ -6,6 +6,7 @@
   - [Maintenance Mode](maintenance.md)
   - [Registration](register.md)
   - [Captcha / reCAPTCHA](captcha.md)
+  - [Multi-Language-Support (i18n)](i18n.md)
 
 ## Installation
 
@@ -16,7 +17,9 @@ Add content here
   - [Events (Hooks)](events.md)
   - [Robots.txt](robots.md)
   - [Page Types](page_type.md)
+  - [Multi-Language-Support (i18n)](i18n.md)
 
 ## For Style / Template Designers
 
   - [Styles](styles.md)
+  - [Multi-Language-Support (i18n)](i18n.md)
