@@ -151,7 +151,7 @@ class DwooTemplate extends Template {
 			// add custom plugin
 			self::$core->addPlugin('lang', function (Dwoo\Core $core, $str, $str1 = "") {
 				return "test_" . $str;
-			}, true);
+			});
 
 			Events::throwEvent("init_dwoo", array(
 				'core' => &self::$core,
