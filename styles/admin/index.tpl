@@ -234,7 +234,7 @@
         </section>
 
         <!-- Main content -->
-        <section class="content">
+        {* <section class="content">
 
             <!-- Default box -->
             <div class="box">
@@ -259,6 +259,18 @@
                 <!-- /.box-footer-->
             </div>
             <!-- /.box -->
+
+        </section> *}
+        <!-- /.content -->
+
+        <!-- Main content -->
+        <section class="content container-fluid">
+
+            <!--------------------------
+              | Your Page Content Here |
+              -------------------------->
+
+            {$CONTENT}
 
         </section>
         <!-- /.content -->
