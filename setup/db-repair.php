@@ -1064,6 +1064,10 @@ Menu::createMenu(100, $main_menuID, "Admin Area", "admin/home", -1, "", "page", 
 Menu::createMenu(101, $main_menuID, "Login", "LOGIN_URL", -1, "login", "external_link", "not_logged_in", false, "none", 3, "user");
 Menu::createMenu(102, $main_menuID, "Logout", "LOGOUT_URL", -1, "logout", "external_link", "all", true, "none", 100, "user");
 
+//privacy policy & imprint
+Menu::createMenu(200, $main_menuID, "lang_Privacy Policy", "privacy_policy", -1, "privacy_policy", "page", array("none"), false, "none", 101, "system");
+Menu::createMenu(201, $main_menuID, "lang_Imprint", "imprint", -1, "imprint", "page", array("none"), false, "none", 102, "system");
+
 echo "Create default pages if absent...<br />";
 
 Page::createIfAbsent("home", "Home", "IndexPage", "Home page", "/");
@@ -1071,6 +1075,10 @@ Page::createIfAbsent("error404", "Error 404", "Error404Page", "Error 404 - Could
 Page::createIfAbsent("login", "Login", "LoginPage", "", "/", -1, -1, -1, false);
 Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/", -1, -1, -1, false);
 Page::createIfAbsent("register", "Registration", "RegisterPage", "", "/", -1, -1, -1, false);
+
+//only at installation process
+Page::createIfAbsent("privacy-policy", "lang_Privacy Policy", "HTMLPage", "Private Policy - Add privaty policy here", "/", -1, -1, -1, true);
+Page::createIfAbsent("imprint", "lang_Imprint", "HTMLPage", "Imprint - Add contact data here", "/", -1, -1, -1, true);
 
 Page::createIfAbsent("user/verify_mail", "Mail Verification", "MailVerifyPage", "", "/user/", -1, -1, -1, false);
 
@@ -1206,6 +1214,10 @@ Robots::addRule("DISALLOW", "/docs/*");
 Robots::addRule("DISALLOW", "/plugins/*");
 Robots::addRule("DISALLOW", "/styles/*");
 Robots::addRule("DISALLOW", "/admin/*");
+
+//dont allow indexing of privacy policy and imprint pages, because they can contain sensitive information
+Robots::addRule("DISALLOW", "/privacy-policy");
+Robots::addRule("DISALLOW", "/imprint");
 
 echo "Create default administrator user if absent...<br />";
 User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrator", 1);
