@@ -65,6 +65,10 @@ class PluginLang extends Plugin implements ICompilableBlock {
 
 		$domain = "";
 
+		if (isset($params[1])) {
+			$domain = $params[1][1];
+		}
+
 		var_dump(/*Compiler::PHP_OPEN . */$prepend . " echo Translator::translate(\"" . $params[0][1] . "\", \"" . $domain . "\"); " . $append/* . Compiler::PHP_CLOSE*/);
 		exit;
 	}
