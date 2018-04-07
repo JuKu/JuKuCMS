@@ -162,4 +162,9 @@ class PHPUtils {
 		return function_exists("gettext");
 	}
 
+	public static function clearGetTextCache () {
+		//clear stats cache, often this clears also gettext cache
+		clearstatcache();
+	}
+
 }
