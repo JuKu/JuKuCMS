@@ -168,8 +168,6 @@ function cms_autoloader ($classname) {
             include ROOT_PATH . "system/classes/" . strtolower($classname) . ".php";
         } else if (file_exists(ROOT_PATH . "system/libs/smarty/sysplugins/" . strtolower($classname) . "php")) {
             require ROOT_PATH . "system/libs/smarty/sysplugins/" . strtolower($classname) . ".php";
-        } else if ($classname == "Smarty") {
-            require("system/libs/smarty/Smarty.class.php");
         } else if (strpos($classname, "Plugin")) {
 			//dwoo tries several times to load a class - with and without namespace, so we hide this error message
 		} else {
