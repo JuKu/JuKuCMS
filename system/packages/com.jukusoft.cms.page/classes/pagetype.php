@@ -108,6 +108,7 @@ class PageType {
 			$template->assign("RAW_TITLE", $title);
 			$template->assign("TITLE", $title_preafix . $title . $title_suffix);
 			$template->assign("CONTENT", $content);
+			$template->assign("FOOTER", Registry::singleton()->getSetting("footer", ""));
 
 			Events::throwEvent("generate_normal_page", array(
 				'template' => &$template,
