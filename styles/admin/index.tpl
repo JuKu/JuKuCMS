@@ -80,7 +80,7 @@
                     <!-- Notifications: style can be found in dropdown.less -->
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-open"></i>
+                            <i class="fa fa-bell"></i>
                             <span class="label label-warning">10</span>
                         </a>
                         <ul class="dropdown-menu">
@@ -101,7 +101,7 @@
                     <!-- Tasks: style can be found in dropdown.less -->
                     <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-open"></i>
+                            <i class="fa fa-flag"></i>
                             <span class="label label-danger">9</span>
                         </a>
                         <ul class="dropdown-menu">
