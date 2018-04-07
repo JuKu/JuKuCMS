@@ -27,8 +27,14 @@
 
 class GetTextBackend implements Translator_Backend {
 
+	/**
+	 * initialize translator backend
+	 *
+	 * @param $lang_token $lang_token contains language & country, e.q. de_DE
+	 */
 	public function init(string $lang_token) {
-		// TODO: Implement init() method.
+		putenv("LANG=" . $lang_token);
+		setlocale(LC_ALL, $lang_token);
 	}
 
 	public function translate(string $key, string $domain): string {

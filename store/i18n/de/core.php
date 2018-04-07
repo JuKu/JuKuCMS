@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright (c) 2018 Justin Kuenzel (jukusoft.com)
  *
@@ -21,23 +20,7 @@
  * Project: JuKuCMS
  * License: Apache 2.0 license
  * User: Justin
- * Date: 07.04.2018
- * Time: 12:19
+ * Date: 06.04.2018
+ * Time: 19:11
  */
-
-interface Translator_Backend {
-
-	/**
-	 * initialize translator backend
-	 *
-	 * @param $lang_token $lang_token contains language & country, e.q. de_DE
-	 */
-	public function init (string $lang_token);
-
-	public function translate (string $key, string $domain) : string;
-
-	public function bindLangPack (string $domain, string $path);
-
-}
-
 ?>
