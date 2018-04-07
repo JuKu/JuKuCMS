@@ -53,8 +53,11 @@ class StyleController {
 		$title_preafix = Settings::get("title_praefix", "");
 		$title_suffix = Settings::get("title_suffix", "");
 
+		//translate title
+		$title = Translator::translateTitle($page->getTitle());
+
 		//assign variables
-		$template->assign("TITLE", $title_preafix . $page->getTitle() . $title_suffix);
+		$template->assign("TITLE", $title_preafix . $title . $title_suffix);
 		$template->assign("RAW_TITLE", $page->getTitle());
 		$template->assign("REGISTRY", $registry->listSettings());
 

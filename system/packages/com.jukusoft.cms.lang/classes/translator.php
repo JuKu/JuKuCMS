@@ -65,6 +65,35 @@ class Translator {
 	public static function n_translate (string $key, string $plural_key, int $n, string $domain = "", array $params = array()) : string {
 		return self::getBackend()->n_translate($key, $plural_key, $n, $domain, $params);
 	}
+	
+	public static function translateTitle (string $token) {
+		//translate title
+		if (strpos($token, "lang_")) {
+			$array1 = explode("_", $token);
+
+			if (count($array1) == 2) {
+				//translate
+				$token = Translator::translate($array1[1]);
+			} else if (count($array1) == 3) {
+				//translate with domain
+				$token = Translator::translate($array1[2], $array1[1]);
+			} else if (count($array1) > 3) {
+				$token_parts = array();
+
+				for ($i = 2; $i < count($array1); $i++) {
+					$token_parts[] = $array1[$i];
+				}
+
+				//generate final token
+				$token = implode("_", $token_parts);
+
+				//translate with domain
+				$token = Translator::translate($token, $array1[1]);
+			}
+		}
+
+		return $token;
+	}
 
 	/**
 	 * get current instance of translator backend
