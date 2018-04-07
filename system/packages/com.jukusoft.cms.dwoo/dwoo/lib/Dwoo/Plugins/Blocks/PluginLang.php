@@ -63,7 +63,7 @@ class PluginLang extends Plugin implements ICompilableBlock {
 	public static function preProcessing(Compiler $compiler, array $params, $prepend, $append, $type) {
 		var_dump($params);
 
-		var_dump(Compiler::PHP_OPEN . $prepend . " echo Translator::translate(" . $params[0] . "); " . $append . Compiler::PHP_CLOSE);
+		var_dump(Compiler::PHP_OPEN . $prepend . " echo Translator::translate(" . $params[0][0] . "); " . $append . Compiler::PHP_CLOSE);
 		exit;
 	}
 
