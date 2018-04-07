@@ -171,7 +171,7 @@ class Menu {
 			}
 
 			//get submenus
-			$entry['submenus'] = $this->getMenuByParent($menu_array, $row['id']);
+			$entry['submenus'] = $this->getMenuByParent($menu_array, $row['id'], $folder);
 			$entry['has_submenus'] = sizeof($entry['submenus']) > 0;
 
 			$array[] = $entry;
