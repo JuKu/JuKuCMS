@@ -1078,6 +1078,7 @@ Menu::createMenu(22, $admin_menuID, "Change password", "admin/change_password", 
 Menu::createMenu(25, $admin_menuID, "Design", "admin/design", -1, "design", "page", array("can_see_global_settings"), true, "fa fa-paint-brush", 7, "system");
 
 Menu::createMenu(35, $admin_menuID, "Plugins", "admin/plugins", -1, "plugins", "no_link", array("can_see_installed_plugins"), true, "fa fa-cubes", 8, "system");
+Menu::createMenu(36, $admin_menuID, "Plugins", "admin/plugins", 35, "plugins_page", "page", array("can_see_installed_plugins"), true, "fa fa-cubes", 1, "systen");
 
 Menu::createMenu(45, $admin_menuID, "Tools", "#", -1, "tools", "no_link", array("none"), true, "fa fa-wrench", 9, "system");
 
@@ -1086,7 +1087,7 @@ Menu::createMenu(54, $admin_menuID, "PhpMyAdmin", "settings:phpmyadmin_link", 45
 Menu::createMenu(55, $admin_menuID, "Webmail", "settings:webmail_link", 45, "webmail", "dynamic_link", array("can_see_webmail_menu"), true, "fas fa-envelope", 11, "system");
 
 Menu::createMenu(60, $admin_menuID, "Settings", "#", -1, "settings", "no_link", array("can_see_global_settings"), true, "fa fa-cogs", 10, "system");
-Menu::createMenu(61, $admin_menuID, "Settings", "admin/settings", 55, "", "page", array("can_see_global_settings", "can_edit_global_settings"), true, "fa fa-cog", 1, "system");
+Menu::createMenu(61, $admin_menuID, "Settings", "admin/settings", 60, "", "page", array("can_see_global_settings", "can_edit_global_settings"), true, "fa fa-cog", 1, "system");
 
 Menu::createMenu(100, $main_menuID, "lang_Admin Area", "admin/home", -1, "", "page", array("can_access_admin_area"), true, "none", 2, "user");
 Menu::createMenu(101, $main_menuID, "lang_Login", "LOGIN_URL", -1, "login", "external_link", "not_logged_in", false, "none", 3, "user");
@@ -1121,6 +1122,7 @@ Page::createIfAbsent("error403", "Error 403", "Error403Page", "Error 403 - Forbi
 
 echo "Create admin pages if absent...<br />";
 Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/admin/", -1, -1, -1, false, true, false);
+Page::createIfAbsent("admin/plugins", "lang_Plugins", "PluginsPage", "", "/admin/", -1, -1, -1, false, true, false);
 
 //create some tool pages
 Page::createIfAbsent("admin/phpinfo", "phpinfo()", "PHPInfoPage", "", "/admin/", -1, -1, -1, false, true, false);
