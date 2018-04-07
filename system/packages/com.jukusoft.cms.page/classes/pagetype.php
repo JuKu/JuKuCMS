@@ -56,6 +56,10 @@ class PageType {
 		return true;
 	}
 
+	public function getFooterScripts () : string {
+		return "";
+	}
+
 	public function showHTMLComments () : bool {
 		return true;
 	}

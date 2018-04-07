@@ -77,6 +77,8 @@ class StyleController {
 		$template->assign("FOOTER", $registry->getSetting("footer", ""));
 		$template->assign("COPYRIGHT", Settings::get("copyright", "<strong>Copyright &copy; 2018 <a href=\"http://jukusoft.com\">JuKuSoft.com</a></strong>, All Rights Reserved."));
 
+		$template->assign("FOOTER_SCRIPTS", $page_type->getFooterScripts());
+
 		$template->assign("MY_GROUP_IDS", implode(",", $registry->getObject("groups")->listGroupIDs()));
 		$template->assign("CHARSET", $page_type->getCharset());
 

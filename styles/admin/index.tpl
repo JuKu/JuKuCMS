@@ -490,6 +490,8 @@
     })
 </script>
 
+{$FOOTER_SCRIPTS}
+
 </body>
 </html>
 <!-- END: main -->
