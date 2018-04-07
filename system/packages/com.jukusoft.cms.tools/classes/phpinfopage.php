@@ -44,7 +44,7 @@ class PHPInfoPage extends PageType {
 			//https://github.com/Froxlor/Froxlor/blob/5437fcdc898cb505348b89c5a3d09a16e29f67d2/admin_settings.php
 
 			//show iframe
-			return " <iframe src=\"" . DomainUtils::generateURL("admin/phpinfo") . "?no_design=true\" style=\"width: 100%; min-height: 800px; \"></iframe> ";
+			return $this->generateNormalPage(" <iframe src=\"" . DomainUtils::generateURL("admin/phpinfo") . "?no_design=true\" style=\"width: 100%; min-height: 800px; \"></iframe> ");
 		}
 	}
 

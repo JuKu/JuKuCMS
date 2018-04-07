@@ -93,6 +93,33 @@ class PageType {
 		return $content;
 	}
 
+	public function generateNormalPage (string $content, $vars = array()) : string {
+		$current_style = Registry::singleton()->getSetting("current_style_name");
+
+		if (file_exists(STYLE_PATH . $current_style . "/normal.tpl")) {
+			$template = new DwooTemplate(STYLE_PATH . $current_style . "/normal.tpl");
+
+			$template->assign("TITLE", $this->getPage()->getTitle());
+			$template->assign("CONTENT", $content);
+
+			Events::throwEvent("generate_normal_page", array(
+				'template' => &$template,
+				'current_style' => $current_style,
+				'content' => &$content,
+				'page_type' => &$this,
+				'page' => $this->getPage()
+			));
+
+			foreach ($vars as $key=>$value) {
+				$template->assign($key, $value);
+			}
+
+			return $template->getCode();
+		} else {
+			return $content;
+		}
+	}
+
 	public function checkPermissions (PermissionChecker $permission_checker) {
 		//first, check required permissions
 		if (count($this->listRequiredPermissions()) > 0) {
