@@ -152,7 +152,7 @@ class Folder {
 		return implode("/", $array) . "/";
 	}
 
-	public static function createFolder (string $folder, bool $hidden = false, array $permissions = array(), int $main_menu = -1, int $local_menu = -1, string $force_template = "none") {
+	public static function createFolder (string $folder, bool $hidden = false, array $permissions = array(), int $main_menu = -1, int $local_menu = -1, string $force_template = "none", bool $title_translation = true) {
 		//escape string
 		//$folder = Database::getInstance()->escape($folder);
 
@@ -163,15 +163,16 @@ class Folder {
 		}
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}folder` (
-			`folder`, `force_template`, `main_menu`, `local_menu`, `permissions`, `hidden`, `activated`
+			`folder`, `force_template`, `main_menu`, `local_menu`, `permissions`, `title_translation_support`, `hidden`, `activated`
 		) VALUES (
-			:folder, :templatename, :main_menu, :local_menu, :permissions, :hidden, '1'
+			:folder, :templatename, :main_menu, :local_menu, :permissions, :title_translation_support, :hidden, '1'
 		); ", array(
 			'folder' => $folder,
 			'templatename' => $force_template,
 			'main_menu' => $main_menu,
 			'local_menu' => $local_menu,
 			'permissions' => $permissions_str,
+			'title_translation_support' => ($title_translation ? 1 : 0),
 			'hidden' => $hidden ? 1 : 0
 		));
 
@@ -179,7 +180,7 @@ class Folder {
 		Cache::clear("folder");
 	}
 
-	public static function createFolderIfAbsent (string $folder, bool $hidden = false, array $permissions = array(), int $main_menu = -1, int $local_menu = -1, string $force_template = "none") {
+	public static function createFolderIfAbsent (string $folder, bool $hidden = false, array $permissions = array(), int $main_menu = -1, int $local_menu = -1, string $force_template = "none", bool $title_translation = true) {
 		//escape string
 		//$folder = Database::getInstance()->escape($folder);
 
@@ -190,15 +191,16 @@ class Folder {
 		}
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}folder` (
-			`folder`, `force_template`, `main_menu`, `local_menu`, `permissions`, `hidden`, `activated`
+			`folder`, `force_template`, `main_menu`, `local_menu`, `permissions`, `title_translation_support`, `hidden`, `activated`
 		) VALUES (
-			:folder, :templatename, :main_menu, :local_menu, :permissions, :hidden, '1'
+			:folder, :templatename, :main_menu, :local_menu, :permissions, :title_translation_support, :hidden, '1'
 		) ON DUPLICATE KEY UPDATE `hidden` = :hidden, `permissions` = :permissions, `force_template` = :templatename; ", array(
 			'folder' => $folder,
 			'templatename' => $force_template,
 			'main_menu' => $main_menu,
 			'local_menu' => $local_menu,
 			'permissions' => $permissions_str,
+			'title_translation_support' => ($title_translation ? 1 : 0),
 			'hidden' => $hidden ? 1 : 0
 		));
 
