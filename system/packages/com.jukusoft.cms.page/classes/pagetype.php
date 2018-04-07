@@ -99,7 +99,14 @@ class PageType {
 		if (file_exists(STYLE_PATH . $current_style . "/pages/normal.tpl")) {
 			$template = new DwooTemplate(STYLE_PATH . $current_style . "/pages/normal.tpl");
 
-			$template->assign("TITLE", $this->getPage()->getTitle());
+			$title_preafix = Settings::get("title_praefix", "");
+			$title_suffix = Settings::get("title_suffix", "");
+
+			//translate title
+			$title = Translator::translateTitle($this->getPage()->getTitle());
+
+			$template->assign("RAW_TITLE", $title);
+			$template->assign("TITLE", $title_preafix . $title . $title_suffix);
 			$template->assign("CONTENT", $content);
 
 			Events::throwEvent("generate_normal_page", array(
