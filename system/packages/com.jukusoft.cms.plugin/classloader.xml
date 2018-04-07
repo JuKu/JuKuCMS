@@ -16,4 +16,5 @@
 
 <classes>
 	<class>Plugins</class>
+	<class>PluginsPage</class>
 </classes>
