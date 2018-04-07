@@ -2,13 +2,16 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">{lang Plugins}</h3>
+                <h3 class="box-title">{lang('Plugins')}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            {foreach $table_header_fields field}
+                                <th>{$field.title}</th>
+                            {/foreach}
                             <th>Rendering engine</th>
                             <th>Browser</th>
                             <th>Platform(s)</th>
