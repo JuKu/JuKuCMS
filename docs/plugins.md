@@ -19,6 +19,12 @@ Like [composer](https://getcomposer.org/doc/04-schema.md#type) this CMS supports
     * allowed characters for directory: a-z, A-Z, 0-9, -
     * underscore **_** is **not** allowed
   - every plugin needs a **plugin.json** in own plugin directory
+  - trial ware is not allowed in our plugin directory
+  - plugins should not track user (CMS installation) without their agreement
+    * plugins should not call external servers without explicit and authorized agreement
+    * for example a registration at a service or a checkbox in plugin settings
+  - plugin version must increased on every new release
+  - respect trademarks & copyrights
   
 ## plugin.json
 
