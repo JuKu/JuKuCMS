@@ -113,6 +113,10 @@ class Folder {
 		return $this->row['local_menu'];
 	}
 
+	public function isTitleTranslationEnabled () {
+		return $this->row['title_translation_support'] == 1;
+	}
+
 	public function isActivated () : bool {
 		return $this->row['activated'] == 1;
 	}

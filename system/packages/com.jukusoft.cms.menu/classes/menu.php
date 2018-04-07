@@ -43,7 +43,7 @@ class Menu {
 		$this->template = $template;
 	}
 
-	public function loadMenu (int $menuID = -1) {
+	public function loadMenu (int $menuID = -1, Folder $folder) {
 		if ($menuID == -1) {
 			$menuID = $this->menuID;
 		}
@@ -67,7 +67,7 @@ class Menu {
 			$menu_cache = self::$menuID_array[$menuID];
 
 			//get menu by parent -y, this means root menu
-			$this->menus = $this->getMenuByParent($menu_cache, -1);
+			$this->menus = $this->getMenuByParent($menu_cache, -1, $folder);
 
 			Events::throwEvent("after_load_menu", array(
 				'menuID' => &$menuID,
@@ -82,7 +82,7 @@ class Menu {
 		$this->menuID = $menuID;
 	}
 
-	protected function getMenuByParent (array &$menu_array, int $parentID) : array {
+	protected function getMenuByParent (array &$menu_array, int $parentID, Folder $folder) : array {
 		if (!isset($menu_array[$parentID])) {
 			//menu doesnt have submenus
 			return array();
@@ -116,7 +116,9 @@ class Menu {
 			$entry = array();
 
 			//translate title
-			$row['title'] = Translator::translateTitle($row['title']);
+			if ($folder->isTitleTranslationEnabled()) {
+				$row['title'] = Translator::translateTitle($row['title']);
+			}
 
 			$href = "";
 			$entry['append'] = "";
