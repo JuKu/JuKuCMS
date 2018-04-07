@@ -60,8 +60,9 @@ class PluginLang extends Plugin/* implements ICompilableBlock*/ {
 	}*/
 
 	// parameters go here if you need any settings
-	public function init() {
-		//
+	public function init($value, $domain = "") {
+		var_dump($value);
+		var_dump($domain);
 	}
 
 	// this can be ommitted, it's called once when the block ends, don't implement if you don't need it
