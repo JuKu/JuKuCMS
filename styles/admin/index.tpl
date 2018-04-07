@@ -264,7 +264,7 @@
         <!-- /.content -->
 
         <!-- Main content -->
-        <section class="content container-fluid">
+        <section class="content">
 
             <!--------------------------
               | Your Page Content Here |
