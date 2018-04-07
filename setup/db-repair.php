@@ -920,7 +920,7 @@ echo "Finished!<br />";
 echo "Create / Upgrade table <b>installed_plugins</b>...<br />";
 
 //create or upgrade test table
-$table = new DBTable("installed_plugins", Database::getInstance());
+$table = new DBTable("plugins", Database::getInstance());
 $table->setEngine("InnoDB");
 $table->setCharset("utf8");
 
