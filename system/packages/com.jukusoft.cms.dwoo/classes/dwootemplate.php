@@ -146,7 +146,7 @@ class DwooTemplate extends Template {
 			//add plugins
 			//self::$core->addPlugin("if");
 
-			self::$core->addPlugin("lang", new \Dwoo\Plugins\Functions\PluginLang(), true);
+			self::$core->addPlugin("lang", new \Dwoo\Plugins\Functions\PluginLang(self::$core), true);
 
 			Events::throwEvent("init_dwoo", array(
 				'core' => &self::$core,
