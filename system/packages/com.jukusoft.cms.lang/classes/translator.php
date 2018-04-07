@@ -62,7 +62,7 @@ class Translator {
 	 *
 	 * @return string translated message
 	 */
-	public function n_translate (string $key, string $plural_key, int $n, string $domain = "", array $params = array()) : string {
+	public static function n_translate (string $key, string $plural_key, int $n, string $domain = "", array $params = array()) : string {
 		return self::getBackend()->n_translate($key, $plural_key, $n, $domain, $params);
 	}
 

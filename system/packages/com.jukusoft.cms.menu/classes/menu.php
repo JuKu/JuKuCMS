@@ -115,6 +115,31 @@ class Menu {
 
 			$entry = array();
 
+			//translate title
+			if (strpos($row['title'], "lang_")) {
+				$array1 = explode("_", $row['title']);
+
+				if (count($array1) == 2) {
+					//translate
+					$row['title'] = Translator::translate($array1[1]);
+				} else if (count($array1) == 3) {
+					//translate with domain
+					$row['title'] = Translator::translate($array1[2], $array1[1]);
+				} else if (count($array1) > 3) {
+					$token_parts = array();
+
+					for ($i = 2; $i < count($array1); $i++) {
+						$token_parts[] = $array1[$i];
+					}
+
+					//generate final token
+					$token = implode("_", $token_parts);
+
+					//translate with domain
+					$row['title'] = Translator::translate($token, $array1[1]);
+				}
+			}
+
 			$href = "";
 			$entry['append'] = "";
 			$entry['title'] = $row['title'];
