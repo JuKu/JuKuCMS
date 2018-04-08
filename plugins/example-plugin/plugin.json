@@ -3,7 +3,7 @@
     "type": "library",
     "title": "Example Plugin",
     "description": "An example plugin to show plugin structure.",
-    "version": "1.0.0",
+    "version": "1.0.0-alpha",
     "keywords": [
         "example", "example-plugin", "plugin"
     ],
