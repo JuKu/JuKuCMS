@@ -46,8 +46,16 @@ class PluginsPage extends PageType {
 				'description' => $plugin->getDescription($lang_token),
 				'version' => $plugin->getVersion(),
 				'installed_version' => $plugin->getInstalledVersion(),
+				'homepage' => $plugin->getHomepage(),
 				'authors' => $plugin->listAuthors(),
 				'license' => $plugin->getLicense(),
+				'keywords' => $plugin->listKeywords(),
+				'categories' => $plugin->listCategories(),
+				'text' => "",
+				'issues' => $plugin->getIssuesLink(),
+				'source' => $plugin->getSourceLink(),
+				'support_mail' => $plugin->getSupportMail(),
+				'support_links' => $plugin->listSupportLinks(),
 				'installed' => $plugin->isInstalled(),
 				'activated' => $plugin->isActivated()
 			);

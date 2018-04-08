@@ -21,7 +21,22 @@
                         {foreach $installed_plugins plugin}
                             <tr>
                                 <td>{$plugin.name}</td>
-                                <td>${$plugin.title}<br /><small>{$plugin.description}</small></td>
+                                <td>
+                                    <strong style="color: /*#4096EE*/#3F4C6B; ">{$plugin.title}</strong><br /><small>{$plugin.description}</small><br /><br />
+
+                                    By {foreach $plugin.authors key author name='plugins'}
+                                        {if $dwoo.foreach.plugins.index > 0}, {/if}<a href="{$author.homepage}" target="_blank" title="{$author.role}">{$author.name}</a>
+                                    {/foreach} | <a href="{$plugin.homepage}" target="_blank">Visit plugin homepage</a><br />
+
+                                    <!-- support information -->
+                                    {foreach $plugin.support_links key link name='supportlinks'}
+                                        {if $dwoo.foreach.supportlinks.index == 0}
+                                            <span style="color: #008C00; ">Support: </span>
+                                        {/if}
+
+                                        {if $dwoo.foreach.supportlinks.index > 0} | {/if}<a href="{$link.href}" target="_blank">{$link.title}</a>
+                                    {/foreach}
+                                </td>
                                 <td>{$plugin.installed_version}</td>
                                 <td>{$plugin.license}</td>
                                 <td>&nbsp;</td>
