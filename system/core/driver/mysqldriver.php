@@ -293,7 +293,14 @@ class MySQLDriver implements DBDriver {
         }
 
         //fetch rows
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($rows === FALSE) {
+        	//failure, http://php.net/manual/de/pdostatement.fetchall.php
+			throw new PDOException("Failure while listRows(): " . print_r($this->getErrorInfo(), true));
+		}
+
+        return $rows;
     }
 
     public function escape(string $str) : string {
