@@ -63,7 +63,7 @@ class Plugins {
 
 	public static function listInstalledPlugins () : array {
 		if (Cache::contains("plugins", "installed_plugins")) {
-			return Cache::contains("plugins", "installed_plugins");
+			return Cache::get("plugins", "installed_plugins");
 		} else {
 			//read installed plugins from database
 			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}plugins` WHERE `installed` = '1'; ");
