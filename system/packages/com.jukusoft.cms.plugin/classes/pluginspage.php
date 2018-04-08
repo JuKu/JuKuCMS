@@ -93,6 +93,8 @@ class PluginsPage extends PageType {
 				'support_links' => $plugin->listSupportLinks(),
 				'compatible' => $installer->checkRequirements(true),
 				'uptodate' => true,//TODO: check, if plugin is newest version
+				'alpha' => $plugin->isAlpha(),
+				'beta' => $plugin->isBeta(),
 				'installed' => $plugin->isInstalled(),
 				'activated' => $plugin->isActivated()
 			);

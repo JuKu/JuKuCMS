@@ -51,9 +51,33 @@ class PluginInstaller {
 		//iterate through all requirements
 		foreach ($require_array as $requirement=>$version) {
 			if ($requirement === "php") {
-				//TODO: check php version
+				//check php version
+				if (!$this->checkVersion($version, phpversion())) {
+					$missing_plugins[] = $requirement;
+
+					continue;
+				}
 			} else if (PHPUtils::startsWith($requirement, "ext-")) {
 				//check php extension
+
+				$extension = str_replace("ext-", "", $requirement);
+
+				//check, if php extension is loaded
+				if (!extension_loaded($extension)) {
+					$missing_plugins[] = $requirement;
+
+					continue;
+				}
+
+				//get extension version
+				$current_version = phpversion($extension);
+
+				//check version
+				if (!$this->checkVersion($version, $current_version)) {
+					$missing_plugins[] = $requirement;
+
+					continue;
+				}
 			} else if (PHPUtils::startsWith($requirement, "package-")) {
 				//TODO: check if package is installed
 				$package = str_replace("package-", "", $requirement);
@@ -62,6 +86,8 @@ class PluginInstaller {
 
 				if (!isset($package_list[$package])) {
 					$missing_plugins[] = $requirement;
+
+					continue;
 				}
 			} else if ($requirement === "core") {
 				//TODO: check core version
@@ -95,6 +121,12 @@ class PluginInstaller {
 	}
 
 	protected function checkVersion (string $expected_version, $current_version) : bool {
+		//remove alpha and beta labels
+		$expected_version = str_replace("-alpha", "", $expected_version);
+		$expected_version = str_replace("-beta", "", $expected_version);
+		$current_version = str_replace("-alpha", "", $current_version);
+		$current_version = str_replace("-beta", "", $current_version);
+
 		//check version
 		if (is_numeric($expected_version)) {
 			//a specific version is required
@@ -124,9 +156,9 @@ class PluginInstaller {
 			$version = substr($expected_version, $operator_length);
 
 			if (!empty($operator_length)) {
-				return version_compare($current_version, $expected_version, $operator);
+				return version_compare($current_version, $expected_version, $operator) === TRUE;
 			} else {
-				return version_compare($current_version, $expected_version);
+				return version_compare($current_version, $expected_version) === 0;
 			}
 		}
 	}

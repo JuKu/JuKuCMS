@@ -26,6 +26,27 @@ Like [composer](https://getcomposer.org/doc/04-schema.md#type) this CMS supports
   - plugin version must increased on every new release
   - respect trademarks & copyrights
   
+## Version Numbers
+
+In order to compare version numbers, we have a strict version format, as [wikipedia](https://de.wikipedia.org/wiki/Versionsnummer) describes:\
+**major.minor.revision[-alpha|-beta]**
+
+  - **Major version**: mostly significant change in the program (mostly incompatible with earlier major versions)
+  - **Minor version**: mostly functional extensions (new features or old features / api removed)
+  - **Revision Number**: patches (bugfixes, but no new features)
+
+**Examples**:
+
+  - 1.0.0
+  - 1.0.1
+  - 1.1.1
+  - 10.3.2
+  - 3.2.1-alpha
+  - 3.2.1-beta
+  
+**Warning**: suffixes "-beta" and "-alpha" **dont have an effect on version check**!\
+They are only decorative kind!
+ 
 ## plugin.json
 
 ```json

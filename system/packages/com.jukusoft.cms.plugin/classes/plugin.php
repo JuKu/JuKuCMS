@@ -213,6 +213,14 @@ class Plugin {
 		return $this->json_data['require'];
 	}
 
+	public function isAlpha () : bool {
+		return PHPUtils::endsWith($this->getVersion(), "-alpha");
+	}
+
+	public function isBeta () : bool {
+		return PHPUtils::endsWith($this->getVersion(), "-beta");
+	}
+
 	public function isInstalled () : bool {
 		return (!empty($this->row) ? $this->row['installed'] == 1 : false);
 	}
