@@ -3,7 +3,7 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">{lang}Installed Plugins{/lang}</h3>
+                <h3 class="box-title"><strong>{lang}Installed Plugins{/lang}</strong></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -52,7 +52,7 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">{lang}Not installed Plugins{/lang}</h3>
+                <h3 class="box-title"><strong>{lang}Not installed Plugins{/lang}</strong></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
