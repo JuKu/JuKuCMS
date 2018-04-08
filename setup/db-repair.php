@@ -918,7 +918,7 @@ echo "Finished!<br />";
  * Package: com.jukusoft.cms.plugin
  */
 
-echo "Create / Upgrade table <b>installed_plugins</b>...<br />";
+echo "Create / Upgrade table <b>plugins</b>...<br />";
 
 //create or upgrade test table
 $table = new DBTable("plugins", Database::getInstance());
