@@ -71,7 +71,11 @@
                             <tr>
                                 <td>{$plugin.name}</td>
                                 <td>
-                                    <strong style="color: /*#4096EE*/#3F4C6B; ">{$plugin.title}</strong><br /><small>{$plugin.description}</small>
+                                    <strong style="color: /*#4096EE*/#3F4C6B; ">{$plugin.title}</strong><br /><small>{$plugin.description}</small><br /><br />
+
+                                    By {foreach $plugin.authors author name='plugins'}
+                                        {if $dwoo.foreach.plugins.index > 0}, {/if}<a href="{$author.homepage}" target="_blank" title="{$author.role}">{author.name}</a>
+                                    {/foreach} | <a href="{$plugin.homepage}">Visit plugin homepage</a>
                                 </td>
                                 <td>{$plugin.version}</td>
                                 <td>{$plugin.license}</td>
