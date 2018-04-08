@@ -20,7 +20,7 @@
                         {foreach $installed_plugins plugin}
                             <tr>
                                 <td>{$plugin.name}</td>
-                                <td>${plugin.title}<br /><small>{$plugin.description}</small></td>
+                                <td>${$plugin.title}<br /><small>{$plugin.description}</small></td>
                                 <td>{$plugin.version}</td>
                                 <td>&nbsp;</td>
                             </tr>
