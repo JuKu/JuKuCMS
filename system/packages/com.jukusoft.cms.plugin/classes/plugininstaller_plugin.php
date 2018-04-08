@@ -27,7 +27,21 @@
 
 class PluginInstaller_Plugin {
 
-	//
+	public function install (Plugin $plugin) : bool {
+		//
+	}
+
+	public function upgrade (Plugin $plugin) : bool {
+		//
+	}
+
+	public function getPriority () : int {
+		return 10;
+	}
+
+	public static function cast (PluginInstaller_Plugin $plugin) : PluginInstaller_Plugin {
+		return $plugin;
+	}
 
 }
 

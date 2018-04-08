@@ -249,6 +249,68 @@ class PluginInstaller {
 		Plugins::clearCache();
 	}
 
+	public static function listInstallerPlugins () : array {
+		$rows = array();
+
+		if (Cache::contains("plugins", "installer_plugins")) {
+			$rows = Cache::get("plugins", "installer_plugins");
+		} else {
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}plugin_installer_plugins`; ");
+
+			//put into cache
+			Cache::put("plugins", "installer_plugins", $rows);
+		}
+
+		$plugins = array();
+
+		foreach ($rows as $row) {
+			$class_name = $row['class_name'];
+			$path = $row['path'];
+
+			//first, include path
+			require_once(ROOT_PATH . $path);
+
+			//create object
+			$obj = new $class_name();
+
+			//check, if object extends PluginInstaller_Plugin
+			if ($obj instanceof PluginInstaller_Plugin) {
+				//add plugin to list
+				$plugins[] = $obj;
+			}
+		}
+
+		//sort list
+		usort($plugins, function(PluginInstaller_Plugin $a, PluginInstaller_Plugin $b) {
+			return $a->getPriority() <=> $b->getPriority();
+		});
+
+		return $plugins;
+	}
+
+	public static function addInstallerPluginIfAbsent (string $class_name, string $path) {
+		Database::getInstance()->execute("INSERT INTO `{praefix}plugin_installer_plugins` (
+			`class_name`, `path`
+		) VALUES (
+			:class_name, :path
+		) ON DUPLICATE KEY UPDATE `path` = :path; ", array(
+			'class_name' => $class_name,
+			'path' => $path
+		));
+
+		//clear cache
+		Cache::clear("plugins", "installer_plugins");
+	}
+
+	public static function removeInstallerPlugin (string $class_name) {
+		Database::getInstance()->execute("DELETE FROM `{praefix}plugin_installer_plugins` WHERE `class_name` = :class_name; ", array(
+			'class_name' => $class_name
+		));
+
+		//clear cache
+		Cache::clear("plugins", "installer_plugins");
+	}
+
 }
 
 ?>

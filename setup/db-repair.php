@@ -942,6 +942,31 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table plugin_installer_plugins
+ *
+ * Package: com.jukusoft.cms.plugin
+ */
+
+echo "Create / Upgrade table <b>plugin_installer_plugins</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("plugin_installer_plugins", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addVarchar("class_name", 255, true);//directory name of plugin
+$table->addVarchar("path", 600, true);
+
+//add keys to table
+$table->addPrimaryKey("class_name");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 
