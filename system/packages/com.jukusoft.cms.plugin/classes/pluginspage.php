@@ -30,6 +30,20 @@ class PluginsPage extends PageType {
 	public function getContent(): string {
 		$template = new DwooTemplate("pages/plugins");
 
+		//get list with installed plugins
+		$installed_plugins = Plugins::listInstalledPlugins();
+
+		$array = array();
+
+		foreach ($installed_plugins as $plugin) {
+			$array[] = array(
+				'name' => $plugin->get
+			);
+		}
+
+		//assign list with installed plugins
+		$template->assign("installed_plugins", $array);
+
 		return $template->getCode();
 	}
 

@@ -930,10 +930,12 @@ $table->addVarchar("name", 255, true);//directory name of plugin
 $table->addVarchar("version", 255, true, "1.0.0");//installed version of plugin
 $table->addInt("build", 10, true, false, 1);//optional: build number of plugin
 $table->addInt("installed", 10, true, false, 1);//flag, if plugin is installed
+$table->addInt("activated", 10, true, false, 1);//flag, if plugin is activated
 
 //add keys to table
 $table->addPrimaryKey("name");
 $table->addIndex("installed");
+$table->addIndex("activated");
 
 //create or upgrade table
 $table->upgrade();

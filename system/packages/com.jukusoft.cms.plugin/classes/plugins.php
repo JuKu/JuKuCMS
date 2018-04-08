@@ -61,6 +61,32 @@ class Plugins {
 		}
 	}
 
+	public static function listInstalledPlugins () : array {
+		if (Cache::contains("plugins", "installed_plugins")) {
+			return Cache::contains("plugins", "installed_plugins");
+		} else {
+			//read installed plugins from database
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}plugins` WHERE `installed` = '1'; ");
+
+			$plugins = array();
+
+			foreach ($rows as $row) {
+				//create new plugin instance
+				$plugin = new Plugin($row['name'], $row);
+
+				//load plugin
+				$plugin->load();
+
+				$plugins[] = $plugin;
+			}
+
+			//cache plugins
+			Cache::put("plugins", "installed_plugins", $plugins);
+
+			return $plugins;
+		}
+	}
+
 }
 
 ?>
