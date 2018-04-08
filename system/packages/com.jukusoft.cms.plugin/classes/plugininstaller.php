@@ -56,7 +56,7 @@ class PluginInstaller {
 				//check php extension
 			} else if (PHPUtils::startsWith($requirement, "package-")) {
 				//TODO: check if package is installed
-				$package = str_replace("package-" . $requirement);
+				$package = str_replace("package-", "", $requirement);
 
 				//packages doesnt supports version
 
