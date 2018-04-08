@@ -61,7 +61,7 @@
                         <tr>
                             <th>{lang}Plugin{/lang}</th>
                             <th>{lang}Title / Description{/lang}</th>
-                            <th>{lang}Installed Version{/lang}</th>
+                            <th>{lang}Version{/lang}</th>
                             <th>{lang}License{/lang}</th>
                             <th>{lang}Actions{/lang}</th>
                         </tr>
@@ -71,7 +71,7 @@
                             <tr>
                                 <td>{$plugin.name}</td>
                                 <td>{$plugin.title}<br /><small>{$plugin.description}</small></td>
-                                <td>{$plugin.installed_version}</td>
+                                <td>{$plugin.version}</td>
                                 <td>{$plugin.license}</td>
                                 <td>&nbsp;</td>
                             </tr>
