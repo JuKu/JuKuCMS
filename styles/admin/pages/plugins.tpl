@@ -145,7 +145,7 @@
                         <tr>
                             <th>{lang}Plugin{/lang}</th>
                             <th>{lang}Title / Description{/lang}</th>
-                            <th>{lang}Installed Version{/lang}</th>
+                            <th>{lang}Version{/lang}</th>
                             <th>{lang}License{/lang}</th>
                             <th>{lang}Actions{/lang}</th>
                         </tr>
