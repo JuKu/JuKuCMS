@@ -46,7 +46,7 @@ class Plugins {
 		if (Cache::contains("plugins", "installed_plugin_names")) {
 			return Cache::get("plugins", "installed_plugin_names");
 		} else {
-			$rows = Database::getInstance()->listRows("SELECT * FROM `plugins` WHERE `installed` = '1'; ");
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}plugins` WHERE `installed` = '1'; ");
 
 			$array = array();
 
