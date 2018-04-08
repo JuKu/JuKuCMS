@@ -107,7 +107,7 @@ class Plugin {
 	}
 
 	public function getInstalledVersion () : string {
-		return $this->row['version'];
+		return (!empty($this->row) ? $this->row['version'] : "n/a");
 	}
 
 	public function getHomepage () : string {
