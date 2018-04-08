@@ -48,6 +48,8 @@ class PluginInstaller {
 
 		$missing_plugins = array();
 
+		$installed_plugins = Plugins::listInstalledPlugins();
+
 		//iterate through all requirements
 		foreach ($require_array as $requirement=>$version) {
 			if ($requirement === "php") {
@@ -75,23 +77,32 @@ class PluginInstaller {
 				//check version
 				if (!$this->checkVersion($version, $current_version)) {
 					$missing_plugins[] = $requirement;
+				}
+			} else if (PHPUtils::startsWith("apache-")) {
+				//check for apache module, but no version check is supported
+
+				$module = str_replace("apache-", "", $requirement);
+
+				if (!function_exists('apache_get_modules')) {
+					$missing_plugins[] = "apache";
 
 					continue;
 				}
+
+				if (!in_array($module, apache_get_modules())) {
+					$missing_plugins[] = $requirement;
+				}
 			} else if (PHPUtils::startsWith($requirement, "package-")) {
-				//TODO: check if package is installed
+				//check if package is installed
 				$package = str_replace("package-", "", $requirement);
 
 				//packages doesnt supports specific version
 
 				if (!isset($package_list[$package])) {
 					$missing_plugins[] = $requirement;
-
-					continue;
 				}
 			} else if ($requirement === "core") {
-				//TODO: check core version
-
+				//check core version
 				if ($version === "*") {
 					//we dont have to check version
 				} else {
