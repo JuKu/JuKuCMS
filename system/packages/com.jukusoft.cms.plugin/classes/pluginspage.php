@@ -77,6 +77,9 @@ class PluginsPage extends PageType {
 			);
 		}
 
+		var_dump($plugin_list);
+		exit;
+
 		$template->assign("plugins", $plugin_list);
 
 		return $template->getCode();
