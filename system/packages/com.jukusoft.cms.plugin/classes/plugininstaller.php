@@ -78,7 +78,7 @@ class PluginInstaller {
 				if (!$this->checkVersion($version, $current_version)) {
 					$missing_plugins[] = $requirement;
 				}
-			} else if (PHPUtils::startsWith("apache-")) {
+			} else if (PHPUtils::startsWith($requirement, "apache-")) {
 				//check for apache module, but no version check is supported
 
 				$module = str_replace("apache-", "", $requirement);
