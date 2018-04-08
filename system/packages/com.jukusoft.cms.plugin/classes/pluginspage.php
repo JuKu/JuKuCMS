@@ -72,6 +72,9 @@ class PluginsPage extends PageType {
 		foreach ($plugins as $plugin) {
 			$plugin = PLugin::castPlugin($plugin);
 
+			//create new instance of PluginInstaller to check plugin compatibility
+			$installer = new PluginInstaller($plugin);
+
 			$plugin_list[] = array(
 				'name' => $plugin->getName(),
 				'title' => $plugin->getTitle(),
@@ -88,6 +91,7 @@ class PluginsPage extends PageType {
 				'source' => $plugin->getSourceLink(),
 				'support_mail' => $plugin->getSupportMail(),
 				'support_links' => $plugin->listSupportLinks(),
+				'compatible' => $installer->checkRequirements(true),
 				'installed' => $plugin->isInstalled(),
 				'activated' => $plugin->isActivated()
 			);

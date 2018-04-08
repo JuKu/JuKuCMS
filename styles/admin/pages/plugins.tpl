@@ -101,7 +101,16 @@
                                         {if $dwoo.foreach.supportlinks.index > 0} | {/if}<a href="{$link.href}" target="_blank">{$link.title}</a>
                                     {/foreach}
                                 </td>
-                                <td><span style="color: #D01F3C; ">{$plugin.version}</span></td>
+                                <td>
+                                    <span style="color: #D01F3C; ">{$plugin.version}</span><br />
+
+                                    <!-- check plugin compatibility -->
+                                    {if $plugin.compatible === true}
+                                        <span class="label label-success">compatible</span>
+                                    {else}
+                                        <span class="label label-danger">incompatible</span>
+                                    {/if}
+                                </td>
                                 <td>{$plugin.license}</td>
                                 <td>&nbsp;</td>
                             </tr>

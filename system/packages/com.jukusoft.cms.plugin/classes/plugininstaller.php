@@ -39,7 +39,7 @@ class PluginInstaller {
 	 *
 	 * @return mixed true, if all required plugins are available, or an array with missing
 	 */
-	public function checkRequirements () {
+	public function checkRequirements (bool $dontCheckPlugins = false) {
 		//get require
 		$require_array = $this->plugin->getRequiredPlugins();
 
@@ -58,7 +58,7 @@ class PluginInstaller {
 				//TODO: check if package is installed
 				$package = str_replace("package-", "", $requirement);
 
-				//packages doesnt supports version
+				//packages doesnt supports specific version
 
 				if (!isset($package_list[$package])) {
 					$missing_plugins[] = $requirement;
@@ -66,6 +66,10 @@ class PluginInstaller {
 			} else if ($requirement === "core") {
 				//TODO: check core version
 			} else {
+				if (!$dontCheckPlugins) {
+					continue;
+				}
+
 				//TODO: check installed plugins
 			}
 		}
