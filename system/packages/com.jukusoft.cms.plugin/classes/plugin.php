@@ -127,7 +127,7 @@ class Plugin {
 	}
 
 	public function isActivated () : bool {
-		return $this->row['activated'] == 1;
+		return (!empty($this->row) ? $this->row['activated'] == 1 : false);
 	}
 
 	public static function castPlugin (Plugin $plugin) : Plugin {
