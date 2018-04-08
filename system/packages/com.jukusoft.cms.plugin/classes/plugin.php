@@ -71,6 +71,10 @@ class Plugin {
 		return $this->name;
 	}
 
+	public function getPath () : string {
+		return PLUGIN_PATH . $this->name . "/";
+	}
+
 	public function getType () : string {
 		$type = $this->json_data['type'];
 
@@ -195,6 +199,14 @@ class Plugin {
 
 	public function listCategories () : array {
 		return $this->json_data['categories'];
+	}
+
+	public function hasInstallJson () : bool {
+		return isset($this->json_data['install']);
+	}
+
+	public function getInstallJsonFile () : string {
+		return $this->json_data['install'];
 	}
 
 	public function isInstalled () : bool {

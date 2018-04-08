@@ -34,6 +34,10 @@ class PluginInstaller {
 		$this->plugin = $plugin;
 	}
 
+	public function checkSystemRequirements () : bool {
+		//
+	}
+
 }
 
 ?>
