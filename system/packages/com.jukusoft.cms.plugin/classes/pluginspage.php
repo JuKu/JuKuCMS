@@ -35,14 +35,49 @@ class PluginsPage extends PageType {
 
 		$array = array();
 
+		$lang_token = substr(Registry::singleton()->getSetting("lang_token"), 0, 2);
+
 		foreach ($installed_plugins as $plugin) {
+			$plugin = PLugin::castPlugin($plugin);
+
 			$array[] = array(
-				'name' => $plugin->get
+				'name' => $plugin->getName(),
+				'title' => $plugin->getTitle(),
+				'description' => $plugin->getDescription($lang_token),
+				'version' => $plugin->getVersion(),
+				'installed_version' => $plugin->getInstalledVersion(),
+				'authors' => $plugin->listAuthors(),
+				'license' => $plugin->getLicense(),
+				'installed' => $plugin->isInstalled(),
+				'activated' => $plugin->isActivated()
 			);
 		}
 
 		//assign list with installed plugins
 		$template->assign("installed_plugins", $array);
+
+		//get list with all uninstalled plugins
+		$plugins = Plugins::listUninstalledPlugins();
+
+		$plugin_list = array();
+
+		foreach ($plugins as $plugin) {
+			$plugin = PLugin::castPlugin($plugin);
+
+			$plugin_list[] = array(
+				'name' => $plugin->getName(),
+				'title' => $plugin->getTitle(),
+				'description' => $plugin->getDescription($lang_token),
+				'version' => $plugin->getVersion(),
+				'installed_version' => $plugin->getInstalledVersion(),
+				'authors' => $plugin->listAuthors(),
+				'license' => $plugin->getLicense(),
+				'installed' => $plugin->isInstalled(),
+				'activated' => $plugin->isActivated()
+			);
+		}
+
+		$template->assign("plugins", $plugin_list);
 
 		return $template->getCode();
 	}

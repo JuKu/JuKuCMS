@@ -85,15 +85,53 @@ class Plugin {
 		return htmlentities($this->json_data['title']);
 	}
 
-	public function getDescription () : string {
+	public function getDescription (string $lang_token = "") : string {
 		$desc = $this->json_data['description'];
 
 		if (is_array($desc)) {
 			//several languages are supported
+			if (empty($lang_token) || !isset($desc[$lang_token])) {
+				//return english description
+				return htmlentities($desc['en']);
+			} else {
+				return htmlentities($desc[$lang_token]);
+			}
 		} else {
 			//use default language
 			return htmlentities($desc);
 		}
+	}
+
+	public function getVersion () : string {
+		return $this->json_data['version'];
+	}
+
+	public function getInstalledVersion () : string {
+		return $this->row['version'];
+	}
+
+	public function getHomepage () : string {
+		return (isset($this->json_data['homepage']) ? $this->json_data['homepage'] : "");
+	}
+
+	public function getLicense () : string {
+		return $this->json_data['license'];
+	}
+
+	public function listAuthors () : array {
+		return $this->json_data['authors'];
+	}
+
+	public function isInstalled () : bool {
+		return (!empty($this->row) ? $this->row['installed'] == 1 : false);
+	}
+
+	public function isActivated () : bool {
+		return $this->row['activated'] == 1;
+	}
+
+	public static function castPlugin (Plugin $plugin) : Plugin {
+		return $plugin;
 	}
 
 }

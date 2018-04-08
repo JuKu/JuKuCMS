@@ -13,6 +13,7 @@
                             <th>{lang}Plugin{/lang}</th>
                             <th>{lang}Title / Description{/lang}</th>
                             <th>{lang}Installed Version{/lang}</th>
+                            <th>{lang}License{/lang}</th>
                             <th>{lang}Actions{/lang}</th>
                         </tr>
                     </thead>
@@ -21,7 +22,8 @@
                             <tr>
                                 <td>{$plugin.name}</td>
                                 <td>${$plugin.title}<br /><small>{$plugin.description}</small></td>
-                                <td>{$plugin.version}</td>
+                                <td>{$plugin.installed_version}</td>
+                                <td>{$plugin.license}</td>
                                 <td>&nbsp;</td>
                             </tr>
                         {/foreach}
@@ -31,6 +33,7 @@
                             <th>{lang}Plugin{/lang}</th>
                             <th>{lang}Title / Description{/lang}</th>
                             <th>{lang}Installed Version{/lang}</th>
+                            <th>{lang}License{/lang}</th>
                             <th>{lang}Actions{/lang}</th>
                         </tr>
                     </tfoot>
@@ -55,29 +58,33 @@
             <div class="box-body">
                 <table id="plugintable" class="table table-bordered table-hover">
                     <thead>
-                    <tr>
-                        {foreach $new_plugins_header field}
-                            <th>{$field}</th>
-                        {/foreach}
-                    </tr>
+                        <tr>
+                            <th>{lang}Plugin{/lang}</th>
+                            <th>{lang}Title / Description{/lang}</th>
+                            <th>{lang}Installed Version{/lang}</th>
+                            <th>{lang}License{/lang}</th>
+                            <th>{lang}Actions{/lang}</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                    </tr>
+                        {foreach $plugins plugin}
+                            <tr>
+                                <td>{$plugin.name}</td>
+                                <td>${$plugin.title}<br /><small>{$plugin.description}</small></td>
+                                <td>{$plugin.installed_version}</td>
+                                <td>{$plugin.license}</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        {/foreach}
                     </tbody>
                     <tfoot>
-                    <tr>
-                        {foreach $new_plugins_header field}
-                            <th>{$field}</th>
-                        {/foreach}
-                    </tr>
+                        <tr>
+                            <th>{lang}Plugin{/lang}</th>
+                            <th>{lang}Title / Description{/lang}</th>
+                            <th>{lang}Installed Version{/lang}</th>
+                            <th>{lang}License{/lang}</th>
+                            <th>{lang}Actions{/lang}</th>
+                        </tr>
                     </tfoot>
                 </table>
             </div>

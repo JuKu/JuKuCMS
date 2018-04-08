@@ -87,6 +87,44 @@ class Plugins {
 		}
 	}
 
+	public static function listUninstalledPlugins () : array {
+		$installed_plugin_names = self::listInstalledPluginNames();
+
+		//create new empty list
+		$list = array();
+
+		$dir = new DirectoryIterator(PLUGIN_PATH);
+
+		foreach ($dir as $fileInfo) {
+			if ($fileInfo->isDot()) {
+				//dont parse directory "."
+				continue;
+			}
+
+			if (!$fileInfo->isDir()) {
+				//we only search for directories
+				continue;
+			}
+
+			//get directory name
+			$name = $fileInfo->getFilename();
+
+			//check, if plugin is already installed
+			if (in_array($name, $installed_plugin_names)) {
+				continue;
+			}
+
+			//create and load new plugin
+			$plugin = new Plugin($name);
+			$plugin->load();
+
+			//add plugin to list
+			$list[] = $plugin;
+		}
+
+		return $list;
+	}
+
 }
 
 ?>
