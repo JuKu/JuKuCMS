@@ -35,6 +35,8 @@ class Plugin {
 
 	protected $json_data = null;
 
+	protected static $allowed_types = array("library", "metaplugin", "project");
+
 	/**
 	 * default constructor
 	 *
@@ -67,6 +69,31 @@ class Plugin {
 	 */
 	public function getName () : string {
 		return $this->name;
+	}
+
+	public function getType () : string {
+		$type = $this->json_data['type'];
+
+		if (!in_array($type, self::$allowed_types)) {
+			throw new IllegalStateException("plugin type '" . $type . "' (plugin '" . $this->name . "') is not supported!");
+		}
+
+		return $type;
+	}
+
+	public function getTitle () : string {
+		return htmlentities($this->json_data['title']);
+	}
+
+	public function getDescription () : string {
+		$desc = $this->json_data['description'];
+
+		if (is_array($desc)) {
+			//several languages are supported
+		} else {
+			//use default language
+			return htmlentities($desc);
+		}
 	}
 
 }

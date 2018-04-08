@@ -227,7 +227,9 @@ if ($page_type->showHTMLComments()) {
 
 	if (DEBUG_MODE) {
 		echo "<!-- userID: " . User::current()->getID() . ", username: " . User::current()->getUsername() . " -->\n";
-		echo "<!-- " . Database::getInstance()->countQueries() . " sql queries executed -->";
+		echo "<!-- " . Database::getInstance()->countQueries() . " sql queries executed -->\n";
+		echo "<!-- pref_lang: " . $registry->getSetting("pref_lang") . " -->\n";
+		echo "<!-- lang_token: " . $registry->getSetting("lang_token") . " -->\n";
 
 		if (DEBUG_SQL_QUERIES) {
 			foreach (Database::getInstance()->listQueryHistory() as $query_array) {
