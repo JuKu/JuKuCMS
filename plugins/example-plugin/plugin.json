@@ -34,6 +34,7 @@
     "require": {
         "php": ">=7.0.8",
         "package-com.jukusoft.cms.settings": "*",
-        "ext-imagick": "*"
+        "ext-imagick": "*",
+        "ext-test": "*"
     }
 }
