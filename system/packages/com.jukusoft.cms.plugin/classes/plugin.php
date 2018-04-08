@@ -122,6 +122,81 @@ class Plugin {
 		return $this->json_data['authors'];
 	}
 
+	public function listSupportArray () : array {
+		return $this->json_data['support'];
+	}
+
+	public function hasSourceLink () : bool {
+		return isset($this->json_data['support']) && isset($this->json_data['support']['source']);
+	}
+
+	public function getSourceLink () : string {
+		if ($this->hasSourceLink()) {
+			return $this->json_data['support']['source'];
+		} else {
+			return "";
+		}
+	}
+
+	public function hasIssuesLink () : bool {
+		return isset($this->json_data['support']) && isset($this->json_data['support']['issues']);
+	}
+
+	public function getIssuesLink () : string {
+		if ($this->hasIssuesLink()) {
+			return $this->json_data['support']['issues'];
+		} else {
+			return "";
+		}
+	}
+
+	public function hasSupportMail () : bool {
+		return isset($this->json_data['support']) && isset($this->json_data['support']['email']);
+	}
+
+	public function getSupportMail () : string {
+		if ($this->hasSupportMail()) {
+			return $this->json_data['support']['email'];
+		} else {
+			return "";
+		}
+	}
+
+	public function listSupportLinks () : array {
+		$array = array();
+
+		if ($this->hasIssuesLink()) {
+			$array[] = array(
+				'title' => Translator::translate("Issues"),
+				'href' => $this->getIssuesLink()
+			);
+		}
+
+		if ($this->hasSourceLink()) {
+			$array[] = array(
+				'title' => Translator::translate("Source"),
+				'href' => $this->getSourceLink()
+			);
+		}
+
+		if ($this->hasSupportMail()) {
+			$array[] = array(
+				'title' => Translator::translate("Mail"),
+				'href' => "mailto:" . $this->getSupportMail(),
+			);
+		}
+
+		return $array;
+	}
+
+	public function listKeywords () : array {
+		return $this->json_data['keywords'];
+	}
+
+	public function listCategories () : array {
+		return $this->json_data['categories'];
+	}
+
 	public function isInstalled () : bool {
 		return (!empty($this->row) ? $this->row['installed'] == 1 : false);
 	}
