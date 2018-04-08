@@ -27,11 +27,15 @@
 
 class PluginInstaller_Plugin {
 
-	public function install (Plugin $plugin) : bool {
+	public function install (Plugin $plugin, array $install_json) : bool {
 		//
 	}
 
-	public function upgrade (Plugin $plugin) : bool {
+	public function uninstall (Plugin $plugin, array $install_json) : bool {
+		//
+	}
+
+	public function upgrade (Plugin $plugin, array $install_json) : bool {
 		//
 	}
 

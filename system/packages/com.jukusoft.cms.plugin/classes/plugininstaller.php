@@ -199,7 +199,27 @@ class PluginInstaller {
 			//get content
 			$install_json = json_decode(file_get_contents($this->plugin->getPath() . "install.json"), true);
 
-			//TODO: add code here
+			$installer_plugins = self::listInstallerPlugins();
+
+			foreach ($installer_plugins as $i_plugin) {
+				//cast plugin
+				$i_plugin = PluginInstaller_Plugin::cast($i_plugin);
+
+				//execute installer plugin
+				$i_plugin->install($this->plugin, $installer_plugins);
+			}
+
+			if (isset($install_json['install_script'])) {
+				$script_filename = $install_json['install_script'];
+				$script_path = $this->plugin->getPath() . $script_filename;
+
+				//execute script, if exists
+				if (file_exists($script_path)) {
+					require($script_path);
+				} else {
+					throw new IllegalStateException("a install script '" . $script_filename . "' is set for plugin '" . $this->plugin->getName() . "', but file doesnt exists (path: " . $script_path . ").");
+				}
+			}
 		}
 
 		//set plugin as installed
@@ -217,11 +237,35 @@ class PluginInstaller {
 			//get content
 			$install_json = json_decode(file_get_contents($this->plugin->getPath() . "install.json"), true);
 
-			//TODO: add code here
+			$installer_plugins = self::listInstallerPlugins();
+
+			foreach ($installer_plugins as $i_plugin) {
+				//cast plugin
+				$i_plugin = PluginInstaller_Plugin::cast($i_plugin);
+
+				//execute installer plugin
+				$i_plugin->uninstall($this->plugin, $installer_plugins);
+			}
+
+			if (isset($install_json['uninstall_script'])) {
+				$script_filename = $install_json['uninstall_script'];
+				$script_path = $this->plugin->getPath() . $script_filename;
+
+				//execute script, if exists
+				if (file_exists($script_path)) {
+					require($script_path);
+				} else {
+					throw new IllegalStateException("a uninstall script '" . $script_filename . "' is set for plugin '" . $this->plugin->getName() . "', but file doesnt exists (path: " . $script_path . ").");
+				}
+			}
 		}
 
 		//set plugin as uninstalled
 		$this->setUnInstalled();
+	}
+
+	public function upgrade () {
+		throw new Exception("UnuspportedOperationException: method PluginInstaller::upgrade() isnt implemented yet.");
 	}
 
 	public function setInstalled () {
