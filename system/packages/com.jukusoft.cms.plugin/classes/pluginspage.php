@@ -92,6 +92,7 @@ class PluginsPage extends PageType {
 				'support_mail' => $plugin->getSupportMail(),
 				'support_links' => $plugin->listSupportLinks(),
 				'compatible' => $installer->checkRequirements(true),
+				'uptodate' => true,//TODO: check, if plugin is newest version
 				'installed' => $plugin->isInstalled(),
 				'activated' => $plugin->isActivated()
 			);

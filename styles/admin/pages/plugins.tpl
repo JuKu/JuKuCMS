@@ -85,7 +85,7 @@
                         {foreach $plugins plugin}
                             <tr>
                                 <td>
-                                    {$plugin.name}<br />
+                                    {$plugin.name}<br /><br />
 
                                     <!-- check plugin compatibility -->
                                     {if $plugin.compatible === true}
@@ -111,7 +111,7 @@
                                     {/foreach}
                                 </td>
                                 <td>
-                                    {if $plugin.compatible === true}
+                                    {if $plugin.uptodate === true}
                                         <span style="color: #008C00; "><b>{$plugin.version}</b></span><br />
                                     {else}
                                         <span style="color: #D01F3C; "><b>{$plugin.version}</b></span><br />
