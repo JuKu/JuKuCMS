@@ -118,6 +118,14 @@
                                     {else}
                                         <span style="color: #D01F3C; "><b>{$plugin.version}</b></span><br />
                                     {/if}
+
+                                    {if $plugin.alpha}
+                                        <span class="label label-danger">{lang}alpha{/lang}</span>
+                                    {elseif $plugin.beta}
+                                        <span class="label label-warning">{lang}beta{/lang}</span>
+                                    {else}
+                                        <span class="label label-info">{lang}release{/lang}</span>
+                                    {/if}
                                 </td>
                                 <td>{$plugin.license}</td>
                                 <td>&nbsp;</td>
