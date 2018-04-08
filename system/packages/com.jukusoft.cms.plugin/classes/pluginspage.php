@@ -70,6 +70,7 @@ class PluginsPage extends PageType {
 				'description' => $plugin->getDescription($lang_token),
 				'version' => $plugin->getVersion(),
 				'installed_version' => $plugin->getInstalledVersion(),
+				'homepage' => $plugin->getHomepage(),
 				'authors' => $plugin->listAuthors(),
 				'license' => $plugin->getLicense(),
 				'installed' => $plugin->isInstalled(),
