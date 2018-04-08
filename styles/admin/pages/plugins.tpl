@@ -84,7 +84,16 @@
                     <tbody>
                         {foreach $plugins plugin}
                             <tr>
-                                <td>{$plugin.name}</td>
+                                <td>
+                                    {$plugin.name}<br />
+
+                                    <!-- check plugin compatibility -->
+                                    {if $plugin.compatible === true}
+                                        <span class="label label-success">compatible</span>
+                                    {else}
+                                        <span class="label label-danger">incompatible</span>
+                                    {/if}
+                                </td>
                                 <td>
                                     <strong style="color: /*#4096EE*/#3F4C6B; ">{$plugin.title}</strong><br /><small>{$plugin.description}</small><br /><br />
 
@@ -103,13 +112,6 @@
                                 </td>
                                 <td>
                                     <span style="color: #D01F3C; ">{$plugin.version}</span><br />
-
-                                    <!-- check plugin compatibility -->
-                                    {if $plugin.compatible === true}
-                                        <span class="label label-success">compatible</span>
-                                    {else}
-                                        <span class="label label-danger">incompatible</span>
-                                    {/if}
                                 </td>
                                 <td>{$plugin.license}</td>
                                 <td>&nbsp;</td>
