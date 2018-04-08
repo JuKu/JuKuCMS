@@ -70,7 +70,9 @@
                         {foreach $plugins plugin}
                             <tr>
                                 <td>{$plugin.name}</td>
-                                <td>{$plugin.title}<br /><small>{$plugin.description}</small></td>
+                                <td>
+                                    <strong>{$plugin.title}</strong><br /><small>{$plugin.description}</small>
+                                </td>
                                 <td>{$plugin.version}</td>
                                 <td>{$plugin.license}</td>
                                 <td>&nbsp;</td>
