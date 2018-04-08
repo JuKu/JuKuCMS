@@ -169,7 +169,9 @@ class PluginInstaller {
 			$version = substr($expected_version, $operator_length);
 
 			if (!empty($operator_length)) {
-				return version_compare($current_version, $expected_version, $operator) === TRUE;
+				echo "check version: " . $current_version . " " . $operator . " " . $version;
+
+				return version_compare($current_version, $version, $operator) === TRUE;
 			} else {
 				return version_compare($current_version, $expected_version) === 0;
 			}
