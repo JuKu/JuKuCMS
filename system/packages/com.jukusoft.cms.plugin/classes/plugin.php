@@ -209,6 +209,10 @@ class Plugin {
 		return $this->json_data['install'];
 	}
 
+	public function getRequiredPlugins () : array {
+		return $this->json_data['require'];
+	}
+
 	public function isInstalled () : bool {
 		return (!empty($this->row) ? $this->row['installed'] == 1 : false);
 	}

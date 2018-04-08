@@ -32,6 +32,8 @@
         "issues": "https://github.com/JuKu/JuKuCMS/issues"
     },
     "require": {
-        "php": ">=7.0.8"
+        "php": ">=7.0.8",
+        "package-com.jukusoft.cms.settings": "*",
+        "ext-imagick": "*"
     }
 }
