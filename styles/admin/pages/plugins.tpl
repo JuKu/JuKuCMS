@@ -64,6 +64,7 @@
 <!-- /.row -->
 {/if}
 
+{if empty($plugins) == false}
 <!-- not installed plugins -->
 <div class="row">
     <div class="col-xs-12">
@@ -158,3 +159,4 @@
     <!-- /.col -->
 </div>
 <!-- /.row -->
+{/if}
