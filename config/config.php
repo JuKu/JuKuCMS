@@ -9,6 +9,11 @@ define('ACTIVATE_BENCHMARK', true);
 
 define('OPTION_PRELOAD_CLASSES', false);
 
+/**
+ * debug mode
+ *
+ * Dont use this in production!
+ */
 define('DEBUG_MODE', true);
 
 /**
