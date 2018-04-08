@@ -135,10 +135,17 @@ class PluginInstaller {
 
 	protected function checkVersion (string $expected_version, $current_version) : bool {
 		//remove alpha and beta labels
-		$expected_version = str_replace("-alpha", "", $expected_version);
+		/*$expected_version = str_replace("-alpha", "", $expected_version);
 		$expected_version = str_replace("-beta", "", $expected_version);
 		$current_version = str_replace("-alpha", "", $current_version);
-		$current_version = str_replace("-beta", "", $current_version);
+		$current_version = str_replace("-beta", "", $current_version);*/
+
+		//validate version numbers, remove suffixes "-alpha", "-beta" and such like -1~dotdeb+8.1 (PHP version 7.0.29-1~dotdeb+8.1)
+		$array1 = explode("-", $expected_version);
+		$expected_version = $array1[0];
+
+		$array2 = explode("-", $current_version);
+		$current_version = $array2[0];
 
 		//check version
 		if (is_numeric($expected_version)) {
