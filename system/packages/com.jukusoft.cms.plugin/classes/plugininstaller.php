@@ -65,6 +65,19 @@ class PluginInstaller {
 				}
 			} else if ($requirement === "core") {
 				//TODO: check core version
+
+				if ($version === "*") {
+					//we dont have to check version
+				} else {
+					//get current version
+					$array = explode(" ", Version::current()->getVersion());
+					$current_core_version = $array[0];
+
+					//check version
+					if (!$this->checkVersion($version, $current_core_version)) {
+						$missing_plugins[] = "core";
+					}
+				}
 			} else {
 				if (!$dontCheckPlugins) {
 					continue;
@@ -78,6 +91,43 @@ class PluginInstaller {
 			return true;
 		} else {
 			return $missing_plugins;
+		}
+	}
+
+	protected function checkVersion (string $expected_version, $current_version) : bool {
+		//check version
+		if (is_numeric($expected_version)) {
+			//a specific version is required
+			if ($current_version !== $expected_version) {
+				return false;
+			} else {
+				return true;
+			}
+		} else if ($expected_version === "*") {
+			//every version is allowed
+			return true;
+		} else {
+			//parse version string
+
+			$operator_length = 0;
+
+			for ($i = 0; $i < strlen($expected_version); $i++) {
+				if (!is_numeric($expected_version[$i])) {
+					$operator_length++;
+				} else {
+					break;
+				}
+			}
+
+			//get operator and version
+			$operator = substr($expected_version, 0, $operator_length);
+			$version = substr($expected_version, $operator_length);
+
+			if (!empty($operator_length)) {
+				return version_compare($current_version, $expected_version, $operator);
+			} else {
+				return version_compare($current_version, $expected_version);
+			}
 		}
 	}
 
