@@ -19,7 +19,10 @@
                     <tbody>
                         {foreach $installed_plugins plugin}
                             <tr>
-
+                                <td>{$plugin.name}</td>
+                                <td>${plugin.title}<br /><small>{$plugin.description}</small></td>
+                                <td>{$plugin.version}</td>
+                                <td>&nbsp;</td>
                             </tr>
                         {/foreach}
                     </tbody>
@@ -50,7 +53,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="plugintable" class="table table-bordered table-hover">
                     <thead>
                     <tr>
                         {foreach $new_plugins_header field}
