@@ -111,7 +111,11 @@
                                     {/foreach}
                                 </td>
                                 <td>
-                                    <span style="color: #D01F3C; ">{$plugin.version}</span><br />
+                                    {if $plugin.compatible === true}
+                                        <span style="color: #008C00; "><b>{$plugin.version}</b></span><br />
+                                    {else}
+                                        <span style="color: #D01F3C; "><b>{$plugin.version}</b></span><br />
+                                    {/if}
                                 </td>
                                 <td>{$plugin.license}</td>
                                 <td>&nbsp;</td>
