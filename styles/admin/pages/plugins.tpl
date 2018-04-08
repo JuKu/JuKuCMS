@@ -133,7 +133,7 @@
                                     <!-- check plugin compatibility -->
                                     {if $plugin.compatible === true}
                                         <!-- link to install plugin -->
-                                        <a href="{$BASE_URL}/admin/plugin_installer?plugin={$plugin.name}">{lang}install{/lang}</a>
+                                        <a href="{$BASE_URL}/admin/plugin_installer?plugin={$plugin.name}" class="btn btn-success">{lang}install{/lang}</a>
                                     {else}
                                         <span class="label label-danger">incompatible</span>
                                     {/if}
