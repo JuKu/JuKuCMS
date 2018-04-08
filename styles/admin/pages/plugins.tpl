@@ -85,7 +85,7 @@
                         {foreach $plugins plugin}
                             <tr>
                                 <td>
-                                    {$plugin.name}<br /><br />
+                                    {$plugin.name}<br />
 
                                     <!-- check plugin compatibility -->
                                     {if $plugin.compatible === true}
