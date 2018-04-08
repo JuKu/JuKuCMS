@@ -1,3 +1,4 @@
+<!-- installed plugins -->
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
@@ -9,29 +10,25 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            {foreach $table_header_fields field}
-                                <th>{$field}</th>
-                            {/foreach}
+                            <th>{lang}Plugin{/lang}</th>
+                            <th>{lang}Title / Description{/lang}</th>
+                            <th>{lang}Installed Version{/lang}</th>
+                            <th>{lang}Actions{/lang}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Trident</td>
-                            <td>Internet
-                                Explorer 4.0
-                            </td>
-                            <td>Win 95+</td>
-                            <td> 4</td>
-                            <td>X</td>
-                        </tr>
+                        {foreach $installed_plugins plugin}
+                            <tr>
+
+                            </tr>
+                        {/foreach}
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Rendering engine</th>
-                            <th>Browser</th>
-                            <th>Platform(s)</th>
-                            <th>Engine version</th>
-                            <th>CSS grade</th>
+                            <th>{lang}Plugin{/lang}</th>
+                            <th>{lang}Title / Description{/lang}</th>
+                            <th>{lang}Installed Version{/lang}</th>
+                            <th>{lang}Actions{/lang}</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -44,9 +41,47 @@
 </div>
 <!-- /.row -->
 
-<table border="0">
-
-    {foreach $plugins plugin}
-
-    {/foreach}
-</table>
+<!-- not installed plugins -->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{lang}Not installed Plugins{/lang}</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        {foreach $new_plugins_header field}
+                            <th>{$field}</th>
+                        {/foreach}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Trident</td>
+                        <td>Internet
+                            Explorer 4.0
+                        </td>
+                        <td>Win 95+</td>
+                        <td> 4</td>
+                        <td>X</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        {foreach $new_plugins_header field}
+                            <th>{$field}</th>
+                        {/foreach}
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
