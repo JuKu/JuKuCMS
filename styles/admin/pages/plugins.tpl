@@ -71,7 +71,7 @@
                             <tr>
                                 <td>{$plugin.name}</td>
                                 <td>
-                                    <strong>{$plugin.title}</strong><br /><small>{$plugin.description}</small>
+                                    <strong style="color: #4096EE; ">{$plugin.title}</strong><br /><small>{$plugin.description}</small>
                                 </td>
                                 <td>{$plugin.version}</td>
                                 <td>{$plugin.license}</td>
