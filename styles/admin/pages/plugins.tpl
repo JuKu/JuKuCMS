@@ -80,7 +80,7 @@
                                     <!-- support information -->
                                     {foreach $plugin.support_links key link name='supportlinks'}
                                         {if $dwoo.foreach.supportlinks.index == 0}
-                                            <span style="color; #008C00">Support: </span>
+                                            <span style="color: #008C00; ">Support: </span>
                                         {/if}
 
                                         {if $dwoo.foreach.supportlinks.index > 0} | {/if}<a href="{$link.href}" target="_blank">{$link.title}</a>
