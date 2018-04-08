@@ -77,7 +77,7 @@
                                         {if $dwoo.foreach.plugins.index > 0}, {/if}<a href="{$author.homepage}" target="_blank" title="{$author.role}">{$author.name}</a>
                                     {/foreach} | <a href="{$plugin.homepage}" target="_blank">Visit plugin homepage</a>
                                 </td>
-                                <td>{$plugin.version}</td>
+                                <td><span style="color: #D01F3C; ">{$plugin.version}</span></td>
                                 <td>{$plugin.license}</td>
                                 <td>&nbsp;</td>
                             </tr>
