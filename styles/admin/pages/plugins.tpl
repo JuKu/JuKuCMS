@@ -82,8 +82,8 @@
                                         {if $dwoo.foreach.supportlinks.index == 0}
                                             <span style="color; #008C00">Support: </span>
                                         {/if}
-                                        
-                                        {if $dwoo.foreach.supportlinks.index > 0} | {/if}<a href="{$link.href}" target="_blank">{$link.name}</a>
+
+                                        {if $dwoo.foreach.supportlinks.index > 0} | {/if}<a href="{$link.href}" target="_blank">{$link.title}</a>
                                     {/foreach}
                                 </td>
                                 <td><span style="color: #D01F3C; ">{$plugin.version}</span></td>
