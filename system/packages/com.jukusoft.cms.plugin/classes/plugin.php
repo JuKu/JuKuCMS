@@ -202,11 +202,11 @@ class Plugin {
 	}
 
 	public function hasInstallJson () : bool {
-		return isset($this->json_data['install']);
+		return isset($this->json_data['installation']) && $this->json_data['installation'] == true;
 	}
 
 	public function getInstallJsonFile () : string {
-		return $this->json_data['install'];
+		return "install.json";
 	}
 
 	public function getRequiredPlugins () : array {

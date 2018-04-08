@@ -125,6 +125,10 @@ class Plugins {
 		return $list;
 	}
 
+	public static function clearCache () {
+		Cache::clear("plugins");
+	}
+
 }
 
 ?>

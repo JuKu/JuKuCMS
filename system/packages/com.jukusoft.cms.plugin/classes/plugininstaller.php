@@ -174,6 +174,72 @@ class PluginInstaller {
 		}
 	}
 
+	public function install () : bool {
+		//first, check compatibility
+		if (!$this->checkRequirements()) {
+			return false;
+		}
+
+		//check, if install.json is used
+		if ($this->plugin->hasInstallJson()) {
+			//check, if install.json exists
+			if (!file_exists($this->plugin->getPath() . "install.json")) {
+				throw new IllegalStateException("plugin '" . $this->plugin->getName() . "' requires a install.json, but plugin directory doesnt contains a install.json file.");
+			}
+
+			//get content
+			$install_json = json_decode(file_get_contents($this->plugin->getPath() . "install.json"), true);
+
+			//TODO: add code here
+		}
+
+		//set plugin as installed
+		$this->setInstalled();
+	}
+
+	public function uninstall () : bool {
+		//check, if install.json is used
+		if ($this->plugin->hasInstallJson()) {
+			//check, if install.json exists
+			if (!file_exists($this->plugin->getPath() . "install.json")) {
+				throw new IllegalStateException("plugin '" . $this->plugin->getName() . "' requires a install.json, but plugin directory doesnt contains a install.json file.");
+			}
+
+			//get content
+			$install_json = json_decode(file_get_contents($this->plugin->getPath() . "install.json"), true);
+
+			//TODO: add code here
+		}
+
+		//set plugin as uninstalled
+		$this->setUnInstalled();
+	}
+
+	public function setInstalled () {
+		Database::getInstance()->execute("INSERT INTO `{praefix}plugins` (
+			`name`, `version`, `installed`, `activated`
+		) VALUES (
+			:name, :version, :installed, :activated
+		) ON DUPLICATE KEY UPDATE `installed` = '1', `version` = :version; ", array(
+			'name' => $this->plugin->getName(),
+			'version' => $this->plugin->getVersion(),
+			'installed' => 1,
+			'activated' => 0
+		));
+
+		//clear cache
+		Plugins::clearCache();
+	}
+
+	public function setUnInstalled () {
+		Database::getInstance()->execute("DELETE FROM `{praefix}plugins` WHERE `name` = :name; ", array(
+			'name' => $this->plugin->getName()
+		));
+
+		//clear cache
+		Plugins::clearCache();
+	}
+
 }
 
 ?>
