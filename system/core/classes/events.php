@@ -106,6 +106,25 @@ class Events {
 		}
 	}
 
+	public static function addEventClass (string $event, string $class_name, string $method, string $plugin_name) {
+		Database::getInstance()->execute("INSERT INTO `{praefix}events` (
+			`id`, `name`, `type`, `file`, `class_name`, `class_method`, `created_from`, `activated`
+		) VALUES (
+			NULL, :event, 'CLASS_STATIC_METHOD', '', :class_name, :method, :created_from, '1'
+		) ON DUPLICATE KEY UPDATE `activated` = '1';", array(
+			'event' => $event,
+			'class_name' => $class_name,
+			'method' => $method,
+			'created_from' => "plugin_" . $plugin_name
+		));
+	}
+
+	public static function removePluginEvents (string $plugin_name) {
+		Database::getInstance()->execute("DELETE FROM `{praefix}events` WHERE `created_from` = :created_from; ", array(
+			'created_from' => "plugin_" . $plugin_name
+		));
+	}
+
 }
 
 ?>

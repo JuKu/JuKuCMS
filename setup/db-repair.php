@@ -1280,6 +1280,9 @@ Robots::addRule("DISALLOW", "/imprint");
 echo "Create default administrator user if absent...<br />";
 User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrator", 1);
 
+echo "Add PluginInstaller plugins...<br />";
+PluginInstaller::addInstallerPluginIfAbsent("EventInstaller", "system/packages/com.jukusoft.cms.plugin/extensions/eventinstaller.php");
+
 echo "Clear gettext cache<br />";
 PHPUtils::clearGetTextCache();
 

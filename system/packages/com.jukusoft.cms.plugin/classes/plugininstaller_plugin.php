@@ -25,19 +25,13 @@
  * Time: 17:50
  */
 
-class PluginInstaller_Plugin {
+abstract class PluginInstaller_Plugin {
 
-	public function install (Plugin $plugin, array $install_json) : bool {
-		//
-	}
+	public abstract function install (Plugin $plugin, array $install_json) : bool;
 
-	public function uninstall (Plugin $plugin, array $install_json) : bool {
-		//
-	}
+	public abstract function uninstall (Plugin $plugin, array $install_json) : bool;
 
-	public function upgrade (Plugin $plugin, array $install_json) : bool {
-		//
-	}
+	public abstract function upgrade (Plugin $plugin, array $install_json) : bool;
 
 	public function getPriority () : int {
 		return 10;

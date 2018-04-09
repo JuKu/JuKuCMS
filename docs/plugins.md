@@ -25,6 +25,7 @@ Like [composer](https://getcomposer.org/doc/04-schema.md#type) this CMS supports
     * for example a registration at a service or a checkbox in plugin settings
   - plugin version must increased on every new release
   - respect trademarks & copyrights
+  - plugin names cannot be renamed
   
 ## Version Numbers
 
