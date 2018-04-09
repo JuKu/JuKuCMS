@@ -1,6 +1,8 @@
 {
+    "comment": "This is a comment, it will not be parsed! You can create such comments everywhere in this file.",
     "events": [
         {
+            "comment": "register a new event handler",
             "event": "event-name",
             "class": "MyClass",
             "method": "myMethod"
