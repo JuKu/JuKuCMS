@@ -56,8 +56,12 @@ class EventInstaller extends PluginInstaller_Plugin {
 
 				$event_name = $event['event'];
 
+				$type = "class_static_method";
+
 				//get type
-				$type = strtolower($event['type']);
+				if (isset($event['type'])) {
+					$type = strtolower($event['type']);
+				}
 
 				switch ($type) {
 					case "file":

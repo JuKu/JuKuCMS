@@ -1,0 +1,9 @@
+{
+    "events": [
+        {
+            "event": "event-name",
+            "class": "MyClass",
+            "method": "myMethod"
+        }
+    ]
+}
