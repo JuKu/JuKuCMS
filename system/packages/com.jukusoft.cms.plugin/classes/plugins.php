@@ -90,8 +90,6 @@ class Plugins {
 	public static function listUninstalledPlugins () : array {
 		$installed_plugin_names = self::listInstalledPluginNames();
 
-		var_dump($installed_plugin_names);
-
 		//create new empty list
 		$list = array();
 
@@ -112,7 +110,7 @@ class Plugins {
 			$name = $fileInfo->getFilename();
 
 			//check, if plugin is already installed
-			if (self::isPluginInArray($name, $installed_plugin_names)) {
+			if (in_array($name, $installed_plugin_names)) {
 				continue;
 			}
 
@@ -125,16 +123,6 @@ class Plugins {
 		}
 
 		return $list;
-	}
-
-	protected static function isPluginInArray (string $plugin_name, array $installed_plugins) : bool {
-		//var_dump($installed_plugins);
-
-		foreach ($installed_plugins as $plugin) {
-			//
-		}
-
-		return false;
 	}
 
 	public static function clearCache () {
