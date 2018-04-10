@@ -110,12 +110,8 @@ class Plugins {
 			$name = $fileInfo->getFilename();
 
 			//check, if plugin is already installed
-			if (in_array($name, $installed_plugin_names)) {
+			if (self::isPluginInArray($name, $installed_plugin_names)) {
 				continue;
-			} else {
-				var_dump($name);
-				var_dump($installed_plugin_names);
-				var_dump(in_array($name, $installed_plugin_names));
 			}
 
 			//create and load new plugin
@@ -127,6 +123,16 @@ class Plugins {
 		}
 
 		return $list;
+	}
+
+	protected static function isPluginInArray (string $plugin_name, array $installed_plugins) : bool {
+		var_dump($installed_plugins);
+
+		foreach ($installed_plugins as $plugin) {
+			//
+		}
+
+		return false;
 	}
 
 	public static function clearCache () {
