@@ -457,6 +457,7 @@ $table->addVarchar("page_type", 255, true);
 $table->addVarchar("title", 255, true);
 $table->addVarchar("create_permissions", 255, true, "none");//list with permissions (OR), one of this permissions is required to create pages with this page type
 $table->addInt("advanced", 10, true, false, 0);//flag, if page type is only shown in expert (advanced) mode
+$table->addVarchar("owner", 255, true, "system");
 $table->addInt("order", 10, true, false, 10);//order in admin area on page creation selection
 $table->addInt("activated", 10, true, false, 1);
 

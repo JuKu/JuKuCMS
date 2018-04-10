@@ -200,7 +200,7 @@ class PageType {
 		return $rows;
 	}
 
-	public static function createPageType (string $class_name, string $title, bool $advanced = false,int $order = 10, array $permissions = array("none")) {
+	public static function createPageType (string $class_name, string $title, bool $advanced = false, int $order = 10, array $permissions = array("none"), string $owner = "system") {
 		//validate values
 		$class_name = Validator_String::get($class_name);
 		$title = Validator_String::get($title);
@@ -211,6 +211,7 @@ class PageType {
 			'title' => &$title,
 			'create_permissions' => &$permissions,
 			'advanced' => &$advanced,
+			'owner' => &$owner,
 			'order' => &$order
 		));
 
@@ -222,11 +223,12 @@ class PageType {
 			`page_type`, `title`, `create_permissions`, `advanced`, `order`, `activated`
 		) VALUES (
 			:pagetype, :title, :permissions, :advanced, :order, '1'
-		) ON DUPLICATE KEY UPDATE `title` = :title, `advanced` = :advanced, `activated` = '1'; ", array(
+		) ON DUPLICATE KEY UPDATE `title` = :title, `create_permissions` = :permissions, `advanced` = :advanced, `order` = :order, `activated` = '1'; ", array(
 			'pagetype' => $class_name,
 			'title' => $title,
 			'permissions' => $permissions,
 			'advanced' => ($advanced ? 1 : 0),
+			'owner' => $owner,
 			'order' => $order
 		));
 
@@ -235,6 +237,7 @@ class PageType {
 			'title' => $title,
 			'create_permissions' => $permissions,
 			'advanced' => $advanced,
+			'owner' => $owner,
 			'order' => $order
 		));
 
@@ -265,6 +268,15 @@ class PageType {
 			//clear cache
 			Cache::clear("pagetypes");
 		}
+	}
+
+	public static function removePageTypesByOwner (string $owner) {
+		Database::getInstance()->execute("DELETE FROM `{praefix}page_types` WHERE `owner` = :owner; ", array('owner' => $owner));
+
+		//TODO: change all pages which have this page type
+
+		//clear cache
+		Cache::clear("pagetypes");
 	}
 
 }
