@@ -43,7 +43,8 @@ class EventInstaller extends PluginInstaller_Plugin {
 	}
 
 	public function upgrade(Plugin $plugin, array $install_json): bool {
-		//TODO: remove events, which arent longer in install json
+		//remove events first
+		$this->uninstall($plugin, $install_json);
 
 		//add events if absent
 		return $this->addEvents($plugin, $install_json);

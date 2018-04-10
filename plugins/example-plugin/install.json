@@ -41,5 +41,23 @@
             "advanced": false,
             "order": 10
         }
+    ],
+    "pages": [
+        {
+            "alias": "/admin/plugins/my_page",
+            "title": "My plugin page",
+            "pagetype": "HTMLPage",
+            "content": "",
+            "folder": "/",
+            "global_menu": -1,
+            "local_menu": -1,
+            "parentID": -1,
+            "sitemap": false,
+            "published": true,
+            "editable": false,
+            "author": "Plugin example-plugin",
+            "comment": "flag, if page should be removed on uninstall of plugin",
+            "autoremove_on_uninstall": false
+        }
     ]
 }
