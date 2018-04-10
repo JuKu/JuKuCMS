@@ -72,6 +72,7 @@ class PluginInstallerPage extends PageType {
 				} else {
 					//load plugin.json
 					$plugin->load();
+					$plugin->loadRow();
 
 					switch ($action) {
 						case "install":
