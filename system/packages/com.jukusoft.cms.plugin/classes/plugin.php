@@ -66,7 +66,7 @@ class Plugin {
 		if (Cache::contains("plugins", "plugin_row_" . $this->name)) {
 			$this->row = Cache::get("plugins", "plugin_row_" . $this->name);
 		} else {
-			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}plugins` WHERE `name` = :name; ");
+			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}plugins` WHERE `name` = :name; ", array('name' => $this->name));
 
 			Cache::put("plugins", "plugin_row_" . $this->name, $row);
 
