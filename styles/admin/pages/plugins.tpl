@@ -70,7 +70,7 @@
                                 {/if}
 
                                 <!-- link to install plugin -->
-                                <a href="{$BASE_URL}/admin/plugin_installer?plugin={$plugin.name}&amp;action=uninstall" class="btn btn-success">{lang}btn btn-danger{/lang}</a>
+                                <a href="{$BASE_URL}/admin/plugin_installer?plugin={$plugin.name}&amp;action=uninstall" class="btn btn-danger">{lang}uninstall{/lang}</a>
                             </td>
                         </tr>
                     </tfoot>
