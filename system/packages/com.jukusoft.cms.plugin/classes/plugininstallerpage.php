@@ -70,6 +70,9 @@ class PluginInstallerPage extends PageType {
 
 					$error = true;
 				} else {
+					//load plugin.json
+					$plugin->load();
+
 					switch ($action) {
 						case "install":
 							//install plugin
