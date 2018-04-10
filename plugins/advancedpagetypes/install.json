@@ -3,6 +3,10 @@
         {
             "class_name": "Plugin_AdvancedPageTypes_MarkdownPage",
             "title": "lang_Markdown page"
+        },
+        {
+            "class_name": "Plugin_AdvancedPageTypes_StaticHTMLPage",
+            "title": "lang_Static HTML page"
         }
     ]
 }
