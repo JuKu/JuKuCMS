@@ -52,6 +52,7 @@ class PluginInstallerPage extends PageType {
 
 		if (!$error) {
 			$plugin = $_REQUEST['plugin'];
+			$action = $_REQUEST['action'];
 		}
 
 		return $template->getCode();

@@ -20,4 +20,5 @@
 	<class>PluginsPage</class>
 	<class>PluginInstaller</class>
 	<class>PluginInstaller_Plugin</class>
+	<class>PluginInstallerPage</class>
 </classes>
