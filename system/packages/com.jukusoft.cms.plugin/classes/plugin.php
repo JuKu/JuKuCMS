@@ -75,6 +75,12 @@ class Plugin {
 		return PLUGIN_PATH . $this->name . "/";
 	}
 
+	public function exists () : bool {
+		$file_path = PLUGIN_PATH . $this->name . "/plugin.json";
+
+		return file_exists($file_path);
+	}
+
 	public function getType () : string {
 		$type = $this->json_data['type'];
 

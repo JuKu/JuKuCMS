@@ -3,3 +3,7 @@
         {$error_message}
     </p>
 {/if}
+
+{if !empty($success_message)}
+    <p style="border: 1px solid green; background: yellowgreen; color:green; padding: 5px; ">{$success_message}</p>
+{/if}

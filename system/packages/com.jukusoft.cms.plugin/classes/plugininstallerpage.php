@@ -53,9 +53,86 @@ class PluginInstallerPage extends PageType {
 		if (!$error) {
 			$plugin = $_REQUEST['plugin'];
 			$action = $_REQUEST['action'];
+
+			//TODO: validate plugin
+			if (!Validator_PluginName::getInstance()->isValide($plugin)) {
+				//set error message
+				$template->assign("error_message", "Invalide plugin name '" . htmlentities($plugin) . "'!");
+
+				$error = true;
+			} else {
+				//create new instance
+				$plugin = new Plugin($plugin);
+
+				if (!$plugin->exists()) {
+					//set error message
+					$template->assign("error_message", "Plugin '" . htmlentities($plugin) . "' doesnt exists!");
+
+					$error = true;
+				} else {
+					switch ($action) {
+						case "install":
+							//install plugin
+							if ($this->installPlugin($plugin)) {
+								//send redirect header
+								header("Location: " . DomainUtils::generateURL("admin/plugins"));
+
+								$template->assign("success_message", "Plugin '" . $plugin->getName() . "' installed successfully!");
+							} else {
+								//set error message
+								$template->assign("error_message", "Couldnt install plugin '" . htmlentities($plugin) . "'!");
+							}
+
+							break;
+						case "uninstall":
+							//uninstall plugin
+							if ($this->uninstallPlugin($plugin)) {
+								//send redirect header
+								header("Location: " . DomainUtils::generateURL("admin/plugins"));
+
+								$template->assign("success_message", "Plugin '" . $plugin->getName() . "' uninstalled successfully!");
+							} else {
+								//set error message
+								$template->assign("error_message", "Couldnt uninstall plugin '" . htmlentities($plugin) . "'!");
+							}
+
+							break;
+						case "upgrade":
+							//upgrade plugin
+							if ($this->upgradePlugin($plugin)) {
+								//send redirect header
+								header("Location: " . DomainUtils::generateURL("admin/plugins"));
+
+								$template->assign("success_message", "Plugin '" . $plugin->getName() . "' upgraded successfully!");
+							} else {
+								//set error message
+								$template->assign("error_message", "Couldnt upgrade plugin '" . htmlentities($plugin) . "'!");
+							}
+
+							break;
+						default:
+							//set error message
+							$template->assign("error_message", "Unknown action type '" . htmlentities($action) . "'!");
+
+							break;
+					}
+				}
+			}
 		}
 
 		return $template->getCode();
+	}
+
+	protected function installPlugin (Plugin $plugin) : bool {
+		//
+	}
+
+	protected function uninstallPlugin (Plugin $plugin) : bool {
+		//
+	}
+
+	protected function upgradePlugin (Plugin $plugin) : bool {
+		//
 	}
 
 	public function listRequiredPermissions(): array {
