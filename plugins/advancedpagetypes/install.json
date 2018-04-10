@@ -1,0 +1,8 @@
+{
+    "pagetypes": [
+        {
+            "class_name": "Plugin_AdvancedPageTypes_MarkdownPage",
+            "title": "lang_Markdown page"
+        }
+    ]
+}

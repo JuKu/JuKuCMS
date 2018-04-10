@@ -1,0 +1,40 @@
+{
+    "name": "advancedpagetypes",
+    "type": "project",
+    "title": "Advanced page types",
+    "description": "Adds support for advanced page types, for example static html pages, markdown & AsciiDoc pages and so on.",
+    "version": "1.0.0",
+    "keywords": [
+        "markdown", "asciidoc", "plugin"
+    ],
+    "categories": [
+        "pagetypes"
+    ],
+    "homepage": "http://jukusoft.com",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Justin Kuenzel",
+            "email": "info@jukusoft.com",
+            "homepage": "http://jukusoft.com",
+            "role": "Project Founder & Lead Developer"
+        },
+        {
+            "name": "Pascal Reintjens",
+            "email": "mail@pascal-reintjens.de",
+            "homepage": "https://reintjens.de",
+            "role": "Project Founder & Developer"
+        }
+    ],
+    "support": {
+        "email": "info@jukusoft.com",
+        "source": "https://github.com/JuKu/JuKuCMS",
+        "issues": "https://github.com/JuKu/JuKuCMS/issues"
+    },
+    "installation": true,
+    "require": {
+        "php": ">=7.0.8",
+        "package-com.jukusoft.cms.settings": "*",
+        "package-com.jukusoft.cms.page": "*"
+    }
+}
