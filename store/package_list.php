@@ -35,6 +35,7 @@ $package_list = array(
 	'com.jukusoft.cms.captcha' => true,
 	'com.jukusoft.cms.mail' => true,
 	'com.jukusoft.cms.plugin' => true,
+	'com.jukusoft.cms.tasks' => true,
 );
 
 ?>
