@@ -38,6 +38,8 @@ class EventInstaller extends PluginInstaller_Plugin {
 			//remove all events from this plugin
 			Events::removePluginEvents($plugin->getName());
 		}
+
+		return true;
 	}
 
 	public function upgrade(Plugin $plugin, array $install_json): bool {
