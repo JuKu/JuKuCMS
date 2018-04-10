@@ -20,37 +20,58 @@
                     </thead>
                     <tbody>
                         {foreach $installed_plugins plugin}
-                            <tr>
-                                <td>{$plugin.name}</td>
-                                <td>
-                                    <strong style="color: /*#4096EE*/#3F4C6B; ">{$plugin.title}</strong><br /><small>{$plugin.description}</small><br /><br />
-
-                                    By {foreach $plugin.authors key author name='plugins'}
-                                        {if $dwoo.foreach.plugins.index > 0}, {/if}<a href="{$author.homepage}" target="_blank" title="{$author.role}">{$author.name}</a>
-                                    {/foreach} | <a href="{$plugin.homepage}" target="_blank">Visit plugin homepage</a><br />
-
-                                    <!-- support information -->
-                                    {foreach $plugin.support_links key link name='supportlinks'}
-                                        {if $dwoo.foreach.supportlinks.index == 0}
-                                            <span style="color: #008C00; ">Support: </span>
-                                        {/if}
-
-                                        {if $dwoo.foreach.supportlinks.index > 0} | {/if}<a href="{$link.href}" target="_blank">{$link.title}</a>
-                                    {/foreach}
-                                </td>
-                                <td>{$plugin.installed_version}</td>
-                                <td>{$plugin.license}</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                        {/foreach}
-                    </tbody>
-                    <tfoot>
                         <tr>
-                            <th>{lang}Plugin{/lang}</th>
-                            <th>{lang}Title / Description{/lang}</th>
-                            <th>{lang}Installed Version{/lang}</th>
-                            <th>{lang}License{/lang}</th>
-                            <th>{lang}Actions{/lang}</th>
+                            <td>
+                                {$plugin.name}<br />
+
+                                <!-- check plugin compatibility -->
+                                {if $plugin.compatible === true}
+                                    <span class="label label-success">compatible</span>
+                                {else}
+                                    <span class="label label-danger">incompatible</span>
+                                {/if}
+                            </td>
+                            <td>
+                                <strong style="color: /*#4096EE*/#3F4C6B; ">{$plugin.title}</strong><br /><small>{$plugin.description}</small><br /><br />
+
+                                By {foreach $plugin.authors key author name='plugins'}
+                                    {if $dwoo.foreach.plugins.index > 0}, {/if}<a href="{$author.homepage}" target="_blank" title="{$author.role}">{$author.name}</a>
+                                {/foreach} | <a href="{$plugin.homepage}" target="_blank">Visit plugin homepage</a><br />
+
+                                <!-- support information -->
+                                {foreach $plugin.support_links key link name='supportlinks'}
+                                    {if $dwoo.foreach.supportlinks.index == 0}
+                                        <span style="color: #008C00; ">Support: </span>
+                                    {/if}
+
+                                    {if $dwoo.foreach.supportlinks.index > 0} | {/if}<a href="{$link.href}" target="_blank">{$link.title}</a>
+                                {/foreach}
+                            </td>
+                            <td>
+                                {if $plugin.uptodate === true}
+                                    <span style="color: #008C00; "><b>{$plugin.version}</b></span><br />
+                                {else}
+                                    <span style="color: #D01F3C; "><b>{$plugin.version}</b></span><br />
+                                {/if}
+
+                                {if $plugin.alpha}
+                                    <span class="label label-danger">{lang}alpha{/lang}</span>
+                                {elseif $plugin.beta}
+                                    <span class="label label-warning">{lang}beta{/lang}</span>
+                                {else}
+                                    <span class="label label-info">{lang}release{/lang}</span>
+                                {/if}
+                            </td>
+                            <td>{$plugin.license}</td>
+                            <td>
+                                <!-- check if plugin upgrade is available -->
+                                {if $plugin.upgrade_available == true}
+                                    <a href="{$BASE_URL}/admin/plugin_installer?plugin={$plugin.name}&amp;action=upgrade" class="btn btn-success">{lang}update{/lang}</a>
+                                {/if}
+
+                                <!-- link to install plugin -->
+                                <a href="{$BASE_URL}/admin/plugin_installer?plugin={$plugin.name}&amp;action=uninstall" class="btn btn-success">{lang}btn btn-danger{/lang}</a>
+                            </td>
                         </tr>
                     </tfoot>
                 </table>

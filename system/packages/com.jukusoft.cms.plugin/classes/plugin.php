@@ -235,6 +235,11 @@ class Plugin {
 		return (!empty($this->row) ? $this->row['installed'] == 1 : false);
 	}
 
+	public function isUpgradeAvailable () : bool {
+		//check, if local and installed version are different
+		return $this->getVersion() !== $this->getInstalledVersion();
+	}
+
 	public function isActivated () : bool {
 		return (!empty($this->row) ? $this->row['activated'] == 1 : false);
 	}
