@@ -7,5 +7,14 @@
             "class": "MyClass",
             "method": "myMethod"
         }
+    ],
+    "comment": "Add new permissions to system",
+    "permissions": [
+        {
+            "token": "plugin_example-plugin_my_token",
+            "title": "My permission title",
+            "description": "My permission description",
+            "category": "admin"
+        }
     ]
 }

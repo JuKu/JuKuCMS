@@ -97,6 +97,16 @@ class Permissions {
 		Cache::clear("permissions", "permission_list");
 	}
 
+	public static function deletePermissionsByOwner (string $owner) {
+		//TODO: cleanup group and user permissions with this specific tokens
+
+		//delete from database
+		Database::getInstance()->execute("DELETE FROM `{praefix}permissions` WHERE `owner` = :owner; ", array('owner' => $owner));
+
+		//clear cache
+		Cache::clear("permissions", "permission_list");
+	}
+
 	public static function listPermissions (string $category = "") : array {
 		$suffix = "";
 
