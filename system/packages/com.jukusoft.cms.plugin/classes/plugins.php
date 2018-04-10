@@ -90,8 +90,6 @@ class Plugins {
 	public static function listUninstalledPlugins () : array {
 		$installed_plugin_names = self::listInstalledPluginNames();
 
-		var_dump($installed_plugin_names);
-
 		//create new empty list
 		$list = array();
 
@@ -114,6 +112,10 @@ class Plugins {
 			//check, if plugin is already installed
 			if (in_array($name, $installed_plugin_names)) {
 				continue;
+			} else {
+				var_dump($name);
+				var_dump($installed_plugin_names);
+				var_dump(in_array($name, $installed_plugin_names));
 			}
 
 			//create and load new plugin
