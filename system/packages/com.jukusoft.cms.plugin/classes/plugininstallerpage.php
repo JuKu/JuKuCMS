@@ -129,21 +129,42 @@ class PluginInstallerPage extends PageType {
 		$res = $installer->checkRequirements();
 
 		//check requirements first
-		if (!$installer->checkRequirements()) {
+		if ($res !== TRUE) {
 			return array(
-				'error' => ""
+				'error' => $res
 			);
 		}
 
-		return true;
+		//try to install plugin
+		return $installer->install();
 	}
 
 	protected function uninstallPlugin (Plugin $plugin) {
-		//
+		//first check, if plugin is installed
+		if (!PluginInstaller::isPluginInstalled($plugin->getName())) {
+			return array(
+				'error' => "plugin_not_installed"
+			);
+		}
+
+		$installer = new PluginInstaller($plugin);
+
+		//try to uninstall plugin
+		return $installer->uninstall();
 	}
 
 	protected function upgradePlugin (Plugin $plugin) {
-		//
+		//first check, if plugin is installed
+		if (!PluginInstaller::isPluginInstalled($plugin->getName())) {
+			return array(
+				'error' => "plugin_not_installed"
+			);
+		}
+
+		$installer = new PluginInstaller($plugin);
+
+		//try to uninstall plugin
+		return $installer->upgrade();
 	}
 
 	public function listRequiredPermissions(): array {
