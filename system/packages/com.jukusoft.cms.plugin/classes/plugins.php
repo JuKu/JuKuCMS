@@ -57,7 +57,7 @@ class Plugins {
 			//cache rows
 			Cache::put("plugins", "installed_plugin_names", $array);
 
-			return $rows;
+			return $array;
 		}
 	}
 
