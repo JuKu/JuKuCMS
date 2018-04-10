@@ -41,6 +41,8 @@ class PermissionInstaller extends PluginInstaller_Plugin {
 				Permissions::createPermission($token, $title, $description, $category, "plugin_" . $plugin->getName(), $order);
 			}
 		}
+
+		return true;
 	}
 
 	public function uninstall(Plugin $plugin, array $install_json): bool {
@@ -48,11 +50,13 @@ class PermissionInstaller extends PluginInstaller_Plugin {
 		if (isset($install_json['permissions'])) {
 			Permissions::deletePermissionsByOwner("plugin_" . $plugin->getName());
 		}
+
+		return true;
 	}
 
 	public function upgrade(Plugin $plugin, array $install_json): bool {
 		//install queries supports ON DUPLICATE KEY
-		$this->install($plugin, $install_json);
+		return $this->install($plugin, $install_json);
 	}
 
 }
