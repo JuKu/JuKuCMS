@@ -265,6 +265,8 @@ class PluginInstaller {
 
 		//set plugin as installed
 		$this->setInstalled();
+
+		return true;
 	}
 
 	public function uninstall () : bool {
@@ -303,6 +305,8 @@ class PluginInstaller {
 
 		//set plugin as uninstalled
 		$this->setUnInstalled();
+
+		return true;
 	}
 
 	public function upgrade () {
