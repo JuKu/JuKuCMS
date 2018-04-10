@@ -55,6 +55,8 @@ class PermissionInstaller extends PluginInstaller_Plugin {
 	}
 
 	public function upgrade(Plugin $plugin, array $install_json): bool {
+		//TODO: remove permissions, which arent longer in install json
+
 		//install queries supports ON DUPLICATE KEY
 		return $this->install($plugin, $install_json);
 	}

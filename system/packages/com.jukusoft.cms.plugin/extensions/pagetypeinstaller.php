@@ -52,6 +52,8 @@ class PageTypeInstaller extends PluginInstaller_Plugin {
 	}
 
 	public function upgrade(Plugin $plugin, array $install_json): bool {
+		//TODO: remove page types, which arent longer in install json
+
 		//install supports ON DUPLICATE KEY
 		return $this->install($plugin, $install_json);
 	}
