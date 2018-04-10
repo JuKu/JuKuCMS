@@ -241,8 +241,18 @@ if ($page_type->showHTMLComments()) {
 
 //flush gzip cache
 ob_end_flush();
+ob_end_flush();
+flush();
 
 //update online list
 User::current()->updateOnlineList();
+
+//https://stackoverflow.com/questions/4806637/continue-processing-after-closing-connection
+ignore_user_abort(true);
+
+//execute tasks
+if (!Settings::get("cronjon_enabled", true)) {
+	Tasks::schedule(Settings::get("max_tasks_on_site", 3));
+}
 
 ?>
