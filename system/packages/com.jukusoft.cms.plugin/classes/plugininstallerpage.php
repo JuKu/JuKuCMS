@@ -73,7 +73,7 @@ class PluginInstallerPage extends PageType {
 					switch ($action) {
 						case "install":
 							//install plugin
-							if ($this->installPlugin($plugin)) {
+							if ($this->installPlugin($plugin) === TRUE) {
 								//send redirect header
 								header("Location: " . DomainUtils::generateURL("admin/plugins"));
 
@@ -86,7 +86,7 @@ class PluginInstallerPage extends PageType {
 							break;
 						case "uninstall":
 							//uninstall plugin
-							if ($this->uninstallPlugin($plugin)) {
+							if ($this->uninstallPlugin($plugin) === TRUE) {
 								//send redirect header
 								header("Location: " . DomainUtils::generateURL("admin/plugins"));
 
@@ -99,7 +99,7 @@ class PluginInstallerPage extends PageType {
 							break;
 						case "upgrade":
 							//upgrade plugin
-							if ($this->upgradePlugin($plugin)) {
+							if ($this->upgradePlugin($plugin) === TRUE) {
 								//send redirect header
 								header("Location: " . DomainUtils::generateURL("admin/plugins"));
 
@@ -123,15 +123,26 @@ class PluginInstallerPage extends PageType {
 		return $template->getCode();
 	}
 
-	protected function installPlugin (Plugin $plugin) : bool {
+	protected function installPlugin (Plugin $plugin) {
+		$installer = new PluginInstaller($plugin);
+
+		$res = $installer->checkRequirements();
+
+		//check requirements first
+		if (!$installer->checkRequirements()) {
+			return array(
+				'error' => ""
+			);
+		}
+
+		return true;
+	}
+
+	protected function uninstallPlugin (Plugin $plugin) {
 		//
 	}
 
-	protected function uninstallPlugin (Plugin $plugin) : bool {
-		//
-	}
-
-	protected function upgradePlugin (Plugin $plugin) : bool {
+	protected function upgradePlugin (Plugin $plugin) {
 		//
 	}
 

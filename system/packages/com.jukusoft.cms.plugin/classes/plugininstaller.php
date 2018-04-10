@@ -122,7 +122,19 @@ class PluginInstaller {
 					continue;
 				}
 
-				//TODO: check installed plugins
+				//check, if plugin is installed
+				if (!self::isPluginInstalled($requirement, $installed_plugins)) {
+					$missing_plugins[] = $requirement;
+					continue;
+				}
+
+				//check plugin version
+				$current_version = self::getPluginVersion($requirement, $installed_plugins);
+
+				//check version
+				if (!$this->checkVersion($version, $current_version)) {
+					$missing_plugins[] = $requirement . ":version";
+				}
 			}
 		}
 
@@ -130,6 +142,35 @@ class PluginInstaller {
 			return true;
 		} else {
 			return $missing_plugins;
+		}
+	}
+
+	public static function isPluginInstalled (string $plugin_name, array $installed_plugins = array()) : bool {
+		if (empty($installed_plugins)) {
+			$installed_plugins = Plugins::listInstalledPlugins();
+		}
+
+		if (!isset($installed_plugins[$plugin_name])) {
+			//plugin is not installed
+			return false;
+		} else {
+			//plugin is installed
+			return true;
+		}
+	}
+
+	public static function getPluginVersion (string $plugin_name, array $installed_plugins = array()) {
+		if (empty($installed_plugins)) {
+			$installed_plugins = Plugins::listInstalledPlugins();
+		}
+
+		if (!isset($installed_plugins[$plugin_name])) {
+			//plugin is not installed
+			return false;
+		} else {
+			//plugin is installed, return installed version
+			$plugin = Plugin::castPlugin($installed_plugins[$plugin_name]);
+			return $plugin->getInstalledVersion();
 		}
 	}
 

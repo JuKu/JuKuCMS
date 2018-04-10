@@ -77,7 +77,7 @@ class Plugins {
 				//load plugin
 				$plugin->load();
 
-				$plugins[] = $plugin;
+				$plugins[$plugin->getName()] = $plugin;
 			}
 
 			//cache plugins
