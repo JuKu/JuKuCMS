@@ -95,7 +95,7 @@ class PluginsPage extends PageType {
 				'uptodate' => true,//TODO: check, if plugin is newest version
 				'alpha' => $plugin->isAlpha(),
 				'beta' => $plugin->isBeta(),
-				'installed' => $plugin->isInstalled(),
+				'installed' => false,
 				'activated' => $plugin->isActivated()
 			);
 		}
