@@ -66,7 +66,7 @@ class PluginInstallerPage extends PageType {
 
 				if (!$plugin->exists()) {
 					//set error message
-					$template->assign("error_message", "Plugin '" . htmlentities($plugin) . "' doesnt exists!");
+					$template->assign("error_message", "Plugin '" . htmlentities($plugin->getName()) . "' doesnt exists!");
 
 					$error = true;
 				} else {
