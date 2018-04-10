@@ -90,6 +90,8 @@ class Plugins {
 	public static function listUninstalledPlugins () : array {
 		$installed_plugin_names = self::listInstalledPluginNames();
 
+		var_dump($installed_plugin_names);
+
 		//create new empty list
 		$list = array();
 
@@ -126,7 +128,7 @@ class Plugins {
 	}
 
 	protected static function isPluginInArray (string $plugin_name, array $installed_plugins) : bool {
-		var_dump($installed_plugins);
+		//var_dump($installed_plugins);
 
 		foreach ($installed_plugins as $plugin) {
 			//
