@@ -73,6 +73,16 @@
                                 <a href="{$BASE_URL}/admin/plugin_installer?plugin={$plugin.name}&amp;action=uninstall" class="btn btn-danger">{lang}uninstall{/lang}</a>
                             </td>
                         </tr>
+                        {/foreach}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>{lang}Plugin{/lang}</th>
+                        <th>{lang}Title / Description{/lang}</th>
+                        <th>{lang}Version{/lang}</th>
+                        <th>{lang}License{/lang}</th>
+                        <th>{lang}Actions{/lang}</th>
+                    </tr>
                     </tfoot>
                 </table>
             </div>
