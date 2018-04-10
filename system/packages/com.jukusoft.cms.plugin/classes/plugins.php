@@ -90,6 +90,8 @@ class Plugins {
 	public static function listUninstalledPlugins () : array {
 		$installed_plugin_names = self::listInstalledPluginNames();
 
+		var_dump($installed_plugin_names);
+
 		//create new empty list
 		$list = array();
 

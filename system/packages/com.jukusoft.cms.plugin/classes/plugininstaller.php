@@ -271,6 +271,9 @@ class PluginInstaller {
 		//set plugin as installed
 		$this->setInstalled();
 
+		//clear cache
+		Cache::clear("plugins");
+
 		return true;
 	}
 
@@ -310,6 +313,9 @@ class PluginInstaller {
 
 		//set plugin as uninstalled
 		$this->setUnInstalled();
+
+		//clear cache
+		Cache::clear("plugins");
 
 		return true;
 	}
