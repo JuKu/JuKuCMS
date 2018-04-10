@@ -252,7 +252,7 @@ class PluginInstaller {
 				$i_plugin = PluginInstaller_Plugin::cast($i_plugin);
 
 				//execute installer plugin
-				$i_plugin->install($this->plugin, $installer_plugins);
+				$i_plugin->install($this->plugin, $install_json);
 			}
 
 			if (isset($install_json['install_script'])) {
@@ -295,7 +295,7 @@ class PluginInstaller {
 				$i_plugin = PluginInstaller_Plugin::cast($i_plugin);
 
 				//execute installer plugin
-				$i_plugin->uninstall($this->plugin, $installer_plugins);
+				$i_plugin->uninstall($this->plugin, $install_json);
 			}
 
 			if (isset($install_json['uninstall_script'])) {
