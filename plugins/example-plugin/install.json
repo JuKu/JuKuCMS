@@ -30,5 +30,16 @@
             "force_template": false,
             "title_translation": true
         }
+    ],
+    "pagetypes": [
+        {
+            "class_name": "TestPageType",
+            "title": "My Pagetype title",
+            "create_permissions": [
+                "none"
+            ],
+            "advanced": false,
+            "order": 10
+        }
     ]
 }

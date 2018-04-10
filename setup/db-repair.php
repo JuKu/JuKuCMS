@@ -1286,6 +1286,7 @@ User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrat
 echo "Add PluginInstaller plugins...<br />";
 PluginInstaller::addInstallerPluginIfAbsent("EventInstaller", "system/packages/com.jukusoft.cms.plugin/extensions/eventinstaller.php");
 PluginInstaller::addInstallerPluginIfAbsent("PermissionInstaller", "system/packages/com.jukusoft.cms.plugin/extensions/permissioninstaller.php");
+PluginInstaller::addInstallerPluginIfAbsent("PageTypeInstaller", "system/packages/com.jukusoft.cms.plugin/extensions/pagetypeinstaller.php");
 
 echo "Clear gettext cache<br />";
 PHPUtils::clearGetTextCache();
