@@ -144,6 +144,11 @@ class PluginInstallerPage extends PageType {
 			);
 		}
 
+		//check, if plugin is already installed
+		if ($plugin->isInstalled()) {
+			return false;
+		}
+
 		//try to install plugin
 		return $installer->install();
 	}
