@@ -43,7 +43,7 @@ class PluginsPage extends PageType {
 			//create new instance of PluginInstaller to check plugin compatibility
 			$installer = new PluginInstaller($plugin);
 
-			$plugin_list[] = array(
+			$array[] = array(
 				'name' => $plugin->getName(),
 				'title' => $plugin->getTitle(),
 				'description' => $plugin->getDescription($lang_token),
