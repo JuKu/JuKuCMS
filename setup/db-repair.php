@@ -1038,7 +1038,7 @@ Settings::create("recaptcha_website_key", "", "reCAPTCHA website key", "reCAPTCH
 Settings::create("recaptcha_secret_key", "", "reCAPTCHA website key", "reCAPTCHA website key, provided by google", "system", "general", "DataType_String");
 
 //cronjob
-Settings::create("cronjob_enabled", false, "Option if cronjob is enabled", "Option if cronjob is enabled", "system", "general", "DataType_Boolean");
+Settings::create("cronjob_enabled", true, "Option if cronjob is enabled", "Option if cronjob is enabled", "system", "general", "DataType_Boolean");
 Settings::create("cronjob_auth_key", "", "Cronjob Auth Key", "Only set this key, if you want, that only a restricted source can call cronjob.php file.", "owner", "general", "DataType_String");
 
 $main_menuID = -1;
