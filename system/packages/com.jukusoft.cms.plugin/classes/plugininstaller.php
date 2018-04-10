@@ -230,6 +230,11 @@ class PluginInstaller {
 			return false;
 		}
 
+		//check, if plugin is already installed
+		if ($this->plugin->isInstalled()) {
+			return false;
+		}
+
 		//check, if install.json is used
 		if ($this->plugin->hasInstallJson()) {
 			//check, if install.json exists
