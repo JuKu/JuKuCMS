@@ -1151,6 +1151,7 @@ Page::createIfAbsent("error403", "Error 403", "Error403Page", "Error 403 - Forbi
 echo "Create admin pages if absent...<br />";
 Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/admin/", -1, -1, -1, false, true, false);
 Page::createIfAbsent("admin/plugins", "lang_Plugins", "PluginsPage", "", "/admin/", -1, -1, -1, false, true, false);
+Page::createIfAbsent("admin/plugin_installer", "lang_Plugin Installer", "PluginInstallerPage", "", "/admin/", -1, -1, -1, false, true, false);
 
 //create some tool pages
 Page::createIfAbsent("admin/phpinfo", "phpinfo()", "PHPInfoPage", "", "/admin/", -1, -1, -1, false, true, false);
@@ -1243,6 +1244,7 @@ Permissions::createPermission("can_edit_menus", "Can edit menus", "Can edit menu
 
 //plugin permissions
 Permissions::createPermission("can_see_installed_plugins", "Can see installed plugins", "Can see installed plugins", "plugins", "system", 1);
+Permissions::createPermission("can_install_plugins", "Can install plugins", "User is allowed to install plugins", "plugins", "system", 2);
 
 //admin permissions
 Permissions::createPermission("can_see_cms_version", "Can see version of CMS system", "Can see version of CMS system", "admin", "system", 1);
