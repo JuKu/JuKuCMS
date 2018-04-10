@@ -84,7 +84,7 @@ class PluginInstallerPage extends PageType {
 								$template->assign("success_message", "Plugin '" . $plugin->getName() . "' installed successfully!");
 							} else {
 								//set error message
-								$template->assign("error_message", "Couldnt install plugin '" . htmlentities($plugin) . "'!");
+								$template->assign("error_message", "Couldnt install plugin '" . htmlentities($plugin->getName()) . "'!");
 							}
 
 							break;
