@@ -38,9 +38,12 @@ class PluginsPage extends PageType {
 		$lang_token = substr(Registry::singleton()->getSetting("lang_token"), 0, 2);
 
 		foreach ($installed_plugins as $plugin) {
-			$plugin = PLugin::castPlugin($plugin);
+			$plugin = Plugin::castPlugin($plugin);
 
-			$array[] = array(
+			//create new instance of PluginInstaller to check plugin compatibility
+			$installer = new PluginInstaller($plugin);
+
+			$plugin_list[] = array(
 				'name' => $plugin->getName(),
 				'title' => $plugin->getTitle(),
 				'description' => $plugin->getDescription($lang_token),
@@ -56,8 +59,11 @@ class PluginsPage extends PageType {
 				'source' => $plugin->getSourceLink(),
 				'support_mail' => $plugin->getSupportMail(),
 				'support_links' => $plugin->listSupportLinks(),
-				'installed' => $plugin->isInstalled(),
-				'upgrade_available' => $plugin->isUpgradeAvailable(),
+				'compatible' => $installer->checkRequirements(true),
+				'uptodate' => true,//TODO: check, if plugin is newest version
+				'alpha' => $plugin->isAlpha(),
+				'beta' => $plugin->isBeta(),
+				'installed' => false,
 				'activated' => $plugin->isActivated()
 			);
 		}
