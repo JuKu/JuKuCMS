@@ -62,6 +62,18 @@ class Plugin {
 		$this->json_data = json_decode(file_get_contents($file_path), true);
 	}
 
+	public function loadRow () {
+		if (Cache::contains("plugins", "plugin_row_" . $this->name)) {
+			$this->row = Cache::get("plugins", "plugin_row_" . $this->name);
+		} else {
+			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}plugins` WHERE `name` = :name; ");
+
+			Cache::put("plugins", "plugin_row_" . $this->name, $row);
+
+			$this->row = $row;
+		}
+	}
+
 	/**
 	 * get directory name of plugin
 	 *

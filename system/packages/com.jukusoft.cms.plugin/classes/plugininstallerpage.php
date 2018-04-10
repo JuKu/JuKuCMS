@@ -54,7 +54,7 @@ class PluginInstallerPage extends PageType {
 			$plugin = $_REQUEST['plugin'];
 			$action = $_REQUEST['action'];
 
-			//TODO: validate plugin
+			//validate plugin
 			if (!Validator_PluginName::getInstance()->isValide($plugin)) {
 				//set error message
 				$template->assign("error_message", "Invalide plugin name '" . htmlentities($plugin) . "'!");
@@ -88,6 +88,9 @@ class PluginInstallerPage extends PageType {
 
 							break;
 						case "uninstall":
+							//load database row
+							$plugin->loadRow();
+
 							//uninstall plugin
 							if ($this->uninstallPlugin($plugin) === TRUE) {
 								//send redirect header
@@ -101,6 +104,9 @@ class PluginInstallerPage extends PageType {
 
 							break;
 						case "upgrade":
+							//load database row
+							$plugin->loadRow();
+
 							//upgrade plugin
 							if ($this->upgradePlugin($plugin) === TRUE) {
 								//send redirect header
