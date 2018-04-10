@@ -45,4 +45,6 @@ if (!empty($auth_key)) {
 $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
 
+echo "<!-- cronjob executed in " . $exec_time . " seconds -->";
+
 ?>
