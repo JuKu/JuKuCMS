@@ -228,6 +228,10 @@ class Plugin {
 	}
 
 	public function isInstalled () : bool {
+		if (empty($this->row)) {
+			throw new IllegalStateException("plugin instance wasnt loaded with row.");
+		}
+
 		return (!empty($this->row) ? $this->row['installed'] == 1 : false);
 	}
 
