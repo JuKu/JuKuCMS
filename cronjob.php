@@ -40,6 +40,8 @@ if (!empty($auth_key)) {
 	}
 }
 
+Events::throwEvent("init_cronjob");
+
 //TODO: execute tasks (task schedular)
 
 $end_time = microtime(true);
