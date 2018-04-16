@@ -155,6 +155,20 @@ class Task {
 		));
 	}
 
+	public function deleteAfterExecution () : bool {
+		return $this->row['delete_after_execution'] == 1;
+	}
+
+	public function delete () {
+		//delete from database
+		Database::getInstance()->execute("DELETE FROM `{praefix}tasks` WHERE `id` = :id; ", array(
+			'id' => array(
+				'type' => PDO::PARAM_INT,
+				'value' => $this->getID()
+			)
+		));
+	}
+
 	public static function cast (Task $task) : Task {
 		return $task;
 	}

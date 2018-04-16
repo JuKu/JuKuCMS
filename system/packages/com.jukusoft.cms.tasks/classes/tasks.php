@@ -27,8 +27,14 @@ class Tasks {
 			//execute task
 			$task->execute();
 
-			//update last execution timestamp
-			$task->setLastExecution();
+			//check, if task is a one-time task
+			if ($task->deleteAfterExecution()) {
+				//delete task
+				$task->delete();
+			} else {
+				//update last execution timestamp
+				$task->setLastExecution();
+			}
 		}
 	}
 

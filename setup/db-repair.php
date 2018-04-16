@@ -989,6 +989,7 @@ $table->addEnum("type", array("FILE", "FUNCTION", "CLASS_STATIC_METHOD", ""), tr
 $table->addVarchar("type_params", 255, false, "NULL");
 $table->addText("params", true);
 $table->addVarchar("owner", 255, true, "system");
+$table->addInt("delete_after_execution", 10, true, false, 0);
 $table->addInt("interval", 10, true, false, 60);
 $table->addTimestamp("last_execution", true, "0000-00-00 00:00:00");
 $table->addInt("activated", 10, true, false, 1);
