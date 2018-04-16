@@ -18,8 +18,35 @@
 
 class Tasks {
 
-	public static function schedule (int $max_count = -1) {
+	public static function schedule (int $limit = 3) {
 		//execute overdued tasks
+		foreach (self::getOverduedTasks($limit) as $task) {
+			//cast task
+			$task = Task::cast($task);
+
+			//execute task
+			$task->execute();
+
+			//update last execution timestamp
+			$task->setLastExecution();
+		}
+	}
+
+	public static function getOverduedTasks (int $limit = 10) : array {
+		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}tasks` WHERE (DATE_ADD(`last_execution`, INTERVAL `interval` MINUTE) < NOW() OR `last_execution` = '0000-00-00 00:00:00') AND `activated` = '1' LIMIT 0, :limit; ", array(
+			'limit' => array(
+				'type' => PDO::PARAM_INT,
+				'value' => $limit
+			)
+		));
+
+		$tasks = array();
+
+		foreach ($rows as $row) {
+			$tasks[] = new Task($row);
+		}
+
+		return $tasks;
 	}
 
 }
