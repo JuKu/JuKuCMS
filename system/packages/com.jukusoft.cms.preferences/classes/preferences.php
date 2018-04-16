@@ -27,8 +27,21 @@
 
 class Preferences {
 
+	protected $prefs = array();
+
 	public function __construct(string $name) {
-		//
+		if (Cache::contains("preferences", "preferences-" . $name)) {
+			$this->prefs = Cache::get("preferences", "preferences-" . $name);
+		} else {
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}preferences` WHERE `area` = :area; ", array('area' => $name));
+
+			foreach ($rows as $row) {
+				$this->prefs[$row['key']] = unserialize($row['value']);
+			}
+
+			//cache preferences
+			Cache::put("preferences", "preferences-" . $name, $this->prefs);
+		}
 	}
 
 }
