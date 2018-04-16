@@ -1005,6 +1005,32 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table preferences
+ *
+ * Package: com.jukusoft.cms.preferences
+ */
+
+echo "Create / Upgrade table <b>preferences</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("preferences", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addVarchar("key", 255, true);
+$table->addVarchar("area", 255, true);
+$table->addText("value");
+
+//add keys to table
+$table->addPrimaryKey(array("key", "area"));
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 
