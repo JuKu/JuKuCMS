@@ -968,6 +968,42 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table tasks
+ *
+ * Package: com.jukusoft.cms.tasks
+ */
+
+echo "Create / Upgrade table <b>tasks</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("tasks", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("id", 10, true, true);
+$table->addVarchar("title", 255, true);
+$table->addVarchar("unique_name", 255, true, "");//unique name, so plugins or upgrade can find task easier
+$table->addEnum("type", array("FILE", "FUNCTION", "CLASS_STATIC_METHOD", ""), true);
+$table->addVarchar("type_params", 255, false, "NULL");
+$table->addText("params", true);
+$table->addVarchar("owner", 255, true, "system");
+$table->addInt("interval", 10, true, false, 60);
+$table->addTimestamp("last_execution", true, "0000-00-00 00:00:00");
+$table->addInt("activated", 10, true, false, 1);
+
+//add keys to table
+$table->addPrimaryKey("id");
+$table->addUnique("unique_name");
+$table->addIndex("last_execution");
+$table->addIndex("activated");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 
