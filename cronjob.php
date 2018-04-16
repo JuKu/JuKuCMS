@@ -36,6 +36,7 @@ if (!empty($auth_key)) {
 	//auth key is required
 	if (!isset($_REQUEST['auth_key']) || $_REQUEST['auth_key'] !== $auth_key) {
 		echo "No auth key set or auth key is wrong.";
+		ob_end_flush();
 		exit;
 	}
 }
@@ -49,5 +50,8 @@ $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
 
 echo "<!-- cronjob executed in " . $exec_time . " seconds -->";
+
+ob_end_flush();
+flush();
 
 ?>
