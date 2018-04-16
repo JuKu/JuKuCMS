@@ -1065,6 +1065,7 @@ Settings::create("copyright", "<strong>Copyright &copy; 2018 <a href=\"http://ju
 Settings::create("website_name", "" . DomainUtils::getDomain(), "Website name", "Name of your website, e.q. used for mail templates", "system", "general", "DataType_String");
 
 Settings::create("gzip_compression", true, "GZip compression enabled", "GZip compression enabled", "system", "general", "DataType_Boolean");
+Settings::create("session_ttl", 3600, "Session TTL", "Session Time-To-Live in seconds, default: 3600 seconds", "system", "general", "DataType_Integer");
 
 //maintenance mode
 Settings::create("maintenance_mode_enabled", false, "Maintenance Mode enabled (boolean)", "Maintenance Mode enabled (boolean), Default: false", "system", "general", "DataType_Boolean");
