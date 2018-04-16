@@ -1,2 +1,13 @@
 Options -Indexes
-deny from all
+# deny from all
+
+<FilesMatch "">
+    Order deny,allow
+    deny from all
+</FilesMatch>
+
+# allow access to js and css files, see also https://stackoverflow.com/questions/30117017/apache-filesmatch-and-indexes-hide-all-files-with-exception
+<FilesMatch "\.(js|css)$">
+    Order allow,deny
+    allow from all
+</FilesMatch>

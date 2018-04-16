@@ -5,6 +5,10 @@
             "title": "lang_Markdown page"
         },
         {
+            "class_name": "Plugin_AdvancedPageTypes_AsciiDocPage",
+            "title": "lang_AsciiDoc page"
+        },
+        {
             "class_name": "Plugin_AdvancedPageTypes_StaticHTMLPage",
             "title": "lang_Static HTML page"
         }

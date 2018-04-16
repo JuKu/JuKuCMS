@@ -75,5 +75,7 @@
 <!-- footer javascript -->
 <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_FOOTER}&amp;position=footer"></script>
 
+{$FOOTER_SCRIPTS}
+
 </body>
 </html>
