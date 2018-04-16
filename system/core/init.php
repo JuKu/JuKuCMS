@@ -24,7 +24,7 @@ if (PHP_MAJOR_VERSION < 7) {
 
 register_shutdown_function(function () {
 	//flush gzip cache
-	ob_end_flush();
+	@ob_end_flush();
 
 	//throw event, for example to write logs to file
 	Events::throwEvent("shutdown_function");
