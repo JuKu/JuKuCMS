@@ -43,7 +43,7 @@ if (!empty($auth_key)) {
 Events::throwEvent("init_cronjob");
 
 //execute tasks (task schedular)
-Tasks::schedule();
+Tasks::schedule(Settings::get("max_tasks_on_cronjob", 10));
 
 $end_time = microtime(true);
 $exec_time = $end_time - $start_time;
