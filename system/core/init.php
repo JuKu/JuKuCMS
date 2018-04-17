@@ -72,7 +72,17 @@ Events::init();
 //throw init event
 Events::throwEvent("init");
 
-//TODO: manage session
+//configure session
+$session_ttl = (int) Settings::get("session_ttl", 3600);
+
+// server should keep session data for AT LEAST 1 hour
+@ini_set('session.gc_maxlifetime', $session_ttl);
+
+//each client should remember their session id for EXACTLY 1 hour
+session_set_cookie_params($session_ttl);
+
+//start session
+session_start();
 
 //check secure php options
 Security::check();

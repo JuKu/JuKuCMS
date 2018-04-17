@@ -9,18 +9,6 @@ error_reporting(E_ALL);
 
 require("system/core/init.php");
 
-//configure session
-$session_ttl = Settings::get("session_ttl", 3600);
-
-// server should keep session data for AT LEAST 1 hour
-@ini_set('session.gc_maxlifetime', $session_ttl);
-
-//each client should remember their session id for EXACTLY 1 hour
-session_set_cookie_params($session_ttl);
-
-//start session
-session_start();
-
 //reset OpCache in debug mode
 if (CLEAR_OP_CACHE) {
 	//http://php.net/manual/en/function.opcache-reset.php
