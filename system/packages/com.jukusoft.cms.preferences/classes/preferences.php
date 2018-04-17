@@ -32,6 +32,8 @@ class Preferences {
 	protected $changed_prefs = array();
 
 	public function __construct(string $area) {
+		$area = strtolower($area);
+
 		if (!PHPUtils::startsWith($area, "plugin_") && !PHPUtils::startsWith($area, "style_")) {
 			throw new IllegalArgumentException("preferences area name should start with 'plugin_' or 'style_'´.");
 		}
@@ -56,9 +58,9 @@ class Preferences {
 		return isset($this->prefs[$key]);
 	}
 
-	public function get (string $key) {
+	public function get (string $key, $default = null) {
 		if (!isset($this->prefs[$key])) {
-			return null;
+			return $default;
 		}
 
 		return $this->prefs[$key];
