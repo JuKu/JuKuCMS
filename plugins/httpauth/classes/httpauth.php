@@ -30,6 +30,37 @@ class Plugin_HTTPAuth_HTTPAuth {
 	public static function headerEvent () {
 		//get preferences first
 		$prefs = new Preferences("plugin_httpauth");
+
+		$activated = $prefs->get("activated", false);
+
+		if (!$activated) {
+			return;
+		}
+
+		//check, if user is logged in
+		if (User::current()->isLoggedIn()) {
+			//http auth is not required, because user is already logged in
+			return;
+		}
+
+		//check, if credentials was already send
+		if (!isset($_SERVER['PHP_AUTH_USER'])) {
+			self::sendHeader($prefs);
+		} else {
+			echo "<p>Hallo {$_SERVER['PHP_AUTH_USER']}.</p>";
+			echo "<p>Sie gaben {$_SERVER['PHP_AUTH_PW']} als Passwort ein.</p>";
+		}
+	}
+
+	protected static function sendHeader (Preferences $prefs) {
+		header('WWW-Authenticate: Basic realm="My Realm"');
+		header('HTTP/1.0 401 Unauthorized');
+
+		//text which will be sended, if user clicks on abort
+		echo $prefs->get("abort_text", "<h1>401 Authorization Required</h1>");
+
+		ob_end_flush();
+		exit;
 	}
 
 }
