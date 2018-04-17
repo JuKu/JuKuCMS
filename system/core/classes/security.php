@@ -69,6 +69,11 @@ class Security {
     }
 
     protected static function initCSRFToken () {
+    	if (session_status() !== PHP_SESSION_ACTIVE) {
+    		throw new IllegalStateException("session wasnt started yet.");
+    		exit;
+		}
+
         if (!isset($_SESSION['csrf_token'])) {
             /*self::$csrf_token = hash_hmac(
                 'sha512',

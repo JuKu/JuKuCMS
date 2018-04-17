@@ -66,7 +66,7 @@ if (isset($_REQUEST['clear_cache'])) {
 }
 
 //TODO: remove this code later
-if (isset($_REQUEST['new_csrf_token'])) {
+if (isset($_REQUEST['generate_csrf_token'])) {
 	Security::generateNewCSRFToken();
 }
 
