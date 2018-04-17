@@ -58,6 +58,33 @@ class Plugin_HTTPAuth_HTTPAuth {
 			if ($res['success'] !== true) {
 				//send http header again
 				self::sendHeader($prefs);
+			} else {
+				//login successful, show redirect
+				if (isset($_REQUEST['redirect_url']) && !empty($_REQUEST['redirect_url'])) {
+					//TODO: check for security issues, maybe we should check if redirect_url is a known domain
+
+					header("Location: " . urldecode($_REQUEST['redirect_url']));
+
+					//flush gzip buffer
+					ob_end_flush();
+
+					exit;
+				} else {
+					//redirect to index page
+
+					//get domain
+					$domain = Registry::singleton()->getObject("domain");
+
+					//generate index url
+					$index_url = DomainUtils::generateURL($domain->getHomePage());
+
+					header("Location: " . $index_url);
+
+					//flush gzip buffer
+					ob_end_flush();
+
+					exit;
+				}
 			}
 		}
 	}
