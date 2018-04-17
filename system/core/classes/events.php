@@ -73,14 +73,14 @@ class Events {
 
 		if (isset(self::$events[$name])) {
 			foreach (self::$events as $event) {
+				var_dump($event);
+
 				self::executeEvent($event, $params);
 			}
 		}
 	}
 
 	protected static function executeEvent ($row, $params) {
-		var_dump($row);
-
 		$type = strtolower($row['type']);
 		$file = $row['file'];
 		$class_name = $row['class_name'];
