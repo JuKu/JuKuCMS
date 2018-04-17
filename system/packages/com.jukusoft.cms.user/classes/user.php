@@ -265,6 +265,9 @@ class User {
 	}
 
 	public function logout () {
+		//check, if session was started
+		PHPUtils::checkSessionStarted();
+
 		unset($_SESSION['userID']);
 		unset($_SESSION['username']);
 
