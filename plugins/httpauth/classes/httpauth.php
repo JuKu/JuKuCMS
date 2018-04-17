@@ -30,9 +30,6 @@ class Plugin_HTTPAuth_HTTPAuth {
 	//http://php.net/manual/de/features.http-auth.php
 
 	public static function headerEvent () {
-		echo "call";
-		exit;
-
 		//get preferences first
 		$prefs = new Preferences("plugin_httpauth");
 
