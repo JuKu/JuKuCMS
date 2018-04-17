@@ -79,6 +79,8 @@ class Events {
 	}
 
 	protected static function executeEvent ($row, $params) {
+		var_dump($row);
+
 		$type = strtolower($row['type']);
 		$file = $row['file'];
 		$class_name = $row['class_name'];
