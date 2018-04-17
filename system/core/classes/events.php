@@ -72,9 +72,7 @@ class Events {
 		}
 
 		if (isset(self::$events[$name])) {
-			var_dump(self::$events[$name]);
-
-			foreach (self::$events as $event) {
+			foreach (self::$events[$name] as $event) {
 				self::executeEvent($event, $params);
 			}
 		}
