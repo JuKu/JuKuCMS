@@ -272,10 +272,7 @@ class PluginInstaller {
 		$this->setInstalled();
 
 		//clear cache
-		Cache::clear("plugins");
-
-		//clear events cache
-		Cache::clear("events");
+		Cache::clear();
 
 		return true;
 	}
@@ -318,7 +315,7 @@ class PluginInstaller {
 		$this->setUnInstalled();
 
 		//clear cache
-		Cache::clear("plugins");
+		Cache::clear();
 
 		return true;
 	}
