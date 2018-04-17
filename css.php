@@ -48,6 +48,8 @@ ob_start("ob_gzhandler");
 //set css header
 header("Content-Type: text/css");
 
+Events::throwEvent("http_header");
+
 Events::throwEvent("init_css");
 
 $style = "";

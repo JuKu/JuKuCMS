@@ -1203,8 +1203,8 @@ Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/", -1, -1, -1, fals
 Page::createIfAbsent("register", "Registration", "RegisterPage", "", "/", -1, -1, -1, false);
 
 //only at installation process
-Page::createIfAbsent("privacy-policy", "lang_Privacy Policy", "HTMLPage", "Private Policy - Add privaty policy here", "/", -1, -1, -1, true);
-Page::createIfAbsent("imprint", "lang_Imprint", "HTMLPage", "Imprint - Add contact data here", "/", -1, -1, -1, true);
+Page::createIfAbsent("privacy-policy", "lang_Privacy Policy", "HTMLPage", "Private Policy - Add privaty policy here", "/", -1, -1, -1, false);
+Page::createIfAbsent("imprint", "lang_Imprint", "HTMLPage", "Imprint - Add contact data here", "/", -1, -1, -1, false);
 
 Page::createIfAbsent("user/verify_mail", "Mail Verification", "MailVerifyPage", "", "/user/", -1, -1, -1, false);
 
@@ -1215,7 +1215,7 @@ Page::createIfAbsent("robots.txt", "Robots.txt", "RobotsPage", "", "/", -1, -1, 
 Page::createIfAbsent("sitemap.xml", "Sitemap", "SitemapPage", "", "/", -1, -1, -1, false, true, false);
 
 //create forbidden pages
-Page::createIfAbsent("error403", "Error 403", "Error403Page", "Error 403 - Forbidden!<br /> You dont have permissions to access this page or folder. Maybe you have to login.", "/");
+Page::createIfAbsent("error403", "Error 403", "Error403Page", "Error 403 - Forbidden!<br /> You dont have permissions to access this page or folder. Maybe you have to login.", "/", -1, -1, -1, false);
 
 echo "Create admin pages if absent...<br />";
 Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/admin/", -1, -1, -1, false, true, false);

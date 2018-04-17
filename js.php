@@ -47,6 +47,8 @@ ob_start("ob_gzhandler");
 //set javascript header
 header("Content-Type: text/javascript");
 
+Events::throwEvent("http_header");
+
 Events::throwEvent("init_js");
 
 $style = "";
