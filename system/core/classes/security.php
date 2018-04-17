@@ -104,6 +104,9 @@ class Security {
     		$value = $_REQUEST['csrf_token'];
 		}
 
+		echo "current: " . $value . ", expected: " . self::$csrf_token;
+    	exit;
+
         return self::$csrf_token === $value;
     }
 
