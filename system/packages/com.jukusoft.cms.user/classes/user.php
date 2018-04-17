@@ -270,6 +270,9 @@ class User {
 
 		$_SESSION['logged-in'] = false;
 
+		echo "logout";
+		exit;
+
 		$this->setGuest();
 	}
 
