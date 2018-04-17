@@ -27,8 +27,12 @@
 
 class LogoutPage extends HTMLPage {
 
+	protected $error = false;
+
 	public function setCustomHeader() {
 		if (!Security::checkCSRFToken()) {
+			$this->error = true;
+
 			//dont logout user, because csrf token isnt correct
 			return;
 		}
@@ -48,6 +52,14 @@ class LogoutPage extends HTMLPage {
 		ob_end_flush();
 
 		exit;
+	}
+
+	public function getContent(): string {
+		if ($this->error) {
+			return "Wrong CSRF token!";
+		}
+
+		return "";
 	}
 
 }
