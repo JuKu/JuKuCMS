@@ -162,6 +162,8 @@ $registry->storeObject("page_type", $page_type);
 header("Content-Type: " . $page_type->getContentType());
 $page_type->setCustomHeader();
 
+Events::throwEvent("http_header");
+
 //get current style
 $registry->setSetting("current_style_name", StyleController::getCurrentStyle($registry, $page, $page_type));
 
