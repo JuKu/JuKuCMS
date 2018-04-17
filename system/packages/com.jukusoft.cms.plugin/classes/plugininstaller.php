@@ -274,6 +274,9 @@ class PluginInstaller {
 		//clear cache
 		Cache::clear("plugins");
 
+		//clear events cache
+		Cache::clear("events");
+
 		return true;
 	}
 
