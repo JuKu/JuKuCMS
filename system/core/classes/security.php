@@ -76,15 +76,20 @@ class Security {
                 openssl_random_pseudo_bytes(16)
             );*/
 
-            //generate new random token with 32 bytes
-            self::$csrf_token = base64_encode( openssl_random_pseudo_bytes(32));
-
-            $_SESSION['csrf_token'] = self::$csrf_token;
+            //generate new CSRF token
+			self::generateNewCSRFToken();
         } else {
             //get CSRF token from string
             self::$csrf_token = $_SESSION['csrf_token'];
         }
     }
+
+    public static function generateNewCSRFToken () {
+		//generate new random token with 32 bytes
+		self::$csrf_token = base64_encode( openssl_random_pseudo_bytes(32));
+
+		$_SESSION['csrf_token'] = self::$csrf_token;
+	}
 
     public static function getCSRFToken () {
         //return CSRF token
@@ -103,9 +108,6 @@ class Security {
 
     		$value = $_REQUEST['csrf_token'];
 		}
-
-		echo "current: " . $value . ", expected: " . self::$csrf_token;
-    	exit;
 
         return self::$csrf_token === $value;
     }

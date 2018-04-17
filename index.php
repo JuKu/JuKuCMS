@@ -65,6 +65,11 @@ if (isset($_REQUEST['clear_cache'])) {
 	echo "Clear cache!<br />";
 }
 
+//TODO: remove this code later
+if (isset($_REQUEST['new_csrf_token'])) {
+	Security::generateNewCSRFToken();
+}
+
 //create new instance of registry
 $registry = Registry::singleton();
 
