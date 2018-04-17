@@ -27,6 +27,8 @@
 
 class Plugin_HTTPAuth_HTTPAuth {
 
+	//http://php.net/manual/de/features.http-auth.php
+
 	public static function headerEvent () {
 		//get preferences first
 		$prefs = new Preferences("plugin_httpauth");
@@ -53,7 +55,9 @@ class Plugin_HTTPAuth_HTTPAuth {
 	}
 
 	protected static function sendHeader (Preferences $prefs) {
-		header('WWW-Authenticate: Basic realm="My Realm"');
+		$realm_name = $prefs->get("realm_name", "Website");
+
+		header('WWW-Authenticate: Basic realm="' . $realm_name . '"');
 		header('HTTP/1.0 401 Unauthorized');
 
 		//text which will be sended, if user clicks on abort
