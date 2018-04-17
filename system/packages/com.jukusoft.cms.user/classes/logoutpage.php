@@ -43,6 +43,8 @@ class LogoutPage extends HTMLPage {
 		//logout user
 		User::current()->logout();
 
+		Events::throwEvent("after_logout");
+
 		//get domain
 		$domain = Registry::singleton()->getObject("domain");
 
