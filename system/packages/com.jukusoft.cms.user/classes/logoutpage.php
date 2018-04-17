@@ -30,6 +30,9 @@ class LogoutPage extends HTMLPage {
 	protected $error = false;
 
 	public function setCustomHeader() {
+		//check, if session was started
+		PHPUtils::checkSessionStarted();
+
 		if (!Security::checkCSRFToken()) {
 			$this->error = true;
 

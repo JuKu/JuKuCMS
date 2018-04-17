@@ -167,4 +167,16 @@ class PHPUtils {
 		clearstatcache();
 	}
 
+	public static function checkSessionStarted (bool $throw_exception = true) : bool {
+		if (session_status() !== PHP_SESSION_ACTIVE) {
+			if ($throw_exception) {
+				throw new IllegalStateException("session wasnt started yet.");
+			}
+
+			return false;
+		}
+
+		return true;
+	}
+
 }
