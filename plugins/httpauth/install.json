@@ -4,6 +4,11 @@
             "event": "http_header",
             "class": "Plugin_HTTPAuth_HTTPAuth",
             "method": "headerEvent"
+        },
+        {
+            "event": "after_logout",
+            "class": "Plugin_HTTPAuth_HTTPAuth",
+            "method": "logoutEvent"
         }
     ]
 }

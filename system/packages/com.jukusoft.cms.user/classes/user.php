@@ -274,6 +274,8 @@ class User {
 		$_SESSION['logged-in'] = false;
 
 		$this->setGuest();
+
+		Events::throwEvent("after_logout");
 	}
 
 	protected function setGuest () {

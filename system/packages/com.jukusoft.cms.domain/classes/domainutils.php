@@ -96,14 +96,15 @@ class DomainUtils {
 		return htmlentities($_SERVER['REQUEST_URI']);
 	}
 
-	public static function getBaseURL () {
+	public static function getBaseURL (bool $without_protocol = false) {
 		$url = "";
 
-		//add protocol
-		if (self::isHTTPS()) {
-			$url .= "https://";
-		} else {
-			$url .= "http://";
+		if (!$without_protocol) {//add protocol
+			if (self::isHTTPS()) {
+				$url .= "https://";
+			} else {
+				$url .= "http://";
+			}
 		}
 
 		//add domain
@@ -162,6 +163,14 @@ class DomainUtils {
 		$host = $array1[0];
 
 		return /*$domain*/$host;
+	}
+
+	public static function getProtocol () : string {
+		if (self::isHTTPS()) {
+			return "https://";
+		} else {
+			return "http://";
+		}
 	}
 
 }
