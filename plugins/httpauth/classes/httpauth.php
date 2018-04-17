@@ -33,7 +33,7 @@ class Plugin_HTTPAuth_HTTPAuth {
 		//get preferences first
 		$prefs = new Preferences("plugin_httpauth");
 
-		$activated = $prefs->get("activated", false);
+		$activated = $prefs->get("activated", true);
 
 		if (!$activated) {
 			return;
@@ -46,17 +46,26 @@ class Plugin_HTTPAuth_HTTPAuth {
 		}
 
 		//check, if credentials was already send
-		if (!isset($_SERVER['PHP_AUTH_USER'])) {
+		if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
 			self::sendHeader($prefs);
 		} else {
-			echo "<p>Hallo {$_SERVER['PHP_AUTH_USER']}.</p>";
-			echo "<p>Sie gaben {$_SERVER['PHP_AUTH_PW']} als Passwort ein.</p>";
+			$username = $_SERVER['PHP_AUTH_USER'];
+			$password = $_SERVER['PHP_AUTH_PW'];
+
+			//try to login
+			$res = User::current()->loginByUsername($username, $password);
+
+			if ($res['success'] !== true) {
+				//send http header again
+				self::sendHeader($prefs);
+			}
 		}
 	}
 
 	protected static function sendHeader (Preferences $prefs) {
 		$realm_name = $prefs->get("realm_name", "Website");
 
+		//send http header, so browser will show a login form
 		header('WWW-Authenticate: Basic realm="' . $realm_name . '"');
 		header('HTTP/1.0 401 Unauthorized');
 
