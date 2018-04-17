@@ -105,7 +105,9 @@ class Plugin_HTTPAuth_HTTPAuth {
 
 	public static function logoutEvent () {
 		//because browser safes http auth credentials by default, we need to do a little trick to clear browser auth cache
-		header("Location: " . DomainUtils::getProtocol() . "foo:bar@" . DomainUtils::getBaseURL(true));
+		//header("Location: " . DomainUtils::getProtocol() . "foo:bar@" . DomainUtils::getBaseURL(true));
+
+		echo "Location: " . DomainUtils::getProtocol() . "foo:bar@" . DomainUtils::getBaseURL(true);
 
 		exit;
 	}
