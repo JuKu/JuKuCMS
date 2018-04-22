@@ -30,6 +30,8 @@ class ChangePasswordPage extends PageType {
 	public function getContent() : string {
 		$template = new DwooTemplate("pages/changepassword");
 
+		$template->assign("form_action", DomainUtils::generateURL($this->getPage()->getAlias()));
+
 		return $template->getCode();
 	}
 
