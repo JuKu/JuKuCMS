@@ -1221,6 +1221,7 @@ echo "Create admin pages if absent...<br />";
 Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/admin/", -1, -1, -1, false, true, false);
 Page::createIfAbsent("admin/plugins", "lang_Plugins", "PluginsPage", "", "/admin/", -1, -1, -1, false, true, false);
 Page::createIfAbsent("admin/plugin_installer", "lang_Plugin Installer", "PluginInstallerPage", "", "/admin/", -1, -1, -1, false, true, false);
+Page::createIfAbsent("admin/change_password", "lang_Change password", "ChangePasswordPage", "", "/admin/", -1, -1, -1, false, true, false);
 
 //create some tool pages
 Page::createIfAbsent("admin/phpinfo", "phpinfo()", "PHPInfoPage", "", "/admin/", -1, -1, -1, false, true, false);
