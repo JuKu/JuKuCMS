@@ -59,5 +59,9 @@
             "comment": "flag, if page should be removed on uninstall of plugin",
             "autoremove_on_uninstall": false
         }
-    ]
+    ],
+    "chmod": {
+        "store/test": "777",
+        "store/test2": "755"
+    }
 }
