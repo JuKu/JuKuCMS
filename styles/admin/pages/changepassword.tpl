@@ -8,6 +8,16 @@
             <!-- form start -->
             <form action="{$form_action}" method="post" role="form">
                 <div class="box-body">
+                    {if empty($error_message) == false}
+                        <p style="border: 1px solid #CC0000; background: #FFAA00; color:#CC0000; padding: 5px; ">
+                            {$error_message}
+                        </p>
+                    {/if}
+
+                    {if $form_submit == true}
+                        <p style="border: 1px solid green; background: yellowgreen; color:green; padding: 5px; ">{$success_message}</p>
+                    {/if}
+
                     <div class="form-group">
                         <label for="old_password">{lang}Old password{/lang}</label>
                         <input type="password" name="old_password" class="form-control" id="old_password" placeholder="Password">
