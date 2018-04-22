@@ -194,6 +194,48 @@ class User {
 		}
 	}
 
+	/**
+	 * check password of current user
+	 *
+	 * @param $password string password
+	 *
+	 * @throws IllegalStateException if user wasnt loaded before
+	 *
+	 * @return true, if password is correct
+	 */
+	public function checkPassword (string $password) : bool {
+		if ($this->row == null || empty($this->row)) {
+			throw new IllegalStateException("user wasnt loaded.");
+		}
+
+		return password_verify($password, $this->row['password']);
+	}
+
+	public function setPassword (string $password) {
+		if ($this->row == null || empty($this->row)) {
+			throw new IllegalStateException("user wasnt loaded.");
+		}
+
+		//validate password
+		$password = Validator_Password::get($password);
+
+		//create new salt
+		$salt = md5(PHPUtils::randomString(50));
+
+		//generate password hash
+		$hashed_password = self::hashPassword($password, $salt);
+
+		//update database
+		Database::getInstance()->execute("UPDATE `{praefix}users` SET `password` = :password, `salt` = :salt WHERE `userID` = :userID; ", array(
+			'password' => $password,
+			'salt' => $salt,
+			'userID' => $this->getID()
+		));
+
+		//clear cache
+		Cache::clear("user", "user-" . $this->getID());
+	}
+
 	protected function loginRow ($row, string $password) : array {
 		if (!$row) {
 			//user doesnt exists

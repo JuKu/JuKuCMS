@@ -34,7 +34,7 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">{lang}Submit{/lang}</button>
+                    <button type="submit" name="submit" class="btn btn-primary">{lang}Submit{/lang}</button>
                 </div>
             </form>
             <!-- /.box-body -->

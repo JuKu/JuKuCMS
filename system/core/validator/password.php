@@ -57,8 +57,13 @@ class Validator_Password implements Validator_Base {
 		if ($this->isValide($value)) {
 			return $value;
 		} else {
-			throw new SecurityException("username is not valide '" . htmlentities($value) . "'!");
+			throw new SecurityException("password is not valide!");
 		}
+	}
+
+	public static function get (string $value) : string {
+		$obj = new Validator_Password();
+		return $obj->validate($value);
 	}
 
 }
