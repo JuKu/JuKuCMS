@@ -22,4 +22,5 @@
 	<class>RegisterPage</class>
 	<class>Mail_Verification</class>
 	<class>MailVerifyPage</class>
+	<class>ChangePasswordPage</class>
 </classes>
