@@ -8,13 +8,13 @@
             <!-- form start -->
             <form action="{$form_action}" method="post" role="form">
                 <div class="box-body">
-                    {if empty($error_message) == false}
+                    {if empty($error_message) === false}
                         <p style="border: 1px solid #CC0000; background: #FFAA00; color:#CC0000; padding: 5px; ">
                             {$error_message}
                         </p>
                     {/if}
 
-                    {if $form_submit == true}
+                    {if $form_submit === true}
                         <p style="border: 1px solid green; background: yellowgreen; color:green; padding: 5px; ">{$success_message}</p>
                     {/if}
 
