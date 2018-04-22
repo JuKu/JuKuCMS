@@ -11,6 +11,7 @@ Like [composer](https://getcomposer.org/doc/04-schema.md#type) this CMS supports
   - **metaplugin** (An empty plugin that contains requirements and will trigger their installation, but contains no files and will not write anything to the filesystem)
   - **project** (a full plugin which adds new features to CMS)
   - **importer** (imports only data from external systems)
+  - **addon** (very large plugins like a full issue management system like github)
   
 ## Plugin Rules
 

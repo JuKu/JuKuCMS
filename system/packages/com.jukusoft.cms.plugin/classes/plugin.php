@@ -35,7 +35,7 @@ class Plugin {
 
 	protected $json_data = null;
 
-	protected static $allowed_types = array("library", "metaplugin", "project", "importer");
+	protected static $allowed_types = array("library", "metaplugin", "project", "importer", "addon");
 
 	/**
 	 * default constructor
