@@ -27,7 +27,11 @@
 
 class ChangePasswordPage extends PageType {
 
-	//
+	public function getContent() : string {
+		$template = new DwooTemplate("pages/changepassword");
+
+		return $template->getCode();
+	}
 
 }
 
