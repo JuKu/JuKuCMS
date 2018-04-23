@@ -60,6 +60,10 @@
             "autoremove_on_uninstall": false
         }
     ],
+    "store": [
+        "test",
+        "test2"
+    ],
     "chmod": {
         "store/test": "777",
         "store/test2": "755"
