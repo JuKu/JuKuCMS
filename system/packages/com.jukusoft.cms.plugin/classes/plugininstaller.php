@@ -247,6 +247,8 @@ class PluginInstaller {
 
 			$installer_plugins = self::listInstallerPlugins();
 
+			var_dump($installer_plugins);
+
 			foreach ($installer_plugins as $i_plugin) {
 				//cast plugin
 				$i_plugin = PluginInstaller_Plugin::cast($i_plugin);
