@@ -51,13 +51,21 @@ class ChangePasswordPage extends PageType {
 						//create new instance of validator
 						$validator = new Validator_Password();
 
-						//validate password
-						$new_password = $validator->validate($new_password);
+						//check, if password is valide
+						if (!$validator->isValide($new_password)) {
+							$min_length = Settings::get("password_min_length", 6);
+							$max_length = Settings::get("password_max_length", 64);
 
-						User::current()->setPassword($new_password);
+							$template->assign("error_message", "New password is not valide! Min length: " . $min_length . ", max length: " . $max_length . " .");
+						} else {
+							//validate password
+							//$new_password = $validator->validate($new_password);
 
-						$template->assign("form_submit", true);
-						$template->assign("success_message", "Password changed successfully!");
+							User::current()->setPassword($new_password);
+
+							$template->assign("form_submit", true);
+							$template->assign("success_message", "Password changed successfully!");
+						}
 					}
 				} else {
 					$template->assign("error_message", "Please complete form!");

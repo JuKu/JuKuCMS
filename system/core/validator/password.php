@@ -40,7 +40,7 @@ class Validator_Password implements Validator_Base {
 			return false;
 		}
 
-		if (strlen($value) < Settings::get("password_min_length", 8)) {
+		if (strlen($value) < Settings::get("password_min_length", 6)) {
 			return false;
 		}
 

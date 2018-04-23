@@ -1090,7 +1090,7 @@ Settings::create("agb_page", "agb", "Terms of use Page", "Terms of use page", "s
 Settings::create("username_min_length", 4, "Minimal length (characters) of allowed username", "Minimal length (characters) of allowed username", "general", "general", "DataType_Integer");
 Settings::create("username_max_length", 20, "Maximal length (characters) of allowed usernames", "Maximal length (characters) of allowed usernames", "general", "general", "DataType_Integer");
 Settings::create("username_regex", "a-zA-Z0-9\.\-", "Username Regex", "Allowed characters of usernames (regex)", "system", "general", "DataType_String");
-Settings::create("password_min_length", 8, "Minimal password length", "Minimal password length, default: 8", "system", "general", "DataType_Integer");
+Settings::create("password_min_length", 6, "Minimal password length", "Minimal password length, default: 8", "system", "general", "DataType_Integer");
 Settings::create("password_max_length", 64, "Maximal password length", "Maximal password length, default: 8", "system", "general", "DataType_Integer");
 Settings::create("register_activation_method", "auto", "Register Activation Method", "Activation method for new user accounts, Default: auto (which means, that users are automatically activated)", "system", "general", "DataType_SelectBox", array("auto", "mail_verification", "manual_verification"));
 Settings::create("default_main_group", 2, "Default main group ID", "ID of default main group, Default: 2 (registered users)", "system", "general", "DataType_Integer");
