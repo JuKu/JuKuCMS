@@ -213,6 +213,12 @@ class User {
 			'userID' => $this->getID()
 		));
 
+		//get salt
+		$salt = $row['salt'];
+
+		//add salt to password
+		$password .= $salt;
+
 		return password_verify($password, $row['password']);
 	}
 
