@@ -237,7 +237,7 @@ class User {
 		$hashed_password = self::hashPassword($password, $salt);
 
 		//update database
-		Database::getInstance()->execute("UPDATE `{praefix}users` SET `password` = :password, `salt` = :salt WHERE `userID` = :userID; ", array(
+		Database::getInstance()->execute("UPDATE `{praefix}user` SET `password` = :password, `salt` = :salt WHERE `userID` = :userID; ", array(
 			'password' => $password,
 			'salt' => $salt,
 			'userID' => $this->getID()
