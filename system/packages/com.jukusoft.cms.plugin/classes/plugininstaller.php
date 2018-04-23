@@ -384,7 +384,7 @@ class PluginInstaller {
 
 		//sort list
 		usort($plugins, function(PluginInstaller_Plugin $a, PluginInstaller_Plugin $b) {
-			return $a->getPriority() <=> $b->getPriority();
+			return $b->getPriority() <=> $a->getPriority();
 		});
 
 		return $plugins;
