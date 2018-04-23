@@ -79,7 +79,7 @@ $session_ttl = (int) Settings::get("session_ttl", 3600);
 @ini_set('session.gc_maxlifetime', $session_ttl);
 
 //each client should remember their session id for EXACTLY 1 hour
-session_set_cookie_params($session_ttl);
+session_set_cookie_params($session_ttl, "/", DomainUtils::getCurrentDomain(), (DomainUtils::isHTTPS() ? TRUE : FALSE), true);
 
 //start session
 session_start();
