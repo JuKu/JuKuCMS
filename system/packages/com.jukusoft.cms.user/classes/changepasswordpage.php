@@ -76,6 +76,10 @@ class ChangePasswordPage extends PageType {
 		return $template->getCode();
 	}
 
+	public function listRequiredPermissions(): array {
+		return array("can_edit_own_password");
+	}
+
 }
 
 ?>
