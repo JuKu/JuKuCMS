@@ -238,7 +238,7 @@ class User {
 
 		//update database
 		Database::getInstance()->execute("UPDATE `{praefix}user` SET `password` = :password, `salt` = :salt WHERE `userID` = :userID; ", array(
-			'password' => $password,
+			'password' => $hashed_password,
 			'salt' => $salt,
 			'userID' => $this->getID()
 		));
