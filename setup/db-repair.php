@@ -1235,6 +1235,7 @@ PageType::createPageType("IndexPage", "index page (supports extra template)", tr
 PageType::createPageType("LoginPage", "Login page", true);
 PageType::createPageType("LogoutPage", "Logout page", true);
 PageType::createPageType("SitemapPage", "Sitemap page", true);
+PageType::createPageType("ChangePasswordPage", "Change password", true);
 
 echo "Create style rule for admin area if absent...<br />";
 StyleRules::createRuleWithPredefinedID(1, "FOLDER", "/admin/", "admin", -1, 1);
