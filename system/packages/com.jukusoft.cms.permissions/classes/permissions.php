@@ -93,18 +93,37 @@ class Permissions {
 		//delete from database
 		Database::getInstance()->execute("DELETE FROM `{praefix}permissions` WHERE `token` = :token; ", array('token' => $token));
 
+		//cleanup group and user rights table
+		self::deletePermissionsInGroupAndUserTable($token);
+
 		//clear cache
 		Cache::clear("permissions", "permission_list");
 	}
 
 	public static function deletePermissionsByOwner (string $owner) {
-		//TODO: cleanup group and user permissions with this specific tokens
+		//cleanup group and user permissions with this specific tokens
+		Database::getInstance()->execute("DELETE `{praefix}group_rights` FROM `{praefix}group_rights` INNER JOIN `{praefix}permissions` ON `{praefix}permissions`.`token` = `{praefix}group_rights`.`token` WHERE `{praefix}permissions`.`owner` = :owner; ", array(
+			'owner' => $owner
+		));
+
+		//cleanup group and user permissions with this specific tokens
+		Database::getInstance()->execute("DELETE `{praefix}user_rights` FROM `{praefix}user_rights` INNER JOIN `{praefix}permissions` ON `{praefix}permissions`.`token` = `{praefix}user_rights`.`token` WHERE `{praefix}permissions`.`owner` = :owner; ", array(
+			'owner' => $owner
+		));
 
 		//delete from database
 		Database::getInstance()->execute("DELETE FROM `{praefix}permissions` WHERE `owner` = :owner; ", array('owner' => $owner));
 
 		//clear cache
 		Cache::clear("permissions", "permission_list");
+	}
+
+	protected static function deletePermissionsInGroupAndUserTable (string $token) {
+		//delete permission in groups table
+		Database::getInstance()->execute("DELETE FROM `{praefix}group_rights` WHERE `token` = :token; ", array('token' => $token));
+
+		//delete permission in user table
+		Database::getInstance()->execute("DELETE FROM `{praefix}user_rights` WHERE `token` = :token; ", array('token' => $token));
 	}
 
 	public static function listPermissions (string $category = "") : array {
