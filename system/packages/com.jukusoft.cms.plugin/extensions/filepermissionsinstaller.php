@@ -40,10 +40,10 @@ class FilePermissionsInstaller extends PluginInstaller_Plugin {
 
 				if (!file_exists($file_path)) {
 					//create directory
-					//throw new IllegalStateException("directory '" . htmlentities($file_path) . "' doesnt exists.");
+					throw new IllegalStateException("directory '" . htmlentities($file_path) . "' doesnt exists.");
 
 					//TODO: remove this line later
-					mkdir($file_path);
+					//mkdir($file_path);
 				}
 
 				if (strlen($chmod_value) != 3) {
