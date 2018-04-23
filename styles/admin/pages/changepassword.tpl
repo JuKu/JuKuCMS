@@ -29,6 +29,9 @@
                     <div class="form-group">
                         <label for="retry_password">{lang}Retry password{/lang}</label>
                         <input type="password" name="retry_password" class="form-control" id="retry_password" placeholder="Password">
+
+                        <!-- CSRF token -->
+                        <input type="hidden" name="csrf_token" value="{CSRF_TOKEN}" />
                     </div>
                 </div>
                 <!-- /.box-body -->
