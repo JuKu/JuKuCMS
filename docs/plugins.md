@@ -28,6 +28,7 @@ Like [composer](https://getcomposer.org/doc/04-schema.md#type) this CMS supports
   - plugin version must increased on every new release
   - respect trademarks & copyrights
   - plugin names cannot be renamed
+  - plugins should not read directly from database, if their is already a provided api (to avoid incompatibilities)
   
 ## Version Numbers
 
