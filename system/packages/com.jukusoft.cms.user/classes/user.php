@@ -208,7 +208,12 @@ class User {
 			throw new IllegalStateException("user wasnt loaded.");
 		}
 
-		return password_verify($password, $this->row['password']);
+		//because password is not cached, we have to load it directly from database
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `userID` = :userID AND `activated` = '1'; ", array(
+			'userID' => $this->getID()
+		));
+
+		return password_verify($password, $row['password']);
 	}
 
 	public function setPassword (string $password) {

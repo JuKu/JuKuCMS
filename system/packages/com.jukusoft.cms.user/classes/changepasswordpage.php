@@ -38,8 +38,6 @@ class ChangePasswordPage extends PageType {
 				$template->assign("error_message", "Wrong CSRF token!");
 			} else {
 				if (isset($_POST['old_password']) && !empty($_POST['old_password']) && isset($_POST['new_password']) && !empty($_POST['new_password']) && isset($_POST['retry_password']) && !empty($_POST['retry_password'])) {
-					echo "submit form.";
-
 					$old_passowrd = $_POST['old_password'];
 					$new_password = $_POST['new_password'];
 					$retry_password = $_POST['retry_password'];
