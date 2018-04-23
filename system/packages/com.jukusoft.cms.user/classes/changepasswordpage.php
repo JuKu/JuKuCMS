@@ -56,6 +56,8 @@ class ChangePasswordPage extends PageType {
 							$min_length = Settings::get("password_min_length", 6);
 							$max_length = Settings::get("password_max_length", 64);
 
+							Settings::set("password_min_length", 4);
+
 							$template->assign("error_message", "New password is not valide! Min length: " . $min_length . ", max length: " . $max_length . " .");
 						} else {
 							//validate password
