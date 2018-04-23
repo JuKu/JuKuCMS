@@ -20,15 +20,15 @@
 
                     <div class="form-group">
                         <label for="old_password">{lang}Old password{/lang}</label>
-                        <input type="password" name="old_password" class="form-control" id="old_password" placeholder="Password">
+                        <input type="password" name="old_password" class="form-control" id="old_password" placeholder="Password" required="required">
                     </div>
                     <div class="form-group">
                         <label for="new_password">{lang}New password{/lang}</label>
-                        <input type="password" name="new_password" class="form-control" id="new_password" placeholder="Password">
+                        <input type="password" name="new_password" class="form-control" id="new_password" placeholder="Password" required="required">
                     </div>
                     <div class="form-group">
                         <label for="retry_password">{lang}Retry password{/lang}</label>
-                        <input type="password" name="retry_password" class="form-control" id="retry_password" placeholder="Password">
+                        <input type="password" name="retry_password" class="form-control" id="retry_password" placeholder="Password" required="required">
 
                         <!-- CSRF token -->
                         <input type="hidden" name="csrf_token" value="{$CSRF_TOKEN}" />
