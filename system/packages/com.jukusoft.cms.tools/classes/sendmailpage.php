@@ -27,6 +27,32 @@
 
 class SendMailPage extends PageType {
 
+	public function getAdditionalHeaderCode(): string {
+		$base_url = DomainUtils::getBaseURL() . "/";
+
+		return "<!-- iCheck -->
+  				<link rel=\"stylesheet\" href=\"" . $base_url . "styles/admin/plugins/iCheck/flat/blue.css\">
+		
+				<!-- bootstrap wysihtml5 - text editor -->
+  				<link rel=\"stylesheet\" href=\"" . $base_url . "styles/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css\">";
+	}
+
+	public function getFooterScripts(): string {
+		$base_url = DomainUtils::getBaseURL() . "/";
+
+		return "<!-- iCheck -->
+				<script src=\"" . $base_url . "styles/admin/plugins/iCheck/icheck.min.js\"></script>
+				<!-- Bootstrap WYSIHTML5 -->
+				<script src=\"" . $base_url . "styles/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js\"></script>
+				<!-- Page Script -->
+				<script>
+				  $(function () {
+					//Add text editor
+					$(\"#compose-textarea\").wysihtml5();
+				  });
+				</script>";
+	}
+
 	public function getContent(): string {
 		$template = new DwooTemplate("pages/sendmail");
 
