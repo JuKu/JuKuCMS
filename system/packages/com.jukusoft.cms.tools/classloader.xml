@@ -17,4 +17,5 @@
 <classes>
 	<class>PHPInfoPage</class>
 	<class>SendMailPage</class>
+	<class>ClearCachePage</class>
 </classes>
