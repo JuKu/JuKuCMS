@@ -23,6 +23,8 @@
 
     <!-- header javascript -->
     <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=admin&amp;hash={$JS_HASH_ALL_HEADER}&amp;position=header"></script>
+
+    {$HEAD}
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
