@@ -40,6 +40,9 @@ class LDAPClient {
 
 	protected $ldap_config = array();
 
+	//flag, if connection is readonly
+	protected $readonly = false;
+
 	public function __construct (string $host = "", int $port = 0, bool $ssl = false) {
 		$ldap_config = array(
 			'enabled' => true,
@@ -62,6 +65,8 @@ class LDAPClient {
 
 			$this->host = $ldap_config['host'];
 			$this->port = intval($ldap_config['port']);
+
+			$this->readonly = boolval($ldap_config['readonly']);
 		} else {
 			$this->host = $host;
 			$this->port = $port;
