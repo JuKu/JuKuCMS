@@ -28,12 +28,12 @@
 class ClearCachePage extends PageType {
 
 	public function getContent(): string {
-		$template->assign("success_message", "Cache cleared successfully!");
+		//clear cache
+		Cache::clear();
 
 		$template = new DwooTemplate("pages/clearcache");
 
-		//clear cache
-		Cache::clear();
+		$template->assign("success_message", "Cache cleared successfully!");
 
 		return $template->getCode();
 	}
