@@ -36,6 +36,7 @@ $package_list = array(
 	'com.jukusoft.cms.plugin' => true,
 	'com.jukusoft.cms.tasks' => true,
 	'com.jukusoft.cms.preferences' => true,
+	'com.jukusoft.cms.ldap' => true,
 );
 
 ?>
