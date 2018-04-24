@@ -54,7 +54,7 @@ class SendMailPage extends PageType {
 	}
 
 	public function getContent(): string {
-		$template = new DwooTemplate("pages/sendmail");
+		$template = new DwooTemplate("admin/sendmail");
 
 		$template->assign("form_action", DomainUtils::generateURL("pages/sendmail"));
 		$template->assign("content", "");
