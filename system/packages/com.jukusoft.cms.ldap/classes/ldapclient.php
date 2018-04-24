@@ -27,7 +27,99 @@
 
 class LDAPClient {
 
-	//
+	//host and port
+	protected $host = "";
+	protected $port = 389;
+
+	//flag, if uri is used instead of host
+	protected $uri_used = false;
+	protected $uri = "";
+
+	protected $conn = null;
+	protected $res = null;
+
+	protected $ldap_config = array();
+
+	public function __construct (string $host = "", int $port = 0, bool $ssl = false) {
+		$ldap_config = array(
+			'enabled' => true,
+			'ssl' => $ssl
+		);
+
+		if (empty($host)) {
+			//load local config
+			if (!file_exists(CONFIG_PATH . "ldap.php")) {
+				throw new IllegalStateException("No ldap configuration file config/ldap.php exists!");
+			}
+
+			//override $ldap_config
+			require(CONFIG_PATH . "ldap.php");
+
+			//check, if ldap is enabled
+			if ($ldap_config['enabled'] == false) {
+				throw new IllegalStateException("LDAP is disabled.");
+			}
+
+			$this->host = $ldap_config['host'];
+			$this->port = intval($ldap_config['port']);
+		} else {
+			$this->host = $host;
+			$this->port = $port;
+		}
+
+		//check, if SSL is enabled
+		if ($ldap_config['ssl'] == true) {
+			//use OpenLDAP 2.x.x URI instead of host
+			$this->uri = "ldaps://" . $this->host . ":" . $this->port;
+
+			//set flag, that uri is used
+			$this->uri_used = true;
+		}
+
+		//check, if host / uri is valide (this statement doesnt connect to server!) - see also http://php.net/manual/de/function.ldap-connect.php
+		if ($this->uri_used) {
+			$this->conn = ldap_connect($this->uri);
+		} else {
+			$this->conn = ldap_connect($this->host, $this->port);
+		}
+
+		if ($this->conn === FALSE) {
+			throw new IllegalStateException("LDAP connection parameters (host or port) are invalide.");
+		}
+
+		$this->ldap_config = $ldap_config;
+	}
+
+	public function connect (string $username = null, string $password = null) : bool {
+		if (is_null($username) && isset($this->ldap_config['user'])) {
+			$username = $this->ldap_config['user'];
+			$password = $this->ldap_config['password'];
+		}
+
+		if ($this->conn === FALSE) {
+			throw new IllegalStateException("ldap connection check failed.");
+		}
+
+		//connect and bind to ldap server
+		if (!is_null($username)) {
+			//with authentification
+			$this->res = ldap_bind($this->conn, $username, $password);
+		} else {
+			//anonymous binding
+			$this->res = ldap_bind($this->conn);
+		}
+
+		return $this->res !== FALSE;
+	}
+
+	public function getConnection () {
+		return $this->conn;
+	}
+
+	public function disconnect () {
+		//disconnect from ldap server
+		ldap_unbind($this->conn);
+	}
 
 }
 
