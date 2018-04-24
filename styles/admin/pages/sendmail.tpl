@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="form-group">
-                        <textarea name="content" id="compose-textarea" class="form-control" style="height: 300px" placeholder="Your message">{$content}</textarea>
+                        <textarea name="content" id="compose-textarea" class="form-control" style="height: 300px" placeholder="Your message" required="required">{$content}</textarea>
 
                         <!-- CSRF token -->
                         <input type="hidden" name="csrf_token" value="{$CSRF_TOKEN}" />
