@@ -32,7 +32,7 @@ class SendMailPage extends PageType {
 
 		$template->assign("action_url", DomainUtils::generateURL("pages/sendmail"));
 
-		return $template;
+		return $template->getCode();
 	}
 
 }
