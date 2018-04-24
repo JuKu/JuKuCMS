@@ -79,7 +79,7 @@ class SendMailPage extends PageType {
 				$required_fields = array("to_mail", "subject", "content");
 
 				foreach ($required_fields as $field) {
-					if (!isset($_POST[$field]) || empty($_POST['field'])) {
+					if (!isset($_POST[$field]) || empty($_POST[$field])) {
 						$template->assign("error_message", "Please complete form!");
 
 						if (isset($_POST['content'])) {
