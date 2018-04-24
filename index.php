@@ -245,17 +245,17 @@ if ($page_type->showHTMLComments()) {
 	}
 }
 
-//clear cache
-if ($registry->getSetting("clear_cache") == true) {
-	//clear cache
-	Cache::clear();
-}
-
 //flush gzip cache
 ob_flush();
 //ob_end_flush();
 //ob_end_flush();
 flush();
+
+//clear cache
+if ($registry->getSetting("clear_cache") == true) {
+	//clear cache
+	Cache::clear();
+}
 
 //update online list
 User::current()->updateOnlineList();
