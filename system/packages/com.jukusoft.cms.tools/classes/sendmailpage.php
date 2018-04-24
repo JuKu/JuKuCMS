@@ -32,6 +32,63 @@ class SendMailPage extends PageType {
 
 		$template->assign("action_url", DomainUtils::generateURL("pages/sendmail"));
 
+		if (isset($_REQUEST['submit'])) {
+			//first, check csrf token
+			if (!Security::checkCSRFToken()) {
+				$template->assign("error_message", "Wrong CSRF token!");
+
+				if (isset($_POST['content'])) {
+					$template->assign("content", $_POST['content']);
+				}
+			} else {
+				$required_fields = array("to_mail", "subject", "content");
+
+				foreach ($required_fields as $field) {
+					if (!isset($_POST[$field]) || empty($_POST['field'])) {
+						$template->assign("error_message", "Please complete form!");
+
+						if (isset($_POST['content'])) {
+							$template->assign("content", $_POST['content']);
+						}
+
+						return $template->getCode();
+					}
+				}
+
+				//form is complete
+				$to_mail = $_POST['to_mail'];
+				$subject = $_POST['subject'];
+				$content = $_POST['content'];
+
+				//check, if mail is valide
+				if (!(new Validator_Mail())->isValide($to_mail)) {
+					$template->assign("error_message", "Mail is not valide!");
+
+					if (isset($_POST['content'])) {
+						$template->assign("content", $_POST['content']);
+					}
+				} else if (!(new Validator_String())->isValide($subject)) {
+					$template->assign("error_message", "Subject is not valide!");
+
+					if (isset($_POST['content'])) {
+						$template->assign("content", $_POST['content']);
+					}
+				} else {
+					//parameters are valide, send mail
+
+					if (MailApi::sendHTMLMail($to_mail, $subject, $content)) {
+						$template->assign("success_message", "Mail sended successfully!");
+					} else {
+						$template->assign("error_message", "Sending of mail failed!");
+
+						if (isset($_POST['content'])) {
+							$template->assign("content", $_POST['content']);
+						}
+					}
+				}
+			}
+		}
+
 		return $template->getCode();
 	}
 

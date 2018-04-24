@@ -28,7 +28,10 @@
                     </div>
 
                     <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" style="height: 300px" placeholder="Your message"></textarea>
+                        <textarea name="content" id="compose-textarea" class="form-control" style="height: 300px" placeholder="Your message">{$content}</textarea>
+
+                        <!-- CSRF token -->
+                        <input type="hidden" name="csrf_token" value="{$CSRF_TOKEN}" />
                     </div>
 
                 </div>
@@ -36,7 +39,7 @@
 
                 <div class="box-footer">
                     <div class="pull-right">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> {lang}Send{/lang}</button>
+                        <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> {lang}Send{/lang}</button>
                     </div>
 
                     <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> {lang}Discard{/lang}</button>
