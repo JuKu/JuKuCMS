@@ -28,16 +28,7 @@
                     </div>
 
                     <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" style="height: 300px">
-                        Hello John Doe,
-
-                        Here is my message.
-                        Have you received it?
-
-                        Best regards,
-
-                        Jane Doe
-                    </textarea>
+                    <textarea id="compose-textarea" class="form-control" style="height: 300px" placeholder="Your message"></textarea>
                     </div>
 
                 </div>
