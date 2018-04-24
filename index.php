@@ -42,8 +42,6 @@ if (Settings::get("gzip_compression", false)) {
 	ob_start();
 }
 
-$registry->setSetting("clear_cache", false);
-
 //TODO: remove this code in production
 if (isset($_REQUEST['clear_cache'])) {
 	//clear cache
@@ -62,6 +60,8 @@ if (isset($_REQUEST['generate_csrf_token'])) {
 
 //create new instance of registry
 $registry = Registry::singleton();
+
+$registry->setSetting("clear_cache", false);
 
 //get domain
 $domain = new Domain();
