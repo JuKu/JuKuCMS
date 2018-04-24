@@ -91,6 +91,8 @@ class SendMailPage extends PageType {
 				}
 
 				//form is complete
+
+				//get values
 				$to_mail = $_POST['to_mail'];
 				$subject = $_POST['subject'];
 				$content = $_POST['content'];
