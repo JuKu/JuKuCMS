@@ -42,6 +42,8 @@ if (Settings::get("gzip_compression", false)) {
 	ob_start();
 }
 
+$registry->setSetting("clear_cache", false);
+
 //TODO: remove this code in production
 if (isset($_REQUEST['clear_cache'])) {
 	//clear cache
@@ -241,6 +243,12 @@ if ($page_type->showHTMLComments()) {
 			}
 		}
 	}
+}
+
+//clear cache
+if ($registry->getSetting("clear_cache") == true) {
+	//clear cache
+	Cache::clear();
 }
 
 //flush gzip cache

@@ -28,8 +28,7 @@
 class ClearCachePage extends PageType {
 
 	public function getContent(): string {
-		//clear cache
-		Cache::clear();
+		Registry::singleton()->setSetting("clear_cache", true);
 
 		$template = new DwooTemplate("pages/clearcache");
 
