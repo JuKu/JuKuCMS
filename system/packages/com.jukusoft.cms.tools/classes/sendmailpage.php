@@ -129,6 +129,10 @@ class SendMailPage extends PageType {
 		return $template->getCode();
 	}
 
+	public function listRequiredPermissions(): array {
+		return array("can_send_board_mails");
+	}
+
 }
 
 ?>
