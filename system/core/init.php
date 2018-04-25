@@ -38,6 +38,17 @@ define('PACKAGE_PATH', ROOT_PATH . "system/packages/");
 define('STYLE_PATH', ROOT_PATH . "styles/");
 define('PLUGIN_PATH', ROOT_PATH . "plugins/");
 
+//check, if cache directory is writable
+if (!file_exists(CACHE_PATH)) {
+	echo "Error! cache directory doesnt exists!";
+	exit;
+}
+
+if (!is_writable(CACHE_PATH)) {
+	echo "Error! directory isnt writable!";
+	exit;
+}
+
 //set default charset to UTF-8
 @ini_set('default_charset', 'utf-8');
 @mb_internal_encoding("UTF-8");
