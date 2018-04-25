@@ -27,7 +27,7 @@ register_shutdown_function(function () {
 	@ob_end_flush();
 
 	//throw event, for example to write logs to file
-	Events::throwEvent("shutdown_function");
+	@Events::throwEvent("shutdown_function");
 });
 
 //define some constants
