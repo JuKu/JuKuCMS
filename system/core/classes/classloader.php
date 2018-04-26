@@ -143,7 +143,7 @@ function cms_autoloader ($classname) {
 				$file_name = implode("/", $array1);
 
 				//load plugin class
-				$path = PLUGIN_PATH . $array[1] . "/" . $file_name . ".php";
+				$path = PLUGIN_PATH . $array[1] . "/classes/" . $file_name . ".php";
 
 				if (file_exists($path)) {
 					require($path);
