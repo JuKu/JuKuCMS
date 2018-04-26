@@ -79,7 +79,7 @@ class Calenders {
 				$user_rows[$calenderID] = $row;
 			}
 
-			$array_str = (!empty($array) ? " OR " : "") . implode(" OR ", $array1);
+			$array_str = (!empty($array1) ? " OR " : "") . implode(" OR ", $array1);
 
 			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}plugin_calender_calenders` WHERE `id` = '-1'" . $array_str . "; ");
 
