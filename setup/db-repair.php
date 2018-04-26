@@ -261,7 +261,7 @@ $table->setCharset("utf8");
 $table->addVarchar("api_method", 255, true);
 $table->addVarchar("classname", 255, true);
 $table->addVarchar("method", 255, true);
-$table->addVarchar("response_type", 255, true, " 	application/json");
+$table->addVarchar("response_type", 255, true, "application/json");
 $table->addVarchar("owner", 255, true, "system");
 $table->addInt("activated", 10, true, false, 1);
 

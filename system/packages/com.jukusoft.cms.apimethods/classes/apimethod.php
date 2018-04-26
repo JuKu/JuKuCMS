@@ -69,6 +69,44 @@ class ApiMethod {
 		echo $result;
 	}
 
+	public static function addMethod (string $api_method, string $class_name, string $method, string $owner = "system", string $response_type = "") {
+		//add method to database
+		Database::getInstance()->execute("INSERT INTO `{praefix}api_methods` (
+			`api_method`, `classname`, `method`, `response_type`, `owner`, `activated`
+		) VALUES (
+			:api_method, :class_name, :method, :response_type, :owner, '1'
+		) ON DUPLICATE KEY UPDATE `classname` = :class_name, `method` = :method, `response_type` = :response_type, `owner` = :owner, `activated` = '1'; ", array(
+			'api_method' => $api_method,
+			'class_name' => $class_name,
+			'method' => $method,
+			'response_type' => $response_type,
+			'owner' => $owner
+		));
+
+		//clear cache
+		Cache::clear("apimethods");
+	}
+
+	public static function deleteMethod (string $api_method) {
+		//delete from database
+		Database::getInstance()->execute("DELETE FROM `{praefix}api_methods` WHERE `api_method` = :api_method; ", array(
+			'api_method' => $api_method
+		));
+
+		//clear cache
+		Cache::clear("apimethods");
+	}
+
+	public static function deleteMethodsByOwner (string $owner) {
+		//delete from database
+		Database::getInstance()->execute("DELETE FROM `{praefix}api_methods` WHERE `owner` = :owner; ", array(
+			'owner' => $owner
+		));
+
+		//clear cache
+		Cache::clear("apimethods");
+	}
+
 }
 
 ?>
