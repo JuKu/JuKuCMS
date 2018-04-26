@@ -42,8 +42,8 @@ if (isset($_REQUEST['method']) && !empty($_REQUEST['method'])) {
 
 //execute api method, if available
 if (!empty($method)) {
-	$apimethods->loadMethod($method);
-	$apimethods->executeApiMethod();
+	$apimethod->loadMethod($method);
+	$apimethod->executeApiMethod();
 } else {
 	//print error message
 	header("Content-Type: application/json");
