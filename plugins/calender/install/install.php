@@ -65,7 +65,7 @@ $table->addInt("all_day", true, true, false, 0);
 $table->addTimestamp("from_date", true, "0000-00-00 00:00:00");
 $table->addTimestamp("to_date",true, "0000-00-00 00:00:00");
 $table->addVarchar("color", 255, true, "none");
-$table->addInt("activated", 10, true, false);
+$table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
 $table->addPrimaryKey("id");
