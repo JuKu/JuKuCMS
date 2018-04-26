@@ -61,7 +61,7 @@ $table->addInt("calenderID", 10, true, false);
 $table->addVarchar("title", 255, true);
 $table->addText("description", true);
 $table->addVarchar("image", 600, true, "none");
-$table->addInt("all_day", true, true, false, 0);
+$table->addInt("all_day", 10, true, false, 0);
 $table->addTimestamp("from_date", true, "0000-00-00 00:00:00");
 $table->addTimestamp("to_date",true, "0000-00-00 00:00:00");
 $table->addVarchar("color", 255, true, "none");
