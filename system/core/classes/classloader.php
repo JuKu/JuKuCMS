@@ -134,8 +134,16 @@ function cms_autoloader ($classname) {
 			$array = explode("\\", $classname);
 
 			if ($array[0] === "Plugin") {
+				$array1 = array();
+
+				for ($i = 2; $i < count($array1); $i++) {
+					$array1[] = $array[$i];
+				}
+
+				$file_name = implode("/", $array1);
+
 				//load plugin class
-				$path = PLUGIN_PATH . $array[1] . "/" . str_replace("\\", "/", $array[2]) . ".php";
+				$path = PLUGIN_PATH . $array[1] . "/" . $file_name . ".php";
 
 				if (file_exists($path)) {
 					require($path);
