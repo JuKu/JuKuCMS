@@ -48,7 +48,25 @@ class CalenderApi {
 	}
 
 	public static function listMyCalenders () : array {
-		//
+		$res = array();
+
+		$calenders = array();
+
+		foreach (Calenders::listMyCalenders(User::current()->getID()) as $calender) {
+			$calender = Calender::castCalender($calender);
+
+			$calenders[] = array(
+				'id' => $calender->getID(),
+				'title' => $calender->getTitle(),
+				'description' => $calender->getDescription(),
+				'type' => $calender->getType(),
+				'permission' => $calender->getPermission()
+			);
+		}
+
+		$res['calenders'] = $calenders;
+
+		return $res;
 	}
 
 }

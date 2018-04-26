@@ -67,6 +67,10 @@ class Calenders {
 		}
 	}
 
+	public static function listMyCalenders (int $userID) : array {
+		//
+	}
+
 	/**
 	 * list calender ids in this form calenderID=>value
 	 *
