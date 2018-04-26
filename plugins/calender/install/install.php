@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-if (!defined("PLUIGIN_INSTALLER")) {
+if (!defined("PLUGIN_INSTALLER")) {
 	echo "You cannot access this file directly!";
 	exit;
 }
