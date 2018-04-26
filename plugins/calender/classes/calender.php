@@ -102,8 +102,22 @@ class Calender {
 		return $this->user_row['value'];
 	}
 
-	public function listAllEvents () : array {
-		//
+	public function listAllEvents (bool $only_current_events = false) : array {
+		//read from database, dont cache
+		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}plugin_calender_events` WHERE `calenderID` = :calenderID" . ($only_current_events ? " AND `to_date` >= NOW()" : "") . "; ", array(
+			'calenderID' => array(
+				'type' => PDO::PARAM_INT,
+				'value' => $this->getID()
+			)
+		));
+
+		$events = array();
+
+		foreach ($rows as $row) {
+			$events[] = new Event($row);
+		}
+
+		return $events;
 	}
 
 	public static function castCalender (Calender $calender) : Calender {

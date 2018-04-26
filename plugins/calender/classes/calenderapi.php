@@ -82,6 +82,12 @@ class CalenderApi {
 
 		$calenderID = intval($_REQUEST['calenderID']);
 
+		$only_current_events = false;
+
+		if (isset($_REQUEST['only_current'])) {
+			$only_current_events = true;
+		}
+
 		//create and load calender
 		$calender = new Calender();
 
@@ -96,7 +102,7 @@ class CalenderApi {
 
 		$events = array();
 
-		foreach ($calender->listAllEvents() as $event) {
+		foreach ($calender->listAllEvents($only_current_events) as $event) {
 			//cast event
 			$event = Event::castEvent($event);
 
