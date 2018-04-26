@@ -1,0 +1,40 @@
+{
+    "name": "calender",
+    "type": "project",
+    "title": "Calender",
+    "description": "A plugin to add a calender to cms and allow apps to get information about calender.",
+    "version": "1.0.0",
+    "keywords": [
+        "calender", "plugin"
+    ],
+    "categories": [
+        "calender", "http"
+    ],
+    "homepage": "http://jukusoft.com",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Justin Kuenzel",
+            "email": "info@jukusoft.com",
+            "homepage": "http://jukusoft.com",
+            "role": "Project Founder & Lead Developer"
+        },
+        {
+            "name": "Pascal Reintjens",
+            "email": "mail@pascal-reintjens.de",
+            "homepage": "https://reintjens.de",
+            "role": "Project Founder & Developer"
+        }
+    ],
+    "support": {
+        "email": "info@jukusoft.com",
+        "source": "https://github.com/JuKu/JuKuCMS",
+        "issues": "https://github.com/JuKu/JuKuCMS/issues"
+    },
+    "installation": true,
+    "require": {
+        "php": ">=7.0.8",
+        "package-com.jukusoft.cms.settings": "*",
+        "package-com.jukusoft.cms.preferences": "*"
+    }
+}

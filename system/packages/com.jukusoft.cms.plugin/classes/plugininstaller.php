@@ -25,6 +25,10 @@
  * Time: 14:45
  */
 
+if (!defined('PLUGIN_INSTALLER')) {
+	define('PLUGIN_INSTALLER', true);
+}
+
 class PluginInstaller {
 
 	//plugin to install / deinstall
