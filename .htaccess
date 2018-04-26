@@ -48,6 +48,13 @@
  Header unset X-Pingback
 </IfModule>
 
+# use gzip compression
+AddOutputFilterByType DEFLATE text/html text/plain text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/x-javascript application/javascript application/ecmascript
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/xml
+
 #<IfModule mod_expires.c>
 #  ExpiresActive On
 #  ExpiresDefault "access plus 1 seconds"
