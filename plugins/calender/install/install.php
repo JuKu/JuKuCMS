@@ -16,13 +16,32 @@
  * limitations under the License.
  */
 
+if (!defined("PLUIGIN_INSTALLER")) {
+	echo "You cannot access this file directly!";
+	exit;
+}
 
 /**
- * Project: JuKuCMS
- * License: Apache 2.0 license
- * User: Justin
- * Date: 26.04.2018
- * Time: 19:40
+ * table plugin_calender_calenders
+ *
+ * Plugin: calender
  */
+
+//create or upgrade test table
+$table = new DBTable("plugin_calender_calenders", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("id", 10, true, true);
+$table->addVarchar("title", 255, true);
+$table->addVarchar("unique_name", 255, true);
+
+//add keys to table
+$table->addPrimaryKey("id");
+$table->addUnique("unique_name");
+
+//create or upgrade table
+$table->upgrade();
 
 ?>

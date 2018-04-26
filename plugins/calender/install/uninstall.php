@@ -25,6 +25,13 @@
  * Time: 19:40
  */
 
-//TODO: delete plugin tables
+if (!defined("PLUIGIN_INSTALLER")) {
+	echo "You cannot access this file directly!";
+	exit;
+}
+
+//delete plugin tables
+$table = new DBTable("plugin_calender_calenders", Database::getInstance());
+$table->drop();
 
 ?>
