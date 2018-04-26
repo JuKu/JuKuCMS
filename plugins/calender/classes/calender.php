@@ -102,6 +102,10 @@ class Calender {
 		return $this->user_row['value'];
 	}
 
+	public function listEvents () : array {
+		//
+	}
+
 	public static function castCalender (Calender $calender) : Calender {
 		return $calender;
 	}
