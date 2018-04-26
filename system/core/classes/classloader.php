@@ -143,6 +143,8 @@ function cms_autoloader ($classname) {
 					$expected_str = (DEBUG_MODE ? " (expected path: " . $path . ")" : "");
 					echo "Could not load plugin-class with namespace " . $classname . $expected_str . "!";
 				}
+			} else {
+				throw new IllegalStateException("Cannot load namespace class '" . $classname . "' with unknown prefix '" . $array[0] . "'!");
 			}
 
 			return;
