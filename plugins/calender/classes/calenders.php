@@ -78,7 +78,7 @@ class Calenders {
 		$array = array();
 
 		foreach ($groupIDs as $id) {
-			$array[] = "`userID` = '" . intval($id) . "'";
+			$array[] = "`groupID` = '" . intval($id) . "'";
 		}
 
 		$array_str = (!empty($array) ? " OR " : "") . implode(" OR ", $array);
