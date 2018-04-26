@@ -136,7 +136,7 @@ function cms_autoloader ($classname) {
 			if ($array[0] === "plugin") {
 				$array1 = array();
 
-				for ($i = 2; $i < count($array1); $i++) {
+				for ($i = 2; $i < count($array); $i++) {
 					$array1[] = $array[$i];
 				}
 
