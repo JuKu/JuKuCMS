@@ -10,6 +10,12 @@
             "class": "Plugin\\Calender\\CalenderApi",
             "method": "listMyCalenders"
         }
+    ,
+        {
+            "api_method": "list-all-calender-events",
+            "class": "Plugin\\Calender\\CalenderApi",
+            "method": "listAllEvents"
+        }
     ],
     "install_script": "install/install.php",
     "uninstall_script": "install/uninstall.php"

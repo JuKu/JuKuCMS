@@ -28,6 +28,7 @@
 namespace Plugin\Calender;
 
 use User;
+use IllegalStateException;
 
 class CalenderApi {
 
@@ -65,6 +66,54 @@ class CalenderApi {
 		}
 
 		$res['calenders'] = $calenders;
+
+		return $res;
+	}
+
+	public static function listAllEvents () : array {
+		$res = array();
+
+		if (!isset($_REQUEST['calenderID']) || empty($_REQUEST['calenderID'])) {
+			$res['status'] = 400;
+			$res['error'] = "No parameter 'calenderID' is set. Right usage: api.php?method=list-all-calender-events&calenderID=<CalenderID>";
+
+			return $res;
+		}
+
+		$calenderID = intval($_REQUEST['calenderID']);
+
+		//create and load calender
+		$calender = new Calender();
+
+		try {
+			$calender->load($calenderID);
+		} catch (IllegalStateException $e) {
+			$res['status'] = 404;
+			$res['error'] = "Couldnt foudn calender with id '" . $calenderID . "'!";
+
+			return $res;
+		}
+
+		$events = array();
+
+		foreach ($calender->listAllEvents() as $event) {
+			//cast event
+			$event = Event::castEvent($event);
+
+			$events[] = array(
+				'id' => $event->getID(),
+				'calenderID' => $event->getCalenderID(),
+				'title' => $event->getTitle(),
+				'description' => $event->getDescription(),
+				'image' => $event->getImage(),
+				'all_day' => $event->isAllDay(),
+				'from' => $event->getFromTimestamp(),
+				'to' => $event->getToTimestamp(),
+				'color' => $event->getColor()
+			);
+		}
+
+		$res['events'] = $events;
 
 		return $res;
 	}

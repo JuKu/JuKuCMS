@@ -102,7 +102,7 @@ class Calender {
 		return $this->user_row['value'];
 	}
 
-	public function listEvents () : array {
+	public function listAllEvents () : array {
 		//
 	}
 

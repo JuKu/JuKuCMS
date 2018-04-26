@@ -79,6 +79,14 @@ class Event {
 		return $this->row['color'];
 	}
 
+	public function isActivated () : bool {
+		return $this->row['activated'] == 1;
+	}
+
+	public static function castEvent (Event $event) : Event {
+		return $event;
+	}
+
 }
 
 ?>
