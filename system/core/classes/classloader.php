@@ -131,9 +131,9 @@ function cms_autoloader ($classname) {
 			//use normal class loading
 			$classname = substr($classname, 1);
 		} else {
-			$array = explode("\\", $classname);
+			$array = explode("\\", strtolower($classname));
 
-			if ($array[0] === "Plugin") {
+			if ($array[0] === "plugin") {
 				$array1 = array();
 
 				for ($i = 2; $i < count($array1); $i++) {
