@@ -72,7 +72,7 @@ class ApiMethod {
 
 		if (is_array($result)) {
 			if (!isset($result['status'])) {
-				$result['status'] = "200";
+				$result['status'] = 200;
 			}
 
 			echo json_encode($result);

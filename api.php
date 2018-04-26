@@ -48,14 +48,14 @@ if (!empty($method)) {
 	if (!$res) {
 		//print error message
 		header("Content-Type: application/json");
-		echo "{\"error\": \"Api method '" . $method . "' doesnt exists\"}";
+		echo "{\"error\": \"Api method '" . $method . "' doesnt exists\", \"status\": 400}";
 	} else {
 		$api_method->executeApiMethod();
 	}
 } else {
 	//print error message
 	header("Content-Type: application/json");
-	echo "{\"error\": \"No api method in request, correct call: api.php?method=<API_METHOD>\"}";
+	echo "{\"error\": \"No api method in request, correct call: api.php?method=<API_METHOD>\", \"status\": 400}";
 }
 
 $end_time = microtime(true);
