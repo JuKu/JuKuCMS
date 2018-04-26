@@ -62,6 +62,8 @@ class Calenders {
 
 			//put results to cache
 			Cache::put("plugin-calender", "calenderIDs-" . $userUD, $calender_ids);
+
+			return $calender_ids;
 		}
 	}
 
