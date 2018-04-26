@@ -27,10 +27,14 @@
 
 namespace Plugin\Calender;
 
+use User;
+
 class CalenderApi {
 
 	public static function listMyCalenderIDs () {
 		$res = array();
+
+		$res['calender_ids'] = Calenders::listMyCalenderIDs(User::current()->getID());
 
 		return $res;
 	}

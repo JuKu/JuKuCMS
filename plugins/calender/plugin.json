@@ -1,6 +1,6 @@
 {
     "name": "calender",
-    "type": "project",
+    "type": "api",
     "title": "Calender",
     "description": "A plugin to add a calender to cms and allow apps to get information about calender.",
     "version": "1.0.0",
