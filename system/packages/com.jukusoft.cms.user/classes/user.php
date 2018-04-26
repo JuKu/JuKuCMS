@@ -80,12 +80,17 @@ class User {
 		if (Cache::contains("user", "user-" . $this->userID)) {
 			$this->row = Cache::get("user", "user-" . $this->userID);
 		} else {
-			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `userID` = :userID AND `activated` = '1'; ", array(
-				'userID' => array(
-					'type' => PDO::PARAM_INT,
-					'value' => $this->userID
-				)
-			));
+			$row = false;
+
+			//check, if guest user, because guest user doesnt exists in database
+			if ($this->userID !== -1) {
+				$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `userID` = :userID AND `activated` = '1'; ", array(
+					'userID' => array(
+						'type' => PDO::PARAM_INT,
+						'value' => $this->userID
+					)
+				));
+			}
 
 			if (!$row) {
 				$logout_user = true;
@@ -116,11 +121,11 @@ class User {
 					'user' => &$this
 				));
 
+				//cache entry
+				Cache::put("user", "user-" . $this->userID, $row);
+
 				$this->row = $row;
 			}
-
-			//cache entry
-			Cache::put("user", "user-" . $this->userID, $row);
 		}
 
 		if ($this->row !== null) {
