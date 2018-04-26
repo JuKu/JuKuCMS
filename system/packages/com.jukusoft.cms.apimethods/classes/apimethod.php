@@ -42,10 +42,14 @@ class ApiMethod {
 
 	}
 
-	public function loadMethod ($method) {
+	public function loadMethod ($method) : bool {
 		if (isset($this->apimethods[$method])) {
 			$this->method = $this->apimethods[$method];
+
+			return true;
 		}
+
+		return false;
 	}
 
 	public function executeApiMethod () {

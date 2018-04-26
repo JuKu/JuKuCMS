@@ -42,8 +42,16 @@ if (isset($_REQUEST['method']) && !empty($_REQUEST['method'])) {
 
 //execute api method, if available
 if (!empty($method)) {
-	$api_method->loadMethod($method);
-	$api_method->executeApiMethod();
+	//load api method
+	$res = $api_method->loadMethod($method);
+
+	if (!$res) {
+		//print error message
+		header("Content-Type: application/json");
+		echo "{\"error\": \"Api method '" . $method . "' doesnt exists\"}";
+	} else {
+		$api_method->executeApiMethod();
+	}
 } else {
 	//print error message
 	header("Content-Type: application/json");
