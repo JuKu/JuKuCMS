@@ -39,8 +39,6 @@ class Calenders {
 		if (Cache::contains("plugin-calender", "calenderIDs-" . $userUD)) {
 			return Cache::get("plugin-calender", "calenderIDs-" . $userUD);
 		} else {
-			$calender_ids = array();
-
 			$groups = new Groups();
 			$groups->loadMyGroups(User::current()->getID());
 			$groupIDs = $groups->listGroupIDs();
@@ -68,7 +66,37 @@ class Calenders {
 	}
 
 	public static function listMyCalenders (int $userID) : array {
-		//
+		if (Cache::contains("plugin-calender", "my-calenders-" . $userID)) {
+			return Cache::get("plugin-calender", "my-calenders-" . $userID);
+		} else {
+			$array = array();
+
+			$array1 = array();
+			$user_rows = array();
+
+			foreach (self::listMyCalenderIDs($userID) as $calenderID=>$row) {
+				$array1[] = "`id` = '" . intval($calenderID) . "'";
+				$user_rows[$calenderID] = $row;
+			}
+
+			$array_str = (!empty($array) ? " OR " : "") . implode(" OR ", $array1);
+
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}plugin_calender_calenders` WHERE `id` = '-1'" . $array_str . "; ");
+
+			foreach ($rows as $row) {
+				$calenderID = $row['id'];
+
+				//create new calender
+				$calender = new Calender($row, $user_rows[$calenderID]);
+
+				$array[] = $calender;
+			}
+
+			//put array to cache
+			Cache::put("plugin-calender", "my-calenders-" . $userID, $array);
+
+			return $array;
+		}
 	}
 
 	/**
