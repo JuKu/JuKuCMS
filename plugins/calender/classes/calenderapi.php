@@ -95,7 +95,7 @@ class CalenderApi {
 			$calender->load($calenderID);
 		} catch (IllegalStateException $e) {
 			$res['status'] = 404;
-			$res['error'] = "Couldnt foudn calender with id '" . $calenderID . "'!";
+			$res['error'] = "Couldnt found calender with id '" . $calenderID . "'!";
 
 			return $res;
 		}

@@ -75,7 +75,7 @@ class Calender {
 			Cache::put("plugin-calender", "calender-" . $calenderID, $row);
 		}
 
-		$this->calenderID = $row['id'];
+		$this->calenderID = $this->row['id'];
 	}
 
 	public function getID () : int {
