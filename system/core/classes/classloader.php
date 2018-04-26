@@ -124,6 +124,31 @@ function cms_autoloader ($classname) {
         }
     }
 
+    //check, if we have to use namespace classloading
+	if (PHPUtils::containsStr($classname, "\\")) {
+    	//we have to use namespace classloading
+		if (PHPUtils::startsWith($classname, "\\")) {
+			//use normal class loading
+			$classname = substr($classname, 1);
+		} else {
+			$array = explode("_", $classname);
+
+			if ($array[0] === "Plugin") {
+				//load plugin class
+				$path = PLUGIN_PATH . $array[1] . "/" . str_replace("\\", "/", $array[2]) . ".php";
+
+				if (file_exists($path)) {
+					require($path);
+				} else {
+					$expected_str = (DEBUG_MODE ? " (expected path: " . $path . ")" : "");
+					echo "Could not load plugin-class with namespace " . $classname . $expected_str . "!";
+				}
+			}
+
+			return;
+		}
+	}
+
     $array = explode("_", strtolower($classname));
 
     if (sizeOf($array) == 3) {

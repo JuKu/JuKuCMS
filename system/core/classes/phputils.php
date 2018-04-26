@@ -179,4 +179,8 @@ class PHPUtils {
 		return true;
 	}
 
+	public static function containsStr (string $haystack, string $needle) : bool {
+		return strpos($haystack, $needle) !== FALSE;
+	}
+
 }
