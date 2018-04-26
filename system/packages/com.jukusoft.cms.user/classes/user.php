@@ -116,11 +116,11 @@ class User {
 					'user' => &$this
 				));
 
-				//cache entry
-				Cache::put("user", "user-" . $this->userID, $row);
-
 				$this->row = $row;
 			}
+
+			//cache entry
+			Cache::put("user", "user-" . $this->userID, $row);
 		}
 
 		if ($this->row !== null) {
