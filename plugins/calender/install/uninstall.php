@@ -34,4 +34,13 @@ if (!defined("PLUIGIN_INSTALLER")) {
 $table = new DBTable("plugin_calender_calenders", Database::getInstance());
 $table->drop();
 
+$table = new DBTable("plugin_calender_events", Database::getInstance());
+$table->drop();
+
+$table = new DBTable("plugin_calender_group_rights", Database::getInstance());
+$table->drop();
+
+$table = new DBTable("plugin_calender_user_rights", Database::getInstance());
+$table->drop();
+
 ?>
