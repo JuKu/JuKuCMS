@@ -31,12 +31,16 @@ use User;
 
 class CalenderApi {
 
-	public static function listMyCalenderIDs () {
+	public static function listMyCalenderIDs () : array {
 		$res = array();
 
 		$res['calender_ids'] = Calenders::listMyCalenderIDs(User::current()->getID());
 
 		return $res;
+	}
+
+	public static function listMyCalenders () : array {
+		//
 	}
 
 }

@@ -4,6 +4,11 @@
             "api_method": "list-calender-ids",
             "class": "Plugin\\Calender\\CalenderApi",
             "method": "listMyCalenderIDs"
+        },
+        {
+            "api_method": "list-my-calenders",
+            "class": "Plugin\\Calender\\CalenderApi",
+            "method": "listMyCalenders"
         }
     ],
     "install_script": "install/install.php",
