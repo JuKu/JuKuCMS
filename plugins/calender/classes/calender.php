@@ -27,10 +27,79 @@
 
 namespace Plugin\Calender;
 
+use Cache;
+use Database;
+use PDO;
+use IllegalStateException;
+
 class Calender {
 
-	public function __construct() {
-		//
+	protected $calenderID = -1;
+	protected $row = null;
+	protected $user_row = null;
+
+	public function __construct (array $row = null, array $user_row = null) {
+		if (!is_null($row) && !empty($row)) {
+			$this->calenderID = $row['id'];
+			$this->row = $row;
+		}
+
+		if (!is_null($user_row) && !empty($user_row)) {
+			$this->user_row = $user_row;
+		}
+	}
+
+	public function load (int $calenderID) {
+		if ($calenderID <= 0) {
+			throw new \IllegalArgumentException("calenderID has to be greater than 0.");
+		}
+
+		if (Cache::contains("plugin-calender", "calender-" . $calenderID)) {
+			$this->row = Cache::get("plugin-calender", "calender-" . $calenderID);
+		} else {
+			//get calender from database
+			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}plugin_calender_calenders` WHERE `id` = :calenderID; ", array(
+				'calenderID' => array(
+					'type' => PDO::PARAM_INT,
+					'value' => $calenderID
+				)
+			));
+
+			if (!$row) {
+				throw new IllegalStateException("calender with id '" . $calenderID . "' doesnt exists.");
+			}
+
+			$this->row = $row;
+
+			//put row to cache
+			Cache::put("plugin-calender", "calender-" . $calenderID, $row);
+		}
+
+		$this->calenderID = $row['id'];
+	}
+
+	public function getID () : int {
+		return $this->calenderID;
+	}
+
+	public function getTitle () : string {
+		return $this->row['title'];
+	}
+
+	public function getDescription () : string {
+		return $this->row['description'];
+	}
+
+	public function getType () : string {
+		return $this->row['type'];
+	}
+
+	public function getPermission () : string {
+		if ($this->user_row == null || empty($this->user_row)) {
+			throw new IllegalStateException("user row wasnt set in constructor.");
+		}
+
+		return $this->user_row['value'];
 	}
 
 }

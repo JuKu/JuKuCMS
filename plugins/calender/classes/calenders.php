@@ -46,17 +46,17 @@ class Calenders {
 			$groupIDs = $groups->listGroupIDs();
 
 			//get calenders by groups
-			$calender_ids = self::listCalenderIDsByGroups($groupIDs);
+			$calender_ids = self::listCalenderRowsByGroups($groupIDs);
 
 			//merge arrays
-			foreach (self::listCalenderIDsByUser(User::current()->getID()) as $calenderID=>$value) {
+			foreach (self::listCalenderRowsByUser(User::current()->getID()) as $calenderID=>$row) {
 				if (isset($calender_ids[$calender_ids])) {
 					//check, which is higher permission
-					if (self::valueToInt($calender_ids[$calenderID]) < self::valueToInt($value)) {
-						$calender_ids[$calenderID] = $value;
+					if (self::valueToInt($calender_ids[$calenderID]['value']) < self::valueToInt($row['value'])) {
+						$calender_ids[$calenderID] = $row;
 					}
 				} else {
-					$calender_ids[$calenderID] = $value;
+					$calender_ids[$calenderID] = $row;
 				}
 			}
 
@@ -76,7 +76,7 @@ class Calenders {
 	 *
 	 * @return array with calender IDs in form calenderID=>value
 	 */
-	protected static function listCalenderIDsByGroups (array $groupIDs) : array {
+	protected static function listCalenderRowsByGroups (array $groupIDs) : array {
 		$array = array();
 
 		foreach ($groupIDs as $id) {
@@ -91,13 +91,13 @@ class Calenders {
 
 		foreach ($rows as $row) {
 			$calenderID = $row['calenderID'];
-			$res_array[$calenderID] = $row['value'];
+			$res_array[$calenderID] = $row;
 		}
 
 		return $res_array;
 	}
 
-	protected static function listCalenderIDsByUser (int $userID) : array {
+	protected static function listCalenderRowsByUser (int $userID) : array {
 		if (Cache::contains("plugin-calender", "calender-ids-by-user-" . $userID)) {
 			return Cache::get("plugin-calender", "calender-ids-by-user-" . $userID);
 		} else {
@@ -114,7 +114,7 @@ class Calenders {
 			foreach ($rows as $row) {
 				$calenderID = $row['calenderID'];
 
-				$array[$calenderID] = $row['value'];
+				$array[$calenderID] = $row;
 			}
 
 			//cache results
