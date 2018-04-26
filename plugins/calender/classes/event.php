@@ -44,7 +44,7 @@ class Event {
 	}
 
 	public function getTitle () : string {
-		return $this->row['string'];
+		return $this->row['title'];
 	}
 
 	public function getDescription () : string {
