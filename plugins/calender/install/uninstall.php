@@ -25,7 +25,7 @@
  * Time: 19:40
  */
 
-if (!defined("PLUIGIN_INSTALLER")) {
+if (!defined("PLUGIN_INSTALLER")) {
 	echo "You cannot access this file directly!";
 	exit;
 }
