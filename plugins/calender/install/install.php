@@ -36,12 +36,10 @@ $table->setCharset("utf8");
 $table->addInt("id", 10, true, true);
 $table->addVarchar("title", 255, true);
 $table->addText("description", true);
-$table->addVarchar("unique_name", 255, true);
 $table->addEnum("type", array("public", "internal", "private"), true, "private");
 
 //add keys to table
 $table->addPrimaryKey("id");
-$table->addUnique("unique_name");
 
 //create or upgrade table
 $table->upgrade();
