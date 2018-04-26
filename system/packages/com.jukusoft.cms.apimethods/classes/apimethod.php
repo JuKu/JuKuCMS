@@ -70,7 +70,15 @@ class ApiMethod {
 
 		$result = call_user_func(array($classname, $method), $args);
 
-		echo $result;
+		if (is_array($result)) {
+			if (!isset($result['status'])) {
+				$result['status'] = "200";
+			}
+
+			echo json_encode($result);
+		} else {
+			echo $result;
+		}
 	}
 
 	public static function addMethod (string $api_method, string $class_name, string $method, string $owner = "system", string $response_type = "") {

@@ -30,7 +30,9 @@ namespace Plugin\Calender;
 class CalenderApi {
 
 	public static function listMyCalenderIDs () {
-		//
+		$array = array();
+
+		return $array;
 	}
 
 }
