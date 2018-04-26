@@ -34,7 +34,15 @@ class CalenderApi {
 	public static function listMyCalenderIDs () : array {
 		$res = array();
 
-		$res['calender_ids'] = Calenders::listMyCalenderIDs(User::current()->getID());
+		$array = array();
+
+		$rows = Calenders::listMyCalenderIDs(User::current()->getID());
+
+		foreach ($rows as $calenderID=>$row) {
+			$array[$calenderID] = $row['value'];
+		}
+
+		$res['calender_ids'] = $array;
 
 		return $res;
 	}
