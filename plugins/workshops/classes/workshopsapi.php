@@ -44,12 +44,12 @@ class WorkshopsApi {
 				'id' => $row['id'],
 				'title' => utf8_encode($row['title']),
 				'description' => utf8_encode($row['description']),
-				'image' => $row['image'],
-				'day' => $row['day'],
-				'time' => $row['time'],
-				'interval' => $row['interval'],
-				'location' => $row['location'],
-				'responsible' => $row['responsible'],
+				'image' => utf8_encode($row['image']),
+				'day' => utf8_encode($row['day']),
+				'time' => utf8_encode($row['time']),
+				'interval' => utf8_encode($row['interval']),
+				'location' => utf8_encode($row['location']),
+				'responsible' => utf8_encode($row['responsible']),
 				'order' => $row['order']
 			);
 		}
