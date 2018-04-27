@@ -22,9 +22,9 @@ if (!defined("PLUGIN_INSTALLER")) {
 }
 
 /**
- * table plugin_calender_calenders
+ * table plugin_workshops_workshops
  *
- * Plugin: calender
+ * Plugin: workshops
  */
 
 //create or upgrade test table

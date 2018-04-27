@@ -31,7 +31,7 @@ if (!defined("PLUGIN_INSTALLER")) {
 }
 
 //delete plugin tables
-$table = new DBTable("plugin_calender_calenders", Database::getInstance());
+$table = new DBTable("plugin_workshops_workshops", Database::getInstance());
 $table->drop();
 
 ?>
