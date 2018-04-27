@@ -27,6 +27,8 @@
 
 namespace Plugin\Workshops;
 
+use Database;
+
 class WorkshopsApi {
 
 	public static function listAllWorkshops () : array {
