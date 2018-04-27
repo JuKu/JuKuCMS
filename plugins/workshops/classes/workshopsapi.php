@@ -45,7 +45,7 @@ class WorkshopsApi {
 				'title' => utf8_encode($row['title']),
 				'description' => utf8_encode($row['description']),
 				'image' => $row['image'],
-				'date' => $row['date'],
+				'day' => $row['day'],
 				'time' => $row['time'],
 				'interval' => $row['interval'],
 				'location' => $row['location'],
