@@ -71,6 +71,10 @@ class Event {
 		return $this->row['to_date'];
 	}
 
+	public function getLocation () : string {
+		return $this->row['location'];
+	}
+
 	public function hasColor () : bool {
 		return $this->row['color'] !== "none";
 	}

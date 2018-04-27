@@ -115,6 +115,7 @@ class CalenderApi {
 				'all_day' => $event->isAllDay(),
 				'from' => $event->getFromTimestamp(),
 				'to' => $event->getToTimestamp(),
+				'location' => $event->getLocation(),
 				'color' => $event->getColor()
 			);
 		}

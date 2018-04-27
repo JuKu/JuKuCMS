@@ -64,6 +64,7 @@ $table->addVarchar("image", 600, true, "none");
 $table->addInt("all_day", 10, true, false, 0);
 $table->addTimestamp("from_date", true, "0000-00-00 00:00:00");
 $table->addTimestamp("to_date",true, "0000-00-00 00:00:00");
+$table->addVarchar("location", 600, true, "");
 $table->addVarchar("color", 255, true, "none");
 $table->addInt("activated", 10, true, false, 1);
 
