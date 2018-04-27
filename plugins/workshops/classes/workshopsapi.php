@@ -25,6 +25,8 @@
  * Time: 20:48
  */
 
+namespace Plugin\Workshops;
+
 class WorkshopsApi {
 
 	public static function listAllWorkshops () : array {
