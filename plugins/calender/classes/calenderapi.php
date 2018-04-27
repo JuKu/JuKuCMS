@@ -121,6 +121,9 @@ class CalenderApi {
 		}
 
 		$res['events'] = $events;
+		
+		print_r($res);
+		exit;
 
 		return $res;
 	}
