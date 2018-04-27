@@ -1,0 +1,11 @@
+{
+    "api_methods": [
+        {
+            "api_method": "list-all-workshops",
+            "class": "Plugin\\Workshops\\WorkshopsApi",
+            "method": "listAllWorkshops"
+        }
+    ],
+    "install_script": "install/install.php",
+    "uninstall_script": "install/uninstall.php"
+}

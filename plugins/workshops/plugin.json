@@ -1,0 +1,34 @@
+{
+    "name": "workshops",
+    "type": "api",
+    "title": "Workshops Api",
+    "description": "A plugin to add an api for apps to read out information about workshops",
+    "version": "1.0.0",
+    "keywords": [
+        "workshops", "app", "plugin"
+    ],
+    "categories": [
+        "api"
+    ],
+    "homepage": "http://jukusoft.com",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Justin Kuenzel",
+            "email": "info@jukusoft.com",
+            "homepage": "http://jukusoft.com",
+            "role": "Project Founder & Lead Developer"
+        }
+    ],
+    "support": {
+        "email": "info@jukusoft.com",
+        "source": "https://github.com/JuKu/JuKuCMS",
+        "issues": "https://github.com/JuKu/JuKuCMS/issues"
+    },
+    "installation": true,
+    "require": {
+        "php": ">=7.0.8",
+        "package-com.jukusoft.cms.settings": "*",
+        "package-com.jukusoft.cms.preferences": "*"
+    }
+}
