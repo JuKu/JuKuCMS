@@ -25,6 +25,10 @@ error_reporting(E_ALL);
 
 require("system/core/init.php");
 
+if (DEBUG_MODE) {
+	@ini_set('display_errors', 1);
+}
+
 //throw event
 Events::throwEvent("start_session");
 
