@@ -44,11 +44,11 @@ class Event {
 	}
 
 	public function getTitle () : string {
-		return $this->row['title'];
+		return utf8_encode($this->row['title']);
 	}
 
 	public function getDescription () : string {
-		return $this->row['description'];
+		return utf8_encode($this->row['description']);
 	}
 
 	public function hasImage () : bool {
@@ -72,7 +72,7 @@ class Event {
 	}
 
 	public function getLocation () : string {
-		return $this->row['location'];
+		return utf8_encode($this->row['location']);
 	}
 
 	public function hasColor () : bool {

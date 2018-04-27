@@ -75,7 +75,6 @@ class ApiMethod {
 				$result['status'] = 200;
 			}
 
-			print_r($result);
 			print_r(json_encode($result));
 			echo "test";
 			exit;
