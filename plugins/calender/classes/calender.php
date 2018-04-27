@@ -104,7 +104,7 @@ class Calender {
 
 	public function listAllEvents (bool $only_current_events = false) : array {
 		//read from database, dont cache
-		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}plugin_calender_events` WHERE `calenderID` = :calenderID" . ($only_current_events ? " AND DATE(`to_date`) >= DATE(NOW())" : "") . "; ", array(
+		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}plugin_calender_events` WHERE `calenderID` = :calenderID" . ($only_current_events ? " AND DATE(`to_date`) >= DATE(NOW())" : "") . " ORDER BY `from_date`; ", array(
 			'calenderID' => array(
 				'type' => PDO::PARAM_INT,
 				'value' => $this->getID()
