@@ -29,11 +29,17 @@ namespace Plugin\FacebookApi;
 
 use PageType;
 use DwooTemplate;
+use Preferences;
 
 class SettingsPage extends PageType {
 
 	public function getContent(): string {
 		$template = new DwooTemplate("plugin_facebookapi_settings");
+
+		//load preferences
+		$prefs = new Preferences("plugin_facebookapi");
+		$template->assign("appID", $prefs->get("appID", ""));
+		$template->assign("secret_key", $prefs->get("secret", ""));
 
 		//TODO: add form for facebook appID and secret key
 
