@@ -106,7 +106,7 @@ class Preferences {
 			$i++;
 		}
 
-		$lines_str = implode(",\r\n");
+		$lines_str = implode(",\r\n", $lines);
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}preferences` (
 			`key`, `area`, `value`
