@@ -81,8 +81,6 @@ class SettingsPage extends PageType {
 		$template->assign("appID", $prefs->get("appID", ""));
 		$template->assign("secret_key", $prefs->get("secret", ""));
 
-		//TODO: save values
-
 		return $template->getCode();
 	}
 
