@@ -25,15 +25,38 @@
  * Time: 17:01
  */
 
-namespace Plugin\Workshops;
+namespace Plugin\FacebookApi;
 
 use ClassLoader;
+use Preferences;
+use Facebook\Facebook;
 
 if (!defined('FB_SDK_PATH')) {
 	define('FB_SDK_PATH', PLUGIN_PATH . "facebookapi/facebook-sdk/");
 }
 
 class FacebookApi {
+
+	protected $appID = "";
+	protected $secret = "";
+
+	//facebook sdk instance
+	protected $fb = null;
+
+	public function __construct() {
+		//load preferences
+		$prefs = new Preferences("plugin_facebookapi");
+
+		$this->appID = $prefs->get("appID", "");
+		$this->secret = $prefs->get("secret", "");
+
+		$config = array();
+		$config['app_id'] = $this->appID;
+		$config['app_secret'] = $this->secret;
+		$config['default_graph_version'] = 'v2.2';
+
+		$this->fb = new Facebook($config);
+	}
 
 	public static function addFBClassloader () {
 		//add classloader for facebook sdk
@@ -47,6 +70,10 @@ class FacebookApi {
 				exit;
 			}
 		});
+	}
+
+	public function getSDK () : Facebook {
+		return $this->fb;
 	}
 
 }
