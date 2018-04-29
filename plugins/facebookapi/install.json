@@ -26,10 +26,10 @@
     "menus": [
         {
             "comment": "load admin menuID from settings",
-            "menuID": "settings:menu_plugin_settings_id",
+            "menuID": "settings:admin_menuID",
             "title": "lang_Facebook Api",
             "url": "admin/plugins/facebookapi",
-            "parent": -1,
+            "parent": "settings:menu_plugin_settings_id",
             "unique_name": "plugin_facebookapi_settings",
             "type": "page",
             "permissions": [
