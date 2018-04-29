@@ -19,7 +19,7 @@
             "homepage": "http://jukusoft.com",
             "role": "Project Founder & Lead Developer"
         }
-    ]
+    ],
     "installation": true,
     "require": {
         "php": ">=7.0.8",
