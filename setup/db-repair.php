@@ -1370,6 +1370,7 @@ PluginInstaller::addInstallerPluginIfAbsent("PageInstaller", "system/packages/co
 PluginInstaller::addInstallerPluginIfAbsent("StoreInstaller", "system/packages/com.jukusoft.cms.plugin/extensions/storeinstaller.php");
 PluginInstaller::addInstallerPluginIfAbsent("FilePermissionsInstaller", "system/packages/com.jukusoft.cms.plugin/extensions/filepermissionsinstaller.php");
 PluginInstaller::addInstallerPluginIfAbsent("ApiMethodInstaller", "system/packages/com.jukusoft.cms.plugin/extensions/apimethodinstaller.php");
+PluginInstaller::addInstallerPluginIfAbsent("MenuInstaller", "system/packages/com.jukusoft.cms.plugin/extensions/menuinstaller.php");
 
 echo "Clear gettext cache<br />";
 PHPUtils::clearGetTextCache();
