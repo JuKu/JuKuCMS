@@ -6,6 +6,23 @@
             "method": "addFBClassloader"
         }
     ],
+    "pages": [
+        {
+            "alias": "admin/plugins/facebookapi",
+            "title": "Facebook Graph-Api Settings",
+            "pagetype": "Plugin\\FacebookApi\\SettingsPage",
+            "content": "",
+            "folder": "/admin/",
+            "global_menu": -1,
+            "local_menu": -1,
+            "parentID": -1,
+            "sitemap": false,
+            "published": true,
+            "editable": false,
+            "author": "Plugin facebookapi",
+            "autoremove_on_uninstall": true
+        }
+    ],
     "install_script": "install/install.php",
     "uninstall_script": "install/uninstall.php"
 }
