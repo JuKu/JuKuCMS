@@ -36,6 +36,8 @@ class SettingsPage extends PageType {
 	public function getContent(): string {
 		$template = new DwooTemplate("plugin_facebookapi_settings");
 
+		$template->assign("form_action", DomainUtils::generateURL("admin/plugins/facebookapi"));
+
 		//load preferences
 		$prefs = new Preferences("plugin_facebookapi");
 		$template->assign("appID", $prefs->get("appID", ""));
