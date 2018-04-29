@@ -77,7 +77,7 @@ class FacebookApi {
 	}
 
 	public function getPage (string $name) : Page {
-		$page = new Page($this->fb);
+		$page = new Page($this);
 		$page->loadPage($name);
 
 		return $page;

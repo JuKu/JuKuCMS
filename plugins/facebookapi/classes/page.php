@@ -30,6 +30,8 @@ namespace Plugin\FacebookApi;
 use Facebook\Facebook;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
+use Facebook\GraphNodes\GraphPage;
+use Facebook\GraphNodes\GraphNode;
 
 class Page {
 
@@ -37,11 +39,13 @@ class Page {
 	protected $api = null;
 
 	protected $pageID = "";
+
 	protected $response = null;
 	protected $graphNode = null;
+	protected $page = null;
 
-	public function __construct (Facebook $fb, FacebookApi $api) {
-		$this->fb = $fb;
+	public function __construct (FacebookApi $api) {
+		$this->fb = $api->getSDK();
 		$this->api = $api;
 	}
 
@@ -67,6 +71,47 @@ class Page {
 		}
 
 		$this->graphNode = $this->response->getGraphNode();
+		$this->page = $this->response->getGraphPage();
+	}
+
+	public function listFieldNames () : array {
+		return $this->graphNode->getFieldNames();
+	}
+
+	public function getGraphNode () : GraphNode {
+		return $this->graphNode;
+	}
+
+	public function getGraphPage () : GraphPage {
+		return $this->page;
+	}
+
+	public function getID () : int {
+		return $this->getGraphNode()->getField("id");
+	}
+
+	public function getName () : string {
+		return $this->getGraphPage()->getName();
+	}
+
+	public function getUsername () : string {
+		return $this->getGraphNode()->getField("username");
+	}
+
+	public function countLikes () : int {
+		return $this->getGraphPage()->getField("fan_count");
+	}
+
+	public function getAbout () : string {
+		return $this->getGraphNode()->getField("about");
+	}
+
+	public function getWebsite () : string {
+		return $this->getGraphNode()->getField("website");
+	}
+
+	public function getAllItems () : array {
+		return $this->getGraphNode()->all();
 	}
 
 }
