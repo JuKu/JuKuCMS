@@ -14,7 +14,7 @@
                         </p>
                     {/if}
 
-                    {if $form_submit === true}
+                    {if empty($success_message) === false}
                         <p style="border: 1px solid green; background: yellowgreen; color:green; padding: 5px; ">{$success_message}</p>
                     {/if}
 
