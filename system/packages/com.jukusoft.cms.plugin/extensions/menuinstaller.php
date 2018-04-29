@@ -56,7 +56,7 @@ class MenuInstaller extends PluginInstaller_Plugin {
 				$order = (isset($menu['order']) ? intval($menu['order']) : 10);
 
 				//create menu
-				Menu::createMenu(null, $menuID, $title, $url, $parent, $unique_name, $type, $permissions, $login_required, $icon, $order, "plugin_" . $plugin->getName());
+				Menu::createMenu(-1, $menuID, $title, $url, $parent, $unique_name, $type, $permissions, $login_required, $icon, $order, "plugin_" . $plugin->getName());
 			}
 		}
 

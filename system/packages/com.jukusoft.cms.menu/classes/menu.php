@@ -303,7 +303,7 @@ class Menu {
 			$unique_name = md5(PHPUtils::randomString(100) . time());
 		}
 
-		if ($id != null) {
+		if ($id != null && $id != -1) {
 			$insertID = Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
 				`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `unique_name`, `extensions`, `order`, `owner`, `activated`
 			) VALUES (
