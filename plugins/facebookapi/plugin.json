@@ -1,0 +1,29 @@
+{
+    "name": "facebookapi",
+    "type": "api",
+    "title": "Facebook Api",
+    "description": "A plugin to use graph api from facebook.",
+    "version": "1.0.0",
+    "keywords": [
+        "facebook", "facebook api", "graph-api", "facebook-graph-api", "plugin"
+    ],
+    "categories": [
+        "facebook", "api"
+    ],
+    "homepage": "http://jukusoft.com",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Justin Kuenzel",
+            "email": "info@jukusoft.com",
+            "homepage": "http://jukusoft.com",
+            "role": "Project Founder & Lead Developer"
+        }
+    ]
+    "installation": true,
+    "require": {
+        "php": ">=7.0.8",
+        "package-com.jukusoft.cms.settings": "*",
+        "package-com.jukusoft.cms.preferences": "*"
+    }
+}

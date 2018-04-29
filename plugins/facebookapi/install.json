@@ -1,0 +1,11 @@
+{
+    "events": [
+        {
+            "event": "init",
+            "class": "FacebookApi",
+            "method": "addFBClassloader"
+        }
+    ],
+    "install_script": "install/install.php",
+    "uninstall_script": "install/uninstall.php"
+}
