@@ -39,7 +39,5 @@
             "icon": "fab fa-facebook-square",
             "order": 10
         }
-    ],
-    "install_script": "install/install.php",
-    "uninstall_script": "install/uninstall.php"
+    ]
 }
