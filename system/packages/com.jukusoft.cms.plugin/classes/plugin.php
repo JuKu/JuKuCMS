@@ -125,6 +125,10 @@ class Plugin {
 	}
 
 	public function getVersion () : string {
+		if ($this->json_data['version'] == null || empty($this->json_data['version'])) {
+			throw new IllegalStateException("plugin.json of plugin '" . $this->name . "' doesnt contains 'version' key.");
+		}
+
 		return $this->json_data['version'];
 	}
 
