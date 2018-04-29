@@ -1176,6 +1176,9 @@ Menu::createMenu(25, $admin_menuID, "Design", "admin/design", -1, "design", "pag
 
 Menu::createMenu(35, $admin_menuID, "Plugins", "admin/plugins", -1, "plugins", "no_link", array("can_see_installed_plugins"), true, "fa fa-cubes", 8, "system");
 Menu::createMenu(36, $admin_menuID, "Plugins", "admin/plugins", 35, "plugins_page", "page", array("can_see_installed_plugins"), true, "fa fa-cubes", 1, "systen");
+Menu::createMenu(37, $admin_menuID, "Settings", "#", 35, "plugins_settings", "no_link", array("can_see_installed_plugins"), true, "fa fa-cogs", 100, "system");
+
+Settings::set("menu_plugin_settings_id", 37);
 
 Menu::createMenu(45, $admin_menuID, "Tools", "#", -1, "tools", "no_link", array("none"), true, "fa fa-wrench", 9, "system");
 
