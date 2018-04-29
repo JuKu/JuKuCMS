@@ -23,6 +23,23 @@
             "autoremove_on_uninstall": true
         }
     ],
+    "menus": [
+        {
+            "comment": "load admin menuID from settings",
+            "menuID": "settings:menu_plugin_settings_id",
+            "title": "lang_Facebook Api",
+            "url": "admin/plugins/facebookapi",
+            "parent": -1,
+            "unique_name": "plugin_facebookapi_settings",
+            "type": "page",
+            "permissions": [
+                "can_see_installed_plugins"
+            ],
+            "login_required": true,
+            "icon": "fab fa-facebook-square",
+            "order": 10
+        }
+    ],
     "install_script": "install/install.php",
     "uninstall_script": "install/uninstall.php"
 }

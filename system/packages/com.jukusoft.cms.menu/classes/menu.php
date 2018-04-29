@@ -303,30 +303,59 @@ class Menu {
 			$unique_name = md5(PHPUtils::randomString(100) . time());
 		}
 
-		$insertID = Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
-			`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `unique_name`, `extensions`, `order`, `owner`, `activated`
-		) VALUES (
-			:id, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :unique_name, :extensions, :menu_order, :owner, '1'
-		) ON DUPLICATE KEY UPDATE `menuID` = :menuID, `title` = :title, `url` = :url, `type` = :url_type, `permissions` = :permissions, `login_required` = :login_required, `parent` = :parent, `unique_name` = :unique_name, `extensions` = :extensions, `order` = :menu_order, `owner` = :owner, `icon` = :icon, `activated` = '1'; ", array(
-			'id' => $id,
-			'menuID' => $menuID,
-			'title' => $title,
-			'url' => $url,
-			'url_type' => $type,
-			'icon' => $icon,
-			'permissions' => $permissions,
-			'login_required' => ($login_required ? 1 : 0),
-			'parent' => $parent,
-			'unique_name' => $unique_name,
-			'extensions' => "none",
-			'menu_order' => $order,
-			'owner' => $owner
-		));
+		if ($id != null) {
+			$insertID = Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
+				`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `unique_name`, `extensions`, `order`, `owner`, `activated`
+			) VALUES (
+				:id, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :unique_name, :extensions, :menu_order, :owner, '1'
+			) ON DUPLICATE KEY UPDATE `menuID` = :menuID, `title` = :title, `url` = :url, `type` = :url_type, `permissions` = :permissions, `login_required` = :login_required, `parent` = :parent, `unique_name` = :unique_name, `extensions` = :extensions, `order` = :menu_order, `owner` = :owner, `icon` = :icon, `activated` = '1'; ", array(
+				'id' => $id,
+				'menuID' => $menuID,
+				'title' => $title,
+				'url' => $url,
+				'url_type' => $type,
+				'icon' => $icon,
+				'permissions' => $permissions,
+				'login_required' => ($login_required ? 1 : 0),
+				'parent' => $parent,
+				'unique_name' => $unique_name,
+				'extensions' => "none",
+				'menu_order' => $order,
+				'owner' => $owner
+			));
+		} else {
+			$insertID = Database::getInstance()->execute("INSERT INTO `{praefix}menu` (
+				`id`, `menuID`, `title`, `url`, `type`, `icon`, `permissions`, `login_required`, `parent`, `unique_name`, `extensions`, `order`, `owner`, `activated`
+			) VALUES (
+				NULL, :menuID, :title, :url, :url_type, :icon, :permissions, :login_required, :parent, :unique_name, :extensions, :menu_order, :owner, '1'
+			) ON DUPLICATE KEY UPDATE `menuID` = :menuID, `title` = :title, `url` = :url, `type` = :url_type, `permissions` = :permissions, `login_required` = :login_required, `parent` = :parent, `unique_name` = :unique_name, `extensions` = :extensions, `order` = :menu_order, `owner` = :owner, `icon` = :icon, `activated` = '1'; ", array(
+				'menuID' => $menuID,
+				'title' => $title,
+				'url' => $url,
+				'url_type' => $type,
+				'icon' => $icon,
+				'permissions' => $permissions,
+				'login_required' => ($login_required ? 1 : 0),
+				'parent' => $parent,
+				'unique_name' => $unique_name,
+				'extensions' => "none",
+				'menu_order' => $order,
+				'owner' => $owner
+			));
+		}
 
 		//clear cache
 		Cache::clear("menus", "menuID_" . $menuID);
 
 		return $insertID;
+	}
+
+	public static function deleteMenusByOwner (string $owner) {
+		//delete menus from database
+		Database::getInstance()->execute("DELETE FROM `{praefix}menu` WHERE `owner` = :owner; ", array('owner' => $owner));
+
+		//clear cache
+		Cache::clear("menus");
 	}
 
 }
