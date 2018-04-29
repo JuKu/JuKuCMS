@@ -30,6 +30,9 @@ namespace Plugin\FacebookApi;
 use PageType;
 use DwooTemplate;
 use Preferences;
+use Security;
+use Validator_Int;
+use Validator_String;
 
 class SettingsPage extends PageType {
 
@@ -40,6 +43,40 @@ class SettingsPage extends PageType {
 
 		//load preferences
 		$prefs = new Preferences("plugin_facebookapi");
+
+		if (isset($_REQUEST['submit'])) {
+			//first check csrf token
+			if (!Security::checkCSRFToken()) {
+				$template->assign("error_message", "Wrong CSRF token!");
+			} else {
+				//check values
+				if (!isset($_POST['appID']) || empty($_POST['appID'])) {
+					$template->assign("error_message", "Please complete form! Field appID is missing!");
+				} else if (!isset($_POST['secret_key']) || empty($_POST['secret_key'])) {
+					$template->assign("error_message", "Please complete form! Field secret key is missing!");
+				} else {
+					$appID = $_POST['appID'];
+					$secret_key = $_POST['secret_key'];
+
+					//validate values
+					$validator = new Validator_Int();
+					$validator_string = new Validator_String();
+
+					if (!$validator->isValide($appID)) {
+						$template->assign("error_message", "appID is invalide!");
+					} else if (!$validator_string->isValide($secret_key)) {
+						$template->assign("error_message", "secret key is invalide!");
+					} else {
+						//save values
+						$prefs->put("appID", $appID);
+						$prefs->put("secret", $secret_key);
+
+						$template->assign("success_message", "appID & secret key saved successfully!");
+					}
+				}
+			}
+		}
+
 		$template->assign("appID", $prefs->get("appID", ""));
 		$template->assign("secret_key", $prefs->get("secret", ""));
 
