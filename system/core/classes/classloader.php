@@ -22,6 +22,8 @@ class ClassLoader {
 
     public static $loadedClasses = 0;
 
+    public static $namespace_autoloader = array();
+
     /**
      * initialize classloader (called only once / request)
      */
@@ -89,6 +91,17 @@ class ClassLoader {
 
     }
 
+    /**
+     * add classloader for specific namespace prefix
+     */
+    public static function addLoader (string $prefix, callable $func) {
+    	self::$namespace_autoloader[$prefix] = $func;
+	}
+
+	public static function removeLoader (string $prefix) {
+    	unset(self::$namespace_autoloader[$prefix]);
+	}
+
 }
 
 /**
@@ -152,6 +165,15 @@ function cms_autoloader ($classname) {
 					echo "Could not load plugin-class with namespace " . $classname . $expected_str . "!";
 				}
 			} else {
+				//check, if there is a classloader for this prefix
+				if (isset(ClassLoader::$namespace_autoloader[$array[0]])) {
+					//get function
+					$func = ClassLoader::$namespace_autoloader[$array[0]];
+
+					//call func
+					$func($classname);
+				}
+
 				throw new IllegalStateException("Cannot load namespace class '" . $classname . "' with unknown prefix '" . $array[0] . "'!");
 			}
 
