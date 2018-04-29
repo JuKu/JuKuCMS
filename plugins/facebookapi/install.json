@@ -2,7 +2,7 @@
     "events": [
         {
             "event": "init",
-            "class": "FacebookApi",
+            "class": "Plugin\\FacebookApi\\FacebookApi",
             "method": "addFBClassloader"
         }
     ],
