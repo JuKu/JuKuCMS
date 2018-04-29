@@ -28,7 +28,7 @@
 class Validator_Int implements Validator_Base {
 
 	public function isValide ($value): bool {
-		return is_int($value);
+		return filter_var($value, FILTER_VALIDATE_INT) !== false;
 	}
 
 	public function validate ($value) : int {
