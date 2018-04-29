@@ -129,8 +129,12 @@ class Template {
 		$array = explode("_", $tpl_name);
 
 		if (sizeof($array) == 3) {
-			//plugin oder style template
-			throw new Exception("templates with 2 '_' arent supported yet.");
+			//plugin or style template
+			if ($array[0] === "plugin") {
+				return PLUGIN_PATH . $array[1] . "/templates/" . $array[2] . ".tpl";
+			} else {
+				throw new Exception("templates with 2 '_' (expect 'plugin') arent supported yet.");
+			}
 		} else if (sizeof($array) == 1) {
 			//search in style path
 			if (file_exists($style_path . $tpl_name . ".tpl")) {
