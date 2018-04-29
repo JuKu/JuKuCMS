@@ -58,7 +58,7 @@ class FacebookApi {
 		$this->fb = new Facebook($config);
 	}
 
-	public static function addFBClassloader () {
+	public static function addFBClassloader (array $params) {
 		//add classloader for facebook sdk
 		ClassLoader::addLoader("Facebook", function (string $class_name) {
 			$path = FB_SDK_PATH . str_replace("\\", "/", $class_name) . ".php";
