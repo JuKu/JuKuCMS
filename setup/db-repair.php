@@ -1105,6 +1105,9 @@ Settings::create("recaptcha_secret_key", "", "reCAPTCHA website key", "reCAPTCHA
 Settings::create("cronjob_enabled", true, "Option if cronjob is enabled", "Option if cronjob is enabled", "system", "general", "DataType_Boolean");
 Settings::create("cronjob_auth_key", "", "Cronjob Auth Key", "Only set this key, if you want, that only a restricted source can call cronjob.php file.", "owner", "general", "DataType_String");
 
+//menuID
+Settings::create("menu_plugin_settings_id", -1, "id of plugin settings menu", "id of plugin settings menu - Dont change this value manually!", "system", "hidden", "DataType_Integer", array(), false);
+
 $main_menuID = -1;
 $local_menuID = -1;
 $admin_menuID = -1;
