@@ -108,8 +108,6 @@ class Preferences {
 
 		$lines_str = implode(",\r\n", $lines);
 
-		print_r($values);
-
 		Database::getInstance()->execute("INSERT INTO `{praefix}preferences` (
 			`key`, `area`, `value`
 		) VALUES " . $lines_str . " ON DUPLICATE KEY UPDATE `value` = VALUES(value); ", $values);
