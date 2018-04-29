@@ -72,6 +72,7 @@ class SettingsPage extends PageType {
 						//save values
 						$prefs->put("appID", $appID);
 						$prefs->put("secret", $secret_key);
+						$prefs->save();
 
 						$template->assign("success_message", Translator::translate("appID & secret key saved successfully!"));
 					}
