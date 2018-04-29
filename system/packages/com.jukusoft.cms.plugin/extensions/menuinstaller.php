@@ -39,6 +39,12 @@ class MenuInstaller extends PluginInstaller_Plugin {
 					$menuID = intval(Settings::get($array[1], 1));
 				}
 
+				if (isset($menu['parent']) && PHPUtils::containsStr($menu['parent'], "settings:")) {
+					$array = explode(":", $menu['parent']);
+
+					$menu['parent'] = intval(Settings::get($array[1], -1));
+				}
+
 				$title = $menu['title'];
 				$url = $menu['url'];
 				$parent = (isset($menu['parent']) ? intval($menu['parent']) : -1);
