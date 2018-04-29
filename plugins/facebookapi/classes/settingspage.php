@@ -34,6 +34,7 @@ use Security;
 use Validator_Int;
 use Validator_String;
 use DomainUtils;
+use Translator;
 
 class SettingsPage extends PageType {
 
@@ -72,7 +73,7 @@ class SettingsPage extends PageType {
 						$prefs->put("appID", $appID);
 						$prefs->put("secret", $secret_key);
 
-						$template->assign("success_message", "appID & secret key saved successfully!");
+						$template->assign("success_message", Translator::translate("appID & secret key saved successfully!"));
 					}
 				}
 			}
