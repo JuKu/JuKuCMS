@@ -76,6 +76,17 @@ class FacebookApi {
 		return $this->fb;
 	}
 
+	public function getPage (string $name) : Page {
+		$page = new Page($this->fb);
+		$page->loadPage($name);
+
+		return $page;
+	}
+
+	public function getAccessToken () : string {
+		return $this->appID . "|" . $this->secret;
+	}
+
 }
 
 ?>
