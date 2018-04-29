@@ -41,7 +41,7 @@ class SettingsPage extends PageType {
 		$template->assign("appID", $prefs->get("appID", ""));
 		$template->assign("secret_key", $prefs->get("secret", ""));
 
-		//TODO: add form for facebook appID and secret key
+		//TODO: save values
 
 		return $template->getCode();
 	}

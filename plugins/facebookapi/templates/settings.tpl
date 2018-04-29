@@ -19,7 +19,7 @@
                     {/if}
 
                     <p>To use this plugin you have to create a facebook app and insert appID and secret. Only with these credentials this plugin can read data from facebook api!<br />
-                        <a href="https://developers.facebook.com/docs/apps/register?locale=de_DE">Register app</a> | <a href="https://developers.facebook.com/docs/apps/register?locale=de_DE#create-app">Create App ID</a>
+                        <a href="https://developers.facebook.com/docs/apps/register?locale=de_DE" target="_blank">Register app</a> | <a href="https://developers.facebook.com/docs/apps/register?locale=de_DE#create-app" target="_blank">Create App ID</a>
                     </p>
 
                     <div class="form-group">
