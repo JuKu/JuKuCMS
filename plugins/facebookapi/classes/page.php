@@ -59,7 +59,7 @@ class Page {
 		try {
 			// Returns a `Facebook\FacebookResponse` object
 			$this->response = $this->fb->get(
-				"/" . $this->pageID . "?fields=id,about,fan_count,website,location,name,username,phone,feed",
+				"/" . $this->pageID . "?fields=id,about,fan_count,website,location,name,username,phone,feed.limit(10){child_attachments,application,actions,caption,description,expanded_height,created_time,coordinates,comments_mirroring_domain,backdated_time,event,from,feed_targeting,full_picture,id,is_expired,is_hidden,height,is_popular,is_published,message,message_tags,likes,link,picture,properties,scheduled_publish_time,object_id,type,privacy,name,place},band_members,best_page,band_interests",
 				$this->api->getAccessToken()
 			);
 		} catch(FacebookResponseException $e) {
