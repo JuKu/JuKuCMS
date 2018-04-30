@@ -1,0 +1,35 @@
+{
+    "pages": [
+        {
+            "alias": "admin/plugins/facebookfeed",
+            "title": "Facebook Feed Settings",
+            "pagetype": "Plugin\\FacebookFeed\\SettingsPage",
+            "content": "",
+            "folder": "/admin/",
+            "global_menu": -1,
+            "local_menu": -1,
+            "parentID": -1,
+            "sitemap": false,
+            "published": true,
+            "editable": false,
+            "author": "Plugin facebookfeed",
+            "autoremove_on_uninstall": true
+        }
+    ],
+    "menus": [
+        {
+            "menuID": "settings:admin_menuID",
+            "title": "lang_Facebook Feed",
+            "url": "admin/plugins/facebookfeed",
+            "parent": "settings:menu_plugin_settings_id",
+            "unique_name": "plugin_facebookfeed_settings",
+            "type": "page",
+            "permissions": [
+                "can_see_installed_plugins"
+            ],
+            "login_required": true,
+            "icon": "fab fa-facebook-square",
+            "order": 10
+        }
+    ]
+}

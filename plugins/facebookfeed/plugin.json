@@ -1,0 +1,30 @@
+{
+    "name": "facebookfeed",
+    "type": "project",
+    "title": "Facebook Feed",
+    "description": "Get facebook feed of a page per api or include facebook page feed in page / sidebar module.",
+    "version": "1.0.0",
+    "keywords": [
+        "facebook", "facebook api", "facebook feed", "feed", "graph-api", "facebook-graph-api", "plugin"
+    ],
+    "categories": [
+        "facebook", "feed", "api"
+    ],
+    "homepage": "http://jukusoft.com",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Justin Kuenzel",
+            "email": "info@jukusoft.com",
+            "homepage": "http://jukusoft.com",
+            "role": "Project Founder & Lead Developer"
+        }
+    ],
+    "installation": true,
+    "require": {
+        "php": ">=7.0.8",
+        "package-com.jukusoft.cms.settings": "*",
+        "package-com.jukusoft.cms.preferences": "*",
+        "facebookapi": "*"
+    }
+}
