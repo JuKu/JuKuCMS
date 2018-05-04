@@ -54,6 +54,14 @@ class FeedApi {
 
 		$fb_page = $fb_api->getPage($pageID);
 
+		//https://developers.facebook.com/docs/graph-api/reference/v3.0/page/feed
+
+		//https://stackoverflow.com/questions/28124078/get-latest-facebook-posts-of-page-with-php-sdk
+
+		//https://gist.github.com/biojazzard/740551af0455c528f8a9
+
+		//http://piotrpasich.com/facebook-fanpage-feed/
+
 		print_r($fb_page->listFieldNames());
 
 		return $res;
