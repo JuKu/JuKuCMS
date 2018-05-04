@@ -32,6 +32,7 @@ use DwooTemplate;
 use Preferences;
 use DomainUtils;
 use Security;
+use Validator_String;
 
 class SettingsPage extends PageType {
 
