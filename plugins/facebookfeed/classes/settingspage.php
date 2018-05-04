@@ -34,6 +34,8 @@ class SettingsPage extends PageType {
 
 	public function getContent(): string {
 		$template = new DwooTemplate("plugin_facebookfeed_settings");
+
+		return $template->getCode();
 	}
 
 }
