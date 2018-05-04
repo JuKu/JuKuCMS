@@ -33,6 +33,7 @@ use Preferences;
 use DomainUtils;
 use Security;
 use Validator_String;
+use Translator;
 
 class SettingsPage extends PageType {
 
