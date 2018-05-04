@@ -1,4 +1,11 @@
 {
+    "api_methods": [
+        {
+            "api_method": "fb-list-posts",
+            "class": "Plugin\\FacebookFeed\\FeedApi",
+            "method": "listFBFeeds"
+        }
+    ],
     "pages": [
         {
             "alias": "admin/plugins/facebookfeed",
