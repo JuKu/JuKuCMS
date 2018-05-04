@@ -30,6 +30,7 @@ namespace Plugin\FacebookFeed;
 use PageType;
 use DwooTemplate;
 use Preferences;
+use DomainUtils;
 
 class SettingsPage extends PageType {
 
