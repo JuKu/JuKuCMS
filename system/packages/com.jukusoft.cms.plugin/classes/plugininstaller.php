@@ -120,7 +120,7 @@ class PluginInstaller {
 					}
 				}
 			} else {
-				throw new Exception("plugin requirement check isnt supported yet.");
+				//throw new Exception("plugin requirement check isnt supported yet.");
 
 				if (!$dontCheckPlugins) {
 					continue;
