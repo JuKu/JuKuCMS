@@ -24,6 +24,9 @@
                     <div class="form-group">
                         <label for="pageID">{lang}Facebook Page-ID{/lang}</label>
                         <input type="text" name="pageID" class="form-control" id="pageID" placeholder="Facebook Page-ID" required="required" value="{$pageID}">
+
+                        <!-- CSRF token -->
+                        <input type="hidden" name="csrf_token" value="{$CSRF_TOKEN}" />
                     </div>
                 </div>
                 <!-- /.box-body -->
