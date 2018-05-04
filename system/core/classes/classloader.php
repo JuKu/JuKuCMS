@@ -95,10 +95,12 @@ class ClassLoader {
      * add classloader for specific namespace prefix
      */
     public static function addLoader (string $prefix, callable $func) {
+    	$prefix = strtolower($prefix);
     	self::$namespace_autoloader[$prefix] = $func;
 	}
 
 	public static function removeLoader (string $prefix) {
+		$prefix = strtolower($prefix);
     	unset(self::$namespace_autoloader[$prefix]);
 	}
 
