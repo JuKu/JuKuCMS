@@ -25,6 +25,8 @@
  * Time: 15:31
  */
 
+namespace Plugin\FacebookFeed;
+
 class FeedApi {
 
 	public static function listFBFeeds () : array {
