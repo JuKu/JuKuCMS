@@ -45,6 +45,9 @@ class FeedApi {
 			);
 		}
 
+		//get pageID
+		$pageID = $prefs->get("pageID", "");
+
 		return $res;
 	}
 
