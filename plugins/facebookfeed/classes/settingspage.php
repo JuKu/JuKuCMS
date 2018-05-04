@@ -29,11 +29,45 @@ namespace Plugin\FacebookFeed;
 
 use PageType;
 use DwooTemplate;
+use Preferences;
 
 class SettingsPage extends PageType {
 
 	public function getContent(): string {
 		$template = new DwooTemplate("plugin_facebookfeed_settings");
+
+		$template->assign("form_action", DomainUtils::generateURL($this->getPage()->getAlias()));
+
+		$prefs = new Preferences("plugin_facebookfeed");
+
+		if (isset($_REQUEST['submit'])) {
+			//first check csrf token
+			if (!Security::checkCSRFToken()) {
+				$template->assign("error_message", "Wrong CSRF token!");
+			} else {
+				//check values
+				if (!isset($_POST['pageID']) || empty($_POST['pageID'])) {
+					$template->assign("error_message", "Please complete form! Field pageID is missing!");
+				} else {
+					$pageID = $_POST['pageID'];
+
+					//validate values
+					$validator_string = new Validator_String();
+
+					if (!$validator_string->isValide($pageID)) {
+						$template->assign("error_message", "pageID is invalide!");
+					} else {
+						//save values
+						$prefs->put("pageID", $pageID);
+						$prefs->save();
+
+						$template->assign("success_message", Translator::translate("pageID saved successfully!"));
+					}
+				}
+			}
+		}
+
+		$template->assign("pageID", $prefs->get("pageID", ""));
 
 		return $template->getCode();
 	}
