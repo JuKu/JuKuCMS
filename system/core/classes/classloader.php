@@ -176,6 +176,8 @@ function cms_autoloader ($classname) {
 					$func($classname);
 				}
 
+				print_r(ClassLoader::$namespace_autoloader);
+
 				throw new IllegalStateException("Cannot load namespace class '" . $classname . "' with unknown prefix '" . $array[0] . "'!");
 			}
 
