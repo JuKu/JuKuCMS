@@ -27,6 +27,7 @@
 
 namespace Plugin\FacebookFeed;
 
+use Plugin\FacebookApi\FacebookApi;
 use Preferences;
 
 class FeedApi {
@@ -47,6 +48,13 @@ class FeedApi {
 
 		//get pageID
 		$pageID = $prefs->get("pageID", "");
+
+		//create facebook api
+		$fb_api = new FacebookApi();
+
+		$fb_page = $fb_api->getPage($pageID);
+
+		print_r($fb_page->listFieldNames());
 
 		return $res;
 	}
