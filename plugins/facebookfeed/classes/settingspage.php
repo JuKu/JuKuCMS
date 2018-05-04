@@ -31,6 +31,7 @@ use PageType;
 use DwooTemplate;
 use Preferences;
 use DomainUtils;
+use Security;
 
 class SettingsPage extends PageType {
 
