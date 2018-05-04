@@ -27,10 +27,23 @@
 
 namespace Plugin\FacebookFeed;
 
+use Preferences;
+
 class FeedApi {
 
 	public static function listFBFeeds () : array {
 		$res = array();
+
+		//load preferences
+		$prefs = new Preferences("plugin_facebookfeed");
+
+		//first check, if pageID is set
+		if (empty($prefs->get("pageID", ""))) {
+			return array(
+				'error' => "No pageID was set in preferences (plugin settings)",
+				"status" => 500
+			);
+		}
 
 		return $res;
 	}
