@@ -158,7 +158,27 @@ class LDAPClient {
 		 */
 		$entries = ldap_get_entries($this->conn, $result);
 
-		return $entries;
+		/*$array = array();
+
+		$count = intval($entries['count']);
+
+		for ($i = 0; $i < $count; $i++) {
+			$entry = $entries[$i];
+
+			$array[] = array(
+				'dn' => $entry['dn'],
+				'count' => $entry['count'],
+				'attributes' => $entry,
+			);
+		}*/
+
+		$groups = array();
+
+		foreach($entries[0]['memberof'] as $grps) {
+			$groups[] = $grps;
+		}
+
+		return $groups;
 	}
 
 	public function unbind () {
