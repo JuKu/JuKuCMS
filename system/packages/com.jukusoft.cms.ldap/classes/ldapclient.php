@@ -38,6 +38,8 @@ class LDAPClient {
 	protected $conn = null;
 	protected $res = null;
 
+	protected $dn = "";
+
 	protected $ldap_config = array();
 
 	//flag, if connection is readonly
@@ -92,6 +94,8 @@ class LDAPClient {
 			throw new IllegalStateException("LDAP connection parameters (host or port) are invalide.");
 		}
 
+		$this->dn = $ldap_config['dn'];
+
 		//set ldap params
 		if (isset($ldap_config['params'])) {
 			foreach ($ldap_config['params'] as $key=>$value) {
@@ -109,29 +113,61 @@ class LDAPClient {
 			$password = $this->ldap_config['password'];
 		}
 
+		$ldap_usr_dom = "";
+
+		if (isset($this->ldap_config['ldap_usr_dom'])) {
+			$ldap_usr_dom = $this->ldap_config['ldap_usr_dom'];
+		}
+
 		if ($this->conn === FALSE) {
 			throw new IllegalStateException("ldap connection check failed.");
 		}
 
+		//http://www.selfadsi.de/ads-attributes/user-sAMAccountName.htm
+
 		//connect and bind to ldap server
 		if (!is_null($username)) {
 			//with authentification
-			$this->res = ldap_bind($this->conn, $username, $password);
+			$this->res = @ldap_bind($this->conn, $username . $ldap_usr_dom, $password);
 		} else {
 			//anonymous binding
-			$this->res = ldap_bind($this->conn);
+			$this->res = @ldap_bind($this->conn);
 		}
 
 		return $this->res !== FALSE;
 	}
 
-	public function getConnection () {
-		return $this->conn;
+	public function listGroupsOfUser (string $user) : array {
+		// check presence in groups
+		$filter = "(sAMAccountName=" . $user . ")";
+		$attr = array("memberof");
+
+		//https://samjlevy.com/php-ldap-login/
+
+		$result = ldap_search($this->conn, $this->dn, $filter, $attr) or exit("Unable to search LDAP server");
+
+		/*
+		 *return_value["count"] = number of entries in the result
+		 * return_value[0] : refers to the details of first entry
+		 * return_value[i]["dn"] = DN of the ith entry in the result
+		 * return_value[i]["count"] = number of attributes in ith entry
+		 * return_value[i][j] = NAME of the jth attribute in the ith entry in the result
+		 * return_value[i]["attribute"]["count"] = number of values for
+		 * attribute in ith entry
+		 * return_value[i]["attribute"][j] = jth value of attribute in ith entry
+		 */
+		$entries = ldap_get_entries($this->conn, $result);
+
+		return $entries;
 	}
 
-	public function disconnect () {
+	public function unbind () {
 		//disconnect from ldap server
 		ldap_unbind($this->conn);
+	}
+
+	public function getConnection () {
+		return $this->conn;
 	}
 
 }

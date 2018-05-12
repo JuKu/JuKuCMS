@@ -566,6 +566,8 @@ $table->addInt("main_group", 10, true, false, "2");
 $table->addVarchar("specific_title", 255, true, "none");
 $table->addInt("online", 10, true, false, "0");
 $table->addTimestamp("last_online", true, "0000-00-00 00:00:00");
+$table->addVarchar("authentificator", 255, true, "LocalAuthentificator");
+$table->addVarchar("owner", 255, true, "system");
 $table->addTimestamp("registered", true, "CURRENT_TIMESTAMP");
 $table->addInt("activated", 10, true, false, 1);
 
