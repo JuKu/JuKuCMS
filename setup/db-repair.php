@@ -1110,6 +1110,9 @@ Settings::create("cronjob_auth_key", "", "Cronjob Auth Key", "Only set this key,
 //menuID
 Settings::create("menu_plugin_settings_id", -1, "id of plugin settings menu", "id of plugin settings menu - Dont change this value manually!", "system", "hidden", "DataType_Integer", array(), false);
 
+//user / ldap authentification
+Settings::create("default_authentificator", "LocalAuthentificator", "Authentificator Class", "Classname of Authentificator method", "system", "user", "DataType_String", array(""), true);
+
 $main_menuID = -1;
 $local_menuID = -1;
 $admin_menuID = -1;
