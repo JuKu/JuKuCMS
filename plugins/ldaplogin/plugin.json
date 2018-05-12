@@ -1,0 +1,34 @@
+{
+    "name": "ldaplogin",
+    "type": "project",
+    "title": "LDAP Login",
+    "description": "A plugin to add support for ldap login.",
+    "version": "1.0.0",
+    "keywords": [
+        "plugin", "user", "authentification", "login"
+    ],
+    "categories": [
+        "auth"
+    ],
+    "homepage": "http://jukusoft.com",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Justin Kuenzel",
+            "email": "info@jukusoft.com",
+            "homepage": "http://jukusoft.com",
+            "role": "Project Founder & Lead Developer"
+        }
+    ],
+    "support": {
+        "email": "info@jukusoft.com",
+        "source": "https://github.com/JuKu/JuKuCMS",
+        "issues": "https://github.com/JuKu/JuKuCMS/issues"
+    },
+    "installation": true,
+    "require": {
+        "php": ">=7.0.8",
+        "package-com.jukusoft.cms.settings": "*",
+        "package-com.jukusoft.cms.preferences": "*"
+    }
+}

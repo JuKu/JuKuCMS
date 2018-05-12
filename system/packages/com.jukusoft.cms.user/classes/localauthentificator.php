@@ -27,7 +27,32 @@
 
 class LocalAuthentificator implements IAuthentificator {
 
-	//
+	public function __construct() {
+		//
+	}
+
+	/**
+	 * check password of user
+	 *
+	 * @param $username string name of user
+	 * @param $password string password of user
+	 *
+	 * @return true, if password is correct
+	 */
+	public function checkPassword(string $username, string $password): bool {
+		// TODO: Implement checkPassword() method.
+	}
+
+	/**
+	 * check, if username exists
+	 *
+	 * @param $username string name of user
+	 *
+	 * @return true, if username exists
+	 */
+	public function exists(string $username): bool {
+		// TODO: Implement exists() method.
+	}
 
 }
 

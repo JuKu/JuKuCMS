@@ -22,10 +22,18 @@
  * License: Apache 2.0 license
  * User: Justin
  * Date: 12.05.2018
- * Time: 13:33
+ * Time: 15:29
  */
 
-interface IAuthentificator {
+namespace Plugin\LDAPLogin;
+
+use IAuthentificator;
+
+class LDAPAuthentificator implements IAuthentificator {
+
+	public function __construct() {
+		//
+	}
 
 	/**
 	 * check password of user
@@ -35,7 +43,9 @@ interface IAuthentificator {
 	 *
 	 * @return true, if password is correct
 	 */
-	public function checkPassword (string $username, string $password) : bool;
+	public function checkPassword(string $username, string $password): bool {
+		// TODO: Implement checkPassword() method.
+	}
 
 	/**
 	 * check, if username exists
@@ -44,7 +54,9 @@ interface IAuthentificator {
 	 *
 	 * @return true, if username exists
 	 */
-	public function exists (string $username) : bool;
+	public function exists(string $username): bool {
+		// TODO: Implement exists() method.
+	}
 
 }
 

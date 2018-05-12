@@ -42,6 +42,8 @@ class User {
 	//current database row
 	protected $row = null;
 
+	protected static $default_authentificator = null;
+
 	public function __construct() {
 		//
 	}
@@ -561,6 +563,59 @@ class User {
 		}
 
 		return $row['userID'];
+	}
+
+	public static function &getAuthentificatorByID (int $userID = -1) {
+		if ($userID == -1) {
+			//get default authentificator
+			return self::getDefaultAuthentificator();
+		} else {
+			//get authentificator class
+
+			//check, if user exists
+			if (!self::existsUserID($userID)) {
+				throw new IllegalStateException("user with userID '" . $userID . "' doesnt exists.");
+			}
+
+			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `userID` = :userID AND `activated` = '1'; ", array(
+				'userID' => &$userID
+			));
+
+			$class_name = $row['authentificator'];
+			return new $class_name();
+		}
+	}
+
+	public static function &getAuthentificatorByUsername (string $username = "") {
+		if ($username == null || empty($username)) {
+			//get default authentificator
+			return self::getDefaultAuthentificator();
+		} else {
+			//get authentificator class
+
+			//check, if user exists
+			if (!self::existsUsername($username)) {
+				throw new IllegalStateException("user with username '" . $username . "' doesnt exists.");
+			}
+
+			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `username` = :username AND `activated` = '1'; ", array(
+				'username' => &$username
+			));
+
+			$class_name = $row['authentificator'];
+			return new $class_name();
+		}
+	}
+
+	public static function &getDefaultAuthentificator () : IAuthentificator {
+		if (self::$default_authentificator == null) {
+			$class_name = Settings::get("default_authentificator", "LocalAuthentificator");
+			$obj = new $class_name();
+
+			self::$default_authentificator = $obj;
+		}
+
+		return self::$default_authentificator;
 	}
 
 	/**
