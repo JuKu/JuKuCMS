@@ -39,19 +39,45 @@ class LocalAuthentificator implements IAuthentificator {
 	 *
 	 * @return true, if password is correct
 	 */
-	public function checkPassword(string $username, string $password): bool {
-		// TODO: Implement checkPassword() method.
-	}
+	public function checkPassword(string $username, string $password) : bool {
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `username` = :username AND `activated` = '1'; ", array(
+			'username' => &$username
+		));
 
-	/**
-	 * check, if username exists
-	 *
-	 * @param $username string name of user
-	 *
-	 * @return true, if username exists
-	 */
-	public function exists(string $username): bool {
-		// TODO: Implement exists() method.
+		if (!$row) {
+			//user doesnt exists
+			return false;
+		}
+
+		//get salt
+		$salt = $row['salt'];
+
+		//add salt to password
+		$password .= $salt;
+
+		//verify password
+		if (password_verify($password, $row['password'])) {
+			//correct password
+
+			//check, if a newer password algorithmus is available --> rehash required
+			if (password_needs_rehash($row['password'], PASSWORD_DEFAULT)) {
+				//rehash password
+				$new_hash = self::hashPassword($password, $salt);
+
+				//update password in database
+				Database::getInstance()->execute("UPDATE `{praefix}user` SET `password` = :password WHERE `userID` = :userID; ", array(
+					'password' => $new_hash,
+					'userID' => array(
+						'type' => PDO::PARAM_INT,
+						'value' => $row['userID']
+					)
+				));
+			}
+
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

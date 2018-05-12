@@ -1,3 +1,5 @@
 {
-
+    "set-settings": {
+        "default_authentificator": "Plugin\\LDAPLogin\LDAPAuthentificator"
+    }
 }

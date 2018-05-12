@@ -44,7 +44,7 @@ interface IAuthentificator {
 	 *
 	 * @return true, if username exists
 	 */
-	public function exists (string $username) : bool;
+	//public function exists (string $username) : bool;
 
 }
 

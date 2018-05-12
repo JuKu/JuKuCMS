@@ -87,6 +87,21 @@ class Preferences {
 		}
 	}
 
+	public function listAll () : array {
+		return $this->prefs;
+	}
+
+	public function clearAll () {
+		//delete from database
+		Database::getInstance()->execute("DELETE FROM `{praefix}preferences` WHERE `area` => :area; ");
+
+		$this->prefs = array();
+		$this->changed_prefs = array();
+
+		//clear cache
+		Cache::clear("preferences", "preferences-" . $this->area);
+	}
+
 	/**
 	 * write all values to database
 	 */

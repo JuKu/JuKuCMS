@@ -263,6 +263,8 @@ class User {
 			return $res;
 		}
 
+		//TODO: get authentificator
+
 		//user exists
 
 		//get salt
