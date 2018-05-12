@@ -172,6 +172,8 @@ class LDAPClient {
 			);
 		}*/
 
+		//https://stackoverflow.com/questions/7187994/memberof-vs-groupmembership-in-ldap-liferay
+
 		$groups = array();
 
 		foreach($entries[0]['memberof'] as $grps) {
