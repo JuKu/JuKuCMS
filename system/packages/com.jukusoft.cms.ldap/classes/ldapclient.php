@@ -178,6 +178,13 @@ class LDAPClient {
 			$groups[] = $grps;
 		}
 
+		/*
+		 * isMemberOf: cn=Dynamic Home Directories,ou=groups,dc=example,dc=com
+		 * isMemberOf: cn=bellevue,ou=groups,dc=example,dc=com
+		 * isMemberOf: cn=shadow entries,ou=groups,dc=example,dc=com
+		 * isMemberOf: cn=persons,ou=groups,dc=example,dc=com
+		 */
+
 		return $groups;
 	}
 
