@@ -36,6 +36,8 @@ class SettingsInstaller extends PluginInstaller_Plugin {
 					//backup old value
 					$old_value = Settings::get($key);
 					$prefs->put($key, $old_value);
+				} else {
+					$prefs->put($key, null);
 				}
 
 				//set new value
@@ -52,7 +54,9 @@ class SettingsInstaller extends PluginInstaller_Plugin {
 		$prefs = new Preferences("plugin_" . $plugin->getName() . "_uninstall");
 
 		foreach ($prefs->listAll() as $key=>$value) {
-			Settings::set($key, $value);
+			if ($value != null) {
+				Settings::set($key, $value);
+			}
 		}
 
 		//clear preferences
