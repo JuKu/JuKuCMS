@@ -92,10 +92,18 @@ class LDAPClient {
 			throw new IllegalStateException("LDAP connection parameters (host or port) are invalide.");
 		}
 
+		//set ldap params
+		if (isset($ldap_config['params'])) {
+			foreach ($ldap_config['params'] as $key=>$value) {
+				// configure ldap params
+				ldap_set_option($this->conn,$key, $value);
+			}
+		}
+
 		$this->ldap_config = $ldap_config;
 	}
 
-	public function connect (string $username = null, string $password = null) : bool {
+	public function bind (string $username = null, string $password = null) : bool {
 		if (is_null($username) && isset($this->ldap_config['user'])) {
 			$username = $this->ldap_config['user'];
 			$password = $this->ldap_config['password'];

@@ -19,6 +19,15 @@ $ldap_config = array(
 	'password' => "admin",
 
 	'readonly' => true,//only readonly access
+
+	//https://www.forumsys.com/tutorials/integration-how-to/ldap/api-identity-management-ldap-server/
+
+	//https://www.forumsys.com/tutorials/integration-how-to/ldap/online-ldap-test-server/
+
+	'params' => array(
+		LDAP_OPT_PROTOCOL_VERSION => 3,
+		LDAP_OPT_REFERRALS => 0
+	),
 );
 
 ?>
