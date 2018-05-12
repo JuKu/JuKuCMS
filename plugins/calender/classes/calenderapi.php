@@ -111,6 +111,7 @@ class CalenderApi {
 				'calenderID' => $event->getCalenderID(),
 				'title' => $event->getTitle(),
 				'description' => $event->getDescription(),
+				'price_info' => $event->getPriceInfo(),
 				'image' => $event->getImage(),
 				'all_day' => $event->isAllDay(),
 				'from' => $event->getFromTimestamp(),

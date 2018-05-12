@@ -51,6 +51,10 @@ class Event {
 		return utf8_encode($this->row['description']);
 	}
 
+	public function getPriceInfo () : string {
+		return (isset($this->row['price_info']) ? $this->row['price_info'] : "");
+	}
+
 	public function hasImage () : bool {
 		return $this->row['image'] !== "none";
 	}
