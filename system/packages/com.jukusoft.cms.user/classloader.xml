@@ -23,4 +23,6 @@
 	<class>Mail_Verification</class>
 	<class>MailVerifyPage</class>
 	<class>ChangePasswordPage</class>
+	<class>IAuthentificator</class>
+	<class>LocalAuthentificator</class>
 </classes>
