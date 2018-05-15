@@ -189,6 +189,11 @@ class LDAPClient {
 
 		print_r($entries);
 
+		if (!isset($entries[0]) || !isset($entries[0]['memberof'])) {
+			//ldap server doesnt contains information about user groups
+			return $groups;
+		}
+
 		foreach($entries[0]['memberof'] as $grps) {
 			$groups[] = $grps;
 		}
