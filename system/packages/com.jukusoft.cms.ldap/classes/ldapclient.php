@@ -187,7 +187,7 @@ class LDAPClient {
 
 		$groups = array();
 
-		print_r($entries);
+		//print_r($entries);
 
 		if (!isset($entries[0]) || !isset($entries[0]['memberof'])) {
 			//ldap server doesnt contains information about user groups
