@@ -87,7 +87,7 @@ class LDAPAuthentificator implements IAuthentificator {
 			$mail = md5(PHPUtils::randomString(10) . time()) . "@local";
 		}
 
-		echo "<br /></br />Mail: " . $mail . "<br />";
+		echo "<br /><br />Mail: " . $mail . "<br />";
 
 		$common_name = "";
 
