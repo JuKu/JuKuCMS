@@ -239,41 +239,53 @@ class PluginInstaller {
 			return false;
 		}
 
-		//check, if install.json is used
-		if ($this->plugin->hasInstallJson()) {
-			//check, if install.json exists
-			if (!file_exists($this->plugin->getPath() . "install.json")) {
-				throw new IllegalStateException("plugin '" . $this->plugin->getName() . "' requires a install.json, but plugin directory doesnt contains a install.json file.");
-			}
+		//start transaction
+		Database::getInstance()->beginTransaction();
 
-			//get content
-			$install_json = json_decode(file_get_contents($this->plugin->getPath() . "install.json"), true);
+		try {
+			//check, if install.json is used
+			if ($this->plugin->hasInstallJson()) {
+				//check, if install.json exists
+				if (!file_exists($this->plugin->getPath() . "install.json")) {
+					throw new IllegalStateException("plugin '" . $this->plugin->getName() . "' requires a install.json, but plugin directory doesnt contains a install.json file.");
+				}
 
-			$installer_plugins = self::listInstallerPlugins();
+				//get content
+				$install_json = json_decode(file_get_contents($this->plugin->getPath() . "install.json"), true);
 
-			foreach ($installer_plugins as $i_plugin) {
-				//cast plugin
-				$i_plugin = PluginInstaller_Plugin::cast($i_plugin);
+				$installer_plugins = self::listInstallerPlugins();
 
-				//execute installer plugin
-				$i_plugin->install($this->plugin, $install_json);
-			}
+				foreach ($installer_plugins as $i_plugin) {
+					//cast plugin
+					$i_plugin = PluginInstaller_Plugin::cast($i_plugin);
 
-			if (isset($install_json['install_script'])) {
-				$script_filename = $install_json['install_script'];
-				$script_path = $this->plugin->getPath() . $script_filename;
+					//execute installer plugin
+					$i_plugin->install($this->plugin, $install_json);
+				}
 
-				//execute script, if exists
-				if (file_exists($script_path)) {
-					require($script_path);
-				} else {
-					throw new IllegalStateException("a install script '" . $script_filename . "' is set for plugin '" . $this->plugin->getName() . "', but file doesnt exists (path: " . $script_path . ").");
+				if (isset($install_json['install_script'])) {
+					$script_filename = $install_json['install_script'];
+					$script_path = $this->plugin->getPath() . $script_filename;
+
+					//execute script, if exists
+					if (file_exists($script_path)) {
+						require($script_path);
+					} else {
+						throw new IllegalStateException("a install script '" . $script_filename . "' is set for plugin '" . $this->plugin->getName() . "', but file doesnt exists (path: " . $script_path . ").");
+					}
 				}
 			}
+
+			//set plugin as installed
+			$this->setInstalled();
+		} catch (Exception $e) {
+			//rollback database on exception
+			Database::getInstance()->rollback();
+
+			throw $e;
 		}
 
-		//set plugin as installed
-		$this->setInstalled();
+		Database::getInstance()->commit();
 
 		//clear cache
 		Cache::clear();
