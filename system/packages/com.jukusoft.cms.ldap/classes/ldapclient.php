@@ -123,6 +123,7 @@ class LDAPClient {
 		}
 
 		$ldap_usr_dom = "";
+		$ldap_usr_prefix = (isset($this->ldap_config['user_prefix']) ? $this->ldap_config['user_prefix'] : "");
 
 		if (isset($this->ldap_config['ldap_usr_dom'])) {
 			$ldap_usr_dom = $this->ldap_config['ldap_usr_dom'];
@@ -137,7 +138,7 @@ class LDAPClient {
 		//connect and bind to ldap server
 		if (!is_null($username)) {
 			//with authentification
-			$this->res = @ldap_bind($this->conn, $username . $ldap_usr_dom, $password);
+			$this->res = @ldap_bind($this->conn, $ldap_usr_prefix . $username . $ldap_usr_dom, $password);
 		} else {
 			//anonymous binding
 			$this->res = @ldap_bind($this->conn);

@@ -14,6 +14,7 @@ $ldap_config = array(
 	'port' => 389,
 
 	'use_uri' => true,
+	'user_prefix' => "uid=",
 
 	'ssl' => false,
 
