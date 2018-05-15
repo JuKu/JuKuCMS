@@ -30,6 +30,7 @@ namespace Plugin\LDAPLogin;
 use IAuthentificator;
 use LDAPClient;
 use IllegalArgumentException;
+use PHPUtils;
 
 class LDAPAuthentificator implements IAuthentificator {
 
@@ -70,13 +71,42 @@ class LDAPAuthentificator implements IAuthentificator {
 			return -1;
 		}
 
-		echo "user exists. User groups: ";
+		//TODO: set user groups
 
-		print_r($ldap_client->listGroupsOfUser("riemann"));
+		//get attributes of user
+		$attributes = $ldap_client->listAllAttributesOfUser($username);
 
-		echo "<br /> Attributes:<br /><br />";
+		$mail = "";
 
-		print_r($ldap_client->listAllAttributesOfUser("riemann"));
+		//get mail of user
+		if (isset($attributes['mail'])) {
+			//get first mail
+			$mail = $attributes['mail'][0];
+		} else {
+			//generate random local mail
+			$mail = md5(PHPUtils::randomString(10) . time()) . "@local";
+		}
+
+		echo "<br /></br />Mail: " . $mail . "<br />";
+
+		$common_name = "";
+
+		if (isset($attributes['cn'])) {
+			$common_name = $attributes['cn'];
+		} else {
+			$common_name = $username;
+		}
+
+		echo "Common Name: " . $common_name . "<br />";
+
+		//get surname
+		$surname = "";
+
+		if (isset($attributes['sn'])) {
+			$surname = $attributes['sn'];
+		}
+
+		echo "Surname: " . $surname . "<br />";
 
 		//unbind
 		$ldap_client->unbind();
