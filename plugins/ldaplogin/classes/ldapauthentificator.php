@@ -92,7 +92,7 @@ class LDAPAuthentificator implements IAuthentificator {
 		$common_name = "";
 
 		if (isset($attributes['cn'])) {
-			$common_name = $attributes['cn'];
+			$common_name = $attributes['cn'][0];
 		} else {
 			$common_name = $username;
 		}
@@ -103,7 +103,7 @@ class LDAPAuthentificator implements IAuthentificator {
 		$surname = "";
 
 		if (isset($attributes['sn'])) {
-			$surname = $attributes['sn'];
+			$surname = $attributes['sn'][0];
 		}
 
 		echo "Surname: " . $surname . "<br />";
