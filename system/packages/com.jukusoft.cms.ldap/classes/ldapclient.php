@@ -91,7 +91,9 @@ class LDAPClient {
 		}
 
 		if ($this->conn === FALSE) {
-			throw new IllegalStateException("LDAP connection parameters (host or port) are invalide." . (DEBUG_MODE ? ldap_error($this->conn) : ""));
+			$error_str = ($this->uri_used ? "URI: " . $this->uri : " Host: " . $this->host . ", port: " . $this->port);
+
+			throw new IllegalStateException("LDAP connection parameters (host or port) are invalide." . (DEBUG_MODE ? " " . $error_str : ""));
 		}
 
 		$this->dn = $ldap_config['dn'];
