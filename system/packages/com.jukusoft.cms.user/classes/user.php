@@ -580,7 +580,9 @@ class User {
 			));
 
 			$class_name = $row['authentificator'];
-			return new $class_name();
+			$obj = new $class_name();
+
+			return $obj;
 		}
 	}
 
@@ -601,7 +603,9 @@ class User {
 			));
 
 			$class_name = $row['authentificator'];
-			return new $class_name();
+			$obj = new $class_name();
+
+			return $obj;
 		}
 	}
 
