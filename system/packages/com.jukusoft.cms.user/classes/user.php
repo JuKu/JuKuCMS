@@ -450,7 +450,7 @@ class User {
 		));
 	}
 
-	public static function create (string $username, string $password, string $mail, string $ip, int $main_group = 2, string $specific_title = "none", int $activated = 1) {
+	public static function create (string $username, string $password, string $mail, string $ip, int $main_group = 2, string $specific_title = "none", int $activated = 1, string $authentificator = "LocalAuthentificator") {
 		if (self::existsUsername($username)) {
 			//dont create user, if username already exists
 			return false;

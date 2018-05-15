@@ -31,6 +31,7 @@ use IAuthentificator;
 use LDAPClient;
 use IllegalArgumentException;
 use PHPUtils;
+use User;
 
 class LDAPAuthentificator implements IAuthentificator {
 
@@ -87,8 +88,6 @@ class LDAPAuthentificator implements IAuthentificator {
 			$mail = md5(PHPUtils::randomString(10) . time()) . "@local";
 		}
 
-		echo "<br /><br />Mail: " . $mail . "<br />";
-
 		$common_name = "";
 
 		if (isset($attributes['cn'])) {
@@ -97,8 +96,6 @@ class LDAPAuthentificator implements IAuthentificator {
 			$common_name = $username;
 		}
 
-		echo "Common Name: " . $common_name . "<br />";
-
 		//get surname
 		$surname = "";
 
@@ -106,14 +103,22 @@ class LDAPAuthentificator implements IAuthentificator {
 			$surname = $attributes['sn'][0];
 		}
 
-		echo "Surname: " . $surname . "<br />";
-
 		//unbind
 		$ldap_client->unbind();
 
-		exit;
+		//check, if we have to import user
+		if (!User::existsUsername($username)) {
+			//generate random password
+			$password = md5(PHPUtils::randomString(16) . time());
 
-		return -1;
+			//import user and create user in database
+			$userID = User::create($username, $password, $mail, PHPUtils::getClientIP(), 2, "none", 1, "Plugin\\LDAPLogin\\LDAPAuthentificator");
+
+			return $userID;
+		} else {
+			//return userID
+			return User::getIDByUsernameFromDB($username);
+		}
 	}
 }
 
