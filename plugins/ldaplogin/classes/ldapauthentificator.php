@@ -114,8 +114,6 @@ class LDAPAuthentificator implements IAuthentificator {
 			//import user and create user in database
 			$res = User::create($username, $password, $mail, PHPUtils::getClientIP(), 2, "none", 1, "Plugin\\LDAPLogin\\LDAPAuthentificator");
 
-			echo "userID: " . $res['userID'];
-
 			return $res['userID'];
 		} else {
 			//return userID
