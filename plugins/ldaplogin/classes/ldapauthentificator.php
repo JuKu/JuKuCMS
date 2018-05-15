@@ -74,6 +74,10 @@ class LDAPAuthentificator implements IAuthentificator {
 
 		print_r($ldap_client->listGroupsOfUser("riemann"));
 
+		echo "<br /> Attributes:<br /><br />";
+
+		print_r($ldap_client->listAllAttributesOfUser("riemann"));
+
 		//unbind
 		$ldap_client->unbind();
 
