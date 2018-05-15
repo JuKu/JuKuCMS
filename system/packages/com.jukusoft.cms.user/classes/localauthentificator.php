@@ -32,21 +32,21 @@ class LocalAuthentificator implements IAuthentificator {
 	}
 
 	/**
-	 * check password of user
+	 * check password of user and import user, if neccessary
 	 *
 	 * @param $username string name of user
 	 * @param $password string password of user
 	 *
-	 * @return true, if password is correct
+	 * @return userID or -1, if credentials are wrong
 	 */
-	public function checkPassword(string $username, string $password) : bool {
+	public function checkPasswordAndImport(string $username, string $password) : int {
 		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `username` = :username AND `activated` = '1'; ", array(
 			'username' => &$username
 		));
 
 		if (!$row) {
 			//user doesnt exists
-			return false;
+			return -1;
 		}
 
 		//get salt
@@ -74,9 +74,9 @@ class LocalAuthentificator implements IAuthentificator {
 				));
 			}
 
-			return true;
+			return $row['userID'];
 		} else {
-			return false;
+			return -1;
 		}
 	}
 

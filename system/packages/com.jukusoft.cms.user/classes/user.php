@@ -154,6 +154,22 @@ class User {
 			'username' => &$username
 		));
 
+		if (!$row) {
+			//get default authentificator
+			$authentificator = self::getDefaultAuthentificator();
+
+			$userID = $authentificator->checkPasswordAndImport($username, $password);
+
+			if ($userID == -1) {
+				//user not found
+			} else {
+				//user was imported now, get user row
+				$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE `userID` = :userID AND `activated` = '1'; ", array(
+					'userID' => &$userID
+				));
+			}
+		}
+
 		return $this->loginRow($row, $password);
 	}
 
@@ -255,6 +271,8 @@ class User {
 	}
 
 	protected function loginRow ($row, string $password) : array {
+		$res = array();
+
 		if (!$row) {
 			//user doesnt exists
 			$res['success'] = false;
@@ -263,34 +281,12 @@ class User {
 			return $res;
 		}
 
-		//TODO: get authentificator
+		//get authentificator
+		$authentificator = self::getAuthentificatorByID($row['userID']);
 
-		//user exists
-
-		//get salt
-		$salt = $row['salt'];
-
-		//add salt to password
-		$password .= $salt;
-
-		//verify password
-		if (password_verify($password, $row['password'])) {
-			//correct password
-
-			//check, if a newer password algorithmus is available --> rehash required
-			if (password_needs_rehash($row['password'], PASSWORD_DEFAULT)) {
-				//rehash password
-				$new_hash = self::hashPassword($password, $salt);
-
-				//update password in database
-				Database::getInstance()->execute("UPDATE `{praefix}user` SET `password` = :password WHERE `userID` = :userID; ", array(
-					'password' => $new_hash,
-					'userID' => array(
-						'type' => PDO::PARAM_INT,
-						'value' => $row['userID']
-					)
-				));
-			}
+		//check password
+		if ($authentificator->checkPasswordAndImport($row['username'], $password)) {
+			//password is correct
 
 			//set online state
 			$this->setOnline();
