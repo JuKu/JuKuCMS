@@ -294,17 +294,11 @@ class User {
 			//set logged in
 			$this->setLoggedIn($row['userID'], $row['username'], $row);
 
-			echo "password correct: " . $password . " (user: " . $row['username'] . ")";
-			exit;
-
 			//login successful
 			$res['success'] = true;
 			$res['error'] = "none";
 			return $res;
 		} else {
-			echo "wrong password";
-			exit;
-
 			//wrong password
 
 			//user doesnt exists
