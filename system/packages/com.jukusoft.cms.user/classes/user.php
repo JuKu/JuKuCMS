@@ -294,6 +294,9 @@ class User {
 			//set logged in
 			$this->setLoggedIn($row['userID'], $row['username'], $row);
 
+			echo "password correct: " . $password . " (user: " . $row['username'] . ")";
+			exit;
+
 			//login successful
 			$res['success'] = true;
 			$res['error'] = "none";
