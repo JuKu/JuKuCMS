@@ -186,6 +186,8 @@ class LDAPClient {
 
 		$groups = array();
 
+		print_r($entries);
+
 		foreach($entries[0]['memberof'] as $grps) {
 			$groups[] = $grps;
 		}
