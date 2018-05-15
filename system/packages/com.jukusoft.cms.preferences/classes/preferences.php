@@ -93,7 +93,7 @@ class Preferences {
 
 	public function clearAll () {
 		//delete from database
-		Database::getInstance()->execute("DELETE FROM `{praefix}preferences` WHERE `area` => :area; ", array('area' => $this->area));
+		Database::getInstance()->execute("DELETE FROM `{praefix}preferences` WHERE `area` = :area; ", array('area' => $this->area));
 
 		$this->prefs = array();
 		$this->changed_prefs = array();
