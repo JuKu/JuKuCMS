@@ -62,7 +62,7 @@ class LDAPClient {
 
 			//check, if ldap is enabled
 			if ($ldap_config['enabled'] == false) {
-				throw new IllegalStateException("LDAP is disabled.");
+				throw new IllegalStateException("LDAP is disabled. Enable ldap in file config/ldap.php .");
 			}
 
 			$this->host = $ldap_config['host'];
