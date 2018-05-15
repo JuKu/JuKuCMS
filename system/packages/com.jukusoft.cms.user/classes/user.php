@@ -456,7 +456,7 @@ class User {
 		));
 	}
 
-	public static function create (string $username, string $password, string $mail, string $ip, int $main_group = 2, string $specific_title = "none", int $activated = 1, string $authentificator = "LocalAuthentificator") {
+	public static function create (string $username, string $password, string $mail, string $ip, int $main_group = 2, string $specific_title = "none", int $activated = 1, string $authentificator = "LocalAuthentificator", string $owner = "system") {
 		if (self::existsUsername($username)) {
 			//dont create user, if username already exists
 			return false;
@@ -479,9 +479,9 @@ class User {
 
 		//create user in database
 		Database::getInstance()->execute("INSERT INTO `{praefix}user` (
-			`userID`, `username`, `password`, `salt`, `mail`, `ip`, `main_group`, `specific_title`, `online`, `last_online`, `registered`, `activated`
+			`userID`, `username`, `password`, `salt`, `mail`, `ip`, `main_group`, `specific_title`, `online`, `last_online`, `authentificator`, `owner`, `registered`, `activated`
 		) VALUES (
-			NULL, :username, :password, :salt, :mail, :ip, :main_group, :title, '0', '0000-00-00 00:00:00', CURRENT_TIMESTAMP , :activated
+			NULL, :username, :password, :salt, :mail, :ip, :main_group, :title, '0', '0000-00-00 00:00:00', :authentificator, :owner, CURRENT_TIMESTAMP , :activated
 		)", array(
 			'username' => $username,
 			'password' => $hashed_password,
@@ -490,6 +490,8 @@ class User {
 			'ip' => $ip,
 			'main_group' => $main_group,
 			'title' => $specific_title,
+			'authentificator' => $authentificator,
+			'owner' => $owner,
 			'activated' => $activated
 		));
 
