@@ -46,6 +46,8 @@ class SettingsInstaller extends PluginInstaller_Plugin {
 
 			$prefs->save();
 		}
+
+		return true;
 	}
 
 	public function uninstall(Plugin $plugin, array $install_json): bool {
@@ -61,6 +63,8 @@ class SettingsInstaller extends PluginInstaller_Plugin {
 
 		//clear preferences
 		$prefs->clearAll();
+
+		return true;
 	}
 
 	public function upgrade(Plugin $plugin, array $install_json): bool {
