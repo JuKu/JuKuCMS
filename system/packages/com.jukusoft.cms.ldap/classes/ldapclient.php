@@ -150,7 +150,7 @@ class LDAPClient {
 	public function listGroupsOfUser (string $user) : array {
 		// check presence in groups
 		//$filter = "(sAMAccountName=" . $user . ")";
-		$filer = "(uid=" . $user . ")";
+		$filter = "(uid=" . $user . ")";
 		$attr = array("memberof");
 
 		//https://samjlevy.com/php-ldap-login/
