@@ -28,6 +28,7 @@
 namespace Plugin\LDAPLogin;
 
 use IAuthentificator;
+use LDAPClient;
 
 class LDAPAuthentificator implements IAuthentificator {
 
@@ -36,28 +37,41 @@ class LDAPAuthentificator implements IAuthentificator {
 	}
 
 	/**
-	 * check password of user
+	 * check password of user and import user, if neccessary
 	 *
 	 * @param $username string name of user
 	 * @param $password string password of user
 	 *
-	 * @return true, if password is correct
+	 * @return userID or -1, if credentials are wrong
 	 */
-	public function checkPassword(string $username, string $password): bool {
-		// TODO: Implement checkPassword() method.
-	}
+	public function checkPasswordAndImport(string $username, string $password): int {
+		//https://samjlevy.com/php-ldap-login/
 
-	/**
-	 * check, if username exists
-	 *
-	 * @param $username string name of user
-	 *
-	 * @return true, if username exists
-	 */
-	public function exists(string $username): bool {
-		// TODO: Implement exists() method.
-	}
+		//Free test ldap server: https://www.forumsys.com/tutorials/integration-how-to/ldap/online-ldap-test-server/
 
+		$ldap_client = new LDAPClient();
+
+		//try to login user on ldap server
+		$res = $ldap_client->bind($username, $password);
+
+		if (!$res) {
+			echo "credentials are wrong.";
+			exit;
+
+			//user doesnt exists or credentials are wrong
+			//return -1;
+		}
+
+		echo "user exists";
+		print_r($res);
+
+		//unbind
+		$ldap_client->unbind();
+
+		return -1;
+
+		exit;
+	}
 }
 
 ?>
