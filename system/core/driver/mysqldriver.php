@@ -105,12 +105,15 @@ class MySQLDriver implements DBDriver {
             if (!$res) {
 				if (DEBUG_MODE) {
 					echo "SQL Query: " + $sql;
+				} else {
+					echo "Debug Mode is disabled. You can enable it in config/config.php file.<br />";
 				}
 
                 //TODO: throw exception instead
 
                 print_r($stmt->errorInfo());
 
+				flush();
 				ob_end_flush();
                 exit;
             }
