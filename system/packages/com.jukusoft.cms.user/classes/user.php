@@ -284,6 +284,8 @@ class User {
 		//get authentificator
 		$authentificator = self::getAuthentificatorByID($row['userID']);
 
+		print_r($authentificator);
+
 		$auth_res = $authentificator->checkPasswordAndImport($row['username'], $password);
 
 		print_r($auth_res);
