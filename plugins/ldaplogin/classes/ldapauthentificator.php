@@ -51,17 +51,16 @@ class LDAPAuthentificator implements IAuthentificator {
 
 		//https://www.experts-exchange.com/questions/23969673/Using-PHP-with-LDAP-to-connect-to-Active-Directory-on-another-machine.html
 
+		//http://www.devshed.com/c/a/php/using-php-with-ldap-part-1/3/
+
 		$ldap_client = new LDAPClient();
 
 		//try to login user on ldap server
 		$res = $ldap_client->bind($username, $password);
 
 		if (!$res) {
-			echo "credentials are wrong.";
-			exit;
-
 			//user doesnt exists or credentials are wrong
-			//return -1;
+			return -1;
 		}
 
 		echo "user exists";
@@ -70,9 +69,9 @@ class LDAPAuthentificator implements IAuthentificator {
 		//unbind
 		$ldap_client->unbind();
 
-		return -1;
-
 		exit;
+
+		return -1;
 	}
 }
 
