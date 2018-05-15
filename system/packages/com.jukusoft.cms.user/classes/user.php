@@ -284,8 +284,12 @@ class User {
 		//get authentificator
 		$authentificator = self::getAuthentificatorByID($row['userID']);
 
+		$auth_res = $authentificator->checkPasswordAndImport($row['username'], $password);
+
+		print_r($auth_res);
+
 		//check password
-		if ($authentificator->checkPasswordAndImport($row['username'], $password) !== -1) {
+		if ($auth_res !== -1) {
 			//password is correct
 
 			//set online state
