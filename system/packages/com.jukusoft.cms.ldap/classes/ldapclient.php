@@ -155,7 +155,7 @@ class LDAPClient {
 
 		//https://samjlevy.com/php-ldap-login/
 
-		$result = ldap_search($this->conn, $this->dn, $filter/*, $attr*/) or exit("Unable to search LDAP server");
+		$result = ldap_search($this->conn, $this->dn, $filter, $attr) or exit("Unable to search LDAP server");
 
 		/*
 		 *return_value["count"] = number of entries in the result
@@ -201,6 +201,20 @@ class LDAPClient {
 		 */
 
 		return $groups;
+	}
+
+	public function listAllAttributesOfUser (string $user) : array {
+		$filter = "(uid=" . $user . ")";
+
+		$result = ldap_search($this->conn, $this->dn, $filter/*, $attr*/) or exit("Unable to search LDAP server");
+
+		$entries = ldap_get_entries($this->conn, $result);
+
+		if (count($entries)) {
+			throw new IllegalStateException("user (uid=" . $user . ") not found in ldap server.");
+		}
+
+		return $entries[0];
 	}
 
 	public function unbind () {
