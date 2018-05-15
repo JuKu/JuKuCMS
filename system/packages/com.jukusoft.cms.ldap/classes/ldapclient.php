@@ -216,7 +216,11 @@ class LDAPClient {
 		$entries = ldap_get_entries($this->conn, $result);
 
 		if (count($entries) == 0) {
-			throw new IllegalStateException("user (uid=" . $user . ") not found in ldap server.");
+			//no user found in ldap server
+
+			//throw new IllegalStateException("user (uid=" . $user . ") not found in ldap server.");
+
+			return array();
 		}
 
 		return $entries[0];
