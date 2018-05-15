@@ -63,8 +63,9 @@ class LDAPAuthentificator implements IAuthentificator {
 			return -1;
 		}
 
-		echo "user exists";
-		print_r($res);
+		echo "user exists. User groups: ";
+
+		print_r($ldap_client->listGroupsOfUser("riemann"));
 
 		//unbind
 		$ldap_client->unbind();
