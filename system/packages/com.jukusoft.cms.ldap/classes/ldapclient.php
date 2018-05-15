@@ -154,7 +154,7 @@ class LDAPClient {
 
 		//https://samjlevy.com/php-ldap-login/
 
-		$result = ldap_search($this->conn, $this->dn, $filter, $attr) or exit("Unable to search LDAP server");
+		$result = ldap_search($this->conn, $this->dn, $filter/*, $attr*/) or exit("Unable to search LDAP server");
 
 		/*
 		 *return_value["count"] = number of entries in the result
