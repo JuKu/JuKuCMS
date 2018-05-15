@@ -299,6 +299,9 @@ class User {
 			$res['error'] = "none";
 			return $res;
 		} else {
+			echo "wrong password";
+			exit;
+
 			//wrong password
 
 			//user doesnt exists
