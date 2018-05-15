@@ -13,6 +13,8 @@ $ldap_config = array(
 	'host' => "localhost",
 	'port' => 389,
 
+	'use_uri' => true,
+
 	'ssl' => false,
 
 	'auth' => true,

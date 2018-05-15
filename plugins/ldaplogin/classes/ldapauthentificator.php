@@ -49,6 +49,8 @@ class LDAPAuthentificator implements IAuthentificator {
 
 		//Free test ldap server: https://www.forumsys.com/tutorials/integration-how-to/ldap/online-ldap-test-server/
 
+		//https://www.experts-exchange.com/questions/23969673/Using-PHP-with-LDAP-to-connect-to-Active-Directory-on-another-machine.html
+
 		$ldap_client = new LDAPClient();
 
 		//try to login user on ldap server

@@ -74,6 +74,13 @@ class LDAPClient {
 			$this->port = $port;
 		}
 
+		if (isset($this->ldap_config['use_uri']) && $this->ldap_config['use_uri']) {
+			$this->uri = "ldap://" . $this->host . ":" . $this->port;
+
+			//set flag, that uri is used
+			$this->uri_used = true;
+		}
+
 		//check, if SSL is enabled
 		if ($ldap_config['ssl'] == true) {
 			//use OpenLDAP 2.x.x URI instead of host
