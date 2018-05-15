@@ -29,6 +29,7 @@ namespace Plugin\LDAPLogin;
 
 use IAuthentificator;
 use LDAPClient;
+use IllegalArgumentException;
 
 class LDAPAuthentificator implements IAuthentificator {
 
@@ -52,6 +53,12 @@ class LDAPAuthentificator implements IAuthentificator {
 		//https://www.experts-exchange.com/questions/23969673/Using-PHP-with-LDAP-to-connect-to-Active-Directory-on-another-machine.html
 
 		//http://www.devshed.com/c/a/php/using-php-with-ldap-part-1/3/
+
+		//check, if username contains a komma (because komma is not allowed here)
+		if (strpos($username, ",") !== FALSE) {
+			throw new IllegalArgumentException("',' is not allowed in username.");
+			return -1;
+		}
 
 		$ldap_client = new LDAPClient();
 
