@@ -32,6 +32,7 @@ use \Rollbar\Payload\Level;
 use LogProvider;
 use Preferences;
 use LogLevel;
+use ClassLoader;
 
 if (!defined('ROLLBAR_SDK_DIR')) {
 	define('ROLLBAR_SDK_DIR', dirname(__FILE__) . "/../rollbar-php-1.6.2/");
