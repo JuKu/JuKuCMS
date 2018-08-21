@@ -1,0 +1,1 @@
+This directory is for plugin-specific configuration files.
