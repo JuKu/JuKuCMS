@@ -36,6 +36,7 @@
         "php": ">=7.0.8",
         "package-com.jukusoft.cms.settings": "*",
         "package-com.jukusoft.cms.preferences": "*",
-        "package-com.jukusoft.cms.logging": "*"
+        "package-com.jukusoft.cms.logging": "*",
+        "ext-curl": "*"
     }
 }
