@@ -1193,6 +1193,10 @@ Settings::create("menu_plugin_settings_id", -1, "id of plugin settings menu", "i
 //user / ldap authentification
 Settings::create("default_authentificator", "LocalAuthentificator", "Authentificator Class", "Classname of Authentificator method", "system", "user", "DataType_String", array(""), true);
 
+//oauth
+Settings::create("oauth_key_length", 255, "oAuth key length", "Length of oauth key in characters", "system", "api", "DataType_Integer", array(), true);
+Settings::create("oauth_expire_seconds", 86400, "oAuth key Validity", "oAuth key Validity in seconds", "system", "api", "DataType_Integer", array(), true);
+
 $main_menuID = -1;
 $local_menuID = -1;
 $admin_menuID = -1;
