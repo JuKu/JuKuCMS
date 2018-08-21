@@ -68,7 +68,7 @@ class RollbarLoggingProvider implements LogProvider {
 				'environment' => $environment,
 
 				// optional - path to directory your code is in. used for linking stack traces.
-				'root' => ROOT_PATH,
+				//'root' => ROOT_PATH,
 				'included_errno' => E_ALL//Note: If you wish to log E_NOTICE errors make sure to pass 'included_errno' => E_ALL to Rollbar::init
 			),
 			true,
