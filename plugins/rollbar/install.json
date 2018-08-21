@@ -8,5 +8,7 @@
     ],
     "set-settings": {
         "logging_provider": "Plugin\\Rollbar\\RollbarLoggingProvider"
-    }
+    },
+    "install_script": "install/install.php",
+    "uninstall_script": "install/uninstall.php"
 }

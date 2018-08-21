@@ -31,6 +31,7 @@ use \Rollbar\Rollbar;
 use \Rollbar\Payload\Level;
 use LogProvider;
 use Preferences;
+use LogLevel;
 
 if (!defined('ROLLBAR_SDK_DIR')) {
 	define('ROLLBAR_SDK_DIR', dirname(__FILE__) . "/../rollbar-php-1.6.2/");
@@ -38,17 +39,33 @@ if (!defined('ROLLBAR_SDK_DIR')) {
 
 class RollbarLoggingProvider implements LogProvider {
 
+	protected $logs = array();
+
 	/**
 	 * initialize logging provider
 	 */
 	public function init () {
 		$preferences = new Preferences("plugin_rollbar");
+		$access_token = $preferences->get("access_token", "none");
+		$environment = $preferences->get("environment", "development");
+
+		if ($access_token === "none") {
+			//access token wasnt set yet
+			return;
+		}
 
 		Rollbar::init(
 			array(
-				'access_token' => $preferences->get("access_token"),
-				'environment' => $preferences->get("environment", "development")
-			)
+				'access_token' => $access_token,
+				'environment' => $environment,
+
+				// optional - path to directory your code is in. used for linking stack traces.
+				'root' => ROOT_PATH,
+				'included_errno' => E_ALL//Note: If you wish to log E_NOTICE errors make sure to pass 'included_errno' => E_ALL to Rollbar::init
+			),
+			true,
+			true,
+			true
 		);
 	}
 
@@ -56,14 +73,38 @@ class RollbarLoggingProvider implements LogProvider {
 	 * log message
 	 */
 	public function log (string $level, string $message, $args = array()) {
-		// TODO: Implement log() method.
+		$this->logs[] = array(
+			'level' => $level,
+			'message' => $message,
+			'args' => $args
+		);
+
+		if ($level === LogLevel::ERROR || $level === LogLevel::CRITICAL) {
+			//send it directly to rollbar server
+			$this->send();
+		}
 	}
 
 	/**
 	 * lazy logging - after generating page write logs to file or send them to server
 	 */
 	public function send () {
-		// TODO: Implement send() method.
+		if (empty($this->logs)) {
+			//we dont have to send anything
+			return;
+		}
+
+		foreach ($this->logs as $entry) {
+			//send log to server
+			Rollbar::log(
+				$entry['level'],
+				$entry['message'],
+				$entry['args'] // key-value additional data
+			);
+		}
+
+		//clear logs array
+		$this->logs = array();
 	}
 
 	public static function addRollbarClassloader (array $params) {

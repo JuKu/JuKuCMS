@@ -38,7 +38,7 @@ if (!empty($auth_key)) {
 		echo "No auth key set or auth key is wrong.";
 		ob_end_flush();
 
-		Logger::log(LogLevel::INFO, "call cronjon.php");
+		Logger::log(LogLevel::WARNING, "No auth key set or auth key is wrong.");
 
 		exit;
 	}
