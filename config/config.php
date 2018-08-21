@@ -28,6 +28,9 @@ define("CACHING", true);
 //clear PHP 7 OpCache f
 define('CLEAR_OP_CACHE', true);
 
+//logging enabled?
+define('LOGGING_ENABLED', false);
+
 //show all errors
 error_reporting(E_ALL);
 
