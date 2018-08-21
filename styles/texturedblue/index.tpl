@@ -17,7 +17,7 @@
     <!-- header javascript -->
     <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_HEADER}&amp;position=header"></script>
     {else}
-        <!-- DEBUG: header javascript was removed, because generated js script was empty -->
+        <!-- DEBUG: header javascript was removed for optimization, because generated js script was empty -->
     {/if}
 
     {$HEAD}
@@ -80,8 +80,12 @@
     </div>
 </div>
 
-<!-- footer javascript -->
-<script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_FOOTER}&amp;position=footer"></script>
+{if $JS_ALL_FOOTER_EMPTY != true}
+    <!-- footer javascript -->
+    <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_FOOTER}&amp;position=footer"></script>
+{else}
+    <!-- DEBUG: footer javascript was removed for optimization, because generated js script was empty -->
+{/if}
 
 {$FOOTER_SCRIPTS}
 
