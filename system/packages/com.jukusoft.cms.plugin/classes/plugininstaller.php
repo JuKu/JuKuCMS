@@ -239,6 +239,8 @@ class PluginInstaller {
 			return false;
 		}
 
+		Logger::log(LogLevel::INFO, "install plugin '" . $this->plugin . "'");
+
 		//start transaction
 		Database::getInstance()->beginTransaction();
 
@@ -294,6 +296,8 @@ class PluginInstaller {
 	}
 
 	public function uninstall () : bool {
+		Logger::log(LogLevel::INFO, "uninstall plugin '" . $this->plugin . "'");
+
 		//check, if install.json is used
 		if ($this->plugin->hasInstallJson()) {
 			//check, if install.json exists
