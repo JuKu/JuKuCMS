@@ -26,4 +26,7 @@ $preferences->put("access_token", "none");
 $preferences->put("environment", "development");
 $preferences->save();
 
+//set logging provider
+Settings::set("logging_provider", "Plugin\\Rollbar\\RollbarLoggingProvider");
+
 ?>

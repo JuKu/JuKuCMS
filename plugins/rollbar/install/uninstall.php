@@ -33,4 +33,7 @@ if (!defined("PLUGIN_INSTALLER")) {
 $preferences = new Preferences("plugin_rollbar");
 $preferences->clearAll();
 
+//reset logging provider
+Settings::set("logging_provider", "EmptyLogProvider");
+
 ?>

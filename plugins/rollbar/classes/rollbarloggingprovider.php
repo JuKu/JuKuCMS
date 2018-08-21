@@ -41,6 +41,10 @@ if (!defined('PSR_SDK_DIR')) {
 	define('PSR_SDK_DIR', dirname(__FILE__) . "/../log-1.0.1/");
 }
 
+if (!defined('MONOLOG_SDK_DIR')) {
+	define('MONOLOG_SDK_DIR', dirname(__FILE__) . "/../monolog-1.23.0/src/");
+}
+
 class RollbarLoggingProvider implements LogProvider {
 
 	protected $logs = array();
@@ -124,6 +128,18 @@ class RollbarLoggingProvider implements LogProvider {
 				require($path);
 			} else {
 				echo "Couldnt load psr class: " . $class_name . " (expected path: " . $path . ")!";
+				exit;
+			}
+		});
+
+		//add classloader for monolog/monolog composer package
+		\ClassLoader::addLoader("Monolog", function (string $class_name) {
+			$path = MONOLOG_SDK_DIR . str_replace("\\", "/", $class_name) . ".php";
+
+			if (file_exists($path)) {
+				require($path);
+			} else {
+				echo "Couldnt load monolog class: " . $class_name . " (expected path: " . $path . ")!";
 				exit;
 			}
 		});
