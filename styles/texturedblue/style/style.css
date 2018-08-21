@@ -223,6 +223,12 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
   padding: 4px; 
   font: 100% arial, sans-serif;}
 
+.search_button{
+   background:none;
+   border:none;
+   font-size:18px;
+}
+
 #colours
 { height: 0px;
   text-align: right;
