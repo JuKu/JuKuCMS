@@ -1197,6 +1197,9 @@ Settings::create("default_authentificator", "LocalAuthentificator", "Authentific
 Settings::create("oauth_key_length", 255, "oAuth key length", "Length of oauth key in characters", "system", "api", "DataType_Integer", array(), true);
 Settings::create("oauth_expire_seconds", 86400, "oAuth key Validity", "oAuth key Validity in seconds", "system", "api", "DataType_Integer", array(), true);
 
+//logging
+Settings::create("logging_provider", "EmptyLogProvider", "Class name of logging provider", "full class name of logging provider", "system", "logging", "DataType_String", array(), false);
+
 $main_menuID = -1;
 $local_menuID = -1;
 $admin_menuID = -1;
