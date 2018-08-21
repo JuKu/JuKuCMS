@@ -175,9 +175,8 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
   padding: 0 0 7px 0; }
 
 .sidebar li a, .sidebar li a:hover
-{ padding: 0 0 0 40px;
-  display: block;
-  background: transparent url({STYLE_PATH}style/link.png) no-repeat left center;}
+{ padding: 0 0 0 0px;
+  display: block;}
 
 .sidebar li a.selected
 { color: #444;
