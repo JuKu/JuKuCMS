@@ -29,7 +29,7 @@ define("CACHING", true);
 define('CLEAR_OP_CACHE', true);
 
 //logging enabled?
-define('LOGGING_ENABLED', false);
+define('LOGGING_ENABLED', true);
 
 //show all errors
 error_reporting(E_ALL);
