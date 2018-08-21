@@ -96,11 +96,15 @@ class RollbarLoggingProvider implements LogProvider {
 
 		foreach ($this->logs as $entry) {
 			//send log to server
-			Rollbar::log(
+			$response = Rollbar::log(
 				$entry['level'],
 				$entry['message'],
 				$entry['args'] // key-value additional data
 			);
+
+			if (!$response->wasSuccessful()) {
+				throw new \IllegalStateException('logging with Rollbar failed');
+			}
 		}
 
 		//clear logs array
