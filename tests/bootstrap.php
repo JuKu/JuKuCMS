@@ -30,6 +30,6 @@ define('ROOT_PATH', dirname(__FILE__) . "/../");
 
 error_reporting(E_ALL);
 
-require(ROOT_PATH . "system/core/init.php");
+//require(ROOT_PATH . "system/core/init.php");
 
 ?>
