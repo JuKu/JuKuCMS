@@ -15,5 +15,8 @@
   -->
 
 <classes>
-	<class>Log</class>
+	<class>Logger</class>
+    <class>LogLevel</class>
+    <class>LogProvider</class>
+    <class>EmptyLogProvider</class>
 </classes>
