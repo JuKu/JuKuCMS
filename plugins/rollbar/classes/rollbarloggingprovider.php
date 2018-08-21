@@ -114,7 +114,7 @@ class RollbarLoggingProvider implements LogProvider {
 
 	public static function addRollbarClassloader (array $params) {
 		//add classloader for facebook sdk
-		ClassLoader::addLoader("Rollbar", function (string $class_name) {
+		\ClassLoader::addLoader("Rollbar", function (string $class_name) {
 			$path = ROLLBAR_SDK_DIR . str_replace("\\", "/", $class_name) . ".php";
 
 			if (file_exists($path)) {
