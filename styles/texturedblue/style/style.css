@@ -226,7 +226,10 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
 .search_button{
    background:none;
    border:none;
-   font-size:18px;
+   font-size:18px;   
+}
+.search_button:hover{
+  cursor: pointer; 
 }
 
 #colours
