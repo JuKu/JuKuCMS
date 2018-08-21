@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-class IllegalStateException extends Exception {
+class IllegalStateException extends RuntimeException {
 
 }
 

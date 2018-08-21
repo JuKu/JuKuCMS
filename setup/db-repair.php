@@ -1033,6 +1033,86 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table api_apps
+ *
+ * Package: com.jukusoft.cms.api
+ */
+
+echo "Create / Upgrade table <b>api_apps</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("api_apps", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("app_id", 10, true, true);
+$table->addVarchar("app_name", 255, true);
+
+//add keys to table
+$table->addPrimaryKey(array("app_id"));
+$table->addUnique("app_name");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
+/**
+ * table api_keys
+ *
+ * Package: com.jukusoft.cms.api
+ */
+
+echo "Create / Upgrade table <b>api_keys</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("api_keys", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("key_id", 10, true, true);
+$table->addVarchar("secret", 255, true);
+$table->addInt("app_id", 10, true, false);
+
+//add keys to table
+$table->addPrimaryKey(array("key_id"));
+$table->addIndex("app_id");
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
+/**
+ * table api_oauth
+ *
+ * Package: com.jukusoft.cms.api
+ */
+
+echo "Create / Upgrade table <b>api_oauth</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("api_oauth", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addVarchar("secret_key", 255, true);
+$table->addInt("userID", 10, true, false);
+$table->addTimestamp("created", true, "CURRENT_TIMESTAMP", false);//to check, if secret key is valide
+$table->addTimestamp("expires", true, "CURRENT_TIMESTAMP", false);
+
+//add keys to table
+$table->addPrimaryKey(array("secret_key"));
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 

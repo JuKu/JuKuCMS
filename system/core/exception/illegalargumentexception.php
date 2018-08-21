@@ -1,6 +1,6 @@
 <?php
 
-class IllegalArgumentException extends Exception {
+class IllegalArgumentException extends RuntimeException {
 
 }
 

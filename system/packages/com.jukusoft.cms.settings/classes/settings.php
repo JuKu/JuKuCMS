@@ -38,6 +38,8 @@ class Settings {
 	 *
 	 * @param key setting
 	 *
+	 * @throws IllegalStateException of key doesnt exists and no default value is set
+	 *
 	 * @return mixed or null, if key doesnt exists in database / default value, if set
 	 */
 	public static function get (string $key, $default_value = null) {
