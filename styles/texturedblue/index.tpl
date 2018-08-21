@@ -62,8 +62,8 @@
             <h3>Search</h3>
             <form method="post" action="#" id="search_form">
                 <p>
-                    <input class="search" type="text" name="search_field" value="Enter keywords....." />
-                    <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="{$STYLE_PATH}style/search.png" alt="Search" title="Search" />
+                    <input class="search" type="text" name="search_field" placeholder="Enter keywords" />
+                    <input class="search_button" name="search" type="submit" value="&#x1f50d;" />
                 </p>
             </form>
         </div>
