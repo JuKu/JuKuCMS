@@ -21,8 +21,12 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
+    {if $JS_ALL_HEADER_EMPTY != true}
     <!-- header javascript -->
     <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=admin&amp;hash={$JS_HASH_ALL_HEADER}&amp;position=header"></script>
+    {else}
+        <!-- DEBUG: header javascript was removed, because generated js script was empty -->
+    {/if}
 
     {$HEAD}
 </head>
