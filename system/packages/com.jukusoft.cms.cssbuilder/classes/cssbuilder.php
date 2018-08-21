@@ -83,6 +83,9 @@ class CSSBuilder {
 			$buffer .= file_get_contents($css_file) . "\n";
 		}
 
+		//set flag, if file is empty
+		$empty_flag = empty($buffer);
+
 		//$code = preg_replace("/\s\s+/", " ", $code);
 
 		//remove comments
@@ -109,6 +112,7 @@ class CSSBuilder {
 		file_put_contents($this->getCachePath($style_name, $media), $buffer);
 
 		Cache::put("cssbuilder", "hash_" . $style_name . "_" . $media, md5($buffer));
+		Cache::put("cssbuilder", "meta_" . $style_name . "_" . $media, array('empty_flag' => $empty_flag));
 
 		$this->content = $buffer;
 
@@ -144,6 +148,15 @@ class CSSBuilder {
 		}
 
 		return Cache::get("cssbuilder", "hash_" . $style . "_" . $media);
+	}
+
+	public function isEmpty (string $style, string $media = "ALL") : bool {
+		if (!Cache::contains("cssbuilder", "meta_" . $style . "_" . $media)) {
+			throw new IllegalStateException("cached css file 'meta_" . $style . "_" . $media . "' doesnt exists.");
+		}
+
+		$array = Cache::get("cssbuilder", "meta_" . $style . "_" . $media);
+		return $array['empty_flag'];
 	}
 
 	public function load (string $style, string $media = "ALL") {

@@ -11,7 +11,7 @@
     <meta name="keywords" content="website keywords, website keywords" />
     <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
 
-    <link rel="stylesheet" href="{$BASE_URL}/css.php?style=texturedblue&amp;hash={$CSS_HASH_ALL}" />
+    {if CSS_ALL_EMPTY != true}<link rel="stylesheet" href="{$BASE_URL}/css.php?style=texturedblue&amp;hash={$CSS_HASH_ALL}" />{else}<!-- DEBUG: header css file was removed for optimization, because generated css file was empty -->{/if}
 
     {if $JS_ALL_HEADER_EMPTY != true}
     <!-- header javascript -->
