@@ -63,7 +63,7 @@
             <form method="post" action="#" id="search_form">
                 <p>
                     <input class="search" type="text" name="search_field" placeholder="Enter keywords" />
-                    <input class="search_button" name="search" type="submit" style="" value="&#x1f50d;" />
+                    <input class="search_button" name="search" type="submit" value="&#x1f50d;" />
                 </p>
             </form>
         </div>
