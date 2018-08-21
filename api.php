@@ -35,6 +35,9 @@ Events::throwEvent("start_session");
 //use gzip compression
 ob_start();
 
+//initialize api oauth
+ApiAuth::getInstance()->init();
+
 $api_method = new ApiMethod();
 $api_method->loadApiMethods();
 

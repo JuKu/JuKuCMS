@@ -1461,6 +1461,9 @@ PluginInstaller::addInstallerPluginIfAbsent("ApiMethodInstaller", "system/packag
 PluginInstaller::addInstallerPluginIfAbsent("MenuInstaller", "system/packages/com.jukusoft.cms.plugin/extensions/menuinstaller.php");
 PluginInstaller::addInstallerPluginIfAbsent("SettingsInstaller", "system/packages/com.jukusoft.cms.plugin/extensions/settingsinstaller.php");
 
+echo "Add apimethod 'oauth'...<br />";
+ApiMethod::addMethod("oauth", "ApiOAuth", "apiOAuth", "package_com.jukusoft.cms.api");
+
 echo "Clear gettext cache<br />";
 PHPUtils::clearGetTextCache();
 

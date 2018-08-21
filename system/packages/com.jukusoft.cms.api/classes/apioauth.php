@@ -100,6 +100,8 @@ class ApiOAuth {
 			'userID' => $userID,
 			'seconds' => $expires_seconds
 		));
+
+		return $token;
 	}
 
 	/**
@@ -122,6 +124,39 @@ class ApiOAuth {
 
 		//clear token cache
 		Cache::clear("oauth");
+	}
+
+	/**
+	 * handles authentification with OAuth, called by ApiMethod::executeApiMethod()
+	 *
+	 * @since 0.1.0
+	 */
+	public static function apiOAuth () : array {
+		$result = array();
+		$result['status'] = 200;
+
+		if (isset($_REQUEST['login']) && !empty($_REQUEST['login']) && isset($_POST['password']) && !empty($_POST['password'])) {
+			$username = $_REQUEST['login'];
+			$password = $_POST['password'];
+
+			$res = User::current()->loginByUsername($username, $password);
+
+			if ($res['success'] === true) {
+				//login was successful --> create new access token
+				$access_token = self::createToken(User::current()->getID());
+
+				$result['access_token'] = $access_token;
+			} else {
+				$result['error'] = $res['error'];
+			}
+		}
+
+		//check, if user is authentificated
+		$result['authentificated'] = User::current()->isLoggedIn();
+		$result['userID'] = User::current()->getID();
+		$result['username'] = User::current()->getUsername();
+
+		return $result;
 	}
 
 }
