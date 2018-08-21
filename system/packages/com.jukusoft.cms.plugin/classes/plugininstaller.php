@@ -239,7 +239,7 @@ class PluginInstaller {
 			return false;
 		}
 
-		Logger::log(LogLevel::INFO, "install plugin '" . $this->plugin . "'");
+		Logger::log(LogLevel::INFO, "install plugin '" . $this->plugin->getName() . "'");
 
 		//start transaction
 		Database::getInstance()->beginTransaction();
@@ -296,7 +296,7 @@ class PluginInstaller {
 	}
 
 	public function uninstall () : bool {
-		Logger::log(LogLevel::INFO, "uninstall plugin '" . $this->plugin . "'");
+		Logger::log(LogLevel::INFO, "uninstall plugin '" . $this->plugin->getName() . "'");
 
 		//check, if install.json is used
 		if ($this->plugin->hasInstallJson()) {
