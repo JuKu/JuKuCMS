@@ -26,7 +26,7 @@
  */
 
 //define root path
-define('ROOT_PATH', dirname(__FILE__) . "/");
+define('ROOT_PATH', dirname(__FILE__) . "/../");
 
 error_reporting(E_ALL);
 
