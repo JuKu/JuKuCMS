@@ -188,7 +188,7 @@ class JSBuilder {
 
 		$array = Cache::get("jsbuilder", "meta_" . $style . "_" . $media . "_" . $position);
 
-		return $array['empty_flag'];
+		return $array['empty_flag'] == true;
 	}
 
 	public function load (string $style, string $media = "ALL", string $position = "header") {

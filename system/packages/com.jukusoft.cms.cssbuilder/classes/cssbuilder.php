@@ -156,7 +156,7 @@ class CSSBuilder {
 		}
 
 		$array = Cache::get("cssbuilder", "meta_" . $style . "_" . $media);
-		return $array['empty_flag'];
+		return $array['empty_flag'] == true;
 	}
 
 	public function load (string $style, string $media = "ALL") {
