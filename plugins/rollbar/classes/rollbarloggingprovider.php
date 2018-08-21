@@ -29,6 +29,10 @@ namespace Plugin\Rollbar;
 
 use LogProvider;
 
+if (!defined('ROLLBAR_SDK_DIR')) {
+	define('ROLLBAR_SDK_DIR', dirname(__FILE__) . "/../rollbar-php-1.6.2/");
+}
+
 class RollbarLoggingProvider implements LogProvider {
 
 	/**
@@ -50,6 +54,20 @@ class RollbarLoggingProvider implements LogProvider {
 	 */
 	public function send () {
 		// TODO: Implement send() method.
+	}
+
+	public static function addRollbarClassloader (array $params) {
+		//add classloader for facebook sdk
+		ClassLoader::addLoader("Rollbar", function (string $class_name) {
+			$path = ROLLBAR_SDK_DIR . str_replace("\\", "/", $class_name) . ".php";
+
+			if (file_exists($path)) {
+				require($path);
+			} else {
+				echo "Couldnt load rollbar class: " . $class_name . " (expected path: " . $path . ")!";
+				exit;
+			}
+		});
 	}
 
 }

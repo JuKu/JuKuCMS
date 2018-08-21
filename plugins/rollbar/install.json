@@ -1,3 +1,12 @@
 {
-
+    "events": [
+        {
+            "event": "init",
+            "class": "Plugin\\Rollbar\\RollbarLoggingProvider",
+            "method": "addRollbarClassloader"
+        }
+    ],
+    "set-settings": {
+        "logging_provider": "Plugin\\Rollbar\\RollbarLoggingProvider"
+    }
 }
