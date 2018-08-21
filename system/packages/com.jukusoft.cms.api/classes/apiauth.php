@@ -69,6 +69,10 @@ class ApiAuth {
 		return $this->is_authentificated;
 	}
 
+	public function getOAuth () : OAuth {
+		return $this->oauth;
+	}
+
 	public static function &getInstance () : ApiAuth {
 		if (self::$instance == null) {
 			self::$instance = new ApiAuth();
