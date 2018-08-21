@@ -37,8 +37,15 @@ class EmptyLogProvider implements LogProvider {
 	/**
 	 * log message
 	 */
-	public function log(string $level, string $message) {
+	public function log(string $level, string $message, $args = array()) {
 		//do nothing
+	}
+
+	/**
+	 * lazy logging - after generating page write logs to file or send them to server
+	 */
+	public function send() {
+		// TODO: Implement send() method.
 	}
 
 }
