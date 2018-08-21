@@ -25,3 +25,7 @@ Add content here
 
   - [Styles](styles.md)
   - [Multi-Language-Support (i18n)](i18n.md)
+  
+## For App developers
+
+  - [OAuth Guide](oauth.md)
