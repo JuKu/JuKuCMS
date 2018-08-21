@@ -13,8 +13,10 @@
 
     <link rel="stylesheet" href="{$BASE_URL}/css.php?style=texturedblue&amp;hash={$CSS_HASH_ALL}" />
 
+    {if $JS_ALL_HEADER_EMPTY == true}
     <!-- header javascript -->
     <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_HEADER}&amp;position=header"></script>
+    {/if}
 
     {$HEAD}
 </head>

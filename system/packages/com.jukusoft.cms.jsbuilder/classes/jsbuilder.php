@@ -181,6 +181,16 @@ class JSBuilder {
 		return Cache::get("jsbuilder", "hash_" . $style . "_" . $media . "_" . $position);
 	}
 
+	public function isEmpty (string $style, string $media = "ALL", string $position = "header") : bool {
+		if (!Cache::contains("jsbuilder", "meta_" . $style . "_" . $media . "_" . $position)) {
+			throw new IllegalStateException("cached js file 'meta_" . $style . "_" . $media . "_" . $position . "' doesnt exists.");
+		}
+
+		$array = Cache::get("jsbuilder", "meta_" . $style . "_" . $media . "_" . $position);
+
+		return $array['empty_flag'];
+	}
+
 	public function load (string $style, string $media = "ALL", string $position = "header") {
 		$cache_path = $this->getCachePath($style, $media, $position);
 
