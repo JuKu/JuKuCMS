@@ -92,10 +92,10 @@ class ApiOAuth {
 
 		//insert token into database
 		Database::getInstance()->execute("INSERT INTO `{praefix}api_oauth` (
-			'secret_key', 'userID', 'created', 'expires'
+			`secret_key`, `userID`, `created`, `expires`
 		) VALUES (
 			:secret_key, :userID, CURRENT_TIMESTAMP, DATE_ADD(NOW(), INTERVAL :seconds SECOND)
-		)", array(
+		); ", array(
 			'secret_key' => $token,
 			'userID' => $userID,
 			'seconds' => $expires_seconds
