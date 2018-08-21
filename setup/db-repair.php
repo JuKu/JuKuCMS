@@ -1103,7 +1103,7 @@ $table->setCharset("utf8");
 $table->addVarchar("secret_key", 255, true);
 $table->addInt("userID", 10, true, false);
 $table->addTimestamp("created", true, "CURRENT_TIMESTAMP", false);//to check, if secret key is valide
-$table->addTimestamp("expires", true, "CURRENT_TIMESTAMP", false);
+$table->addTimestamp("expires", true, "0000-00-00 00:00:00", false);
 
 //add keys to table
 $table->addPrimaryKey(array("secret_key"));
