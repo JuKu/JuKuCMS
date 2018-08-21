@@ -37,6 +37,10 @@ if (!defined('ROLLBAR_SDK_DIR')) {
 	define('ROLLBAR_SDK_DIR', dirname(__FILE__) . "/../rollbar-php-1.6.2/");
 }
 
+if (!defined('PSR_SDK_DIR')) {
+	define('PSR_SDK_DIR', dirname(__FILE__) . "/../log-1.0.1/");
+}
+
 class RollbarLoggingProvider implements LogProvider {
 
 	protected $logs = array();
@@ -112,7 +116,19 @@ class RollbarLoggingProvider implements LogProvider {
 	}
 
 	public static function addRollbarClassloader (array $params) {
-		//add classloader for facebook sdk
+		//add classloader for psr/log composer package
+		\ClassLoader::addLoader("Psr", function (string $class_name) {
+			$path = PSR_SDK_DIR . str_replace("\\", "/", $class_name) . ".php";
+
+			if (file_exists($path)) {
+				require($path);
+			} else {
+				echo "Couldnt load psr class: " . $class_name . " (expected path: " . $path . ")!";
+				exit;
+			}
+		});
+
+		//add classloader for rollbar sdk
 		\ClassLoader::addLoader("Rollbar", function (string $class_name) {
 			$path = ROLLBAR_SDK_DIR . str_replace("\\", "/", $class_name) . ".php";
 
