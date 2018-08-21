@@ -38,6 +38,7 @@ $package_list = array(
 	'com.jukusoft.cms.preferences' => true,
 	'com.jukusoft.cms.ldap' => true,
 	'com.jukusoft.cms.api' => true,
+	'com.jukusoft.cms.logging' => true,
 );
 
 ?>
