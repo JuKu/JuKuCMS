@@ -1,0 +1,41 @@
+{
+    "name": "rollbar",
+    "type": "project",
+    "title": "Rollbar (Logging)",
+    "description": "A plugin to provide a logging provider for rollbar.com",
+    "version": "1.0.0",
+    "keywords": [
+        "logging", "rollbar", "plugin"
+    ],
+    "categories": [
+        "logging"
+    ],
+    "homepage": "http://jukusoft.com",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Justin Kuenzel",
+            "email": "info@jukusoft.com",
+            "homepage": "http://jukusoft.com",
+            "role": "Project Founder & Lead Developer"
+        },
+        {
+            "name": "Pascal Reintjens",
+            "email": "mail@pascal-reintjens.de",
+            "homepage": "https://reintjens.de",
+            "role": "Project Founder & Developer"
+        }
+    ],
+    "support": {
+        "email": "info@jukusoft.com",
+        "source": "https://github.com/JuKu/JuKuCMS",
+        "issues": "https://github.com/JuKu/JuKuCMS/issues"
+    },
+    "installation": true,
+    "require": {
+        "php": ">=7.0.8",
+        "package-com.jukusoft.cms.settings": "*",
+        "package-com.jukusoft.cms.preferences": "*",
+        "package-com.jukusoft.cms.logging": "*"
+    }
+}
