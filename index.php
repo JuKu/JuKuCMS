@@ -268,6 +268,11 @@ if (!Settings::get("cronjon_enabled", true)) {
 	Tasks::schedule(Settings::get("max_tasks_on_site", 3));
 }
 
+//send logs to server
+if (LOGGING_ENABLED) {
+	Logger::send();
+}
+
 ob_end_flush();
 ob_end_flush();
 

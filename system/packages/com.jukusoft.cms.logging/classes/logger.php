@@ -40,8 +40,15 @@ class Logger {
 	/**
 	 * log message
 	 */
-	public static function log (string $level, string $message) {
-		self::getProvider()->log($level, $message);
+	public static function log (string $level, string $message, $args = array()) {
+		self::getProvider()->log($level, $message, $args);
+	}
+
+	/**
+	 * lazy logging - write logs into file or send it to server
+	 */
+	public static function send () {
+		self::getProvider()->send();
 	}
 
 	public static function &getProvider () : LogProvider {

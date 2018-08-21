@@ -37,9 +37,14 @@ if (!empty($auth_key)) {
 	if (!isset($_REQUEST['auth_key']) || $_REQUEST['auth_key'] !== $auth_key) {
 		echo "No auth key set or auth key is wrong.";
 		ob_end_flush();
+
+		Logger::log(LogLevel::INFO, "call cronjon.php");
+
 		exit;
 	}
 }
+
+Logger::log(LogLevel::INFO, "call cronjon.php");
 
 Events::throwEvent("init_cronjob");
 
@@ -53,5 +58,10 @@ echo "<!-- cronjob executed in " . $exec_time . " seconds -->";
 
 ob_end_flush();
 flush();
+
+//send logs to server
+if (LOGGING_ENABLED) {
+	Logger::send();
+}
 
 ?>

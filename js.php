@@ -162,6 +162,11 @@ echo $js_builder->getBuffer();
 //flush gzip cache
 ob_end_flush();
 
+//send logs to server
+if (LOGGING_ENABLED) {
+	Logger::send();
+}
+
 Events::throwEvent("after_show_js");
 
 ?>

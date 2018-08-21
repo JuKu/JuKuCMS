@@ -71,5 +71,10 @@ $exec_time = $end_time - $start_time;
 //flush gzip cache
 ob_end_flush();
 
+//send logs to server
+if (LOGGING_ENABLED) {
+	Logger::send();
+}
+
 
 ?>

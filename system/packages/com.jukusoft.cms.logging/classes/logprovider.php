@@ -35,7 +35,12 @@ interface LogProvider {
 	/**
 	 * log message
 	 */
-	public function log (string $level, string $message);
+	public function log (string $level, string $message, $args = array());
+
+	/**
+	 * lazy logging - after generating page write logs to file or send them to server
+	 */
+	public function send ();
 
 }
 
