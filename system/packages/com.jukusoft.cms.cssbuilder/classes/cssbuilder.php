@@ -69,7 +69,7 @@ class CSSBuilder {
 		}
 
 		//load css files from database
-		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}css_files` WHERE (`style` = :style OR `style` = 'ALL') AND (`media` = :media OR `media` = 'ALL') AND `position` = :position AND `activated` = '1'; ", array(
+		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}css_files` WHERE (`style` = :style OR `style` = 'ALL') AND (`media` = :media OR `media` = 'ALL') AND `style_json_name` = :style_json_name AND `activated` = '1'; ", array(
 			'style' => $style_name,
 			'media' => $media,
 			'style_json_name' => $position
