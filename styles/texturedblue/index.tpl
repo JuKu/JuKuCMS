@@ -13,7 +13,7 @@
 
     <!-- test {lang} -->
 
-    {if $CSS_ALL_EMPTY != true}
+    {*{if $CSS_ALL_EMPTY != true}
     <link rel="stylesheet" href="{$BASE_URL}/css.php?style=texturedblue&amp;hash={$CSS_HASH_ALL}" />
     {else}
     <!-- DEBUG: header css file was removed for optimization, because generated css file was empty -->
@@ -24,10 +24,10 @@
     <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_HEADER}&amp;position=header"></script>
     {else}
         <!-- DEBUG: header javascript was removed for optimization, because generated js script was empty -->
-    {/if}
+    {/if} *}
 
-    {res load="async" media="ALL"}css{/res}
-    {* {res load="async"}css_background{/res} *}
+    {res media="ALL"}css{/res}
+    {res load="async"}css_background{/res}
 
     {$HEAD}
 </head>
@@ -89,12 +89,14 @@
     </div>
 </div>
 
-{if $JS_ALL_FOOTER_EMPTY != true}
+{* {if $JS_ALL_FOOTER_EMPTY != true}
     <!-- footer javascript -->
     <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_FOOTER}&amp;position=footer"></script>
 {else}
     <!-- DEBUG: footer javascript was removed for optimization, because generated js script was empty -->
-{/if}
+{/if} *}
+
+{res load="async"}js_footer{/res}
 
 {$FOOTER_SCRIPTS}
 

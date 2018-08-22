@@ -97,7 +97,7 @@ class PluginRes extends Plugin implements ICompilableBlock {
 			self::$media = $params[1][1];
 		}
 
-		var_dump($params);
+		//var_dump($params);
 
 		return Compiler::PHP_OPEN . "$" . "position = \"";
 	}
