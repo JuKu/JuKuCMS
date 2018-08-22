@@ -13,7 +13,6 @@
 
     {if $CSS_ALL_EMPTY != true}
     <link rel="stylesheet" href="{$BASE_URL}/css.php?style=texturedblue&amp;hash={$CSS_HASH_ALL}" />
-    <link rel="stylesheet" href="{$BASE_URL}/css.php?style=texturedblue&amp;hash={$CSS_HASH_ALL_BACKGROUND}" />
     {else}
     <!-- DEBUG: header css file was removed for optimization, because generated css file was empty -->
     {/if}
