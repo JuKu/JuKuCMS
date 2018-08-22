@@ -26,7 +26,7 @@
         <!-- DEBUG: header javascript was removed for optimization, because generated js script was empty -->
     {/if}
 
-    {res load="async"}css{/res}
+    {res load="async" media="ALL"}css{/res}
     {* {res load="async"}css_background{/res} *}
 
     {$HEAD}
