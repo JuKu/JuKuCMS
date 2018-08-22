@@ -1,5 +1,3 @@
-# JuKuCMS
-
 ![Rocket CMS](./system/images/banner.png)
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FJuKu%2FJuKuCMS.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FJuKu%2FJuKuCMS?ref=badge_shield)
