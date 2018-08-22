@@ -16,4 +16,5 @@
 
 <classes>
 	<class>Tasks</class>
+	<class>Task</class>
 </classes>
