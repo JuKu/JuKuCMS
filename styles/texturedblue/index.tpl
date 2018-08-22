@@ -17,12 +17,17 @@
     <!-- DEBUG: header css file was removed for optimization, because generated css file was empty -->
     {/if}
 
+    {*
     {if $JS_ALL_HEADER_EMPTY != true}
     <!-- header javascript -->
     <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_HEADER}&amp;position=header"></script>
     {else}
         <!-- DEBUG: header javascript was removed for optimization, because generated js script was empty -->
     {/if}
+    *}
+
+    {RES load="async"}css{/RES}
+    {RES load="async"}css_background{/RES}
 
     {$HEAD}
 </head>
