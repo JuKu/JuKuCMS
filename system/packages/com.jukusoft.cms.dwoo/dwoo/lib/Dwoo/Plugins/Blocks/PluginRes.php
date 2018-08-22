@@ -25,6 +25,17 @@
  * Time: 16:39
  */
 
+namespace Dwoo\Plugins\Blocks;
+
+use Dwoo\Compiler;
+use Dwoo\Block\Plugin as Plugin;
+use Dwoo\ICompilable\Block as ICompilableBlock;
+
+use DomainUtils;
+use Registry;
+use CSSBuilder;
+use JSBuilder;
+
 class PluginRes extends Plugin implements ICompilableBlock {
 
 	protected static $load = "";
