@@ -95,7 +95,7 @@ class StyleController {
 		$template->assign("JS_HASH_ALL_FOOTER", $js_builder->getHash($current_style, "ALL", "footer"));
 
 		//set empty flags
-		$template->assign("CSS_ALL_EMPTY", $css_builder->isEmpty($current_style, "ALL"));
+		$template->assign("CSS_ALL_EMPTY", $css_builder->isEmpty($current_style, "ALL", "header"));
 		$template->assign("JS_ALL_HEADER_EMPTY", $js_builder->isEmpty($current_style, "ALL", "header"));
 		$template->assign("JS_ALL_FOOTER_EMPTY", $js_builder->isEmpty($current_style, "ALL", "footer"));
 
