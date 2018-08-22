@@ -44,7 +44,7 @@ if (!empty($auth_key)) {
 	}
 }
 
-Logger::log(LogLevel::INFO, "call cronjon.php");
+Logger::log(LogLevel::INFO, "execute cronjon.php");
 
 Events::throwEvent("init_cronjob");
 

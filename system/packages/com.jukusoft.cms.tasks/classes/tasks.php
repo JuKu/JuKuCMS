@@ -24,11 +24,15 @@ class Tasks {
 			//cast task
 			$task = Task::cast($task);
 
+			Logger::log(LogLevel::DEBUG, "execute task '" . $task->getTitle() . "'");
+
 			//execute task
 			$task->execute();
 
 			//check, if task is a one-time task
 			if ($task->deleteAfterExecution()) {
+				Logger::log(LogLevel::INFO, "delete task '" . $task->getTitle() . "', because delete_on_execution is enabled.");
+
 				//delete task
 				$task->delete();
 			} else {
