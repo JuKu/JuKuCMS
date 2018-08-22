@@ -11,6 +11,8 @@
     <meta name="keywords" content="website keywords, website keywords" />
     <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
 
+    <!-- test {lang} -->
+
     {if $CSS_ALL_EMPTY != true}
     <link rel="stylesheet" href="{$BASE_URL}/css.php?style=texturedblue&amp;hash={$CSS_HASH_ALL}" />
     {else}
@@ -24,8 +26,8 @@
         <!-- DEBUG: header javascript was removed for optimization, because generated js script was empty -->
     {/if}
 
-    {RES load="async"}css{/RES}
-    {* {RES load="async"}css_background{/RES} *}
+    {res load="async"}css{/res}
+    {* {res load="async"}css_background{/res} *}
 
     {$HEAD}
 </head>
