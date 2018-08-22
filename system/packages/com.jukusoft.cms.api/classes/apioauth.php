@@ -119,7 +119,7 @@ class ApiOAuth {
 	/**
 	 * remove all expired tokens from database
 	 */
-	public static function removeAllOutdatedTokensToken () {
+	public static function removeAllOutdatedTokens () {
 		Database::getInstance()->execute("DELETE FROM `{praefix}api_oauth` WHERE `expires` < NOW(); ");
 
 		//clear token cache

@@ -1471,6 +1471,9 @@ PluginInstaller::addInstallerPluginIfAbsent("SettingsInstaller", "system/package
 echo "Add apimethod 'oauth'...<br />";
 ApiMethod::addMethod("oauth", "ApiOAuth", "apiOAuth", "package_com.jukusoft.cms.api");
 
+echo "Add default tasks...<br />";
+Task::createStaticMethodTask("Cleanup outdated oauth tokens", "ApiOAuth", "removeAllOutdatedTokens", 1440, "oauth_cleanup_tokens", "system", array(), false);//cleanup outdated oauth tokens every day
+
 echo "Clear gettext cache<br />";
 PHPUtils::clearGetTextCache();
 
