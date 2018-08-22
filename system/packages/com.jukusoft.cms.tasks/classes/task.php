@@ -185,7 +185,7 @@ class Task {
 			`id`, `title`, `unique_name`, `type`, `type_params`, `params`, `owner`, `delete_after_execution`, `interval`, `last_execution`, `activated`
 		) VALUES (
 			NULL, :title, :unique_name, 'CLASS_STATIC_METHOD', :type_params, :params, :owner, :delete_after_execution, :interval_minutes, '0000-00-00 00:00:00', 1
-		) ON DUPLICATE KEY UPDATE `title` = :title, `type` = :type, `type_params` = :type_params, `params` = :params, `owner` = :owner, `delete_after_execution` = :delete_after_execution, `interval` = :interval_minutes; ", array(
+		) ON DUPLICATE KEY UPDATE `title` = :title, `type` = 'CLASS_STATIC_METHOD', `type_params` = :type_params, `params` = :params, `owner` = :owner, `delete_after_execution` = :delete_after_execution, `interval` = :interval_minutes; ", array(
 			'title' => $title,
 			'unique_name' => $unique_name,
 			'type_params' => $type_params,
