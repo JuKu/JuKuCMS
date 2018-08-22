@@ -669,6 +669,7 @@ $table->setCharset("utf8");
 $table->addVarchar("style", 255, true);
 $table->addVarchar("css_file", 255, true);
 $table->addVarchar("media", 255, true, "ALL");
+$table->addVarchar("style_json_name", 255, true, "header");
 $table->addInt("activated", 10, true, false, 1);
 
 //https://www.w3schools.com/colors/colors_picker.asp

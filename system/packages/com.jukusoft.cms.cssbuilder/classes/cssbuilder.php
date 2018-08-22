@@ -35,7 +35,7 @@ class CSSBuilder {
 		//
 	}
 
-	public function generateCSS (string $style_name, string $media = "ALL") : string {
+	public function generateCSS (string $style_name, string $media = "ALL", string $position = "header") : string {
 		if (ACTIVATE_BENCHMARK) {
 			$start_time = microtime(true);
 		}
@@ -43,6 +43,13 @@ class CSSBuilder {
 		//validate values
 		$style_name = Validator_Filename::get($style_name);
 		$media = Validator_Filename::get($media);
+		$position = strtoupper(Validator_Filename::get($position));
+
+		$suffix = "";
+
+		if ($position !== "HEADER") {
+			$suffix = "_" . strtolower($position);
+		}
 
 		//$md5_filename = md5($style_name);
 		//$css_cache_path = CACHE_PATH . "cssbuilder/" . $md5_filename . ".css";
@@ -53,8 +60,8 @@ class CSSBuilder {
 		if (file_exists(STYLE_PATH . $style_name . "/style.json")) {
 			$json = json_decode(file_get_contents(STYLE_PATH . $style_name . "/style.json"), true);
 
-			if (isset($json['css']) && is_array($json['css'])) {
-				foreach ($json['css'] as $css_file) {
+			if (isset($json['css' . $suffix]) && is_array($json['css' . $suffix])) {
+				foreach ($json['css' . $suffix] as $css_file) {
 					$full_path = STYLE_PATH . $style_name . "/" . $css_file;
 					$css_files[] = $full_path;
 				}
@@ -62,9 +69,10 @@ class CSSBuilder {
 		}
 
 		//load css files from database
-		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}css_files` WHERE (`style` = :style OR `style` = 'ALL') AND (`media` = :media OR `media` = 'ALL') AND `activated` = '1'; ", array(
+		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}css_files` WHERE (`style` = :style OR `style` = 'ALL') AND (`media` = :media OR `media` = 'ALL') AND `position` = :position AND `activated` = '1'; ", array(
 			'style' => $style_name,
-			'media' => $media
+			'media' => $media,
+			'style_json_name' => $position
 		));
 
 		foreach ($rows as $row) {
@@ -109,10 +117,10 @@ class CSSBuilder {
 		}
 
 		//cache buffer
-		file_put_contents($this->getCachePath($style_name, $media), $buffer);
+		file_put_contents($this->getCachePath($style_name, $media, $position), $buffer);
 
-		Cache::put("cssbuilder", "hash_" . $style_name . "_" . $media, md5($buffer));
-		Cache::put("cssbuilder", "meta_" . $style_name . "_" . $media, array('empty_flag' => $empty_flag));
+		Cache::put("cssbuilder", "hash_" . $style_name . "_" . $media . "_" . $position, md5($buffer));
+		Cache::put("cssbuilder", "meta_" . $style_name . "_" . $media . "_" . $position, array('empty_flag' => $empty_flag));
 
 		$this->content = $buffer;
 
@@ -126,44 +134,46 @@ class CSSBuilder {
 		return $buffer;
 	}
 
-	public function getCachePath (string $style, string $media = "ALL") : string {
-		$md5_filename = md5("css_" . $style . "_" . $media);
+	public function getCachePath (string $style, string $media = "ALL", string $position = "header") : string {
+		$position = strtolower($position);
+
+		$md5_filename = md5("css_" . $style . "_" . $media . "_" . $position);
 		$css_cache_path = CACHE_PATH . "cssbuilder/" . $md5_filename . ".css";
 
 		return $css_cache_path;
 	}
 
-	public function existsCache (string $style, string $media = "ALL") : bool {
-		return file_exists($this->getCachePath($style, $media));
+	public function existsCache (string $style, string $media = "ALL", string $position = "header") : bool {
+		return file_exists($this->getCachePath($style, $media, $position));
 	}
 
-	public function getHash (string $style, string $media = "ALL") : string {
-		if (!$this->existsCache($style, $media)) {
+	public function getHash (string $style, string $media = "ALL", string $position = "header") : string {
+		if (!$this->existsCache($style, $media, $position)) {
 			//generate cached css file
-			$this->generateCSS($style, $media);
+			$this->generateCSS($style, $media, $position);
 		}
 
-		if (!Cache::contains("cssbuilder", "hash_" . $style . "_" . $media)) {
-			throw new IllegalStateException("cached css file 'hash_" . $style . "_" . $media . "' doesnt exists.");
+		if (!Cache::contains("cssbuilder", "hash_" . $style . "_" . $media . "_" . $position)) {
+			throw new IllegalStateException("cached css file 'hash_" . $style . "_" . $media . "_" . $position . "' doesnt exists.");
 		}
 
-		return Cache::get("cssbuilder", "hash_" . $style . "_" . $media);
+		return Cache::get("cssbuilder", "hash_" . $style . "_" . $media . "_" . $position);
 	}
 
-	public function isEmpty (string $style, string $media = "ALL") : bool {
-		if (!Cache::contains("cssbuilder", "meta_" . $style . "_" . $media)) {
-			throw new IllegalStateException("cached css file 'meta_" . $style . "_" . $media . "' doesnt exists.");
+	public function isEmpty (string $style, string $media = "ALL", string $position = "header") : bool {
+		if (!Cache::contains("cssbuilder", "meta_" . $style . "_" . $media . "_" . $position)) {
+			throw new IllegalStateException("cached css file 'meta_" . $style . "_" . $media . "_" . $position . "' doesnt exists.");
 		}
 
-		$array = Cache::get("cssbuilder", "meta_" . $style . "_" . $media);
+		$array = Cache::get("cssbuilder", "meta_" . $style . "_" . $media . "_" . $position);
 		return $array['empty_flag'] == true;
 	}
 
-	public function load (string $style, string $media = "ALL") {
-		$cache_path = $this->getCachePath($style, $media);
+	public function load (string $style, string $media = "ALL", string $position = "header") {
+		$cache_path = $this->getCachePath($style, $media, $position);
 
-		if (!$this->existsCache($style, $media)) {
-			$this->generateCSS($style, $media);
+		if (!$this->existsCache($style, $media, $position)) {
+			$this->generateCSS($style, $media, $position);
 		} else {
 			$this->content = file_get_contents($cache_path);
 		}
