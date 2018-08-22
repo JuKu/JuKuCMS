@@ -10,14 +10,6 @@ Open Source CMS should be the fastest CMS world wide (WIP).\
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JuKu/JuKuCMS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/JuKu/JuKuCMS/?branch=master)
 [![codebeat badge](https://codebeat.co/badges/7c8806e3-d071-42a8-8e24-87e5852ee4c7)](https://codebeat.co/projects/github-com-juku-jukucms-master)
 
-## Name suggestions
-
-  - **provisional name**: JuKuCMS
-  - Falcon CMS (falcons are the fastest animals in the world)
-  - RocketCMS (as fast as a rocket - the fastest vehicle on the earth)
-  - WarpCMS (suggested by @PascalReintjens)
-  - HyperspeedCMS (suggested by @PascalReintjens)
-
 ## Main Goals
 
 I am one of the earlier developers of [ContentLion](http://contentlion.org) and now i want to build a new - very fast - CMS (Content Management System).\
