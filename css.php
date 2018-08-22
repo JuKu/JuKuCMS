@@ -59,6 +59,7 @@ if (!isset($_REQUEST['style']) || empty($_REQUEST['style'])) {
 
 $style = $_REQUEST['style'];
 $media = "ALL";
+$position = "header";
 
 //check, if stlye name is valide
 $validator = new Validator_Filename();
@@ -85,15 +86,24 @@ if (isset($_REQUEST['media']) && !empty($_REQUEST['media'])) {
 	$media = $validator->validate($_REQUEST['media']);
 }
 
+if (isset($_REQUEST['position']) && !empty($_REQUEST['position'])) {
+	if (!$validator->isValide($_REQUEST['position'])) {
+		echo "Invalide position '" . htmlentities($_REQUEST['position']) . "'!";
+		exit;
+	}
+
+	$position = $validator->validate($_REQUEST['position']);
+}
+
 //create css builder
 $css_builder = new CSSBuilder();
 
 //get style cache path
-$css_cache_path = $css_builder->getCachePath($style, $media);
+$css_cache_path = $css_builder->getCachePath($style, $media, $position);
 
 //generate css file, if neccessary
-if (!$css_builder->existsCache($style, $media)) {
-	$css_builder->generateCSS($style, $media);
+if (!$css_builder->existsCache($style, $media, $position)) {
+	$css_builder->generateCSS($style, $media, $position);
 }
 
 //http://blog.franky.ws/php-und-das-caching-via-http-header-etag/
@@ -147,7 +157,7 @@ if (file_exists($css_cache_path)) {
 }
 
 //load css builder
-$css_builder->load($style, $media);
+$css_builder->load($style, $media, $position);
 
 //get css output
 echo $css_builder->getBuffer();
