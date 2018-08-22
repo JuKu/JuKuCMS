@@ -43,11 +43,11 @@ class CSSBuilder {
 		//validate values
 		$style_name = Validator_Filename::get($style_name);
 		$media = Validator_Filename::get($media);
-		$position = strtoupper(Validator_Filename::get($position));
+		$position = strtolower(Validator_Filename::get($position));
 
 		$suffix = "";
 
-		if ($position !== "HEADER") {
+		if ($position !== "header") {
 			$suffix = "_" . strtolower($position);
 		}
 
