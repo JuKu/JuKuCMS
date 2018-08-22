@@ -24,8 +24,8 @@
         <!-- DEBUG: header javascript was removed for optimization, because generated js script was empty -->
     {/if}
 
-    {* {RES load="async"}css{/RES}
-    {RES load="async"}css_background{/RES} *}
+    {RES load="async"}css{/RES}
+    {* {RES load="async"}css_background{/RES} *}
 
     {$HEAD}
 </head>

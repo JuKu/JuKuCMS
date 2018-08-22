@@ -84,7 +84,7 @@ class StyleController {
 		$template->assign("CHARSET", $page_type->getCharset());
 
 		//create new css builder
-		$css_builder = new CSSBuilder();
+		/*$css_builder = new CSSBuilder();
 
 		//create new js builder
 		$js_builder = new JSBuilder();
@@ -97,7 +97,7 @@ class StyleController {
 		//set empty flags
 		$template->assign("CSS_ALL_EMPTY", $css_builder->isEmpty($current_style, "ALL", "header"));
 		$template->assign("JS_ALL_HEADER_EMPTY", $js_builder->isEmpty($current_style, "ALL", "header"));
-		$template->assign("JS_ALL_FOOTER_EMPTY", $js_builder->isEmpty($current_style, "ALL", "footer"));
+		$template->assign("JS_ALL_FOOTER_EMPTY", $js_builder->isEmpty($current_style, "ALL", "footer"));*/
 
 		//set version and build number
 		if (PermissionChecker::current()->hasRight("can_see_cms_version")) {
