@@ -173,6 +173,31 @@ class Task {
 		return $task;
 	}
 
+	public static function createStaticMethodTask (string $title, string $classname, string $method, int $interval, string $unique_name = null, string $owner = "user", $params = array(), bool $delete_after_execution = false) : string {
+		$type_params = $classname . ":" . $method;
+
+		if ($unique_name == null) {
+			//generate random unique string
+			$unique_name = PHPUtils::randomString(20);
+		}
+
+		Database::getInstance()->execute("INSERT INTO `{praefix}tasks` (
+			`id`, `title`, `unique_name`, `type`, `type_params`, `params`, `owner`, `delete_after_execution`, `interval`, `last_execution`, `activated`
+		) VALUES (
+			NULL, :title, :unique_name, 'CLASS_STATIC_METHOD', :type_params, :params, :owner, :delete_after_execution, :interval_minutes, '0000-00-00 00:00:00', 1
+		); ", array(
+			'title' => $title,
+			'unique_name' => $unique_name,
+			'type_params' => $type_params,
+			'params' => serialize($params),
+			'owner' => $owner,
+			'delete_after_execution' => ($delete_after_execution ? 1 : 0),
+			'interval_minutes' => $interval
+		));
+
+		return Database::getInstance()->lastInsertId();
+	}
+
 }
 
 ?>
