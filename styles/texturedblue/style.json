@@ -2,6 +2,9 @@
     "css": [
         "style/style.css"
     ],
+    "css_background": [
+        "style/background.css"
+    ],
     "js": [
 
     ],
