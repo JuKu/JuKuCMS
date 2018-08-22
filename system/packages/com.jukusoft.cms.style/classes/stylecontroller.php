@@ -90,7 +90,7 @@ class StyleController {
 		$js_builder = new JSBuilder();
 
 		$current_style = $registry->getSetting("current_style_name");
-		$template->assign("CSS_HASH_ALL", $css_builder->getHash($current_style, "ALL"));
+		$template->assign("CSS_HASH_ALL", $css_builder->getHash($current_style, "ALL", "header"));
 		$template->assign("JS_HASH_ALL_HEADER", $js_builder->getHash($current_style, "ALL", "header"));
 		$template->assign("JS_HASH_ALL_FOOTER", $js_builder->getHash($current_style, "ALL", "footer"));
 
