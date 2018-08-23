@@ -74,13 +74,6 @@
     </div>
 </div>
 
-{* {if $JS_ALL_FOOTER_EMPTY != true}
-    <!-- footer javascript -->
-    <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_FOOTER}&amp;position=footer"></script>
-{else}
-    <!-- DEBUG: footer javascript was removed for optimization, because generated js script was empty -->
-{/if} *}
-
 {res load="async"}js_footer{/res}
 
 {$FOOTER_SCRIPTS}
