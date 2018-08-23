@@ -149,7 +149,7 @@ class PluginRes extends Plugin implements ICompilableBlock {
 
 			if (!$empty_flag) {
 				//show css file
-				echo "<link rel=\"stylesheet\" href=\"" . self::$base_url . "/css.php?style=" . $style_name . "&amp;media=" . $media . "&amp;hash=" . $hash . "\" />";
+				echo "<link rel=\"stylesheet\" href=\"" . self::$base_url . "/css.php?style=" . $style_name . "&amp;media=" . $media . "&amp;position=" . $position . "&amp;hash=" . $hash . "\" />";
 			} else {
 				echo "<!-- DEBUG: " . $position . " css file was removed for optimization, because generated css file was empty -->";
 			}
