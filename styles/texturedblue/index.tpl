@@ -15,7 +15,6 @@
     {res load="async"}css_background{/res}
 
     {res load="async"}js{/res}
-
     {$HEAD}
 </head>
 
