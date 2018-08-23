@@ -25,6 +25,7 @@ Add content here
 
   - [Styles](styles.md)
   - [Multi-Language-Support (i18n)](i18n.md)
+  - [Include CSS / JS files](./res.md)
   
 ## For App developers
 
