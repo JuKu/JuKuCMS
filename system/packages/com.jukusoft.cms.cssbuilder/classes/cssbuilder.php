@@ -122,8 +122,6 @@ class CSSBuilder {
 		Cache::put("cssbuilder", "hash_" . $style_name . "_" . $media . "_" . $position, md5($buffer));
 		Cache::put("cssbuilder", "meta_" . $style_name . "_" . $media . "_" . $position, array('empty_flag' => $empty_flag));
 
-		echo "write cache file " . "meta_" . $style_name . "_" . $media . "_" . $position . " .";
-
 		$this->content = $buffer;
 
 		if (ACTIVATE_BENCHMARK) {

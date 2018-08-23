@@ -141,13 +141,13 @@ class PluginRes extends Plugin implements ICompilableBlock {
 			//create new css builder
 			$css_builder = new CSSBuilder();
 
+			//get hash first, because else css file isn't generated
+			$hash = $css_builder->getHash($style_name, $media, $position);
+
 			//check, if file is empty
 			$empty_flag = $css_builder->isEmpty($style_name, $media, $position);
 
 			if (!$empty_flag) {
-				//get hash
-				$hash = $css_builder->getHash($style_name, $media, $position);
-
 				//show css file
 				echo "<link rel=\"stylesheet\" href=\"" . self::$base_url . "/css.php?style=" . $style_name . "&amp;media=" . $media . "&amp;hash=" . $hash . "\" />";
 			} else {
@@ -162,12 +162,12 @@ class PluginRes extends Plugin implements ICompilableBlock {
 			//create new js builder
 			$js_builder = new JSBuilder();
 
+			//get hash
+			$hash = $js_builder->getHash($style_name, $media, $position);
+
 			$empty_flag = $js_builder->isEmpty($style_name, $media, $position);
 
 			if (!$empty_flag) {
-				//get hash
-				$hash = $js_builder->getHash($style_name, $media, $position);
-
 				$load_str = "";
 
 				//support for async / defer, see also https://bitsofco.de/async-vs-defer/
