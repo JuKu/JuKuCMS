@@ -1114,6 +1114,33 @@ $table->upgrade();
 
 echo "Finished!<br />";
 
+/**
+ * table widgets
+ *
+ * Package: com.jukusoft.cms.widgets
+ */
+
+echo "Create / Upgrade table <b>widgets</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("widgets", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("widgetID", 10, true, true);
+$table->addVarchar("name", 255, true);
+$table->addVarchar("class_name", 255, true);
+
+//add keys to table
+$table->addPrimaryKey(array("widgetID"));
+$table->addUnique(array("class_name"));
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
 //create default wildcard domain, if absent
 Domain::createWildcardDomain();
 
