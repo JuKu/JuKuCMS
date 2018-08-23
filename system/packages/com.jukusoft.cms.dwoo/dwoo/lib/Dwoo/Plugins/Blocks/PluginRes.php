@@ -110,7 +110,7 @@ class PluginRes extends Plugin implements ICompilableBlock {
 		 */
 		//return $content . Compiler::PHP_OPEN . $prepend . ' ' . $append . Compiler::PHP_CLOSE;
 
-		return $content . "\"; PluginRes::helperFuncInsertCode($" . "position, \"" . self::$media . "\", \"" . self::$load . "\"); " . Compiler::PHP_CLOSE;
+		return $content . "\"; \\Dwoo\Plugins\\Blocks\\PluginRes::helperFuncInsertCode($" . "position, \"" . self::$media . "\", \"" . self::$load . "\"); " . Compiler::PHP_CLOSE;
 	}
 
 	/**
