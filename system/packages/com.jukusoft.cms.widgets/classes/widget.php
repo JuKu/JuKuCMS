@@ -33,17 +33,40 @@ abstract class Widget {
 		//
 	}
 
+	public function load ($row) {
+		if (!is_array($row)) {
+			throw new IllegalArgumentException("row has to be an array (table row).");
+		}
+
+		$this->row = $row;
+	}
+
 	public function getTitle () : string {
 		return $this->row['title'];
 	}
 
-	public static function register (string $title, string $class_name) {
-		//
+	public function getRow () : array {
+		return $this->row;
 	}
 
-	public static function unregister (string $class_name) {
-		//
+	protected function useTemplate () {
+		return true;
 	}
+
+	/**
+	 * get html code which is shown on website
+	 */
+	public abstract function getCode ();
+
+	/**
+	 * get formular html code which is shown in admin area if user edits the widget
+	 */
+	public abstract function getAdminForm ();
+
+	/**
+	 * save widget data when new settings are saved in the admin area
+	 */
+	public abstract function save ();
 
 }
 

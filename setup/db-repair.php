@@ -1136,8 +1136,68 @@ $table->addInt("editable", 10, true, false, 1);//flag, if widget type is editabl
 $table->addVarchar("owner", 255, true, "system");
 
 //add keys to table
-$table->addPrimaryKey(array("widgetID"));
+$table->addPrimaryKey(array("id"));
 $table->addUnique(array("class_name"));
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
+/**
+ * table sidebars
+ *
+ * Package: com.jukusoft.cms.sidebar
+ */
+
+echo "Create / Upgrade table <b>sidebars</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("sidebars", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("sidebar_id", 10, true, true);
+$table->addVarchar("title", 255, true, "");
+
+//add keys to table
+$table->addPrimaryKey(array("sidebar_id"));
+
+//create or upgrade table
+$table->upgrade();
+
+echo "Finished!<br />";
+
+/**
+ * table sidebar_widgets
+ *
+ * Package: com.jukusoft.cms.sidebar
+ */
+
+echo "Create / Upgrade table <b>sidebar_widgets</b>...<br />";
+
+//create or upgrade test table
+$table = new DBTable("sidebar_widgets", Database::getInstance());
+$table->setEngine("InnoDB");
+$table->setCharset("utf8");
+
+//fields
+$table->addInt("id", 10, true, true);
+$table->addInt("sidebar_id", 10, true, false);
+$table->addVarchar("title", 255, true, "");
+$table->addText("content", true, "");
+$table->addText("widget_params", true, "{}");//json encoded string
+$table->addVarchar("css_id", 255, true, "");
+$table->addVarchar("css_class", 255, true, "");
+$table->addVarchar("before_widget", 600, true, "");
+$table->addVarchar("after_widget", 600, true, "");
+//$table->addVarchar("before_title", 600, true, "");
+//$table->addVarchar("after_title", 600, true, "");
+
+//add keys to table
+$table->addPrimaryKey(array("id"));
+$table->addIndex(array("sidebar_id"));
 
 //create or upgrade table
 $table->upgrade();

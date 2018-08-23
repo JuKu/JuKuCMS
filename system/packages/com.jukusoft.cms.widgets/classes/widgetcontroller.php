@@ -27,7 +27,9 @@
 
 class WidgetController {
 
-
+	public function __construct() {
+		//
+	}
 
 }
 
