@@ -35,6 +35,7 @@ use DomainUtils;
 use Registry;
 use CSSBuilder;
 use JSBuilder;
+use PHPUtils;
 
 class PluginRes extends Plugin implements ICompilableBlock {
 
