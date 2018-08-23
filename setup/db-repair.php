@@ -1115,22 +1115,25 @@ $table->upgrade();
 echo "Finished!<br />";
 
 /**
- * table widgets
+ * table widget_types
  *
  * Package: com.jukusoft.cms.widgets
  */
 
-echo "Create / Upgrade table <b>widgets</b>...<br />";
+echo "Create / Upgrade table <b>widget_types</b>...<br />";
 
 //create or upgrade test table
-$table = new DBTable("widgets", Database::getInstance());
+$table = new DBTable("widget_types", Database::getInstance());
 $table->setEngine("InnoDB");
 $table->setCharset("utf8");
 
 //fields
-$table->addInt("widgetID", 10, true, true);
+$table->addInt("id", 10, true, true);
 $table->addVarchar("name", 255, true);
+$table->addVarchar("description", 600, true, "");
 $table->addVarchar("class_name", 255, true);
+$table->addInt("editable", 10, true, false, 1);//flag, if widget type is editable (this means added widgets with this type can be edited)
+$table->addVarchar("owner", 255, true, "system");
 
 //add keys to table
 $table->addPrimaryKey(array("widgetID"));

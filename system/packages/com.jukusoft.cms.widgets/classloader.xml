@@ -17,4 +17,5 @@
 <classes>
 	<class>Widget</class>
 	<class>WidgetController</class>
+    <class>WidgetType</class>
 </classes>
