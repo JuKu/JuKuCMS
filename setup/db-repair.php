@@ -1505,6 +1505,10 @@ ApiMethod::addMethod("oauth", "ApiOAuth", "apiOAuth", "package_com.jukusoft.cms.
 echo "Add default tasks...<br />";
 Task::createStaticMethodTask("Cleanup outdated oauth tokens", "ApiOAuth", "removeAllOutdatedTokens", 1440, "oauth_cleanup_tokens", "system", array(), false);//cleanup outdated oauth tokens every day
 
+echo "Add default widgets...<br />";
+WidgetType::register("TextWidget", "Text Widget", "Widget which shows text without html code.", true, "system");
+WidgetType::register("HTMLWidget", "HTML Widget", "Widget which shows html code.", true, "system");
+
 echo "Clear gettext cache<br />";
 PHPUtils::clearGetTextCache();
 
