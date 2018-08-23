@@ -14,6 +14,8 @@
     {res media="ALL"}css{/res}
     {res load="async"}css_background{/res}
 
+    {res}js{/res}
+
     {$HEAD}
 </head>
 
