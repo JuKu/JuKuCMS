@@ -11,19 +11,6 @@
     <meta name="keywords" content="website keywords, website keywords" />
     <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
 
-    {*{if $CSS_ALL_EMPTY != true}
-    <link rel="stylesheet" href="{$BASE_URL}/css.php?style=texturedblue&amp;hash={$CSS_HASH_ALL}" />
-    {else}
-    <!-- DEBUG: header css file was removed for optimization, because generated css file was empty -->
-    {/if}
-
-    {if $JS_ALL_HEADER_EMPTY != true}
-    <!-- header javascript -->
-    <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=texturedblue&amp;hash={$JS_HASH_ALL_HEADER}&amp;position=header"></script>
-    {else}
-        <!-- DEBUG: header javascript was removed for optimization, because generated js script was empty -->
-    {/if} *}
-
     {res media="ALL"}css{/res}
     {res load="async"}css_background{/res}
 
