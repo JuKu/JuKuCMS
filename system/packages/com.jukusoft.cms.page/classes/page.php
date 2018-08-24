@@ -151,6 +151,14 @@ class Page {
 		return $this->row['content_type'];
 	}
 
+	public function getLeftSidebarID () : int {
+		return $this->row['sidebar_left'];
+	}
+
+	public function getRightSidebarID () : int {
+		return $this->row['sidebar_right'];
+	}
+
 	public function activate (bool $bool = true) {
 		$this->row['activated'] = $bool;
 	}

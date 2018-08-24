@@ -1161,11 +1161,13 @@ $table->setCharset("utf8");
 
 //fields
 $table->addInt("sidebar_id", 10, true, true);
+$table->addVarchar("unique_name", 255, true);
 $table->addVarchar("title", 255, true, "");
 $table->addInt("deletable", 10, true, false, 1);
 
 //add keys to table
 $table->addPrimaryKey(array("sidebar_id"));
+$table->addUnique(array("unique_name"));
 
 //create or upgrade table
 $table->upgrade();
@@ -1217,6 +1219,11 @@ echo "Create default (supported) languages...<br />";
 //add supported languages
 Lang::addLangOrUpdate("de", "German");
 Lang::addLangOrUpdate("en", "English");
+
+echo "Create default sidebars...<br />";
+
+Sidebar::create("Left sidebar", "sidebar_left", false);
+Sidebar::create("Right sidebar", "sidebar_right", false);
 
 echo "Create default global settings...<br />";
 
@@ -1293,6 +1300,10 @@ Settings::create("oauth_expire_seconds", 86400, "oAuth key Validity", "oAuth key
 
 //logging
 Settings::create("logging_provider", "EmptyLogProvider", "Class name of logging provider", "full class name of logging provider", "system", "logging", "DataType_String", array(), false);
+
+//sidebar
+Settings::create("default_sidebar_left", 1, "ID of default left sidebar", "ID of default left sidebar", "system", "sidebar", "DataType_Integer", array(), false);
+Settings::create("default_sidebar_right", 2, "ID of default right sidebar", "ID of default right sidebar", "system", "sidebar", "DataType_Integer", array(), false);
 
 $main_menuID = -1;
 $local_menuID = -1;
