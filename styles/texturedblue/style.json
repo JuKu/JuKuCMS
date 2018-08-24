@@ -10,5 +10,9 @@
     ],
     "js_footer": [
 
+    ],
+    "sidebars": [
+        "left-sidebar",
+        "right-sidebar"
     ]
 }

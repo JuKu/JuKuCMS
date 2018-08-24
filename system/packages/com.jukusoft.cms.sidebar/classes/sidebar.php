@@ -27,6 +27,58 @@
 
 class Sidebar {
 
+	protected $sidebar_id = -1;
+	protected $row = array();
+
+	public function __construct() {
+		//
+	}
+
+	public function load (int $sidebar_id) {
+		if (Cache::contains("sidebars", "sidebar_" . $sidebar_id)) {
+			$this->row = Cache::get("sidebars", "sidebar_" . $sidebar_id);
+		} else {
+			//get sidebar from database
+			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}sidebars` WHERE `sidebar_id` = :sidebar_id; ", array(
+				'sidebar_id' => $sidebar_id
+			));
+
+			if (!$row) {
+				throw new IllegalStateException("sidebar with sidebar_id '" . $sidebar_id . "' doesnt exists.");
+			}
+
+			$this->row = $row;
+
+			//cache row
+			Cache::put("sidebars", "sidebar_" . $sidebar_id, $this->row);
+		}
+
+		$this->sidebar_id = $sidebar_id;
+	}
+
+	/**
+	 * @return int sidebar id
+	 */
+	public function getSidebarId(): int {
+		return $this->sidebar_id;
+	}
+
+	public function getUniqueName () : string {
+		return $this->row['unique_name'];
+	}
+
+	public function getTitle () : string {
+		return $this->row['title'];
+	}
+
+	public function isDeletable () : bool {
+		return $this->row['deletable'] == 1;
+	}
+
+	public function getRow () : array {
+		return $this->row;
+	}
+
 	public static function create (string $title, string $unique_name, bool $deletable = true) : int {
 		if (empty($unique_name)) {
 			throw new IllegalArgumentException("unique_name cannot be null.");

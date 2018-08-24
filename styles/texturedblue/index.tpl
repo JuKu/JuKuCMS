@@ -42,8 +42,19 @@
     </div>
     <div id="site_content">
         <div class="sidebar">
+            {foreach $sidebar.left_sidebar widget}
+                <h3>{$widget.title}</h3>
+
+                <!-- widget html code -->
+                {if $widget.use_template == true}
+                    <p>{$widget.code}</p>
+                {else}
+                    {$widget.code}
+                {/if}
+            {/foreach}
+
             <!-- insert your sidebar items here -->
-            <h3>Latest News</h3>
+            <!-- <h3>Latest News</h3>
             <h4>New Website Launched</h4>
             <h5>August 1st, 2013</h5>
             <p>2013 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href="#">Read more</a></p>
@@ -64,7 +75,7 @@
                     <input class="search" type="text" name="search_field" placeholder="Enter keywords" />
                     <input class="search_button" name="search" type="submit" value="&#x1f50d;" />
                 </p>
-            </form>
+            </form> -->
         </div>
         <div id="content">
             {$CONTENT}
