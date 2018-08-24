@@ -35,8 +35,8 @@ class Sidebar {
 	}
 
 	public function load (int $sidebar_id) {
-		if (Cache::contains("sidebars", "sidebar_" . $sidebar_id)) {
-			$this->row = Cache::get("sidebars", "sidebar_" . $sidebar_id);
+		if (Cache::contains("sidebars", "sidebar_row_" . $sidebar_id)) {
+			$this->row = Cache::get("sidebars", "sidebar_row_" . $sidebar_id);
 		} else {
 			//get sidebar from database
 			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}sidebars` WHERE `sidebar_id` = :sidebar_id; ", array(
@@ -50,7 +50,7 @@ class Sidebar {
 			$this->row = $row;
 
 			//cache row
-			Cache::put("sidebars", "sidebar_" . $sidebar_id, $this->row);
+			Cache::put("sidebars", "sidebar_row_" . $sidebar_id, $this->row);
 		}
 
 		$this->sidebar_id = $sidebar_id;
