@@ -427,6 +427,8 @@ $table->addInt("editable", 10, true, false, 1);
 $table->addInt("author", 10, true, false, -1);
 $table->addVarchar("can_see_permissions", 255, true, "none");
 $table->addVarchar("template", 255, true, "none");
+$table->addInt("sidebar_left", 10, true, false, -1);
+$table->addInt("sidebar_right", 10, true, false, -1);
 $table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
@@ -1160,6 +1162,7 @@ $table->setCharset("utf8");
 //fields
 $table->addInt("sidebar_id", 10, true, true);
 $table->addVarchar("title", 255, true, "");
+$table->addInt("deletable", 10, true, false, 1);
 
 //add keys to table
 $table->addPrimaryKey(array("sidebar_id"));
