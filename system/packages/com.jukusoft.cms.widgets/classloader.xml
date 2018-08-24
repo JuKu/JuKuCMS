@@ -16,7 +16,6 @@
 
 <classes>
 	<class>Widget</class>
-	<class>WidgetController</class>
     <class>WidgetType</class>
     <class>TextWidget</class>
     <class>HTMLWidget</class>
