@@ -179,11 +179,16 @@ $menu = new Menu($menuID, "menu");
 $menu->loadMenu($menuID, $folder);
 $registry->storeObject("main_menu", $menu);
 
-//get (global) main menu
+//get (local) main menu
 $localMenuID = (int) ($page->getLocalMenuID() != -1) ? $page->getLocalMenuID() : ($folder->hasCustomLocalMenu() ? $folder->getLocalMenu() : Settings::get("local_menuID"));
 $localMenu = new Menu($menuID, "localmenu");
 $localMenu->loadMenu($localMenuID, $folder);
 $registry->storeObject("local_menu", $localMenu);
+
+//load sidebar
+$sidebar_controller = new SidebarController($page);
+$registry->storeObject("left_sidebar", $sidebar_controller->getLeftSidebar());
+$registry->storeObject("right_sidebar", $sidebar_controller->getRightSidebar());
 
 $registry->setSetting("header", "");
 $registry->setSetting("footer", "");

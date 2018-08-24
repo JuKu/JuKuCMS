@@ -16,4 +16,5 @@
 
 <classes>
 	<class>Sidebar</class>
+	<class>SidebarController</class>
 </classes>
