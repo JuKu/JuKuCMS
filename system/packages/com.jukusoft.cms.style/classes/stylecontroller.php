@@ -107,7 +107,6 @@ class StyleController {
 			'right_sidebar' => $right_sidebar->listWidgetTplArray()
 		);
 		$template->assign("sidebars", $sidebars_var);
-		var_dump($sidebars_var);
 
 		//set version and build number
 		if (PermissionChecker::current()->hasRight("can_see_cms_version")) {
