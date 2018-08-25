@@ -160,7 +160,7 @@ class Sidebar {
 			}
 
 			//cache result
-			Cache::put("sidebars", "all_sidebars");
+			Cache::put("sidebars", "all_sidebars", self::$all_sidebars);
 		}
 
 		self::$is_initialized = true;
