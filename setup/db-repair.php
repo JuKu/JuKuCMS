@@ -1200,10 +1200,12 @@ $table->addVarchar("before_widget", 600, true, "");
 $table->addVarchar("after_widget", 600, true, "");
 //$table->addVarchar("before_title", 600, true, "");
 //$table->addVarchar("after_title", 600, true, "");
+$table->addVarchar("unique_name", 255, true);
 $table->addInt("order", 10, true, false, 10);
 
 //add keys to table
 $table->addPrimaryKey(array("id"));
+$table->addUnique("unique_name");
 $table->addIndex("sidebar_id");
 
 //create or upgrade table
@@ -1584,6 +1586,28 @@ Task::createStaticMethodTask("Cleanup outdated oauth tokens", "ApiOAuth", "remov
 echo "Add default widgets...<br />";
 WidgetType::register("TextWidget", "Text Widget", "Widget which shows text without html code.", true, "system");
 WidgetType::register("HTMLWidget", "HTML Widget", "Widget which shows html code.", true, "system");
+
+//TODO: remove this lines
+echo "Add default sidebar widgets...<br />";
+HTMLWidget::create(2, "Latest News", "<h4>New Website Launched</h4>
+            <h5>August 1st, 2013</h5>
+            <p>2013 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href=\"#\">Read more</a></p>
+            <p></p>
+            <h4>New Website Launched</h4>
+            <h5>August 1st, 2013</h5>
+            <p>2013 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href=\"#\">Read more</a></p>", "default_right_widget_1");
+HTMLWidget::create(2, "Useful links", "<ul>
+                <li><a href=\"#\">link 1</a></li>
+                <li><a href=\"#\">link 2</a></li>
+                <li><a href=\"#\">link 3</a></li>
+                <li><a href=\"#\">link 4</a></li>
+            </ul>", "default_right_widget_2");
+HTMLWidget::create(2, "Search", "<form method=\"post\" action=\"#\" id=\"search_form\">
+                <p>
+                    <input class=\"search\" type=\"text\" name=\"search_field\" placeholder=\"Enter keywords\" />
+                    <input class=\"search_button\" name=\"search\" type=\"submit\" value=\"&#x1f50d;\" />
+                </p>
+            </form>", "default_right_widget_3");
 
 echo "Clear gettext cache<br />";
 PHPUtils::clearGetTextCache();

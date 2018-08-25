@@ -31,7 +31,7 @@ class HTMLWidget extends Widget {
 	 * get html code which is shown on website
 	 */
 	public function getCode() {
-		// TODO: Implement getCode() method.
+		return $this->getContent();
 	}
 
 	/**
@@ -46,6 +46,30 @@ class HTMLWidget extends Widget {
 	 */
 	public function save() {
 		// TODO: Implement save() method.
+	}
+
+	public function useTemplate() {
+		return false;
+	}
+
+	public static function create (int $sidebar_id, string $title, string $content, string $unique_name = "") {
+		if (empty($unique_name)) {
+			$unique_name = md5($title . "_" . $sidebar_id . "_" . time());
+		}
+
+		Database::getInstance()->execute("INSERT INTO `{praefix}sidebar_widgets` (
+			`id`, `sidebar_id`, `title`, `content`, `class_name`, `widget_params`, `css_id`, `css_class`, `before_widget`, `after_widget`, `unique_name`, `order`
+		) VALUES (
+			NULL, :sidebar_id, :title, :content, 'HTMLWidget', '', :widget_params, '', '', '', '', :unique_name, 10
+		) ON DUPLICATE KEY UPDATE `title` = :title, `content` = :content, `class_name` = 'HTMLWidget', `widget_params` = :widget_params, `unique_name` = :unique_name; ", array(
+			'sidebar_id' => $sidebar_id,
+			'title' => $title,
+			'content' => $content,
+			'widget_params' => serialize(array()),
+			'unique_name' => $unique_name
+		));
+
+		Cache::clear("sidebars");
 	}
 
 }
