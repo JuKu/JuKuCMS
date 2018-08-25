@@ -60,7 +60,7 @@ class HTMLWidget extends Widget {
 		Database::getInstance()->execute("INSERT INTO `{praefix}sidebar_widgets` (
 			`id`, `sidebar_id`, `title`, `content`, `class_name`, `widget_params`, `css_id`, `css_class`, `before_widget`, `after_widget`, `unique_name`, `order`
 		) VALUES (
-			NULL, :sidebar_id, :title, :content, 'HTMLWidget', '', :widget_params, '', '', '', '', :unique_name, 10
+			NULL, :sidebar_id, :title, :content, 'HTMLWidget', :widget_params, '', '', '', '', :unique_name, 10
 		) ON DUPLICATE KEY UPDATE `title` = :title, `content` = :content, `class_name` = 'HTMLWidget', `widget_params` = :widget_params, `unique_name` = :unique_name; ", array(
 			'sidebar_id' => $sidebar_id,
 			'title' => $title,
