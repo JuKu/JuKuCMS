@@ -1139,7 +1139,7 @@ $table->addVarchar("owner", 255, true, "system");
 
 //add keys to table
 $table->addPrimaryKey(array("id"));
-$table->addUnique(array("class_name"));
+$table->addUnique("class_name");
 
 //create or upgrade table
 $table->upgrade();
@@ -1167,7 +1167,7 @@ $table->addInt("deletable", 10, true, false, 1);
 
 //add keys to table
 $table->addPrimaryKey(array("sidebar_id"));
-$table->addUnique(array("unique_name"));
+$table->addUnique("unique_name");
 
 //create or upgrade table
 $table->upgrade();
