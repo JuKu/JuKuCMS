@@ -30,6 +30,8 @@ class Sidebar {
 	protected $sidebar_id = -1;
 	protected $row = array();
 
+	protected $widget_rows = array();
+
 	protected static $is_initialized = false;
 	protected static $all_sidebars = array();
 
@@ -48,6 +50,23 @@ class Sidebar {
 		}
 
 		$this->sidebar_id = $sidebar_id;
+	}
+
+	public function loadWidgets () {
+		//load widgets
+		if (Cache::contains("sidebars", "sidebar_widgets_" . $this->sidebar_id)) {
+			$this->widget_rows = Cache::get("sidebars", "sidebar_widgets_" . $this->sidebar_id);
+		} else {
+			//list rows from database
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}sidebar_widgets` WHERE `sidebar_id` = :sidebar_id ORDER BY `order`; ", array(
+				'sidebar_id' => $this->sidebar_id
+			));
+
+			//cache results
+			Cache::put("sidebars", "sidebar_widgets_" . $this->sidebar_id, $rows);
+
+			$this->widget_rows = $rows;
+		}
 	}
 
 	/**

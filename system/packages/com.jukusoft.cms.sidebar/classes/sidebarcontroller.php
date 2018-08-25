@@ -50,10 +50,12 @@ class SidebarController {
 		//initialize left sidebar
 		$this->left_sidebar = new Sidebar();
 		$this->left_sidebar->load($this->left_sidebar_id);
+		$this->left_sidebar->loadWidgets();
 
 		//initalize right sidebar
 		$this->right_sidebar = new Sidebar();
 		$this->right_sidebar->load($this->right_sidebar_id);
+		$this->right_sidebar->loadWidgets();
 	}
 
 	public function getLeftSidebar () : Sidebar {

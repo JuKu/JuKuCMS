@@ -1199,6 +1199,7 @@ $table->addVarchar("before_widget", 600, true, "");
 $table->addVarchar("after_widget", 600, true, "");
 //$table->addVarchar("before_title", 600, true, "");
 //$table->addVarchar("after_title", 600, true, "");
+$table->addInt("order", 10, true, false, 10);
 
 //add keys to table
 $table->addPrimaryKey(array("id"));
