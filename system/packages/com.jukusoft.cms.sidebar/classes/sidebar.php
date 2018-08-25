@@ -73,6 +73,8 @@ class Sidebar {
 			$this->widget_rows = $rows;
 		}
 
+		var_dump($this->widget_rows);
+
 		foreach ($this->widget_rows as $widget_row) {
 			$class_name = $widget_row['class_name'];
 			$widget_instance = new $class_name();
