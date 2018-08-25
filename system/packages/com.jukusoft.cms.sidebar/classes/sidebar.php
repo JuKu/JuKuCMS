@@ -30,27 +30,21 @@ class Sidebar {
 	protected $sidebar_id = -1;
 	protected $row = array();
 
+	protected static $is_initialized = false;
+	protected static $all_sidebars = array();
+
 	public function __construct() {
-		//
+		//load in-memory cache, if neccessary
+		if (!self::isInitialized()) {
+			self::initialize();
+		}
 	}
 
 	public function load (int $sidebar_id) {
-		if (Cache::contains("sidebars", "sidebar_row_" . $sidebar_id)) {
-			$this->row = Cache::get("sidebars", "sidebar_row_" . $sidebar_id);
+		if (isset(self::$all_sidebars[$sidebar_id])) {
+			$this->row = self::$all_sidebars[$sidebar_id];
 		} else {
-			//get sidebar from database
-			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}sidebars` WHERE `sidebar_id` = :sidebar_id; ", array(
-				'sidebar_id' => $sidebar_id
-			));
-
-			if (!$row) {
-				throw new IllegalStateException("sidebar with sidebar_id '" . $sidebar_id . "' doesnt exists.");
-			}
-
-			$this->row = $row;
-
-			//cache row
-			Cache::put("sidebars", "sidebar_row_" . $sidebar_id, $this->row);
+			throw new IllegalStateException("sidebar with id '" . $sidebar_id . "' doesnt exists.");
 		}
 
 		$this->sidebar_id = $sidebar_id;
@@ -79,6 +73,33 @@ class Sidebar {
 		return $this->row;
 	}
 
+	/**
+	 * @return bool
+	 */
+	protected static function isInitialized(): bool {
+		return self::$is_initialized;
+	}
+
+	protected static function initialize () {
+		if (Cache::contains("sidebars", "all_sidebars")) {
+			self::$all_sidebars = Cache::get("sidebars", "all_sidebars");
+		} else {
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}sidebars`; ");
+
+			//clear in-memory cache
+			self::$all_sidebars = array();
+
+			foreach ($rows as $row) {
+				self::$all_sidebars[$row['sidebar_id']] = $row;
+			}
+
+			//cache result
+			Cache::put("sidebars", "all_sidebars");
+		}
+
+		self::$is_initialized = true;
+	}
+
 	public static function create (string $title, string $unique_name, bool $deletable = true) : int {
 		if (empty($unique_name)) {
 			throw new IllegalArgumentException("unique_name cannot be null.");
@@ -93,6 +114,9 @@ class Sidebar {
 			'title' => $title,
 			'deletable' => ($deletable ? 1 : 0)
 		));
+
+		//clear cache
+		Cache::clear("sidebars");
 
 		return Database::getInstance()->lastInsertId();
 	}
