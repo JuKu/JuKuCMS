@@ -31,12 +31,6 @@
         <div id="menubar">
             <ul id="menu">
                 {$MENU}
-                <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <!-- <li class="selected"><a href="index.html">Home</a></li>
-                <li><a href="examples.html">Examples</a></li>
-                <li><a href="page.html">A Page</a></li>
-                <li><a href="another_page.html">Another Page</a></li>
-                <li><a href="contact.html">Contact Us</a></li> -->
             </ul>
         </div>
     </div>
@@ -52,30 +46,6 @@
                     {$widget.code}
                 {/if}
             {/foreach}
-
-            <!-- insert your sidebar items here -->
-            <!-- <h3>Latest News</h3>
-            <h4>New Website Launched</h4>
-            <h5>August 1st, 2013</h5>
-            <p>2013 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href="#">Read more</a></p>
-            <p></p>
-            <h4>New Website Launched</h4>
-            <h5>August 1st, 2013</h5>
-            <p>2013 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href="#">Read more</a></p>
-            <h3>Useful Links</h3>
-            <ul>
-                <li><a href="#">link 1</a></li>
-                <li><a href="#">link 2</a></li>
-                <li><a href="#">link 3</a></li>
-                <li><a href="#">link 4</a></li>
-            </ul>
-            <h3>Search</h3>
-            <form method="post" action="#" id="search_form">
-                <p>
-                    <input class="search" type="text" name="search_field" placeholder="Enter keywords" />
-                    <input class="search_button" name="search" type="submit" value="&#x1f50d;" />
-                </p>
-            </form> -->
         </div>
         <div id="content">
             {$CONTENT}
