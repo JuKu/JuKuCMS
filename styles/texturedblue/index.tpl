@@ -42,7 +42,7 @@
     </div>
     <div id="site_content">
         <div class="sidebar">
-            {foreach $sidebar.left_sidebar widget}
+            {foreach $sidebars.left_sidebar widget}
                 <h3>{$widget.title}</h3>
 
                 <!-- widget html code -->

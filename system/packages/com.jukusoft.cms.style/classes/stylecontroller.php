@@ -102,8 +102,11 @@ class StyleController {
 		//set sidebar arrays
 		$left_sidebar = Registry::singleton()->getObject("left_sidebar");
 		$right_sidebar = Registry::singleton()->getObject("right_sidebar");
-		$template->assign("LEFT_SIDEBAR_WIDGETS", $left_sidebar->listWidgetTplArray());
-		$template->assign("RIGHT_SIDEBAR_WIDGETS", $right_sidebar->listWidgetTplArray());
+		$sidebars_var = array(
+			'left_sidebar' => $left_sidebar->listWidgetTplArray(),
+			'right_sidebar' => $right_sidebar->listWidgetTplArray()
+		);
+		$template->assign("sidebars", $sidebars_var);
 
 		//set version and build number
 		if (PermissionChecker::current()->hasRight("can_see_cms_version")) {
