@@ -1204,7 +1204,7 @@ $table->addInt("order", 10, true, false, 10);
 
 //add keys to table
 $table->addPrimaryKey(array("id"));
-$table->addIndex(array("sidebar_id"));
+$table->addIndex("sidebar_id");
 
 //create or upgrade table
 $table->upgrade();
