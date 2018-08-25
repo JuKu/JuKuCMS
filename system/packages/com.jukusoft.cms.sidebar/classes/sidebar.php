@@ -31,6 +31,7 @@ class Sidebar {
 	protected $row = array();
 
 	protected $widget_rows = array();
+	protected $widgets = array();
 
 	protected static $is_initialized = false;
 	protected static $all_sidebars = array();
@@ -53,6 +54,8 @@ class Sidebar {
 	}
 
 	public function loadWidgets () {
+		$this->widgets = array();
+
 		//load widgets
 		if (Cache::contains("sidebars", "sidebar_widgets_" . $this->sidebar_id)) {
 			$this->widget_rows = Cache::get("sidebars", "sidebar_widgets_" . $this->sidebar_id);
@@ -67,6 +70,50 @@ class Sidebar {
 
 			$this->widget_rows = $rows;
 		}
+
+		foreach ($this->widget_rows as $widget_row) {
+			$class_name = $widget_row['class_name'];
+			$widget_instance = new $class_name();
+
+			if (!($widget_instance instanceof Widget)) {
+				throw new IllegalStateException("instance has to be an instance of class Widget, this means widget types has to extends class Widget.");
+			}
+
+			//cast widget
+			$widget = Widget::castWidget($widget_instance);
+
+			//load widget and set row, so widget doesn't needs to load data seperate from database
+			$widget->load($widget_row);
+
+			//add widget to list
+			$this->widgets[] = $widget;
+		}
+	}
+
+	/**
+	 * list widget instances
+	 */
+	public function listWidgets () : array {
+		return $this->widgets;
+	}
+
+	public function listWidgetTplArray () : array {
+		$array = array();
+
+		foreach ($this->listWidgets() as $widget) {
+			$widget = Widget::castWidget($widget);
+
+			$array[] = array(
+				'id' => $widget->getId(),
+				'title' => $widget->getTitle(),
+				'code' => $widget->getCode(),
+				'css_id' => $widget->getCSSId(),
+				'css_class' => $widget->getCSSClass(),
+				'use_template' => $widget->useTemplate()
+			);
+		}
+
+		return $array;
 	}
 
 	/**

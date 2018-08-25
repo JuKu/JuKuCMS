@@ -41,15 +41,39 @@ abstract class Widget {
 		$this->row = $row;
 	}
 
+	public function getId () : int {
+		return $this->row['id'];
+	}
+
 	public function getTitle () : string {
 		return $this->row['title'];
+	}
+
+	protected function getContent () : string {
+		return $this->row['content'];
+	}
+
+	protected function getClassName () : string {
+		return $this->row['class_name'];
+	}
+
+	protected function getWidgetParams () : array {
+		return unserialize($this->row['widget_params']);
+	}
+
+	public function getCSSId () : string {
+		return $this->row['css_id'];
+	}
+
+	public function getCSSClass () : string {
+		return $this->row['css_class'];
 	}
 
 	public function getRow () : array {
 		return $this->row;
 	}
 
-	protected function useTemplate () {
+	public function useTemplate () {
 		return true;
 	}
 
@@ -67,6 +91,10 @@ abstract class Widget {
 	 * save widget data when new settings are saved in the admin area
 	 */
 	public abstract function save ();
+
+	public static function castWidget (Widget $widget) : Widget {
+		return $widget;
+	}
 
 }
 
