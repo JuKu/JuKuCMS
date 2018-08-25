@@ -35,7 +35,7 @@ class WidgetType {
 		}
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}widget_types` (
-			`widgetID`, `name`, `description`, `class_name`, `editable`, `owner`
+			`id`, `name`, `description`, `class_name`, `editable`, `owner`
 		) VALUES (
 			NULL, :name, :description, :class_name, :editable, :owner
 		) ON DUPLICATE KEY UPDATE `name` = :name, `description` = :description, `class_name` = :class_name", array(
