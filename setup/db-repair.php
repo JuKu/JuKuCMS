@@ -1193,7 +1193,7 @@ $table->addInt("sidebar_id", 10, true, false);
 $table->addVarchar("title", 255, true, "");
 $table->addText("content", true, "");
 $table->addVarchar("class_name", 255, true, "");
-$table->addText("widget_params", true, "{}");//json encoded string
+$table->addText("widget_params", true);//json encoded string, e.q. "{}"
 $table->addVarchar("css_id", 255, true, "");
 $table->addVarchar("css_class", 255, true, "");
 $table->addVarchar("before_widget", 600, true, "");
