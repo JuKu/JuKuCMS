@@ -187,8 +187,10 @@ $registry->storeObject("local_menu", $localMenu);
 
 //load sidebar
 $sidebar_controller = new SidebarController($page);
-$registry->storeObject("left_sidebar", $sidebar_controller->getLeftSidebar());
-$registry->storeObject("right_sidebar", $sidebar_controller->getRightSidebar());
+$left_sidebar = $sidebar_controller->getLeftSidebar();
+$right_sidebar = $sidebar_controller->getRightSidebar();
+$registry->storeObject("left_sidebar", $left_sidebar);
+$registry->storeObject("right_sidebar", $right_sidebar);
 
 $registry->setSetting("header", "");
 $registry->setSetting("footer", "");
