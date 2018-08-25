@@ -56,6 +56,8 @@ class Sidebar {
 	public function loadWidgets () {
 		$this->widgets = array();
 
+		echo "load widgets for sidebar " . $this->sidebar_id . ".<br />";
+
 		//load widgets
 		if (Cache::contains("sidebars", "sidebar_widgets_" . $this->sidebar_id)) {
 			$this->widget_rows = Cache::get("sidebars", "sidebar_widgets_" . $this->sidebar_id);
