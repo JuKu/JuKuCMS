@@ -23,7 +23,7 @@ use Dwoo\ICompilable\Block as ICompilableBlock;
 
 
 /**
- * Project: JuKuCMS
+ * Project: RocketCMS
  * License: Apache 2.0 license
  * User: Justin
  * Date: 07.04.2018

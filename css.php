@@ -19,7 +19,7 @@
 /**
  * Shows CSS
  *
- * Project: JuKuCMS
+ * Project: RocketCMS
  * License: Apache 2.0 license
  * User: Justin
  * Date: 22.03.2018

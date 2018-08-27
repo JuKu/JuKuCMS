@@ -20,7 +20,7 @@
 /**
  * This class is responsible for validating strings
  *
- * Project: JuKuCMS
+ * Project: RocketCMS
  * License: Apache 2.0 license
  * User: Justin
  * Date: 16.03.2018

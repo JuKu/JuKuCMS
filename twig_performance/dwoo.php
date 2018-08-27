@@ -18,7 +18,7 @@
 
 
 /**
- * Project: JuKuCMS
+ * Project: RocketCMS
  * License: Apache 2.0 license
  * User: Justin
  * Date: 03.04.2018
@@ -43,7 +43,7 @@
 
 
 /**
- * Project: JuKuCMS
+ * Project: RocketCMS
  * License: Apache 2.0 license
  * User: Justin
  * Date: 30.03.2018
