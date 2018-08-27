@@ -44,6 +44,8 @@ class User {
 
 	protected static $default_authentificator = null;
 
+	protected static $getIDByUsernameFromDB_cache = array();
+
 	public function __construct() {
 		//
 	}
@@ -107,7 +109,7 @@ class User {
 					'user' => &$this
 				));
 
-				if ($logout_user) {
+				if ($logout_user && $this->userID == -1) {
 					//logout user
 					$this->logout();
 				}
@@ -277,6 +279,14 @@ class User {
 			//user doesnt exists
 			$res['success'] = false;
 			$res['error'] = "user_not_exists";
+
+			return $res;
+		}
+
+		if ($row['userID'] <= 0) {
+			//user doesnt exists
+			$res['success'] = false;
+			$res['error'] = "not_permitted_user";
 
 			return $res;
 		}
@@ -568,6 +578,11 @@ class User {
 	}
 
 	public static function getIDByUsernameFromDB (string $username) : int {
+		//use in-memory cache to avoid a large amount of sql queries on setup scripts
+		if (isset(self::$getIDByUsernameFromDB_cache[$username])) {
+			return self::$getIDByUsernameFromDB_cache[$username];
+		}
+
 		//search for username in database, ignore case
 		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}user` WHERE UPPER(`username`) LIKE UPPER(:username); ", array('username' => $username));
 
@@ -576,7 +591,10 @@ class User {
 			return Settings::get("guest_userid", -1);
 		}
 
-		return $row['userID'];
+		$userID = $row['userID'];
+		self::$getIDByUsernameFromDB_cache[$username] = $userID;
+
+		return $userID;
 	}
 
 	public static function &getAuthentificatorByID (int $userID = -1) {

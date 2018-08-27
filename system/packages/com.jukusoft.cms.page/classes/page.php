@@ -219,6 +219,13 @@ class Page {
 			'author' => &$author
 		));
 
+		if (!is_int($author)) {
+			//get userID of author
+			$author = User::getIDByUsernameFromDB($author);
+		} else {
+			$author = (int) $author;
+		}
+
 		Database::getInstance()->execute("INSERT INTO `{praefix}pages` (
 			`id`, `alias`, `title`, `content`, `parent`, `folder`, `global_menu`, `local_menu`, `page_type`, `design`, `sitemap`, `published`, `version`, `last_update`, `created`, `editable`, `author`, `activated`
 		) VALUES (

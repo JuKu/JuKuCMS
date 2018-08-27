@@ -1569,6 +1569,7 @@ Robots::addRule("DISALLOW", "/privacy-policy");
 Robots::addRule("DISALLOW", "/imprint");
 
 echo "Create default administrator user if absent...<br />";
+//User::createIfIdAbsent(0, "system", md5(time() . "test_"), "admin1@example.com", 1, "System", 1);
 User::createIfIdAbsent(1, "admin", "admin", "admin@example.com", 1, "Administrator", 1);
 
 echo "Add PluginInstaller plugins...<br />";
