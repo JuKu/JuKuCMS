@@ -159,6 +159,14 @@ class Page {
 		return $this->row['sidebar_right'];
 	}
 
+	public function getMetaDescription () : string {
+		return $this->row['meta_description'];
+	}
+
+	public function getKeywords () : string {
+		return $this->row['meta_keywords'];
+	}
+
 	public function activate (bool $bool = true) {
 		$this->row['activated'] = $bool;
 	}

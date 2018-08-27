@@ -83,6 +83,22 @@ class StyleController {
 		$template->assign("MY_GROUP_IDS", implode(",", $registry->getObject("groups")->listGroupIDs()));
 		$template->assign("CHARSET", $page_type->getCharset());
 
+		//meta tags
+		$meta = array(
+			'description' => $page->getMetaDescription(),
+			'keywords' => $page->getKeywords()
+		);
+
+		Events::throwEvent("meta_tags", array(
+			'page' => &$page,
+			'translated_title' => &$title,
+			'registry' => &$registry,
+			'template' => &$template,
+			'meta' => &$meta
+		));
+
+		$template->assign("meta", $meta);
+
 		//create new css builder
 		/*$css_builder = new CSSBuilder();
 

@@ -6,9 +6,11 @@
     <link rel="shortcut icon" href="{$STYLE_PATH}style/favicon.ico" type="image/x-icon">
     <link rel="icon" href="{$STYLE_PATH}style/favicon.ico" type="image/x-icon">	
     <link rel="shortcut icon" href="{$STYLE_PATH}style/favicon.png">
-    <link rel="icon" href="{$STYLE_PATH}style/favicon.png">	
-    <meta name="description" content="website description" />
-    <meta name="keywords" content="website keywords, website keywords" />
+    <link rel="icon" href="{$STYLE_PATH}style/favicon.png">
+
+    <meta name="description" content="{$meta.description}">
+    <meta name="keywords" content="{$meta.keywords}">
+
     <meta http-equiv="content-type" content="text/html; charset={$CHARSET}" />
 
     <!-- set charset -->

@@ -429,6 +429,8 @@ $table->addVarchar("can_see_permissions", 255, true, "none");
 $table->addVarchar("template", 255, true, "none");
 $table->addInt("sidebar_left", 10, true, false, -1);
 $table->addInt("sidebar_right", 10, true, false, -1);
+$table->addVarchar("meta_description", 600, true, "");
+$table->addVarchar("meta_keywords", 255, true, "");
 $table->addInt("activated", 10, true, false, 1);
 
 //add keys to table

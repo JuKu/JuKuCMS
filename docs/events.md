@@ -20,3 +20,7 @@ Events::throwEvent("event-name", array(
   - **Core**: `eventname`
   - **Plugins**: `plugin_<plugin name>_<eventname>`
   - **Styles**: `style_<style-name>_<eventname>`
+  
+## Event List
+
+  - meta_tags (class StyleController)
