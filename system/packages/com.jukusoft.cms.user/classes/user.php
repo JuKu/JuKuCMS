@@ -70,6 +70,8 @@ class User {
 			} else {
 				$this->setGuest();
 			}
+		} else if ($userID == 0) {
+			throw new IllegalArgumentException("userID cannot be 0, userID has to be > 0.");
 		} else {
 			$this->userID = (int) $userID;
 		}
