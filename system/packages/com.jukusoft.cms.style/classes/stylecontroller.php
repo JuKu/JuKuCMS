@@ -90,9 +90,9 @@ class StyleController {
 		$meta = array(
 			'description' => $page->getMetaDescription(),
 			'keywords' => $page->getMetaKeywords(),
-			'robots' => $page->getMetaRobotsOption(),
+			'robots' => $page->getMetaRobotsOptions(),
 			'canoncials' => $page->getMetaCanonicals(),
-			'has_robots' => !empty($page->getMetaRobotsOption()),
+			'has_robots' => !empty($page->getMetaRobotsOptions()),
 			'has_canoncials' => !empty($page->getMetaCanonicals()),
 			'author' => array(
 				'userID' => $author->getID(),
