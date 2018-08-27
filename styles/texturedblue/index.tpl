@@ -11,6 +11,9 @@
     <meta name="keywords" content="website keywords, website keywords" />
     <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
 
+    <!-- set charset -->
+    <meta charset="{$CHARSET}" />
+
     {res media="ALL"}css{/res}
     {res load="async"}css_background{/res}
 
