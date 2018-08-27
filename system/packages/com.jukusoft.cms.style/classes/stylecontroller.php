@@ -89,7 +89,11 @@ class StyleController {
 		//meta tags
 		$meta = array(
 			'description' => $page->getMetaDescription(),
-			'keywords' => $page->getKeywords(),
+			'keywords' => $page->getMetaKeywords(),
+			'robots' => $page->getMetaRobotsOption(),
+			'canoncials' => $page->getMetaCanonicals(),
+			'has_robots' => !empty($page->getMetaRobotsOption()),
+			'has_canoncials' => !empty($page->getMetaCanonicals()),
 			'author' => array(
 				'userID' => $author->getID(),
 				'username' => $author->getUsername(),

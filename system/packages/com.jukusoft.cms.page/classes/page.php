@@ -165,8 +165,16 @@ class Page {
 		return $this->row['meta_description'];
 	}
 
-	public function getKeywords () : string {
+	public function getMetaKeywords () : string {
 		return $this->row['meta_keywords'];
+	}
+
+	public function getMetaRobotsOptions () : string {
+		return $this->row['meta_robots'];
+	}
+
+	public function getMetaCanonicals () : string {
+		return $this->row['meta_canonicals'];
 	}
 
 	public function getAuthorID () : int {
