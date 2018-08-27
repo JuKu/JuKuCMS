@@ -8,9 +8,11 @@
     <link rel="shortcut icon" href="{$STYLE_PATH}style/favicon.png">
     <link rel="icon" href="{$STYLE_PATH}style/favicon.png">
 
-    <meta name="description" content="{$meta.description}">
-    <meta name="keywords" content="{$meta.keywords}">
-    <meta name="author" content="{$meta.author.username}">
+    <meta name="description" content="{$meta.description}" />
+    <meta name="keywords" content="{$meta.keywords}" />
+    <meta name="author" content="{$meta.author.username}" />
+    {if $meta.has_robots == true}<meta name="robots" content="{$meta.robots}" />{/if}
+    {if $meta.has_canoncials == true}<link rel=”canonical” href="{$meta.canoncials}" />{/if}
 
     <meta http-equiv="content-type" content="text/html; charset={$CHARSET}" />
 
