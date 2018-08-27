@@ -9,7 +9,7 @@
     <link rel="icon" href="{$STYLE_PATH}style/favicon.png">	
     <meta name="description" content="website description" />
     <meta name="keywords" content="website keywords, website keywords" />
-    <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+    <meta http-equiv="content-type" content="text/html; charset={$CHARSET}" />
 
     <!-- set charset -->
     <meta charset="{$CHARSET}" />
