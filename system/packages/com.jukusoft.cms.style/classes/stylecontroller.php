@@ -83,10 +83,18 @@ class StyleController {
 		$template->assign("MY_GROUP_IDS", implode(",", $registry->getObject("groups")->listGroupIDs()));
 		$template->assign("CHARSET", $page_type->getCharset());
 
+		//author name
+		$author = $page->getAuthor();
+
 		//meta tags
 		$meta = array(
 			'description' => $page->getMetaDescription(),
-			'keywords' => $page->getKeywords()
+			'keywords' => $page->getKeywords(),
+			'author' => array(
+				'userID' => $author->getID(),
+				'username' => $author->getUsername(),
+				'title' => $author->getTitle()
+			)
 		);
 
 		Events::throwEvent("meta_tags", array(
@@ -94,6 +102,7 @@ class StyleController {
 			'translated_title' => &$title,
 			'registry' => &$registry,
 			'template' => &$template,
+			'author' => &$author,
 			'meta' => &$meta
 		));
 

@@ -22,6 +22,8 @@ class Page {
 	protected $row = null;
 	protected $pagetype = "";
 
+	protected $author = null;
+
 	public function __construct() {
 		//
 	}
@@ -165,6 +167,20 @@ class Page {
 
 	public function getKeywords () : string {
 		return $this->row['meta_keywords'];
+	}
+
+	public function getAuthorID () : int {
+		return $this->row['author'];
+	}
+
+	public function getAuthor () : User {
+		if ($this->author == null) {
+			//load author
+			$this->author = new User();
+			$this->author->load($this->getAuthorID());
+		}
+
+		return $this->author;
 	}
 
 	public function activate (bool $bool = true) {

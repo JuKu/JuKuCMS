@@ -10,6 +10,7 @@
 
     <meta name="description" content="{$meta.description}">
     <meta name="keywords" content="{$meta.keywords}">
+    <meta name="author" content="{$meta.author.username}">
 
     <meta http-equiv="content-type" content="text/html; charset={$CHARSET}" />
 

@@ -391,6 +391,18 @@ class User {
 		return $this->row;
 	}
 
+	public function hasTitle () : bool {
+		return $this->row['specific_title'] !== "none";
+	}
+
+	public function getTitle () : string {
+		if (!$this->hasTitle()) {
+			return Settings::get("user_default_title", "User");
+		}
+
+		return $this->row['specific_title'];
+	}
+
 	public function setOnline (bool $updateIP = true) {
 		//get client ip
 		$ip = PHPUtils::getClientIP();
