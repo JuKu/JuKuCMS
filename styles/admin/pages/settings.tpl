@@ -5,10 +5,10 @@
             <div class="panel-heading">
                 <ul class="nav nav-tabs">
                     {foreach $categories, category, name='tabs'}
-                        {if $dwoo.foreach.default.first}
-                            <li class="active"><a href="#tab{$dwoo.foreach.default.index}primary" data-toggle="tab">{$category.title}</a></li>
+                        {if $dwoo.foreach.tabs.first}
+                            <li class="active"><a href="#tab{$dwoo.foreach.tabs.index}primary" data-toggle="tab">{$category.title}</a></li>
                         {else}
-                            <li><a href="#tab2primary" data-toggle="tab">Primary 2</a></li>
+                            <li><a href="#tab{$dwoo.foreach.tabs.index}primary" data-toggle="tab">{$category.title}</a></li>
                         {/if}
                     {/foreach}
                     <li class="active"><a href="#tab1primary" data-toggle="tab">Primary 1</a></li>
