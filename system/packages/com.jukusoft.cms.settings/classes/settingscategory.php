@@ -95,7 +95,7 @@ class SettingsCategory {
 			$rows = Cache::get("setting_categories", "list");
 		} else {
 			//get categories from database
-			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}global_settings_category`");
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}global_settings_category` ORDER BY `order`; ");
 
 			//store values in cache
 			Cache::put("setting_categories", "list", $rows);
