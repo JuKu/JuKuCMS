@@ -25,11 +25,18 @@
             </div>
             <div class="panel-body">
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id="tab1primary">Primary 1</div>
+                    {foreach $categories, category, name='tabs'}
+                        {if $dwoo.foreach.tabs.first}
+                            <div class="tab-pane fade in active" id="tab{$dwoo.foreach.tabs.index}primary">Primary 1</div>
+                        {else}
+                            <div class="tab-pane fade" id="tab{$dwoo.foreach.tabs.index}primary">Primary 2</div>
+                        {/if}
+                    {/foreach}
+                    <!-- <div class="tab-pane fade in active" id="tab1primary">Primary 1</div>
                     <div class="tab-pane fade" id="tab2primary">Primary 2</div>
                     <div class="tab-pane fade" id="tab3primary">Primary 3</div>
                     <div class="tab-pane fade" id="tab4primary">Primary 4</div>
-                    <div class="tab-pane fade" id="tab5primary">Primary 5</div>
+                    <div class="tab-pane fade" id="tab5primary">Primary 5</div> -->
                 </div>
             </div>
         </div>
