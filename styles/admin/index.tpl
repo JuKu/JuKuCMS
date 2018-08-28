@@ -492,7 +492,7 @@
 <!-- ./wrapper -->
 
 <!-- footer javascript -->
-<script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=admin&amp;hash={$JS_HASH_ALL_FOOTER}&amp;position=footer"></script>
+{res load="async"}js_footer{/res}
 
 <script>
     $(document).ready(function () {
