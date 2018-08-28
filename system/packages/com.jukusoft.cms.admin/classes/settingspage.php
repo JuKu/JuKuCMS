@@ -35,7 +35,10 @@ class SettingsPage extends PageType {
 
 		$categories = array(
 			array(
-				'title' => "test"
+				'title' => "General"
+			),
+			array(
+				'title' => "Mail"
 			)
 		);
 		$template->assign("categories", $categories);

@@ -11,7 +11,7 @@
                             <li><a href="#tab{$dwoo.foreach.tabs.index}primary" data-toggle="tab">{$category.title}</a></li>
                         {/if}
                     {/foreach}
-                    <li class="active"><a href="#tab1primary" data-toggle="tab">Primary 1</a></li>
+                    <!-- <li class="active"><a href="#tab1primary" data-toggle="tab">Primary 1</a></li>
                     <li><a href="#tab2primary" data-toggle="tab">Primary 2</a></li>
                     <li><a href="#tab3primary" data-toggle="tab">Primary 3</a></li>
                     <li class="dropdown">
@@ -20,7 +20,7 @@
                             <li><a href="#tab4primary" data-toggle="tab">Primary 4</a></li>
                             <li><a href="#tab5primary" data-toggle="tab">Primary 5</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <div class="panel-body">
