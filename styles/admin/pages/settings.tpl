@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <div class="panel with-nav-tabs panel-primary">
+        <div class="panel with-nav-tabs panel-info">
             <div class="panel-heading">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab1primary" data-toggle="tab">Primary 1</a></li>
