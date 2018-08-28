@@ -9,24 +9,28 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <link rel="stylesheet" href="{$BASE_URL}/css.php?style=admin&amp;hash={$CSS_HASH_ALL}" />
+    <meta name="description" content="{$meta.description}" />
+    <meta name="keywords" content="{$meta.keywords}" />
+    <meta name="author" content="{$meta.author.username}" />
+    {if $meta.has_robots == true}<meta name="robots" content="{$meta.robots}" />{/if}
+    {if $meta.has_canoncials == true}<link rel=”canonical” href="{$meta.canoncials}" />{/if}
+
+    <!-- set charset -->
+    <meta charset="{$CHARSET}" />
+
+    {res media="ALL"}css{/res}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script async src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script async src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-    {if $JS_ALL_HEADER_EMPTY != true}
-    <!-- header javascript -->
-    <script language="javascript" type="text/javascript" src="{$BASE_URL}/js.php?style=admin&amp;hash={$JS_HASH_ALL_HEADER}&amp;position=header"></script>
-    {else}
-        <!-- DEBUG: header javascript was removed, because generated js script was empty -->
-    {/if}
+    {res load="async"}js{/res}
 
     {$HEAD}
 </head>
