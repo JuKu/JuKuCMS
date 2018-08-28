@@ -492,7 +492,7 @@
 <!-- ./wrapper -->
 
 <!-- footer javascript -->
-{res load="async"}js_footer{/res}
+{res}js_footer{/res}
 
 <script>
     $(document).ready(function () {
