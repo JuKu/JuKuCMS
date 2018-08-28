@@ -1442,6 +1442,9 @@ Page::createIfAbsent("admin/clearcache", "lang_Clear cache", "ClearCachePage", "
 //create some tool pages
 Page::createIfAbsent("admin/phpinfo", "phpinfo()", "PHPInfoPage", "", "/admin/", -1, -1, -1, false, true, false);
 
+//admin pages
+Page::createIfAbsent("admin/settings", "Settings", "SettingsPage", "", "/admin/", -1, -1, -1, false, true, false);
+
 echo "Create default page types if absent...<br />";
 
 PageType::createPageType("HTMLPage", "HTML page", false, 1);//order 1 - so show as first page type in admin area
