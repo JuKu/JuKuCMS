@@ -28,9 +28,9 @@
 class SettingsPage extends PageType {
 
 	public function getContent(): string {
-		$template = new DwooTemplate("pages/sendmail");
+		$template = new DwooTemplate("pages/settings");
 
-		$template->assign("form_action", DomainUtils::generateURL("admin/sendmail"));
+		$template->assign("form_action", DomainUtils::generateURL("admin/settings"));
 		$template->assign("content", "");
 
 		return $template->getCode();
