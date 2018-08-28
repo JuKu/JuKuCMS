@@ -1233,6 +1233,15 @@ echo "Create default sidebars...<br />";
 Sidebar::create("Left sidebar", "sidebar_left", false);
 Sidebar::create("Right sidebar", "sidebar_right", false);
 
+echo "Create default global setting categories...<br />";
+
+SettingsCategory::createIfAbsent("general", "General", 1, "system");
+SettingsCategory::createIfAbsent("sidebar", "Sidebar", 2, "system");
+SettingsCategory::createIfAbsent("mail", "Mail", 15, "system");
+SettingsCategory::createIfAbsent("user", "User", 16, "system");
+SettingsCategory::createIfAbsent("api", "API", 17, "system");
+SettingsCategory::createIfAbsent("logging", "Logging", 18, "system");
+
 echo "Create default global settings...<br />";
 
 //create or update default settings (value will be only set, if key doesnt exists)
