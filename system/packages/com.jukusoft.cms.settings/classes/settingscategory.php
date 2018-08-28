@@ -113,6 +113,10 @@ class SettingsCategory {
 		return $list;
 	}
 
+	public static function cast (SettingsCategory $category) : SettingsCategory {
+		return $category;
+	}
+
 }
 
 ?>

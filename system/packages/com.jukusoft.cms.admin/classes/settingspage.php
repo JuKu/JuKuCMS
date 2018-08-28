@@ -33,14 +33,16 @@ class SettingsPage extends PageType {
 		$template->assign("form_action", DomainUtils::generateURL("admin/settings"));
 		$template->assign("content", "");
 
-		$categories = array(
-			array(
-				'title' => "General"
-			),
-			array(
-				'title' => "Mail"
-			)
-		);
+		$categories = array();
+
+		foreach (SettingsCategory::listAllCategories() as $category) {
+			$category = SettingsCategory::cast($category);
+
+			$categories[] = array(
+				'title' => $category->getTitle()
+			);
+		}
+
 		$template->assign("categories", $categories);
 
 		return $template->getCode();
