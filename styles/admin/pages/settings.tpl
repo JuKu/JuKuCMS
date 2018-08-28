@@ -26,11 +26,6 @@
             <div class="panel-body">
                 <div class="tab-content">
                     {foreach $categories, category, name='tabs'}
-                        {* {if $dwoo.foreach.tabs.first}
-                            <div class="tab-pane fade in active" id="tab{$dwoo.foreach.tabs.index}primary">Primary 1</div>
-                        {else}
-                            <div class="tab-pane fade" id="tab{$dwoo.foreach.tabs.index}primary">Primary 2</div>
-                        {/if} *}
                         <div class="tab-pane fade{if $dwoo.foreach.tabs.first} in active{/if}" id="tab{$dwoo.foreach.tabs.index}primary">Primary 2</div>
                     {/foreach}
                     <!-- <div class="tab-pane fade in active" id="tab1primary">Primary 1</div>
