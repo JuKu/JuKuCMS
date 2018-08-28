@@ -1,8 +1,12 @@
 <div class="row">
     <div class="col-xs-12">
+        <!-- see also https://bootsnipp.com/snippets/featured/panels-with-nav-tabs -->
         <div class="panel with-nav-tabs panel-default">
             <div class="panel-heading">
                 <ul class="nav nav-tabs">
+                    {foreach $categories, category, name='tabs'}
+                        <li class="active"><a href="#tab1primary" data-toggle="tab">Primary 1</a></li>
+                    {/foreach}
                     <li class="active"><a href="#tab1primary" data-toggle="tab">Primary 1</a></li>
                     <li><a href="#tab2primary" data-toggle="tab">Primary 2</a></li>
                     <li><a href="#tab3primary" data-toggle="tab">Primary 3</a></li>
