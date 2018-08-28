@@ -27,14 +27,25 @@
                 <div class="panel-body">
                     <div class="tab-content">
                         {foreach $categories, category, name='tabs'}
-                            <div class="tab-pane fade{if $dwoo.foreach.tabs.first} in active{/if}" id="tab{$dwoo.foreach.tabs.index}primary">Primary 2</div>
+                            <div class="tab-pane fade{if $dwoo.foreach.tabs.first} in active{/if}" id="tab{$dwoo.foreach.tabs.index}primary">
+                                <table>
+                                    {foreach $category.settings setting}
+                                        <tr>
+                                            <td>{$setting.title}</td>
+                                            <td>{$setting.code}</td>
+                                        </tr>
+                                    {/foreach}
+                                </table>
+                            </div>
                         {/foreach}
-                        <!-- <div class="tab-pane fade in active" id="tab1primary">Primary 1</div>
-                        <div class="tab-pane fade" id="tab2primary">Primary 2</div>
-                        <div class="tab-pane fade" id="tab3primary">Primary 3</div>
-                        <div class="tab-pane fade" id="tab4primary">Primary 4</div>
-                        <div class="tab-pane fade" id="tab5primary">Primary 5</div> -->
                     </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="pull-right">
+                        <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> {lang}Save{/lang}</button>
+                    </div>
+
+                    <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> {lang}Discard{/lang}</button>
                 </div>
             </form>
         </div>
