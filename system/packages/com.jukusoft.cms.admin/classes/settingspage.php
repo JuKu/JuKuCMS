@@ -35,11 +35,29 @@ class SettingsPage extends PageType {
 
 		$categories = array();
 
+		$all_settings_by_category = Settings::listAllSettingsByCategory();
+
 		foreach (SettingsCategory::listAllCategories() as $category) {
 			$category = SettingsCategory::cast($category);
 
+			$settings = array();
+
+			if (isset($all_settings_by_category[$category])) {
+				//list settings
+				$rows = $all_settings_by_category[$category];
+
+				foreach ($rows as $key=>$row) {
+					$settings[] = array(
+						'title' => Translator::translateTitle($row['title']),#
+						'description' => Translator::translateTitle($row['description']),
+						'code' => ""
+					);
+				}
+			}
+
 			$categories[] = array(
-				'title' => $category->getTitle()
+				'title' => $category->getTitle(),
+				'settings' => $settings
 			);
 		}
 
