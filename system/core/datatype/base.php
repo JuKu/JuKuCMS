@@ -46,6 +46,26 @@ abstract class DataType_Base {
 		return $this->datatype_params;
 	}
 
+	public function getInputName () {
+		return "setting_" . $this->row['key'];
+	}
+
+	public function getTitle () : string {
+		if (is_array($this->datatype_params) && isset($this->datatype_params['checkbox_title'])) {
+			return $this->datatype_params['checkbox_title'];
+		}
+
+		return $this->row['title'];
+	}
+
+	public function getDescription () : string {
+		return $this->row['description'];
+	}
+
+	public function getValue () {
+		return unserialize($this->row['value']);
+	}
+
 	public abstract function getFormCode () : string;
 
 	public abstract function validate () : bool;
