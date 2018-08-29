@@ -31,7 +31,7 @@
                                 <table>
                                     {foreach $category.settings setting}
                                         <tr>
-                                            <td style="min-width: 150px; height: 50px; " title="{$setting.description}">{$setting.title}</td>
+                                            <td style="min-width: 150px; height: 50px; " title="{$setting.description}"><b>{$setting.title}</b></td>
                                             <td>{$setting.code}</td>
                                         </tr>
                                     {/foreach}
