@@ -28,7 +28,14 @@
 class DataType_SelectBox extends DataType_Base {
 
 	public function getFormCode(): string {
-		return "";
+		$code = "<select name=\"" . $this->getInputName() . "\" class=\"form-control select2\" style=\"width: 100%;\">";
+
+		foreach ($this->getDatatypeParams() as $option) {
+			echo "<option" . ($option === $this->getValue() ? " selected=\"selected\"" : "") . ">" . $option . "</option>";
+		}
+
+		$code .= "</select>";
+		return $code;
 	}
 
 	public function validate(): bool {

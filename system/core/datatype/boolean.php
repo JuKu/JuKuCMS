@@ -32,7 +32,6 @@ class DataType_Boolean extends DataType_Base {
 
 		return "	<label>
 						<input type=\"checkbox\" name=\"" . $this->getInputName() . "\" value=\"enabled\" class=\"flat-green\"" . ($this->getValue() == true ? " checked" : "") . " />
-						test
                 	</label>";
 	}
 
