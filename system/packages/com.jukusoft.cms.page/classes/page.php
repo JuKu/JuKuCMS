@@ -227,6 +227,11 @@ class Page {
 		if (!is_int($author)) {
 			//get userID of author
 			$author = User::getIDByUsernameFromDB($author);
+
+			if ($author == -1) {
+				//username doesnt exists, so choose first user
+				$author = 1;
+			}
 		} else {
 			$author = (int) $author;
 		}
