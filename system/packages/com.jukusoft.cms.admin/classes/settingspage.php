@@ -44,7 +44,7 @@ class SettingsPage extends PageType {
 
 			if (isset($all_settings_by_category[$category->getCategory()])) {
 				//list settings
-				$rows = $all_settings_by_category[$category];
+				$rows = $all_settings_by_category[$category->getCategory()];
 
 				foreach ($rows as $key=>$row) {
 					$settings[] = array(
