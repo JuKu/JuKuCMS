@@ -30,7 +30,7 @@
                             <div class="tab-pane fade{if $dwoo.foreach.tabs.first} in active{/if}" id="tab{$dwoo.foreach.tabs.index}primary">
                                 <table>
                                     {foreach $category.settings setting}
-                                        <tr style="min-height: 50px; ">
+                                        <tr style="min-height: 100px; ">
                                             <td style="min-width: 150px; " title="{$setting.description}">{$setting.title}</td>
                                             <td>{$setting.code}</td>
                                         </tr>
