@@ -25,14 +25,10 @@
  * Time: 14:48
  */
 
-class DataType_HTML implements DataType_Base {
-
-	public function load(array $row, $datatype_params) {
-		// TODO: Implement load() method.
-	}
+class DataType_HTML extends DataType_Base {
 
 	public function getFormCode(): string {
-		// TODO: Implement getFormCode() method.
+		return "";
 	}
 
 	public function validate(): bool {

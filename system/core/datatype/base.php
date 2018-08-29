@@ -25,13 +25,30 @@
  * Time: 23:34
  */
 
-interface DataType_Base {
+abstract class DataType_Base {
 
-	public function load (array $row, $datatype_params);
+	protected $row = array();
+	protected $datatype_params = null;
 
-	public function getFormCode () : string;
+	public function load (array $row, $datatype_params) {
+		$this->row = $row;
+		$this->datatype_params = $datatype_params;
+	}
 
-	public function validate () : bool;
+	/**
+	 * @return array
+	 */
+	public function getRow (): array {
+		return $this->row;
+	}
+
+	public function getDatatypeParams () {
+		return $this->datatype_params;
+	}
+
+	public abstract function getFormCode () : string;
+
+	public abstract function validate () : bool;
 
 }
 

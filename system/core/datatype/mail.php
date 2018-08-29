@@ -25,14 +25,10 @@
  * Time: 14:55
  */
 
-class DataType_Mail implements DataType_Base {
-
-	public function load(array $row, $datatype_params) {
-		// TODO: Implement load() method.
-	}
+class DataType_Mail extends DataType_Base {
 
 	public function getFormCode(): string {
-		// TODO: Implement getFormCode() method.
+		return "";
 	}
 
 	public function validate(): bool {

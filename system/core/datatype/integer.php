@@ -25,14 +25,10 @@
  * Time: 14:49
  */
 
-class DataType_Integer implements DataType_Base {
-
-	public function load(array $row, $datatype_params) {
-		// TODO: Implement load() method.
-	}
+class DataType_Integer extends DataType_Base {
 
 	public function getFormCode(): string {
-		// TODO: Implement getFormCode() method.
+		return "";
 	}
 
 	public function validate(): bool {

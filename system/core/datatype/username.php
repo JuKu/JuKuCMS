@@ -25,14 +25,10 @@
  * Time: 14:52
  */
 
-class DataType_Username implements DataType_Base {
-
-	public function load(array $row, $datatype_params) {
-		// TODO: Implement load() method.
-	}
+class DataType_Username extends DataType_Base {
 
 	public function getFormCode(): string {
-		// TODO: Implement getFormCode() method.
+		return "";
 	}
 
 	public function validate(): bool {

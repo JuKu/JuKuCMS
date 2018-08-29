@@ -22,17 +22,18 @@
  * License: Apache 2.0 license
  * User: Justin
  * Date: 29.08.2018
- * Time: 14:51
+ * Time: 14:59
  */
 
-class DataType_URL extends DataType_Base {
+class DataType_Hidden extends DataType_Base {
 
 	public function getFormCode(): string {
 		return "";
 	}
 
 	public function validate(): bool {
-		// TODO: Implement validate() method.
+		//value cannot be changed
+		return true;
 	}
 
 }
