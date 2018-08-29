@@ -47,6 +47,15 @@ class SettingsPage extends PageType {
 				$rows = $all_settings_by_category[$category->getCategory()];
 
 				foreach ($rows as $key=>$row) {
+					$datatype = $row['datatype'];
+					$datatype_params = unserialize($row['datatype_params']);
+
+					$obj = new $datatype();
+
+					if (!($obj instanceof DataType_Base)) {
+						throw new IllegalArgumentException("obj of class name '" . $datatype . "' has to be an instance of DataType_Base.");
+					}
+
 					$settings[] = array(
 						'title' => Translator::translateTitle($row['title']),#
 						'description' => Translator::translateTitle($row['description']),
