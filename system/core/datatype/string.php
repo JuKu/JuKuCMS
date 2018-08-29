@@ -28,7 +28,7 @@
 class DataType_String extends DataType_Base {
 
 	public function getFormCode(): string {
-		return "";
+		return "<input type=\"text\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" />";
 	}
 
 	public function validate(): bool {
