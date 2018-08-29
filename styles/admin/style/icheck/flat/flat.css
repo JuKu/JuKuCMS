@@ -137,7 +137,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     padding: 0;
     width: 20px;
     height: 20px;
-    background: url({STYLE_PATH}green.png) no-repeat;
+    background: url({STYLE_PATH}style/icheck/flat/green.png) no-repeat;
     border: none;
     cursor: pointer;
 }
