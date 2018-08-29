@@ -28,7 +28,7 @@
                     <div class="tab-content">
                         {foreach $categories, category, name='tabs'}
                             <div class="tab-pane fade{if $dwoo.foreach.tabs.first} in active{/if}" id="tab{$dwoo.foreach.tabs.index}primary">
-                                <table>
+                                <table border="0">
                                     {foreach $category.settings setting}
                                         <tr>
                                             <td style="min-width: 150px; padding-top: 10px; padding-bottom: 10px; " title="{$setting.description}"><b>{$setting.title}</b></td>
