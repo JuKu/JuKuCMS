@@ -31,7 +31,7 @@
                                 <table border="0">
                                     {foreach $category.settings setting}
                                         <tr>
-                                            <td style="min-width: 150px; " title="{$setting.description}"><b>{$setting.title}</b></td>
+                                            <td style="min-width: 150px; padding-top: 20px; " title="{$setting.description}"><b>{$setting.title}</b></td>
                                             <td>{$setting.code}</td>
                                         </tr>
                                     {/foreach}
@@ -46,6 +46,7 @@
                     </div>
 
                     <!-- <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> {lang}Discard{/lang}</button> -->
+                    <br />
                 </div>
             </form>
         </div>
