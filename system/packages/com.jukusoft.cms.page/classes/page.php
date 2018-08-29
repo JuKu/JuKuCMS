@@ -185,6 +185,7 @@ class Page {
 		if ($this->author == null) {
 			//load author
 			$this->author = new User();
+			echo "Author ID: " . $this->getAuthorID();
 			$this->author->load($this->getAuthorID());
 		}
 
