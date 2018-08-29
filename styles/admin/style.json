@@ -6,7 +6,9 @@
         "bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css",
         "dist/css/AdminLTE.min.css",
         "dist/css/skins/_all-skins.min.css",
-        "style/tabs.css"
+        "style/tabs.css",
+        "style/icheck/all.css",
+        "style/icheck/flat.css"
     ],
     "js": {
 
