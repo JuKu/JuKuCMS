@@ -8,7 +8,7 @@
         "dist/css/skins/_all-skins.min.css",
         "style/tabs.css",
         "style/icheck/all.css",
-        "style/icheck/flat.css"
+        "style/icheck/flat/flat.css"
     ],
     "js": {
 
