@@ -27,7 +27,11 @@
 
 interface DataType_Base {
 
-	//
+	public function load (array $row, $datatype_params);
+
+	public function getFormCode () : string;
+
+	public function validate () : bool;
 
 }
 

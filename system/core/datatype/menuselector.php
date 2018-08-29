@@ -21,11 +21,11 @@
  * Project: RocketCMS
  * License: Apache 2.0 license
  * User: Justin
- * Date: 03.04.2018
- * Time: 23:33
+ * Date: 29.08.2018
+ * Time: 14:48
  */
 
-class DataType_String implements DataType_Base {
+class DataType_MenuSelector implements DataType_Base {
 
 	public function load(array $row, $datatype_params) {
 		// TODO: Implement load() method.
