@@ -47,7 +47,7 @@
 
                     <!-- <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> {lang}Discard{/lang}</button> -->
                     <br />
-                    <span style="min-height: 10px; ">&nbsp;</span>
+                    <span style="height: 10px; ">&nbsp;</span>
                 </div>
             </form>
         </div>
