@@ -239,6 +239,38 @@ class Settings {
 		self::$initialized = true;
 	}
 
+	public static function listAllSettingsByCategory () {
+		//load settings if neccessary
+		self::loadSettingsIfAbsent();
+
+		$rows = array();
+
+		if (Cache::contains("global_settings", "all_rows")) {
+			$rows = Cache::get("global_settings", "all_rows");
+		} else {
+			//load settings from database
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}global_settings` WHERE `activated` = '1' ORDER BY `order`; ");
+
+			Cache::put("global_settings", "all_rows", $rows);
+		}
+
+		$list = array();
+
+		foreach ($rows as $row) {
+			$category = $row['category'];
+			$key = $row['key'];
+
+			//add array, if key doesnt exists in array
+			if (!isset($list[$category])) {
+				$list[$category] = array();
+			}
+
+			$list[$category][$key] = $row;
+		}
+
+		return $list;
+	}
+
 	/**
 	 * load settings, if class was not initialized yet
 	 */
