@@ -45,7 +45,7 @@
                         <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> {lang}Save{/lang}</button>
                     </div>
 
-                    <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> {lang}Discard{/lang}</button>
+                    <!-- <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> {lang}Discard{/lang}</button> -->
                 </div>
             </form>
         </div>
