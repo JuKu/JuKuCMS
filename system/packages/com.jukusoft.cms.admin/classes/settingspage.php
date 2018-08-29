@@ -56,6 +56,9 @@ class SettingsPage extends PageType {
 						throw new IllegalArgumentException("obj of class name '" . $datatype . "' has to be an instance of DataType_Base.");
 					}
 
+					//load instance
+					$obj->load($row, $datatype_params);
+
 					$settings[] = array(
 						'title' => Translator::translateTitle($row['title']),#
 						'description' => Translator::translateTitle($row['description']),
