@@ -31,7 +31,8 @@ class DataType_Boolean extends DataType_Base {
 		//return "<input type=\"checkbox\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getTitle() . "\"" . ($this->getValue() == true ? " checked" : "") . " />";
 
 		return "	<label>
-						<input type=\"checkbox\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getTitle() . "\" class=\"flat-green\"" . ($this->getValue() == true ? " checked" : "") . " />
+						<input type=\"checkbox\" name=\"" . $this->getInputName() . "\" value=\"enabled\" class=\"flat-green\"" . ($this->getValue() == true ? " checked" : "") . " />
+						test
                 	</label>";
 	}
 
