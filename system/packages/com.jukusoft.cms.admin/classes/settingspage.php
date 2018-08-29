@@ -59,7 +59,7 @@ class SettingsPage extends PageType {
 					$settings[] = array(
 						'title' => Translator::translateTitle($row['title']),#
 						'description' => Translator::translateTitle($row['description']),
-						'code' => ""
+						'code' => $obj->getFormCode()
 					);
 				}
 			}
