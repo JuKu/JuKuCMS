@@ -28,7 +28,11 @@
 class DataType_Boolean extends DataType_Base {
 
 	public function getFormCode(): string {
-		return "<input type=\"checkbox\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getTitle() . "\"" . ($this->getValue() == true ? " checked" : "") . " />";
+		//return "<input type=\"checkbox\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getTitle() . "\"" . ($this->getValue() == true ? " checked" : "") . " />";
+
+		return "	<label>
+						<input type=\"checkbox\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getTitle() . "\" class=\"flat-red\"" . ($this->getValue() == true ? " checked" : "") . " />
+                	</label>";
 	}
 
 	public function validate(): bool {
