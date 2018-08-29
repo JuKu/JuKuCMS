@@ -185,7 +185,11 @@ class Page {
 		if ($this->author == null) {
 			//load author
 			$this->author = new User();
-			echo "Author ID: " . $this->getAuthorID();
+
+			if ($this->getAuthorID() <= 0) {
+				throw new IllegalArgumentException("authorID has to be > 0.");
+			}
+
 			$this->author->load($this->getAuthorID());
 		}
 
