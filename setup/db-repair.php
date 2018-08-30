@@ -1277,7 +1277,7 @@ Settings::create("phpmyadmin_link", "#", "Link to PhpMyAdmin", "Link to PhpMyAdm
 Settings::create("webmail_link", "#", "Link to Webmail", "Link to Webmail", "system", "general", "DataType_URL");
 
 //send mail
-Settings::create("send_mails_enabled", true, "Enable send mails from CMS", "Enable send mails from CMS - if disabled no mails can be sended! If deactivated, it can influence other features like registration.", "system", "mail");
+Settings::create("send_mails_enabled", true, "Enable send mails from CMS", "Enable send mails from CMS - if disabled no mails can be sended! If deactivated, it can influence other features like registration.", "system", "mail", "DataType_Boolean");
 Settings::create("sendmail_method", "PHPMail", "Method for sending mails", "Method for sending mails (class name of send mail implementation)", "system", "mail", "DataType_SelectBox", array("PHPMail", "SMTPMail"));
 Settings::create("mail_sender_address", "none", "Sender mail address", "sender mail address, e.q. admin@example.com", "system", "mail", "DataType_Mail");
 Settings::create("mail_sender_name", "", "Sender name", "Name of mail sender, e.q. John Doe", "system", "mail", "DataType_String");
