@@ -187,7 +187,16 @@ class StyleController {
 	}
 
 	public static function listAllStyles () : array {
-		return $file_array = glob(STYLE_PATH . "*");
+		$styles = array();
+
+		$file_array = glob(STYLE_PATH . "*");
+
+		foreach ($file_array as $dir) {
+			$array1 = explode("/", $dir);
+			$styles[] = $array1[count($array1)];
+		}
+
+		return $styles;
 	}
 
 }
