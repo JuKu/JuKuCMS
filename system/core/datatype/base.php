@@ -79,7 +79,7 @@ abstract class DataType_Base {
 	}
 
 	public final function save () {
-		//get value
+		//get value - because checkboxes doesn't require key is set, we have to check it first
 		$value = (isset($_REQUEST[$this->getInputName()]) ? $_REQUEST[$this->getInputName()] : "");
 
 		$this->saveAsync($value);
