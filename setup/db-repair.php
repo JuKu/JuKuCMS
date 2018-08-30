@@ -1242,6 +1242,7 @@ SettingsCategory::createIfAbsent("user", "User", 16, "system");
 SettingsCategory::createIfAbsent("api", "API", 17, "system");
 SettingsCategory::createIfAbsent("logging", "Logging", 18, "system");
 SettingsCategory::createIfAbsent("tasks", "Tasks", 19, "system");
+SettingsCategory::createIfAbsent("tools", "Tools", 20, "system");
 
 echo "Create default global settings...<br />";
 
@@ -1273,8 +1274,8 @@ Settings::create("maintenance_mode_enabled", false, "Maintenance Mode enabled (b
 Settings::create("maintenance_text", "This domain is currently under scheduled maintenance mode. Sorry for the inconvenience! Look in a few minutes over again!", "Maintenance Text", "Text which is shown, if maintenance mode is enabled", "system", "general", "DataType_HTML");
 
 //external tools
-Settings::create("phpmyadmin_link", "#", "Link to PhpMyAdmin", "Link to PhpMyAdmin", "system", "general", "DataType_URL");
-Settings::create("webmail_link", "#", "Link to Webmail", "Link to Webmail", "system", "general", "DataType_URL");
+Settings::create("phpmyadmin_link", "#", "Link to PhpMyAdmin", "Link to PhpMyAdmin", "system", "tools", "DataType_URL");
+Settings::create("webmail_link", "#", "Link to Webmail", "Link to Webmail", "system", "tools", "DataType_URL");
 
 //send mail
 Settings::create("send_mails_enabled", true, "Enable send mails from CMS", "Enable send mails from CMS - if disabled no mails can be sended! If deactivated, it can influence other features like registration.", "system", "mail", "DataType_Boolean");
