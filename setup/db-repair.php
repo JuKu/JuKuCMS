@@ -1241,6 +1241,7 @@ SettingsCategory::createIfAbsent("mail", "Mail", 15, "system");
 SettingsCategory::createIfAbsent("user", "User", 16, "system");
 SettingsCategory::createIfAbsent("api", "API", 17, "system");
 SettingsCategory::createIfAbsent("logging", "Logging", 18, "system");
+SettingsCategory::createIfAbsent("tasks", "Tasks", 19, "system");
 
 echo "Create default global settings...<br />";
 
@@ -1302,8 +1303,8 @@ Settings::create("recaptcha_website_key", "", "reCAPTCHA website key", "reCAPTCH
 Settings::create("recaptcha_secret_key", "", "reCAPTCHA secret key", "reCAPTCHA secret key, provided by google", "system", "general", "DataType_String");
 
 //cronjob
-Settings::create("cronjob_enabled", true, "Option if cronjob is enabled", "Option if cronjob is enabled", "system", "general", "DataType_Boolean");
-Settings::create("cronjob_auth_key", "", "Cronjob Auth Key", "Only set this key, if you want, that only a restricted source can call cronjob.php file.", "owner", "general", "DataType_String");
+Settings::create("cronjob_enabled", true, "Option if cronjob is enabled", "Option if cronjob is enabled", "system", "tasks", "DataType_Boolean");
+Settings::create("cronjob_auth_key", "", "Cronjob Auth Key", "Only set this key, if you want, that only a restricted source can call cronjob.php file.", "owner", "tasks", "DataType_String");
 
 //menuID
 Settings::create("menu_plugin_settings_id", -1, "id of plugin settings menu", "id of plugin settings menu - Dont change this value manually!", "system", "hidden", "DataType_Integer", array(), false);
