@@ -30,6 +30,7 @@ class DataType_Integer extends DataType_Base {
 	public function getFormCode(): string {
 		$min = null;
 		$max = null;
+		$unit = null;
 
 		if (is_array($this->getDatatypeParams())) {
 			$array = $this->getDatatypeParams();
@@ -41,9 +42,13 @@ class DataType_Integer extends DataType_Base {
 			if (isset($array['max'])) {
 				$max = (int) $array['max'];
 			}
+
+			if (isset($array['unit'])) {
+				$unit = (int) $array['unit'];
+			}
 		}
 
-		return "<input type=\"number\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" step=\"1\"" . ($min != null ? " min=\"" . $min . "\"" : "") . "" . ($max != null ? " max=\"" . $max . "\"" : "") . " />";
+		return "<input type=\"number\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" step=\"1\"" . ($min != null ? " min=\"" . $min . "\"" : "") . "" . ($max != null ? " max=\"" . $max . "\"" : "") . " />" . ($unit != null ? " " . $unit : "");
 	}
 
 	public function validate(): bool {
