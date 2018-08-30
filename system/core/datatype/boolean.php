@@ -35,6 +35,11 @@ class DataType_Boolean extends DataType_Base {
                 	</label>";
 	}
 
+	public function val () : bool {
+		//if key isn't set this means checkbox isn't checked
+		return true;
+	}
+
 	public function validate(string $value): bool {
 		return true;
 	}
