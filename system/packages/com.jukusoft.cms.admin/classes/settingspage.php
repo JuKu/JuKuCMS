@@ -45,11 +45,11 @@ class SettingsPage extends PageType {
 		}
 
 		//check permission
-		if (/*!PermissionChecker::current()->hasRight("can_edit_global_settings")*/false) {
+		if (!PermissionChecker::current()->hasRight("can_edit_global_settings")) {
 			$save = false;
 		}
 
-		$template->assign("permission_to_edit_settings", PermissionChecker::current()->hasRight("can_edit_global_settings"));
+		$template->assign("permission_to_edit_settings", /*PermissionChecker::current()->hasRight("can_edit_global_settings")*/false);
 
 		foreach (SettingsCategory::listAllCategories() as $category) {
 			$category = SettingsCategory::cast($category);
