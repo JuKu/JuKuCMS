@@ -86,7 +86,7 @@ class Settings {
 		self::$async_save_list[$key] = $value;
 
 		//update local in-memory cache
-		self::$settings[$key] = $value;
+		self::$settings[$key] = serialize($value);
 	}
 
 	public static function saveAsync () {
