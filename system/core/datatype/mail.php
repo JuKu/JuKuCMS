@@ -32,7 +32,7 @@ class DataType_Mail extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
-		filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
+		return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
 	}
 
 	protected function saveAsync($value) {
