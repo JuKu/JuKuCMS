@@ -31,10 +31,10 @@ class DataType_MenuSelector extends DataType_Base {
 		$code = "<select name=\"" . $this->getInputName() . "\" class=\"form-control select2\" style=\"width: 100%;\">";
 
 		foreach (Menu::listMenuNames() as $row) {
-			$code .= "<option value=\"" . $row['menuID'] . "\"" . ($row['menuID'] === $this->getValue() ? " selected=\"selected\"" : "") . ">" . $row['title'] . "</option>";
+			$code .= "<option value=\"" . $row['menuID'] . "\"" . ($row['menuID'] == $this->getValue() ? " selected=\"selected\"" : "") . ">" . $row['title'] . "</option>";
 		}
 
-		$code .= "</select>";
+		$code .= "</select><!-- current value: " . $this->getValue() . " -->";
 		return $code;
 	}
 

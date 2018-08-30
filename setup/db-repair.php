@@ -1251,7 +1251,7 @@ Settings::create("default_style_name", "texturedblue", "Default Style", "Default
 Settings::create("default_mobile_style_name", "texturedblue", "Default mobile Style", "Like default style name, but for mobiledevices", "system", "general", "DataType_StyleChooser");
 Settings::create("guest_userid", -1, "Guest UserID", "UserID of not-logged-in users (default: -1).", "system", "general", "DataType_Integer", array("min" => -1));
 Settings::create("guest_username", "Guest", "Guest Username", "Username of not-logged-in users (default: Guest).", "system", "general", "DataType_Username");
-Settings::create("online_interval", 5, "Online Interval", "Interval-Angabe in minues, how long a user is set as online (since last page request). IMPORTANT: This is independent from login interval!", "system", "general", "DataType_Integer");
+Settings::create("online_interval", 5, "Online Interval", "Interval in minues, how long a user is set as online (since last page request). IMPORTANT: This is independent from login interval!", "system", "general", "DataType_Integer");
 Settings::create("x_frame_options", "DENY", "X-Frame-Options header value (none = dont set header).", "values: DENY, SAMEORIGIN, ALLOW-FROM https://example.com/, none", "system", "security", "DataType_String");
 Settings::create("login_page","login", "Alias of Login Page (incl. directory, if necessary)", "Alias of Login Page (incl. directory, if necessary). Default: login", "system", "general", "DataType_String");
 Settings::create("logout_page", "logout", "Alias of Logout Page (incl. directory, if necessary)", "Alias of Logout Page (incl. directory, if necessary). Default: logout", "system", "general", "DataType_String");
@@ -1266,7 +1266,7 @@ Settings::create("copyright", "<strong>Copyright &copy; 2018 <a href=\"http://ju
 Settings::create("website_name", "" . DomainUtils::getDomain(), "Website name", "Name of your website, e.q. used for mail templates", "system", "general", "DataType_String");
 
 Settings::create("gzip_compression", true, "GZip compression enabled", "GZip compression enabled", "system", "general", "DataType_Boolean");
-Settings::create("session_ttl", 3600, "Session TTL", "Session Time-To-Live in seconds, default: 3600 seconds", "system", "general", "DataType_Integer");
+Settings::create("session_ttl", 3600, "Session TTL", "Session Time-To-Live in seconds, default: 3600 seconds", "system", "general", "DataType_Integer", array("unit" => "seconds"));
 
 //maintenance mode
 Settings::create("maintenance_mode_enabled", false, "Maintenance Mode enabled (boolean)", "Maintenance Mode enabled (boolean), Default: false", "system", "general", "DataType_Boolean");
