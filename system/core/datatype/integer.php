@@ -28,7 +28,22 @@
 class DataType_Integer extends DataType_Base {
 
 	public function getFormCode(): string {
-		return "<input type=\"number\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" step=\"1\" />";
+		$min = null;
+		$max = null;
+
+		if (is_array($this->getDatatypeParams())) {
+			$array = $this->getDatatypeParams();
+
+			if (isset($array['min'])) {
+				$min = (int) $array['min'];
+			}
+
+			if (isset($array['max'])) {
+				$max = (int) $array['max'];
+			}
+		}
+
+		return "<input type=\"number\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" step=\"1\"" . ($min != null ? " min=\"" . $min . "\"" : "") . "" . ($max != null ? " max=\"" . $max . "\"" : "") . " />";
 	}
 
 	public function validate(): bool {
