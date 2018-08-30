@@ -35,6 +35,7 @@ class DataType_StyleChooser extends DataType_Base {
 		}
 
 		$code .= "</select>";
+
 		return $code;
 	}
 
