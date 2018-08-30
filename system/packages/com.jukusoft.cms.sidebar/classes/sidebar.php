@@ -53,6 +53,11 @@ class Sidebar {
 		$this->sidebar_id = $sidebar_id;
 	}
 
+	public function loadByArray (array $row) {
+		$this->row = $row;
+		$this->sidebar_id = (int) $row['sidebar_id'];
+	}
+
 	public function loadWidgets () {
 		$this->widgets = array();
 
@@ -224,7 +229,7 @@ class Sidebar {
 
 		foreach ($rows as $row) {
 			$obj = new Sidebar();
-			$obj->load($row);
+			$obj->loadByArray($row);
 
 			$list[] = $obj;
 		}
