@@ -83,7 +83,10 @@ class Settings {
 	}
 
 	public static function setAsync (string $key, $value) {
-		self::$async_save_list[$key] = $value;
+		//only execute database query, if value was changed
+		if (isset(self::$async_save_list[$key]) || self::get($key) == $value) {
+			self::$async_save_list[$key] = $value;
+		}
 
 		//update local in-memory cache
 		self::$settings[$key] = serialize($value);
