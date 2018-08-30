@@ -78,7 +78,7 @@ abstract class DataType_Base {
 		return isset($_REQUEST[$this->getInputName()]) && $this->validate($_REQUEST[$this->getInputName()]);
 	}
 
-	public function save () {
+	public final function save () {
 		//get value
 		$value = $_REQUEST[$this->getInputName()];
 
