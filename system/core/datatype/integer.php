@@ -72,7 +72,7 @@ class DataType_Integer extends DataType_Base {
 			}
 		}
 
-		return is_int($value) && ($min == null || $value >= $min);
+		return is_int($value);// && ($min == null || $value >= $min);
 	}
 
 	protected function saveAsync($value) {
