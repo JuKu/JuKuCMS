@@ -36,9 +36,12 @@ class DataType_Boolean extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
-		// TODO: Implement validate() method.
+		return true;
 	}
 
+	protected function saveAsync($value) {
+		Settings::setAsync($this->getKey(), (boolean) (isset($_REQUEST[$this->getInputName()]) ? true : false));
+	}
 }
 
 ?>

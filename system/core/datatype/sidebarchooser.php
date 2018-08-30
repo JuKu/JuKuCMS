@@ -41,7 +41,21 @@ class DataType_SidebarChooser extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
-		// TODO: Implement validate() method.
+		foreach (Sidebar::listSidebars() as $sidebar) {
+			$sidebar = Sidebar::cast($sidebar);
+			$value = (int) $value;
+
+			if ($sidebar->getSidebarId() == $value) {
+				//sidebar exists
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	protected function saveAsync($value) {
+		Settings::setAsync($this->getKey(), (int) $value);
 	}
 
 }

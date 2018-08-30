@@ -37,6 +37,9 @@ class DataType_Hidden extends DataType_Base {
 		return true;
 	}
 
+	protected function saveAsync($value) {
+		//dont do anything, because value cannot be overriden
+	}
 }
 
 ?>

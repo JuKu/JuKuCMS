@@ -32,7 +32,15 @@ class DataType_URL extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
-		// TODO: Implement validate() method.
+		if ($value === "#") {
+			return true;
+		}
+
+		return filter_var($value, FILTER_VALIDATE_URL);
+	}
+
+	protected function saveAsync($value) {
+		Settings::setAsync($this->getKey(), (string) $value);
 	}
 
 }

@@ -31,6 +31,8 @@ class Settings {
 	//flag, if global settings was initialized
 	protected static $initialized = false;
 
+	protected static $async_save_list = array();
+
 	/**
 	 * get value of setting
 	 *
@@ -78,6 +80,18 @@ class Settings {
 
 		//clear cache (area "global_settings")
 		Cache::clear("global_settings");
+	}
+
+	public static function setAsync (string $key, $value) {
+		self::$async_save_list[$key] = serialize($value);
+	}
+
+	public static function saveAsync () {
+		if (!empty(self::$async_save_list)) {
+			foreach (self::$async_save_list as $key=>$value) {
+				Settings::set($key, $value);
+			}
+		}
 	}
 
 	/**

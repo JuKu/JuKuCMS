@@ -39,7 +39,18 @@ class DataType_MenuSelector extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
-		// TODO: Implement validate() method.
+		foreach (Menu::listMenuNames() as $row) {
+			if ($row['menuID'] == $value) {
+				//menuID exists
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	protected function saveAsync($value) {
+		Settings::setAsync($this->getKey(), (int) $value);
 	}
 
 }

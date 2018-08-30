@@ -32,9 +32,12 @@ class DataType_Mail extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
-		// TODO: Implement validate() method.
+		filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
 	}
 
+	protected function saveAsync($value) {
+		Settings::setAsync($this->getKey(), (string) $value);
+	}
 }
 
 ?>

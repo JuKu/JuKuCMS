@@ -30,9 +30,6 @@ class DataType_LangChooser extends DataType_Base {
 	public function getFormCode(): string {
 		$langs = Lang::listSupportedLangTokens();
 
-		//get default language
-		$default_lang = Settings::get("default_lang");
-
 		$code = "<select name=\"" . $this->getInputName() . "\">";
 
 		foreach ($langs as $lang) {
@@ -44,9 +41,22 @@ class DataType_LangChooser extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
-		// TODO: Implement validate() method.
+		//check, if lang is in list
+		$langs = Lang::listSupportedLangTokens();
+
+		foreach ($langs as $lang) {
+			if ($value == $lang) {
+				//language is suppored
+				return true;
+			}
+		}
+
+		return false;
 	}
 
+	protected function saveAsync($value) {
+		Settings::setAsync($this->getKey(), (string) $value);
+	}
 }
 
 ?>

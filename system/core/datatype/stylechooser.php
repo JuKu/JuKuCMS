@@ -40,7 +40,18 @@ class DataType_StyleChooser extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
-		// TODO: Implement validate() method.
+		foreach (StyleController::listAllStyles() as $style) {
+			if ($style == $value) {
+				//style exists
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	protected function saveAsync($value) {
+		Settings::setAsync($this->getKey(), (string) $value);
 	}
 
 }

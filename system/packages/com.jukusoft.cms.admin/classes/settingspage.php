@@ -37,6 +37,13 @@ class SettingsPage extends PageType {
 
 		$all_settings_by_category = Settings::listAllSettingsByCategory();
 
+		$save = false;
+		$save_success = true;
+
+		if (isset($_REQUEST['option']) && $_REQUEST['option'] == "save") {
+			$save = true;
+		}
+
 		foreach (SettingsCategory::listAllCategories() as $category) {
 			$category = SettingsCategory::cast($category);
 
@@ -59,8 +66,16 @@ class SettingsPage extends PageType {
 					//load instance
 					$obj->load($row, $datatype_params);
 
+					//try to validate
+					if (!$obj->val()) {
+						$save_success = false;
+					} else {
+						//save object
+						$obj->save();
+					}
+
 					$settings[] = array(
-						'title' => Translator::translateTitle($row['title']),#
+						'title' => Translator::translateTitle($row['title']),
 						'description' => Translator::translateTitle($row['description']),
 						'code' => $obj->getFormCode()
 					);
@@ -72,6 +87,8 @@ class SettingsPage extends PageType {
 				'settings' => $settings
 			);
 		}
+
+		Settings::saveAsync();
 
 		$template->assign("categories", $categories);
 

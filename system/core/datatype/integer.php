@@ -52,9 +52,12 @@ class DataType_Integer extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
-		// TODO: Implement validate() method.
+		return is_int($value);
 	}
 
+	protected function saveAsync($value) {
+		Settings::setAsync($this->getKey(), (int) $value);
+	}
 }
 
 ?>

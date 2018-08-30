@@ -34,7 +34,12 @@ class DataType_Username extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
-		// TODO: Implement validate() method.
+		$val = new Validator_Username();
+		return $val->isValide($value);
+	}
+
+	protected function saveAsync($value) {
+		Settings::setAsync($this->getKey(), (string) $value);
 	}
 
 }

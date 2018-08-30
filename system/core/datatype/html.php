@@ -32,9 +32,12 @@ class DataType_HTML extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
-		// TODO: Implement validate() method.
+		return true;
 	}
 
+	protected function saveAsync($value) {
+		Settings::setAsync($this->getKey(), (string) $value);
+	}
 }
 
 ?>

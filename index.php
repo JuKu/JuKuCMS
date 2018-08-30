@@ -275,6 +275,9 @@ if (!Settings::get("cronjon_enabled", true)) {
 	Tasks::schedule(Settings::get("max_tasks_on_site", 3));
 }
 
+//save changed settings into database
+Settings::saveAsync();
+
 //send logs to server
 if (LOGGING_ENABLED) {
 	Logger::send();

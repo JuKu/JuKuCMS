@@ -50,6 +50,10 @@ abstract class DataType_Base {
 		return "setting_" . $this->row['key'];
 	}
 
+	public function getKey () {
+		return $this->row['key'];
+	}
+
 	public function getTitle () : string {
 		if (is_array($this->datatype_params) && isset($this->datatype_params['checkbox_title'])) {
 			return $this->datatype_params['checkbox_title'];
@@ -73,6 +77,18 @@ abstract class DataType_Base {
 	public function val () : bool {
 		return isset($_REQUEST[$this->getInputName()]) && $this->validate($_REQUEST[$this->getInputName()]);
 	}
+
+	public function save () {
+		//get value
+		$value = $_REQUEST[$this->getInputName()];
+
+		$this->saveAsync($value);
+
+		//set new value for form
+		$this->row['value'] = serialize(Settings::get($this->row['key']));
+	}
+
+	protected abstract function saveAsync ($value);
 
 }
 
