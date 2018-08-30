@@ -80,7 +80,7 @@ abstract class DataType_Base {
 
 	public final function save () {
 		//get value
-		$value = $_REQUEST[$this->getInputName()];
+		$value = (isset($_REQUEST[$this->getInputName()]) ? $_REQUEST[$this->getInputName()] : "");
 
 		$this->saveAsync($value);
 
