@@ -52,7 +52,27 @@ class DataType_Integer extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
-		return is_int($value);
+		$min = null;
+		$max = null;
+		$unit = null;
+
+		if (is_array($this->getDatatypeParams())) {
+			$array = $this->getDatatypeParams();
+
+			if (isset($array['min'])) {
+				$min = (int) $array['min'];
+			}
+
+			if (isset($array['max'])) {
+				$max = (int) $array['max'];
+			}
+
+			if (isset($array['unit'])) {
+				$unit = $array['unit'];
+			}
+		}
+
+		return is_int($value) && ($min == null || $value >= $min);
 	}
 
 	protected function saveAsync($value) {
