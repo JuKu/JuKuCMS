@@ -1,5 +1,11 @@
 <div class="row">
     <div class="col-xs-12">
+        {if $save_failed == true}
+            <div class="alert alert-danger">
+                <strong>Error!</strong> Couldn't save settings!
+            </div>
+        {/if}
+
         {if $save_success == true}
             <div class="alert alert-success">
                 <strong>Success!</strong> Settings was saved successfully!

@@ -98,7 +98,8 @@ class SettingsPage extends PageType {
 		}
 
 		Settings::saveAsync();
-		$template->assign("save_success", $save && $save_success);
+		$template->assign("save_success", ($save && $save_success));
+		$template->assign("save_faileds", ($save && !$save_success));
 
 		$template->assign("categories", $categories);
 
