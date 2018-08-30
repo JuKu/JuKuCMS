@@ -49,7 +49,7 @@ class SettingsPage extends PageType {
 			$save = false;
 		}
 
-		$template->assign("permission_to_edit_settings", /*PermissionChecker::current()->hasRight("can_edit_global_settings")*/false);
+		$template->assign("permission_to_edit_settings", PermissionChecker::current()->hasRight("can_edit_global_settings"));
 
 		foreach (SettingsCategory::listAllCategories() as $category) {
 			$category = SettingsCategory::cast($category);
