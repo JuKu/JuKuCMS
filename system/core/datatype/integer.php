@@ -72,7 +72,10 @@ class DataType_Integer extends DataType_Base {
 			}
 		}
 
-		return is_int($value);// && ($min == null || $value >= $min);
+		$val = new Validator_Int();
+		return $val->isValide($value);
+
+		//return is_int($value);// && ($min == null || $value >= $min);
 	}
 
 	protected function saveAsync($value) {
