@@ -48,7 +48,7 @@ class DataType_Integer extends DataType_Base {
 			}
 		}
 
-		return "<input type=\"number\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" step=\"1\"" . ($min != null ? " min=\"" . $min . "\"" : "") . "" . ($max != null ? " max=\"" . $max . "\"" : "") . " />" . ($unit != null ? " " . $unit : "");
+		return "<input type=\"number\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" step=\"1\"" . ($min != null ? " min=\"" . $min . "\"" : "") . "" . ($max != null ? " max=\"" . $max . "\"" : "") . " class=\"form-control\" />" . ($unit != null ? " " . $unit : "");
 	}
 
 	public function validate(string $value): bool {
