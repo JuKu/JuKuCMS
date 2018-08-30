@@ -28,7 +28,7 @@
 class DataType_Text extends DataType_Base {
 
 	public function getFormCode(): string {
-		return "<textarea name=\"" . $this->getInputName() . "\">" . $this->getValue() . "</textarea>";
+		return "<textarea name=\"" . $this->getInputName() . "\" rows=\"4\" cols=\"50\">" . $this->getValue() . "</textarea>";
 	}
 
 	public function validate(): bool {
