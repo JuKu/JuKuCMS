@@ -1,5 +1,11 @@
 <div class="row">
     <div class="col-xs-12">
+        {if $save_success == true}
+            <div class="alert alert-success">
+                <strong>Success!</strong> Settings was saved successfully!
+            </div>
+        {/if}
+
         <!-- see also https://bootsnipp.com/snippets/featured/panels-with-nav-tabs -->
         <div class="panel with-nav-tabs panel-default">
             <form action="{$form_action}" method="post" role="form">
