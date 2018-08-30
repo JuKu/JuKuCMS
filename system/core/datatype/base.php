@@ -68,7 +68,11 @@ abstract class DataType_Base {
 
 	public abstract function getFormCode () : string;
 
-	public abstract function validate () : bool;
+	public abstract function validate (string $value) : bool;
+
+	public function val () : bool {
+		return isset($_REQUEST[$this->getInputName()]) && $this->validate($_REQUEST[$this->getInputName()]);
+	}
 
 }
 

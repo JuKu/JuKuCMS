@@ -31,7 +31,7 @@ class DataType_Mail extends DataType_Base {
 		return "<input type=\"email\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" />";
 	}
 
-	public function validate(): bool {
+	public function validate(string $value): bool {
 		// TODO: Implement validate() method.
 	}
 

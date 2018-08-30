@@ -31,7 +31,7 @@ class DataType_URL extends DataType_Base {
 		return "<input type=\"text\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" required aria-required=\"true\" pattern=\"https?:\/\/.*|#.*\" placeholder=\"https://example.com\" />";
 	}
 
-	public function validate(): bool {
+	public function validate(string $value): bool {
 		// TODO: Implement validate() method.
 	}
 

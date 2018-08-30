@@ -35,7 +35,7 @@ class DataType_Boolean extends DataType_Base {
                 	</label>";
 	}
 
-	public function validate(): bool {
+	public function validate(string $value): bool {
 		// TODO: Implement validate() method.
 	}
 

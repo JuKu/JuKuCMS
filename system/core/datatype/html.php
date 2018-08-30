@@ -31,7 +31,7 @@ class DataType_HTML extends DataType_Base {
 		return "<textarea name=\"" . $this->getInputName() . "\" rows=\"4\" cols=\"50\">" . $this->getValue() . "</textarea>";
 	}
 
-	public function validate(): bool {
+	public function validate(string $value): bool {
 		// TODO: Implement validate() method.
 	}
 

@@ -40,7 +40,7 @@ class DataType_SidebarChooser extends DataType_Base {
 		return $code;
 	}
 
-	public function validate(): bool {
+	public function validate(string $value): bool {
 		// TODO: Implement validate() method.
 	}
 

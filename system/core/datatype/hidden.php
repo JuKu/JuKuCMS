@@ -32,7 +32,7 @@ class DataType_Hidden extends DataType_Base {
 		return "";
 	}
 
-	public function validate(): bool {
+	public function validate(string $value): bool {
 		//value cannot be changed
 		return true;
 	}
