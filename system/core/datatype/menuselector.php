@@ -28,7 +28,14 @@
 class DataType_MenuSelector extends DataType_Base {
 
 	public function getFormCode(): string {
-		return "";
+		$code = "<select name=\"" . $this->getInputName() . "\" class=\"form-control select2\" style=\"width: 100%;\">";
+
+		foreach (Menu::listMenuNames() as $row) {
+			$code .= "<option value=\"" . $row['menuID'] . "\"" . ($row['menuID'] === $this->getValue() ? " selected=\"selected\"" : "") . ">" . $row['title'] . "</option>";
+		}
+
+		$code .= "</select>";
+		return $code;
 	}
 
 	public function validate(): bool {

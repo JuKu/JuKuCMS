@@ -284,6 +284,18 @@ class Menu {
 		Cache::clear("menus", "menuID_" . $menuID);
 	}
 
+	public static function listMenuNames () : array {
+		if (Cache::contains("menus", "menu_names")) {
+			return Cache::get("menus", "menu_names");
+		} else {
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}menu_names` WHERE `activated` = 1; ");
+
+			Cache::put("menus", "menu_names", $rows);
+
+			return $rows;
+		}
+	}
+
 	public static function createMenu (int $id, int $menuID, string $title, string $url, int $parent = -1, string $unique_name = "", $type = "page", $permissions = array("all"), $login_required = false, string $icon = "none", int $order = 100, string $owner = "user") {
 		if (!is_array($permissions)) {
 			$permissions = array($permissions);
