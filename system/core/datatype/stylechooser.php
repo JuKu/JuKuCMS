@@ -28,7 +28,14 @@
 class DataType_StyleChooser extends DataType_Base {
 
 	public function getFormCode(): string {
-		return "";
+		$code = "<select name=\"" . $this->getInputName() . "\" class=\"form-control select2\" style=\"width: 100%;\">";
+
+		foreach (StyleController::listAllStyles() as $style) {
+			$code .= "<option value=\"" . $style . "\"" . ($style == $this->getValue() ? " selected=\"selected\"" : "") . ">" . $style . "</option>";
+		}
+
+		$code .= "</select>";
+		return $code;
 	}
 
 	public function validate(): bool {

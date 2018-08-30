@@ -186,6 +186,10 @@ class StyleController {
 		echo $template->getCode();
 	}
 
+	public static function listAllStyles () : array {
+		return $file_array = glob(STYLE_PATH . "*");
+	}
+
 }
 
 ?>
