@@ -44,7 +44,7 @@ class DataType_Integer extends DataType_Base {
 			}
 
 			if (isset($array['unit'])) {
-				$unit = (int) $array['unit'];
+				$unit = $array['unit'];
 			}
 		}
 
