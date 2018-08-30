@@ -30,7 +30,7 @@ class DataType_Username extends DataType_Base {
 	public function getFormCode(): string {
 		$regex = Settings::get("username_regex");
 
-		return "<input type=\"text\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" />";
+		return "<input type=\"text\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" class=\"form-control\" />";
 	}
 
 	public function validate(string $value): bool {
