@@ -1299,7 +1299,7 @@ Settings::create("default_main_group", 2, "Default main group ID", "ID of defaul
 Settings::create("captcha_enabled", true, "Captcha enabled", "Option, if captcha is enabled on forms", "system", "general", "DataType_Boolean");
 Settings::create("captcha_class_name", "ReCaptcha", "Captcha Classname", "Captcha Classname", "system", "general", "DataType_String");
 Settings::create("recaptcha_website_key", "", "reCAPTCHA website key", "reCAPTCHA website key, provided by google", "system", "general", "DataType_String");
-Settings::create("recaptcha_secret_key", "", "reCAPTCHA website key", "reCAPTCHA website key, provided by google", "system", "general", "DataType_String");
+Settings::create("recaptcha_secret_key", "", "reCAPTCHA secret key", "reCAPTCHA secret key, provided by google", "system", "general", "DataType_String");
 
 //cronjob
 Settings::create("cronjob_enabled", true, "Option if cronjob is enabled", "Option if cronjob is enabled", "system", "general", "DataType_Boolean");
