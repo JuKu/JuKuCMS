@@ -209,6 +209,33 @@ class Sidebar {
 		Cache::clear("sidebars");
 	}
 
+	public static function listSidebars () : array {
+		$rows = array();
+
+		if (Cache::contains("sidebars", "list")) {
+			$rows = Cache::get("sidebars", "list");
+		} else {
+			$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}sidebars`; ");
+
+			Cache::put("sidebars", "list", $rows);
+		}
+
+		$list = array();
+
+		foreach ($rows as $row) {
+			$obj = new Sidebar();
+			$obj->load($row);
+
+			$list[] = $obj;
+		}
+
+		return $list;
+	}
+
+	public static function cast (Sidebar $sidebar) : Sidebar {
+		return $sidebar;
+	}
+
 }
 
 ?>

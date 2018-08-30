@@ -1321,8 +1321,8 @@ Settings::create("oauth_expire_seconds", 86400, "oAuth key Validity", "oAuth key
 Settings::create("logging_provider", "EmptyLogProvider", "Class name of logging provider", "full class name of logging provider", "system", "logging", "DataType_String", array(), false);
 
 //sidebar
-Settings::create("default_sidebar_left", 1, "ID of default left sidebar", "ID of default left sidebar", "system", "sidebar", "DataType_Integer", array(), false);
-Settings::create("default_sidebar_right", 2, "ID of default right sidebar", "ID of default right sidebar", "system", "sidebar", "DataType_Integer", array(), false);
+Settings::create("default_sidebar_left", 1, "ID of default left sidebar", "ID of default left sidebar", "system", "sidebar", "DataType_SidebarChooser", array(), false);
+Settings::create("default_sidebar_right", 2, "ID of default right sidebar", "ID of default right sidebar", "system", "sidebar", "DataType_SidebarChooser", array(), false);
 
 $main_menuID = -1;
 $local_menuID = -1;
