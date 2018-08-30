@@ -84,7 +84,7 @@ class Settings {
 
 	public static function setAsync (string $key, $value) {
 		//only execute database query, if value was changed
-		if (isset(self::$async_save_list[$key]) || self::get($key) == $value) {
+		if (isset(self::$async_save_list[$key]) || self::get($key) != $value) {
 			self::$async_save_list[$key] = $value;
 		}
 
