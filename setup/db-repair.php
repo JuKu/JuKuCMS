@@ -1241,8 +1241,8 @@ SettingsCategory::createIfAbsent("mail", "Mail", 15, "system");
 SettingsCategory::createIfAbsent("user", "User", 16, "system");
 SettingsCategory::createIfAbsent("api", "API", 17, "system");
 SettingsCategory::createIfAbsent("logging", "Logging", 18, "system");
-SettingsCategory::createIfAbsent("tasks", "Tasks", 19, "system");
-SettingsCategory::createIfAbsent("tools", "Tools", 20, "system");
+SettingsCategory::createIfAbsent("tools", "Tools", 19, "system");
+SettingsCategory::createIfAbsent("tasks", "Tasks", 20, "system");
 
 echo "Create default global settings...<br />";
 
