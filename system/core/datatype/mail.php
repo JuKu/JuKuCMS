@@ -32,6 +32,12 @@ class DataType_Mail extends DataType_Base {
 	}
 
 	public function validate(string $value): bool {
+		$allow_empty_string = true;
+
+		if (empty($value)) {
+			return true;
+		}
+
 		return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
 	}
 
