@@ -39,6 +39,7 @@ class SettingsPage extends PageType {
 
 		$save = false;
 		$save_success = true;
+		$invalide_field = "";
 
 		if (isset($_REQUEST['option']) && $_REQUEST['option'] == "save") {
 			$save = true;
@@ -77,6 +78,7 @@ class SettingsPage extends PageType {
 						//try to validate
 						if (!$obj->val()) {
 							$save_success = false;
+							$invalide_field = $obj->getTitle();
 						} else {
 							//save object
 							$obj->save();
@@ -102,6 +104,7 @@ class SettingsPage extends PageType {
 		//set state
 		$template->assign("save_success", (boolean) ($save && $save_success));
 		$template->assign("save_failed", (boolean) ($save && !$save_success));
+		$template->assign("invalide_field", $invalide_field);
 
 		$template->assign("categories", $categories);
 

@@ -2,7 +2,7 @@
     <div class="col-xs-12">
         {if $save_failed == true}
             <div class="alert alert-danger">
-                <strong>Error!</strong> Couldn't save settings!
+                <strong>Error!</strong> Couldn't save settings, field '{$invalide_field}' is invalide!
             </div>
         {/if}
 
