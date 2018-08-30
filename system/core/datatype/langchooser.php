@@ -28,7 +28,19 @@
 class DataType_LangChooser extends DataType_Base {
 
 	public function getFormCode(): string {
-		return "";
+		$langs = Lang::listSupportedLangTokens();
+
+		//get default language
+		$default_lang = Settings::get("default_lang");
+
+		$code = "<select name=\"" . $this->getInputName() . "\">";
+
+		foreach ($langs as $lang) {
+			$code .= "<option value=\"" . $lang . "\"" . ($lang === $this->getValue() ? " selected=\"selected\"" : "") . ">" . $lang . "</option>";
+		}
+
+		$code .= "</select>";
+		return $code;
 	}
 
 	public function validate(): bool {

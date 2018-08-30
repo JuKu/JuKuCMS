@@ -28,6 +28,7 @@
 class DataType_Hidden extends DataType_Base {
 
 	public function getFormCode(): string {
+		//dont show hidden value
 		return "";
 	}
 
