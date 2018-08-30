@@ -44,6 +44,13 @@ class SettingsPage extends PageType {
 			$save = true;
 		}
 
+		//check permission
+		if (!PermissionChecker::current()->hasRight("can_edit_global_settings")) {
+			$save = false;
+		}
+
+		$template->assign("permission_to_edit_settings", PermissionChecker::current()->hasRight("can_edit_global_settings"));
+
 		foreach (SettingsCategory::listAllCategories() as $category) {
 			$category = SettingsCategory::cast($category);
 
@@ -66,12 +73,14 @@ class SettingsPage extends PageType {
 					//load instance
 					$obj->load($row, $datatype_params);
 
-					//try to validate
-					if (!$obj->val()) {
-						$save_success = false;
-					} else {
-						//save object
-						$obj->save();
+					if ($save) {
+						//try to validate
+						if (!$obj->val()) {
+							$save_success = false;
+						} else {
+							//save object
+							$obj->save();
+						}
 					}
 
 					$settings[] = array(

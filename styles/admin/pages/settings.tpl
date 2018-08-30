@@ -41,9 +41,11 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <div class="pull-right">
-                        <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> {lang}Save{/lang}</button>
-                    </div>
+                    {if $permission_to_edit_settings == true}
+                        <div class="pull-right">
+                            <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> {lang}Save{/lang}</button>
+                        </div>
+                    {/if}
 
                     <!-- <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> {lang}Discard{/lang}</button> -->
                     <br />
