@@ -28,7 +28,7 @@
 class DataType_Mail extends DataType_Base {
 
 	public function getFormCode(): string {
-		return "<input type=\"email\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" />";
+		return "<input type=\"email\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" class=\"form-control\" />";
 	}
 
 	public function validate(string $value): bool {
