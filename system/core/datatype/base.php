@@ -85,7 +85,7 @@ abstract class DataType_Base {
 		$this->saveAsync($value);
 
 		//set new value for form
-		$this->row['value'] = serialize(Settings::get($this->row['key']));
+		$this->row['value'] = serialize($value);
 	}
 
 	protected abstract function saveAsync ($value);
