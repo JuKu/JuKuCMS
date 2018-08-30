@@ -28,7 +28,7 @@
 class DataType_Integer extends DataType_Base {
 
 	public function getFormCode(): string {
-		return "";
+		return "<input type=\"number\" name=\"" . $this->getInputName() . "\" value=\"" . $this->getValue() . "\" step=\"1\" />";
 	}
 
 	public function validate(): bool {
