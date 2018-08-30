@@ -34,7 +34,7 @@ class DataType_MenuSelector extends DataType_Base {
 			$code .= "<option value=\"" . $row['menuID'] . "\"" . ($row['menuID'] == $this->getValue() ? " selected=\"selected\"" : "") . ">" . $row['title'] . "</option>";
 		}
 
-		$code .= "</select><!-- current value: " . $this->getValue() . " -->";
+		$code .= "</select>";
 		return $code;
 	}
 
