@@ -193,7 +193,7 @@ class StyleController {
 
 		foreach ($file_array as $dir) {
 			$array1 = explode("/", $dir);
-			$styles[] = $array1[count($array1)];
+			$styles[] = $array1[count($array1) - 1];
 		}
 
 		return $styles;
