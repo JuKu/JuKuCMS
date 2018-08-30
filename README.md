@@ -86,7 +86,9 @@ Some early screenshots from core, **main page**:\
 ![Screenshot Main Page](./docs/images/screenshot1.jpg)\
 \
 **Admin Area**:\
-![Admin Area Screnshot](./docs/images/screenshot2.jpg)
+![Admin Area Screnshot](./docs/images/screenshot2.jpg)\
+\
+![Admin Area Settings](./docs/images/screenshot3.jpg)
 
 ## Presentation
 
