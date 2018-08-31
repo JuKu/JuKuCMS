@@ -16,11 +16,14 @@
                     <table id="pagetable" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>Rendering engine</th>
+                            <!-- <th>Rendering engine</th>
                             <th>Browser</th>
                             <th>Platform(s)</th>
                             <th>Engine version</th>
-                            <th>CSS grade</th>
+                            <th>CSS grade</th> -->
+                            {foreach $columns column}
+                                <th>{$column}</th>
+                            {/foreach}
                         </tr>
                         </thead>
                         <tbody>
@@ -434,11 +437,14 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th>Rendering engine</th>
+                            <!-- <th>Rendering engine</th>
                             <th>Browser</th>
                             <th>Platform(s)</th>
                             <th>Engine version</th>
-                            <th>CSS grade</th>
+                            <th>CSS grade</th> -->
+                            {foreach $columns column}
+                                <th>{$column}</th>
+                            {/foreach}
                         </tr>
                         </tfoot>
                     </table>

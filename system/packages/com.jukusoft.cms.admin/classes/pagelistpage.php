@@ -32,6 +32,15 @@ class PageListPage extends PageType {
 
 		$template->assign("no_edit_permissions", (boolean) (!PermissionChecker::current()->hasRight("an_edit_all_pages") && !PermissionChecker::current()->hasRight("can_edit_own_pages")));
 
+		//set table columns
+		$template->assign("columns", array(
+			Translator::translate("ID"),
+			Translator::translate("Title"),
+			Translator::translate("Author"),
+			Translator::translate("State"),
+			Translator::translate("Actions")
+		));
+
 		return $template->getCode();
 	}
 
