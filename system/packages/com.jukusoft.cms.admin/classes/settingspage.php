@@ -111,6 +111,21 @@ class SettingsPage extends PageType {
 		return $template->getCode();
 	}
 
+	public function getFooterScripts(): string {
+		return "<script>
+		  $(function () {
+			$('#pagetable').DataTable({
+			  'paging'      : true,
+			  'lengthChange': false,
+			  'searching'   : false,
+			  'ordering'    : true,
+			  'info'        : true,
+			  'autoWidth'   : false
+			});
+		  });
+		</script>";
+	}
+
 	public function listRequiredPermissions(): array {
 		return array("can_see_global_settings", "can_edit_global_settings");
 	}
