@@ -35,6 +35,21 @@ class PageListPage extends PageType {
 		return $template->getCode();
 	}
 
+	public function getFooterScripts(): string {
+		return "<script>
+		  $(function () {
+			$('#pagetable').DataTable({
+			  'paging'      : true,
+			  'lengthChange': false,
+			  'searching'   : false,
+			  'ordering'    : true,
+			  'info'        : true,
+			  'autoWidth'   : false
+			});
+		  });
+		</script>";
+	}
+
 	public function listRequiredPermissions(): array {
 		return array("can_see_all_pages", "can_edit_all_pages");
 	}
