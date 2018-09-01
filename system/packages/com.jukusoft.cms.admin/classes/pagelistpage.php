@@ -35,11 +35,30 @@ class PageListPage extends PageType {
 		//set table columns
 		$template->assign("columns", array(
 			Translator::translate("ID"),
+			Translator::translate("Alias"),
 			Translator::translate("Title"),
 			Translator::translate("Author"),
 			Translator::translate("State"),
 			Translator::translate("Actions")
 		));
+
+		$pages = array();
+
+		//get all pages from database
+		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}pages` LEFT JOIN `{praefix}user` user ON (`{praefix}pages`.`author` = `{praefix}user`.`userID`) WHERE `{praefix}pages`.`editable` = '1'; ");
+
+		foreach ($rows as $row) {
+			$pages[] = array(
+				'id' => $row['id'],
+				'alias' => $row['alias'],
+				'title' => Translator::translateTitle($row['title']),
+				'author' => $row['username'],
+				'state' => "&nbsp;",
+				'actions' => "&nbsp;"
+			);
+		}
+
+		$template->assign("pagelist", $pages);
 
 		return $template->getCode();
 	}
