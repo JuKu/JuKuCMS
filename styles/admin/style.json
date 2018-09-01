@@ -7,7 +7,8 @@
         "dist/css/AdminLTE.min.css",
         "dist/css/skins/_all-skins.min.css",
         "style/tabs.css",
-        "style/icheck/flat/green.css"
+        "style/icheck/flat/green.css",
+        "style/tags/tags.css"
     ],
     "js": {
 
