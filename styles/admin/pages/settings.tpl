@@ -7,8 +7,13 @@
         {/if}
 
         {if $save_success == true}
-            <div class="alert alert-success">
+            <!-- <div class="alert alert-success">
                 <strong>Success!</strong> Settings was saved successfully!
+            </div> -->
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> {lang}Success{/lang}!</h4>
+                Settings was saved successfully!
             </div>
         {/if}
 
