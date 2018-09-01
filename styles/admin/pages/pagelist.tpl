@@ -44,7 +44,7 @@
                                     </td>
                                     <td>{$page.actions}
                                         {if $page.locked == true}
-                                            <button type="button" class="btn" title="Page was locked from user {$page.locked_user} at {$page.locked_timestamp}">Locked  <i class=" fa fa-lock"></i></button><!-- fa-wrench -->
+                                            <button type="button" class="btn  disabled" title="Page was locked from user {$page.locked_user} at {$page.locked_timestamp}">Locked  <i class=" fa fa-lock"></i></button><!-- fa-wrench -->
                                         {/if}
                                     </td>
                                 </tr>
