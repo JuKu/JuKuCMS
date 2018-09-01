@@ -36,7 +36,7 @@
                                           <span>Published</span>
                                           <a><i class="remove glyphicon glyphicons-check glyphicon-white"></i></a>
                                         </span> -->
-                                        <span class="label label-success">Success Label</span>
+                                        <span class="label label-success">Published</span>
 
                                     </td>
                                     <td>{$page.actions}</td>
