@@ -32,10 +32,12 @@
                                         <!-- <button type="button" class="btn btn-default btn-sm">
                                             <span class="glyphicon glyphicon-star"></span> Star
                                         </button> -->
-                                        <span class="tag label label-success">
+                                        <!-- <span class="tag label label-success">
                                           <span>Published</span>
                                           <a><i class="remove glyphicon glyphicons-check glyphicon-white"></i></a>
-                                        </span>
+                                        </span> -->
+                                        <span class="label label-success">Success Label</span>
+
                                     </td>
                                     <td>{$page.actions}</td>
 
