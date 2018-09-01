@@ -36,7 +36,7 @@
                                           <span>Published</span>
                                           <a><i class="remove glyphicon glyphicons-check glyphicon-white"></i></a>
                                         </span> -->
-                                        <span class="label label-success">Published <i class=" fa fa-cogs"></i></span>
+                                        <span class="label label-success">Published <i class=" fa fa-check-circle"></i></span>
 
                                     </td>
                                     <td>{$page.actions}</td>
