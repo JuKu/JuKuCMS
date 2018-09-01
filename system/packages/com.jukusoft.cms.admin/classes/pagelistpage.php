@@ -45,7 +45,7 @@ class PageListPage extends PageType {
 		$pages = array();
 
 		//get all pages from database
-		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}pages` LEFT JOIN `{praefix}user` user ON (`{praefix}pages`.`author` = `{praefix}user`.`userID`) WHERE `{praefix}pages`.`editable` = '1'; ");
+		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}pages` LEFT JOIN `{praefix}user` ON (`{praefix}pages`.`author` = `{praefix}user`.`userID`) WHERE `{praefix}pages`.`editable` = '1'; ");
 
 		foreach ($rows as $row) {
 			$pages[] = array(
