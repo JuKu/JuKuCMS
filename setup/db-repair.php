@@ -1534,8 +1534,9 @@ Permissions::createPermission("can_edit_own_pages", "Can edit own pages", "Can e
 Permissions::createPermission("can_edit_all_pages", "Can edit all pages", "Can edit all pages, including pages which was created by other users", "pages", "system", 4);
 Permissions::createPermission("can_publish_own_pages", "Can publish his own pages", "Can publish his own pages", "pages", "system", 5);
 Permissions::createPermission("can_publish_all_pages", "Can publish all pages", "Can publish all pages, including pages which was created by other users", "pages", "system", 6);
-Permissions::createPermission("can_delete_own_pages", "Can delete own pages", "Can delete pages which was created by user", "pages", "system", 7);
-Permissions::createPermission("can_delete_all_pages", "Can delete all pages", "Can delete all pages, including pages which was created by other users", "pages", "system", 8);
+Permissions::createPermission("can_unlock_all_pages", "Can unlock all pages", "Can unlock all pages from every user", "pages", "system", 7);
+Permissions::createPermission("can_delete_own_pages", "Can delete own pages", "Can delete pages which was created by user", "pages", "system", 8);
+Permissions::createPermission("can_delete_all_pages", "Can delete all pages", "Can delete all pages, including pages which was created by other users", "pages", "system", 9);
 
 //media permissions
 Permissions::createPermission("can_see_all_media", "Can see all media", "Can see all media files", "media", "system", 1);

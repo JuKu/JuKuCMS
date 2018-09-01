@@ -45,6 +45,7 @@ class PageListPage extends PageType {
 		$current_userID = User::current()->getID();
 		$permission_can_edit_all_pages = PermissionChecker::current()->hasRight("can_edit_all_pages");
 		$permission_can_edit_own_pages = PermissionChecker::current()->hasRight("can_edit_own_pages");
+		$permission_can_unlock_all_pages = PermissionChecker::current()->hasRight("can_unlock_all_pages");
 
 		$pages = array();
 
