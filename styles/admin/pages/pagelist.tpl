@@ -47,11 +47,11 @@
                                             {if $permission_can_unlock_all_pages == true}
                                                 <a href="{$page.unlock_url}" class="btn btn-primary" role="button" title="Unlock page">Unlock <i class=" fa fa-unlock"></i></button></a>
                                             {else}
-                                                <button type="button" class="btn  disabled" title="Page was locked from user {$page.locked_user} at {$page.locked_timestamp}">Locked  <i class=" fa fa-lock"></i></button><!-- fa-lock fa-wrench -->
+                                                <button type="button" class="btn  disabled" title="Page was locked from user {$page.locked_user} at {$page.locked_timestamp}">{lang}Locked{/lang}  <i class=" fa fa-lock"></i></button><!-- fa-lock fa-wrench -->
                                             {/if}
                                         {else}
                                             <!-- show action buttons -->
-                                            {if $page.can_delete == true}<a href="{$page.delete_url}" class="btn btn-danger" role="button" title="Delete page">Delete <i class=" fa fa-trash"></i></button></a>{/if}
+                                            {if $page.can_delete == true}<a href="{$page.delete_url}" class="btn btn-danger" role="button" title="Delete page">{lang}Delete{/lang} <i class=" fa fa-trash"></i></button></a>{/if}
                                         {/if}
                                     </td>
                                 </tr>
