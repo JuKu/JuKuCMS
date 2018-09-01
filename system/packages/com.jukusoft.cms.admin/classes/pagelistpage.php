@@ -42,6 +42,8 @@ class PageListPage extends PageType {
 			Translator::translate("Actions")
 		));
 
+		$current_userID = User::current()->getID();
+
 		$pages = array();
 
 		//get all pages from database
@@ -49,6 +51,7 @@ class PageListPage extends PageType {
 
 		foreach ($rows as $row) {
 			$is_author_online = $row['online'] == 1;
+			$is_own_page = $row['author'] == $current_userID;
 
 			$pages[] = array(
 				'id' => $row['id'],
@@ -58,7 +61,8 @@ class PageListPage extends PageType {
 				'state' => "&nbsp;",
 				'actions' => "&nbsp;",
 				'online' => $is_author_online,
-				'url' => DomainUtils::generateURL($row['alias'])
+				'url' => DomainUtils::generateURL($row['alias']),
+				'own_page' => $is_own_page
 			);
 		}
 
