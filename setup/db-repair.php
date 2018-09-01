@@ -1425,40 +1425,40 @@ Menu::createMenu(201, $main_menuID, "lang_Imprint", "imprint", -1, "imprint", "p
 echo "Create default pages if absent...<br />";
 
 Page::createIfAbsent("home", "Home", "IndexPage", "Home page", "/");
-Page::createIfAbsent("error404", "Error 404", "Error404Page", "Error 404 - Couldn't find this page.", "/", -1, -1, -1, false);
-Page::createIfAbsent("login", "Login", "LoginPage", "", "/", -1, -1, -1, false);
-Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/", -1, -1, -1, false);
-Page::createIfAbsent("register", "Registration", "RegisterPage", "", "/", -1, -1, -1, false);
+Page::createIfAbsent("error404", "Error 404", "Error404Page", "Error 404 - Couldn't find this page.", "/", -1, -1, -1, false, true, true, false);
+Page::createIfAbsent("login", "Login", "LoginPage", "", "/", -1, -1, -1, false, true, true, false);
+Page::createIfAbsent("logout", "Logout", "LogoutPage", "", "/", -1, -1, -1, false, true, false);
+Page::createIfAbsent("register", "Registration", "RegisterPage", "", "/", -1, -1, -1, false, true, false, false);
 
 //only at installation process
-Page::createIfAbsent("privacy-policy", "lang_Privacy Policy", "HTMLPage", "Private Policy - Add privaty policy here", "/", -1, -1, -1, false);
-Page::createIfAbsent("imprint", "lang_Imprint", "HTMLPage", "Imprint - Add contact data here", "/", -1, -1, -1, false);
+Page::createIfAbsent("privacy-policy", "lang_Privacy Policy", "HTMLPage", "Private Policy - Add privaty policy here", "/", -1, -1, -1, false, true, true, true);
+Page::createIfAbsent("imprint", "lang_Imprint", "HTMLPage", "Imprint - Add contact data here", "/", -1, -1, -1, false, true, true, false);
 
-Page::createIfAbsent("user/verify_mail", "Mail Verification", "MailVerifyPage", "", "/user/", -1, -1, -1, false, true, false);
+Page::createIfAbsent("user/verify_mail", "Mail Verification", "MailVerifyPage", "", "/user/", -1, -1, -1, false, true, false, false);
 
 //create robots.txt page
-Page::createIfAbsent("robots.txt", "Robots.txt", "RobotsPage", "", "/", -1, -1, -1, false, true, false);
+Page::createIfAbsent("robots.txt", "Robots.txt", "RobotsPage", "", "/", -1, -1, -1, false, true, false, false);
 
 //create sitemap page
-Page::createIfAbsent("sitemap.xml", "Sitemap", "SitemapPage", "", "/", -1, -1, -1, false, true, false);
+Page::createIfAbsent("sitemap.xml", "Sitemap", "SitemapPage", "", "/", -1, -1, -1, false, true, false, false);
 
 //create forbidden pages
-Page::createIfAbsent("error403", "Error 403", "Error403Page", "Error 403 - Forbidden!<br /> You dont have permissions to access this page or folder. Maybe you have to login.", "/", -1, -1, -1, false);
+Page::createIfAbsent("error403", "Error 403", "Error403Page", "Error 403 - Forbidden!<br /> You dont have permissions to access this page or folder. Maybe you have to login.", "/", -1, -1, -1, false, true, true, false);
 
 echo "Create admin pages if absent...<br />";
-Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/admin/", -1, -1, -1, false, true, false);
-Page::createIfAbsent("admin/plugins", "lang_Plugins", "PluginsPage", "", "/admin/", -1, -1, -1, false, true, false);
-Page::createIfAbsent("admin/plugin_installer", "lang_Plugin Installer", "PluginInstallerPage", "", "/admin/", -1, -1, -1, false, true, false);
-Page::createIfAbsent("admin/change_password", "lang_Change password", "ChangePasswordPage", "", "/admin/", -1, -1, -1, false, true, false);
-Page::createIfAbsent("admin/sendmail", "lang_Send Mail", "SendMailPage", "", "/admin/", -1, -1, -1, false, true, false);
-Page::createIfAbsent("admin/clearcache", "lang_Clear cache", "ClearCachePage", "", "/admin/", -1, -1, -1, false, true, false);
+Page::createIfAbsent("admin/home", "Admin Dashboard", "Admin_Dashboard", "", "/admin/", -1, -1, -1, false, true, false, false);
+Page::createIfAbsent("admin/plugins", "lang_Plugins", "PluginsPage", "", "/admin/", -1, -1, -1, false, true, false, false);
+Page::createIfAbsent("admin/plugin_installer", "lang_Plugin Installer", "PluginInstallerPage", "", "/admin/", -1, -1, -1, false, true, false, false);
+Page::createIfAbsent("admin/change_password", "lang_Change password", "ChangePasswordPage", "", "/admin/", -1, -1, -1, false, true, false, false);
+Page::createIfAbsent("admin/sendmail", "lang_Send Mail", "SendMailPage", "", "/admin/", -1, -1, -1, false, true, false, false);
+Page::createIfAbsent("admin/clearcache", "lang_Clear cache", "ClearCachePage", "", "/admin/", -1, -1, -1, false, true, false, false);
 
 //create some tool pages
-Page::createIfAbsent("admin/phpinfo", "phpinfo()", "PHPInfoPage", "", "/admin/", -1, -1, -1, false, true, false);
+Page::createIfAbsent("admin/phpinfo", "phpinfo()", "PHPInfoPage", "", "/admin/", -1, -1, -1, false, true, false, false);
 
 //admin pages
-Page::createIfAbsent("admin/settings", "Settings", "SettingsPage", "", "/admin/", -1, -1, -1, false, true, false);
-Page::createIfAbsent("admin/pages", "Pages", "PageListPage", "", "/admin/", -1, -1, -1, false, true, false);
+Page::createIfAbsent("admin/settings", "Settings", "SettingsPage", "", "/admin/", -1, -1, -1, false, true, false, false);
+Page::createIfAbsent("admin/pages", "Pages", "PageListPage", "", "/admin/", -1, -1, -1, false, true, false, false);
 
 echo "Create default page types if absent...<br />";
 

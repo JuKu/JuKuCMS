@@ -207,7 +207,7 @@ class Page {
 		//TODO: add code here
 	}
 
-	public static function createIfAbsent (string $alias, string $title, string $page_type, string $content = "", string $folder = "/", int $globalMenu = -1, int $localMenu = -1, int $parentID = -1, bool $sitemap = true, bool $published = true, bool $editable = true, string $author = "system") : int {
+	public static function createIfAbsent (string $alias, string $title, string $page_type, string $content = "", string $folder = "/", int $globalMenu = -1, int $localMenu = -1, int $parentID = -1, bool $sitemap = true, bool $published = true, bool $editable = true, bool $deletable = true, string $author = "system") : int {
 		//throw event
 		Events::throwEvent("create_page", array(
 			'alias' => &$alias,
@@ -237,10 +237,10 @@ class Page {
 		}
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}pages` (
-			`id`, `alias`, `title`, `content`, `parent`, `folder`, `global_menu`, `local_menu`, `page_type`, `design`, `sitemap`, `published`, `version`, `last_update`, `created`, `editable`, `author`, `activated`
+			`id`, `alias`, `title`, `content`, `parent`, `folder`, `global_menu`, `local_menu`, `page_type`, `design`, `sitemap`, `published`, `version`, `last_update`, `created`, `editable`, `deletable`, `author`, `activated`
 		) VALUES (
-			NULL, :alias, :title, :content, :parent, :folder, :globalMenu, :localMenu, :pageType, 'none', :sitemap, :published, '1', '0000-00-00 00:00:00', CURRENT_TIMESTAMP, :editable, :author, '1'
-		) ON DUPLICATE KEY UPDATE `alias` = :alias; ", array(
+			NULL, :alias, :title, :content, :parent, :folder, :globalMenu, :localMenu, :pageType, 'none', :sitemap, :published, '1', '0000-00-00 00:00:00', CURRENT_TIMESTAMP, :editable, :deletable, :author, '1'
+		) ON DUPLICATE KEY UPDATE `alias` = :alias, `deletable` = :deletable; ", array(
 			'alias' => $alias,
 			'title' => $title,
 			'content' => $content,
@@ -252,6 +252,7 @@ class Page {
 			'sitemap' => ($sitemap ? 1 : 0),
 			'published' => ($published ? 1 : 0),
 			'editable' => ($editable ? 1 : 0),
+			'deletable' => ($deletable ? 1 : 0),
 			'author' => $author
 		));
 
@@ -360,7 +361,7 @@ class Page {
 	}
 
 	public static function unlockPage (int $pageID) {
-		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `locked_by` = -1 WHERE `id` = :pageID; ", array(
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `locked_by` WHERE `id` = :pageID; ", array(
 			'pageID' => $pageID
 		));
 	}

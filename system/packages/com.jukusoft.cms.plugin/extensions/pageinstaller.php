@@ -43,7 +43,7 @@ class PageInstaller extends PluginInstaller_Plugin {
 				$editable = (isset($page['editable']) ? boolval($page['editable']) : true);
 				$author = (isset($page['author']) ? $page['author'] : "System");
 
-				Page::createIfAbsent($alias, $title, $pagetype, $content, $folder, $global_menu, $local_menu, $parentID, $sitemap, $published, $editable, $author);
+				Page::createIfAbsent($alias, $title, $pagetype, $content, $folder, $global_menu, $local_menu, $parentID, $sitemap, $published, $editable, false, $author);
 			}
 		}
 
