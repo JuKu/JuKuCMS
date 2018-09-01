@@ -240,7 +240,7 @@ class Page {
 			`id`, `alias`, `title`, `content`, `parent`, `folder`, `global_menu`, `local_menu`, `page_type`, `design`, `sitemap`, `published`, `version`, `last_update`, `created`, `editable`, `deletable`, `author`, `activated`
 		) VALUES (
 			NULL, :alias, :title, :content, :parent, :folder, :globalMenu, :localMenu, :pageType, 'none', :sitemap, :published, '1', '0000-00-00 00:00:00', CURRENT_TIMESTAMP, :editable, :deletable, :author, '1'
-		) ON DUPLICATE KEY UPDATE `alias` = :alias, `deletable` = :deletable; ", array(
+		) ON DUPLICATE KEY UPDATE `alias` = :alias, `editable` = :editable, `deletable` = :deletable; ", array(
 			'alias' => $alias,
 			'title' => $title,
 			'content' => $content,
