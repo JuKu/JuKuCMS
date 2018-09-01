@@ -45,7 +45,7 @@
                                     <td>
                                         {if $page.locked == true}
                                             {if $permission_can_unlock_all_pages == true}
-                                                <a href="{$page.unlock_url}" class="btn btn-primary" role="button">Unlock <i class=" fa fa-unlock"></i></button></a>
+                                                <a href="{$page.unlock_url}" class="btn btn-primary" role="button" title="Unlock page">Unlock <i class=" fa fa-unlock"></i></button></a>
                                             {else}
                                                 <button type="button" class="btn  disabled" title="Page was locked from user {$page.locked_user} at {$page.locked_timestamp}">Locked  <i class=" fa fa-lock"></i></button><!-- fa-lock fa-wrench -->
                                             {/if}
