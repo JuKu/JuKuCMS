@@ -57,7 +57,8 @@ class PageListPage extends PageType {
 				'author' => $row['username'],
 				'state' => "&nbsp;",
 				'actions' => "&nbsp;",
-				'online' => $is_author_online
+				'online' => $is_author_online,
+				'url' => DomainUtils::generateURL($row['alias'])
 			);
 		}
 

@@ -25,8 +25,8 @@
                             {foreach $pagelist page}
                                 <tr>
                                     <td>{$page.id}</td>
-                                    <td>{$page.alias}</td>
-                                    <td><span style="color: #0d6aad;">{$page.title}</span></td>
+                                    <td><a href="{$page.url}" target="_blank"><span style="color: #0d6aad;">{$page.alias}</span></a></td>
+                                    <td><b>{$page.title}</b></td>
                                     <td><span style="color: {if online == true}#006E2E{else}#00a7d0{/if}; ">{$page.author}</span></td>
                                     <td>{$page.state}</td>
                                     <td>{$page.actions}</td>
