@@ -39,9 +39,8 @@
                                         {if $page.published == true}
                                             <span class="label label-success">Published <i class=" fa fa-check-circle"></i></span>
                                         {else}
-                                            <span class="label label-danger">Draft <i class=" fa fa-edit"></i></span>
+                                            <span class="label label-danger">Draft <i class=" fa fa-pen-square"></i></span>
                                         {/if}
-
                                     </td>
                                     <td>{$page.actions}</td>
 
