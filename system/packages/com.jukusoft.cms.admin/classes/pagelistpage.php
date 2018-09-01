@@ -75,6 +75,8 @@ class PageListPage extends PageType {
 			);
 		}
 
+		$template->assign("permission_can_unlock_all_pages", $permission_can_unlock_all_pages);
+
 		$template->assign("pagelist", $pages);
 
 		return $template->getCode();
