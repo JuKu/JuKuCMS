@@ -67,7 +67,10 @@ class PageListPage extends PageType {
 				'url' => DomainUtils::generateURL($row['alias']),
 				'own_page' => (boolean) $is_own_page,
 				'editable' => (boolean) $editable,
-				'published' => $row['published'] == 1
+				'published' => $row['published'] == 1,
+				'locked' => $row['locked_by'] != -1,
+				'locked_user' => $row['locked_by'],
+				'locked_timestamp' => $row['locked_timestamp']
 			);
 		}
 

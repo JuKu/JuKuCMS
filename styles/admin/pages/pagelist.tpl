@@ -42,8 +42,11 @@
                                             <span class="label label-danger" title="Page wasn't published yet">Draft <i class=" fa fa-pen-square"></i></span>
                                         {/if}
                                     </td>
-                                    <td>{$page.actions}</td>
-
+                                    <td>{$page.actions}
+                                        {if $page.locked == true}
+                                            <button type="button" class="btn" title="Page was locked from user {page.locked_user} at {page.locked_timestamp}">Locked  <i class=" fa fa-lock"></i></button><!-- fa-wrench -->
+                                        {/if}
+                                    </td>
                                 </tr>
                             {/foreach}
                         </tbody>
