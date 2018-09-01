@@ -37,9 +37,9 @@
                                           <a><i class="remove glyphicon glyphicons-check glyphicon-white"></i></a>
                                         </span> -->
                                         {if $page.published == true}
-                                            <span class="label label-success">Published <i class=" fa fa-check-circle"></i></span>
+                                            <span class="label label-success" title="Page was published">Published <i class=" fa fa-check-circle"></i></span>
                                         {else}
-                                            <span class="label label-danger">Draft <i class=" fa fa-pen-square"></i></span>
+                                            <span class="label label-danger" title="Page wasn't published yet">Draft <i class=" fa fa-pen-square"></i></span>
                                         {/if}
                                     </td>
                                     <td>{$page.actions}</td>
