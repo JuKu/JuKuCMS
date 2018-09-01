@@ -46,6 +46,8 @@ class PageListPage extends PageType {
 		$permission_can_edit_all_pages = PermissionChecker::current()->hasRight("can_edit_all_pages");
 		$permission_can_edit_own_pages = PermissionChecker::current()->hasRight("can_edit_own_pages");
 		$permission_can_unlock_all_pages = PermissionChecker::current()->hasRight("can_unlock_all_pages");
+		$permission_can_delete_own_pages = PermissionChecker::current()->hasRight("can_delete_own_pages");
+		$permission_can_delete_all_pages = PermissionChecker::current()->hasRight("can_delete_all_pages");
 
 		if (isset($_REQUEST['unlock']) && $permission_can_unlock_all_pages) {
 			$pageID = (int) $_REQUEST['unlock'];
@@ -77,7 +79,9 @@ class PageListPage extends PageType {
 				'locked' => $row['locked_by'] != -1,
 				'locked_user' => $row['locked_by'],
 				'locked_timestamp' => $row['locked_timestamp'],
-				'unlock_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("unlock" => $row['id']))
+				'unlock_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("unlock" => $row['id'])),
+				'can_delete' => ($permission_can_delete_all_pages || ($permission_can_delete_own_pages && $is_own_page)),
+				'delete_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("delete" => $row['id']))
 			);
 		}
 
