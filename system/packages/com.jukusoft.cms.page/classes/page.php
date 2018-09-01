@@ -352,6 +352,19 @@ class Page {
 		return $row['id'];
 	}
 
+	public static function lockPage (int $pageID, int $userID) {
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `locked_by` = :userID, `locked_timestamp` = CURRENT_TIMESTAMP WHERE `id` = :pageID; ", array(
+			'userID' => $userID,
+			'pageID' => $pageID
+		));
+	}
+
+	public static function unlockPage (int $pageID) {
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `locked_by` = -1 WHERE `id` = :pageID; ", array(
+			'pageID' => $pageID
+		));
+	}
+
 }
 
 ?>

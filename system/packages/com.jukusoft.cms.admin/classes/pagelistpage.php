@@ -47,6 +47,11 @@ class PageListPage extends PageType {
 		$permission_can_edit_own_pages = PermissionChecker::current()->hasRight("can_edit_own_pages");
 		$permission_can_unlock_all_pages = PermissionChecker::current()->hasRight("can_unlock_all_pages");
 
+		if (isset($_REQUEST['unlock']) && $permission_can_unlock_all_pages) {
+			$pageID = (int) $_REQUEST['unlock'];
+			Page::unlockPage($pageID);
+		}
+
 		$pages = array();
 
 		//get all pages from database
