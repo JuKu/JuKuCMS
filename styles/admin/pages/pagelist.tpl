@@ -42,9 +42,16 @@
                                             <span class="label label-danger" title="Page wasn't published yet">Draft <i class=" fa fa-pen-square"></i></span>
                                         {/if}
                                     </td>
-                                    <td>{$page.actions}
+                                    <td>
                                         {if $page.locked == true}
-                                            <button type="button" class="btn  disabled" title="Page was locked from user {$page.locked_user} at {$page.locked_timestamp}">Locked  <i class=" fa fa-lock"></i></button><!-- fa-lock fa-wrench -->
+                                            {if $permission_can_unlock_all_pages == true}
+                                                <a href="{$page.unlock_url}" class="btn btn-primary" role="button">Unlock <i class=" fa fa-unlock"></i></button></a>
+                                            {else}
+                                                <button type="button" class="btn  disabled" title="Page was locked from user {$page.locked_user} at {$page.locked_timestamp}">Locked  <i class=" fa fa-lock"></i></button><!-- fa-lock fa-wrench -->
+                                            {/if}
+                                        {else}
+                                            <!-- show action buttons -->
+                                            {$page.actions}
                                         {/if}
                                     </td>
                                 </tr>

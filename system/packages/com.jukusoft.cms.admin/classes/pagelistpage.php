@@ -71,7 +71,8 @@ class PageListPage extends PageType {
 				'published' => $row['published'] == 1,
 				'locked' => $row['locked_by'] != -1,
 				'locked_user' => $row['locked_by'],
-				'locked_timestamp' => $row['locked_timestamp']
+				'locked_timestamp' => $row['locked_timestamp'],
+				'unlock_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("unlock" => $row['id']))
 			);
 		}
 
