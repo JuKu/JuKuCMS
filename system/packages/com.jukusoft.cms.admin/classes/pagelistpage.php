@@ -43,6 +43,8 @@ class PageListPage extends PageType {
 		));
 
 		$current_userID = User::current()->getID();
+		$permission_can_edit_all_pages = PermissionChecker::current()->hasRight("can_edit_all_pages");
+		$permission_can_edit_own_pages = PermissionChecker::current()->hasRight("can_edit_own_pages");
 
 		$pages = array();
 
@@ -52,6 +54,7 @@ class PageListPage extends PageType {
 		foreach ($rows as $row) {
 			$is_author_online = $row['online'] == 1;
 			$is_own_page = $row['author'] == $current_userID;
+			$editable = $permission_can_edit_all_pages || ($permission_can_edit_own_pages && $is_own_page);
 
 			$pages[] = array(
 				'id' => $row['id'],
@@ -60,9 +63,10 @@ class PageListPage extends PageType {
 				'author' => $row['username'],
 				'state' => "&nbsp;",
 				'actions' => "&nbsp;",
-				'online' => $is_author_online,
+				'user_online' => (boolean) $is_author_online,
 				'url' => DomainUtils::generateURL($row['alias']),
-				'own_page' => $is_own_page
+				'own_page' => (boolean) $is_own_page,
+				'editable' => (boolean) $editable
 			);
 		}
 

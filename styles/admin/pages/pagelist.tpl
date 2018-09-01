@@ -27,7 +27,7 @@
                                     <td>{$page.id}</td>
                                     <td><a href="{$page.url}" target="_blank"><span style="color: #0d6aad;">{$page.alias}</span></a></td>
                                     <td><b style="color: #3F4C6B; ">{$page.title}</b></td>
-                                    <td><span style="color: {if online == true}#006E2E{else}#00a7d0{/if}; " title="{if online == true}User is online{else}User is offline{/if}">{$page.author}</span></td>
+                                    <td><span style="color: {if $page.user_online == true}#006E2E{else}#00a7d0{/if}; " title="{if $page.user_online == true}User is online{else}User is offline{/if}">{$page.author}</span></td>
                                     <td>{$page.state}</td>
                                     <td>{$page.actions}</td>
 
