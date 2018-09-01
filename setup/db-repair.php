@@ -424,7 +424,7 @@ $table->addInt("version", 10, true, false, 1);
 $table->addTimestamp("last_update", true, "0000-00-00 00:00:00", true);
 $table->addTimestamp("created", true, "0000-00-00 00:00:00", false);
 $table->addInt("editable", 10, true, false, 1);
-//$table->addInt("deletable", 10, true, false, 1);
+$table->addInt("deletable", 10, true, false, 1);
 $table->addInt("author", 10, true, false, -1);
 $table->addVarchar("can_see_permissions", 255, true, "none");
 $table->addVarchar("template", 255, true, "none");
