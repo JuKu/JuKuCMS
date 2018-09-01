@@ -81,7 +81,7 @@ class PageListPage extends PageType {
 				'locked_timestamp' => $row['locked_timestamp'],
 				'unlock_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("unlock" => $row['id'])),
 				'can_edit' => ($permission_can_edit_all_pages || ($permission_can_edit_own_pages && $is_own_page)) && $row['editable'] == 1,
-				'edit_url' => DomainUtils::generateURL("admin/page_edit", array("edit" => $row['id'])),
+				'edit_url' => DomainUtils::generateURL("admin/edit_page", array("edit" => $row['id'])),
 				'can_delete' => ($permission_can_delete_all_pages || ($permission_can_delete_own_pages && $is_own_page)) && $row['deletable'] == 1,
 				'delete_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("delete" => $row['id']))
 			);
