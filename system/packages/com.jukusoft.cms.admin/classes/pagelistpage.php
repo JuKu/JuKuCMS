@@ -61,7 +61,7 @@ class PageListPage extends PageType {
 				'alias' => $row['alias'],
 				'title' => Translator::translateTitle($row['title']),
 				'author' => $row['username'],
-				'state' => "&nbsp;",
+				'state' => ($row['published'] == 1 ? "Published" : "Draft"),
 				'actions' => "&nbsp;",
 				'user_online' => (boolean) $is_author_online,
 				'url' => DomainUtils::generateURL($row['alias']),
