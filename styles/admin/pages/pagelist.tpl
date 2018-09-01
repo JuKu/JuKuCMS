@@ -51,7 +51,7 @@
                                             {/if}
                                         {else}
                                             <!-- show action buttons -->
-                                            <a href="{$page.delete_url}" class="btn btn-danger" role="button" title="Delete page">Delete <i class=" fa fa-trash"></i></button></a>
+                                            {if $page.can_delete == true}<a href="{$page.delete_url}" class="btn btn-danger" role="button" title="Delete page">Delete <i class=" fa fa-trash"></i></button></a>{/if}
                                         {/if}
                                     </td>
                                 </tr>
