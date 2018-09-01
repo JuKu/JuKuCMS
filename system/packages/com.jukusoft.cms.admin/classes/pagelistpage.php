@@ -66,7 +66,8 @@ class PageListPage extends PageType {
 				'user_online' => (boolean) $is_author_online,
 				'url' => DomainUtils::generateURL($row['alias']),
 				'own_page' => (boolean) $is_own_page,
-				'editable' => (boolean) $editable
+				'editable' => (boolean) $editable,
+				'published' => $row['published'] == 1
 			);
 		}
 
