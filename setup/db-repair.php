@@ -433,6 +433,8 @@ $table->addVarchar("meta_description", 600, true, "");
 $table->addVarchar("meta_keywords", 255, true, "");
 $table->addVarchar("meta_robots", 255, true, "");//none means not set
 $table->addVarchar("meta_canonicals", 255, true, "");
+$table->addInt("locked_by", 10, true, false, -1);
+$table->addTimestamp("locked_timestamp", true, "0000-00-00 00:00:00");
 $table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
