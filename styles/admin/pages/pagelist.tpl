@@ -51,6 +51,7 @@
                                             {/if}
                                         {else}
                                             <!-- show action buttons -->
+                                            {if $page.can_edit == true}<a href="{$page.edit_url}" class="btn btn-warning" role="button" title="Edit page">{lang}Edit{/lang} <i class=" fa fa-edit"></i></button></a>{/if}
                                             {if $page.can_delete == true}<a href="{$page.delete_url}" class="btn btn-danger" role="button" title="Delete page">{lang}Delete{/lang} <i class=" fa fa-trash"></i></button></a>{/if}
                                         {/if}
                                     </td>
