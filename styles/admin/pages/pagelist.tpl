@@ -50,7 +50,7 @@
                                                 <button type="button" class="btn  disabled" title="Page was locked from user {$page.locked_user} at {$page.locked_timestamp}">{lang}Locked{/lang}  <i class=" fa fa-lock"></i></button><!-- fa-lock fa-wrench -->
                                             {/if}
                                         {else}
-                                            <!-- show action buttons -->
+                                            <!-- action buttons -->
                                             {if $page.can_edit == true}<a href="{$page.edit_url}" class="btn btn-warning" role="button" title="Edit page">{lang}Edit{/lang} <i class=" fa fa-edit"></i></button></a>{/if}
                                             {if $page.can_delete == true}<a href="{$page.delete_url}" class="btn btn-danger" role="button" title="Delete page">{lang}Delete{/lang} <i class=" fa fa-trash"></i></button></a>{/if}
                                         {/if}
