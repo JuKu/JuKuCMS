@@ -26,7 +26,7 @@
                                 <tr>
                                     <td>{$page.id}</td>
                                     <td>{$page.alias}</td>
-                                    <td>{$page.title}</td>
+                                    <td><span style="color: #0d6aad;">{$page.title}</span></td>
                                     <td><span style="color: {if online == true}#006E2E{else}#00a7d0{/if}; ">{$page.author}</span></td>
                                     <td>{$page.state}</td>
                                     <td>{$page.actions}</td>
