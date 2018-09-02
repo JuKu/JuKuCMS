@@ -39,7 +39,7 @@ class CreatePagePage extends PageType {
 		$page_types_rows = PageType::listPageTypes();
 		$page_types = array();
 
-		foreach ($page_types as $row) {
+		foreach ($page_types_rows as $row) {
 			$page_types[] = array(
 				'title' => htmlentities($row['title']),
 				'class_name' => $row['page_type']
