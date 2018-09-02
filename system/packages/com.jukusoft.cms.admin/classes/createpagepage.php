@@ -64,7 +64,7 @@ class CreatePagePage extends PageType {
 		//set menus
 		$menu_names = array();
 
-		foreach (Menu::listMenuNaes() as $row) {
+		foreach (Menu::listMenuNames() as $row) {
 			$menu_names[] = array(
 				'id' => $row['menuID'],
 				'title' => $row['title']
