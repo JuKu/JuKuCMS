@@ -61,6 +61,18 @@ class CreatePagePage extends PageType {
 
 		$template->assign("sidebars", $sidebars);
 
+		//set menus
+		$menu_names = array();
+
+		foreach (Menu::listMenuNaes() as $row) {
+			$menu_names[] = array(
+				'id' => $row['menuID'],
+				'title' => $row['title']
+			);
+		}
+
+		$template->assign("menus", $menu_names);
+
 		return $template->getCode();
 	}
 

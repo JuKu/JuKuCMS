@@ -45,6 +45,43 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
+
+            <!-- menu selection -->
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{lang}Menus{/lang}</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="inputGlobalMenu" class="col-sm-2 control-label">Global Menu</label>
+
+                        <div class="col-sm-10">
+                            <select name="global_menu" class="form-control" id="inputGlobalMenu">
+                                <option value="-1" selected="selected">Default global menu</option>
+                                {foreach $menus menu}
+                                    <option value="{$menu.id}">{$menu.title}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLocalMenu" class="col-sm-2 control-label">Local Menu</label>
+
+                        <div class="col-sm-10">
+                            <select name="local_menu" class="form-control" id="inputLocalMenu">
+                                <option value="-1" selected="selected">Default local menu</option>
+                                {foreach $menus menu}
+                                    <option value="{$menu.id}">{$menu.title}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
         </div>
         <!--/.col (left) -->
 
