@@ -99,7 +99,7 @@
 
                         <div class="col-sm-10">
                             <select name="left_sidebar" class="form-control" id="inputLeftSidebar">
-                                <option value="-1" selected="selected">Default</option>
+                                <option value="-1" selected="selected">Default left sidebar</option>
                                 {foreach $sidebars sidebar}
                                     <option value="{$sidebar.id}">{$sidebar.title}</option>
                                 {/foreach}
@@ -111,7 +111,7 @@
 
                         <div class="col-sm-10">
                             <select name="right_sidebar" class="form-control" id="inputRightSidebar">
-                                <option value="-1" selected="selected">Default</option>
+                                <option value="-1" selected="selected">Default right sidebar</option>
                                 {foreach $sidebars sidebar}
                                     <option value="{$sidebar.id}">{$sidebar.title}</option>
                                 {/foreach}
