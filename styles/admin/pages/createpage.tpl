@@ -30,6 +30,17 @@
                             <input type="text" class="form-control" id="inputTitle" placeholder="My page title">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="inputPageType" class="col-sm-2 control-label">PageType</label>
+
+                        <div class="col-sm-10">
+                            <select name="pagetype" class="form-control" id="inputPageType">
+                                {foreach $pagetypes $pagetype}
+                                    <option value="{$pagetype.class_name}">{$pagetype.title}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
                     <!-- <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">

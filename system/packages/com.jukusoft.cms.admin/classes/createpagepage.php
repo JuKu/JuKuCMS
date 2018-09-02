@@ -33,6 +33,21 @@ class CreatePagePage extends PageType {
 		//set form action url
 		$template->assign("action_url", DomainUtils::generateURL($this->getPage()->getAlias()));
 
+		//TODO: list folders
+
+		//list page types
+		$page_types_rows = PageType::listPageTypes();
+		$page_types = array();
+
+		foreach ($page_types as $row) {
+			$page_types[] = array(
+				'title' => htmlentities($row['title']),
+				'class_name' => $row['page_type']
+			);
+		}
+
+		$template->assign("page_types", $page_types);
+
 		return $template->getCode();
 	}
 
