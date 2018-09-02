@@ -51,11 +51,16 @@
                     </div>
                 </div>
                 <!-- /.box-body -->
+                <div class="box-footer">
+                    <!-- <button type="submit" class="btn btn-default">Cancel</button> -->
+                    <button type="submit" class="btn btn-info btn-primary">{lang}Create Page{/lang}</button>
+                </div>
+                <!-- /.box-footer -->
             </div>
             <!-- /.box -->
 
             <!-- menu selection -->
-            <div class="box box-success">
+            {* <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title">{lang}Menus{/lang}</h3>
                 </div>
@@ -89,12 +94,12 @@
                 </div>
                 <!-- /.box-body -->
             </div>
-            <!-- /.box -->
+            <!-- /.box -->*}
         </div>
         <!--/.col (left) -->
 
         <!-- right column -->
-        <div class="col-md-6">
+        {* <div class="col-md-6">
             <!-- Horizontal Form -->
             <div class="box box-info">
                 <div class="box-header with-border">
@@ -174,7 +179,7 @@
             </div>
             <!-- /.box -->
         </div>
-        <!--/.col (right) -->
+        <!--/.col (right) -->*}
     </form>
 </div>
 <!-- /.row -->
