@@ -46,7 +46,7 @@ class CreatePagePage extends PageType {
 			);
 		}
 
-		$template->assign("page_types", $page_types);
+		$template->assign("pagetypes", $page_types);
 
 		return $template->getCode();
 	}
