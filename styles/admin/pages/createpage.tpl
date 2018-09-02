@@ -14,7 +14,7 @@
                         <label for="inputFolder" class="col-sm-2 control-label">Alias</label>
 
                         <div class="col-sm-5">
-                            <select name="folder" id="inputFolder">
+                            <select name="folder" class="form-control" id="inputFolder">
                                 <option>/</option>
                                 <option>/admin/</option>
                             </select>
