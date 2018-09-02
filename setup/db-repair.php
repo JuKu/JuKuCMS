@@ -1380,7 +1380,7 @@ Menu::createMenu(5, $admin_menuID, "Website", "", 2, "", "page", "none", false, 
 Menu::createMenu(6, $admin_menuID, "Updates", "admin/update", 2, "updates", "page", array("can_see_cms_version", "can_update_cms"), true, "fa fa-download", 4, "system");
 Menu::createMenu(7, $admin_menuID, "Posts", "#", -1, "posts", "no_link", array("can_see_all_pages"), true, "fa fa-list-alt", 2, "system");
 Menu::createMenu(8, $admin_menuID, "Pages", "admin/pages", -1, "pages", "page", array("can_see_all_pages"), true, "fa fa-file", 3, "system");
-Menu::createMenu(9, $admin_menuID, "All Pages", "admin/pages", 8, "all_pages", "page", array("can_see_all_pages"), true, "fa fa-circle", 1, "system");
+Menu::createMenu(9, $admin_menuID, "All Pages", "admin/pages", 8, "all_pages", "page", array("can_see_all_pages"), true, "fa fa-list", 1, "system");
 Menu::createMenu(10, $admin_menuID, "Create page", "admin/create_page", 8, "create_page", "page", array("can_create_pages"), true, "fa fa-plus-circle", 2, "system");
 Menu::createMenu(11, $admin_menuID, "Media", "admin/media", -1, "media", "page", array("can_see_all_media", "can_upload_media"), true, "fa fa-file-image", 3, "system");
 Menu::createMenu(12, $admin_menuID, "All Media", "admin/media", 11, "all_media", "page", array("can_see_all_media"), true, "fa fa-file-image", 1, "system");
