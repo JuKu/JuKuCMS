@@ -13,6 +13,12 @@
                 {$message}
             </div>
         {/foreach}
+
+        {if $show_trash == true}
+            <div class="alert alert-info" role="alert">
+                <strong>Information!</strong> You currently see only pages in trash. <a href="{$page_url}">Back to normal pages</a>
+            </div>
+        {/if}
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{lang}All pages{/lang}</h3>

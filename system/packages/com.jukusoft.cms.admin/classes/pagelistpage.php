@@ -123,6 +123,9 @@ class PageListPage extends PageType {
 			$show_trash = true;
 		}
 
+		$template->assign("show_trash", $show_trash);
+		$template->assign("page_url", DomainUtils::generateURL($this->getPage()->getAlias()));
+
 		$pages = array();
 
 		//get all pages from database
