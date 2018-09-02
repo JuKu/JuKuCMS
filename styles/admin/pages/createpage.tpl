@@ -83,12 +83,11 @@
                     </div>
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer">
             </div>
             <!-- /.box -->
 
             <!-- Horizontal Form -->
-            <div class="box box-info">
+            <div class="box box-warning">
                 <div class="box-header with-border">
                     <h3 class="box-title">Sidebars</h3>
                 </div>
