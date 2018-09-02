@@ -49,7 +49,7 @@ class CreatePagePage extends PageType {
 
 		$template->assign("pagetypes", $page_types);
 
-		$sidebars = array();
+		/*$sidebars = array();
 
 		foreach (Sidebar::listSidebars() as $sidebar) {
 			$sidebar = Sidebar::cast($sidebar);
@@ -72,7 +72,7 @@ class CreatePagePage extends PageType {
 			);
 		}
 
-		$template->assign("menus", $menu_names);
+		$template->assign("menus", $menu_names);*/
 
 		return $template->getCode();
 	}
