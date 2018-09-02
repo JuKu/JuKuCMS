@@ -17,4 +17,5 @@
 <classes>
 	<class>SettingsPage</class>
 	<class>PageListPage</class>
+	<class>CreatePagePage</class>
 </classes>
