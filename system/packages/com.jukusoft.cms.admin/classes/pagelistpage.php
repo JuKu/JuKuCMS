@@ -137,9 +137,7 @@ class PageListPage extends PageType {
 			$is_author_online = $row['online'] == 1;
 			$is_own_page = $row['author'] == $current_userID;
 			$editable = $permission_can_edit_all_pages || ($permission_can_edit_own_pages && $is_own_page);
-			$is_trash = ((int) $row['activated']) === 2;
-			var_dump($row);
-			var_dump($row['activated'] == 2);
+			$is_trash = $row['activated'] == 2;
 
 			$pages[] = array(
 				'id' => $row['id'],
