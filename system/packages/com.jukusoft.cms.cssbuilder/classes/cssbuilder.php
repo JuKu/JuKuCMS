@@ -84,6 +84,10 @@ class CSSBuilder {
 		foreach ($css_files as $css_file) {
 			//first check, if file exists
 			if (!file_exists($css_file)) {
+				if (DEBUG_MODE) {
+					throw new IllegalStateException("css file " . $css_file . " doesnt exists.");
+				}
+
 				continue;
 			}
 
