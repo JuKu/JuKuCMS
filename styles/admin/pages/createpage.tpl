@@ -23,7 +23,7 @@
                             </select>
                         </div>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="inputAlias" placeholder="my-page-alias">
+                            <input type="text" class="form-control" id="inputAlias" placeholder="my-page-alias" title="page alias, e.q. if folder is /admin/ and alias is my-page the url is /admin/my-page">
                         </div>
                     </div>
                     <div class="form-group">
