@@ -14,7 +14,7 @@
                         <label for="inputFolder" class="col-sm-2 control-label">Alias</label>
 
                         <div class="col-sm-5">
-                            <select name="folder" class="form-control" id="inputFolder">
+                            <select name="folder" class="form-control" id="inputFolder" title="Page Folder">
                                 <option>/</option>
                                 <option>/admin/</option>
                             </select>
@@ -41,31 +41,8 @@
                             </select>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input type="file" id="exampleInputFile">
-
-                        <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Check me out
-                        </label>
-                    </div> -->
                 </div>
                 <!-- /.box-body -->
-
-                <!-- <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">{lang}Create page{/lang}</button>
-                </div> -->
             </div>
             <!-- /.box -->
         </div>
@@ -76,7 +53,7 @@
             <!-- Horizontal Form -->
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Horizontal Form</h3>
+                    <h3 class="box-title">SEO (Search Engine Optimization)</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
@@ -102,6 +79,44 @@
                                     <input type="checkbox"> Remember me
                                 </label>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+            </div>
+            <!-- /.box -->
+
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Sidebars</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="inputLeftSidebar" class="col-sm-2 control-label">Left Sidebar</label>
+
+                        <div class="col-sm-10">
+                            <select name="left_sidebar" class="form-control" id="inputLeftSidebar">
+                                <option value="-1" selected="selected">Default</option>
+                                {foreach $sidebars sidebar}
+                                    <option value="{$sidebar.id}">{$sidebar.title}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputRightSidebar" class="col-sm-2 control-label">Right Sidebar</label>
+
+                        <div class="col-sm-10">
+                            <select name="right_sidebar" class="form-control" id="inputRightSidebar">
+                                <option value="-1" selected="selected">Default</option>
+                                {foreach $sidebars sidebar}
+                                    <option value="{$sidebar.id}">{$sidebar.title}</option>
+                                {/foreach}
+                            </select>
                         </div>
                     </div>
                 </div>

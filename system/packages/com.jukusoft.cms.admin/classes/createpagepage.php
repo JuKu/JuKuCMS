@@ -48,6 +48,19 @@ class CreatePagePage extends PageType {
 
 		$template->assign("pagetypes", $page_types);
 
+		$sidebars = array();
+
+		foreach (Sidebar::listSidebars() as $sidebar) {
+			$sidebar = Sidebar::cast($sidebar);
+
+			$sidebars[] = array(
+				'id' => $sidebar->getSidebarId(),
+				'title' => $sidebar->getTitle()
+			);
+		}
+
+		$template->assign("sidebars", $sidebars);
+
 		return $template->getCode();
 	}
 
