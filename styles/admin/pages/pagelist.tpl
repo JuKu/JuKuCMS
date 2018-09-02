@@ -20,7 +20,7 @@
             </div>
         {/if}
 
-        {if $show_trash == true}
+        {if $show_trash == false}
             <a href="{$trash_url}" class="btn btn-app">
                 <span class="badge bg-teal">{$pages_in_trash}</span>
                 <i class="fa fa-trash"></i> Trash
