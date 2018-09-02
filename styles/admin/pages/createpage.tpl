@@ -35,7 +35,7 @@
 
                         <div class="col-sm-10">
                             <select name="pagetype" class="form-control" id="inputPageType">
-                                {foreach $pagetypes $pagetype}
+                                {foreach $pagetypes pagetype}
                                     <option value="{$pagetype.class_name}">{$pagetype.title}</option>
                                 {/foreach}
                             </select>
