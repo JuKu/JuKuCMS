@@ -41,6 +41,14 @@
                             </select>
                         </div>
                     </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="inputAuthor" class="col-sm-2 control-label">Author</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputAuthor" placeholder="John Doe" value="{$username}" disabled="disabled">
+                        </div>
+                    </div>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -95,27 +103,28 @@
                 <!-- /.box-header -->
                 <!-- form start -->
                 <div class="box-body">
+                    <!-- checkbox -->
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="show_in_sitemap">
+                                Show in sitemap
+                            </label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                        <label for="inputSitemapChangeFreq" class="col-sm-2 control-label">Sitemap change frequency</label>
 
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Remember me
-                                </label>
-                            </div>
+                            <select name="sitemap_changefreq" class="form-control" id="inputSitemapChangeFreq">
+                                <option>ALWAYS</option>
+                                <option>HOURLY</option>
+                                <option>DAILY</option>
+                                <option selected="selected">WEEKLY</option>
+                                <option>MONTHLY</option>
+                                <option>YEARLY</option>
+                                <option>NEVER (avoid this!)</option>
+                            </select>
                         </div>
                     </div>
                 </div>
