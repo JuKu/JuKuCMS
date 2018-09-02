@@ -59,6 +59,8 @@ class PageListPage extends PageType {
 		if (isset($_REQUEST['unlock']) && $permission_can_unlock_all_pages) {
 			$pageID = (int) $_REQUEST['unlock'];
 			Page::unlockPage($pageID);
+
+			$success_messages[] = "Unlocked page successfully!";
 		}
 
 		//move pages to trash
