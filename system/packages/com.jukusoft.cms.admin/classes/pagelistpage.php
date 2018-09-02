@@ -137,7 +137,7 @@ class PageListPage extends PageType {
 			$is_author_online = $row['online'] == 1;
 			$is_own_page = $row['author'] == $current_userID;
 			$editable = $permission_can_edit_all_pages || ($permission_can_edit_own_pages && $is_own_page);
-			$is_trash = (boolean) (((int) $row['activated']) === 2);
+			$is_trash = ((int) $row['activated']) === 2;
 
 			$pages[] = array(
 				'id' => $row['id'],
@@ -159,7 +159,7 @@ class PageListPage extends PageType {
 				'edit_url' => DomainUtils::generateURL("admin/edit_page", array("edit" => $row['id'])),
 				'can_delete' => ($permission_can_delete_all_pages || ($permission_can_delete_own_pages && $is_own_page)) && $row['deletable'] == 1,
 				'delete_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("trash" => $row['id'])),
-				'is_in_trash' => $is_trash,
+				'is_in_trash' => (boolean) $is_trash,
 				'restore_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("restore" => $row['id'])),
 				'delete_permanently_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("delete_permanently" => $row['id']))
 			);
