@@ -56,7 +56,7 @@
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <!-- <button type="submit" class="btn btn-default">Cancel</button> -->
-                    <button type="submit" class="btn btn-primary">{lang}Create Page{/lang}</button>
+                    <button type="submit" class="btn btn-primary pull-right">{lang}Create Page{/lang}</button>
                 </div>
                 <!-- /.box-footer -->
             </div>
