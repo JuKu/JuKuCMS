@@ -197,7 +197,15 @@ class Page {
 	}
 
 	public function activate (bool $bool = true) {
-		$this->row['activated'] = $bool;
+		$this->row['activated'] = ($bool ? 1 : 0);
+	}
+
+	public function isTrash () : bool {
+		return $this->row['activated'] == 2;
+	}
+
+	public function isActivated () : bool {
+		return $this->row['activated'] == 1;
 	}
 
 	/**
@@ -362,6 +370,12 @@ class Page {
 
 	public static function unlockPage (int $pageID) {
 		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `locked_by` WHERE `id` = :pageID; ", array(
+			'pageID' => $pageID
+		));
+	}
+
+	public static function movePageToTrash (int $pageID) {
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `activated` = 2 WHERE `id` = :pageID; ", array(
 			'pageID' => $pageID
 		));
 	}
