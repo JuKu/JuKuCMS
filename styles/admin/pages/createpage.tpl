@@ -10,7 +10,7 @@
                 <!-- /.box-header -->
                 <!-- form start -->
                 <div class="box-body">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                     </div>
@@ -28,7 +28,7 @@
                         <label>
                             <input type="checkbox"> Check me out
                         </label>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- /.box-body -->
 
