@@ -11,7 +11,7 @@
                 <!-- form start -->
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="inputFolder" class="col-sm-2 control-label">Alias</label>
+                        <label for="inputFolder" class="col-sm-2 control-label">Alias (URL)</label>
 
                         <div class="col-sm-5">
                             <select name="folder" class="form-control" id="inputFolder" title="Page Folder">
