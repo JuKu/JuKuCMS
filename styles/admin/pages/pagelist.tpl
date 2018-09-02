@@ -55,7 +55,7 @@
                                         {/if}
                                     </td>
                                     <td>
-                                        {if $page.is_trash == true}
+                                        {if $page.is_in_trash == true}
                                             {if $permission_can_restore_trash_pages == true}<a href="{$page.restore_url}" class="btn btn-primary" role="button" title="Restore page">{lang}Restore{/lang} <i class=" fa fa-plus-square"></i></button></a>{/if}
                                             {if $permission_can_delete_all_pages_permanently == true}<a href="{$page.delete_permanently_url}" class="btn btn-danger" role="button" title="Delete page permanently, so you cannot restore them">{lang}Delete permanently{/lang} <i class=" fa fa-minus-circle"></i></button></a>{/if}
                                         {else}

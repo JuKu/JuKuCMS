@@ -159,7 +159,7 @@ class PageListPage extends PageType {
 				'edit_url' => DomainUtils::generateURL("admin/edit_page", array("edit" => $row['id'])),
 				'can_delete' => ($permission_can_delete_all_pages || ($permission_can_delete_own_pages && $is_own_page)) && $row['deletable'] == 1,
 				'delete_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("trash" => $row['id'])),
-				'is_trash' => $is_trash,
+				'is_in_trash' => $is_trash,
 				'restore_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("restore" => $row['id'])),
 				'delete_permanently_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("delete_permanently" => $row['id']))
 			);
