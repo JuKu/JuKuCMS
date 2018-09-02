@@ -19,6 +19,12 @@
                 <strong>Information!</strong> You currently see only pages in trash. <a href="{$page_url}">Back to normal pages</a>
             </div>
         {/if}
+
+        <a href="{$trash_url}" class="btn btn-app">
+            <span class="badge bg-teal">{$pages_in_trash}</span>
+            <i class="fa fa-trash"></i> Trash
+        </a>
+
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{if $show_trash == false}{lang}All pages{/lang}{else}{lang}Trash{/lang}{/if}</h3>

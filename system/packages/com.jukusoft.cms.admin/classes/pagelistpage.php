@@ -134,6 +134,7 @@ class PageListPage extends PageType {
 
 			$number_of_pages_in_trash = (int) $row['COUNT(*)'];
 			$template->assign("pages_in_trash", $number_of_pages_in_trash);
+			$template->assign("trash_url", DomainUtils::generateURL($this->getPage()->getAlias(), array("show_trash" => 1)));
 		}
 
 		//get all pages from database
