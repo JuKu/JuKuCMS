@@ -131,7 +131,9 @@ class PageListPage extends PageType {
 		if (!$show_trash) {
 			//count pages in trash
 			$row = Database::getInstance()->getRow("SELECT COUNT(*) FROM `{praefix}pages` WHERE `activated` = 2; ");
-			var_dump($row['COUNT(*)']);
+
+			$number_of_pages_in_trash = (int) $row['COUNT(*)'];
+			$template->assign("pages_in_trash", $number_of_pages_in_trash);
 		}
 
 		//get all pages from database
