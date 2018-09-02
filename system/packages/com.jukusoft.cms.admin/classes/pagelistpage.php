@@ -129,7 +129,7 @@ class PageListPage extends PageType {
 		$pages = array();
 
 		//get all pages from database
-		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}pages` LEFT JOIN `{praefix}user` ON (`{praefix}pages`.`author` = `{praefix}user`.`userID`) WHERE `{praefix}pages`.`editable` = '1' AND `{praefix}pages`.`activated` = :activated; ", array(
+		$rows = Database::getInstance()->listRows("SELECT *, `{praefix}pages`.`activated` as `activated` FROM `{praefix}pages` LEFT JOIN `{praefix}user` ON (`{praefix}pages`.`author` = `{praefix}user`.`userID`) WHERE `{praefix}pages`.`editable` = '1' AND `{praefix}pages`.`activated` = :activated; ", array(
 			'activated' => (!$show_trash ? 1 : 2)
 		));
 
