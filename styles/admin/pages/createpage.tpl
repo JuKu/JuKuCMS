@@ -18,7 +18,7 @@
                                 <!-- <option>/</option>
                                 <option>/admin/</option> -->
                                 {foreach $folders folder}
-                                    <option value="{$folder.folder}">{$folder.folder}</option>
+                                    <option value="{$folder.folder}"{if $folder.is_root_folder == true} selected="selected"{/if}>{$folder.folder}</option>
                                 {/foreach}
                             </select>
                         </div>

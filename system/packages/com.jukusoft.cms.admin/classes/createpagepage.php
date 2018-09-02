@@ -52,7 +52,8 @@ class CreatePagePage extends PageType {
 		foreach (Folder::listFolders(false) as $row) {
 			$folders[] = array(
 				'folder' => $row['folder'],
-				'hidden' => $row['hidden'] == 1
+				'hidden' => $row['hidden'] == 1,
+				'is_root_folder' => $row['folder'] === "/"
 			);
 		}
 
