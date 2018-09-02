@@ -6,7 +6,13 @@
             </div>
         {/if}
 
-        <div class="col-xs-12">
+        {foreach $success_messages message}
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> {lang}Success{/lang}!</h4>
+                {$message}
+            </div>
+        {/foreach}
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{lang}All pages{/lang}</h3>
@@ -43,16 +49,21 @@
                                         {/if}
                                     </td>
                                     <td>
-                                        {if $page.locked == true}
-                                            {if $permission_can_unlock_all_pages == true}
-                                                <a href="{$page.unlock_url}" class="btn btn-primary" role="button" title="Unlock page">{lang}Unlock{/lang} <i class=" fa fa-unlock"></i></button></a>
-                                            {else}
-                                                <button type="button" class="btn  disabled" title="Page was locked from user {$page.locked_user} at {$page.locked_timestamp}">{lang}Locked{/lang}  <i class=" fa fa-lock"></i></button><!-- fa-lock fa-wrench -->
-                                            {/if}
+                                        {if $page.is_trash == true}
+                                            {if $permission_can_restore_trash_pages == true}<a href="{$page.restore_url}" class="btn btn-primary" role="button" title="Restore page">{lang}Restore{/lang} <i class=" fa fa-plus-square"></i></button></a>{/if}
+                                            {if $permission_can_delete_all_pages_permanently == true}<a href="{$page.delete_permanently_url}" class="btn btn-danger" role="button" title="Delete page permanently, so you cannot restore them">{lang}Delete permanently{/lang} <i class=" fa fa-minus-circle"></i></button></a>{/if}
                                         {else}
-                                            <!-- action buttons -->
-                                            {if $page.can_edit == true}<a href="{$page.edit_url}" class="btn btn-warning" role="button" title="Edit page">{lang}Edit{/lang} <i class=" fa fa-edit"></i></button></a>{/if}
-                                            {if $page.can_delete == true}<a href="{$page.delete_url}" class="btn btn-danger" role="button" title="Delete page">{lang}Delete{/lang} <i class=" fa fa-trash"></i></button></a>{/if}
+                                            {if $page.locked == true}
+                                                {if $permission_can_unlock_all_pages == true}
+                                                    <a href="{$page.unlock_url}" class="btn btn-primary" role="button" title="Unlock page">{lang}Unlock{/lang} <i class=" fa fa-unlock"></i></button></a>
+                                                {else}
+                                                    <button type="button" class="btn  disabled" title="Page was locked from user {$page.locked_user} at {$page.locked_timestamp}">{lang}Locked{/lang}  <i class=" fa fa-lock"></i></button><!-- fa-lock fa-wrench -->
+                                                {/if}
+                                            {else}
+                                                <!-- action buttons -->
+                                                {if $page.can_edit == true}<a href="{$page.edit_url}" class="btn btn-warning" role="button" title="Edit page">{lang}Edit{/lang} <i class=" fa fa-edit"></i></button></a>{/if}
+                                                {if $page.can_delete == true}<a href="{$page.delete_url}" class="btn btn-danger" role="button" title="Delete page">{lang}Trash{/lang} <i class=" fa fa-trash"></i></button></a>{/if}
+                                            {/if}
                                         {/if}
                                     </td>
                                 </tr>
@@ -70,10 +81,6 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-        </div>
-        <!-- /.col -->
-
-        <!-- content -->
     </div>
     <!-- /.col -->
 </div>

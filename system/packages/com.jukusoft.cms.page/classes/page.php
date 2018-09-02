@@ -18,6 +18,7 @@
 
 class Page {
 
+	protected $pageID = -1;
 	protected $alias = null;
 	protected $row = null;
 	protected $pagetype = "";
@@ -76,6 +77,32 @@ class Page {
 			//cache result
 			Cache::put("pages", "page_" . $alias, $row);
 		}
+
+		//get pageID
+		$this->pageID = $this->row['id'];
+
+		//get name of page type (class name)
+		$this->pagetype = $this->row['page_type'];
+	}
+
+	public function loadByID (int $pageID) {
+		if (Cache::contains("pages", "pageID_" . $pageID)) {
+			$this->row = Cache::get("pages", "pageID_" . $pageID);
+		} else {
+			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}pages` WHERE `id` = :pageID; ", array('pageID' => $pageID));
+
+			if (!$row) {
+				throw new IllegalStateException("Page with pageID " . $pageID . " doesnt exists!");
+			}
+
+			$this->row = $row;
+
+			//cache result
+			Cache::put("pages", "pageID_" . $pageID, $row);
+		}
+
+		$this->pageID = $this->row['id'];
+		$this->alias = $this->row['alias'];
 
 		//get name of page type (class name)
 		$this->pagetype = $this->row['page_type'];
@@ -204,8 +231,35 @@ class Page {
 		return $this->row['activated'] == 2;
 	}
 
+	public function isEditable () : bool {
+		return $this->row['editable'] == 1;
+	}
+
+	public function isDeletable () : bool {
+		return $this->row['deletable'] == 1;
+	}
+
 	public function isActivated () : bool {
 		return $this->row['activated'] == 1;
+	}
+
+	public function moveToTrash () {
+		self::movePageToTrash($this->pageID);
+
+		//clear cache
+		Cache::clear("pages", "pageID_" . $this->pageID);
+		Cache::clear("pages", "page_" . $this->alias);
+	}
+
+	/**
+	 * restore page from trash
+	 */
+	public function restore () {
+		self::restorePage($this->pageID);
+
+		//clear cache
+		Cache::clear("pages", "pageID_" . $this->pageID);
+		Cache::clear("pages", "page_" . $this->alias);
 	}
 
 	/**
@@ -374,10 +428,22 @@ class Page {
 		));
 	}
 
-	public static function movePageToTrash (int $pageID) {
+	protected static function movePageToTrash (int $pageID) {
 		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `activated` = 2 WHERE `id` = :pageID; ", array(
 			'pageID' => $pageID
 		));
+
+		//clear cache
+		Cache::clear("pages", "pageID_" . $pageID);
+	}
+
+	protected static function restorePage (int $pageID) {
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `activated` = 1 WHERE `id` = :pageID; ", array(
+			'pageID' => $pageID
+		));
+
+		//clear cache
+		Cache::clear("pages", "pageID_" . $pageID);
 	}
 
 }

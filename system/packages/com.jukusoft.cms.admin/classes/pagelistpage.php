@@ -42,22 +42,91 @@ class PageListPage extends PageType {
 			Translator::translate("Actions")
 		));
 
+		//get permissions
 		$current_userID = User::current()->getID();
 		$permission_can_edit_all_pages = PermissionChecker::current()->hasRight("can_edit_all_pages");
 		$permission_can_edit_own_pages = PermissionChecker::current()->hasRight("can_edit_own_pages");
 		$permission_can_unlock_all_pages = PermissionChecker::current()->hasRight("can_unlock_all_pages");
 		$permission_can_delete_own_pages = PermissionChecker::current()->hasRight("can_delete_own_pages");
 		$permission_can_delete_all_pages = PermissionChecker::current()->hasRight("can_delete_all_pages");
+		$permission_can_see_trash_pages = PermissionChecker::current()->hasRight("can_see_trash_pages");
+		$permission_can_restore_trash_pages = PermissionChecker::current()->hasRight("can_restore_trash_pages");
+		$permission_can_delete_all_pages_permanently = PermissionChecker::current()->hasRight("can_delete_all_pages_permanently");
 
+		$success_messages = array();
+
+		//unlock pages
 		if (isset($_REQUEST['unlock']) && $permission_can_unlock_all_pages) {
 			$pageID = (int) $_REQUEST['unlock'];
 			Page::unlockPage($pageID);
 		}
 
+		//move pages to trash
+		if (isset($_REQUEST['trash']) && is_numeric($_REQUEST['trash']) && ($permission_can_delete_own_pages || $permission_can_delete_all_pages)) {
+			//move page to trash
+			$pageID = (int) $_REQUEST['trash'];
+
+			//load page
+			$page = new Page();
+			$page->loadByID($pageID);
+
+			//check permisssion
+			if ($permission_can_delete_all_pages || ($permission_can_delete_own_pages && $page->getAuthorID() == User::current()->getID())) {
+				//check, if page is deletable
+				if ($page->isDeletable()) {
+					//move page to trash
+					$page->moveToTrash();
+
+					$success_messages[] = "Moved page '" . $page->getAlias() . "' to trash.";
+				}
+			}
+		}
+
+		//restore pages from trash
+		if (isset($_REQUEST['restore']) && is_numeric($_REQUEST['restore']) && $permission_can_restore_trash_pages) {
+			//restore page
+			$pageID = (int) $_REQUEST['restore'];
+
+			//load page
+			$page = new Page();
+			$page->loadByID($pageID);
+
+			if ($page->isTrash()) {
+				$page->restore();
+
+				$success_messages[] = "Restored page '" . $page->getAlias() . "' successfully!";
+			}
+		}
+
+		//delete pages from trash
+		if (isset($_REQUEST['delete_permanently']) && is_numeric($_REQUEST['delete_permanently']) && $permission_can_delete_all_pages_permanently) {
+			$pageID = (int) $_REQUEST['delete_permanently'];
+
+			//load page
+			$page = new Page();
+			$page->loadByID($pageID);
+
+			//check, if page is in trash
+			if ($page->isTrash()) {
+				Page::deleteByID($page->getPageID());
+
+				$success_messages[] = "Deleted page '" . $page->getAlias() . "' permanently successful!";
+			}
+		}
+
+		$show_trash = false;
+
+		//show pages in trash
+		if (isset($_REQUEST['show_trash']) && $permission_can_see_trash_pages) {
+			$show_trash = true;
+		}
+
 		$pages = array();
 
 		//get all pages from database
-		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}pages` LEFT JOIN `{praefix}user` ON (`{praefix}pages`.`author` = `{praefix}user`.`userID`) WHERE `{praefix}pages`.`editable` = '1'; ");
+		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}pages` LEFT JOIN `{praefix}user` ON (`{praefix}pages`.`author` = `{praefix}user`.`userID`) WHERE `{praefix}pages`.`editable` = '1' AND `{praefix}pages`.`activated` = :activated; ", array(
+			'activated' => (!$show_trash ? 1 : 2)
+		));
 
 		foreach ($rows as $row) {
 			$is_author_online = $row['online'] == 1;
@@ -83,11 +152,18 @@ class PageListPage extends PageType {
 				'can_edit' => ($permission_can_edit_all_pages || ($permission_can_edit_own_pages && $is_own_page)) && $row['editable'] == 1,
 				'edit_url' => DomainUtils::generateURL("admin/edit_page", array("edit" => $row['id'])),
 				'can_delete' => ($permission_can_delete_all_pages || ($permission_can_delete_own_pages && $is_own_page)) && $row['deletable'] == 1,
-				'delete_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("delete" => $row['id']))
+				'delete_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("trash" => $row['id'])),
+				'is_trash' => $row['activated'] == 2,
+				'restore_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("restore" => $row['id'])),
+				'delete_permanently_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("delete_permanently" => $row['id']))
 			);
 		}
 
 		$template->assign("permission_can_unlock_all_pages", $permission_can_unlock_all_pages);
+		$template->assign("permission_can_restore_trash_pages", $permission_can_restore_trash_pages);
+		$template->assign("permission_can_delete_all_pages_permanently", $permission_can_delete_all_pages_permanently);
+
+		$template->assign("success_messages", $success_messages);
 
 		$template->assign("pagelist", $pages);
 
