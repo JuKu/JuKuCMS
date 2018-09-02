@@ -215,6 +215,24 @@ class Folder {
 		Database::getInstance()->execute("DELETE FROM `{praefix}folder` WHERE `folder` = :folder; ", array('folder' => $folder));
 	}
 
+	public static function listFolders (bool $include_hidden_folders = false) {
+		if (Cache::contains("folder", "list_" . ($include_hidden_folders ? "hidden" : "not_hidden"))) {
+			return Cache::get("folder", "list_" . ($include_hidden_folders ? "hidden" : "not_hidden"));
+		} else {
+			$rows = array();
+
+			if ($include_hidden_folders) {
+				$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}folder` WHERE `activated` = 1; ");
+			} else {
+				$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}folder` WHERE `hidden` = 0 AND `activated` = 1; ");
+			}
+
+			Cache::put("folder", "list_" . ($include_hidden_folders ? "hidden" : "not_hidden"), $rows);
+
+			return $rows;
+		}
+	}
+
 }
 
 ?>

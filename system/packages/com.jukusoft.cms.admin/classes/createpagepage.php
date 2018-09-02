@@ -49,30 +49,16 @@ class CreatePagePage extends PageType {
 
 		$template->assign("pagetypes", $page_types);
 
-		/*$sidebars = array();
+		$folders = array();
 
-		foreach (Sidebar::listSidebars() as $sidebar) {
-			$sidebar = Sidebar::cast($sidebar);
-
-			$sidebars[] = array(
-				'id' => $sidebar->getSidebarId(),
-				'title' => $sidebar->getTitle()
+		foreach (Folder::listFolders(false) as $row) {
+			$folders[] = array(
+				'folder' => $row['folder'],
+				'hidden' => $row['hidden'] == 1
 			);
 		}
 
-		$template->assign("sidebars", $sidebars);
-
-		//set menus
-		$menu_names = array();
-
-		foreach (Menu::listMenuNames() as $row) {
-			$menu_names[] = array(
-				'id' => $row['menuID'],
-				'title' => $row['title']
-			);
-		}
-
-		$template->assign("menus", $menu_names);*/
+		$template->assign("folders", $folders);
 
 		return $template->getCode();
 	}

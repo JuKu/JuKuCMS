@@ -15,8 +15,11 @@
 
                         <div class="col-sm-5">
                             <select name="folder" class="form-control" id="inputFolder" title="Page Folder">
-                                <option>/</option>
-                                <option>/admin/</option>
+                                <!-- <option>/</option>
+                                <option>/admin/</option> -->
+                                {foreach $folders folder}
+                                    <option value="{$folder.folder}">{$folder.folder}</option>
+                                {/foreach}
                             </select>
                         </div>
                         <div class="col-sm-5">
