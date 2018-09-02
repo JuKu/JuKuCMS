@@ -1432,7 +1432,7 @@ Page::createIfAbsent("register", "Registration", "RegisterPage", "", "/", -1, -1
 
 //only at installation process
 Page::createIfAbsent("privacy-policy", "lang_Privacy Policy", "HTMLPage", "Private Policy - Add privaty policy here", "/", -1, -1, -1, false, true, true, true);
-Page::createIfAbsent("imprint", "lang_Imprint", "HTMLPage", "Imprint - Add contact data here", "/", -1, -1, -1, false, true, true, false);
+Page::createIfAbsent("imprint", "lang_Imprint", "HTMLPage", "Imprint - Add contact data here", "/", -1, -1, -1, false, true, true, true);
 
 Page::createIfAbsent("user/verify_mail", "Mail Verification", "MailVerifyPage", "", "/user/", -1, -1, -1, false, true, false, false);
 
