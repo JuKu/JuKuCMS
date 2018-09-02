@@ -21,7 +21,7 @@
         {/if}
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">{lang}All pages{/lang}</h3>
+                    <h3 class="box-title">{if $show_trash == false}{lang}All pages{/lang}{else}{lang}Trash{/lang}{/if}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
