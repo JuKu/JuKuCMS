@@ -28,7 +28,7 @@
 class CreatePagePage extends PageType {
 
 	public function getContent(): string {
-		$template = new DwooTemplate("pages/create_page");
+		$template = new DwooTemplate("pages/createpage");
 
 		$template->assign("page_url", DomainUtils::generateURL($this->getPage()->getAlias()));
 
