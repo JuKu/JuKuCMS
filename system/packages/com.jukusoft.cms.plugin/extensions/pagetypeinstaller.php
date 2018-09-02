@@ -34,7 +34,7 @@ class PageTypeInstaller extends PluginInstaller_Plugin {
 				$title = $pagetype['title'];
 				$permissions = (isset($pagetype['create_permissions']) ? $pagetype['create_permissions'] : array("none"));
 				$advanced = (isset($pagetype['advanced']) ? boolval($pagetype['advanced']) : false);
-				$order = (isset($pagetype['order']) ? intval($pagetype['advanced']) : 100);
+				$order = (isset($pagetype['order']) ? intval($pagetype['order']) : 100);
 
 				//create page type
 				PageType::createPageType($class_name, $title, $advanced, $order, $permissions, "plugin_" . $plugin->getName());
