@@ -220,10 +220,10 @@ class PageType {
 		$permissions = Validator_String::get($permissions);
 
 		Database::getInstance()->execute("INSERT INTO `{praefix}page_types` (
-			`page_type`, `title`, `create_permissions`, `advanced`, `order`, `activated`
+			`page_type`, `title`, `create_permissions`, `advanced`, `owner`, `order`, `activated`
 		) VALUES (
-			:pagetype, :title, :permissions, :advanced, :order, '1'
-		) ON DUPLICATE KEY UPDATE `title` = :title, `create_permissions` = :permissions, `advanced` = :advanced, `order` = :order, `activated` = '1'; ", array(
+			:pagetype, :title, :permissions, :advanced, :owner, :order, '1'
+		) ON DUPLICATE KEY UPDATE `title` = :title, `create_permissions` = :permissions, `advanced` = :advanced, `owner` = :owner, `order` = :order, `activated` = '1'; ", array(
 			'pagetype' => $class_name,
 			'title' => $title,
 			'permissions' => $permissions,
