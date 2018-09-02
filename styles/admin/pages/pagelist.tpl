@@ -20,10 +20,12 @@
             </div>
         {/if}
 
-        <a href="{$trash_url}" class="btn btn-app">
-            <span class="badge bg-teal">{$pages_in_trash}</span>
-            <i class="fa fa-trash"></i> Trash
-        </a>
+        {if $show_trash == true}
+            <a href="{$trash_url}" class="btn btn-app">
+                <span class="badge bg-teal">{$pages_in_trash}</span>
+                <i class="fa fa-trash"></i> Trash
+            </a>
+        {/if}
 
             <div class="box">
                 <div class="box-header">
