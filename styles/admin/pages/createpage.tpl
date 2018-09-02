@@ -32,9 +32,9 @@
                 </div>
                 <!-- /.box-body -->
 
-                <div class="box-footer">
+                <!-- <div class="box-footer">
                     <button type="submit" class="btn btn-primary">{lang}Create page{/lang}</button>
-                </div>
+                </div> -->
             </div>
             <!-- /.box -->
         </div>
@@ -76,10 +76,10 @@
                         </div>
                     </div>
                     <!-- /.box-body -->
-                    <!-- <div class="box-footer">
-                        <button type="submit" class="btn btn-default">Cancel</button>
-                        <button type="submit" class="btn btn-info pull-right">Sign in</button>
-                    </div> -->
+                    <div class="box-footer">
+                        <!-- <button type="submit" class="btn btn-default">Cancel</button> -->
+                        <button type="submit" class="btn btn-info btn-primary">{lang}Create Page{/lang}</button>
+                    </div>
                     <!-- /.box-footer -->
                 </form>
             </div>
