@@ -4,7 +4,7 @@
         "bower_components/font-awesome-5.0.9/css/font-awesome-all.min.css",
         "bower_components/Ionicons/css/ionicons.min.css",
         "bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css",
-        "dist/css/AdminLTE.min.css",
+        "dist/css/AdminLTE.min.csstest",
         "dist/css/skins/_all-skins.min.css",
         "style/tabs.css",
         "style/icheck/flat/green.css",
