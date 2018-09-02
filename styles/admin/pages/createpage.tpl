@@ -10,6 +10,26 @@
                 <!-- /.box-header -->
                 <!-- form start -->
                 <div class="box-body">
+                    <div class="form-group">
+                        <label for="inputFolder" class="col-sm-2 control-label">Alias</label>
+
+                        <div class="col-sm-5">
+                            <select name="folder" id="inputFolder">
+                                <option>/</option>
+                                <option>/admin/</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="inputAlias" placeholder="my-page-alias">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputTitle" class="col-sm-2 control-label">Title</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputTitle" placeholder="My page title">
+                        </div>
+                    </div>
                     <!-- <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
