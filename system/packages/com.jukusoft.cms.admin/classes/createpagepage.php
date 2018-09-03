@@ -30,9 +30,34 @@ class CreatePagePage extends PageType {
 	public function getContent(): string {
 		$template = new DwooTemplate("pages/createpage");
 
+		$errors = array();
+
+		if (isset($_REQUEST['action']) && $_REQUEST['action'] === "create" && PermissionChecker::current()->hasRight("can_create_pages")) {
+			//try to create a new page
+
+			//first, get all values
+			if (!isset($_REQUEST['folder']) || empty($_REQUEST['folder'])) {
+				$errors[] = "Folder is not set!";
+			}
+
+			if (!isset($_REQUEST['page_alias']) || empty($_REQUEST['page_alias'])) {
+				$errors[] = "Page alias isn't set!";
+			}
+
+			if (!isset($_REQUEST['title']) || empty($_REQUEST['title'])) {
+				$errors[] = "Title is't set!";
+			}
+
+			if (!isset($_REQUEST['pagetype']) || empty($_REQUEST['pagetype'])) {
+				$errors[] = "Pagetype is't set!";
+			}
+		}
+
 		//set form action url
 		$template->assign("action_url", DomainUtils::generateURL($this->getPage()->getAlias(), array("action" => "create")));
 		$template->assign("username", User::current()->getUsername());
+
+		$template->assign("errors", $errors);
 
 		//list page types
 		$page_types_rows = PageType::listPageTypes();

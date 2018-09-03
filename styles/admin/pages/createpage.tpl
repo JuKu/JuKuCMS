@@ -1,5 +1,13 @@
 <div class="row">
     <form action="{$action_url}" method="post" role="form">
+        {foreach $errors message}
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-exclamation-triangle"></i> {lang}Error{/lang}!</h4>
+                {$message}
+            </div>
+        {/foreach}
+
         <!-- left column -->
         <div class="col-md-6">
             <!-- general form elements -->
@@ -23,14 +31,14 @@
                             </select>
                         </div>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="inputAlias" placeholder="my-page-alias" title="page alias, e.q. if folder is /admin/ and alias is my-page the url is /admin/my-page">
+                            <input type="text" name="page_alias" class="form-control" id="inputAlias" placeholder="my-page-alias" title="page alias, e.q. if folder is /admin/ and alias is my-page the url is /admin/my-page">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputTitle" class="col-sm-2 control-label">Title</label>
 
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTitle" placeholder="My page title">
+                            <input type="text" name="title" class="form-control" id="inputTitle" placeholder="My page title">
                         </div>
                     </div>
                     <div class="form-group">
@@ -49,7 +57,7 @@
                         <label for="inputAuthor" class="col-sm-2 control-label">Author</label>
 
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAuthor" placeholder="John Doe" value="{$username}" disabled="disabled">
+                            <input type="text" name="author" class="form-control" id="inputAuthor" placeholder="John Doe" value="{$username}" disabled="disabled">
                         </div>
                     </div>
                 </div>
