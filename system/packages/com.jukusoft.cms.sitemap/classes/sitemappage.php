@@ -36,7 +36,7 @@ class SitemapPage extends PageType {
 
 		$urls = array();
 
-		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}pages` WHERE `sitemap` = '1' AND `activated` = '1'; ");
+		$rows = Database::getInstance()->listRows("SELECT * FROM `{praefix}pages` WHERE `sitemap` = '1' AND `published` = '1' AND `activated` = '1'; ");
 
 		foreach ($rows as $row) {
 			$entry = array();

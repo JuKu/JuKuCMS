@@ -66,6 +66,11 @@ class CreatePagePage extends PageType {
 				//check, if page alias already exists
 				$page_full_alias = $folder . $alias;
 
+				if (PHPUtils::startsWith($page_full_alias, "/")) {
+					//remove / at beginning
+					$page_full_alias = substr($page_full_alias, 1);
+				}
+
 				if (Page::exists($page_full_alias)) {
 					$errors[] = "Page alias '" . htmlentities($page_full_alias) . "' already exists!";
 				}
@@ -78,8 +83,25 @@ class CreatePagePage extends PageType {
 					$errors[] = "Pagetype '" . htmlentities($pagetype) . "' doesn't exists!";
 				}
 
+				Events::throwEvent("before_create_page", array(
+					'folder' => &$folder,
+					'alias' => &$alias,
+					'full_alias' => &$page_full_alias,
+					'title' => &$title,
+					'pagetype' => &$pagetype
+				));
+
 				if (empty($errors)) {
-					//TODO: create page
+					$pageID = Page::createIfAbsent($page_full_alias, htmlentities($title), $pagetype, "", $folder, -1, -1, -1, true, false, true, true, User::current()->getUsername());
+
+					Events::throwEvent("after_create_page", array(
+						'pageID' => $pageID
+					));
+
+					//redirect header
+					header("Location: " . DomainUtils::generateURL("admin/edit_page", array("edit" => $pageID)));
+
+					exit;
 				}
 			}
 		}
