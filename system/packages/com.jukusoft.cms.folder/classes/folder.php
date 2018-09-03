@@ -233,6 +233,14 @@ class Folder {
 		}
 	}
 
+	public static function exists (string $folder) : bool {
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}folder` WHERE `folder` = :folder; ", array(
+			'folder' => $folder
+		));
+
+		return $row !== false;
+	}
+
 }
 
 ?>

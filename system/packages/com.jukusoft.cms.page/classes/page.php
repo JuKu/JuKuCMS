@@ -446,6 +446,14 @@ class Page {
 		Cache::clear("pages", "pageID_" . $pageID);
 	}
 
+	public static function exists (string $alias) : bool {
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}pages` WHERE `alias` = :alias; ", array(
+			'alias' => $alias
+		));
+
+		return $row !== false;
+	}
+
 }
 
 ?>

@@ -51,6 +51,37 @@ class CreatePagePage extends PageType {
 			if (!isset($_REQUEST['pagetype']) || empty($_REQUEST['pagetype'])) {
 				$errors[] = "Pagetype is't set!";
 			}
+
+			if (empty($errors)) {
+				$folder = $_REQUEST['folder'];
+				$alias = $_REQUEST['page_alias'];
+				$title = $_REQUEST['title'];
+				$pagetype = $_REQUEST['pagetype'];
+
+				//check, if folder exists
+				if (!Folder::exists($folder)) {
+					$errors[] = "Folder '" . htmlentities($folder) . "' doesn't exists!";
+				}
+
+				//check, if page alias already exists
+				$page_full_alias = $folder . $alias;
+
+				if (Page::exists($page_full_alias)) {
+					$errors[] = "Page alias '" . htmlentities($page_full_alias) . "' already exists!";
+				}
+
+				//remove html characters in title
+				$title = htmlentities($title);
+
+				//check, if pagetype exists
+				if (!PageType::exists($pagetype)) {
+					$errors[] = "Pagetype '" . htmlentities($pagetype) . "' doesn't exists!";
+				}
+
+				if (empty($errors)) {
+					//TODO: create page
+				}
+			}
 		}
 
 		//set form action url

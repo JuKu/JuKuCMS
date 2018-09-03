@@ -279,6 +279,14 @@ class PageType {
 		Cache::clear("pagetypes");
 	}
 
+	public static function exists (string $class_name) : bool {
+		$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}page_types` WHERE `page_type` = :pagetype; ", array(
+			'pagetype' => $class_name
+		));
+
+		return $row !== false;
+	}
+
 }
 
 ?>
