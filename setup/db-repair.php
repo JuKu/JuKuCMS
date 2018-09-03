@@ -1460,6 +1460,7 @@ Page::createIfAbsent("admin/phpinfo", "phpinfo()", "PHPInfoPage", "", "/admin/",
 Page::createIfAbsent("admin/settings", "Settings", "SettingsPage", "", "/admin/", -1, -1, -1, false, true, false, false);
 Page::createIfAbsent("admin/pages", "Pages", "PageListPage", "", "/admin/", -1, -1, -1, false, true, false, false);
 Page::createIfAbsent("admin/create_page", "Create new page", "CreatePagePage", "", "/admin/", -1, -1, -1, false, true, false, false);
+Page::createIfAbsent("admin/edit_page", "Edit page", "PageEditPage", "", "/admin/", -1, -1, -1, false, true, false, false);
 
 echo "Create default page types if absent...<br />";
 
