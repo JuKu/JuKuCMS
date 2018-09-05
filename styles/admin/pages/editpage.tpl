@@ -17,7 +17,7 @@
                 </div> -->
                 <!-- /.box-header -->
                 <!-- form start -->
-                <div class="box-body">
+                <div class="box-body pad">
                     <div class="form-group">
                         <label for="inputTitle" class="col-sm-2 control-label">Title</label>
 
