@@ -49,6 +49,14 @@ class PageEditPage extends PageType {
 
 		//TODO: add code here
 
+		$template->assign("action_url", DomainUtils::generateURL($this->getPage()->getAlias(), array("edit" => $pageID)));
+
+		$template->assign("page", array(
+			'alias' => $page->getAlias(),
+			'title' => (isset($_POST['title']) ? htmlentities($_POST['title']) : $page->getTitle()),
+			'is_published' => $page->isPublished()
+		));
+
 		return $template->getCode();
 	}
 
