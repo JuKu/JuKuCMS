@@ -98,7 +98,7 @@ class PageEditPage extends PageType {
 					// Replace the <textarea id=\"editor1\"> with a CKEditor
 					// instance, using default configuration.
 					CKEDITOR.replace('wysiwygEditor', {
-						height: '600px',
+						height: '500px',
 						enterMode: CKEDITOR.ENTER_BR, 
 						/*toolbar:    
 						[   { name: 'document', groups: [ 'document', 'doctools' ], items: [ 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] },
