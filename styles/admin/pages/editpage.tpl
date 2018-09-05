@@ -35,7 +35,7 @@
 
                     {$additional_code_header}
 
-                    <textarea id="editor1" name="html_code" style="margin-top: 20px; " rows="10" cols="80">{$page.content}</textarea>
+                    <textarea id="wysiwygEditor" name="html_code" style="margin-top: 20px; " rows="10" cols="80">{$page.content}</textarea>
 
                     {$additional_code_footer}
                 </div>

@@ -87,7 +87,19 @@ class PageEditPage extends PageType {
 	}
 
 	public function getFooterScripts(): string {
-		return "";
+		$style_name = Registry::singleton()->getSetting("current_style_name");
+		$style_path = DomainUtils::getBaseURL() . "/styles/" . $style_name . "/";
+
+		return "<!-- CK Editor -->
+			<script src=\"" . $style_path . "bower_components/ckeditor/ckeditor.js\"></script>
+			
+			<script>
+				$(function () {
+					// Replace the <textarea id=\"editor1\"> with a CKEditor
+					// instance, using default configuration.
+					CKEDITOR.replace('wysiwygEditor');
+				})
+			</script>";
 	}
 
 	public function listRequiredPermissions(): array {
