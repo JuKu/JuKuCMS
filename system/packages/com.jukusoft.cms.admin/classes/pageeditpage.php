@@ -51,11 +51,15 @@ class PageEditPage extends PageType {
 		$error_messages = array();
 
 		//save page
-		if (isset($_REQUEST['submit']) && $_REQUEST['submit'] === "Save") {
-			$success_messages[] = "Saved page successfully!";
+		if (isset($_REQUEST['submit'])) {
+			if ($_REQUEST['submit'] === "Save") {
+				//TODO: save page
+				$success_messages[] = "Saved page successfully!";
+			} else if ($_REQUEST['submit'] === "Publish") {
+				//TODO: save and publish page
+				$success_messages[] = "Page published successfully!";
+			}
 		}
-
-		var_dump($_REQUEST);
 
 		$template->assign("action_url", DomainUtils::generateURL($this->getPage()->getAlias(), array("edit" => $pageID)));
 
