@@ -8,6 +8,14 @@
             </div>
         {/foreach}
 
+        {foreach $success_messages message}
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> {lang}Success{/lang}!</h4>
+                {$message}
+            </div>
+        {/foreach}
+
         <!-- left column -->
         <div class="col-md-9">
             <!-- general form elements -->
@@ -81,9 +89,9 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button type="submit" name="Submit" value="Save" class="btn btn-info{if $page.is_published == true} pull-right{/if}">{lang}Save{/lang}</button>
+                    <button type="submit" name="submit" value="Save" class="btn btn-info{if $page.is_published == true} pull-right{/if}">{lang}Save{/lang}</button>
 
-                    {if $page.is_published == false}<button type="submit" name="Submit" value="Publish" class="btn btn-primary pull-right">{lang}Publish{/lang}</button>{/if}
+                    {if $page.is_published == false}<button type="submit" name="submit" value="Publish" class="btn btn-primary pull-right">{lang}Publish{/lang}</button>{/if}
                 </div>
                 <!-- /.box-footer -->
             </div>

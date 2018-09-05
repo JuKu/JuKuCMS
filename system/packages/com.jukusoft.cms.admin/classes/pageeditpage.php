@@ -47,7 +47,13 @@ class PageEditPage extends PageType {
 			return $this->showError("You don't have permissions to edit this page!");
 		}
 
-		//TODO: add code here
+		$success_messages = array();
+		$error_messages = array();
+
+		//save page
+		if (isset($_REQUEST['submit']) && $_REQUEST['submit'] === "Save") {
+			$success_messages[] = "Saved page successfully!";
+		}
 
 		$template->assign("action_url", DomainUtils::generateURL($this->getPage()->getAlias(), array("edit" => $pageID)));
 
@@ -75,6 +81,9 @@ class PageEditPage extends PageType {
 		));
 
 		$template->assign("additional_code_footer", $additional_code_footer);
+
+		$template->assign("errors", $error_messages);
+		$template->assign("success_messages", $success_messages);
 
 		return $template->getCode();
 	}
