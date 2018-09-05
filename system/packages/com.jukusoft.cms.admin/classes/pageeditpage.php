@@ -30,8 +30,32 @@ class PageEditPage extends PageType {
 	public function getContent(): string {
 		$template = new DwooTemplate("pages/editpage");
 
-		//TODO: first check permissions
+		//check, if pageID is set
+		if (!isset($_REQUEST['edit']) || empty($_REQUEST['edit'])) {
+			//show error
+			return $this->showError("No pageID was set!");
+		}
 
+		$pageID = (int) $_REQUEST['edit'];
+
+		$page = new Page();
+		$page->loadByID($pageID);
+
+		//first check permissions
+		if (!PermissionChecker::current()->hasRight("can_edit_all_pages") && !(PermissionChecker::current()->hasRight("can_edit_own_pages") && $page->getAuthorID() == User::current()->getID())) {
+			//user doesn't have permissions to edit this page
+			return $this->showError("You don't have permissions to edit this page!");
+		}
+
+		//TODO: add code here
+
+		return $template->getCode();
+	}
+
+	protected function showError (string $message) : string {
+		//show error
+		$template = new DwooTemplate("pages/error");
+		$template->assign("No pageID was set!");
 		return $template->getCode();
 	}
 
