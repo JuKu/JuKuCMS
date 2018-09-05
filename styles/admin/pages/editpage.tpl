@@ -35,7 +35,7 @@
 
                     {$additional_code_header}
 
-                    Add form here
+                    <textarea id="editor1" name="html_code" rows="10" cols="80">{$page.content}</textarea>
 
                     {$additional_code_footer}
                 </div>

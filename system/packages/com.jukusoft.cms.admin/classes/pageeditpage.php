@@ -54,6 +54,7 @@ class PageEditPage extends PageType {
 		$template->assign("page", array(
 			'alias' => "/" . $page->getAlias(),
 			'title' => (isset($_POST['title']) ? htmlentities($_POST['title']) : $page->getTitle()),
+			'content' => (isset($_POST['content']) ? $_POST['content'] : $page->getContent()),
 			'is_published' => $page->isPublished()
 		));
 
