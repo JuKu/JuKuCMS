@@ -72,7 +72,8 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button type="submit" name="Submit" value="Save" class="btn btn-info pull-right">{lang}Save{/lang}</button>
+                    <button type="submit" name="Submit" value="Save" class="btn btn-info{if $page.is_published == true} pull-right{/if}">{lang}Save{/lang}</button>
+
                     {if $page.is_published == false}<button type="submit" name="Submit" value="Publish" class="btn btn-primary pull-right">{lang}Publish{/lang}</button>{/if}
                 </div>
                 <!-- /.box-footer -->
