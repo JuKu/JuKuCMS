@@ -66,7 +66,7 @@ class PageEditPage extends PageType {
 			'code' => &$additional_code_header
 		));
 
-		$template->assign("additional_code_footer", $additional_code_footer);
+		$template->assign("additional_code_header", $additional_code_footer);
 
 		Events::throwEvent("page_edit_additional_code_footer", array(
 			'page' => &$page,
