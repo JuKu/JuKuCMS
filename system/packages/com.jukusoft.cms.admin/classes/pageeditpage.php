@@ -55,6 +55,8 @@ class PageEditPage extends PageType {
 			$success_messages[] = "Saved page successfully!";
 		}
 
+		var_dump($_REQUEST);
+
 		$template->assign("action_url", DomainUtils::generateURL($this->getPage()->getAlias(), array("edit" => $pageID)));
 
 		$template->assign("page", array(
