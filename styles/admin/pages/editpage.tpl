@@ -36,7 +36,9 @@
                     {$additional_code_header}
 
                     <div class="form-group">
-                        <textarea id="wysiwygEditor" name="html_code" style="width: 100%; " rows="10">{$page.content}</textarea>
+                        <div class="box-body pad">
+                            <textarea id="wysiwygEditor" name="html_code" style="width: 100%; " rows="10">{$page.content}</textarea>
+                        </div>
                     </div>
 
                     {$additional_code_footer}
