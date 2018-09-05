@@ -28,14 +28,14 @@
                     <div class="form-group">
                         <label for="inputFolder" class="col-sm-2 control-label">Alias</label>
 
-                        <div class="col-sm-10">
+                        <div class="col-sm-10" style="padding-bottom: 20px;">
                             <input type="text" name="page_alias" value="{$page.alias}" class="form-control" id="inputAlias" placeholder="my-page-alias" required="required" disabled="disableds">
                         </div>
                     </div>
 
                     {$additional_code_header}
 
-                    <textarea id="wysiwygEditor" name="html_code" style="margin-top: 20px; " rows="10" cols="80">{$page.content}</textarea>
+                    <textarea id="wysiwygEditor" name="html_code" style="width: 100%; " rows="10">{$page.content}</textarea>
 
                     {$additional_code_footer}
                 </div>
