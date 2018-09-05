@@ -33,9 +33,11 @@
                         </div>
                     </div>
 
-                    {$additional_code}
+                    {$additional_code_header}
 
                     Add form here
+
+                    {$additional_code_footer}
                 </div>
                 <!-- /.box-body -->
                 <!-- <div class="box-footer">

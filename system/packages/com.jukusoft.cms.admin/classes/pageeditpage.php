@@ -57,6 +57,24 @@ class PageEditPage extends PageType {
 			'is_published' => $page->isPublished()
 		));
 
+		//add support to show additional code from plugins
+		$additional_code_header = "";
+		$additional_code_footer = "";
+
+		Events::throwEvent("page_edit_additional_code_header", array(
+			'page' => &$page,
+			'code' => &$additional_code_header
+		));
+
+		$template->assign("additional_code_footer", $additional_code_footer);
+
+		Events::throwEvent("page_edit_additional_code_footer", array(
+			'page' => &$page,
+			'code' => &$additional_code_footer
+		));
+
+		$template->assign("additional_code_footer", $additional_code_footer);
+
 		return $template->getCode();
 	}
 
