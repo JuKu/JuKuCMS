@@ -29,7 +29,7 @@
                         <label for="inputFolder" class="col-sm-2 control-label">Alias</label>
 
                         <div class="col-sm-10">
-                            /<input type="text" name="page_alias" value="{$page.alias}" class="form-control" id="inputAlias" placeholder="my-page-alias" required="required" disabled="disableds">
+                            <input type="text" name="page_alias" value="{$page.alias}" class="form-control" id="inputAlias" placeholder="my-page-alias" required="required" disabled="disableds">
                         </div>
                     </div>
 
