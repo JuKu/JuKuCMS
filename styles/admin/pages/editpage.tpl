@@ -8,13 +8,16 @@
             </div>
         {/foreach}
 
-        {foreach $success_messages message}
-            <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i> {lang}Success{/lang}!</h4>
-                {$message}
+        <div class="col-xs-12">
+            {foreach $success_messages message}
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-check"></i> {lang}Success{/lang}!</h4>
+                    {$message}
+                </div>
+            {/foreach}
             </div>
-        {/foreach}
+        <!-- /.col -->
 
         <!-- left column -->
         <div class="col-md-9">
