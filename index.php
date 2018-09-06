@@ -137,7 +137,19 @@ $page_permission = "see";
 //check, if page is not published
 if (!$page->isPublished()) {
 	//another permission is required, because page is not published yet
-	$page_permission = "see_draft";
+	if (isset($_REQUEST['preview']) && $_REQUEST['preview'] == "true") {
+		//show preview
+
+		//check permissions
+		if (PermissionChecker::current()->hasRight("can_edit_all_pages") || (PermissionChecker::current()->hasRight("can_edit_own_pages") && $page->getAuthorID() == User::current()->getID())) {
+			//editor's can see previews of this page, also if they aren't published yet
+			$page_permission = "see";
+		} else {
+			$page_permission = "see_draft";
+		}
+	} else {
+		$page_permission = "see_draft";
+	}
 }
 
 if (!$page_rights->checkRights($user->getID(), $groups->listGroupIDs(), $page_permission)) {
