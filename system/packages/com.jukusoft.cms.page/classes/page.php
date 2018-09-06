@@ -288,8 +288,8 @@ class Page {
 
 	public function clearCache () {
 		//clear cache
-		Cache::clear("pages", "pageID_" . $this->pageID);
-		Cache::clear("pages", "page_" . $this->alias);
+		Cache::clear("pages", "pageID_" . $this->getPageID());
+		Cache::clear("pages", "page_" . $this->getAlias());
 	}
 
 	public static function createIfAbsent (string $alias, string $title, string $page_type, string $content = "", string $folder = "/", int $globalMenu = -1, int $localMenu = -1, int $parentID = -1, bool $sitemap = true, bool $published = true, bool $editable = true, bool $deletable = true, string $author = "system") : int {
