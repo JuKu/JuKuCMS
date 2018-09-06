@@ -65,7 +65,7 @@ class PageType {
 	}
 
 	public function getOgTitle () : string {
-		return $this->page->getOgTitle;
+		return $this->page->getOgTitle();
 	}
 
 	public function getOgType () : string {
