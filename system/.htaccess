@@ -1,16 +1,9 @@
 Options -Indexes
 
 Order Allow,Deny
-deny from all
+#deny from all
 
-<FilesMatch "\.(js|css|png)$">
+<FilesMatch "/thirdparty/*$">
     Order Deny,Allow
     Allow from all
 </FilesMatch>
-
-<Files "thirdparty">
-    Options +Indexes
-
-    Order Allow,Deny
-    Allow from all
-</Files>
