@@ -1,13 +1,13 @@
 Options -Indexes
 
 # BEGIN Disable access to all files EXCEPT
-Order deny,allow
-Deny from all
+#Order deny,allow
+#Deny from all
 
-<FilesMatch "thirdparty/*$">
-    Allow from all
-</FilesMatch>
+#<FilesMatch "thirdparty/*$">
+#    Allow from all
+#</FilesMatch>
 
-<FilesMatch "^thirdparty.*">
-    Allow from all
-</FilesMatch>
+#<FilesMatch "^thirdparty.*">
+#    Allow from all
+#</FilesMatch>
