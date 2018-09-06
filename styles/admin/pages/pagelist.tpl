@@ -68,12 +68,12 @@
                                             {if $permission_can_delete_all_pages_permanently == true}<a href="{$page.delete_permanently_url}" class="btn btn-danger" role="button" title="Delete page permanently, so you cannot restore them">{lang}Delete permanently{/lang} <i class=" fa fa-minus-circle"></i></button></a>{/if}
                                         {else}
                                             {if $page.locked == true}
+                                                {if $page.can_edit == true && $page.locked_by_me == true}<a href="{$page.edit_url}" class="btn btn-warning" role="button" title="Edit page">{lang}Edit{/lang} <i class=" fa fa-edit"></i></button></a>{/if}
                                                 {if $permission_can_unlock_all_pages == true}
                                                     <a href="{$page.unlock_url}" class="btn btn-primary" role="button" title="Unlock page">{lang}Unlock{/lang} <i class=" fa fa-unlock"></i></button></a>
                                                 {else}
                                                     <button type="button" class="btn  disabled" title="Page was locked from user {$page.locked_user} at {$page.locked_timestamp}">{lang}Locked{/lang}  <i class=" fa fa-lock"></i></button><!-- fa-lock fa-wrench -->
                                                 {/if}
-                                                {if $page.can_edit == true && $page.locked_by_me == true}<a href="{$page.edit_url}" class="btn btn-warning" role="button" title="Edit page">{lang}Edit{/lang} <i class=" fa fa-edit"></i></button></a>{/if}
                                             {else}
                                                 <!-- action buttons -->
                                                 {if $page.can_edit == true}<a href="{$page.edit_url}" class="btn btn-warning" role="button" title="Edit page">{lang}Edit{/lang} <i class=" fa fa-edit"></i></button></a>{/if}
