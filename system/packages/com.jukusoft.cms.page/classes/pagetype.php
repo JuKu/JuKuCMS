@@ -106,7 +106,13 @@ class PageType {
 		$tags_lines = "<!-- OpenGraph tags -->\r\n";
 
 		foreach ($tags as $property=>$content) {
-			$tags_lines .= "\t<meta property=\"" . $property . "\" content=\"" . $content . "\" />\r\n";
+			if (is_array($content)) {
+				foreach ($content as $value) {
+					$tags_lines .= "\t<meta property=\"" . $property . "\" content=\"" . $value . "\" />\r\n";
+				}
+			} else {
+				$tags_lines .= "\t<meta property=\"" . $property . "\" content=\"" . $content . "\" />\r\n";
+			}
 		}
 
 		return $tags_lines;
