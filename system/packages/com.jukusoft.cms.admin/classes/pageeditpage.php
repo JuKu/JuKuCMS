@@ -207,7 +207,7 @@ class PageEditPage extends PageType {
 				});
 			</script>";*/
 
-		return "<script src=\"" . $thirdparty_url . "tinymce_4.8.2/js/tinymce.min.js\"></script>
+		return "<script src=\"" . $thirdparty_url . "tinymce_4.8.2/js/tinymce/tinymce.min.js\"></script>
   				<script>tinymce.init({ selector:'textarea' });</script>";
 	}
 
