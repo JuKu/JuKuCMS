@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <title>{$TITLE}</title>
     <link rel="shortcut icon" href="{$STYLE_PATH}style/favicon.ico" type="image/x-icon">
     <link rel="icon" href="{$STYLE_PATH}style/favicon.ico" type="image/x-icon">	
@@ -13,6 +13,8 @@
     <meta name="author" content="{$meta.author.username}" />
     {if $meta.has_robots == true}<meta name="robots" content="{$meta.robots}" />{/if}
     {if $meta.has_canoncials == true}<link rel=”canonical” href="{$meta.canoncials}" />{/if}
+
+    {$OG_TAGS}
 
     <meta http-equiv="content-type" content="text/html; charset={$CHARSET}" />
 

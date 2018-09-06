@@ -1,8 +1,10 @@
 <!-- BEGIN: main -->
 <!DOCTYPE html>
 <html>
-    <head>
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
         <title>{$TITLE}</title>
+
+        {$OG_TAGS}
 
         {$HEAD}
     </head>

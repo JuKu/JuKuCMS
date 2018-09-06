@@ -1,7 +1,7 @@
 <!-- BEGIN: main -->
 <!DOCTYPE html>
 <html>
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <meta charset="{$CHARSET}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{$TITLE}</title>
@@ -14,6 +14,8 @@
     <meta name="author" content="{$meta.author.username}" />
     {if $meta.has_robots == true}<meta name="robots" content="{$meta.robots}" />{/if}
     {if $meta.has_canoncials == true}<link rel=”canonical” href="{$meta.canoncials}" />{/if}
+
+    {$OG_TAGS}
 
     <!-- set charset -->
     <meta charset="{$CHARSET}" />

@@ -112,6 +112,9 @@ class StyleController {
 
 		$template->assign("meta", $meta);
 
+		//set opengraph tags
+		$template->assign("OG_TAGS", $page_type->getOgTags());
+
 		//create new css builder
 		/*$css_builder = new CSSBuilder();
 

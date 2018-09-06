@@ -64,6 +64,34 @@ class PageType {
 		return true;
 	}
 
+	public function getOgTitle () : string {
+		return $this->page->getOgTitle;
+	}
+
+	public function getOgType () : string {
+		return $this->page->getOgType();
+	}
+
+	public function getOgImage () : string {
+		return $this->page->getOgImage();
+	}
+
+	public function getOgUrl () : string {
+		return DomainUtils::generateURL($this->page->getAlias());
+	}
+
+	public function getOgTags () : string {
+		$tags = "<meta property=\"og:type\" content=\"" . $this->getOgType() . "\" />
+				<meta property=\"og:url\" content=\"" . $this->getOgUrl() . "\" />
+				<meta property=\"og:title\" content=\"" . $this->getOgTitle() . "\" />";
+
+		if (!empty($this->getOgImage())) {
+			$tags .= "<meta property=\"og:image\" content=\"" . $this->getOgImage() . "\" />";
+		}
+
+		return $tags;
+	}
+
 	public function getContent () : string {
 		$content = $this->getPage()->getContent();
 

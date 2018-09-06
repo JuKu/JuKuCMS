@@ -223,6 +223,18 @@ class Page {
 		return $this->row['meta_canonicals'];
 	}
 
+	public function getOgType () : string {
+		return $this->row['og_type'];
+	}
+
+	public function getOgTitle () : string {
+		return !empty($this->row['og_title']) ? $this->row['og_title'] : $this->getTitle();
+	}
+
+	public function getOgImage () : string {
+		return $this->row['og_image'];
+	}
+
 	public function getAuthorID () : int {
 		return $this->row['author'];
 	}
