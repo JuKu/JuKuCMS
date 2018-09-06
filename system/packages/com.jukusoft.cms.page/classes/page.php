@@ -447,12 +447,18 @@ class Page {
 			'userID' => $userID,
 			'pageID' => $pageID
 		));
+
+		//clear cache
+		Cache::clear("pages", "pageID_" . $pageID);
 	}
 
 	public static function unlockPage (int $pageID) {
 		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `locked_by` WHERE `id` = :pageID; ", array(
 			'pageID' => $pageID
 		));
+
+		//clear cache
+		Cache::clear("pages", "pageID_" . $pageID);
 	}
 
 	protected static function movePageToTrash (int $pageID) {
