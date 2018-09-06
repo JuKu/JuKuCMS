@@ -95,6 +95,8 @@ class PageType {
 			$tags['og:image'] = $this->getOgImage();
 		}
 
+		$this->getAdditionalTags($tags);
+
 		Events::throwEvent("og_tags", array(
 			'page' => &$this->page,
 			'page_type' => &$this,
@@ -108,6 +110,15 @@ class PageType {
 		}
 
 		return $tags_lines;
+	}
+
+	/**
+	 * add additional tags
+	 *
+	 * This method was added so that page types doesn't have to override getOgTags() completely
+	 */
+	protected function getAdditionalTags (array &$tags) {
+		//add additional tags
 	}
 
 	public function getContent () : string {
