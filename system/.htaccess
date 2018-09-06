@@ -8,9 +8,9 @@ deny from all
     Allow from all
 </FilesMatch>
 
-<Directory thirdparty>
+<Files "thirdparty">
     Options +Indexes
 
     Order Deny,Allow
     Allow from all
-</Directory>
+</Files>
