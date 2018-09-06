@@ -150,9 +150,6 @@ class PageEditPage extends PageType {
 		//reload page from database
 		$page->loadByID($page->getPageID(), false);
 
-		//$page->setTitle($title);
-		//$page->setContent($content);
-
 		//TODO: remove this line later
 		Cache::clear("pages");
 
@@ -167,10 +164,14 @@ class PageEditPage extends PageType {
 				'pageID' => $page->getPageID()
 			));
 
-			$page->publish();
-
 			//clear cache
 			$page->clearCache();
+
+			//reload page from database
+			$page->loadByID($page->getPageID(), false);
+
+			//TODO: remove this line later
+			Cache::clear("pages");
 
 			return true;
 		} else {
