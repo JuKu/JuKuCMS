@@ -162,6 +162,7 @@ class PageListPage extends PageType {
 				'published' => $row['published'] == 1,
 				'locked' => $row['locked_by'] != -1,
 				'locked_user' => $row['locked_by'],
+				'locked_by_me' => $row['locked_by'] == User::current()->getID(),
 				'locked_timestamp' => $row['locked_timestamp'],
 				'unlock_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("unlock" => $row['id'])),
 				'can_edit' => ($permission_can_edit_all_pages || ($permission_can_edit_own_pages && $is_own_page)) && $row['editable'] == 1,
