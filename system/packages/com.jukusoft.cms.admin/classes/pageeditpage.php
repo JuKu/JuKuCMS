@@ -53,11 +53,32 @@ class PageEditPage extends PageType {
 		//save page
 		if (isset($_REQUEST['submit'])) {
 			if ($_REQUEST['submit'] === "Save") {
-				//TODO: save page
-				$success_messages[] = "Saved page successfully!";
+				//save page
+				$res = $this->save();
+
+				if ($res == true) {
+					$success_messages[] = "Saved page successfully!";
+				} else {
+					$error_messages[] = $res;
+				}
 			} else if ($_REQUEST['submit'] === "Publish") {
-				//TODO: save and publish page
-				$success_messages[] = "Page published successfully!";
+				//save page
+				$res = $this->save();
+
+				if ($res == true) {
+					$success_messages[] = "Saved page successfully!";
+				} else {
+					$error_messages[] = $res;
+				}
+
+				//publish page
+				$res = $this->publish();
+
+				if ($res == true) {
+					$success_messages[] = "Page published successfully!";
+				} else {
+					$error_messages[] = $res;
+				}
 			}
 		}
 
@@ -67,7 +88,8 @@ class PageEditPage extends PageType {
 			'alias' => "/" . $page->getAlias(),
 			'title' => (isset($_POST['title']) ? htmlentities($_POST['title']) : $page->getTitle()),
 			'content' => (isset($_POST['content']) ? $_POST['content'] : $page->getContent()),
-			'is_published' => $page->isPublished()
+			'is_published' => $page->isPublished(),
+			'can_publish' => false//(!$page->isPublished() && (PermissionChecker::current()->hasRight("can_publish_all_pages") || (PermissionChecker::current()->hasRight("can_publish_own_pages") && $page->getAuthorID() == User::current()->getID())))
 		));
 
 		//add support to show additional code from plugins
@@ -92,6 +114,21 @@ class PageEditPage extends PageType {
 		$template->assign("success_messages", $success_messages);
 
 		return $template->getCode();
+	}
+
+	protected function save () {
+		return true;
+	}
+
+	protected function publish (Page $page) {
+		//TODO: check permissions for publishing
+		if (PermissionChecker::current()->hasRight("can_publish_all_pages") || (PermissionChecker::current()->hasRight("can_publish_own_pages") && $page->getAuthorID() == User::current()->getID())) {
+			//
+		} else {
+			return "You don't have the permissions to publish this page!";
+		}
+
+		return true;
 	}
 
 	protected function showError (string $message) : string {
