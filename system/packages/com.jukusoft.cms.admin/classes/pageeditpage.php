@@ -117,6 +117,12 @@ class PageEditPage extends PageType {
 	}
 
 	protected function save () {
+		//first check permissions
+		if (!PermissionChecker::current()->hasRight("can_edit_all_pages") && !(PermissionChecker::current()->hasRight("can_edit_own_pages") && $page->getAuthorID() == User::current()->getID())) {
+			//user doesn't have permissions to edit this page
+			return "You don't have permissions to edit this page!";
+		}
+
 		return true;
 	}
 
