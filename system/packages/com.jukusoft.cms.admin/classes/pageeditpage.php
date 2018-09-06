@@ -85,8 +85,9 @@ class PageEditPage extends PageType {
 		$template->assign("action_url", DomainUtils::generateURL($this->getPage()->getAlias(), array("edit" => $pageID)));
 
 		$template->assign("page", array(
+			'id' => $page->getPageID(),
 			'alias' => "/" . $page->getAlias(),
-			'title' => (isset($_POST['title']) ? htmlentities($_POST['title']) : $page->getTitle()),
+			'title' => $page->getTitle(),
 			'content' => (isset($_POST['html_code']) ? $_POST['html_code'] : $page->getContent()),
 			'is_published' => $page->isPublished(),
 			'can_publish' => (!$page->isPublished() && (PermissionChecker::current()->hasRight("can_publish_all_pages") || (PermissionChecker::current()->hasRight("can_publish_own_pages") && $page->getAuthorID() == User::current()->getID())))
@@ -143,11 +144,14 @@ class PageEditPage extends PageType {
 			'pageID' => $page->getPageID()
 		));
 
-		$page->setTitle($title);
-		$page->setContent($content);
-
 		//clear cache
 		$page->clearCache();
+
+		//reload page from database
+		$page->loadByID($page->getPageID(), false);
+
+		//$page->setTitle($title);
+		//$page->setContent($content);
 
 		return true;
 	}

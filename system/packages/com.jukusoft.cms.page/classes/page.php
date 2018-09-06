@@ -88,8 +88,8 @@ class Page {
 		$this->pagetype = $this->row['page_type'];
 	}
 
-	public function loadByID (int $pageID) {
-		if (Cache::contains("pages", "pageID_" . $pageID)) {
+	public function loadByID (int $pageID, bool $use_cache = true) {
+		if ($use_cache && Cache::contains("pages", "pageID_" . $pageID)) {
 			$this->row = Cache::get("pages", "pageID_" . $pageID);
 		} else {
 			$row = Database::getInstance()->getRow("SELECT * FROM `{praefix}pages` WHERE `id` = :pageID; ", array('pageID' => $pageID));
@@ -287,6 +287,10 @@ class Page {
 	}
 
 	public function clearCache () {
+		if (!is_int($this->getPageID())) {
+			throw new IllegalStateException("pageID isn't set.");
+		}
+
 		//clear cache
 		Cache::clear("pages", "pageID_" . $this->getPageID());
 		Cache::clear("pages", "page_" . $this->getAlias());

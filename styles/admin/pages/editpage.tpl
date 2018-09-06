@@ -88,7 +88,8 @@
                 <!-- /.box-header -->
                 <!-- form start -->
                 <div class="box-body">
-                    Publish state
+                    Publish state<br />
+                    PageID: {$page.id}
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
