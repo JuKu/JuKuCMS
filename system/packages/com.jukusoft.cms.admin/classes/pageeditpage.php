@@ -56,7 +56,7 @@ class PageEditPage extends PageType {
 				//save page
 				$res = $this->save();
 
-				if ($res == true) {
+				if ($res === true) {
 					$success_messages[] = "Saved page successfully!";
 				} else {
 					$error_messages[] = $res;
@@ -65,7 +65,7 @@ class PageEditPage extends PageType {
 				//save page
 				$res = $this->save();
 
-				if ($res == true) {
+				if ($res === true) {
 					$success_messages[] = "Saved page successfully!";
 				} else {
 					$error_messages[] = $res;
@@ -74,7 +74,7 @@ class PageEditPage extends PageType {
 				//publish page
 				$res = $this->publish();
 
-				if ($res == true) {
+				if ($res === true) {
 					$success_messages[] = "Page published successfully!";
 				} else {
 					$error_messages[] = $res;
@@ -89,7 +89,7 @@ class PageEditPage extends PageType {
 			'title' => (isset($_POST['title']) ? htmlentities($_POST['title']) : $page->getTitle()),
 			'content' => (isset($_POST['content']) ? $_POST['content'] : $page->getContent()),
 			'is_published' => $page->isPublished(),
-			'can_publish' => false//(!$page->isPublished() && (PermissionChecker::current()->hasRight("can_publish_all_pages") || (PermissionChecker::current()->hasRight("can_publish_own_pages") && $page->getAuthorID() == User::current()->getID())))
+			'can_publish' => (!$page->isPublished() && (PermissionChecker::current()->hasRight("can_publish_all_pages") || (PermissionChecker::current()->hasRight("can_publish_own_pages") && $page->getAuthorID() == User::current()->getID())))
 		));
 
 		//add support to show additional code from plugins
@@ -121,6 +121,14 @@ class PageEditPage extends PageType {
 		if (!PermissionChecker::current()->hasRight("can_edit_all_pages") && !(PermissionChecker::current()->hasRight("can_edit_own_pages") && $page->getAuthorID() == User::current()->getID())) {
 			//user doesn't have permissions to edit this page
 			return "You don't have permissions to edit this page!";
+		}
+
+		if (!isset($_POST['title']) || empty($_POST['title'])) {
+			return "No title was set";
+		}
+
+		if (!isset($_POST['html_code']) || empty($_POST['html_code'])) {
+			return "No content was set or content is empty!";
 		}
 
 		return true;
