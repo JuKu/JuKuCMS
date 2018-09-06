@@ -11,6 +11,6 @@ deny from all
 <Files "thirdparty">
     Options +Indexes
 
-    Order Deny,Allow
+    Order Allow,Deny
     Allow from all
 </Files>
