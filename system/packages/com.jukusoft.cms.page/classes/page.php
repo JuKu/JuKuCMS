@@ -135,7 +135,7 @@ class Page {
 		return $this->row['title'];
 	}
 
-	public function setTitle (string $title) : string {
+	public function setTitle (string $title) {
 		$this->row['title'] = $title;
 		$this->changes[] = "title";
 	}
@@ -144,7 +144,7 @@ class Page {
 		return $this->row['content'];
 	}
 
-	public function setContent (string $content) : string {
+	public function setContent (string $content) {
 		$this->row['content'] = $content;
 		$this->changes[] = "content";
 		$this->changes[] = "content";
