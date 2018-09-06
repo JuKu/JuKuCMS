@@ -153,11 +153,14 @@ class PageEditPage extends PageType {
 		//$page->setTitle($title);
 		//$page->setContent($content);
 
+		//TODO: remove this line later
+		Cache::clear("pages");
+
 		return true;
 	}
 
 	protected function publish (Page &$page) {
-		//TODO: check permissions for publishing
+		//check permissions for publishing
 		if (PermissionChecker::current()->hasRight("can_publish_all_pages") || (PermissionChecker::current()->hasRight("can_publish_own_pages") && $page->getAuthorID() == User::current()->getID())) {
 			//update page in database
 			Database::getInstance()->execute("UPDATE `{praefix}pages` SET `published` = '1' WHERE `id` = :pageID; ", array(
