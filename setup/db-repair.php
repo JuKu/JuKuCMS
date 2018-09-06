@@ -1543,6 +1543,7 @@ Permissions::createPermission("can_delete_all_pages", "Can delete all pages", "C
 Permissions::createPermission("can_see_trash_pages", "Can see all deleted pages in trash", "Can see all deleted pages in trash", "pages", "system", 10);
 Permissions::createPermission("can_delete_all_pages_permanently", "Can delete all pages from trash permanently", "Can delete all pages from trash permanently, so you couldn't restore them anymore.", "pages", "system", 11);
 Permissions::createPermission("can_restore_trash_pages", "Can restore all pages in trash", "Can restore all pages in trash", "pages", "system", 12);
+Permissions::createPermission("can_change_page_owner", "Can change page owner of all pages", "Can change page owner of all pages", "pages", "system", 14);
 
 //media permissions
 Permissions::createPermission("can_see_all_media", "Can see all media", "Can see all media files", "media", "system", 1);
