@@ -8,6 +8,6 @@ Deny from all
     Allow from all
 </FilesMatch>
 
-<FilesMatch "^thirdparty_.*">
+<FilesMatch "^thirdparty.*">
     Allow from all
 </FilesMatch>
