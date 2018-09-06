@@ -119,6 +119,7 @@
                 <!-- /.box-header -->
                 <!-- form start -->
                 <div class="box-body">
+                    Folder: {$page.folder}<br />
                     Parent page, template, menus
                 </div>
                 <!-- /.box-body -->

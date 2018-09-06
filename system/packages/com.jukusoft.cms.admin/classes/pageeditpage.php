@@ -91,7 +91,8 @@ class PageEditPage extends PageType {
 			'content' => $page->getContent(),
 			'is_published' => $page->isPublished(),
 			'can_publish' => (!$page->isPublished() && (PermissionChecker::current()->hasRight("can_publish_all_pages") || (PermissionChecker::current()->hasRight("can_publish_own_pages") && $page->getAuthorID() == User::current()->getID()))),
-			'can_change_owner' => (PermissionChecker::current()->hasRight("can_change_page_owner") || $page->getAuthorID() == User::current()->getID())
+			'can_change_owner' => (PermissionChecker::current()->hasRight("can_change_page_owner") || $page->getAuthorID() == User::current()->getID()),
+			'folder' => $page->getFolder()
 		));
 
 		//add support to show additional code from plugins
