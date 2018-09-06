@@ -98,10 +98,10 @@ class PageType {
 			'tags' => &$tags
 		));
 
-		$tags_lines = "";
+		$tags_lines = "<!-- OpenGraph tags -->";
 
 		foreach ($tags as $property=>$content) {
-			$tags_lines .= "<meta property=\"" . $property . "\" content=\"" . $content . "\" />";
+			$tags_lines .= "<meta property=\"" . $property . "\" content=\"" . $content . "\" />\r\n";
 		}
 
 		return $tags_lines;
