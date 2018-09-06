@@ -103,6 +103,29 @@
                 <!-- /.box-footer -->
             </div>
             <!-- /.box -->
+
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{lang}Permissions{/lang}</h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                title="Collapse">
+                            <i class="fa fa-minus"></i></button>
+                        <!-- <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip"
+                                title="Remove">
+                            <i class="fa fa-times"></i></button> -->
+                    </div>
+                    <!-- /. tools -->
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">
+                    Permissions
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
         </div>
         <!--/.col (right) -->
 
