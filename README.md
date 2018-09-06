@@ -105,6 +105,7 @@ https://poser.pugx.org/
 ## License
 
 **Styles, Plugins & Packages** can have their own licenses (see LICENSE file in directory)!\
+Also directory **system/thirdparty** contains own licenses!\
 All other code is licensed under **Apache 2.0** license.
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FJuKu%2FJuKuCMS.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FJuKu%2FJuKuCMS?ref=badge_large)
