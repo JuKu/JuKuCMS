@@ -173,6 +173,8 @@ if (isset($_REQUEST['redirect_url']) && !empty($_REQUEST['redirect_url'])) {
 $registry->setSetting("login_url", DomainUtils::getBaseURL() . "/" . Settings::get("login_page", "login") . "?action=login&redirect_url=" . $redirect_url);
 $registry->setSetting("logout_url", DomainUtils::getBaseURL() . "/" . Settings::get("logout_page", "logout") . "?csrf_token=" . urlencode(Security::getCSRFToken()));
 
+$registry->setSetting("thirdparty_url", DomainUtils::getBaseURL() . "/system/thirdparty/");
+
 //get (global) main menu
 $menuID = (int) ($page->getGlobalMenuID() != -1) ? $page->getGlobalMenuID() : ($folder->hasCustomMainMenu() ? $folder->getMainMenu() : Settings::get("main_menuID"));
 $menu = new Menu($menuID, "menu");

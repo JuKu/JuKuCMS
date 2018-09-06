@@ -191,7 +191,9 @@ class PageEditPage extends PageType {
 		$style_name = Registry::singleton()->getSetting("current_style_name");
 		$style_path = DomainUtils::getBaseURL() . "/styles/" . $style_name . "/";
 
-		return "<!-- CK Editor -->
+		$thirdparty_url = Registry::singleton()->getSetting("thirdparty_url");
+
+		/*return "<!-- CK Editor -->
 			<script src=\"" . $style_path . "bower_components/ckeditor/ckeditor.js\"></script>
 			
 			<script>
@@ -200,22 +202,13 @@ class PageEditPage extends PageType {
 					// instance, using default configuration.
 					CKEDITOR.replace('wysiwygEditor', {
 						height: '500px',
-						enterMode: CKEDITOR.ENTER_BR, 
-						/*toolbar:    
-						[   { name: 'document', groups: [ 'document', 'doctools' ], items: [ 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] },
-							{ name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
-							{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl' ] },        '/',
-							{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
-							{ name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] }, { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
-							{ name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar', 'PageBreak', 'Iframe', 'Syntaxhighlight' ] }, '/',
-							{ name: 'styles', items: [ 'Format', 'Font', 'FontSize' ] },
-							{ name: 'colors', items: [ 'TextColor', 'BGColor' ] },
-							{ name: 'others', groups: [ 'mode' ], items: [ 'Source', 'searchCode', 'autoFormat', 'CommentSelectedRange', 'UncommentSelectedRange', 'AutoComplete', '-', 'ShowBlocks' ] },
-							{ name: 'tools', items: [ 'Maximize' ] },
-						]*/
+						enterMode: CKEDITOR.ENTER_BR
 					});
 				});
-			</script>";
+			</script>";*/
+
+		return "<script src=\"" . $thirdparty_url . "tinymce_4.8.2/js/tinymce.min.js\"></script>
+  				<script>tinymce.init({ selector:'textarea' });</script>";
 	}
 
 	public function listRequiredPermissions(): array {
