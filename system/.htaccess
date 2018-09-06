@@ -5,7 +5,6 @@ Order deny,allow
 Deny from all
 
 <FilesMatch "thirdparty/*$">
-    Order Deny,Allow
     Allow from all
 </FilesMatch>
 
