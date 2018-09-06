@@ -81,15 +81,33 @@ class PageType {
 	}
 
 	public function getOgTags () : string {
+		$tags = array();
+		$tags['og:type'] = $this->getOgType();
+		$tags['og:url'] = $this->getOgUrl();
+		$tags['og:title'] = $this->getOgTitle();
+
+
 		$tags = "<meta property=\"og:type\" content=\"" . $this->getOgType() . "\" />
 				<meta property=\"og:url\" content=\"" . $this->getOgUrl() . "\" />
 				<meta property=\"og:title\" content=\"" . $this->getOgTitle() . "\" />";
 
 		if (!empty($this->getOgImage())) {
-			$tags .= "<meta property=\"og:image\" content=\"" . $this->getOgImage() . "\" />";
+			$tags['og:image'] = $this->getOgImage();
 		}
 
-		return $tags;
+		Events::throwEvent("og_tags", array(
+			'page' => &$this->page,
+			'page_type' => &$this,
+			'tags' => &$tags
+		));
+
+		$tags_lines = "";
+
+		foreach ($tags as $property=>$content) {
+			$tags_lines .= "<meta property=\"" . $property . "\" content=\"" . $content . "\" />";
+		}
+
+		return $tags_lines;
 	}
 
 	public function getContent () : string {
