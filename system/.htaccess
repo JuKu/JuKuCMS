@@ -1,7 +1,16 @@
 Options -Indexes
+
+Order Allow,Deny
 deny from all
 
-<FilesMatch "\.(js|css|png|md)$">
+<FilesMatch "\.(js|css|png)$">
     Order Deny,Allow
     Allow from all
 </FilesMatch>
+
+<Directory thirdparty>
+    Options +Indexes
+
+    Order Deny,Allow
+    Allow from all
+</Directory>
