@@ -453,7 +453,7 @@ class Page {
 	}
 
 	public static function unlockPage (int $pageID) {
-		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `locked_by` WHERE `id` = :pageID; ", array(
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `locked_by` = '-1' WHERE `id` = :pageID; ", array(
 			'pageID' => $pageID
 		));
 
