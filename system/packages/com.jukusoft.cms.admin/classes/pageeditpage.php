@@ -87,7 +87,7 @@ class PageEditPage extends PageType {
 		$template->assign("page", array(
 			'alias' => "/" . $page->getAlias(),
 			'title' => (isset($_POST['title']) ? htmlentities($_POST['title']) : $page->getTitle()),
-			'content' => (isset($_POST['content']) ? $_POST['content'] : $page->getContent()),
+			'content' => (isset($_POST['html_code']) ? $_POST['html_code'] : $page->getContent()),
 			'is_published' => $page->isPublished(),
 			'can_publish' => (!$page->isPublished() && (PermissionChecker::current()->hasRight("can_publish_all_pages") || (PermissionChecker::current()->hasRight("can_publish_own_pages") && $page->getAuthorID() == User::current()->getID())))
 		));
@@ -134,7 +134,7 @@ class PageEditPage extends PageType {
 			return "No content was set or content is empty!";
 		}
 
-		$content = $_POST['content'];
+		$content = $_POST['html_code'];
 
 		//update page in database
 		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content WHERE `id` = :pageID; ", array(
