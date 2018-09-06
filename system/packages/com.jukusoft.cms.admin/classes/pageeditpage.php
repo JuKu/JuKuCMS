@@ -88,7 +88,7 @@ class PageEditPage extends PageType {
 			'id' => $page->getPageID(),
 			'alias' => "/" . $page->getAlias(),
 			'title' => $page->getTitle(),
-			'content' => (isset($_POST['html_code']) ? $_POST['html_code'] : $page->getContent()),
+			'content' => $page->getContent(),
 			'is_published' => $page->isPublished(),
 			'can_publish' => (!$page->isPublished() && (PermissionChecker::current()->hasRight("can_publish_all_pages") || (PermissionChecker::current()->hasRight("can_publish_own_pages") && $page->getAuthorID() == User::current()->getID())))
 		));
