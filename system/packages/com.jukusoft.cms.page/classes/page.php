@@ -266,8 +266,7 @@ class Page {
 		self::movePageToTrash($this->pageID);
 
 		//clear cache
-		Cache::clear("pages", "pageID_" . $this->pageID);
-		Cache::clear("pages", "page_" . $this->alias);
+		$this->clearCache();
 	}
 
 	/**
@@ -277,8 +276,7 @@ class Page {
 		self::restorePage($this->pageID);
 
 		//clear cache
-		Cache::clear("pages", "pageID_" . $this->pageID);
-		Cache::clear("pages", "page_" . $this->alias);
+		$this->clearCache();
 	}
 
 	/**
@@ -286,6 +284,12 @@ class Page {
 	 */
 	public function save () {
 		//TODO: add code here
+	}
+
+	public function clearCache () {
+		//clear cache
+		Cache::clear("pages", "pageID_" . $this->pageID);
+		Cache::clear("pages", "page_" . $this->alias);
 	}
 
 	public static function createIfAbsent (string $alias, string $title, string $page_type, string $content = "", string $folder = "/", int $globalMenu = -1, int $localMenu = -1, int $parentID = -1, bool $sitemap = true, bool $published = true, bool $editable = true, bool $deletable = true, string $author = "system") : int {

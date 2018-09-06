@@ -146,6 +146,9 @@ class PageEditPage extends PageType {
 		$page->setTitle($title);
 		$page->setContent($content);
 
+		//clear cache
+		$page->clearCache();
+
 		return true;
 	}
 
@@ -158,6 +161,9 @@ class PageEditPage extends PageType {
 			));
 
 			$page->publish();
+
+			//clear cache
+			$page->clearCache();
 
 			return true;
 		} else {
