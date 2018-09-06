@@ -113,7 +113,8 @@ class PageEditPage extends PageType {
 			'is_published' => $page->isPublished(),
 			'can_publish' => (!$page->isPublished() && (PermissionChecker::current()->hasRight("can_publish_all_pages") || (PermissionChecker::current()->hasRight("can_publish_own_pages") && $page->getAuthorID() == User::current()->getID()))),
 			'can_change_owner' => (PermissionChecker::current()->hasRight("can_change_page_owner") || $page->getAuthorID() == User::current()->getID()),
-			'folder' => $page->getFolder()
+			'folder' => $page->getFolder(),
+			'preview_url' => DomainUtils::generateURL($page->getAlias(), array("preview" => "true"))
 		));
 
 		//add support to show additional code from plugins

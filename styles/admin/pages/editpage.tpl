@@ -91,6 +91,8 @@
                 <!-- /.box-header -->
                 <!-- form start -->
                 <div class="box-body">
+                    <a href="{$page.preview_url}" class="btn" role="button" title="Preview page">{lang}Preview{/lang} <i class=" fa fa-search"></i></button></a>
+
                     Publish state<br />
                     PageID: {$page.id}
                 </div>
