@@ -105,6 +105,27 @@
             <!-- /.box -->
 
             <!-- Box: SEO -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{lang}Page Attributes{/lang}</h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                title="Collapse">
+                            <i class="fa fa-minus"></i></button>
+                    </div>
+                    <!-- /. tools -->
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">
+                    Parent page, template, menus
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+            <!-- Box: SEO -->
             <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title">{lang}SEO & Meta Data{/lang}</h3>
@@ -119,7 +140,7 @@
                 <!-- /.box-header -->
                 <!-- form start -->
                 <div class="box-body">
-                    SEO
+                    SEO, Meta Data, Sitemap and Robots.txt settings
                 </div>
                 <!-- /.box-body -->
             </div>
