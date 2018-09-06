@@ -3,7 +3,7 @@ Options -Indexes
 Order Allow,Deny
 #deny from all
 
-<FilesMatch "/thirdparty/*$">
+<FilesMatch "thirdparty/*$">
     Order Deny,Allow
     Allow from all
 </FilesMatch>
