@@ -86,11 +86,6 @@ class PageType {
 		$tags['og:url'] = $this->getOgUrl();
 		$tags['og:title'] = $this->getOgTitle();
 
-
-		$tags = "<meta property=\"og:type\" content=\"" . $this->getOgType() . "\" />
-				<meta property=\"og:url\" content=\"" . $this->getOgUrl() . "\" />
-				<meta property=\"og:title\" content=\"" . $this->getOgTitle() . "\" />";
-
 		if (!empty($this->getOgImage())) {
 			$tags['og:image'] = $this->getOgImage();
 		}
