@@ -168,7 +168,7 @@ class PageEditPage extends PageType {
 	protected function showError (string $message) : string {
 		//show error
 		$template = new DwooTemplate("pages/error");
-		$template->assign("No pageID was set!");
+		$template->assign("message", "No pageID was set!");
 		return $template->getCode();
 	}
 
