@@ -192,6 +192,7 @@ class Page {
 
 	public function publish () {
 		$this->row['published'] = 1;
+		$this->changes[] = "published";
 	}
 
 	public function getContentType () : string {
