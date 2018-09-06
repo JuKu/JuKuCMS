@@ -68,6 +68,10 @@ class PageType {
 		return $this->page->getOgTitle();
 	}
 
+	public function getOgDescription () : string {
+		return $this->page->getOgDescription();
+	}
+
 	public function getOgType () : string {
 		return $this->page->getOgType();
 	}
@@ -85,6 +89,7 @@ class PageType {
 		$tags['og:type'] = $this->getOgType();
 		$tags['og:url'] = $this->getOgUrl();
 		$tags['og:title'] = $this->getOgTitle();
+		$tags['og:description'] = $this->getOgDescription();
 
 		if (!empty($this->getOgImage())) {
 			$tags['og:image'] = $this->getOgImage();

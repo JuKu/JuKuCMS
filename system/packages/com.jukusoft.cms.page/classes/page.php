@@ -231,6 +231,10 @@ class Page {
 		return !empty($this->row['og_title']) ? $this->row['og_title'] : $this->getTitle();
 	}
 
+	public function getOgDescription () : string {
+		return !empty($this->row['og_description']) ? $this->row['og_description'] : $this->getMetaDescription();
+	}
+
 	public function getOgImage () : string {
 		return $this->row['og_image'];
 	}
