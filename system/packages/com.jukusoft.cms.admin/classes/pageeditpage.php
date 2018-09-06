@@ -47,6 +47,9 @@ class PageEditPage extends PageType {
 			return $this->showError("You don't have permissions to edit this page!");
 		}
 
+		//first, lock page
+		Page::lockPage($page->getPageID(), User::current()->getID());
+
 		$success_messages = array();
 		$error_messages = array();
 
@@ -58,6 +61,24 @@ class PageEditPage extends PageType {
 
 				if ($res === true) {
 					$success_messages[] = "Saved page successfully!";
+				} else {
+					$error_messages[] = $res;
+				}
+			} else if ($_REQUEST['submit'] === "SaveUnlock") {
+				//save page
+				$res = $this->save($page);
+
+				if ($res === true) {
+					//unlock page
+					Page::unlockPage($page->getPageID());
+
+					//redirect to admin/pages
+					header("Location: " . DomainUtils::generateURL("admin/pages"));
+
+					ob_flush();
+					ob_end_flush();
+
+					exit;
 				} else {
 					$error_messages[] = $res;
 				}
