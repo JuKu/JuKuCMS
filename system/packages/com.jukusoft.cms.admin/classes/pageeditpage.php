@@ -54,7 +54,7 @@ class PageEditPage extends PageType {
 		if (isset($_REQUEST['submit'])) {
 			if ($_REQUEST['submit'] === "Save") {
 				//save page
-				$res = $this->save();
+				$res = $this->save($page);
 
 				if ($res === true) {
 					$success_messages[] = "Saved page successfully!";
@@ -63,7 +63,7 @@ class PageEditPage extends PageType {
 				}
 			} else if ($_REQUEST['submit'] === "Publish") {
 				//save page
-				$res = $this->save();
+				$res = $this->save($page);
 
 				if ($res === true) {
 					$success_messages[] = "Saved page successfully!";
@@ -72,7 +72,7 @@ class PageEditPage extends PageType {
 				}
 
 				//publish page
-				$res = $this->publish();
+				$res = $this->publish($page);
 
 				if ($res === true) {
 					$success_messages[] = "Page published successfully!";
@@ -116,7 +116,7 @@ class PageEditPage extends PageType {
 		return $template->getCode();
 	}
 
-	protected function save () {
+	protected function save (Page &$page) {
 		//first check permissions
 		if (!PermissionChecker::current()->hasRight("can_edit_all_pages") && !(PermissionChecker::current()->hasRight("can_edit_own_pages") && $page->getAuthorID() == User::current()->getID())) {
 			//user doesn't have permissions to edit this page
@@ -127,22 +127,42 @@ class PageEditPage extends PageType {
 			return "No title was set";
 		}
 
+		//validate title
+		$title = htmlentities($_POST['title']);
+
 		if (!isset($_POST['html_code']) || empty($_POST['html_code'])) {
 			return "No content was set or content is empty!";
 		}
 
+		$content = $_POST['content'];
+
+		//update page in database
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content WHERE `id` = :pageID; ", array(
+			'title' => $title,
+			'content' => $content,
+			'pageID' => $page->getPageID()
+		));
+
+		$page->setTitle($title);
+		$page->setContent($content);
+
 		return true;
 	}
 
-	protected function publish (Page $page) {
+	protected function publish (Page &$page) {
 		//TODO: check permissions for publishing
 		if (PermissionChecker::current()->hasRight("can_publish_all_pages") || (PermissionChecker::current()->hasRight("can_publish_own_pages") && $page->getAuthorID() == User::current()->getID())) {
-			//
+			//update page in database
+			Database::getInstance()->execute("UPDATE `{praefix}pages` SET `published` = '1' WHERE `id` = :pageID; ", array(
+				'pageID' => $page->getPageID()
+			));
+
+			$page->publish();
+
+			return true;
 		} else {
 			return "You don't have the permissions to publish this page!";
 		}
-
-		return true;
 	}
 
 	protected function showError (string $message) : string {

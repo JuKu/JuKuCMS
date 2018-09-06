@@ -25,6 +25,9 @@ class Page {
 
 	protected $author = null;
 
+	//changed columns to save with save()
+	protected $changes = array();
+
 	public function __construct() {
 		//
 	}
@@ -132,8 +135,19 @@ class Page {
 		return $this->row['title'];
 	}
 
+	public function setTitle (string $title) : string {
+		$this->row['title'] = $title;
+		$this->changes[] = "title";
+	}
+
 	public function getContent () : string {
 		return $this->row['content'];
+	}
+
+	public function setContent (string $content) : string {
+		$this->row['content'] = $content;
+		$this->changes[] = "content";
+		$this->changes[] = "content";
 	}
 
 	public function getGlobalMenuID () : int {
@@ -174,6 +188,10 @@ class Page {
 
 	public function isPublished () : bool {
 		return $this->row['published'] == 1;
+	}
+
+	public function publish () {
+		$this->row['published'] = 1;
 	}
 
 	public function getContentType () : string {
