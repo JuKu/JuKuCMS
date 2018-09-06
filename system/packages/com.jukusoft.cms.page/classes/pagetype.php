@@ -76,8 +76,8 @@ class PageType {
 		return $this->page->getOgType();
 	}
 
-	public function getOgImage () : string {
-		return $this->page->getOgImage();
+	public function getOgImages () : array {
+		return $this->page->getOgImages();
 	}
 
 	public function getOgUrl () : string {
@@ -91,8 +91,8 @@ class PageType {
 		$tags['og:title'] = $this->getOgTitle();
 		$tags['og:description'] = $this->getOgDescription();
 
-		if (!empty($this->getOgImage())) {
-			$tags['og:image'] = $this->getOgImage();
+		if (!empty($this->getOgImages())) {
+			$tags['og:image'] = $this->getOgImages();
 		}
 
 		$this->getAdditionalTags($tags);

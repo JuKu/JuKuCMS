@@ -235,8 +235,12 @@ class Page {
 		return !empty($this->row['og_description']) ? $this->row['og_description'] : $this->getMetaDescription();
 	}
 
-	public function getOgImage () : string {
-		return $this->row['og_image'];
+	public function getOgImages () : array {
+		if (empty($this->row['og_image'])) {
+			return array();
+		}
+
+		return explode(",", $this->row['og_image']);
 	}
 
 	public function getAuthorID () : int {

@@ -439,7 +439,7 @@ $table->addTimestamp("locked_timestamp", true, "0000-00-00 00:00:00");
 $table->addVarchar("og_type", 50, true, "website");
 $table->addVarchar("og_title", 50, true, "");
 $table->addVarchar("og_description", 255, true, "");
-$table->addVarchar("og_image", 255, true, "");
+$table->addVarchar("og_image", 600, true, "");
 $table->addInt("activated", 10, true, false, 1);
 
 //add keys to table
