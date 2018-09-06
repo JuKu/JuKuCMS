@@ -1,2 +1,7 @@
 Options -Indexes
 deny from all
+
+<FilesMatch "\.(js|css|png|md)$">
+    Order Deny,Allow
+    Allow from all
+</FilesMatch>
