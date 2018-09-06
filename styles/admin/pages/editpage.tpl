@@ -107,7 +107,7 @@
             <!-- Box: SEO -->
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{lang}SEO{/lang}</h3>
+                    <h3 class="box-title">{lang}SEO & Meta Data{/lang}</h3>
                     <!-- tools box -->
                     <div class="pull-right box-tools">
                         <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
