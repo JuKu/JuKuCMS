@@ -97,7 +97,7 @@
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <button type="submit" name="submit" value="Save" class="btn btn-info{if $page.is_published == true} pull-right{/if}">{lang}Save{/lang}</button>
-                    <button type="submit" name="submit" value="SaveUnlock" class="btn btn-warning>{lang}Save & Unlock{/lang}</button>
+                    <button type="submit" name="submit" value="SaveUnlock" class="btn btn-warning">{lang}Save & Unlock{/lang}</button>
 
                     {if $page.is_published == false}<button type="submit" name="submit" value="Publish" class="btn btn-primary pull-right"{if $page.can_publish == false} disabled="disabled" title="You don't have permissions to publish this page"{else}title="Publish page"{/if}>{lang}Publish{/lang}</button>{/if}
                 </div>
