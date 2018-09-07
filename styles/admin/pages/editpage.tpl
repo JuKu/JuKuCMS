@@ -130,9 +130,9 @@
 
                         <div class="col-sm-10">
                             <select name="parent" class="form-control" id="inputParent">
-                                <option value="-1">Mainpage (default)</option>
+                                <option value="-1"{if $page.parent == -1} selected="selected"{/if}>Mainpage (default)</option>
                                 {foreach $parent_pages page1}
-                                    <option value="{$page1.id}">{$page1.alias}</option>
+                                    <option value="{$page1.id}"{if $page.parent == $page1.id} selected="selected"{/if}>{$page1.alias}</option>
                                 {/foreach}
                             </select>
                         </div>

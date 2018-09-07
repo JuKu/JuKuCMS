@@ -117,7 +117,8 @@ class PageEditPage extends PageType {
 			'preview_url' => DomainUtils::generateURL($page->getAlias(), array("preview" => "true")),
 			'current_style' => $page->getStyle(),
 			'template' => $page->getCustomTemplate(),
-			'has_custom_template' => $page->hasCustomTemplate()
+			'has_custom_template' => $page->hasCustomTemplate(),
+			'parent' => $page->getParentID()
 		));
 
 		//set available styles

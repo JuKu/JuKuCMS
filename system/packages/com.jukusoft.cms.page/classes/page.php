@@ -199,6 +199,10 @@ class Page {
 		return $this->row['content_type'];
 	}
 
+	public function getParentID () : int {
+		return $this->row['parent'];
+	}
+
 	public function getLeftSidebarID () : int {
 		return $this->row['sidebar_left'];
 	}
