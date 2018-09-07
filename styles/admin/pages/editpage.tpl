@@ -123,7 +123,11 @@
                 <!-- form start -->
                 <div class="box-body">
                     <div class="form-group">
-                        Folder: {$page.folder}
+                        <label for="inputFolder" class="col-sm-2 control-label">Folder</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="folder" class="form-control" id="inputFolder" placeholder="/" value="{$page.folder}" title="Folder isn't changeable after page creation" disabled="disabled" />
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="inputParent" class="col-sm-2 control-label">Parent</label>
@@ -156,7 +160,7 @@
                             <input type="checkbox" name="has_custom_template" id="customTplCheckbox"{if $page.has_custom_template == true} checked="checked"{/if} />
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" name="author" class="form-control" id="inputTpl" placeholder="none" value="{$page.template}"{if $page.has_custom_template == false} disabled="disabled"{/if} />
+                            <input type="text" name="template" class="form-control" id="inputTpl" placeholder="none" value="{$page.template}"{if $page.has_custom_template == false} disabled="disabled"{/if} />
                         </div>
                     </div>
                     <!-- Parent page, template, menus -->
