@@ -150,7 +150,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputTpl" class="col-sm-2 control-label">Template</label>
+                        <label for="inputTpl" class="col-sm-2 control-label">Custom Template</label>
 
                         <div class="col-sm-10">
                             <input type="checkbox" name="has_custom_template" id="customTplCheckbox"{if $page.has_custom_template == true} checked="checked"{/if} />
