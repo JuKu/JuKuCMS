@@ -131,8 +131,8 @@
                         <div class="col-sm-10">
                             <select name="parent" class="form-control" id="inputParent">
                                 <option value="-1">Mainpage (default)</option>
-                                {foreach $parent_pages page}
-                                    <option value="{$page.id}">{$page.alias}</option>
+                                {foreach $parent_pages page1}
+                                    <option value="{$page1.id}">{$page1.alias}</option>
                                 {/foreach}
                             </select>
                         </div>
