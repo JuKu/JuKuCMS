@@ -157,7 +157,7 @@
                         <label for="inputTpl" class="col-sm-2 control-label">Custom Template</label>
 
                         <div class="col-sm-1">
-                            <input type="checkbox" name="has_custom_template" id="customTplCheckbox"{if $page.has_custom_template == true} checked="checked"{/if} />
+                            <input type="checkbox" name="has_custom_template" id="customTplCheckbox" style="margin-left: 10px; margin-top: 10px; "{if $page.has_custom_template == true} checked="checked"{/if} />
                         </div>
                         <div class="col-sm-9">
                             <input type="text" name="template" class="form-control" id="inputTpl" placeholder="none" value="{$page.template}"{if $page.has_custom_template == false} disabled="disabled"{/if} />
