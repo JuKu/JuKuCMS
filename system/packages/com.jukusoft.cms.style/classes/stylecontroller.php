@@ -43,6 +43,11 @@ class StyleController {
 			'registry' => $registry
 		));
 
+		//check, if page has own style
+		if ($page->getStyle() !== "none") {
+			return $page->getStyle();
+		}
+
 		return $style_name;
 	}
 
