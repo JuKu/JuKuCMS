@@ -171,7 +171,8 @@ class PageListPage extends PageType {
 				'delete_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("trash" => $row['id'])),
 				'is_in_trash' => (boolean) $is_trash,
 				'restore_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("restore" => $row['id'])),
-				'delete_permanently_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("delete_permanently" => $row['id'], "show_trash" => 1))
+				'delete_permanently_url' => DomainUtils::generateURL($this->getPage()->getAlias(), array("delete_permanently" => $row['id'], "show_trash" => 1)),
+				'preview_url' => DomainUtils::generateURL($row['alias'], array("preview" => "true"))
 			);
 		}
 
