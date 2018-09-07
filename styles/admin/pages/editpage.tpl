@@ -142,7 +142,7 @@
 
                         <div class="col-sm-10">
                             <select name="design" class="form-control" id="inputStyle">
-                                <option value="none">Default Style</option>
+                                <option value="none"{if $style == "none"} selected="selected"{/if}>Default Style</option>
                                 {foreach $styles style}
                                     <option value="{$style}"{if $style == $page.current_style} selected="selected"{/if}>{$style}</option>
                                 {/foreach}
