@@ -123,8 +123,18 @@ class PageEditPage extends PageType {
 		//set available styles
 		$template->assign("styles", StyleController::listAllStyles());
 
-		//TODO: set all pages
-		$template->assign("parent_pages", array());
+		//get all pages from database
+		$pages = array();
+		$rows = Database::getInstance()->listRows("SELECT `id`, `alias` as `activated` FROM `{praefix}pages` WHERE `editable` = '1' AND `activated` = '1'; ");
+
+		foreach ($rows as $row) {
+			$pages[] = array(
+				'id' => $row['id'],
+				'alias' => $row['alias']
+			);
+		}
+
+		$template->assign("parent_pages", $pages);
 
 		//add support to show additional code from plugins
 		$additional_code_header = "";
