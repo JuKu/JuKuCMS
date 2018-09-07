@@ -115,7 +115,9 @@ class PageEditPage extends PageType {
 			'can_change_owner' => (PermissionChecker::current()->hasRight("can_change_page_owner") || $page->getAuthorID() == User::current()->getID()),
 			'folder' => $page->getFolder(),
 			'preview_url' => DomainUtils::generateURL($page->getAlias(), array("preview" => "true")),
-			'current_style' => $page->getStyle()
+			'current_style' => $page->getStyle(),
+			'template' => $page->getCustomTemplate(),
+			'has_custom_template' => $page->hasCustomTemplate()
 		));
 
 		//set available styles
@@ -246,7 +248,12 @@ class PageEditPage extends PageType {
 					  plugins: 'print preview searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help',
 					  toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
 					  image_advtab: true
-				});</script>";
+				});
+				
+				document.getElementById('customTplCheckbox').onchange = function() {
+					document.getElementById('inputTpl').disabled = !this.checked;
+				};
+				</script>";
 	}
 
 	public function listRequiredPermissions(): array {

@@ -150,14 +150,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputParent" class="col-sm-2 control-label">Template</label>
+                        <label for="inputTpl" class="col-sm-2 control-label">Template</label>
 
                         <div class="col-sm-10">
-                            <select name="parent" class="form-control" id="inputParent">
-                                {foreach $parent_pages page}
-                                    <option value="{$page.id}">{$page.title}</option>
-                                {/foreach}
-                            </select>
+                            <input type="checkbox" name="has_custom_template" id="customTplCheckbox"{if $page.has_custom_template == true} checked="checked"{/if} />
+                            <input type="text" name="author" class="form-control" id="inputTpl" placeholder="none" value="{$page.template}"{if $page.has_custom_template == false} disabled="disabled"{/if} />
                         </div>
                     </div>
                     <!-- Parent page, template, menus -->
