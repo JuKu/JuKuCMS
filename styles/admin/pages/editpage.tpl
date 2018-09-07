@@ -152,10 +152,10 @@
                     <div class="form-group">
                         <label for="inputTpl" class="col-sm-2 control-label">Custom Template</label>
 
-                        <div class="col-sm-2">
+                        <div class="col-sm-1">
                             <input type="checkbox" name="has_custom_template" id="customTplCheckbox"{if $page.has_custom_template == true} checked="checked"{/if} />
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-9">
                             <input type="text" name="author" class="form-control" id="inputTpl" placeholder="none" value="{$page.template}"{if $page.has_custom_template == false} disabled="disabled"{/if} />
                         </div>
                     </div>

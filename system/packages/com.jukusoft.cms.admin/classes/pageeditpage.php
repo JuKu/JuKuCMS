@@ -252,6 +252,10 @@ class PageEditPage extends PageType {
 				
 				document.getElementById('customTplCheckbox').onchange = function() {
 					document.getElementById('inputTpl').disabled = !this.checked;
+					
+					if (!this.checked) {
+						document.getElementById('inputTpl').value = 'none';
+					}
 				};
 				</script>";
 	}
