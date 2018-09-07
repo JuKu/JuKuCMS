@@ -122,8 +122,45 @@
                 <!-- /.box-header -->
                 <!-- form start -->
                 <div class="box-body">
-                    Folder: {$page.folder}<br />
-                    Parent page, template, menus
+                    <div class="form-group">
+                        Folder: {$page.folder}
+                    </div>
+                    <div class="form-group">
+                        <label for="inputParent" class="col-sm-2 control-label">Parent</label>
+
+                        <div class="col-sm-10">
+                            <select name="parent" class="form-control" id="inputParent">
+                                <option value="-1">Mainpage (default)</option>
+                                {foreach $parent_pages page}
+                                    <option value="{$page.id}">{$page.title}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputStyle" class="col-sm-2 control-label">Design</label>
+
+                        <div class="col-sm-10">
+                            <select name="design" class="form-control" id="inputStyle">
+                                <option value="none">Default Style</option>
+                                {foreach $styles style}
+                                    <option value="{$style}"{if $style == $page.current_style} selected="selected"{/if}>{$styles}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputParent" class="col-sm-2 control-label">Template</label>
+
+                        <div class="col-sm-10">
+                            <select name="parent" class="form-control" id="inputParent">
+                                {foreach $parent_pages page}
+                                    <option value="{$page.id}">{$page.title}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Parent page, template, menus -->
                 </div>
                 <!-- /.box-body -->
             </div>

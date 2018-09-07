@@ -114,8 +114,15 @@ class PageEditPage extends PageType {
 			'can_publish' => (!$page->isPublished() && (PermissionChecker::current()->hasRight("can_publish_all_pages") || (PermissionChecker::current()->hasRight("can_publish_own_pages") && $page->getAuthorID() == User::current()->getID()))),
 			'can_change_owner' => (PermissionChecker::current()->hasRight("can_change_page_owner") || $page->getAuthorID() == User::current()->getID()),
 			'folder' => $page->getFolder(),
-			'preview_url' => DomainUtils::generateURL($page->getAlias(), array("preview" => "true"))
+			'preview_url' => DomainUtils::generateURL($page->getAlias(), array("preview" => "true")),
+			'current_style' => $page->getStyle()
 		));
+
+		//set available styles
+		$template->assign("styles", StyleController::listAllStyles());
+
+		//TODO: set all pages
+		$template->assign("parent_pages", array());
 
 		//add support to show additional code from plugins
 		$additional_code_header = "";
