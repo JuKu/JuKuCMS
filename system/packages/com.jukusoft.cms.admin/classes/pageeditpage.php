@@ -125,7 +125,7 @@ class PageEditPage extends PageType {
 
 		//get all pages from database
 		$pages = array();
-		$rows = Database::getInstance()->listRows("SELECT `id`, `alias` as `activated` FROM `{praefix}pages` WHERE `editable` = '1' AND `activated` = '1'; ");
+		$rows = Database::getInstance()->listRows("SELECT `id`, `alias` FROM `{praefix}pages` WHERE `editable` = '1' AND `activated` = '1'; ");
 
 		foreach ($rows as $row) {
 			$pages[] = array(
