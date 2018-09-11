@@ -181,11 +181,35 @@ class PageEditPage extends PageType {
 
 		$content = $_POST['html_code'];
 
+		//TODO: save page attributes
+		if (!isset($_REQUEST['parent']) || empty($_REQUEST['parent'])) {
+			return "Parent page wasn't set!";
+		}
+
+		$parent = (int) $_REQUEST['parent'];
+
+		if (!isset($_REQUEST['design']) || empty($_REQUEST['design'])) {
+			return "Design wasn't set!";
+		}
+
+		$design = $_REQUEST['design'];
+
+		//TODO: check, if style (design) exists
+
+		$template = "none";
+
+		if (isset($_REQUEST['has_custom_template']) && isset($_REQUEST['template']) && !empty($_REQUEST['template'])) {
+			$template = $_REQUEST['template'];
+		}
+
 		//update page in database
-		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content WHERE `id` = :pageID; ", array(
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content, `parent` => :parent, `design` = :design, `template` = :template WHERE `id` = :pageID; ", array(
 			'title' => $title,
 			'content' => $content,
-			'pageID' => $page->getPageID()
+			'pageID' => $page->getPageID(),
+			'parent' => $parent,
+			'design' => $design,
+			'template' => $template
 		));
 
 		//clear cache
