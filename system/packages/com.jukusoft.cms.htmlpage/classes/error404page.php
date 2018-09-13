@@ -36,7 +36,7 @@ class Error404Page extends HTMLPage {
 		//first check, if specific template exists
 		$current_style = Registry::singleton()->getSetting("current_style_name");
 		if (file_exists(STYLE_PATH . $current_style . "/pages/error404.tpl")) {
-			$template = new Template("pages/error404");
+			$template = new Template($this->getPage()->hasCustomTemplate() ? $this->getPage()->getCustomTemplate() : "pages/error404");
 
 			$template->assign("TITLE", $this->getPage()->getTitle());
 			$template->assign("CONTENT", parent::getContent());
