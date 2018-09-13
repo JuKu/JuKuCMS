@@ -22,7 +22,7 @@ class HTMLPage extends PageType {
 		//first check, if specific template exists
 		$current_style = Registry::singleton()->getSetting("current_style_name");
 		if (file_exists(STYLE_PATH . $current_style . "/pages/htmlpage.tpl")) {
-			$template = new Template("pages/htmlpage");
+			$template = new Template($this->getPage()->hasCustomTemplate() ? $this->getPage()->getCustomTemplate() : "pages/htmlpage");
 
 			$template->assign("TITLE", $this->getPage()->getTitle());
 			$template->assign("CONTENT", parent::getContent());
