@@ -253,7 +253,7 @@
                         <label for="inputSitemapPriority" class="col-sm-4 control-label">Priority</label>
 
                         <div class="col-sm-8">
-                            <input type="number" name="sitemap_priority" class="form-control" lang="en-150" min="0" max="1" step="0.1" id="inputSitemapPriority" placeholder="0.5" value="{$page.sitemap_priority}" title="Priority for search engines to index these pages regulary"{if $page.sitemap == false} disabled="disabled"{/if} />
+                            <input type="text" name="sitemap_priority" class="form-control" lang="en-150" min="0" max="1" step="0.1" id="inputSitemapPriority" placeholder="0.5" value="{$page.sitemap_priority}" title="Priority for search engines to index these pages regulary"{if $page.sitemap == false} disabled="disabled"{/if} />
                         </div>
                     </div>
                     <div class="form-group">
