@@ -330,6 +330,11 @@ class PageEditPage extends PageType {
 						document.getElementById('inputCanoncials').value = '';
 					}
 				};
+				
+				document.getElementById('inputSitemap').onchange = function() {
+					document.getElementById('inputSitemapChangeFrequency').disabled = !this.checked;
+					document.getElementById('inputSitemapPriority').disabled = !this.checked;
+				};
 				</script>";
 	}
 
