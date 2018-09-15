@@ -185,25 +185,6 @@
                 <!-- form start -->
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="inputFolder" class="col-sm-2 control-label">Folder</label>
-
-                        <div class="col-sm-10">
-                            <input type="text" name="folder" class="form-control" id="inputFolder" placeholder="/" value="{$page.folder}" title="Folder isn't changeable after page creation" disabled="disabled" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputParent" class="col-sm-2 control-label">Parent</label>
-
-                        <div class="col-sm-10">
-                            <select name="parent" class="form-control" id="inputParent">
-                                <option value="-1"{if $page.parent == -1} selected="selected"{/if}>Mainpage (default)</option>
-                                {foreach $parent_pages page1}
-                                    <option value="{$page1.id}"{if $page.parent == $page1.id} selected="selected"{/if}>{$page1.alias}</option>
-                                {/foreach}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label for="inputMetaDesc" class="col-sm-2 control-label" title="Meta description">Desc.</label>
 
                         <div class="col-sm-10">
