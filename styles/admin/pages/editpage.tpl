@@ -258,7 +258,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <br />
+                            <hr />
                         </div>
                     </div>
                     <!-- SEO, Meta Data, Sitemap and Robots.txt settings -->
