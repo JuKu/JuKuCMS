@@ -165,7 +165,7 @@ class PageEditPage extends PageType {
 			"AlWAYS", "HOURLY", "DAILY", "WEEKLY", "MONTHLY", "YEARLY", "NEVER"
 		);
 
-		$template->assign("sitemap_changefreq", $sitemap_change_frequencies);
+		$template->assign("sitemap_change_frequencies", $sitemap_change_frequencies);
 
 		//add support to show additional code from plugins
 		$additional_code_header = "";
