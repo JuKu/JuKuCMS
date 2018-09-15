@@ -154,11 +154,6 @@ class PageEditPage extends PageType {
 			"unavailable_after: "
 		);
 
-		Events::throwEvent("edit_page_robots_options", array(
-			'page' => &$this->getPage(),
-			'options' => &$robots_options
-		));
-
 		$template->assign("robots_options", $robots_options);
 
 		//add support to show additional code from plugins
