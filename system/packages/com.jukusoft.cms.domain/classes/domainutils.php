@@ -69,7 +69,7 @@ class DomainUtils {
 			return htmlentities($_SERVER['SERVER_ADDR']);
 		}
 
-		if (PHPUtils::containsStr($host, "cms.")) {
+		if ($host == "cms.chipbyte.de") {
 			var_dump($_SERVER);
 		}
 
