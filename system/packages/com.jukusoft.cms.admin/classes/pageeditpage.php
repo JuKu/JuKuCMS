@@ -118,7 +118,9 @@ class PageEditPage extends PageType {
 			'current_style' => $page->getStyle(),
 			'template' => $page->getCustomTemplate(),
 			'has_custom_template' => $page->hasCustomTemplate(),
-			'parent' => $page->getParentID()
+			'parent' => $page->getParentID(),
+			'meta_description' => $page->getMetaDescription(),
+			'meta_keywords' => $page->getMetaKeywords()
 		));
 
 		//set available styles
