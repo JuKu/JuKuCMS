@@ -69,6 +69,10 @@ class DomainUtils {
 			return htmlentities($_SERVER['SERVER_ADDR']);
 		}
 
+		if (PHPUtils::containsStr($host, "cms.")) {
+			var_dump($_SERVER);
+		}
+
 		// Remove port number from host
 		$host = preg_replace("%:\d+$%", "", $host);
 
