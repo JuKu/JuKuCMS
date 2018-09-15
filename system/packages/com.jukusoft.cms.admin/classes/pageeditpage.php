@@ -121,7 +121,9 @@ class PageEditPage extends PageType {
 			'parent' => $page->getParentID(),
 			'meta_description' => $page->getMetaDescription(),
 			'meta_keywords' => $page->getMetaKeywords(),
-			'meta_robots' => $page->getMetaRobotsOptions()
+			'meta_robots' => $page->getMetaRobotsOptions(),
+			'meta_canonicals' => $page->getMetaCanonicals(),
+			'has_canoncials' => !empty($page->getMetaCanonicals())
 		));
 
 		//set available styles
@@ -309,6 +311,14 @@ class PageEditPage extends PageType {
 					
 					if (!this.checked) {
 						document.getElementById('inputTpl').value = 'none';
+					}
+				};
+				
+				document.getElementById('customCanoncialsCheckbox').onchange = function() {
+					document.getElementById('inputCanoncials').disabled = !this.checked;
+					
+					if (!this.checked) {
+						document.getElementById('inputCanoncials').value = '';
 					}
 				};
 				</script>";

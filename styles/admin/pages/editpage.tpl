@@ -210,6 +210,16 @@
                             <input type="text" name="meta_robots" class="form-control" id="inputRobots" placeholder="index, follow" value="{$page.meta_robots}" title="Meta robots tag" />
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="inputCanoncials" class="col-sm-4 control-label">Canoncials</label>
+
+                        <div class="col-sm-1">
+                            <input type="checkbox" name="has_canoncials" id="customCanoncialsCheckbox"{if $page.has_canoncials == true} checked="checked"{/if} />
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" name="meta_keywords" class="form-control" id="inputCanoncials" placeholder="http://example.com" value="{$page.meta_canonicals}" title="Canoncial link to avoid duplicate content" />
+                        </div>
+                    </div>
                     <!-- SEO, Meta Data, Sitemap and Robots.txt settings -->
                 </div>
                 <!-- /.box-body -->
