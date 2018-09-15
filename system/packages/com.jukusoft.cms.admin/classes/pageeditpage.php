@@ -120,7 +120,8 @@ class PageEditPage extends PageType {
 			'has_custom_template' => $page->hasCustomTemplate(),
 			'parent' => $page->getParentID(),
 			'meta_description' => $page->getMetaDescription(),
-			'meta_keywords' => $page->getMetaKeywords()
+			'meta_keywords' => $page->getMetaKeywords(),
+			'meta_robots' => $page->getMetaRobotsOptions()
 		));
 
 		//set available styles
@@ -138,6 +139,27 @@ class PageEditPage extends PageType {
 		}
 
 		$template->assign("parent_pages", $pages);
+
+		//https://developers.google.com/search/reference/robots_meta_tag?hl=de
+		$robots_options = array(
+			"all",
+			"noindex",
+			"nofollow",
+			"none",
+			"noarchive",
+			"nosnippet",
+			"noodp",
+			"notranslate",
+			"noimageindex",
+			"unavailable_after: "
+		);
+
+		Events::throwEvent("edit_page_robots_options", array(
+			'page' => &$this->getPage(),
+			'options' => &$robots_options
+		));
+
+		$template->assign("robots_options", $robots_options);
 
 		//add support to show additional code from plugins
 		$additional_code_header = "";

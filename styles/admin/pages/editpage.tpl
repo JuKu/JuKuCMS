@@ -198,6 +198,18 @@
                             <input type="text" name="meta_keywords" class="form-control" id="inputMetaKeywords" placeholder="keyword1, keyword2" value="{$page.meta_description}" title="Meta Keywords - Attention! Search engines doesn't observe meta keywords anymore!" />
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="inputRobots" class="col-sm-4 control-label">Robots</label>
+
+                        <div class="col-sm-8">
+                            {* <select name="robots" class="form-control" id="inputRobots">
+                                {foreach $robots_options option}
+                                    <option value="{$option}"{if $page.meta_robots == $option} selected="selected"{/if}>{$option}</option>
+                                {/foreach}
+                            </select> *}
+                            <input type="text" name="meta_robots" class="form-control" id="inputRobots" placeholder="index, follow" value="{$page.meta_robots}" title="Meta robots tag" />
+                        </div>
+                    </div>
                     <!-- SEO, Meta Data, Sitemap and Robots.txt settings -->
                 </div>
                 <!-- /.box-body -->
