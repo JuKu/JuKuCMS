@@ -219,7 +219,12 @@
                         <div class="col-sm-7">
                             <input type="text" name="meta_keywords" class="form-control" id="inputCanoncials" placeholder="http://example.com" value="{$page.meta_canonicals}" title="Canoncial link to avoid duplicate content"{if $page.has_canoncials == false} disabled="disabled"{/if} />
                         </div>
+                    </div><div class="form-group">
+                        <div class="col-sm-12">
+                            <hr />
+                        </div>
                     </div>
+
                     <div class="form-group">
                         <label for="inputSitemap" class="col-sm-4 control-label">Sitemap</label>
 
