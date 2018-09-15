@@ -270,6 +270,14 @@ class Page {
 		return $this->row['sitemap'] == 1;
 	}
 
+	public function getSitemapChangeFreq () : string {
+		return $this->row['sitemap_changefreq'];
+	}
+
+	public function getSitemapPriority () : string {
+		return $this->row['sitemap_priority'];
+	}
+
 	public function activate (bool $bool = true) {
 		$this->row['activated'] = ($bool ? 1 : 0);
 	}

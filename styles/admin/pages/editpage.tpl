@@ -224,7 +224,18 @@
                         <label for="inputSitemap" class="col-sm-4 control-label">Sitemap</label>
 
                         <div class="col-sm-8">
-                            <input type="checkbox" name="sitemap" id="inputSitemap"{if $page.sitemap == true} checked="checked"{/if} />
+                            <input type="checkbox" name="sitemap" id="inputSitemap"{if $page.sitemap == true} checked="checked"{/if} /> enabled
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputSitemapChangeFrequency" class="col-sm-4 control-label">Change Frequency</label>
+
+                        <div class="col-sm-8">
+                            <select name="sitemap_changefreq" class="form-control" id="inputSitemapChangeFrequency">
+                                {foreach $sitemap_change_frequencies freq}
+                                    <option value="{$freq}"{if $page.sitemap_changefreq == $freq} selected="selected"{/if}>{$freq}</option>
+                                {/foreach}
+                            </select>
                         </div>
                     </div>
                     <!-- SEO, Meta Data, Sitemap and Robots.txt settings -->

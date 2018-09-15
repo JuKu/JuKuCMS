@@ -124,7 +124,9 @@ class PageEditPage extends PageType {
 			'meta_robots' => $page->getMetaRobotsOptions(),
 			'meta_canonicals' => $page->getMetaCanonicals(),
 			'has_canoncials' => !empty($page->getMetaCanonicals()),
-			'sitemap' => $page->isSitemapEnabled()
+			'sitemap' => $page->isSitemapEnabled(),
+			'sitemap_changefreq' => $page->getSitemapChangeFreq(),
+			'sitemap_priority' => $page->getSitemapPriority()
 		));
 
 		//set available styles
@@ -158,6 +160,12 @@ class PageEditPage extends PageType {
 		);
 
 		$template->assign("robots_options", $robots_options);
+
+		$sitemap_change_frequencies = array(
+			"AlWAYS", "HOURLY", "DAILY", "WEEKLY", "MONTHLY", "YEARLY", "NEVER"
+		);
+
+		$template->assign("sitemap_changefreq", $sitemap_change_frequencies);
 
 		//add support to show additional code from plugins
 		$additional_code_header = "";
