@@ -70,10 +70,10 @@ class DomainUtils {
 		}
 
 		//TODO: remove this code
-		if ($host == "cms.chipbyte.de") {
+		/*if ($host == "cms.chipbyte.de") {
 			echo "Debugging: Invalide host!";
 			var_dump($_SERVER);
-		}
+		}*/
 
 		// Remove port number from host
 		$host = preg_replace("%:\d+$%", "", $host);
