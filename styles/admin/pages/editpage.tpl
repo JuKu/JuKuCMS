@@ -228,7 +228,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputSitemapChangeFrequency" class="col-sm-4 control-label">Change Frequency</label>
+                        <label for="inputSitemapChangeFrequency" class="col-sm-4 control-label">Freq.</label>
 
                         <div class="col-sm-8">
                             <select name="sitemap_changefreq" class="form-control" id="inputSitemapChangeFrequency">
