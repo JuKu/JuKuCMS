@@ -220,6 +220,13 @@
                             <input type="text" name="meta_keywords" class="form-control" id="inputCanoncials" placeholder="http://example.com" value="{$page.meta_canonicals}" title="Canoncial link to avoid duplicate content"{if $page.has_canoncials == false} disabled="disabled"{/if} />
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="inputSitemap" class="col-sm-4 control-label">Sitemap</label>
+
+                        <div class="col-sm-8">
+                            <input type="checkbox" name="sitemap" id="inputSitemap"{if $page.sitemap == true} checked="checked"{/if} />
+                        </div>
+                    </div>
                     <!-- SEO, Meta Data, Sitemap and Robots.txt settings -->
                 </div>
                 <!-- /.box-body -->

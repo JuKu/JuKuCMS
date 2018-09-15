@@ -123,7 +123,8 @@ class PageEditPage extends PageType {
 			'meta_keywords' => $page->getMetaKeywords(),
 			'meta_robots' => $page->getMetaRobotsOptions(),
 			'meta_canonicals' => $page->getMetaCanonicals(),
-			'has_canoncials' => !empty($page->getMetaCanonicals())
+			'has_canoncials' => !empty($page->getMetaCanonicals()),
+			'sitemap' => $page->isSitemapEnabled()
 		));
 
 		//set available styles

@@ -266,6 +266,10 @@ class Page {
 		return $this->author;
 	}
 
+	public function isSitemapEnabled () : bool {
+		return $this->row['sitemap'] == 1;
+	}
+
 	public function activate (bool $bool = true) {
 		$this->row['activated'] = ($bool ? 1 : 0);
 	}
