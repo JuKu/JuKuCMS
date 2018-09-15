@@ -185,7 +185,7 @@
                 <!-- form start -->
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="inputMetaDesc" class="col-sm-2 control-label" title="Meta description">Desc.</label>
+                        <label for="inputMetaDesc" class="col-sm-2 control-label" title="Meta description">Meta Desc.</label>
 
                         <div class="col-sm-10">
                             <input type="text" name="meta_description" class="form-control" id="inputMetaDesc" placeholder="Meta description of page" value="{$page.meta_description}" title="Meta Description" />
