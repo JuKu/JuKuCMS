@@ -69,8 +69,6 @@ class DomainUtils {
 			return htmlentities($_SERVER['SERVER_ADDR']);
 		}
 
-		echo "Host: " . $host;
-
 		if ($host == "cms.chipbyte.de") {
 			var_dump($_SERVER);
 		}
