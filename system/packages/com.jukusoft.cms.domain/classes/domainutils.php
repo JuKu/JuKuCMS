@@ -69,7 +69,9 @@ class DomainUtils {
 			return htmlentities($_SERVER['SERVER_ADDR']);
 		}
 
+		//TODO: remove this code
 		if ($host == "cms.chipbyte.de") {
+			echo "Debugging: Invalide host!";
 			var_dump($_SERVER);
 		}
 
