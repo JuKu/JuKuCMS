@@ -246,8 +246,8 @@
                                     <option value="{$freq}"{if $page.sitemap_changefreq == $freq} selected="selected"{/if}>{$freq}</option>
                                 {/foreach}
                             </select>
+                            <br />
                         </div>
-                        <br />
                     </div>
                     <div class="form-group">
                         <label for="inputSitemapPriority" class="col-sm-4 control-label">Priority</label>
