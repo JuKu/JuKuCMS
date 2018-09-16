@@ -261,6 +261,18 @@
                             <hr />
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="inputOGType" class="col-sm-4 control-label" title="OpenGraph type">OG Type</label>
+
+                        <div class="col-sm-8">
+                            <select name="og_type" class="form-control" id="inputOGType">
+                                {foreach $og_types og_type}
+                                    <option value="{$og_type}"{if $page.og_type == $og_type} selected="selected"{/if}>{$og_type}</option>
+                                {/foreach}
+                            </select>
+                            <br />
+                        </div>
+                    </div>
                     <!-- SEO, Meta Data, Sitemap and Robots.txt settings -->
                 </div>
                 <!-- /.box-body -->

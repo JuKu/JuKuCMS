@@ -126,7 +126,8 @@ class PageEditPage extends PageType {
 			'has_canoncials' => !empty($page->getMetaCanonicals()),
 			'sitemap' => $page->isSitemapEnabled(),
 			'sitemap_changefreq' => $page->getSitemapChangeFreq(),
-			'sitemap_priority' => $page->getSitemapPriority()
+			'sitemap_priority' => $page->getSitemapPriority(),
+			'og_type' => $page->getOgType()
 		));
 
 		//set available styles
@@ -166,6 +167,11 @@ class PageEditPage extends PageType {
 		);
 
 		$template->assign("sitemap_change_frequencies", $sitemap_change_frequencies);
+
+		//OpenGraph types,https://developers.facebook.com/docs/reference/opengraph/
+		$og_types = array("website", "article", "book", "profile");
+
+		$template->assign("og_types", $og_types);
 
 		//add support to show additional code from plugins
 		$additional_code_header = "";
