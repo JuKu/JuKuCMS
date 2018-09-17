@@ -238,14 +238,23 @@ class PageEditPage extends PageType {
 			$template = $_REQUEST['template'];
 		}
 
+		$keywords = "";
+
+		if (!isset($_REQUEST['meta_keywords']) || empty($_REQUEST['meta_keywords'])) {
+			return "Meta keywords wasn't set!";
+		}
+
+		$keywords = htmlentities($_REQUEST['meta_keywords']);
+
 		//update page in database
-		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content, `parent` = :parent, `design` = :design, `template` = :template WHERE `id` = :pageID; ", array(
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content, `parent` = :parent, `design` = :design, `template` = :template, `meta_keywords` = :keywords WHERE `id` = :pageID; ", array(
 			'title' => $title,
 			'content' => $content,
 			'pageID' => $page->getPageID(),
 			'parent' => $parent,
 			'design' => $design,
-			'template' => $template
+			'template' => $template,
+			'keywords' => $keywords
 		));
 
 		//clear cache
