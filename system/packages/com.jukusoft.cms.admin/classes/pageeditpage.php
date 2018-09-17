@@ -401,8 +401,8 @@ class PageEditPage extends PageType {
 				};
 				
 				document.getElementById('inputSitemap').onchange = function() {
-					document.getElementById('inputSitemapChangeFrequency').disabled = !this.checked;
-					document.getElementById('inputSitemapPriority').disabled = !this.checked;
+					document.getElementById('inputSitemapChangeFrequency').readonly = !this.checked;
+					document.getElementById('inputSitemapPriority').readonly = !this.checked;
 				};
 				</script>";
 	}
