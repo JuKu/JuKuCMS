@@ -27,6 +27,10 @@
 
 class PageEditPage extends PageType {
 
+	protected $sitemap_change_frequencies = array(
+		"AlWAYS", "HOURLY", "DAILY", "WEEKLY", "MONTHLY", "YEARLY", "NEVER"
+	);
+
 	public function getContent(): string {
 		$template = new DwooTemplate("pages/editpage");
 
@@ -162,9 +166,7 @@ class PageEditPage extends PageType {
 
 		$template->assign("robots_options", $robots_options);
 
-		$sitemap_change_frequencies = array(
-			"AlWAYS", "HOURLY", "DAILY", "WEEKLY", "MONTHLY", "YEARLY", "NEVER"
-		);
+		$sitemap_change_frequencies = $this->sitemap_change_frequencies;
 
 		$template->assign("sitemap_change_frequencies", $sitemap_change_frequencies);
 
@@ -262,8 +264,38 @@ class PageEditPage extends PageType {
 			$sitemap = 1;
 		}
 
+		if (!isset($_REQUEST['sitemap_changefreq']) || empty($_REQUEST['sitemap_changefreq'])) {
+			return "Sitemap change frequency wasn't set!";
+		}
+
+		$sitemap_changefreq = $_REQUEST['sitemap_changefreq'];
+
+		if (!in_array($sitemap_changefreq, $this->sitemap_change_frequencies)) {
+			return "Invalide value for sitemap change frequency: " . $sitemap_changefreq;
+		}
+
+		if (!isset($_REQUEST['sitemap_priority']) || empty($_REQUEST['sitemap_priority'])) {
+			return "Sitemap priority wasn't set!";
+		}
+
+		$sitemap_priority = (float) $_REQUEST['sitemap_priority'];
+
+		if ($sitemap_priority < 0) {
+			return "Minimum value of sitemap priority is 0.";
+		}
+
+		if ($sitemap_priority > 1) {
+			return "Maximum value of sitemap priority is 1.";
+		}
+
+		if (!isset($_REQUEST['og_type']) || empty($_REQUEST['og_type'])) {
+			return "OpenGraph type wasn't set!";
+		}
+
+		$og_type = $_REQUEST['og_type'];
+
 		//update page in database
-		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content, `parent` = :parent, `design` = :design, `template` = :template, `sitemap` = :sitemap, `meta_keywords` = :keywords, `meta_robots` = :robots, `meta_canonicals` = :canoncials WHERE `id` = :pageID; ", array(
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content, `parent` = :parent, `design` = :design, `template` = :template, `sitemap` = :sitemap, `sitemap_changefreq` = :sitemap_changefreq, `sitemap_priority` = :sitemap_priority, `meta_keywords` = :keywords, `meta_robots` = :robots, `meta_canonicals` = :canoncials, `og_type` = :og_type WHERE `id` = :pageID; ", array(
 			'title' => $title,
 			'content' => $content,
 			'pageID' => $page->getPageID(),
@@ -271,9 +303,12 @@ class PageEditPage extends PageType {
 			'design' => $design,
 			'template' => $template,
 			'sitemap' => $sitemap,
+			'sitemap_changefreq' => $sitemap_changefreq,
+			'sitemap_priority' => $sitemap_priority,
 			'keywords' => $keywords,
 			'robots' => $robots,
-			'canoncials' => $canoncials
+			'canoncials' => $canoncials,
+			'og_type' => $og_type
 		));
 
 		//clear cache
