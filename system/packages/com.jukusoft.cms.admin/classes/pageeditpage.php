@@ -256,14 +256,21 @@ class PageEditPage extends PageType {
 			$canoncials = $_REQUEST['meta_canoncials'];
 		}
 
+		$sitemap = 0;
+
+		if (isset($_REQUEST['sitemap'])) {
+			$sitemap = 1;
+		}
+
 		//update page in database
-		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content, `parent` = :parent, `design` = :design, `template` = :template, `meta_keywords` = :keywords, `meta_robots` = :robots, `meta_canonicals` = :canoncials WHERE `id` = :pageID; ", array(
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content, `parent` = :parent, `design` = :design, `template` = :template, `sitemap` = :sitemap, `meta_keywords` = :keywords, `meta_robots` = :robots, `meta_canonicals` = :canoncials WHERE `id` = :pageID; ", array(
 			'title' => $title,
 			'content' => $content,
 			'pageID' => $page->getPageID(),
 			'parent' => $parent,
 			'design' => $design,
 			'template' => $template,
+			'sitemap' => $sitemap,
 			'keywords' => $keywords,
 			'robots' => $robots,
 			'canoncials' => $canoncials
