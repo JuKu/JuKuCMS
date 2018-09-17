@@ -259,33 +259,35 @@ class PageEditPage extends PageType {
 		}
 
 		$sitemap = 0;
+		$sitemap_changefreq = "WEEKLY";
+		$sitemap_priority = 0.5;
 
 		if (isset($_REQUEST['sitemap'])) {
 			$sitemap = 1;
-		}
 
-		if (!isset($_REQUEST['sitemap_changefreq']) || empty($_REQUEST['sitemap_changefreq'])) {
-			return "Sitemap change frequency wasn't set!";
-		}
+			if (!isset($_REQUEST['sitemap_changefreq']) || empty($_REQUEST['sitemap_changefreq'])) {
+				return "Sitemap change frequency wasn't set!";
+			}
 
-		$sitemap_changefreq = $_REQUEST['sitemap_changefreq'];
+			$sitemap_changefreq = $_REQUEST['sitemap_changefreq'];
 
-		if (!in_array($sitemap_changefreq, $this->sitemap_change_frequencies)) {
-			return "Invalide value for sitemap change frequency: " . $sitemap_changefreq;
-		}
+			if (!in_array($sitemap_changefreq, $this->sitemap_change_frequencies)) {
+				return "Invalide value for sitemap change frequency: " . $sitemap_changefreq;
+			}
 
-		if (!isset($_REQUEST['sitemap_priority']) || empty($_REQUEST['sitemap_priority'])) {
-			return "Sitemap priority wasn't set!";
-		}
+			if (!isset($_REQUEST['sitemap_priority']) || empty($_REQUEST['sitemap_priority'])) {
+				return "Sitemap priority wasn't set!";
+			}
 
-		$sitemap_priority = (float) $_REQUEST['sitemap_priority'];
+			$sitemap_priority = (float) $_REQUEST['sitemap_priority'];
 
-		if ($sitemap_priority < 0) {
-			return "Minimum value of sitemap priority is 0.";
-		}
+			if ($sitemap_priority < 0) {
+				return "Minimum value of sitemap priority is 0.";
+			}
 
-		if ($sitemap_priority > 1) {
-			return "Maximum value of sitemap priority is 1.";
+			if ($sitemap_priority > 1) {
+				return "Maximum value of sitemap priority is 1.";
+			}
 		}
 
 		if (!isset($_REQUEST['og_type']) || empty($_REQUEST['og_type'])) {
@@ -401,8 +403,8 @@ class PageEditPage extends PageType {
 				};
 				
 				document.getElementById('inputSitemap').onchange = function() {
-					document.getElementById('inputSitemapChangeFrequency').readonly = !this.checked;
-					document.getElementById('inputSitemapPriority').readonly = !this.checked;
+					document.getElementById('inputSitemapChangeFrequency').disabled = !this.checked;
+					document.getElementById('inputSitemapPriority').disabled = !this.checked;
 				};
 				</script>";
 	}

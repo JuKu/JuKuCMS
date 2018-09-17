@@ -241,7 +241,7 @@
                         <label for="inputSitemapChangeFrequency" class="col-sm-4 control-label">Change Frequency</label>
 
                         <div class="col-sm-8">
-                            <select name="sitemap_changefreq" class="form-control" id="inputSitemapChangeFrequency"{if $page.sitemap == false} readonly{/if}>
+                            <select name="sitemap_changefreq" class="form-control" id="inputSitemapChangeFrequency"{if $page.sitemap == false} disabled="disabled"{/if}>
                                 {foreach $sitemap_change_frequencies freq}
                                     <option value="{$freq}"{if $page.sitemap_changefreq == $freq} selected="selected"{/if}>{$freq}</option>
                                 {/foreach}
@@ -253,7 +253,7 @@
                         <label for="inputSitemapPriority" class="col-sm-4 control-label">Priority</label>
 
                         <div class="col-sm-8">
-                            <input type="text" name="sitemap_priority" class="form-control" lang="en-150" id="inputSitemapPriority" placeholder="0.5" value="{$page.sitemap_priority}" title="Priority for search engines to index these pages regulary"{if $page.sitemap == false} readonly{/if} />
+                            <input type="text" name="sitemap_priority" class="form-control" lang="en-150" id="inputSitemapPriority" placeholder="0.5" value="{$page.sitemap_priority}" title="Priority for search engines to index these pages regulary"{if $page.sitemap == false} disabled="disabled"{/if} />
                         </div>
                     </div>
                     <div class="form-group">
