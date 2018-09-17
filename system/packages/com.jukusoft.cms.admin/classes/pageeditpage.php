@@ -244,15 +244,29 @@ class PageEditPage extends PageType {
 
 		$keywords = htmlentities($_REQUEST['meta_keywords']);
 
+		if (!isset($_REQUEST['meta_robots']) || empty($_REQUEST['meta_robots'])) {
+			return "Meta robots wasn't set!";
+		}
+
+		$robots = htmlentities($_REQUEST['meta_robots']);
+
+		$canoncials = "";
+
+		if (isset($_REQUEST['has_canoncials']) && isset($_REQUEST['meta_canoncials']) && !empty($_REQUEST['meta_canoncials'])) {
+			$canoncials = $_REQUEST['meta_canoncials'];
+		}
+
 		//update page in database
-		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content, `parent` = :parent, `design` = :design, `template` = :template, `meta_keywords` = :keywords WHERE `id` = :pageID; ", array(
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content, `parent` = :parent, `design` = :design, `template` = :template, `meta_keywords` = :keywords, `meta_robots` = :robots, `meta_canonicals` = :canoncials WHERE `id` = :pageID; ", array(
 			'title' => $title,
 			'content' => $content,
 			'pageID' => $page->getPageID(),
 			'parent' => $parent,
 			'design' => $design,
 			'template' => $template,
-			'keywords' => $keywords
+			'keywords' => $keywords,
+			'robots' => $robots,
+			'canoncials' => $canoncials
 		));
 
 		//clear cache

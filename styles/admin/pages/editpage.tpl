@@ -217,7 +217,7 @@
                             <input type="checkbox" name="has_canoncials" id="customCanoncialsCheckbox"{if $page.has_canoncials == true} checked="checked"{/if} />
                         </div>
                         <div class="col-sm-7">
-                            <input type="text" name="meta_keywords" class="form-control" id="inputCanoncials" placeholder="http://example.com" value="{$page.meta_canonicals}" title="Canoncial link to avoid duplicate content"{if $page.has_canoncials == false} disabled="disabled"{/if} />
+                            <input type="text" name="meta_canoncials" class="form-control" id="inputCanoncials" placeholder="http://example.com" value="{$page.meta_canonicals}" title="Canoncial link to avoid duplicate content"{if $page.has_canoncials == false} disabled="disabled"{/if} />
                         </div>
                     </div><div class="form-group">
                         <div class="col-sm-12">
