@@ -195,7 +195,7 @@
                         <label for="inputMetaKeywords" class="col-sm-4 control-label">Keywords</label>
 
                         <div class="col-sm-8">
-                            <input type="text" name="meta_keywords" class="form-control" id="inputMetaKeywords" placeholder="keyword1, keyword2" value="{$page.meta_description}" title="Meta Keywords - Attention! Search engines doesn't observe meta keywords anymore!" />
+                            <input type="text" name="meta_keywords" class="form-control" id="inputMetaKeywords" placeholder="keyword1, keyword2" value="{$page.meta_keywords}" title="Meta Keywords - Attention! Search engines doesn't observe meta keywords anymore!" />
                         </div>
                     </div>
                     <div class="form-group">
