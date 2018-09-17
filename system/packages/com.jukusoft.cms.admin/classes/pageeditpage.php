@@ -238,8 +238,6 @@ class PageEditPage extends PageType {
 			$template = $_REQUEST['template'];
 		}
 
-		$keywords = "";
-
 		if (!isset($_REQUEST['meta_keywords']) || empty($_REQUEST['meta_keywords'])) {
 			return "Meta keywords wasn't set!";
 		}
