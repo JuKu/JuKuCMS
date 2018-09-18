@@ -246,11 +246,13 @@ class PageEditPage extends PageType {
 
 		$keywords = htmlentities($_REQUEST['meta_keywords']);
 
-		if (!isset($_REQUEST['meta_robots']) || empty($_REQUEST['meta_robots'])) {
-			return "Meta robots wasn't set!";
-		}
+		$robots = "";
 
-		$robots = htmlentities($_REQUEST['meta_robots']);
+		if (!isset($_REQUEST['meta_robots']) || empty($_REQUEST['meta_robots'])) {
+			//return "Meta robots wasn't set!";
+		} else {
+			$robots = htmlentities($_REQUEST['meta_robots']);
+		}
 
 		$canoncials = "";
 
