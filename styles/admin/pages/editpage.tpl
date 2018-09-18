@@ -77,6 +77,14 @@
                 <!-- /.box-header -->
                 <!-- form start -->
                 <div class="box-body pad">
+                    <div class="form-group">
+                        <label for="inputOGTitle" class="col-sm-2 control-label">OpenGraph title</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="og_title" value="{$page.og_title}" class="form-control" id="inputOGTitle" placeholder="Page title" required="required">
+                        </div>
+                    </div>
+
                     Meta description & OpenGraph tags
                 </div>
                 <!-- /.box-body -->

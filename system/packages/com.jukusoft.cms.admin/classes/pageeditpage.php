@@ -131,7 +131,9 @@ class PageEditPage extends PageType {
 			'sitemap' => $page->isSitemapEnabled(),
 			'sitemap_changefreq' => $page->getSitemapChangeFreq(),
 			'sitemap_priority' => $page->getSitemapPriority(),
-			'og_type' => $page->getOgType()
+			'og_type' => $page->getOgType(),
+			'og_title' => $page->getOgTitle(),
+			'og_description' => $page->getOgDescription()
 		));
 
 		//set available styles
@@ -300,8 +302,14 @@ class PageEditPage extends PageType {
 
 		$og_type = $_REQUEST['og_type'];
 
+		if (!isset($_REQUEST['og_title']) || empty($_REQUEST['og_title'])) {
+			return "OpenGraph title wasn't set!";
+		}
+
+		$og_title = htmlentities($_REQUEST['og_title']);
+
 		//update page in database
-		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content, `parent` = :parent, `design` = :design, `template` = :template, `sitemap` = :sitemap, `sitemap_changefreq` = :sitemap_changefreq, `sitemap_priority` = :sitemap_priority, `meta_keywords` = :keywords, `meta_robots` = :robots, `meta_canonicals` = :canoncials, `og_type` = :og_type WHERE `id` = :pageID; ", array(
+		Database::getInstance()->execute("UPDATE `{praefix}pages` SET `title` = :title, `content` = :content, `parent` = :parent, `design` = :design, `template` = :template, `sitemap` = :sitemap, `sitemap_changefreq` = :sitemap_changefreq, `sitemap_priority` = :sitemap_priority, `meta_keywords` = :keywords, `meta_robots` = :robots, `meta_canonicals` = :canoncials, `og_type` = :og_type, `og_title` = :og_title WHERE `id` = :pageID; ", array(
 			'title' => $title,
 			'content' => $content,
 			'pageID' => $page->getPageID(),
@@ -314,7 +322,8 @@ class PageEditPage extends PageType {
 			'keywords' => $keywords,
 			'robots' => $robots,
 			'canoncials' => $canoncials,
-			'og_type' => $og_type
+			'og_type' => $og_type,
+			'og_title' => $og_title
 		));
 
 		//clear cache
