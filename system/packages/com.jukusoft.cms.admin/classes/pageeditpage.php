@@ -240,11 +240,13 @@ class PageEditPage extends PageType {
 			$template = $_REQUEST['template'];
 		}
 
-		if (!isset($_REQUEST['meta_keywords']) || empty($_REQUEST['meta_keywords'])) {
-			return "Meta keywords wasn't set!";
-		}
+		$keywords = "";
 
-		$keywords = htmlentities($_REQUEST['meta_keywords']);
+		if (!isset($_REQUEST['meta_keywords']) || empty($_REQUEST['meta_keywords'])) {
+			//return "Meta keywords wasn't set!";
+		} else {
+			$keywords = htmlentities($_REQUEST['meta_keywords']);
+		}
 
 		$robots = "";
 
