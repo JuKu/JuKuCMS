@@ -69,6 +69,23 @@
                 <!-- /.box-footer -->
             </div>
             <!-- /.box -->
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{lang}SEO & OpenGraph{/lang}</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body pad">
+                    Meta description & OpenGraph tags
+                </div>
+                <!-- /.box-body -->
+                <!-- <div class="box-footer">
+                    <button type="submit" class="btn btn-primary pull-right">{lang}Edit Page{/lang}</button>
+                </div> -->
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
         </div>
         <!--/.col (left) -->
 
