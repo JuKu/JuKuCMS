@@ -43,7 +43,7 @@
                         <label for="inputFolder" class="col-sm-2 control-label">Alias</label>
 
                         <div class="col-sm-10" style="padding-bottom: 20px;">
-                            <input type="text" name="page_alias" value="{$page.alias}" class="form-control" id="inputAlias" placeholder="my-page-alias" required="required" disabled="disableds">
+                            <input type="text" name="page_alias" value="{$page.alias}" class="form-control" id="inputAlias" placeholder="my-page-alias" required="required" disabled="disabled">
                         </div>
                     </div>
 
@@ -86,6 +86,14 @@
                     </div>
 
                     {$additional_seo_code_header}
+
+                    <div class="form-group">
+                        <label for="inputOGDescription" class="col-sm-4 control-label">OpenGraph Description</label>
+
+                        <div class="col-sm-8" style="padding-bottom: 20px;">
+                            <textarea name="og_description" id="inputOGDescription" rows="3" required="required">{$page.og_description}</textarea>
+                        </div>
+                    </div>
 
                     Meta description & OpenGraph tags
 
