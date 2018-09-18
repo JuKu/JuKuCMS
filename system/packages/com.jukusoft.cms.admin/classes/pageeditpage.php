@@ -283,7 +283,7 @@ class PageEditPage extends PageType {
 				return "Sitemap priority wasn't set!";
 			}
 
-			$sitemap_priority = (float) $_REQUEST['sitemap_priority'];
+			$sitemap_priority = (float) str_replace(",", ".", $_REQUEST['sitemap_priority']);
 
 			if ($sitemap_priority < 0) {
 				return "Minimum value of sitemap priority is 0.";
