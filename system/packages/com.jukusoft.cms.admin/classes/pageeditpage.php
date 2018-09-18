@@ -180,13 +180,15 @@ class PageEditPage extends PageType {
 		//add support to show additional code from plugins
 		$additional_code_header = "";
 		$additional_code_footer = "";
+		$additional_seo_code_header = "";
+		$additional_seo_code_footer = "";
 
 		Events::throwEvent("page_edit_additional_code_header", array(
 			'page' => &$page,
 			'code' => &$additional_code_header
 		));
 
-		$template->assign("additional_code_header", $additional_code_footer);
+		$template->assign("additional_code_header", $additional_code_header);
 
 		Events::throwEvent("page_edit_additional_code_footer", array(
 			'page' => &$page,
@@ -194,6 +196,15 @@ class PageEditPage extends PageType {
 		));
 
 		$template->assign("additional_code_footer", $additional_code_footer);
+
+		Events::throwEvent("pageedit_additional_seo_code", array(
+			'page' => &$page,
+			'seo_header' => &$additional_seo_code_header,
+			'seo_footer' => &$additional_seo_code_footer
+		));
+
+		$template->assign("additional_seo_code_header", $additional_seo_code_header);
+		$template->assign("additional_seo_code_footer", $additional_seo_code_footer);
 
 		$template->assign("errors", $error_messages);
 		$template->assign("success_messages", $success_messages);

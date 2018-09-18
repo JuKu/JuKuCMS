@@ -85,7 +85,11 @@
                         </div>
                     </div>
 
+                    {$additional_seo_code_header}
+
                     Meta description & OpenGraph tags
+
+                    {$additional_seo_code_footer}
                 </div>
                 <!-- /.box-body -->
                 <!-- <div class="box-footer">
