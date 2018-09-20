@@ -56,7 +56,7 @@
                         <br />
 
                         <div class="box-body pad">
-                            <textarea id="wysiwygEditor" name="html_code" style="width: 100%; min-height: 400px; " rows="10" cols="50">{$page.content}</textarea>
+                            <textarea id="wysiwygEditor" name="html_code" style="width: 100%; min-height: 400px; " rows="10">{$page.content}</textarea>
                         </div>
                     </div>
 
@@ -91,7 +91,7 @@
                         <label for="inputOGDescription" class="col-sm-4 control-label">OpenGraph Description</label>
 
                         <div class="col-sm-8" style="padding-bottom: 20px;">
-                            <textarea name="og_description" id="inputOGDescription" rows="3" required="required">{$page.og_description}</textarea>
+                            <textarea name="og_description" id="inputOGDescription" rows="3" cols="50" required="required">{$page.og_description}</textarea>
                         </div>
                     </div>
 
