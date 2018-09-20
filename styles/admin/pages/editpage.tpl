@@ -56,7 +56,7 @@
                         <br />
 
                         <div class="box-body pad">
-                            <textarea id="wysiwygEditor" name="html_code" style="width: 100%; min-height: 400px; " rows="10">{$page.content}</textarea>
+                            <textarea id="wysiwygEditor" name="html_code" style="width: 100%; min-height: 400px; " rows="10" cols="50">{$page.content}</textarea>
                         </div>
                     </div>
 
