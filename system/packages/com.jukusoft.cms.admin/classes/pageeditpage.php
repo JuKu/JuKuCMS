@@ -401,7 +401,7 @@ class PageEditPage extends PageType {
 
 		return "<script src=\"" . $thirdparty_url . "tinymce_4.8.2/js/tinymce/tinymce.min.js\"></script>
   				<script>tinymce.init({
-					  selector: 'textarea',
+					  selector: '#wysiwygEditor',
 					  height: 500,
 					  theme: 'modern',
 					  removed_menuitems: 'newdocument',
