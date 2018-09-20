@@ -91,7 +91,7 @@
                         <label for="inputOGDescription" class="col-sm-4 control-label">OpenGraph Description</label>
 
                         <div class="col-sm-8" style="padding-bottom: 20px;">
-                            <textarea name="og_description" id="inputOGDescription" rows="3" cols="50" required="required">{$page.og_description}</textarea>
+                            <textarea name="og_description" id="inputOGDescription" rows="3" cols="50" style="witdth: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; " required="required">{$page.og_description}</textarea>
                         </div>
                     </div>
 
